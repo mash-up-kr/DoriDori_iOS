@@ -17,15 +17,6 @@ final class ___VARIABLE_productName___ViewController: UIViewController {
     // MARK: - Bind ViewModel
 
     func bind(viewModel: ___VARIABLE_productName___ViewModel) {
-        bindAction(viewModel: viewModel)
-        bindState(viewModel: viewModel)
-    }
 
-    func bindAction(viewModel: ___VARIABLE_productName___ViewModel) {
-        
-    }
-
-    func bindState(viewModel: ___VARIABLE_productName___ViewModel) {
-        
     }
 }
