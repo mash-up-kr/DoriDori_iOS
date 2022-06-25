@@ -9,7 +9,7 @@
 	<key>Summary</key>
 	<string>Reactor classes</string>
 	<key>SortOrder</key>
-	<string>2</string>
+	<string>1</string>
 	<key>AllowedTypes</key>
 	<array>
 		<string>public.swift-source</string>
@@ -18,6 +18,10 @@
 	<string>Reactor</string>
 	<key>MainTemplateFiles</key>
 	<string>___FILEBASENAME___.swift</string>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
 	<key>Options</key>
 	<array>
 		<dict>
@@ -26,13 +30,27 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>name:</string>
+			<string>name: </string>
 			<key>Description</key>
 			<string>The name of the Reactor to create</string>
 			<key>Type</key>
 			<string>text</string>
+			<key>NotPersisted</key>
+			<string>true</string>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>Storyboard</string>
+			<key>Required</key>
+			<string>true</string>
+			<key>Name</key>
+			<string>Use Storyboard</string>
+			<key>Description</key>
+			<string>스토리보드를 사용하는가</string>
+			<key>Type</key>
+			<string>checkbox</string>
 			<key>Default</key>
-			<string></string>
+			<string>true</string>
 			<key>NotPersisted</key>
 			<string>true</string>
 		</dict>
