@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A24741AB286742BF008F1D34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24741AA286742BF008F1D34 /* Network.swift */; };
+		A24741AD286745CC008F1D34 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24741AC286745CC008F1D34 /* ResponseModel.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A24741AA286742BF008F1D34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		A24741AC286745CC008F1D34 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A24741A928674291008F1D34 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A24741AA286742BF008F1D34 /* Network.swift */,
+				A24741AC286745CC008F1D34 /* ResponseModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		CEAAA585285A2A4C00D8D3EA = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 		CEAAA590285A2A4C00D8D3EA /* DoriDori_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A24741A928674291008F1D34 /* Network */,
 				CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */,
 				CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */,
 				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
@@ -283,6 +297,8 @@
 			files = (
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
+				A24741AB286742BF008F1D34 /* Network.swift in Sources */,
+				A24741AD286745CC008F1D34 /* ResponseModel.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
