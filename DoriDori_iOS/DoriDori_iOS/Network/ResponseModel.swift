@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct DataModel: Decodable {
-    var test: String
-}
-
-struct ErrorModel: Decodable {
-    let code: String
-    let meesage: String
-}
-
 struct ResponseModel<Model: Decodable>: Decodable {
     let success: Bool
     let data: Model?

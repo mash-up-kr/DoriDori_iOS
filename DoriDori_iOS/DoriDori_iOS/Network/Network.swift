@@ -11,12 +11,6 @@ import RxSwift
 
 typealias HTTPMethod = Alamofire.HTTPMethod
 
-protocol Requestable {
-    var url: String { get }
-    var parameters: [String: Any] { get }
-    var method: HTTPMethod { get }
-}
-
 struct Network {
     func fetch<Model: Decodable>(
         request: Requestable,

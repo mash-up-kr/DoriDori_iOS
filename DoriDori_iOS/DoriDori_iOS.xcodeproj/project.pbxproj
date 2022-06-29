@@ -9,15 +9,16 @@
 /* Begin PBXBuildFile section */
 		A24741AB286742BF008F1D34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24741AA286742BF008F1D34 /* Network.swift */; };
 		A24741AD286745CC008F1D34 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24741AC286745CC008F1D34 /* ResponseModel.swift */; };
+		A27DB6EC286CC9F60055016B /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27DB6EB286CC9F60055016B /* MockModel.swift */; };
+		A27DB6EE286CCAD90055016B /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27DB6ED286CCAD90055016B /* ErrorModel.swift */; };
+		A27DB6F0286CCAF20055016B /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27DB6EF286CCAF20055016B /* Requestable.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
 		CEAAA599285A2A4C00D8D3EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA597285A2A4C00D8D3EA /* Main.storyboard */; };
 		CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */; };
 		CEAAA59E285A2A4D00D8D3EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA59C285A2A4D00D8D3EA /* LaunchScreen.storyboard */; };
-		CEAAA5A9285A2A4D00D8D3EA /* DoriDori_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */; };
-		CEAAA5B3285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */; };
-		CEAAA5B5285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */; };
+		CEAAA5A9285A2A4D00D8D3EA /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5A8285A2A4D00D8D3EA /* NetworkTests.swift */; };
 		CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C2285A2BDB00D8D3EA /* ReactorKit */; };
 		CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C5285A2D3300D8D3EA /* RxCocoa */; };
 		CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C7285A2D3300D8D3EA /* RxRelay */; };
@@ -33,18 +34,14 @@
 			remoteGlobalIDString = CEAAA58D285A2A4C00D8D3EA;
 			remoteInfo = DoriDori_iOS;
 		};
-		CEAAA5AF285A2A4D00D8D3EA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CEAAA586285A2A4C00D8D3EA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEAAA58D285A2A4C00D8D3EA;
-			remoteInfo = DoriDori_iOS;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A24741AA286742BF008F1D34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A24741AC286745CC008F1D34 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		A27DB6EB286CC9F60055016B /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		A27DB6ED286CCAD90055016B /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		A27DB6EF286CCAF20055016B /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,10 +51,7 @@
 		CEAAA59D285A2A4D00D8D3EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEAAA59F285A2A4D00D8D3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSTests.swift; sourceTree = "<group>"; };
-		CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITests.swift; sourceTree = "<group>"; };
-		CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEAAA5A8285A2A4D00D8D3EA /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +74,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEAAA5AB285A2A4D00D8D3EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -95,8 +82,26 @@
 			children = (
 				A24741AA286742BF008F1D34 /* Network.swift */,
 				A24741AC286745CC008F1D34 /* ResponseModel.swift */,
+				A27DB6ED286CCAD90055016B /* ErrorModel.swift */,
+				A27DB6EF286CCAF20055016B /* Requestable.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A27DB6E9286CC9AE0055016B /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAA5A8285A2A4D00D8D3EA /* NetworkTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		A27DB6EA286CC9E50055016B /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A27DB6EB286CC9F60055016B /* MockModel.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		CEAAA585285A2A4C00D8D3EA = {
@@ -104,7 +109,6 @@
 			children = (
 				CEAAA590285A2A4C00D8D3EA /* DoriDori_iOS */,
 				CEAAA5A7285A2A4D00D8D3EA /* DoriDori_iOSTests */,
-				CEAAA5B1285A2A4D00D8D3EA /* DoriDori_iOSUITests */,
 				CEAAA58F285A2A4C00D8D3EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,7 +118,6 @@
 			children = (
 				CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */,
 				CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */,
-				CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,18 +140,10 @@
 		CEAAA5A7285A2A4D00D8D3EA /* DoriDori_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */,
+				A27DB6EA286CC9E50055016B /* Mock */,
+				A27DB6E9286CC9AE0055016B /* Cases */,
 			);
 			path = DoriDori_iOSTests;
-			sourceTree = "<group>";
-		};
-		CEAAA5B1285A2A4D00D8D3EA /* DoriDori_iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */,
-				CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */,
-			);
-			path = DoriDori_iOSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,24 +191,6 @@
 			productReference = CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CEAAA5AD285A2A4D00D8D3EA /* DoriDori_iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEAAA5BE285A2A4D00D8D3EA /* Build configuration list for PBXNativeTarget "DoriDori_iOSUITests" */;
-			buildPhases = (
-				CEAAA5AA285A2A4D00D8D3EA /* Sources */,
-				CEAAA5AB285A2A4D00D8D3EA /* Frameworks */,
-				CEAAA5AC285A2A4D00D8D3EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CEAAA5B0285A2A4D00D8D3EA /* PBXTargetDependency */,
-			);
-			name = DoriDori_iOSUITests;
-			productName = DoriDori_iOSUITests;
-			productReference = CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,10 +205,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					CEAAA5A3285A2A4D00D8D3EA = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = CEAAA58D285A2A4C00D8D3EA;
-					};
-					CEAAA5AD285A2A4D00D8D3EA = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = CEAAA58D285A2A4C00D8D3EA;
 					};
@@ -258,7 +231,6 @@
 			targets = (
 				CEAAA58D285A2A4C00D8D3EA /* DoriDori_iOS */,
 				CEAAA5A3285A2A4D00D8D3EA /* DoriDori_iOSTests */,
-				CEAAA5AD285A2A4D00D8D3EA /* DoriDori_iOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,13 +253,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEAAA5AC285A2A4D00D8D3EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -295,6 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A27DB6EE286CCAD90055016B /* ErrorModel.swift in Sources */,
+				A27DB6F0286CCAF20055016B /* Requestable.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				A24741AB286742BF008F1D34 /* Network.swift in Sources */,
@@ -307,16 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAAA5A9285A2A4D00D8D3EA /* DoriDori_iOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEAAA5AA285A2A4D00D8D3EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEAAA5B5285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift in Sources */,
-				CEAAA5B3285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift in Sources */,
+				CEAAA5A9285A2A4D00D8D3EA /* NetworkTests.swift in Sources */,
+				A27DB6EC286CC9F60055016B /* MockModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,11 +286,6 @@
 			isa = PBXTargetDependency;
 			target = CEAAA58D285A2A4C00D8D3EA /* DoriDori_iOS */;
 			targetProxy = CEAAA5A5285A2A4D00D8D3EA /* PBXContainerItemProxy */;
-		};
-		CEAAA5B0285A2A4D00D8D3EA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEAAA58D285A2A4C00D8D3EA /* DoriDori_iOS */;
-			targetProxy = CEAAA5AF285A2A4D00D8D3EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -406,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -461,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -534,6 +488,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49VF2WJUF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -553,6 +508,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49VF2WJUF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -562,40 +518,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoriDori_iOS.app/DoriDori_iOS";
-			};
-			name = Release;
-		};
-		CEAAA5BF285A2A4D00D8D3EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MashUp-Bangwidae.DoriDori-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DoriDori_iOS;
-			};
-			name = Debug;
-		};
-		CEAAA5C0285A2A4D00D8D3EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MashUp-Bangwidae.DoriDori-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DoriDori_iOS;
 			};
 			name = Release;
 		};
@@ -625,15 +547,6 @@
 			buildConfigurations = (
 				CEAAA5BC285A2A4D00D8D3EA /* Debug */,
 				CEAAA5BD285A2A4D00D8D3EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEAAA5BE285A2A4D00D8D3EA /* Build configuration list for PBXNativeTarget "DoriDori_iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEAAA5BF285A2A4D00D8D3EA /* Debug */,
-				CEAAA5C0285A2A4D00D8D3EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
