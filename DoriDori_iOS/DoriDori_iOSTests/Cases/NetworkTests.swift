@@ -14,7 +14,7 @@ final class NetworkTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.sut = Network()
+        self.sut = Network(baseURL: "fake_url")
     }
 
     override func tearDown() {
@@ -25,7 +25,7 @@ final class NetworkTests: XCTestCase {
     func testRxNetwork_setFailRequest_catchError() async {
         // given
         let request = FakeRequest(
-            url: "fakeProtocol//api",
+            path: "/fake_api",
             parameters: ["fake": ""],
             method: .get
         )
@@ -50,7 +50,7 @@ final class NetworkTests: XCTestCase {
     func testConcurrencyNetwork_setFailRequest_catchError() async {
         // given
         let request = FakeRequest(
-            url: "fakeProtocol//api",
+            path: "/fake_api",
             parameters: ["fake": ""],
             method: .get
         )

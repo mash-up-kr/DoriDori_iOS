@@ -12,13 +12,18 @@ import RxSwift
 typealias HTTPMethod = Alamofire.HTTPMethod
 
 struct Network {
+    private let baseURL: String
+    init(baseURL: String) {
+        self.baseURL = baseURL
+    }
+    
     func fetch<Model: Decodable>(
         request: Requestable,
         responseModel: ResponseModel<Model>.Type
     ) async throws -> ResponseModel<Model> {
         return try await withUnsafeThrowingContinuation({ continuation in
             AF.request(
-                request.url,
+                "\(baseURL)\(request.path)",
                 method: request.method,
                 parameters: request.parameters,
                 headers: nil
@@ -44,7 +49,7 @@ struct Network {
     ) -> Single<ResponseModel<Model>> {
         Single<ResponseModel<Model>>.create { observer in
             AF.request(
-                request.url,
+                "\(baseURL)\(request.path)",
                 method: request.method,
                 parameters: request.parameters,
                 headers: nil

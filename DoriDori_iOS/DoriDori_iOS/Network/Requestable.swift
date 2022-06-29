@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Requestable {
-    var url: String { get }
+    var path: String { get }
     var parameters: [String: Any]? { get }
     var method: HTTPMethod { get }
 }

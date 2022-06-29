@@ -9,16 +9,16 @@ import Foundation
 @testable import DoriDori_iOS
 
 struct FakeRequest: Requestable {
-    let url: String
+    let path: String
     let parameters: [String : Any]?
     let method: HTTPMethod
     
     init(
-        url: String,
+        path: String,
         parameters: [String: Any]?,
         method: HTTPMethod
     ) {
-        self.url = url
+        self.path = path
         self.parameters = parameters
         self.method = method
     }
