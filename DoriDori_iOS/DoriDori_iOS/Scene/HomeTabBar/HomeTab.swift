@@ -29,22 +29,22 @@ extension HomeTabType {
     var tabImage: UIImage? {
         switch self {
         case .first:
-            return UIImage(named: "book")
+            return UIImage(systemName: "book")
         case .second:
-            return UIImage(named: "book")
+            return UIImage(systemName: "book")
         case .third:
-            return UIImage(named: "book")
+            return UIImage(systemName: "book")
         }
     }
     
     var selectedImage: UIImage? {
         switch self {
         case .first:
-            return UIImage(named: "book")
+            return UIImage(systemName: "pencil")
         case .second:
-            return UIImage(named: "book")
+            return UIImage(systemName: "pencil")
         case .third:
-            return UIImage(named: "book")
+            return UIImage(systemName: "pencil")
         }
     }
 }

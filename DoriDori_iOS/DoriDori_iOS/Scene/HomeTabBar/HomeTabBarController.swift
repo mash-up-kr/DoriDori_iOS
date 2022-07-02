@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeTabBarController: BaseTabBarController {
+final class HomeTabBarController: BaseTabBarController {
     
     let tabbarItems: [HomeTabType] = HomeTabType.allCases
     
@@ -15,6 +15,7 @@ class HomeTabBarController: BaseTabBarController {
         super.viewDidLoad()
         
         setup()
+        self.view.backgroundColor = .red
     }
     
     // MARK: - Methods
