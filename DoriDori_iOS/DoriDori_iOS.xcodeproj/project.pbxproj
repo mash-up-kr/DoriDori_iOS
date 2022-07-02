@@ -21,6 +21,9 @@
 		CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C7285A2D3300D8D3EA /* RxRelay */; };
 		CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CA285A2D8700D8D3EA /* Alamofire */; };
 		CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CD285A2DAB00D8D3EA /* Kingfisher */; };
+		CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7651E2867462B007FC892 /* BaseTabBarController.swift */; };
+		CEE76521286746B4007FC892 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE76520286746B4007FC892 /* HomeTab.swift */; };
+		CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7652228674750007FC892 /* HomeTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITests.swift; sourceTree = "<group>"; };
 		CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEE7651E2867462B007FC892 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		CEE76520286746B4007FC892 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
+		CEE7652228674750007FC892 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		CEAAA590285A2A4C00D8D3EA /* DoriDori_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CEE7651D28674582007FC892 /* AppStart */,
 				CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */,
 				CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */,
 				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
@@ -135,6 +142,16 @@
 				CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */,
 			);
 			path = DoriDori_iOSUITests;
+			sourceTree = "<group>";
+		};
+		CEE7651D28674582007FC892 /* AppStart */ = {
+			isa = PBXGroup;
+			children = (
+				CEE7651E2867462B007FC892 /* BaseTabBarController.swift */,
+				CEE7652228674750007FC892 /* HomeTabBarController.swift */,
+				CEE76520286746B4007FC892 /* HomeTab.swift */,
+			);
+			path = AppStart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
+				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
+				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
