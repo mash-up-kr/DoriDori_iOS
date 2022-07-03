@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     struct AppDependecy {
         let window: UIWindow
@@ -21,7 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         self.window = UIWindow(windowScene: windowScene)
-        self.dependency = CompositionRoot.resolve(window: self.window!, start: .home)
+        
+        guard let newWindow = self.window else { return }
+        
+        self.dependency = CompositionRoot.resolve(window: newWindow, start: .home)
         self.window = dependency.window
         self.window?.makeKeyAndVisible()
     }

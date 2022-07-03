@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeTabBarController: BaseTabBarController {
     
-    let tabbarItems: [HomeTabType] = HomeTabType.allCases
+    private let tabbarItems: [HomeTabType] = HomeTabType.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
