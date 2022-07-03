@@ -20,8 +20,8 @@ struct Network {
     func fetch<Model: Decodable>(
         request: Requestable,
         responseModel: ResponseModel<Model>.Type
-    ) -> Single<ResponseModel<Model>> {
-        Single<ResponseModel<Model>>.create { observer in
+    ) -> Single<Model> {
+        Single<Model>.create { observer in
             AF.request(
                 "\(baseURL)\(request.path)",
                 method: request.method,
@@ -38,10 +38,20 @@ struct Network {
             ) { dataResponse in
                 debugPrint(dataResponse)
                 switch dataResponse.result {
-                case .success(let data):
-                    observer(.success(data))
-                case .failure(let error):
-                    observer(.failure(error))
+                case .success(let responseModel):
+                    if let isSuccess = responseModel.success {
+                        if !isSuccess {
+                            if let errModel = responseModel.error {
+                                observer(.failure(errModel))
+                            } else { observer(.failure(DoriDoriError.no_errorModel)) }
+                        } else {
+                            if let data = responseModel.data {
+                                observer(.success(data))
+                            } else { observer(.failure(DoriDoriError.no_data)) }
+                        }
+                    } else { observer(.failure(DoriDoriError.field_error)) }
+                case .failure(let AFError):
+                    observer(.failure(AFError))
                 }
             }
             return Disposables.create()
