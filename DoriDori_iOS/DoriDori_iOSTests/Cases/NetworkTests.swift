@@ -31,7 +31,7 @@ final class NetworkTests: XCTestCase {
         )
         
         // when
-        var response: ResponseModel<FakeModel>?
+        var response: FakeModel?
         var networkError: Error?
         do {
             response = try await sut.fetch(
