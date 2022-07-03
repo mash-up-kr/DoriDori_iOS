@@ -8,6 +8,6 @@
 import Foundation
 
 struct ErrorModel: Decodable {
-    let code: String
-    let meesage: String
+    let code: String?
+    let meesage: String?
 }

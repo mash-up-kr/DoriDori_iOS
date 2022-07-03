@@ -20,32 +20,6 @@ struct Network {
     func fetch<Model: Decodable>(
         request: Requestable,
         responseModel: ResponseModel<Model>.Type
-    ) async throws -> ResponseModel<Model> {
-        return try await withUnsafeThrowingContinuation({ continuation in
-            AF.request(
-                "\(baseURL)\(request.path)",
-                method: request.method,
-                parameters: request.parameters,
-                headers: nil
-            )
-            .responseDecodable(
-                of: responseModel,
-                queue: .init(label: "DoriDori_network_queue", qos: .background, attributes: .concurrent)
-            ) { dataResponse in
-                debugPrint(dataResponse)
-                switch dataResponse.result {
-                case .success(let data):
-                    continuation.resume(returning: data)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        })
-    }
-    
-    func fetch2<Model: Decodable>(
-        request: Requestable,
-        responseModel: ResponseModel<Model>.Type
     ) -> Single<ResponseModel<Model>> {
         Single<ResponseModel<Model>>.create { observer in
             AF.request(
@@ -56,7 +30,11 @@ struct Network {
             )
             .responseDecodable(
                 of: responseModel,
-                queue: .init(label: "DoriDori_network_queue", qos: .background, attributes: .concurrent)
+                queue: .init(
+                    label: "DoriDori_network_queue",
+                    qos: .background,
+                    attributes: .concurrent
+                )
             ) { dataResponse in
                 debugPrint(dataResponse)
                 switch dataResponse.result {

@@ -34,7 +34,7 @@ final class NetworkTests: XCTestCase {
         var response: ResponseModel<FakeModel>?
         var networkError: Error?
         do {
-            response = try await sut.fetch2(
+            response = try await sut.fetch(
                 request: request,
                 responseModel: ResponseModel<FakeModel>.self
             ).value
@@ -42,32 +42,6 @@ final class NetworkTests: XCTestCase {
             networkError = error
         }
         
-        // then
-        XCTAssertNil(response)
-        XCTAssertNotNil(networkError)
-    }
-
-    func testConcurrencyNetwork_setFailRequest_catchError() async {
-        // given
-        let request = FakeRequest(
-            path: "/fake_api",
-            parameters: ["fake": ""],
-            method: .get
-        )
-        
-        // when
-        var response: ResponseModel<FakeModel>?
-        var networkError: Error?
-        
-        do {
-            response = try await sut.fetch(
-                request: request,
-                responseModel: ResponseModel<FakeModel>.self
-            )
-        } catch (let error) {
-            networkError = error
-        }
-       
         // then
         XCTAssertNil(response)
         XCTAssertNotNil(networkError)

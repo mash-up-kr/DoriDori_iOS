@@ -8,7 +8,7 @@
 import Foundation
 
 struct ResponseModel<Model: Decodable>: Decodable {
-    let success: Bool
+    let success: Bool?
     let data: Model?
     let error: ErrorModel?
 }
