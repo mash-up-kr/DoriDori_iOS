@@ -20,6 +20,8 @@
 		CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C7285A2D3300D8D3EA /* RxRelay */; };
 		CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CA285A2D8700D8D3EA /* Alamofire */; };
 		CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CD285A2DAB00D8D3EA /* Kingfisher */; };
+		CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */; };
+		CEB265702875EA6800B9970B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2656F2875EA6800B9970B /* Colors.xcassets */; };
 		CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7651E2867462B007FC892 /* BaseTabBarController.swift */; };
 		CEE76521286746B4007FC892 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE76520286746B4007FC892 /* HomeTab.swift */; };
 		CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7652228674750007FC892 /* HomeTabBarController.swift */; };
@@ -55,6 +57,8 @@
 		CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITests.swift; sourceTree = "<group>"; };
 		CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CEB2656F2875EA6800B9970B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CEE7651E2867462B007FC892 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		CEE76520286746B4007FC892 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CEE7652228674750007FC892 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */,
+				CEB2656F2875EA6800B9970B /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			children = (
 				CEE7651D28674582007FC892 /* AppStart */,
 				CE42D38528705BEE00C49548 /* Scene */,
+				CEB2656B2875E9B500B9970B /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
 				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
 				CEAAA59F285A2A4D00D8D3EA /* Info.plist */,
@@ -163,6 +169,22 @@
 				CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */,
 			);
 			path = DoriDori_iOSUITests;
+			sourceTree = "<group>";
+		};
+		CEB2656B2875E9B500B9970B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEB2656C2875E9C000B9970B /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CEB2656C2875E9C000B9970B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CEE7651D28674582007FC892 /* AppStart */ = {
@@ -293,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */,
+				CEB265702875EA6800B9970B /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +347,7 @@
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
+				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
