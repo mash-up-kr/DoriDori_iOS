@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
+		CE58A7F92877385C00928091 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58A7F82877385C00928091 /* Coordinator.swift */; };
+		CE58A7FB2877389100928091 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58A7FA2877389100928091 /* MainCoordinator.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		CE58A7F82877385C00928091 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CE58A7FA2877389100928091 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		CE58A7F72877385100928091 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE58A7F82877385C00928091 /* Coordinator.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		CEAAA585285A2A4C00D8D3EA = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +153,7 @@
 			children = (
 				CEE7651D28674582007FC892 /* AppStart */,
 				CE42D38528705BEE00C49548 /* Scene */,
+				CE58A7F72877385100928091 /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
 				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
 				CEAAA59F285A2A4D00D8D3EA /* Info.plist */,
@@ -171,6 +184,7 @@
 				CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */,
 				CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */,
 				CE42D3832870483A00C49548 /* CompositionRoot.swift */,
+				CE58A7FA2877389100928091 /* MainCoordinator.swift */,
 			);
 			path = AppStart;
 			sourceTree = "<group>";
@@ -317,12 +331,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE58A7F92877385C00928091 /* Coordinator.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
+				CE58A7FB2877389100928091 /* MainCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

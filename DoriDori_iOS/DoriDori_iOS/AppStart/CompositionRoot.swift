@@ -13,12 +13,10 @@ enum AppStart {
 }
 
 struct CompositionRoot {
-    static func resolve(window: UIWindow, start: AppStart) -> SceneDelegate.AppDependecy {
+    static func resolve(window: UIWindow, appStart: AppStart) -> SceneDelegate.AppDependecy {
         
-        switch start {
-            case .home:
-                window.rootViewController = HomeTabBarController()
-        }
+        let coordinator = AppCoordinator(appStart: appStart, window: window)
+        coordinator.start()
         
         return SceneDelegate.AppDependecy(window: window)
     }
