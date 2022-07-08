@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  AppCoordinator.swift
 //  DoriDori_iOS
 //
 //  Created by JeongMinho on 2022/07/08.
