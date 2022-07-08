@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "FlexLayout",
+        "repositoryURL": "https://github.com/layoutBox/FlexLayout.git",
+        "state": {
+          "branch": "master",
+          "revision": "2440c5ae80cadf43acf624e1e51614a1d1ea0360",
+          "version": null
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {

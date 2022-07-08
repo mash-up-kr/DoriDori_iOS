@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "_Icon=Icon [Check Box_Outline].png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "_Icon=Icon [Check Box_Outline]@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "_Icon=Icon [Check Box_Outline]@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
