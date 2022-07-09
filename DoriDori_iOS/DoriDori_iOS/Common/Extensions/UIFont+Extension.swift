@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIFont {
-    static let SFPro: String = "SF-Pro"
+    static let SFPro: String = "SF-Pro-Display"
     static let SpoqaHanSansNeo: String = "SpoqaHanSansNeo"
     
     static func setKRFont(weight: UIFont.Weight, size: CGFloat) -> UIFont? {
@@ -16,7 +16,7 @@ extension UIFont {
     }
     
     static func setEngFont(weight: UIFont.Weight, size: CGFloat) -> UIFont? {
-        return UIFont(name: "\(UIFont.SFPro)-Display-\(weight.name)", size: size)
+        return UIFont(name: "\(UIFont.SFPro)-\(weight.name)", size: size)
     }
 }
 

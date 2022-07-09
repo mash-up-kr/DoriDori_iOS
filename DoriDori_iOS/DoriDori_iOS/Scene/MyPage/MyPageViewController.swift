@@ -14,16 +14,67 @@ final class MyPageViewController: UIViewController {
 
     // MARK: - UIComponent
     
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .darkGray
-        collectionView.collectionViewLayout = layout
-        return collectionView
+    private let profileView: MyPageProfileView = MyPageProfileView()
+    private let answerCompleteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("답변완료", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 16)
+        return button
+    }()
+    private let answerRecievedButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("받은질문", for: .normal)
+        button.setTitleColor(UIColor.gray500, for: .normal)
+        button.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 16)
+        return button
+    }()
+    private let myAnswerButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("내 질문", for: .normal)
+        button.setTitleColor(UIColor.gray500, for: .normal)
+        button.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 16)
+        return button
+    }()
+    
+    private let tabStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        return stackView
+    }()
+    
+    private let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray800
+        return view
+    }()
+    
+    private let selectedLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let containerScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .darkGray
+        return scrollView
+    }()
+    
+    private let containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 0
+        stackView.alignment = .top
+        return stackView
     }()
     
     var disposeBag = DisposeBag()
-
+    private var selectedButtonIndex: Int = 0
+    
     // MARK: - Life cycle
     
     init(myPageCoordinator: Coordinator) {
@@ -37,27 +88,62 @@ final class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .systemPink
+        self.view.backgroundColor = .gray900
+        self.setupTabStackView()
         self.setupLayouts()
-        self.configure(self.collectionView)
-    }
-    
-    private func setupLayouts() {
-        self.view.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        self.setupContentScrollView()
+        
+        let viewController1 = AnswerCompleteViewController(nibName: nil, bundle: nil)
+        self.addChild(viewController1)
+        self.containerStackView.addArrangedSubview(viewController1.view)
+        viewController1.view.snp.makeConstraints {
+            $0.width.equalTo(UIScreen.main.bounds.width)
+            $0.top.bottom.equalToSuperview()
         }
     }
     
-    private func configure(_ collectionView: UICollectionView) {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        self.register(collectionView)
+    private func setupLayouts() {
+        self.view.addSubViews(views: self.profileView, self.tabStackView, self.dividerView, self.selectedLineView, self.containerScrollView)
+        self.profileView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(144)
+        }
+        self.tabStackView.snp.makeConstraints {
+            $0.top.equalTo(self.profileView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(52)
+        }
+        self.dividerView.snp.makeConstraints {
+            $0.top.equalTo(self.tabStackView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        self.selectedLineView.snp.makeConstraints {
+            $0.top.equalTo(self.tabStackView.snp.bottom)
+            $0.centerX.equalTo(self.answerCompleteButton.snp.centerX)
+            $0.width.equalTo(UIScreen.main.bounds.width / 3)
+            $0.height.equalTo(2)
+        }
+        self.containerScrollView.snp.makeConstraints {
+            $0.top.equalTo(self.dividerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
-    private func register(_ collectionView: UICollectionView) {
-        collectionView.register(MyPageHeaderView.self, supplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
-        collectionView.register(MyPageCollectionViewCell.self)
+    private func setupTabStackView() {
+        [self.answerCompleteButton, self.answerRecievedButton, self.myAnswerButton].forEach { button in
+            self.tabStackView.addArrangedSubview(button)
+        }
+    }
+    
+    private func setupContentScrollView() {
+        self.containerScrollView.addSubview(self.containerStackView)
+        self.containerStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(UIScreen.main.bounds.width)
+            $0.height.equalTo(3000)
+        }
     }
 
     // MARK: - Bind ViewModel
@@ -65,56 +151,10 @@ final class MyPageViewController: UIViewController {
     func bind(viewModel: MyPageViewModel) {
 
     }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension MyPageViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return 10
-    }
+    // MARK: - Bind Action
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        collectionView.dequeueReusableCell(type: MyPageCollectionViewCell.self, for: indexPath)
+    private func bind() {
+        
     }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(
-            kind: kind,
-            type: MyPageHeaderView.self,
-            for: indexPath
-        )
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension MyPageViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 196)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 148)
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension MyPageViewController: UICollectionViewDelegateFlowLayout {
-    
 }
