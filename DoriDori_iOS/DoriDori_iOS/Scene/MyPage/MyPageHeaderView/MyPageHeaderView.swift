@@ -18,8 +18,8 @@ final class MyPageHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 24, weight: .medium)
-        label.text = "매쉬업 방위대"
+        label.font = .setKRFont(weight: .medium, size: 24)
+        label.text = "매시업방위대"
         return label
     }()
     
