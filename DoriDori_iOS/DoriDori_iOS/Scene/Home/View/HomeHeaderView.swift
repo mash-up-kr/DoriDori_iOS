@@ -30,7 +30,7 @@ final class HomeHeaderView: UIView {
     // MARK: - UIView
     private let homeLogoImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
-        imageView.image = UIImage(named: "HomeLogo")
+        imageView.image = UIImage(named: "homeLogo")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
