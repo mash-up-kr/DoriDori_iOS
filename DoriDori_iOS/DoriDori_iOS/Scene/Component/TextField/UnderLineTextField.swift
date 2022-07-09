@@ -7,26 +7,13 @@
 
 import UIKit
 import CoreData
+import RxSwift
+import RxCocoa
 
-public enum UnderLineType: String {
-    case email = "이메일"
-    case password = "비밀번호"
-    case nickname = "닉네임"
-    case authNumber = "인증번호"
-}
-
-public struct UnderLineData {
-    public let type: UnderLineType
-    public var filledState: Bool?
-    
-    public init(type: UnderLineType, filledState: Bool? = nil) {
-        self.type = type
-        self.filledState = filledState
-    }
-}
 
 public protocol UnderLineTextFieldDelegate: AnyObject {
     func underLineDidChange(sender: UITextField)
+    func underLineDidEnd(sender: UITextField)
 }
 
 public class UnderLineTextField: UIView {
@@ -37,7 +24,9 @@ public class UnderLineTextField: UIView {
     @IBOutlet public weak var errorLabel: UILabel!
     @IBOutlet public weak var iconImageView: UIImageView!
     public weak var delegate: UnderLineTextFieldDelegate?
-        
+    
+    private let disposeBag = DisposeBag()
+
     public var data: UnderLineData? {
         didSet {
             guard let data = data else { return }
@@ -48,7 +37,6 @@ public class UnderLineTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
-        self.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -79,9 +67,15 @@ public class UnderLineTextField: UIView {
     private func configure(infoData: UnderLineData) {
         let typeValue = infoData.type.rawValue
         switch infoData.type {
-        case .email, .password:
+        case .email:
             self.titleLabel.text = typeValue
             self.textField.placeholder = "\(typeValue) 입력"
+            self.textField.addTarget(self, action: #selector(emailFieldDidChange), for: .editingChanged)
+//            self.textField.addTarget(self, action: #selector(emailFieldDidEnd), for: .editingDidEnd)
+        case .password:
+            self.titleLabel.text = typeValue
+            self.textField.placeholder = "\(typeValue) 입력"
+            self.textField.addTarget(self, action: #selector(passwordFieldDidChange), for: .editingChanged)
         case .nickname:
             self.titleLabel.text = "닉네임"
             self.textField.placeholder = "도리를 찾아서"
@@ -91,14 +85,47 @@ public class UnderLineTextField: UIView {
         }
     }
     
-    @objc func textFieldDidChange(sender: UITextField) {
-        if sender.text?.isEmpty == false{
-            lineView.backgroundColor = UIColor(red: 0.0, green: 195.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0)
-            data?.filledState = true
-        } else {
-            lineView.backgroundColor = UIColor(red: 229.0 / 255.0, green: 230.0 / 255.0, blue: 233.0 / 255.0, alpha: 1.0)
-            data?.filledState = false
+    @objc func emailFieldDidChange(sender: UITextField) {
+        if sender.text?.validateEmail() == true { // 이메일 유효되면
+            lineView.backgroundColor = UIColor(named: "lime300")
+            data?.validState = true
+        } else { // 비어있으면
+            lineView.backgroundColor = UIColor(named: "gray800")
+            data?.validState = false
+        }
+        delegate?.underLineDidChange(sender: sender)
+    }
+    
+    @objc func emailFieldDidEnd(sender: UITextField) {
+        if sender.text?.validateEmail() == false {
+            lineView.backgroundColor = UIColor(named: "red500")
+            data?.validState = false
+        }
+        delegate?.underLineDidEnd(sender: sender)
+    }
+    
+    @objc func passwordFieldDidChange(sender: UITextField) {
+        if sender.text?.validatePassword() == true {
+            lineView.backgroundColor = UIColor(named: "lime300")
+            data?.validState = true
+        } else { // 비어있으면
+            lineView.backgroundColor = UIColor(named: "gray800")
+            data?.validState = false
         }
         delegate?.underLineDidChange(sender: sender)
     }
 }
+
+extension String {
+    func validateEmail() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+        return predicate.evaluate(with: self)
+    }
+    func validatePassword() -> Bool {
+        let passwordreg =  ("(?=.*[A-Za-z])(?=.*[0-9]).{6,20}")
+        let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordreg)
+        return passwordtesting.evaluate(with: self)
+    }
+}
+

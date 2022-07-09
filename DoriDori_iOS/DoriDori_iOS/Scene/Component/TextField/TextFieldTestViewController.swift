@@ -31,10 +31,19 @@ class TextFieldTestViewController: UIViewController {
 }
 
 extension TextFieldTestViewController: UnderLineTextFieldDelegate {
+    func underLineDidEnd(sender: UITextField) {
+        var state: Bool = true
+        textFieldData.forEach {
+            if $0.validState == false {
+                state = false
+            }
+        }
+    }
+    
     func underLineDidChange(sender: UITextField) {
         var state: Bool = true
         textFieldData.forEach {
-            if $0.filledState == false {
+            if $0.validState == false {
                 state = false
             }
         }

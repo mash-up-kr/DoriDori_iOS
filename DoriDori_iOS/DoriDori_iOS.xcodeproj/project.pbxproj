@@ -11,6 +11,7 @@
 		6CB65B6D2879CA8600C15E2B /* UnderLineTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB65B6B2879CA8600C15E2B /* UnderLineTextField.xib */; };
 		6CB65B6F2879CD7600C15E2B /* TextFieldTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB65B6E2879CD7600C15E2B /* TextFieldTest.storyboard */; };
 		6CB65B712879CFAE00C15E2B /* TextFieldTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B702879CFAE00C15E2B /* TextFieldTestViewController.swift */; };
+		6CB65B74287A066B00C15E2B /* UnderLineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B73287A066A00C15E2B /* UnderLineData.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -64,6 +65,7 @@
 		6CB65B6B2879CA8600C15E2B /* UnderLineTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderLineTextField.xib; sourceTree = "<group>"; };
 		6CB65B6E2879CD7600C15E2B /* TextFieldTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TextFieldTest.storyboard; sourceTree = "<group>"; };
 		6CB65B702879CFAE00C15E2B /* TextFieldTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTestViewController.swift; sourceTree = "<group>"; };
+		6CB65B73287A066A00C15E2B /* UnderLineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineData.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				6CB65B6B2879CA8600C15E2B /* UnderLineTextField.xib */,
 				6CB65B6E2879CD7600C15E2B /* TextFieldTest.storyboard */,
 				6CB65B702879CFAE00C15E2B /* TextFieldTestViewController.swift */,
+				6CB65B73287A066A00C15E2B /* UnderLineData.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CB65B74287A066B00C15E2B /* UnderLineData.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				6CB65B712879CFAE00C15E2B /* TextFieldTestViewController.swift in Sources */,
