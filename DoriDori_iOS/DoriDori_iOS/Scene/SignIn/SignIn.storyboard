@@ -139,7 +139,7 @@
         <!--Email Login View Controller-->
         <scene sceneID="t8Y-Ve-PpA">
             <objects>
-                <viewController id="Gns-NG-izc" customClass="EmailLoginViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailLoginViewController" id="Gns-NG-izc" customClass="EmailLoginViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OT4-ab-n2U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

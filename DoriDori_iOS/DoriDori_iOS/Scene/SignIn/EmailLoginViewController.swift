@@ -12,14 +12,10 @@ class EmailLoginViewController: UIViewController {
     @IBOutlet weak var emailPwFindStackView: UIStackView!
     @IBOutlet weak var emailSignUpButton: UIButton!
     @IBOutlet weak var emailFindButton: UIButton!
-    
-    @IBOutlet weak var passwordFindButton: UIButton!
+    @IBOutlet weak var passwordFindButton: UIButton!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
-
-
 }

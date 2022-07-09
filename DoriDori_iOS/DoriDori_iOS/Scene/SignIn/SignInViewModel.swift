@@ -8,16 +8,20 @@
 import Foundation
 import ReactorKit
 
+enum SignInButtonType {
+    case apple
+    case kakao
+    case email
+}
+
 final class SignInViewModel: Reactor {
-    
+    typealias Mutation = Action
     enum Action {
-        
+        case tapSignInButton(SignInButtonType)
     }
-    enum Mutation {
-        
-    }
+    
     struct State {
-        
+        var provider: SignInButtonType?
     }
 
     let initialState: State
@@ -26,12 +30,19 @@ final class SignInViewModel: Reactor {
         self.initialState = State()
     }
 
-    func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
-    }
+//    func mutate(action: Action) -> Observable<Mutation> {
+//        print("mutation", action)
+//        return .just(action)
+//    }
 
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        return state
+    func reduce(state: State, action: Mutation) -> State {
+        print("reduce state", state)
+        var _state = state
+        switch action {
+        case .tapSignInButton(let type):
+            _state.provider = type
+            print(state.provider)
+        }
+        return _state
     }
 }
