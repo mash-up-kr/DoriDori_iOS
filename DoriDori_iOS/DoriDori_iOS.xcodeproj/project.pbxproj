@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */; };
+		A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */; };
+		A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -116,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A20A9E9328797B5C000ABFBB /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */,
+				A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */,
+				A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +147,7 @@
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A20A9E9328797B5C000ABFBB /* MyPage */,
 				CE42D38628705BFC00C49548 /* HomeTabBar */,
 			);
 			path = Scene;
@@ -389,11 +406,14 @@
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
+				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
+				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
+				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
