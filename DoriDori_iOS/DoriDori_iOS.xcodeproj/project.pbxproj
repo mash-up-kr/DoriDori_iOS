@@ -24,6 +24,7 @@
 		A22FC8D22879BD9700F33D4F /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A22FC8C42879BD9600F33D4F /* SF-Pro-Display-Light.otf */; };
 		A22FC8D32879BD9700F33D4F /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A22FC8C52879BD9600F33D4F /* SF-Pro-Display-Regular.otf */; };
 		A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8D82879BF7A00F33D4F /* UIFont+Extension.swift */; };
+		A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8DD2879D80C00F33D4F /* KeywordView.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -90,6 +91,7 @@
 		A22FC8C42879BD9600F33D4F /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		A22FC8C52879BD9600F33D4F /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		A22FC8D82879BF7A00F33D4F /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		A22FC8DD2879D80C00F33D4F /* KeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordView.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A22FC8DC2879D7E200F33D4F /* KeywordView */ = {
+			isa = PBXGroup;
+			children = (
+				A22FC8DD2879D80C00F33D4F /* KeywordView.swift */,
+			);
+			path = KeywordView;
+			sourceTree = "<group>";
+		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +297,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
 				CE5B13252879748D00F10A20 /* Coordinator.swift */,
 				A2CF64DD28796D72007D54DD /* Network */,
@@ -485,6 +496,7 @@
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
+				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
