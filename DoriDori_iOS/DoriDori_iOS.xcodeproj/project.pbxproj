@@ -11,6 +11,7 @@
 		CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7EE2877279C00928091 /* FlexLayout */; };
 		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
 		CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F22877279C00928091 /* FlexLayoutYogaKit */; };
+		CE58A80B2879681B00928091 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A80A2879681B00928091 /* SnapKit */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -78,6 +79,7 @@
 				CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */,
 				CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
+				CE58A80B2879681B00928091 /* SnapKit in Frameworks */,
 				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
 				CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */,
 			);
@@ -228,6 +230,7 @@
 				CE58A7EE2877279C00928091 /* FlexLayout */,
 				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
+				CE58A80A2879681B00928091 /* SnapKit */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -307,6 +310,7 @@
 				CEAAA5C9285A2D8700D8D3EA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
+				CE58A8092879681B00928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -684,6 +688,14 @@
 				kind = branch;
 			};
 		};
+		CE58A8092879681B00928091 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		CEAAA5C1285A2BDB00D8D3EA /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -733,6 +745,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
 			productName = FlexLayoutYogaKit;
+		};
+		CE58A80A2879681B00928091 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE58A8092879681B00928091 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		CEAAA5C2285A2BDB00D8D3EA /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
