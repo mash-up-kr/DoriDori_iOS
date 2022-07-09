@@ -10,6 +10,11 @@
 		A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */; };
 		A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */; };
 		A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */; };
+		A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */; };
+		A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */; };
+		A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9F2879A18E000ABFBB /* MyPageCollectionViewCell.swift */; };
+		A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AD2879A62500F33D4F /* LevelView.swift */; };
+		A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -62,6 +67,11 @@
 		A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
+		A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
+		A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		A20A9E9F2879A18E000ABFBB /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
+		A22FC8AD2879A62500F33D4F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -125,11 +135,29 @@
 		A20A9E9328797B5C000ABFBB /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				A20A9E9A28798226000ABFBB /* MyPageHeaderView */,
 				A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */,
 				A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */,
 				A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A20A9E9A28798226000ABFBB /* MyPageHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */,
+				A20A9E9F2879A18E000ABFBB /* MyPageCollectionViewCell.swift */,
+			);
+			path = MyPageHeaderView;
+			sourceTree = "<group>";
+		};
+		A22FC8AA2879A5DC00F33D4F /* LevelView */ = {
+			isa = PBXGroup;
+			children = (
+				A22FC8AD2879A62500F33D4F /* LevelView.swift */,
+			);
+			path = LevelView;
 			sourceTree = "<group>";
 		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
@@ -225,6 +253,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A22FC8AA2879A5DC00F33D4F /* LevelView */,
 				CE5B13252879748D00F10A20 /* Coordinator.swift */,
 				A2CF64DD28796D72007D54DD /* Network */,
 				CEB2656C2875E9C000B9970B /* Extensions */,
@@ -236,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */,
+				A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */,
+				A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,13 +431,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
+				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
+				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
+				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
@@ -415,6 +450,7 @@
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
