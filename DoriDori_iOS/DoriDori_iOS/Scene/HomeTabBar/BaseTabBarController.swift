@@ -12,6 +12,9 @@ class BaseTabBarController: UITabBarController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setTabbarAppearance()
+        
+        let label = UILabel()
+        label.font = UIFont.setEngFont(weight: .bold, size: 14)
     }
     
     required init?(coder: NSCoder) {

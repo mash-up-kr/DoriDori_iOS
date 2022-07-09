@@ -10,4 +10,24 @@ import UIKit
 extension UIFont {
     static let SFPro: String = "SFPro"
     static let SpoqaHanSansNeo: String = "SpoqaHanSansNeo"
+    
+    static func setKRFont(weight: UIFont.Weight, size: CGFloat) -> UIFont? {
+        UIFont(name: "\(UIFont.SpoqaHanSansNeo)-\(weight.name)", size: size)
+    }
+    
+    static func setEngFont(weight: UIFont.Weight, size: CGFloat) -> UIFont? {
+        UIFont(name: "\(UIFont.SpoqaHanSansNeo)-\(weight.name)", size: size)
+    }
+}
+
+extension UIFont.Weight {
+    var name: String {
+        switch self {
+        case .medium: return "Medium"
+        case .light: return "Light"
+        case .regular: return "Regular"
+        case .bold: return "Bold"
+        default: return ""
+        }
+    }
 }
