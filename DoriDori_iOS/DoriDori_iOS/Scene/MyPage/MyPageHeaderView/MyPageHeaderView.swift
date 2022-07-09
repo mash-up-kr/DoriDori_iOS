@@ -19,11 +19,11 @@ final class MyPageHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.textColor = .white
         label.font = .setKRFont(weight: .medium, size: 24)
-        label.text = "매시업방위대"
+        label.text = "매시업 방위대"
         return label
     }()
     
-    private let levelView = LevelView(level: 1)
+    private let levelView = LevelView(level: 10)
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "arrow"), for: .normal)
@@ -38,6 +38,21 @@ final class MyPageHeaderView: UICollectionReusableView {
         let button = UIButton()
         button.setImage(UIImage(named:"setting"), for: .normal)
         return button
+    }()
+    
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 24
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    private let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 26
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     override init(frame: CGRect) {
@@ -55,12 +70,17 @@ final class MyPageHeaderView: UICollectionReusableView {
     }
     
     private func setupLayouts() {
-        self.addSubViews(views: self.titleLabel, self.levelView, self.moreButton, self.settingButton, self.shareButton)
+        [self.settingButton, self.shareButton].forEach {
+            self.buttonStackView.addArrangedSubview($0)
+        }
+        
+        self.addSubViews(views: self.titleLabel, self.levelView, self.moreButton, self.buttonStackView)
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(30)
         }
+        
         self.levelView.snp.makeConstraints {
             $0.centerY.equalTo(self.titleLabel.snp.centerY)
             $0.leading.equalTo(self.titleLabel.snp.trailing).offset(8)
@@ -68,21 +88,14 @@ final class MyPageHeaderView: UICollectionReusableView {
         
         self.moreButton.snp.makeConstraints {
             $0.centerY.equalTo(self.titleLabel.snp.centerY)
+            $0.leading.equalTo(self.levelView.snp.trailing).offset(8)
             $0.width.equalTo(10)
             $0.height.equalTo(22)
-            $0.trailing.equalTo(self.levelView.snp.trailing).offset(16)
         }
        
-        self.settingButton.snp.makeConstraints {
-            $0.size.equalTo(24)
-            $0.trailing.equalToSuperview().inset(28)
+        self.buttonStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
-        }
-        
-        self.shareButton.snp.makeConstraints {
-            $0.size.equalTo(24)
-            $0.trailing.equalToSuperview().inset(76)
-            $0.top.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().inset(24)
         }
     }
 }

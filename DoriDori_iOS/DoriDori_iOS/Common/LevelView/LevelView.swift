@@ -12,7 +12,8 @@ final class LevelView: UIView {
     private let levelLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.font = UIFont.setKRFont(weight: .medium, size: 12)
+        print(label.font)
         return label
     }()
     
