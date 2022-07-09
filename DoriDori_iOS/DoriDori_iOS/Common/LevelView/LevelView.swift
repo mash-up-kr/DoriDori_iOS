@@ -18,8 +18,9 @@ final class LevelView: UIView {
     
     // MARK: Init
     
-    init(level: Int) {
+    init(level: Int, backgroundColor: UIColor = .lime300) {
         super.init(frame: .zero)
+        self.backgroundColor = backgroundColor
         self.setupLevel(level)
         self.configureUI()
         self.setUpLayouts()
@@ -39,7 +40,7 @@ final class LevelView: UIView {
         debugPrint("\(String(describing: self)) deinit")
     }
     
-    func configure(level: Int) {
+    func configure(level: Int, backgroundColor: UIColor = .lime300) {
         self.setupLevel(level)
     }
 }

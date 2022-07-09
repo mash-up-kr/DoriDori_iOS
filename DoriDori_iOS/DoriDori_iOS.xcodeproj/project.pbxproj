@@ -25,6 +25,10 @@
 		A22FC8D32879BD9700F33D4F /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A22FC8C52879BD9600F33D4F /* SF-Pro-Display-Regular.otf */; };
 		A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8D82879BF7A00F33D4F /* UIFont+Extension.swift */; };
 		A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8DD2879D80C00F33D4F /* KeywordView.swift */; };
+		A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */; };
+		A22FC8E4287A044900F33D4F /* MyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E3287A044900F33D4F /* MyQuestionCell.swift */; };
+		A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E5287A046300F33D4F /* OtherQuestionCell.swift */; };
+		A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E8287A10B800F33D4F /* AnswerCompleteViewController.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -92,6 +96,10 @@
 		A22FC8C52879BD9600F33D4F /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		A22FC8D82879BF7A00F33D4F /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A22FC8DD2879D80C00F33D4F /* KeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordView.swift; sourceTree = "<group>"; };
+		A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
+		A22FC8E3287A044900F33D4F /* MyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionCell.swift; sourceTree = "<group>"; };
+		A22FC8E5287A046300F33D4F /* OtherQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherQuestionCell.swift; sourceTree = "<group>"; };
+		A22FC8E8287A10B800F33D4F /* AnswerCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteViewController.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -155,6 +163,8 @@
 		A20A9E9328797B5C000ABFBB /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				A22FC8E7287A10A900F33D4F /* AnswerComplete */,
+				A22FC8E2287A043600F33D4F /* MyPageCell */,
 				A20A9E9A28798226000ABFBB /* MyPageHeaderView */,
 				A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */,
 				A20A9E9528797B6D000ABFBB /* MyPageViewModel.swift */,
@@ -201,6 +211,30 @@
 				A22FC8DD2879D80C00F33D4F /* KeywordView.swift */,
 			);
 			path = KeywordView;
+			sourceTree = "<group>";
+		};
+		A22FC8E1287A040600F33D4F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		A22FC8E2287A043600F33D4F /* MyPageCell */ = {
+			isa = PBXGroup;
+			children = (
+				A22FC8E3287A044900F33D4F /* MyQuestionCell.swift */,
+				A22FC8E5287A046300F33D4F /* OtherQuestionCell.swift */,
+			);
+			path = MyPageCell;
+			sourceTree = "<group>";
+		};
+		A22FC8E7287A10A900F33D4F /* AnswerComplete */ = {
+			isa = PBXGroup;
+			children = (
+				A22FC8E8287A10B800F33D4F /* AnswerCompleteViewController.swift */,
+			);
+			path = AnswerComplete;
 			sourceTree = "<group>";
 		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
@@ -297,6 +331,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A22FC8E1287A040600F33D4F /* New Group */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
 				CE5B13252879748D00F10A20 /* Coordinator.swift */,
@@ -313,6 +348,7 @@
 				A22FC8D82879BF7A00F33D4F /* UIFont+Extension.swift */,
 				A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */,
 				A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */,
+				A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,19 +523,23 @@
 			files = (
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
+				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
+				A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
+				A22FC8E4287A044900F33D4F /* MyQuestionCell.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
+				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,

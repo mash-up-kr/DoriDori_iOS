@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class MyPageHeaderView: UICollectionReusableView {
+final class MyPageProfileView: UIView {
     
     struct Item {
         let title: String
@@ -88,12 +88,11 @@ final class MyPageHeaderView: UICollectionReusableView {
     
     let dummyKeywordTitle: [String] = ["디즈니", "영화", "애니메이션"]
 
-    
-    
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .gray900
         self.setupLayouts()
         self.setupKeywordStackView()
     }
@@ -105,7 +104,7 @@ final class MyPageHeaderView: UICollectionReusableView {
     
     // MARK: Configure
     
-    func configure(_ item: MyPageHeaderView.Item) {
+    func configure(_ item: MyPageProfileView.Item) {
         self.titleLabel.text = item.title
         self.levelView.configure(level: item.level)
     }
@@ -119,6 +118,8 @@ final class MyPageHeaderView: UICollectionReusableView {
             self.keywordStackView.addArrangedSubview(keywordView)
         }
     }
+    
+   
     
     private func setupLayouts() {
         [self.settingButton, self.shareButton].forEach {
