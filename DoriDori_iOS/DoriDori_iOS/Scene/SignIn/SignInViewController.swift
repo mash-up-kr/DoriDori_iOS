@@ -26,28 +26,52 @@ final class SignInViewController: UIViewController, StoryboardView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+    
+    }
+    
+    private func router(to: SignInButtonType) {
+        switch to {
+        case .apple:
+            print("apple")
+        case .kakao:
+            print("kakao")
+        case .email:
+            print("email")
+        case .emailSignup:
+            print("email signup")
+        }
     }
 
     // MARK: - Bind ViewModel
 
     func bind(reactor viewModel: SignInViewModel) {
-        print("bind reactor")
+        
+        kakaoLoginButton.rx.tap
+            .map { .kakaoLoginButtonDidTap }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
+        appleLoginButton.rx.tap
+            .map { .appleLoginButtonDidTap }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
+        emailLoginButton.rx.tap
+            .map { .emailLoginButtonDidTap }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
         emailSignUpButton.rx.tap
-            .debug("email button")
-            .map{ Reactor.Action.tapSignInButton(.email) }
-        .bind(to: viewModel.action)
-        .disposed(by: disposeBag)
+            .map { .emailSignupButtonDidTap }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
         
-        
-        viewModel.state
-            .debug("viewmodel state")
-            .filter { ($0.provider == .email )}
-            .bind { [weak self] _ in
-                let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailLoginViewController") as? EmailLoginViewController else { return }
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-            .disposed(by: self.disposeBag)
+        reactor?.pulse(\.$buttonType)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] in
+                self?.router(to: $0)
+            })
+            .disposed(by: disposeBag)
+
     }
 }

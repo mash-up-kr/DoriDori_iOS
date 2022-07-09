@@ -12,16 +12,25 @@ enum SignInButtonType {
     case apple
     case kakao
     case email
+    case emailSignup
 }
 
 final class SignInViewModel: Reactor {
-    typealias Mutation = Action
+    
     enum Action {
-        case tapSignInButton(SignInButtonType)
+        case kakaoLoginButtonDidTap
+        case appleLoginButtonDidTap
+        case emailLoginButtonDidTap
+        case emailSignupButtonDidTap
+    }
+    
+    enum Mutation {
+        case router(to: SignInButtonType)
     }
     
     struct State {
-        var provider: SignInButtonType?
+        @Pulse var buttonType: SignInButtonType?
+        
     }
 
     let initialState: State
@@ -29,20 +38,32 @@ final class SignInViewModel: Reactor {
     init() {
         self.initialState = State()
     }
-
-//    func mutate(action: Action) -> Observable<Mutation> {
-//        print("mutation", action)
-//        return .just(action)
-//    }
-
-    func reduce(state: State, action: Mutation) -> State {
-        print("reduce state", state)
-        var _state = state
+    
+    func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .tapSignInButton(let type):
-            _state.provider = type
-            print(state.provider)
+        case .kakaoLoginButtonDidTap:
+            return .just(.router(to: .kakao))
+            
+        case .appleLoginButtonDidTap:
+            return .just(.router(to: .apple))
+            
+        case .emailLoginButtonDidTap:
+            return .just(.router(to: .email))
+            
+        case .emailSignupButtonDidTap:
+            return .just(.router(to: .emailSignup))
         }
-        return _state
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        
+        switch mutation {
+        case .router(to: let type):
+            newState.buttonType = type
+        }
+        
+        return newState
     }
 }
+
