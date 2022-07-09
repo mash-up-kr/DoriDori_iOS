@@ -36,6 +36,7 @@
 		CE58A80E28796C8900928091 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A80D28796C8900928091 /* SnapKit */; };
 		CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13252879748D00F10A20 /* Coordinator.swift */; };
 		CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B1327287974A400F10A20 /* AppCoordinator.swift */; };
+		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -98,6 +99,7 @@
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		CE5B13252879748D00F10A20 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE5B1327287974A400F10A20 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CE5B134B287A11A600F10A20 /* WebView */,
 				A20A9E9328797B5C000ABFBB /* MyPage */,
 				CE42D38628705BFC00C49548 /* HomeTabBar */,
 			);
@@ -232,6 +235,14 @@
 				CEB2656F2875EA6800B9970B /* Colors.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE5B134B287A11A600F10A20 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		CEAAA585285A2A4C00D8D3EA = {
@@ -479,6 +490,7 @@
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
+				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
