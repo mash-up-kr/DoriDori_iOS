@@ -43,10 +43,10 @@ final class AppCoordinator: Coordinator {
     func start() {
         switch appStart {
         case .home:
-            let homeTabbarController = HomeTabBarController()
+            let mainTabbarController = MainTabBarController()
             let viewControllers = tabbarItems.map(createTabBarViewControllers(tab:))
-            homeTabbarController.setViewControllers(viewControllers, animated: false)
-            window?.rootViewController = homeTabbarController
+            mainTabbarController.setViewControllers(viewControllers, animated: false)
+            window?.rootViewController = mainTabbarController
         }
     }
 }

@@ -35,7 +35,7 @@
 		CEB265702875EA6800B9970B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2656F2875EA6800B9970B /* Colors.xcassets */; };
 		CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7651E2867462B007FC892 /* BaseTabBarController.swift */; };
 		CEE76521286746B4007FC892 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE76520286746B4007FC892 /* HomeTab.swift */; };
-		CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7652228674750007FC892 /* HomeTabBarController.swift */; };
+		CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7652228674750007FC892 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,7 @@
 		CEB2656F2875EA6800B9970B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CEE7651E2867462B007FC892 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		CEE76520286746B4007FC892 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
-		CEE7652228674750007FC892 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		CEE7652228674750007FC892 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 		CE42D38628705BFC00C49548 /* HomeTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				CEE7652228674750007FC892 /* HomeTabBarController.swift */,
+				CEE7652228674750007FC892 /* MainTabBarController.swift */,
 				CEE7651E2867462B007FC892 /* BaseTabBarController.swift */,
 				CEE76520286746B4007FC892 /* HomeTab.swift */,
 			);
@@ -387,7 +387,7 @@
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
-				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
+				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
