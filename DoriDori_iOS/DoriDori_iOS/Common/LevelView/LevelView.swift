@@ -8,23 +8,38 @@
 import UIKit
 
 final class LevelView: UIView {
-    let levelLabel: UILabel = {
+    
+    private let levelLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.font = .systemFont(ofSize: 12, weight: .medium)
         return label
     }()
     
+    // MARK: Init
     init(level: Int) {
         super.init(frame: .zero)
+        self.setupLevel(level)
         self.configureUI()
-        self.levelLabel.text = "Lv.\(level)"
         self.setUpLayouts()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        debugPrint("\(String(describing: self)) deinit")
+    }
+    
+    func configure(level: Int) {
+        self.setupLevel(level)
+    }
+}
+
+// MARK: - Private
+
+extension LevelView {
     
     private func configureUI() {
         self.backgroundColor = .lime300
@@ -40,5 +55,9 @@ final class LevelView: UIView {
             $0.leading.equalToSuperview().offset(9.5)
             $0.trailing.equalToSuperview().inset(9.5)
         }
+    }
+    
+    private func setupLevel(_ level: Int) {
+        self.levelLabel.text = "Lv.\(level)"
     }
 }

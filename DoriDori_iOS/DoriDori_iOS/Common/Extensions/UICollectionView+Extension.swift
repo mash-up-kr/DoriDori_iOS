@@ -10,13 +10,15 @@ import UIKit
 extension UICollectionView {
     
     func register<Cell: UICollectionViewCell>(_ type: Cell.Type) {
-        self.register(type, forCellWithReuseIdentifier: String(describing: self))
+        print(" regist \(String(describing: type))")
+        self.register(type, forCellWithReuseIdentifier: String(describing: type))
     }
     
     func register<SupplementaryView: UICollectionReusableView>(
         _ type: SupplementaryView.Type,
         supplementaryViewOfKind kind: String
     ) {
+        print(" regist supplementary \(String(describing: type))")
         self.register(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: type))
     }
     
@@ -24,6 +26,7 @@ extension UICollectionView {
         type: Cell.Type,
         for indexPath: IndexPath
     ) -> Cell {
+        print("dequeue identifier \(String(describing: type))")
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: type), for: indexPath) as? Cell else {
             fatalError("identifier: \(String(describing: type)) can not dequeue cell")
         }
@@ -35,6 +38,7 @@ extension UICollectionView {
         type: SupplementaryView.Type,
         for indexPath: IndexPath
     ) -> SupplementaryView {
+        print("dequeue identifier \(String(describing: type))")
         guard let supplementaryView = self.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: String(describing: type),

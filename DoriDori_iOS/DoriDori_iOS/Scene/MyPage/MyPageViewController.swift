@@ -36,8 +36,10 @@ final class MyPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .systemPink
         self.setupLayouts()
+        self.configure(self.collectionView)
     }
     
     private func setupLayouts() {
@@ -55,6 +57,7 @@ final class MyPageViewController: UIViewController {
     
     private func register(_ collectionView: UICollectionView) {
         collectionView.register(MyPageHeaderView.self, supplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        collectionView.register(MyPageCollectionViewCell.self)
     }
 
     // MARK: - Bind ViewModel
@@ -82,7 +85,7 @@ extension MyPageViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return .init()
+        collectionView.dequeueReusableCell(type: MyPageCollectionViewCell.self, for: indexPath)
     }
     
     func collectionView(
@@ -101,7 +104,13 @@ extension MyPageViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MyPageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: 196)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 148)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
