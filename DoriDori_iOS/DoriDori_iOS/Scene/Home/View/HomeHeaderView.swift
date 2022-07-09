@@ -89,6 +89,6 @@ final class HomeHeaderView: UIView {
     }
     
     private func setupConstraints() {
-        homeLogoImageView.sn
+        
     }
 }
