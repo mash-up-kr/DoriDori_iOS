@@ -47,6 +47,10 @@ final class AppCoordinator: Coordinator {
             let viewControllers = tabbarItems.map(createTabBarViewControllers(tab:))
             homeTabbarController.setViewControllers(viewControllers, animated: false)
             window?.rootViewController = homeTabbarController
+        case .testTextField:
+            let story = UIStoryboard(name: "TextFieldTest", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "TextFieldTestViewController") as! TextFieldTestViewController
+            window?.rootViewController = vc
         }
     }
 }
