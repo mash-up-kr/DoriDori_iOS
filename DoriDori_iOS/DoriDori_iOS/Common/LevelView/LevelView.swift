@@ -17,9 +17,16 @@ final class LevelView: UIView {
     }()
     
     // MARK: Init
+    
     init(level: Int) {
         super.init(frame: .zero)
         self.setupLevel(level)
+        self.configureUI()
+        self.setUpLayouts()
+    }
+    
+    init() {
+        super.init(frame: .zero)
         self.configureUI()
         self.setUpLayouts()
     }
