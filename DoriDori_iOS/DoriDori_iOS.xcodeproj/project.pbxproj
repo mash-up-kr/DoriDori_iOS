@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2526BF92879663F0071B66C /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526BF82879663F0071B66C /* DoriDoriError.swift */; };
-		A2526BFB2879665A0071B66C /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526BFA2879665A0071B66C /* ErrorModel.swift */; };
-		A2526BFD287966740071B66C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526BFC287966740071B66C /* Network.swift */; };
-		A2526BFF2879668B0071B66C /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526BFE2879668B0071B66C /* Requestable.swift */; };
-		A2526C012879669E0071B66C /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526C002879669E0071B66C /* ResponseModel.swift */; };
-		A2526C04287966BB0071B66C /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526C03287966BB0071B66C /* NetworkTests.swift */; };
-		A2526C07287966D20071B66C /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2526C06287966D20071B66C /* MockModel.swift */; };
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
 		CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7EE2877279C00928091 /* FlexLayout */; };
 		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
@@ -55,13 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A2526BF82879663F0071B66C /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
-		A2526BFA2879665A0071B66C /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
-		A2526BFC287966740071B66C /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		A2526BFE2879668B0071B66C /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
-		A2526C002879669E0071B66C /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
-		A2526C03287966BB0071B66C /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
-		A2526C06287966D20071B66C /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,34 +100,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A2526BF7287966180071B66C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				A2526BF82879663F0071B66C /* DoriDoriError.swift */,
-				A2526BFA2879665A0071B66C /* ErrorModel.swift */,
-				A2526BFC287966740071B66C /* Network.swift */,
-				A2526BFE2879668B0071B66C /* Requestable.swift */,
-				A2526C002879669E0071B66C /* ResponseModel.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		A2526C02287966B10071B66C /* Cases */ = {
-			isa = PBXGroup;
-			children = (
-				A2526C03287966BB0071B66C /* NetworkTests.swift */,
-			);
-			path = Cases;
-			sourceTree = "<group>";
-		};
-		A2526C05287966C90071B66C /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				A2526C06287966D20071B66C /* MockModel.swift */,
-			);
-			path = Mock;
-			sourceTree = "<group>";
-		};
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +163,6 @@
 		CEAAA5A7285A2A4D00D8D3EA /* DoriDori_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				A2526C05287966C90071B66C /* Mock */,
-				A2526C02287966B10071B66C /* Cases */,
 				CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */,
 			);
 			path = DoriDori_iOSTests;
@@ -224,7 +180,6 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A2526BF7287966180071B66C /* Network */,
 				CEB2656C2875E9C000B9970B /* Extensions */,
 			);
 			path = Common;
@@ -395,17 +350,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2526BFB2879665A0071B66C /* ErrorModel.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
-				A2526BFD287966740071B66C /* Network.swift in Sources */,
-				A2526BF92879663F0071B66C /* DoriDoriError.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
-				A2526C012879669E0071B66C /* ResponseModel.swift in Sources */,
-				A2526BFF2879668B0071B66C /* Requestable.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 			);
@@ -415,8 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2526C07287966D20071B66C /* MockModel.swift in Sources */,
-				A2526C04287966BB0071B66C /* NetworkTests.swift in Sources */,
 				CEAAA5A9285A2A4D00D8D3EA /* DoriDori_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
