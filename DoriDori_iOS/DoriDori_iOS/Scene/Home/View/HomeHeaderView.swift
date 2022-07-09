@@ -45,32 +45,51 @@ final class HomeHeaderView: UIView {
     private let wardImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "ward")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     lazy var wardTitleLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.text = wardState?.description
+        label.text = "지금 여기는 강남구!"
+        label.font = UIFont.setKRFont(weight: .bold, size: 24)
         label.textColor = .white
         return label
     }()
     
-    private let emptyContainerView: UIView = {
+    private let emptyContainerView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.image = UIImage(named: "group")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let hotLocatinContainerView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .clear
         return view
     }()
     
-    private let hotLocationView: UIView = {
-        let view: UIView = UIView()
-        view.backgroundColor = .blue
-        return view
+    private let hotLocationView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.image = UIImage(named: "hotLocation")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let hotLocationLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.textColor = .white
+        label.text = "지금 강남동이 핫🔥해요!!"
+        label.font = UIFont.setKRFont(weight: .regular, size: 14)
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        setupViews()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -85,10 +104,52 @@ final class HomeHeaderView: UIView {
         addSubview(wardImageView)
         addSubview(wardTitleLabel)
         addSubview(emptyContainerView)
-        addSubview(hotLocationView)
+        addSubview(hotLocatinContainerView)
+        hotLocatinContainerView.addSubview(hotLocationView)
+        hotLocatinContainerView.addSubview(hotLocationLabel)
     }
     
     private func setupConstraints() {
+        homeLogoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().inset(30)
+        }
         
+        wardImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(13)
+            $0.trailing.equalToSuperview().inset(28)
+        }
+        
+        wardDescriptionImageView.snp.makeConstraints {
+            $0.trailing.equalTo(wardImageView.snp.leading).inset(-6)
+            $0.centerY.equalTo(wardImageView)
+        }
+        
+        wardTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(homeLogoImageView.snp.bottom).inset(-32)
+            $0.leading.equalToSuperview().inset(30)
+            $0.height.equalTo(34)
+        }
+        
+        emptyContainerView.snp.makeConstraints {
+            $0.top.equalTo(wardTitleLabel.snp.bottom).inset(-16)
+            $0.leading.equalToSuperview()
+        }
+        
+        hotLocatinContainerView.snp.makeConstraints {
+            $0.top.equalTo(emptyContainerView.snp.bottom).inset(-20)
+            $0.leading.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(40)
+        }
+        
+        hotLocationView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        hotLocationLabel.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(8)
+            $0.leading.equalToSuperview().inset(16)
+        }
     }
 }

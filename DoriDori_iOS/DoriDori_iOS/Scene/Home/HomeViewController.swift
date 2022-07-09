@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
     var disposeBag = DisposeBag()
     
     // MARK: - UIView
+    let homeHeaderView: HomeHeaderView = HomeHeaderView()
     
 
     // MARK: - Life cycle
@@ -22,6 +23,12 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(homeHeaderView)
+        homeHeaderView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(44)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(300)
+        }
     }
 
     // MARK: - Bind ViewModel
