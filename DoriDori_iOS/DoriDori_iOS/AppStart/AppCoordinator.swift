@@ -47,6 +47,11 @@ final class AppCoordinator: Coordinator {
             let viewControllers = tabbarItems.map(createTabBarViewControllers(tab:))
             homeTabbarController.setViewControllers(viewControllers, animated: false)
             window?.rootViewController = homeTabbarController
+        case .siginIn:
+            let story = UIStoryboard(name: "SignIn", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            let navi = UINavigationController(rootViewController: vc)
+            window?.rootViewController = navi
         }
     }
 }

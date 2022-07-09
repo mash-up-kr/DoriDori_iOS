@@ -24,7 +24,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let newWindow = self.window else { return }
         
-        self.dependency = CompositionRoot.resolve(window: newWindow, appStart: .home)
+        self.dependency = CompositionRoot.resolve(window: newWindow, appStart: .siginIn)
         self.window = dependency.window
         self.window?.makeKeyAndVisible()
     }
