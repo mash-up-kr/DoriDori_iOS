@@ -15,15 +15,8 @@ enum HomeTabType: CaseIterable {
 }
 
 extension HomeTabType {
-    var tabTitle: String {
-        switch self {
-        case .notification:
-            return "a"
-        case .home:
-            return "b"
-        case .myPage:
-            return "c"
-        }
+    var tabTitle: String? {
+       return nil
     }
     
     var tabImage: UIImage? {
