@@ -14,6 +14,9 @@
 		A27DB6F0286CCAF20055016B /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27DB6EF286CCAF20055016B /* Requestable.swift */; };
 		A27DB70A2871F10E0055016B /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27DB7092871F10E0055016B /* DoriDoriError.swift */; };
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
+		CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7EE2877279C00928091 /* FlexLayout */; };
+		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
+		CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F22877279C00928091 /* FlexLayoutYogaKit */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -24,6 +27,8 @@
 		CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C7285A2D3300D8D3EA /* RxRelay */; };
 		CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CA285A2D8700D8D3EA /* Alamofire */; };
 		CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CD285A2DAB00D8D3EA /* Kingfisher */; };
+		CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */; };
+		CEB265702875EA6800B9970B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2656F2875EA6800B9970B /* Colors.xcassets */; };
 		CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7651E2867462B007FC892 /* BaseTabBarController.swift */; };
 		CEE76521286746B4007FC892 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE76520286746B4007FC892 /* HomeTab.swift */; };
 		CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7652228674750007FC892 /* HomeTabBarController.swift */; };
@@ -54,6 +59,12 @@
 		CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEAAA59F285A2A4D00D8D3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSTests.swift; sourceTree = "<group>"; };
+		CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITests.swift; sourceTree = "<group>"; };
+		CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CEB2656F2875EA6800B9970B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CEAAA5A8285A2A4D00D8D3EA /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		CEE7651E2867462B007FC892 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		CEE76520286746B4007FC892 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
@@ -66,9 +77,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */,
+				CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */,
 				CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */,
 				CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */,
+				CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
+				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
 				CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */,
+				CEB2656F2875EA6800B9970B /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -160,6 +175,7 @@
 			children = (
 				CEE7651D28674582007FC892 /* AppStart */,
 				CE42D38528705BEE00C49548 /* Scene */,
+				CEB2656B2875E9B500B9970B /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
 				A24741A928674291008F1D34 /* Network */,
 				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
@@ -175,6 +191,22 @@
 				A27DB6E9286CC9AE0055016B /* Cases */,
 			);
 			path = DoriDori_iOSTests;
+			sourceTree = "<group>";
+		};
+		CEB2656B2875E9B500B9970B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEB2656C2875E9C000B9970B /* Extensions */,
+			path = Common;
+			);
+			sourceTree = "<group>";
+		CEB2656C2875E9C000B9970B /* Extensions */ = {
+		};
+			isa = PBXGroup;
+			children = (
+				CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CEE7651D28674582007FC892 /* AppStart */ = {
@@ -209,6 +241,9 @@
 				CEAAA5C7285A2D3300D8D3EA /* RxRelay */,
 				CEAAA5CA285A2D8700D8D3EA /* Alamofire */,
 				CEAAA5CD285A2DAB00D8D3EA /* Kingfisher */,
+				CE58A7EE2877279C00928091 /* FlexLayout */,
+				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
+				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -265,6 +300,7 @@
 				CEAAA5C4285A2D3300D8D3EA /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CEAAA5C9285A2D8700D8D3EA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -282,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */,
+				CEB265702875EA6800B9970B /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +348,7 @@
 				A24741AB286742BF008F1D34 /* Network.swift in Sources */,
 				A24741AD286745CC008F1D34 /* ResponseModel.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
+				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +413,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "FLEXLAYOUT_SWIFT_PACKAGE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -434,6 +469,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "FLEXLAYOUT_SWIFT_PACKAGE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -577,6 +613,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CEAAA5C1285A2BDB00D8D3EA /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -612,6 +656,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE58A7EE2877279C00928091 /* FlexLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayout;
+		};
+		CE58A7F02877279C00928091 /* FlexLayoutYoga */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYoga;
+		};
+		CE58A7F22877279C00928091 /* FlexLayoutYogaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYogaKit;
+		};
 		CEAAA5C2285A2BDB00D8D3EA /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEAAA5C1285A2BDB00D8D3EA /* XCRemoteSwiftPackageReference "ReactorKit" */;
