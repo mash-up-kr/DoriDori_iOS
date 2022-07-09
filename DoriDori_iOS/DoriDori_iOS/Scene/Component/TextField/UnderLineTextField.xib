@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +61,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="darkGray"/>
             <constraints>
                 <constraint firstItem="OBN-xq-9jj" firstAttribute="top" secondItem="frj-Bk-yym" secondAttribute="bottom" constant="8" id="056-6w-Uma"/>
                 <constraint firstItem="OBN-xq-9jj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="16p-DF-65l"/>
@@ -83,6 +84,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="darkGray">
+            <color red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

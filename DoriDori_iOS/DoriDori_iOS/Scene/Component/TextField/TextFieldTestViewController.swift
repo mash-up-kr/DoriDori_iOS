@@ -9,12 +9,35 @@ import UIKit
 
 class TextFieldTestViewController: UIViewController {
 
-    @IBOutlet weak var textFieldView: UnderLineTextField!
+    @IBOutlet weak var textFieldStackView: UIStackView!
+    
+    var textFieldData: [UnderLineData] = [
+        UnderLineData(type: .email),
+        UnderLineData(type: .password)
+    ]
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textFieldData.enumerated().forEach {
+            let makeView = UnderLineTextField()
+            makeView.data = $1
+            makeView.delegate = self
+            if $0 == 0 {
+                makeView.textField.becomeFirstResponder()
+            }
+            textFieldStackView.insertArrangedSubview(makeView, at: $0)
+        }
     }
-    
-    
 }
+
+extension TextFieldTestViewController: UnderLineTextFieldDelegate {
+    func underLineDidChange(sender: UITextField) {
+        var state: Bool = true
+        textFieldData.forEach {
+            if $0.filledState == false {
+                state = false
+            }
+        }
+    }
+}
+ 
