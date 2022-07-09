@@ -12,14 +12,22 @@ final class LevelView: UIView {
     private let levelLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.font = UIFont.setKRFont(weight: .medium, size: 12)
         return label
     }()
     
     // MARK: Init
-    init(level: Int) {
+    
+    init(level: Int, backgroundColor: UIColor = .lime300) {
         super.init(frame: .zero)
+        self.backgroundColor = backgroundColor
         self.setupLevel(level)
+        self.configureUI()
+        self.setUpLayouts()
+    }
+    
+    init() {
+        super.init(frame: .zero)
         self.configureUI()
         self.setUpLayouts()
     }
@@ -32,7 +40,7 @@ final class LevelView: UIView {
         debugPrint("\(String(describing: self)) deinit")
     }
     
-    func configure(level: Int) {
+    func configure(level: Int, backgroundColor: UIColor = .lime300) {
         self.setupLevel(level)
     }
 }
