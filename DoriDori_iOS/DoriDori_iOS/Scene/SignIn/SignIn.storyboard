@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,18 +17,276 @@
                     <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-1Z-SSM">
+                                <rect key="frame" x="30" y="90" width="315" height="57.333333333333343"/>
+                                <string key="text">도리도리,
+내 근처 사람에게 물어보세요</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-YX-etJ">
+                                <rect key="frame" x="62.666666666666657" y="197.33333333333337" width="249.99999999999997" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="664-ge-LWN"/>
+                                    <constraint firstAttribute="width" constant="250" id="eEK-A6-GJS"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CjZ-em-D0Z">
+                                <rect key="frame" x="30" y="512" width="315" height="246"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djE-YY-hTG">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="54"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="9Wj-YB-LMF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Apple로 로그인">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6O-DQ-pfz">
+                                        <rect key="frame" x="0.0" y="64" width="315" height="54"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="uzF-gp-Puz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="카카오로 로그인">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiE-KS-Kul">
+                                        <rect key="frame" x="0.0" y="128" width="315" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="1qj-q1-TSi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일로 로그인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="0.95013074450000001" blue="0.8934427023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-a5-QAD">
+                                        <rect key="frame" x="0.0" y="192" width="315" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="ByD-XP-KsZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일로 회원가입">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
                         <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="CjZ-em-D0Z" secondAttribute="trailing" constant="30" id="0zS-LC-A93"/>
+                            <constraint firstItem="QI1-1Z-SSM" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="6vR-nA-Ioq"/>
+                            <constraint firstItem="CjZ-em-D0Z" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="ADC-Jt-Fsd"/>
+                            <constraint firstAttribute="bottom" secondItem="CjZ-em-D0Z" secondAttribute="bottom" constant="54" id="B5Z-Lx-XzJ"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="top" secondItem="QI1-1Z-SSM" secondAttribute="bottom" constant="50" id="OYB-9a-YrI"/>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="QI1-1Z-SSM" secondAttribute="trailing" constant="30" id="RP4-c3-9yp"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="centerX" secondItem="BNZ-bO-rhc" secondAttribute="centerX" id="YgB-mM-KrM"/>
+                            <constraint firstItem="QI1-1Z-SSM" firstAttribute="top" secondItem="HgA-Aw-ocO" secondAttribute="top" constant="46" id="xL1-c0-cDD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appleLoginButton" destination="djE-YY-hTG" id="HVU-b8-MM6"/>
+                        <outlet property="emailLoginButton" destination="BiE-KS-Kul" id="Ah3-ob-6zS"/>
+                        <outlet property="emailSignUpButton" destination="G1e-a5-QAD" id="J5W-1n-yR8"/>
+                        <outlet property="kakaoLoginButton" destination="x6O-DQ-pfz" id="Kol-BH-Hpd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="244" y="205"/>
+        </scene>
+        <!--Email Login View Controller-->
+        <scene sceneID="t8Y-Ve-PpA">
+            <objects>
+                <viewController id="Gns-NG-izc" customClass="EmailLoginViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OT4-ab-n2U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일로 입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-dn-95g">
+                                <rect key="frame" x="30" y="90" width="315" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="gkj-4d-zL0">
+                                <rect key="frame" x="30" y="150.66666666666666" width="315" height="161.99999999999997"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="LiT-TT-m4I"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW">
+                                        <rect key="frame" x="0.0" y="92" width="315" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="cYA-q7-90S"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-p3-aUA">
+                                <rect key="frame" x="54" y="664" width="274" height="10"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-Vj-hKF">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="QnR-fi-sab"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" name="gray500"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일 가입"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ato-Xv-KM8">
+                                        <rect key="frame" x="81.666666666666657" y="0.0" width="4" height="10"/>
+                                        <color key="tintColor" name="gray500"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="LOu-p3-PzF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="gray500"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpO-8x-h3Z">
+                                        <rect key="frame" x="103" y="0.0" width="60" height="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" name="gray500"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일 찾기"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZw-Rf-wM6">
+                                        <rect key="frame" x="180.66666666666666" y="0.0" width="4" height="10"/>
+                                        <color key="tintColor" name="gray500"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="PIw-Ce-cr3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="gray500"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgA-VY-mcZ">
+                                        <rect key="frame" x="202" y="0.0" width="72" height="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" name="gray500"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="비밀번호 찾기"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI5-eu-s2n">
+                                <rect key="frame" x="30" y="704" width="315" height="54"/>
+                                <color key="backgroundColor" name="gray700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="gLA-qq-ihp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" name="gray300"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="Yq1-p3-aUA" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="54" id="APF-4k-6ju"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="wI5-eu-s2n" secondAttribute="trailing" constant="30" id="IBd-gp-0Ld"/>
+                            <constraint firstItem="w1i-dn-95g" firstAttribute="top" secondItem="99Z-CD-qDP" secondAttribute="top" constant="46" id="JqX-tY-3Z1"/>
+                            <constraint firstItem="gkj-4d-zL0" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="LmV-Qq-8qp"/>
+                            <constraint firstItem="wI5-eu-s2n" firstAttribute="top" secondItem="Yq1-p3-aUA" secondAttribute="bottom" constant="30" id="O0S-qx-Cfj"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="Yq1-p3-aUA" secondAttribute="trailing" constant="47" id="PUp-wI-U0J"/>
+                            <constraint firstItem="wI5-eu-s2n" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="WcJ-VA-ilq"/>
+                            <constraint firstAttribute="bottom" secondItem="wI5-eu-s2n" secondAttribute="bottom" constant="54" id="dGT-uF-19R"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" constant="30" id="fJL-4B-gEj"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="gkj-4d-zL0" secondAttribute="trailing" constant="30" id="oUd-cY-3Um"/>
+                            <constraint firstItem="w1i-dn-95g" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="pD9-XL-r0A"/>
+                            <constraint firstItem="gkj-4d-zL0" firstAttribute="top" secondItem="w1i-dn-95g" secondAttribute="bottom" constant="32" id="q7d-6G-dVP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uzc-Ab-ds7"/>
+                    <connections>
+                        <outlet property="emailFindButton" destination="RpO-8x-h3Z" id="4na-DS-g4C"/>
+                        <outlet property="emailPwFindStackView" destination="Yq1-p3-aUA" id="Yry-aR-GgO"/>
+                        <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
+                        <outlet property="passwordFindButton" destination="GgA-VY-mcZ" id="MWR-7T-xGt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0i-nB-gtP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="204.67980295566502"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="darkGray">
             <color red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="gray300">
+            <color red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray500">
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray700">
+            <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
