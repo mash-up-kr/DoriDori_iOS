@@ -23,13 +23,13 @@ final class AppCoordinator: Coordinator {
 
         switch tab {
         // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
-        case .first:
+        case .notification:
             let firstViewController = ViewController()
             viewController = firstViewController
-        case .second:
+        case .home:
             let secondViewController = ViewController()
             viewController = secondViewController
-        case .third:
+        case .myPage:
             let thirdViewController = ViewController()
             viewController = thirdViewController
         }

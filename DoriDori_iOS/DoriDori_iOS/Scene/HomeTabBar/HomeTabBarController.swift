@@ -11,8 +11,6 @@ final class HomeTabBarController: BaseTabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .red
     }
 }
 

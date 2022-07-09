@@ -19,8 +19,8 @@ class BaseTabBarController: UITabBarController {
     }
     
     private func setTabbarAppearance() {
-        self.tabBar.backgroundColor = .systemGray
-        self.tabBar.tintColor = .blue
+        self.tabBar.backgroundColor = .darkGray
+        self.tabBar.tintColor = .lime300
     }
 }
 
