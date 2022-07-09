@@ -17,6 +17,8 @@
 		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
 		CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F22877279C00928091 /* FlexLayoutYogaKit */; };
 		CE58A80E28796C8900928091 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A80D28796C8900928091 /* SnapKit */; };
+		CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13252879748D00F10A20 /* Coordinator.swift */; };
+		CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B1327287974A400F10A20 /* AppCoordinator.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
 		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
@@ -60,6 +62,8 @@
 		A2CF64E428796DA5007D54DD /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		A2CF64E628796DB1007D54DD /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		CE5B13252879748D00F10A20 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CE5B1327287974A400F10A20 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CE5B13252879748D00F10A20 /* Coordinator.swift */,
 				A2CF64DD28796D72007D54DD /* Network */,
 				CEB2656C2875E9C000B9970B /* Extensions */,
 			);
@@ -224,6 +229,7 @@
 				CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */,
 				CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */,
 				CE42D3832870483A00C49548 /* CompositionRoot.swift */,
+				CE5B1327287974A400F10A20 /* AppCoordinator.swift */,
 			);
 			path = AppStart;
 			sourceTree = "<group>";
@@ -383,11 +389,13 @@
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
+				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 			);
