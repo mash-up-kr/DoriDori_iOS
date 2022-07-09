@@ -27,8 +27,8 @@ final class AppCoordinator: Coordinator {
             let firstViewController = ViewController()
             viewController = firstViewController
         case .home:
-            let secondViewController = ViewController()
-            viewController = secondViewController
+            let homeViewController = HomeViewController()
+            viewController = homeViewController
         case .myPage:
             let thirdViewController = ViewController()
             viewController = thirdViewController
