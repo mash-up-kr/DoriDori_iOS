@@ -8,7 +8,12 @@
 import Foundation
 
 protocol Requestable {
+    typealias Parameter = [String: Any]?
     var path: String { get }
-    var parameters: [String: Any]? { get }
+    var parameters: Parameter { get }
     var method: HTTPMethod { get }
+}
+
+extension Requestable {
+    var method: HTTPMethod { .get }
 }

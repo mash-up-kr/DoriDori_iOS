@@ -34,8 +34,8 @@ final class NetworkTests: XCTestCase {
         var response: FakeModel?
         var networkError: Error?
         do {
-            response = try await sut.fetch(
-                request: request,
+            response = try await sut.request(
+                api: request,
                 responseModel: ResponseModel<FakeModel>.self
             ).value
         } catch (let error) {
