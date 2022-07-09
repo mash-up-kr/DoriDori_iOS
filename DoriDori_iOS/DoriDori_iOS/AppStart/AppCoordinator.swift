@@ -24,11 +24,11 @@ final class AppCoordinator: Coordinator {
         switch tab {
         // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
         case .notification:
-            let firstViewController = ViewController()
+            let firstViewController = ViewController(url: URL(string: "https://bangwidae-web-temp-glyfw73sw-kimbangg.vercel.app/open-inquiry")!)
             let navigationController = UINavigationController(rootViewController: firstViewController)
             viewController = navigationController
         case .home:
-            let secondViewController = ViewController()
+            let secondViewController = ViewController(url: URL(string: "https://bangwidae-web-temp-glyfw73sw-kimbangg.vercel.app/open-inquiry")!)
             let navigationController = UINavigationController(rootViewController: secondViewController)
             viewController = navigationController
         case .myPage:
