@@ -6,47 +6,33 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TextFieldTestViewController: UIViewController {
 
     @IBOutlet weak var textFieldStackView: UIStackView!
-    
-    var textFieldData: [TextFieldData] = [
-        TextFieldData(type: .email, errorType: .email),
-        TextFieldData(type: .password, errorType: .password)
-    ]
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var emailTextField: UnderLineTextField!
+    @IBOutlet weak var passwordTextField: UnderLineTextField!
+
+    let disposeBag = DisposeBag()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldData.enumerated().forEach {
-            let makeView = UnderLineTextField()
-            makeView.data = $1
-            makeView.delegate = self
-            if $0 == 0 {
-                makeView.textField.becomeFirstResponder()
-            }
-            textFieldStackView.insertArrangedSubview(makeView, at: $0)
-        }
-    }
-}
-
-extension TextFieldTestViewController: UnderLineTextFieldDelegate {
-    func underLineDidEnd(sender: UITextField) {
-        var state: Bool = true
-        textFieldData.forEach {
-            if $0.validState == false {
-                state = false
-            }
-        }
+        confirmButton.isEnabled = false
+        emailTextField.data = TextFieldData(type: .email)
+        passwordTextField.data = TextFieldData(type: .password)
+        emailTextField.rxBind()
+        passwordTextField.rxBind()
+        validLoginButton()
     }
     
-    func underLineDidChange(sender: UITextField) {
-        var state: Bool = true
-        textFieldData.forEach {
-            if $0.validState == false {
-                state = false
-            }
-        }
+    private func validLoginButton() {
+        Observable.combineLatest(emailTextField.boolSubject, passwordTextField.boolSubject, resultSelector: { $0 && $1 })
+            .subscribe(onNext: { b in
+                self.confirmButton.isEnabled = b
+            })
+            .disposed(by: disposeBag)
     }
 }
- 

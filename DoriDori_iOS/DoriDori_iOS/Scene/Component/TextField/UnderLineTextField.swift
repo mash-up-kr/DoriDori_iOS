@@ -10,12 +10,6 @@ import CoreData
 import RxSwift
 import RxCocoa
 
-
-public protocol UnderLineTextFieldDelegate: AnyObject {
-    func underLineDidChange(sender: UITextField)
-    func underLineDidEnd(sender: UITextField)
-}
-
 public class UnderLineTextField: UIView {
     
     @IBOutlet public weak var titleLabel: UILabel!
@@ -23,7 +17,11 @@ public class UnderLineTextField: UIView {
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var errorLabel: UILabel!
     @IBOutlet public weak var iconImageView: UIImageView!
-    public weak var delegate: UnderLineTextFieldDelegate?
+    
+    //rx변수
+    public let stringSubject: BehaviorSubject<String> = BehaviorSubject(value: "")
+    public let boolSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    private let disposeBag = DisposeBag()
     
     public var data: TextFieldData? {
         didSet {
@@ -35,8 +33,6 @@ public class UnderLineTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
-        self.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        self.textField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
     }
     
     required init?(coder: NSCoder) {
@@ -83,52 +79,44 @@ public class UnderLineTextField: UIView {
             self.textField.placeholder = "6자리 숫자"
         }
     }
-   
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let data = data else { return }
-        if textField.text?.validate(data.type) == true {
-            lineView.backgroundColor = UIColor(named: "lime300")
-            errorLabel.isHidden = true
-            iconImageView.isHidden = true
-        }
-        else if textField.text?.isEmpty == true { //비어있으면
-            lineView.backgroundColor = UIColor(named: "gray800")
-            errorLabel.isHidden = true
-            iconImageView.isHidden = true
-        }
-    }
-    @objc func textFieldDidEndEditing(sender: UITextField) {
-        guard let data = data else { return }
-        validateCheck(data)
+    
+    //MARK: - RxBinding
+    public func rxBind() {
+        rxBindInput()
+        rxBindOutput()
     }
     
-    private func validateCheck(_ textFieldData: TextFieldData) {
-        if textField.text?.validate(textFieldData.type) == false && textField.text?.isEmpty == false {
-            lineView.backgroundColor = UIColor(named: "red500")
-            errorLabel.isHidden = false
-            errorLabel.text = textFieldData.errorType.rawValue
-            data?.validState = false
-            iconImageView.isHidden = false
-            iconImageView.image = UIImage(named: "error")
-        }
+    private func rxBindInput() {
+        textField.rx.text.orEmpty
+            .bind(to: stringSubject)
+            .disposed(by: disposeBag)
+        
+        stringSubject
+        //타입에 따라 validation 다르게 ,,, 체크 하는 법 ?!
+            .map(emailValidateCheck)
+            .bind(to: boolSubject)
+            .disposed(by: disposeBag)
     }
-    
-}
-
-extension String {
-    func validate(_ type: TextFieldType) -> Bool {
-        switch type {
-        case .email:
-            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            return predicate.evaluate(with: self)
-
-        case .password, .nickname, .authNumber:
-            let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}"
-            let predicate = NSPredicate(format: "SELF MATCHES %@", passwordreg)
-            return predicate.evaluate(with: self)
-
-        }
+    private func rxBindOutput() {
+        boolSubject.subscribe(onNext: { check in
+            if check {
+                self.lineView.backgroundColor = UIColor(named: "lime300")
+            }
+        }).disposed(by: disposeBag)
     }
 }
 
+//MARK: - type validation
+extension UnderLineTextField {
+    func emailValidateCheck(_ value: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+        return predicate.evaluate(with: value)
+    }
+            
+    func passwordValidateCheck(_ value: String) -> Bool {
+        let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", passwordreg)
+        return predicate.evaluate(with: value)
+    }
+}

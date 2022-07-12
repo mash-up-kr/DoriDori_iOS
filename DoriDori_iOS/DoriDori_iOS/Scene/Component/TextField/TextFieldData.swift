@@ -19,15 +19,14 @@ public enum TextFieldErrorType: String {
     case authNumber = "인증번호를 확인해주세요."
 }
 
-
 public struct TextFieldData {
     public let type: TextFieldType
     public let errorType: TextFieldErrorType
     public var validState: Bool?
     
-    public init(type: TextFieldType, errorType: TextFieldErrorType, validState: Bool? = nil) {
+    public init(type: TextFieldType, validState: Bool? = nil) {
         self.type = type
-        self.errorType = errorType
+        self.errorType = (.init(rawValue: type.rawValue) ?? .email)
         self.validState = validState
     }
 }
