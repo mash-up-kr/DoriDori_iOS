@@ -11,9 +11,9 @@ class TextFieldTestViewController: UIViewController {
 
     @IBOutlet weak var textFieldStackView: UIStackView!
     
-    var textFieldData: [UnderLineData] = [
-        UnderLineData(type: .email),
-        UnderLineData(type: .password)
+    var textFieldData: [TextFieldData] = [
+        TextFieldData(type: .email, errorType: .email),
+        TextFieldData(type: .password, errorType: .password)
     ]
         
     override func viewDidLoad() {
