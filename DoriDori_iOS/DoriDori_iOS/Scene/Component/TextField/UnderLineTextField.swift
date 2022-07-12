@@ -25,9 +25,7 @@ public class UnderLineTextField: UIView {
     @IBOutlet public weak var iconImageView: UIImageView!
     public weak var delegate: UnderLineTextFieldDelegate?
     
-    private let disposeBag = DisposeBag()
-
-    public var data: UnderLineData? {
+    public var data: TextFieldData? {
         didSet {
             guard let data = data else { return }
             configure(infoData: data)
@@ -37,6 +35,8 @@ public class UnderLineTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
+        self.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        self.textField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
     }
     
     required init?(coder: NSCoder) {
@@ -44,7 +44,7 @@ public class UnderLineTextField: UIView {
         loadView()
     }
     
-    convenience init(infoData: UnderLineData) {
+    convenience init(infoData: TextFieldData) {
         self.init(frame: .zero)
         configure(infoData: infoData)
     }
@@ -64,18 +64,17 @@ public class UnderLineTextField: UIView {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
-    private func configure(infoData: UnderLineData) {
+    private func configure(infoData: TextFieldData) {
         let typeValue = infoData.type.rawValue
         switch infoData.type {
         case .email:
             self.titleLabel.text = typeValue
             self.textField.placeholder = "\(typeValue) 입력"
-            self.textField.addTarget(self, action: #selector(emailFieldDidChange), for: .editingChanged)
-//            self.textField.addTarget(self, action: #selector(emailFieldDidEnd), for: .editingDidEnd)
+            self.textField.keyboardType = .emailAddress
         case .password:
             self.titleLabel.text = typeValue
             self.textField.placeholder = "\(typeValue) 입력"
-            self.textField.addTarget(self, action: #selector(passwordFieldDidChange), for: .editingChanged)
+            self.textField.isSecureTextEntry = true
         case .nickname:
             self.titleLabel.text = "닉네임"
             self.textField.placeholder = "도리를 찾아서"
@@ -84,48 +83,52 @@ public class UnderLineTextField: UIView {
             self.textField.placeholder = "6자리 숫자"
         }
     }
-    
-    @objc func emailFieldDidChange(sender: UITextField) {
-        if sender.text?.validateEmail() == true { // 이메일 유효되면
+   
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let data = data else { return }
+        if textField.text?.validate(data.type) == true {
             lineView.backgroundColor = UIColor(named: "lime300")
-            data?.validState = true
-        } else { // 비어있으면
-            lineView.backgroundColor = UIColor(named: "gray800")
-            data?.validState = false
+            errorLabel.isHidden = true
+            iconImageView.isHidden = true
         }
-        delegate?.underLineDidChange(sender: sender)
+        else if textField.text?.isEmpty == true { //비어있으면
+            lineView.backgroundColor = UIColor(named: "gray800")
+            errorLabel.isHidden = true
+            iconImageView.isHidden = true
+        }
+    }
+    @objc func textFieldDidEndEditing(sender: UITextField) {
+        guard let data = data else { return }
+        validateCheck(data)
     }
     
-    @objc func emailFieldDidEnd(sender: UITextField) {
-        if sender.text?.validateEmail() == false {
+    private func validateCheck(_ textFieldData: TextFieldData) {
+        if textField.text?.validate(textFieldData.type) == false && textField.text?.isEmpty == false {
             lineView.backgroundColor = UIColor(named: "red500")
+            errorLabel.isHidden = false
+            errorLabel.text = textFieldData.errorType.rawValue
             data?.validState = false
+            iconImageView.isHidden = false
+            iconImageView.image = UIImage(named: "error")
         }
-        delegate?.underLineDidEnd(sender: sender)
     }
     
-    @objc func passwordFieldDidChange(sender: UITextField) {
-        if sender.text?.validatePassword() == true {
-            lineView.backgroundColor = UIColor(named: "lime300")
-            data?.validState = true
-        } else { // 비어있으면
-            lineView.backgroundColor = UIColor(named: "gray800")
-            data?.validState = false
-        }
-        delegate?.underLineDidChange(sender: sender)
-    }
 }
 
 extension String {
-    func validateEmail() -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-        return predicate.evaluate(with: self)
-    }
-    func validatePassword() -> Bool {
-        let passwordreg =  ("(?=.*[A-Za-z])(?=.*[0-9]).{6,20}")
-        let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordreg)
-        return passwordtesting.evaluate(with: self)
+    func validate(_ type: TextFieldType) -> Bool {
+        switch type {
+        case .email:
+            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+            return predicate.evaluate(with: self)
+
+        case .password, .nickname, .authNumber:
+            let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", passwordreg)
+            return predicate.evaluate(with: self)
+
+        }
     }
 }
 
