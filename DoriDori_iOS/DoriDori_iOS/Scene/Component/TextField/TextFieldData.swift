@@ -5,6 +5,8 @@
 //  Created by 김지인 on 2022/07/10.
 //
 
+import RxSwift
+
 public enum TextFieldType: String {
     case email = "이메일"
     case password = "비밀번호"
@@ -19,14 +21,17 @@ public enum TextFieldErrorType: String {
     case authNumber = "인증번호를 확인해주세요."
 }
 
+
 public struct TextFieldData {
     public let type: TextFieldType
     public let errorType: TextFieldErrorType
+    public let stringSubject: BehaviorSubject<String>
     public var validState: Bool?
     
     public init(type: TextFieldType, validState: Bool? = nil) {
         self.type = type
         self.errorType = (.init(rawValue: type.rawValue) ?? .email)
         self.validState = validState
+        self.stringSubject = BehaviorSubject(value: "")
     }
 }

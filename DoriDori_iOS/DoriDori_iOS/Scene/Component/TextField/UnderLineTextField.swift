@@ -18,8 +18,6 @@ public class UnderLineTextField: UIView {
     @IBOutlet public weak var errorLabel: UILabel!
     @IBOutlet public weak var iconImageView: UIImageView!
     
-    //rx변수
-    public let stringSubject: BehaviorSubject<String> = BehaviorSubject(value: "")
     public let boolSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     private let disposeBag = DisposeBag()
     
@@ -87,16 +85,23 @@ public class UnderLineTextField: UIView {
     }
     
     private func rxBindInput() {
+        guard let stringSubject = data?.stringSubject else { return }
         textField.rx.text.orEmpty
             .bind(to: stringSubject)
             .disposed(by: disposeBag)
         
         stringSubject
-        //타입에 따라 validation 다르게 ,,, 체크 하는 법 ?!
-            .map(emailValidateCheck)
+            .map {
+                switch self.data?.type{
+                case .email: return self.emailValidateCheck($0)
+                case .password: return self.passwordValidateCheck($0)
+                default: return false
+                }
+            }
             .bind(to: boolSubject)
             .disposed(by: disposeBag)
     }
+    
     private func rxBindOutput() {
         boolSubject.subscribe(onNext: { check in
             if check {

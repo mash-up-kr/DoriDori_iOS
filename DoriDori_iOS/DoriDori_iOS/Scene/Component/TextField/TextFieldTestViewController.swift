@@ -17,10 +17,10 @@ class TextFieldTestViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UnderLineTextField!
 
     let disposeBag = DisposeBag()
+
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        confirmButton.isEnabled = false
         emailTextField.data = TextFieldData(type: .email)
         passwordTextField.data = TextFieldData(type: .password)
         emailTextField.rxBind()
