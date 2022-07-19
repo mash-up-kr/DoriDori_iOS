@@ -36,7 +36,9 @@ final class SignInViewController: UIViewController, StoryboardView {
         case .kakao:
             print("kakao")
         case .email:
-            print("email")
+            let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "EmailLoginViewController") as! EmailLoginViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .emailSignup:
             print("email signup")
         }

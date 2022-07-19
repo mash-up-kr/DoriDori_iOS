@@ -155,9 +155,20 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozD-EX-Tlk">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ozD-EX-Tlk" secondAttribute="trailing" id="HC8-kT-ZS4"/>
                                             <constraint firstAttribute="height" constant="70" id="LiT-TT-m4I"/>
+                                            <constraint firstItem="ozD-EX-Tlk" firstAttribute="top" secondItem="Fab-yM-Zf3" secondAttribute="top" id="PKT-8a-nsD"/>
+                                            <constraint firstAttribute="bottom" secondItem="ozD-EX-Tlk" secondAttribute="bottom" id="S7Z-Y1-pbW"/>
+                                            <constraint firstItem="ozD-EX-Tlk" firstAttribute="leading" secondItem="Fab-yM-Zf3" secondAttribute="leading" id="uYC-CX-9vb"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW">
@@ -261,6 +272,7 @@
                         <outlet property="emailFindButton" destination="RpO-8x-h3Z" id="4na-DS-g4C"/>
                         <outlet property="emailPwFindStackView" destination="Yq1-p3-aUA" id="Yry-aR-GgO"/>
                         <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
+                        <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
                         <outlet property="passwordFindButton" destination="GgA-VY-mcZ" id="MWR-7T-xGt"/>
                     </connections>
                 </viewController>
