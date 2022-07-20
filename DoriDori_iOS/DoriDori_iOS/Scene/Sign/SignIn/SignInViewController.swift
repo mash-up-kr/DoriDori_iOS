@@ -30,18 +30,24 @@ final class SignInViewController: UIViewController, StoryboardView {
     }
     
     private func router(to: SignInButtonType) {
+        let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
+        var targetVC: UIViewController = .init()
         switch to {
         case .apple:
             print("apple")
         case .kakao:
             print("kakao")
         case .email:
-            let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "EmailLoginViewController") as! EmailLoginViewController
-            navigationController?.pushViewController(vc, animated: true)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignInViewController") as? EmailSignInViewController else { return }
+            targetVC = vc
+            navigationController?.pushViewController(targetVC, animated: true)
+
         case .emailSignup:
-            print("email signup")
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController else { return }
+            targetVC = vc
+            navigationController?.pushViewController(targetVC, animated: true)
         }
+
     }
 
     // MARK: - Bind ViewModel

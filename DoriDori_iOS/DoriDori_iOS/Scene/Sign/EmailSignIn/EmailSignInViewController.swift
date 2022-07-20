@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import ReactorKit
 
-class EmailLoginViewController: UIViewController {
+
+class EmailSignInViewController: UIViewController, StoryboardView {
+    typealias Reactor = EmailSignInViewModel
 
     @IBOutlet weak var emailPwFindStackView: UIStackView!
     @IBOutlet weak var emailSignUpButton: UIButton!
@@ -15,16 +18,27 @@ class EmailLoginViewController: UIViewController {
     @IBOutlet weak var passwordFindButton: UIButton!    
     @IBOutlet weak var loginButtomConstraint: NSLayoutConstraint!
     
+    var disposeBag = DisposeBag()
+
+    // MARK: - Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         notifiyKeyboardShow()
         hideKeyboardWhenTappedBackground()
     }
+
+    // MARK: - Bind ViewModel
+
+    func bind(reactor viewModel: EmailSignInViewModel) {
+
+    }
+    
     
 }
 
 //MARK: - textField 편집시 Keyboard 설정
-extension EmailLoginViewController {
+extension EmailSignInViewController {
     func notifiyKeyboardShow() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
