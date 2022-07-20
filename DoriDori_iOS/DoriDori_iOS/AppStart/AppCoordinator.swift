@@ -19,19 +19,23 @@ final class AppCoordinator: Coordinator {
     }
 
     private func createTabBarViewControllers(tab: HomeTabType) -> UIViewController {
-        let viewController: UIViewController
+        let viewController: UINavigationController
 
         switch tab {
         // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
-        case .first:
-            let firstViewController = ViewController()
-            viewController = firstViewController
-        case .second:
-            let secondViewController = ViewController()
-            viewController = secondViewController
-        case .third:
-            let thirdViewController = ViewController()
-            viewController = thirdViewController
+        case .notification:
+            let firstViewController = ViewController(url: URL(string: "https://bangwidae-web-temp-glyfw73sw-kimbangg.vercel.app/open-inquiry")!)
+            let navigationController = UINavigationController(rootViewController: firstViewController)
+            viewController = navigationController
+        case .home:
+            let secondViewController = ViewController(url: URL(string: "https://bangwidae-web-temp-glyfw73sw-kimbangg.vercel.app/open-inquiry")!)
+            let navigationController = UINavigationController(rootViewController: secondViewController)
+            viewController = navigationController
+        case .myPage:
+            let navigationController: UINavigationController = .init()
+            let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
+            navigationController.viewControllers = [ MyPageViewController(myPageCoordinator: myPageCoordinator)]
+            viewController = navigationController
         }
 
         viewController.tabBarItem.title = tab.tabTitle
