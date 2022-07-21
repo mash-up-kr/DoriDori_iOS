@@ -15,10 +15,10 @@ final class SignInViewController: UIViewController, StoryboardView {
         
     typealias Reactor = SignInViewModel
     
-    @IBOutlet weak var appleLoginButton: UIButton!
-    @IBOutlet weak var kakaoLoginButton: UIButton!
-    @IBOutlet weak var emailLoginButton: UIButton!
-    @IBOutlet weak var emailSignUpButton: UIButton!
+    @IBOutlet private weak var appleLoginButton: UIButton!
+    @IBOutlet private weak var kakaoLoginButton: UIButton!
+    @IBOutlet private weak var emailLoginButton: UIButton!
+    @IBOutlet private weak var emailSignUpButton: UIButton!
     
     var disposeBag = DisposeBag()
 
@@ -43,7 +43,7 @@ final class SignInViewController: UIViewController, StoryboardView {
             navigationController?.pushViewController(targetVC, animated: true)
 
         case .emailSignup:
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController else { return }
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "TermsOfServiceViewContoller") as? TermsOfServiceViewContoller else { return }
             targetVC = vc
             navigationController?.pushViewController(targetVC, animated: true)
         }

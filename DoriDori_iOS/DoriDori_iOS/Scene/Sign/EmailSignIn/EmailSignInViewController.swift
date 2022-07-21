@@ -24,8 +24,7 @@ class EmailSignInViewController: UIViewController, StoryboardView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        notifiyKeyboardShow()
-        hideKeyboardWhenTappedBackground()
+        keyboardSetting()
     }
 
     // MARK: - Bind ViewModel
@@ -39,9 +38,10 @@ class EmailSignInViewController: UIViewController, StoryboardView {
 
 //MARK: - textField 편집시 Keyboard 설정
 extension EmailSignInViewController {
-    func notifiyKeyboardShow() {
+    func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        hideKeyboardWhenTappedBackground()
     }
     
     func hideKeyboardWhenTappedBackground() {
