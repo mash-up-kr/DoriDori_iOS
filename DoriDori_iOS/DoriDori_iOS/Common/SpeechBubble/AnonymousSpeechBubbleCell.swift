@@ -59,7 +59,7 @@ extension AnonymousSpeechBubbleCell {
         self.contentView.addSubViews(views: self.profileImageView, self.speechBubble)
         self.profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
-            $0.top.equalToSuperview().offset(32)
+            $0.top.equalToSuperview().offset(16)
             $0.size.equalTo(42)
         }
         self.speechBubble.snp.makeConstraints {

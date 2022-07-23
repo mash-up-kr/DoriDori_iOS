@@ -46,9 +46,9 @@ class OtherSpeechBubble: UIView {
                             controlPoint2: CGPoint(x: left, y: bottom - 7.61))
         
         // 왼쪽
+        bezierPath.addLine(to: .init(x: left, y: 45))
+        bezierPath.addLine(to: .init(x: 0, y: 37))
         bezierPath.addLine(to: .init(x: left, y: 37))
-        bezierPath.addLine(to: .init(x: 0, y: 29))
-        bezierPath.addLine(to: .init(x: left, y: 29))
         bezierPath.addLine(to: CGPoint(x: left, y: 17 + borderWidth))
         bezierPath.addCurve(to: CGPoint(x: 17 + borderWidth, y: top),
                             controlPoint1: CGPoint(x: 10, y: 7.61 + borderWidth),
