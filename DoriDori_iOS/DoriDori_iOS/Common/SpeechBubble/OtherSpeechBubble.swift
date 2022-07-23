@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OtherSpeechBubble: UIView {
+class OtherSpeechBubble: UIView {
     
     private let borderWidth: CGFloat
     private let borderColor: UIColor

@@ -74,7 +74,7 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 143)
+        CGSize(width: collectionView.bounds.width, height: 194)
     }
 }
 

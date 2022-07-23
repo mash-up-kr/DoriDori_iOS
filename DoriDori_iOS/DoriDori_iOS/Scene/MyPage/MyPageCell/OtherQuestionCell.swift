@@ -24,11 +24,12 @@ final class OtherQuestionCell: UICollectionViewCell {
     
     private let levelView: LevelView = .init(level: 3, backgroundColor: .lime400)
     
-    private let speechBubbleView: OtherSpeechBubble = {
-        let view = OtherSpeechBubble(
+    private let speechBubbleView: AnonymousSpeechBubble = {
+        let view = AnonymousSpeechBubble(
             borderWidth: 1,
             borderColor: .gray500,
-            backgroundColor: .gray900
+            backgroundColor: .gray900,
+            item: AnonymousSpeechBubbleItem(text: "같은지역이면 친구해요\n저는 #강남 입니다 :)", location: "강남구", updatedTime: 1)
         )
         return view
     }()
