@@ -24,10 +24,13 @@ final class OtherQuestionCell: UICollectionViewCell {
     
     private let levelView: LevelView = .init(level: 3, backgroundColor: .lime400)
     
-    private let speechBubbleView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "OtherSpeechBubble")
-        return imageView
+    private let speechBubbleView: OtherSpeechBubble = {
+        let view = OtherSpeechBubble(
+            borderWidth: 1,
+            borderColor: .gray500,
+            backgroundColor: .gray900
+        )
+        return view
     }()
     
     private let userNameLabel: UILabel = {
@@ -106,7 +109,7 @@ final class OtherQuestionCell: UICollectionViewCell {
     
     private func setupLayouts() {
         self.addSubViews(views: self.profileImageView, self.levelView, self.speechBubbleView)
-        self.speechBubbleView.addSubViews(views: self.userNameLabel, self.keywordStackView, self.contentLabel, self.infoStackView, self.moreButton)
+//        self.speechBubbleView.addSubViews(views: self.userNameLabel, self.keywordStackView, self.contentLabel, self.infoStackView, self.moreButton)
         
         self.profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
@@ -125,6 +128,7 @@ final class OtherQuestionCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().inset(30)
         }
         
+        /*
         self.userNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(18)
             $0.leading.equalToSuperview().offset(26)
@@ -155,6 +159,7 @@ final class OtherQuestionCell: UICollectionViewCell {
         self.dividerView.snp.makeConstraints {
             $0.width.equalTo(1)
         }
+         */
     }
     
     let dummyKeywordTitle: [String] = ["디즈니", "영화", "애니메이션"]
