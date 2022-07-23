@@ -44,7 +44,7 @@ final class AnswerCompleteViewController: UIViewController {
     }
     
     private func register(_ collectionView: UICollectionView) {
-        collectionView.register(OtherQuestionCell.self)
+        collectionView.register(AnonymousSpeechBubbleCell.self)
     }
 }
 
@@ -62,7 +62,9 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        collectionView.dequeueReusableCell(type: OtherQuestionCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(type: AnonymousSpeechBubbleCell.self, for: indexPath)
+        cell.configure(AnonymousSpeechBubbleCellItem(text: "같은지역이면 친구해요\n저는 #강남 입니다:)", location: "강남구", updatedTime: 1))
+        return cell
     }
 }
 

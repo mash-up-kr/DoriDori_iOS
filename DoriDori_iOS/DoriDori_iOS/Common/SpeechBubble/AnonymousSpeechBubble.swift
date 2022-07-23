@@ -13,12 +13,6 @@ protocol AnonymousSpeechBubbleItemType {
     var updatedTime: Int { get }
 }
 
-struct AnonymousSpeechBubbleItem: AnonymousSpeechBubbleItemType {
-    var text: String
-    var location: String
-    var updatedTime: Int
-}
-
 final class AnonymousSpeechBubble: OtherSpeechBubble {
     
     // MARK: - UIComponent
@@ -102,30 +96,31 @@ final class AnonymousSpeechBubble: OtherSpeechBubble {
         return stackView
     }()
     
-    
     // MARK: - Init
-    init(
+    
+    override init(
         borderWidth: CGFloat = 1,
         borderColor: UIColor = .gray500,
-        backgroundColor: UIColor = .gray900,
-        item : AnonymousSpeechBubbleItemType
+        backgroundColor: UIColor = .gray900
     ) {
-        super.init(borderWidth: borderWidth, borderColor: borderColor, backgroundColor: backgroundColor)
+        super.init(
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            backgroundColor: backgroundColor
+        )
         self.setupLayouts()
-        self.configure(item)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 // MARK: - Private functions
 
 extension AnonymousSpeechBubble {
     
-    private func configure(_ item: AnonymousSpeechBubbleItemType) {
+    func configure(_ item: AnonymousSpeechBubbleItemType) {
         let textParagraphStype = NSMutableParagraphStyle()
         textParagraphStype.maximumLineHeight = 25
         textParagraphStype.minimumLineHeight = 25

@@ -23,7 +23,7 @@ class OtherSpeechBubble: UIView {
         self._backgroundColor = backgroundColor
         
         super.init(frame: .zero)
-        print("🎂init")
+        self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -31,10 +31,9 @@ class OtherSpeechBubble: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        print("🎂draw recxt: \(rect)")
         let bezierPath = UIBezierPath()
-        bezierPath.lineWidth = borderWidth // 3
-        let bottom = rect.height - borderWidth // 4
+        bezierPath.lineWidth = borderWidth
+        let bottom = rect.height - borderWidth
         let right = rect.width - borderWidth
         let top = borderWidth
         let left: CGFloat = 10

@@ -28,8 +28,7 @@ final class OtherQuestionCell: UICollectionViewCell {
         let view = AnonymousSpeechBubble(
             borderWidth: 1,
             borderColor: .gray500,
-            backgroundColor: .gray900,
-            item: AnonymousSpeechBubbleItem(text: "같은지역이면 친구해요\n저는 #강남 입니다 :)", location: "강남구", updatedTime: 1)
+            backgroundColor: .gray900
         )
         return view
     }()

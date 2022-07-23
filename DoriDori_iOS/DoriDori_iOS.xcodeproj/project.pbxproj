@@ -37,6 +37,7 @@
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubble.swift */; };
 		A2F92C6E288BEED1000340F5 /* AnonymousSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
+		A2F92C72288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */; };
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
 		CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7EE2877279C00928091 /* FlexLayout */; };
 		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
@@ -112,6 +113,7 @@
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubble.swift; sourceTree = "<group>"; };
 		A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSpeechBubble.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSpeechBubbleCell.swift; sourceTree = "<group>"; };
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		CE5B13252879748D00F10A20 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE5B1327287974A400F10A20 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				A2F92C6B288BD1F4000340F5 /* OtherSpeechBubble.swift */,
 				A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */,
+				A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */,
 			);
 			path = SpeechBubble;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
+				A2F92C72288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
