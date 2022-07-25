@@ -36,10 +36,6 @@ final class LevelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        debugPrint("\(String(describing: self)) deinit")
-    }
-    
     func configure(level: Int, backgroundColor: UIColor = .lime300) {
         self.setupLevel(level)
     }

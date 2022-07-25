@@ -38,6 +38,9 @@
 		A2F92C6E288BEED1000340F5 /* AnonymousSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
 		A2F92C72288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */; };
+		A2F92C74288CF594000340F5 /* HomeOtherSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C73288CF594000340F5 /* HomeOtherSpeechBubble.swift */; };
+		A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA0288EDA94000340F5 /* Int+Extension.swift */; };
+		A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */; };
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
 		CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7EE2877279C00928091 /* FlexLayout */; };
 		CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = CE58A7F02877279C00928091 /* FlexLayoutYoga */; };
@@ -114,6 +117,9 @@
 		A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSpeechBubble.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSpeechBubbleCell.swift; sourceTree = "<group>"; };
+		A2F92C73288CF594000340F5 /* HomeOtherSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubble.swift; sourceTree = "<group>"; };
+		A2F92CA0288EDA94000340F5 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubbleCell.swift; sourceTree = "<group>"; };
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		CE5B13252879748D00F10A20 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE5B1327287974A400F10A20 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 				A2F92C6B288BD1F4000340F5 /* OtherSpeechBubble.swift */,
 				A2F92C6D288BEED1000340F5 /* AnonymousSpeechBubble.swift */,
 				A2F92C71288C05F5000340F5 /* AnonymousSpeechBubbleCell.swift */,
+				A2F92C73288CF594000340F5 /* HomeOtherSpeechBubble.swift */,
+				A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */,
 			);
 			path = SpeechBubble;
 			sourceTree = "<group>";
@@ -380,6 +388,7 @@
 				A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */,
 				A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */,
 				A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */,
+				A2F92CA0288EDA94000340F5 /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -555,6 +564,7 @@
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
+				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubble.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* AnonymousSpeechBubble.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
@@ -572,6 +582,7 @@
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
+				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
@@ -584,6 +595,7 @@
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
+				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
 			);

@@ -23,7 +23,7 @@ final class AnonymousSpeechBubble: OtherSpeechBubble {
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         return label
     }()
-    private let textLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = 2
@@ -124,7 +124,7 @@ extension AnonymousSpeechBubble {
         let textParagraphStype = NSMutableParagraphStyle()
         textParagraphStype.maximumLineHeight = 25
         textParagraphStype.minimumLineHeight = 25
-        self.textLabel.attributedText = NSMutableAttributedString(string: item.text, attributes: [
+        self.contentLabel.attributedText = NSMutableAttributedString(string: item.text, attributes: [
             .font: UIFont.setKRFont(weight: .medium, size: 16),
             .paragraphStyle: textParagraphStype,
             .foregroundColor: UIColor.white
@@ -136,7 +136,7 @@ extension AnonymousSpeechBubble {
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
         self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.refuseButton)
-        self.addSubViews(views: self.nameLabel, self.textLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
+        self.addSubViews(views: self.nameLabel, self.contentLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
         self.commentButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperatedView.snp.makeConstraints {
             $0.height.equalTo(24)
@@ -153,23 +153,23 @@ extension AnonymousSpeechBubble {
             $0.top.equalToSuperview().offset(18)
             $0.leading.equalToSuperview().offset(26)
         }
-        self.textLabel.snp.makeConstraints {
+        self.contentLabel.snp.makeConstraints {
             $0.top.equalTo(self.nameLabel.snp.bottom).offset(16)
             $0.leading.equalToSuperview().offset(26)
             $0.trailing.equalToSuperview().inset(16)
         }
         self.locationTimeStackView.snp.makeConstraints {
-            $0.top.equalTo(self.textLabel.snp.bottom).offset(16)
-            $0.leading.equalTo(self.textLabel)
+            $0.top.equalTo(self.contentLabel.snp.bottom).offset(16)
+            $0.leading.equalTo(self.contentLabel)
         }
         self.horizontalSeperatedView.snp.makeConstraints {
             $0.top.equalTo(self.locationTimeStackView.snp.bottom).offset(16)
-            $0.leading.trailing.equalTo(self.textLabel)
+            $0.leading.trailing.equalTo(self.contentLabel)
             $0.height.equalTo(1)
         }
         self.buttonStackView.snp.makeConstraints {
             $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
-            $0.leading.trailing.equalTo(self.textLabel)
+            $0.leading.trailing.equalTo(self.contentLabel)
         }
     }
 }
