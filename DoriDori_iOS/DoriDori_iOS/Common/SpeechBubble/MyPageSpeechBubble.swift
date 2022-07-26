@@ -1,5 +1,5 @@
 //
-//  AnonymousSpeechBubble.swift
+//  MyPageSpeechBubble.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/23.
@@ -7,21 +7,35 @@
 
 import UIKit
 
-protocol AnonymousSpeechBubbleItemType {
+protocol MyPageSpeechBubbleItemType {
     var text: String { get }
     var location: String { get }
     var updatedTime: Int { get }
+    var tags: [String] { get }
 }
 
-final class AnonymousSpeechBubble: OtherSpeechBubble {
+final class MyPageSpeechBubble: OtherSpeechBubble {
     
     // MARK: - UIComponent
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "익명"
         label.textColor = .gray200
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         return label
+    }()
+    private let tagStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 6
+        stackView.distribution = .fill
+        return stackView
+    }()
+    private let moreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "more"), for: .normal)
+        return button
     }()
     private let contentLabel: UILabel = {
         let label = UILabel()
@@ -118,9 +132,9 @@ final class AnonymousSpeechBubble: OtherSpeechBubble {
 
 // MARK: - Private functions
 
-extension AnonymousSpeechBubble {
+extension MyPageSpeechBubble {
     
-    func configure(_ item: AnonymousSpeechBubbleItemType) {
+    func configure(_ item: MyPageSpeechBubbleItemType) {
         let textParagraphStype = NSMutableParagraphStyle()
         textParagraphStype.maximumLineHeight = 25
         textParagraphStype.minimumLineHeight = 25

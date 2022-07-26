@@ -24,8 +24,8 @@ final class OtherQuestionCell: UICollectionViewCell {
     
     private let levelView: LevelView = .init(level: 3, backgroundColor: .lime400)
     
-    private let speechBubbleView: AnonymousSpeechBubble = {
-        let view = AnonymousSpeechBubble(
+    private let speechBubbleView: MyPageSpeechBubble = {
+        let view = MyPageSpeechBubble(
             borderWidth: 1,
             borderColor: .gray500,
             backgroundColor: .gray900
