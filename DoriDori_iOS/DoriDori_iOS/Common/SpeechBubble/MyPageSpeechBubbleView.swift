@@ -12,6 +12,7 @@ protocol MyPageSpeechBubbleItemType {
     var location: String { get }
     var updatedTime: Int { get }
     var tags: [String] { get }
+    var userName: String { get }
 }
 
 final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
@@ -20,7 +21,6 @@ final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "익명"
         label.textColor = .gray200
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         return label
@@ -135,6 +135,7 @@ final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
 extension MyPageSpeechBubbleView {
     
     func configure(_ item: MyPageSpeechBubbleItemType) {
+        self.nameLabel.text = item.userName
         self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"

@@ -8,23 +8,35 @@
 import UIKit
 import Kingfisher
 
-struct MyPageSpeechBubbleCellItem: MyPageSpeechBubbleCellItemType {
+struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
     let content: String
     let location: String
     let updatedTime: Int
     let level: Int
     let imageURL: URL?
     let tags: [String]
+    let userName: String
 }
 
-protocol MyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {
+struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
+    let content: String
+    let location: String
+    let updatedTime: Int
+    let tags: [String]
+    let userName: String
+}
+
+protocol IdentifiedMyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {
     var level: Int { get }
     var imageURL: URL? { get }
 }
 
+protocol AnonymousMyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {
+}
+
 final class MyPageSpeechBubbleCell: UICollectionViewCell {
         
-    // MARK: UI Components
+    // MARK: - UI Components
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -53,13 +65,18 @@ final class MyPageSpeechBubbleCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(_ item: MyPageSpeechBubbleCellItemType) {
-        self.profileImageView.kf.setImage(with: item.imageURL)
-        self.levelView.configure(level: item.level)
+    func configure(_ item: MyPageSpeechBubbleItemType) {
         self.speechBubble.configure(item)
+        if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
+            self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
+            self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)
+        }
+        if let _ = item as? AnonymousMyPageSpeechBubbleCellItem {
+            self.levelView.isHidden = true
+        }
     }
     
-    static func fittingSize<Item: MyPageSpeechBubbleCellItemType>(width: CGFloat, item: Item) -> CGSize {
+    static func fittingSize(width: CGFloat, item: MyPageSpeechBubbleItemType) -> CGSize {
         let cell = MyPageSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,

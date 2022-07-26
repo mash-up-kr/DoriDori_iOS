@@ -28,15 +28,15 @@ final class AnswerCompleteViewController: UIViewController {
         HomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도리 를 찾아서 보러가실 분!!", userNmae: "방위대", likeCount: 2220, commentCount: 0, tags: ["연애"]),
     ]
     
-    let myData: [MyPageSpeechBubbleCellItem] = [
-        MyPageSpeechBubbleCellItem(content: "1방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 3, imageURL: nil, tags: ["메롱"]),
-        MyPageSpeechBubbleCellItem(content: "2방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 10, imageURL: nil, tags: []),
-        MyPageSpeechBubbleCellItem(content: "3방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 1, imageURL: nil, tags: ["메롱", "맥주 대신 소주"]),
-        MyPageSpeechBubbleCellItem(content: "4", location: "강남구", updatedTime: 1, level: 2, imageURL: nil, tags: ["메롱", "ㅋㅋㅎㅋ"]),
-        MyPageSpeechBubbleCellItem(content: "5방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil, tags: ["메롱", "쿠쿠루삥뽕"]),
-        MyPageSpeechBubbleCellItem(content: "6방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 77, imageURL: nil, tags: ["메롱", "김용명"]),
-        MyPageSpeechBubbleCellItem(content: "7방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil, tags: ["메롱"])
-        
+    let myData: [MyPageSpeechBubbleItemType] = [
+        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
+        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
+        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
+        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
+        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
+        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
+        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
+        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명")
     ]
 
     // MARK: Init
