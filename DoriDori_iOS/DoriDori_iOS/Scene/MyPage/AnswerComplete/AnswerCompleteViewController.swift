@@ -78,15 +78,15 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return myData.count
+        return datas.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: MyPageSpeechBubbleCell.self, for: indexPath)
-        cell.configure(self.myData[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(type: HomeOtherSpeechBubbleCell.self, for: indexPath)
+        cell.configure(self.datas[indexPath.item])
         return cell
     }
 }
@@ -99,9 +99,9 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let item = self.myData[indexPath.item]
-        print(MyPageSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item))
-        return MyPageSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
+        let item = self.datas[indexPath.item]
+        print(HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item))
+        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
     }
 }
 

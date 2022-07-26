@@ -11,7 +11,7 @@ protocol MyPageSpeechBubbleItemType {
     var text: String { get }
     var location: String { get }
     var updatedTime: Int { get }
-    var tags: [String] { get }
+//    var tags: [String] { get }
 }
 
 final class MyPageSpeechBubble: OtherSpeechBubble {
