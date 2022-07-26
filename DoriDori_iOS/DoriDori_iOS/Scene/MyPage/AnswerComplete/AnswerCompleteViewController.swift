@@ -9,7 +9,7 @@ import UIKit
 
 final class AnswerCompleteViewController: UIViewController {
     
-    // MARK: UIComponent
+    // MARK: - UI Component
     
     private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -17,15 +17,15 @@ final class AnswerCompleteViewController: UIViewController {
         return collectionView
     }()
     
-    let datas: [HomeOtherSpeechBubbleCellItem] = [
-        HomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도리 를 찾아서 보러가실 분!!긴글긴글긴글긴글긴글긴글", userNmae: "방위대", likeCount: 2220, commentCount: 0, tags: []),
-        HomeOtherSpeechBubbleCellItem(level: 3, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도🤔!", userNmae: "서영테스트입니당", likeCount: 0, commentCount: 0, tags: ["연애", "독서"]),
-        HomeOtherSpeechBubbleCellItem(level: 10, location: "강남구", updatedTime: 1, profileImageURL: "", content: "#도리 를 찾아서가 뭐에요?", userNmae: "매쉬업 방위대", likeCount: 0, commentCount: 10, tags: ["연애", "독서", "맛집탐방"]),
-        HomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도리 를 찾아서 보러가실 분!!", userNmae: "방위대", likeCount: 2220, commentCount: 0, tags: ["연애"]),
-        HomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도리 를 찾아서 보러가실 분!!", userNmae: "방위대", likeCount: 2220, commentCount: 0, tags: []),
-        HomeOtherSpeechBubbleCellItem(level: 3, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도🤔!", userNmae: "서영테스트입니당", likeCount: 0, commentCount: 0, tags: ["연애", "독서"]),
-        HomeOtherSpeechBubbleCellItem(level: 10, location: "강남구", updatedTime: 1, profileImageURL: "", content: "#도리 를 찾아서가 뭐에요?", userNmae: "매쉬업 방위대", likeCount: 0, commentCount: 10, tags: ["연애", "독서", "맛집탐방"]),
-        HomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 1, profileImageURL: "", content: "저랑 같이 강남역 CGV에서 #도리 를 찾아서 보러가실 분!!", userNmae: "방위대", likeCount: 2220, commentCount: 0, tags: ["연애"]),
+    let datas: [HomeOtherSpeechBubbleItemType] = [
+        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다. 디즈니 영화 다 추천해주세요~~~ 안녕하세요:-)", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
+        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
+        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
+        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
     ]
     
     let myData: [MyPageSpeechBubbleItemType] = [
@@ -78,15 +78,15 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return myData.count
+        return datas.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: MyPageSpeechBubbleCell.self, for: indexPath)
-        cell.configure(self.myData[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(type: HomeOtherSpeechBubbleCell.self, for: indexPath)
+        cell.configure(self.datas[indexPath.item])
         return cell
     }
 }
@@ -99,8 +99,8 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let item = self.myData[indexPath.item]
-        return MyPageSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
+        let item = self.datas[indexPath.item]
+        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
     }
 }
 
