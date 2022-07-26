@@ -9,11 +9,12 @@ import UIKit
 import Kingfisher
 
 struct MyPageSpeechBubbleCellItem: MyPageSpeechBubbleCellItemType {
-    let text: String
+    let content: String
     let location: String
     let updatedTime: Int
     let level: Int
     let imageURL: URL?
+    let tags: [String]
 }
 
 protocol MyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {

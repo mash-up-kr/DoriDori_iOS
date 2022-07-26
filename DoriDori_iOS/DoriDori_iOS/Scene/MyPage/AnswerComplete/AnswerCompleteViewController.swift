@@ -29,13 +29,13 @@ final class AnswerCompleteViewController: UIViewController {
     ]
     
     let myData: [MyPageSpeechBubbleCellItem] = [
-        MyPageSpeechBubbleCellItem(text: "1방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 3, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "2방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 10, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "3방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 1, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "4방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 2, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "5방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "6방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 77, imageURL: nil),
-        MyPageSpeechBubbleCellItem(text: "7방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil)
+        MyPageSpeechBubbleCellItem(content: "1방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 3, imageURL: nil, tags: ["메롱"]),
+        MyPageSpeechBubbleCellItem(content: "2방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 10, imageURL: nil, tags: []),
+        MyPageSpeechBubbleCellItem(content: "3방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 1, imageURL: nil, tags: ["메롱", "맥주 대신 소주"]),
+        MyPageSpeechBubbleCellItem(content: "4", location: "강남구", updatedTime: 1, level: 2, imageURL: nil, tags: ["메롱", "ㅋㅋㅎㅋ"]),
+        MyPageSpeechBubbleCellItem(content: "5방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil, tags: ["메롱", "쿠쿠루삥뽕"]),
+        MyPageSpeechBubbleCellItem(content: "6방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 77, imageURL: nil, tags: ["메롱", "김용명"]),
+        MyPageSpeechBubbleCellItem(content: "7방위대 아이오에스 공부합니다. 모각코 디코에서 합니다", location: "강남구", updatedTime: 1, level: 9, imageURL: nil, tags: ["메롱"])
         
     ]
 
@@ -78,15 +78,15 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return datas.count
+        return myData.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: HomeOtherSpeechBubbleCell.self, for: indexPath)
-        cell.configure(self.datas[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(type: MyPageSpeechBubbleCell.self, for: indexPath)
+        cell.configure(self.myData[indexPath.item])
         return cell
     }
 }
@@ -99,9 +99,8 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let item = self.datas[indexPath.item]
-        print(HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item))
-        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
+        let item = self.myData[indexPath.item]
+        return MyPageSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
     }
 }
 
