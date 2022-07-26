@@ -1,5 +1,5 @@
 //
-//  HomeOtherSpeechBubble.swift
+//  HomeOtherSpeechBubbleView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/24.
@@ -17,7 +17,7 @@ protocol HomeOtherSpeechBubbleItemType {
     var tags: [String] { get }
 }
 
-final class HomeOtherSpeechBubble: OtherSpeechBubble {
+final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     
     // MARK: - UIComponent
     
@@ -127,21 +127,25 @@ final class HomeOtherSpeechBubble: OtherSpeechBubble {
     }
     
     func configure(_ item: HomeOtherSpeechBubbleItemType) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        textParagraphStype.lineBreakMode = .byCharWrapping
-        self.contentLabel.attributedText = NSMutableAttributedString(string: item.content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+        self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
         self.userNameLabel.text = item.userNmae
         self.setupHandButton(item.likeCount)
         self.setupCommentButton(item.commentCount)
         self.setupTagView(item.tags)
+    }
+    
+    private func setupContent(_ content: String) {
+        let textParagraphStype = NSMutableParagraphStyle()
+        textParagraphStype.maximumLineHeight = 25
+        textParagraphStype.minimumLineHeight = 25
+        textParagraphStype.lineBreakMode = .byCharWrapping
+        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
+            .font: UIFont.setKRFont(weight: .medium, size: 16),
+            .paragraphStyle: textParagraphStype,
+            .foregroundColor: UIColor.white
+        ])
     }
     
     private func setupTagView(_ tags: [String]) {

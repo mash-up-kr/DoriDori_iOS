@@ -35,7 +35,7 @@ final class MyPageSpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = MyPageSpeechBubble()
+    private let speechBubble = MyPageSpeechBubbleView()
     
     // MARK: Init
     

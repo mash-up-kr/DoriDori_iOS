@@ -37,7 +37,7 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = HomeOtherSpeechBubble()
+    private let speechBubble = HomeOtherSpeechBubbleView()
     
     // MARK: Init
     

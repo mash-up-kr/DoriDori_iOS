@@ -1,5 +1,5 @@
 //
-//  OtherSpeechBubble.swift
+//  OtherSpeechBubbleView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OtherSpeechBubble: UIView {
+class OtherSpeechBubbleView: UIView {
     
     private let borderWidth: CGFloat
     private let borderColor: UIColor

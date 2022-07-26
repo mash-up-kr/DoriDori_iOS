@@ -1,5 +1,5 @@
 //
-//  MyPageSpeechBubble.swift
+//  MyPageSpeechBubbleView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/23.
@@ -14,7 +14,7 @@ protocol MyPageSpeechBubbleItemType {
 //    var tags: [String] { get }
 }
 
-final class MyPageSpeechBubble: OtherSpeechBubble {
+final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
     
     // MARK: - UIComponent
     
@@ -132,19 +132,23 @@ final class MyPageSpeechBubble: OtherSpeechBubble {
 
 // MARK: - Private functions
 
-extension MyPageSpeechBubble {
+extension MyPageSpeechBubbleView {
     
     func configure(_ item: MyPageSpeechBubbleItemType) {
+        self.setupContent(item.text)
+        self.locationLabel.text = item.location
+        self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
+    }
+    
+    private func setupContent(_ content: String) {
         let textParagraphStype = NSMutableParagraphStyle()
         textParagraphStype.maximumLineHeight = 25
         textParagraphStype.minimumLineHeight = 25
-        self.contentLabel.attributedText = NSMutableAttributedString(string: item.text, attributes: [
+        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
             .font: UIFont.setKRFont(weight: .medium, size: 16),
             .paragraphStyle: textParagraphStype,
             .foregroundColor: UIColor.white
         ])
-        self.locationLabel.text = item.location
-        self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
     }
     
     private func setupLayouts() {
