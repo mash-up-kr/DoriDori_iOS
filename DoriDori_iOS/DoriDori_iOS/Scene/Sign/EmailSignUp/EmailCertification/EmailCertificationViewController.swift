@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-final class EmailSignUpViewController: UIViewController, StoryboardView {
-    typealias Reactor = EmailSignUpViewModel
+final class EmailCertificationViewController: UIViewController, StoryboardView {
+    typealias Reactor = EmailCertificationViewModel
     
 
     var disposeBag = DisposeBag()
@@ -24,7 +24,7 @@ final class EmailSignUpViewController: UIViewController, StoryboardView {
 
     // MARK: - Bind ViewModel
 
-    func bind(reactor viewModel: EmailSignUpViewModel) {
+    func bind(reactor viewModel: EmailCertificationViewModel) {
 
     }
 }

@@ -15,7 +15,7 @@ enum SignInButtonType {
     case emailSignup
 }
 
-final class SignInViewModel: Reactor {
+final class SignInMainViewModel: Reactor {
     
     enum Action {
         case kakaoLoginButtonDidTap

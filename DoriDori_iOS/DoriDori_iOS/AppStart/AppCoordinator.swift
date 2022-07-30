@@ -53,8 +53,8 @@ final class AppCoordinator: Coordinator {
             window?.rootViewController = homeTabbarController
         case .siginIn:
             let story = UIStoryboard(name: "SignIn", bundle: nil)
-            let reactor = SignInViewModel()
-            let vc = story.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            let reactor = SignInMainViewModel()
+            guard let vc = story.instantiateViewController(withIdentifier: "SignInMainViewController") as? SignInMainViewController else { return }
             let navi = UINavigationController(rootViewController: vc)
             vc.reactor = reactor
             window?.rootViewController = navi

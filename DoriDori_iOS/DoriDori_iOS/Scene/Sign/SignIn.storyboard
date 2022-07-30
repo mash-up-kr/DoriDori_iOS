@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sign In View Controller-->
+        <!--Sign In Main View Controller-->
         <scene sceneID="GzV-lN-fg7">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" id="vKn-9P-Ny8" customClass="SignInViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInMainViewController" id="vKn-9P-Ny8" customClass="SignInMainViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -429,7 +429,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkD-5Z-Zjc">
                                                                 <rect key="frame" x="12" y="16" width="291" height="315.33333333333331"/>
-                                                                <mutableString key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</mutableString>
+                                                                <string key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -474,7 +474,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75g-iV-bPE">
                                                                 <rect key="frame" x="12" y="16" width="291" height="315.33333333333331"/>
-                                                                <mutableString key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</mutableString>
+                                                                <string key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -569,15 +569,15 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="703.44827586206895"/>
         </scene>
-        <!--Email Sign Up View Controller-->
+        <!--Email Certification View Controller-->
         <scene sceneID="AJ7-9D-UMk">
             <objects>
-                <viewController storyboardIdentifier="EmailSignUpViewController" id="S2E-8W-ItQ" customClass="EmailSignUpViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailSignUpViewController" id="S2E-8W-ItQ" customClass="EmailCertificationViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8c-e2-2hX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일로 입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8n-4V-baU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 인증이 필요해요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8n-4V-baU">
                                 <rect key="frame" x="30" y="86" width="315" height="28.666666666666671"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -651,7 +651,91 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNB-KD-ImO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="703"/>
+            <point key="canvasLocation" x="1817" y="672"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rj3-Yf-flo">
+            <objects>
+                <viewController id="PBu-Kx-sp4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="385-YO-Ucs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 입력해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dos-MV-OOJ">
+                                <rect key="frame" x="30" y="86" width="315" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="WZo-y6-dOa">
+                                <rect key="frame" x="30" y="146.66666666666666" width="315" height="189.99999999999997"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-La-m5M">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U5H-ry-9Ut">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="U5H-ry-9Ut" secondAttribute="bottom" id="1zx-gn-6PT"/>
+                                            <constraint firstItem="U5H-ry-9Ut" firstAttribute="leading" secondItem="Bsb-La-m5M" secondAttribute="leading" id="ItZ-tU-4Bv"/>
+                                            <constraint firstAttribute="trailing" secondItem="U5H-ry-9Ut" secondAttribute="trailing" id="gIr-CM-1FJ"/>
+                                            <constraint firstAttribute="height" constant="70" id="lAQ-N6-qIB"/>
+                                            <constraint firstItem="U5H-ry-9Ut" firstAttribute="top" secondItem="Bsb-La-m5M" secondAttribute="top" id="pmd-gi-T3z"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-DK-S6G">
+                                        <rect key="frame" x="0.0" y="120.00000000000003" width="315" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="UKG-Nj-Tzm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjK-qw-KkQ">
+                                <rect key="frame" x="30" y="670" width="315" height="54"/>
+                                <color key="backgroundColor" name="gray700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="fML-X7-8D4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="확인">
+                                    <color key="titleColor" name="gray300"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tGo-Ma-9j1"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="dos-MV-OOJ" firstAttribute="top" secondItem="tGo-Ma-9j1" secondAttribute="top" constant="42" id="638-gS-jcj"/>
+                            <constraint firstItem="WZo-y6-dOa" firstAttribute="top" secondItem="dos-MV-OOJ" secondAttribute="bottom" constant="32" id="C0K-1j-JSG"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="trailing" secondItem="tjK-qw-KkQ" secondAttribute="trailing" constant="30" id="QcX-zs-62I"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="bottom" secondItem="tjK-qw-KkQ" secondAttribute="bottom" constant="54" id="Ru6-Zp-ufa"/>
+                            <constraint firstItem="WZo-y6-dOa" firstAttribute="trailing" secondItem="dos-MV-OOJ" secondAttribute="trailing" id="Upf-S6-Oec"/>
+                            <constraint firstItem="WZo-y6-dOa" firstAttribute="leading" secondItem="dos-MV-OOJ" secondAttribute="leading" id="Xvy-fi-VRG"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="trailing" secondItem="dos-MV-OOJ" secondAttribute="trailing" constant="30" id="ZqX-us-4iE"/>
+                            <constraint firstItem="dos-MV-OOJ" firstAttribute="leading" secondItem="tGo-Ma-9j1" secondAttribute="leading" constant="30" id="gPe-q4-oQz"/>
+                            <constraint firstItem="tjK-qw-KkQ" firstAttribute="leading" secondItem="tGo-Ma-9j1" secondAttribute="leading" constant="30" id="rD2-XA-2zz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzK-PK-t0e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2615" y="672"/>
         </scene>
     </scenes>
     <resources>
