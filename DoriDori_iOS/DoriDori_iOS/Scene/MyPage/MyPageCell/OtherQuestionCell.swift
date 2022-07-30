@@ -108,7 +108,7 @@ final class OtherQuestionCell: UICollectionViewCell {
     // MARK: - Layouts
     
     private func setupLayouts() {
-        self.addSubViews(views: self.profileImageView, self.levelView, self.speechBubbleView)
+        self.addSubViews(self.profileImageView, self.levelView, self.speechBubbleView)
 //        self.speechBubbleView.addSubViews(views: self.userNameLabel, self.keywordStackView, self.contentLabel, self.infoStackView, self.moreButton)
         
         self.profileImageView.snp.makeConstraints {

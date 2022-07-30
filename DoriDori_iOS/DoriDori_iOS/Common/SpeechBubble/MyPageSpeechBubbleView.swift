@@ -164,7 +164,7 @@ extension MyPageSpeechBubbleView {
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
         self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.refuseButton)
-        self.addSubViews(views: self.nameLabel, self.moreButton, self.tagStackView, self.contentLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
+        self.addSubViews(self.nameLabel, self.moreButton, self.tagStackView, self.contentLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
         
         self.commentButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperatedView.snp.makeConstraints {

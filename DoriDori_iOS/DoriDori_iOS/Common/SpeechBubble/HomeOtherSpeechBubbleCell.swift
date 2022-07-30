@@ -97,7 +97,7 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
 extension HomeOtherSpeechBubbleCell {
     
     private func setupLayouts() {
-        self.contentView.addSubViews(views: self.profileImageView, self.levelView, self.speechBubble)
+        self.contentView.addSubViews( self.profileImageView, self.levelView, self.speechBubble)
         self.profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
             $0.top.equalToSuperview().offset(16)

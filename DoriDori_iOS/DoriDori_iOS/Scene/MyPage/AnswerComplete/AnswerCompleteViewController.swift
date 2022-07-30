@@ -38,6 +38,8 @@ final class AnswerCompleteViewController: UIViewController {
         IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
         AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명")
     ]
+    
+    let myItem = MyPageMySpeechBubbleCellItem(questioner: "감자도리도리", userName: "매쉬업 방위대~", content: "ㅋㅋㅋㅋ니모를 찾아서예용", location: "강남", updatedTime: 1, likeCount: 3, profileImageURL: nil, level: 5)
 
     // MARK: Init
     
@@ -51,6 +53,7 @@ final class AnswerCompleteViewController: UIViewController {
         }
         self.collectionView.reloadData()
         self.collectionView.backgroundColor = .darkGray
+        self.view.backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
@@ -68,6 +71,7 @@ final class AnswerCompleteViewController: UIViewController {
     private func register(_ collectionView: UICollectionView) {
         collectionView.register(MyPageSpeechBubbleCell.self)
         collectionView.register(HomeOtherSpeechBubbleCell.self)
+        collectionView.register(MyPageMySpeechBubbleCell.self)
     }
 }
 
@@ -78,15 +82,15 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return datas.count
+       1
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: HomeOtherSpeechBubbleCell.self, for: indexPath)
-        cell.configure(self.datas[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
+        cell.configure(myItem)
         return cell
     }
 }
@@ -99,8 +103,11 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let item = self.datas[indexPath.item]
-        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
+//        let item = self.datas[indexPath.item]
+//        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
+        let size = MyPageMySpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: myItem)
+        print(size)
+        return size
     }
 }
 

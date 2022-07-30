@@ -129,7 +129,7 @@ final class MyPageProfileView: UIView {
             self.profileStackView.addArrangedSubview($0)
         }
         
-        self.addSubViews(views: self.titleLabel, self.levelView, self.moreButton, self.buttonStackView, self.profileImageView, self.profileStackView)
+        self.addSubViews(self.titleLabel, self.levelView, self.moreButton, self.buttonStackView, self.profileImageView, self.profileStackView)
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)

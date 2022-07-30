@@ -185,7 +185,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     private func setupLayouts() {
       
         self.addSubViews(
-            views: self.userNameLabel,
+            self.userNameLabel,
             self.moreButton,
             self.tagStackView,
             self.contentLabel,
