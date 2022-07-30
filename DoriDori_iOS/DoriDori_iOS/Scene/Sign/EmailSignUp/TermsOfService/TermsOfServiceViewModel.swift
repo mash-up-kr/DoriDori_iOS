@@ -5,33 +5,22 @@
 //  Created by 김지인 on 2022/07/21.
 //
 
-import Foundation
-import ReactorKit
+import RxSwift
 
-final class TermsOfServiceViewModel: Reactor {
+final class TermsOfServiceViewModel {
     
-    enum Action {
-        
+    struct Input {
+        let allAgree: Observable<Bool>
     }
-    enum Mutation {
-        
+    
+    struct Output {
+        let isValidButton: Observable<Bool>
     }
-    struct State {
-        
+    
+    func transform(input: Input) -> Output {
+        return Output(isValidButton: input.allAgree)
     }
+   
+    
 
-    let initialState: State
-
-    init() {
-        self.initialState = State()
-    }
-
-    func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
-    }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        return state
-    }
 }

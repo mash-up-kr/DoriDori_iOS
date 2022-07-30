@@ -310,7 +310,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRL-7Z-A1y">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRL-7Z-A1y">
                                                         <rect key="frame" x="16" y="17" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="2Tk-2X-oUx"/>
@@ -391,7 +391,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
-                                                <rect key="frame" x="29.999999999999993" y="392.66666666666669" width="111.33333333333331" height="20"/>
+                                                <rect key="frame" x="29.999999999999993" y="392.66666666666669" width="124.33333333333331" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPo-w3-TAK">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -403,18 +403,12 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-lW-sJi">
-                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="83.333333333333314" height="20"/>
+                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="96.333333333333314" height="20"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
-                                                                <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현 위치 추적 허용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
+                                                                <rect key="frame" x="0.0" y="0.0" width="96.333333333333329" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3s-Hp-UeP">
-                                                                <rect key="frame" x="48.666666666666671" y="0.0" width="34.666666666666671" height="20"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -560,9 +554,10 @@
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="allAgreeButton" destination="zRL-7Z-A1y" id="2bn-96-ubD"/>
+                        <outlet property="allAgreeOutLineView" destination="b9W-pm-DZP" id="pKU-Zt-yGu"/>
+                        <outlet property="compulsoryAgreeButton" destination="wW1-H9-fEF" id="Wq0-Ux-WZV"/>
+                        <outlet property="currentLocationAgreeButton" destination="PPo-w3-TAK" id="sCz-EH-rgd"/>
                         <outlet property="finalAgreeButton" destination="Z2q-kp-LTx" id="yWL-SQ-Vzm"/>
-                        <outlet property="firstAgreeButton" destination="wW1-H9-fEF" id="Wq0-Ux-WZV"/>
-                        <outlet property="secondAgreeButton" destination="PPo-w3-TAK" id="sCz-EH-rgd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgy-18-rSi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

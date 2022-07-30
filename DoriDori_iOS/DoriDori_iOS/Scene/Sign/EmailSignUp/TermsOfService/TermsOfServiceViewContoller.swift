@@ -8,27 +8,52 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ReactorKit
 
-final class TermsOfServiceViewContoller: UIViewController, StoryboardView {
-    typealias Reactor = TermsOfServiceViewModel
+final class TermsOfServiceViewContoller: UIViewController {
     
     @IBOutlet private weak var allAgreeButton: UIButton!
-    @IBOutlet private weak var firstAgreeButton: UIButton!
-    @IBOutlet private weak var secondAgreeButton: UIButton!
+    @IBOutlet private weak var allAgreeOutLineView: UIView!
+    
+    @IBOutlet private weak var compulsoryAgreeButton: UIButton!
+    @IBOutlet private weak var currentLocationAgreeButton: UIButton!
     @IBOutlet private weak var finalAgreeButton: UIButton!
     
-    var disposeBag = DisposeBag()
+    private var viewModel: TermsOfServiceViewModel = .init()
+    private var disposeBag = DisposeBag()
+    private var agreeBool: Bool = false
+    
 
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    // MARK: - Bind ViewModel
-
-    func bind(reactor viewModel: TermsOfServiceViewModel) {
+        bind(viewModel: viewModel)
 
     }
+    
+    private func bind(viewModel: TermsOfServiceViewModel) {
+        let input = TermsOfServiceViewModel.Input(allAgree: allAgreeButton.rx.tap.scan(false) { (lastState, newValue) in
+            !lastState
+        }.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        output.isValidButton.bind { [weak self] isValid in
+            //Setting allAgree
+            self?.allAgreeButton.isSelected = isValid
+            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+            let toogleColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
+            let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
+            self?.allAgreeButton.setImage(buttonImage, for: .selected)
+            self?.allAgreeOutLineView.borderColor = toogleColor
+            //Setting finalAgree
+            self?.finalAgreeButton.isEnabled = isValid
+            self?.finalAgreeButton.backgroundColor = toogleColor
+            self?.finalAgreeButton.setTitleColor(buttonTitleColor, for: .normal)
+            //Setting Other
+            self?.compulsoryAgreeButton.setImage(buttonImage, for: .normal)
+            self?.currentLocationAgreeButton.setImage(buttonImage, for: .normal)
+        }.disposed(by: disposeBag)
+    }
+
+    
 }
