@@ -21,8 +21,8 @@ enum FormatType {
 
 extension FormatType {
     
-    func numberToDecimal(number: NSNumber) -> String? {
-        return numberFormatter.string(from: number)
+    func numberToDecimal(number: Int) -> String? {
+        return numberFormatter.string(from: NSNumber(value: number))
     }
     
     func setAttributeText(_ text: String) -> NSAttributedString? {

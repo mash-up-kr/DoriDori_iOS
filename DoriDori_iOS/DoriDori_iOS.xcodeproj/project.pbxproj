@@ -39,7 +39,6 @@
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
 		A2F92C72288C05F5000340F5 /* MyPageSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C71288C05F5000340F5 /* MyPageSpeechBubbleCell.swift */; };
 		A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */; };
-		A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA0288EDA94000340F5 /* Int+Extension.swift */; };
 		A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */; };
 		CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3832870483A00C49548 /* CompositionRoot.swift */; };
 		CE54AD7A289032B000B7AECC /* FormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE54AD79289032B000B7AECC /* FormatType.swift */; };
@@ -120,7 +119,6 @@
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		A2F92C71288C05F5000340F5 /* MyPageSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSpeechBubbleCell.swift; sourceTree = "<group>"; };
 		A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
-		A2F92CA0288EDA94000340F5 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubbleCell.swift; sourceTree = "<group>"; };
 		CE42D3832870483A00C49548 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		CE54AD79289032B000B7AECC /* FormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatType.swift; sourceTree = "<group>"; };
@@ -393,7 +391,6 @@
 				A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */,
 				A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */,
 				A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */,
-				A2F92CA0288EDA94000340F5 /* Int+Extension.swift */,
 				CE8A535228981429005E33CC /* Array+Extension.swift */,
 			);
 			path = Extensions;
@@ -589,7 +586,6 @@
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
-				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CE8A535328981429005E33CC /* Array+Extension.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,

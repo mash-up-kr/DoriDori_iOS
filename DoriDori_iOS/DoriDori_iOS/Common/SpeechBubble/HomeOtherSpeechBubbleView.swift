@@ -166,7 +166,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         }
         else {
             self.handButton.setImage(UIImage(named: "hand"), for: .normal)
-            self.handButton.setTitle(count.decimalString ?? "0", for: .normal)
+            self.handButton.setTitle(FormatType.decimal.numberToDecimal(number: count), for: .normal)
             self.handButton.setTitleColor(.lime300, for: .normal)
             self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
             self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
@@ -176,7 +176,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     private func setupCommentButton(_ count: Int) {
         let buttonTitle: String
         if count == 0 { buttonTitle = "댓글" }
-        else { buttonTitle = count.decimalString ?? "0" }
+        else { buttonTitle = FormatType.decimal.numberToDecimal(number: count) ?? "0"}
         self.commentButton.setTitle(buttonTitle, for: .normal)
         self.commentButton.setTitleColor(.gray500, for: .normal)
         self.commentButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
