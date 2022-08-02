@@ -57,11 +57,14 @@ final class HomeHeaderView: UIView {
         return label
     }()
     
-    private let emptyContainerView: UIImageView = {
-        let imageView: UIImageView = UIImageView()
-        imageView.image = UIImage(named: "group")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+    let locationCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+//        layout.estimatedItemSize = .zero
+        let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.register(LocationCollectionViewCell.self)
+        return collectionView
     }()
     
     private let hotLocatinContainerView: UIView = {
@@ -103,7 +106,7 @@ final class HomeHeaderView: UIView {
         addSubview(wardDescriptionImageView)
         addSubview(wardImageView)
         addSubview(wardTitleLabel)
-        addSubview(emptyContainerView)
+        addSubview(locationCollectionView)
         addSubview(hotLocatinContainerView)
         hotLocatinContainerView.addSubview(hotLocationView)
         hotLocatinContainerView.addSubview(hotLocationLabel)
@@ -112,7 +115,7 @@ final class HomeHeaderView: UIView {
     private func setupConstraints() {
         homeLogoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
-            $0.leading.equalToSuperview().inset(30)
+            $0.leading.equalToSuperview().offset(30)
         }
         
         wardImageView.snp.makeConstraints {
@@ -131,13 +134,15 @@ final class HomeHeaderView: UIView {
             $0.height.equalTo(34)
         }
         
-        emptyContainerView.snp.makeConstraints {
+        locationCollectionView.snp.makeConstraints {
             $0.top.equalTo(wardTitleLabel.snp.bottom).inset(-16)
-            $0.leading.equalToSuperview()
+            $0.leading.equalTo(wardTitleLabel.snp.leading)
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(34)
         }
         
         hotLocatinContainerView.snp.makeConstraints {
-            $0.top.equalTo(emptyContainerView.snp.bottom).inset(-20)
+            $0.top.equalTo(locationCollectionView.snp.bottom).inset(-20)
             $0.leading.equalToSuperview().inset(30)
             $0.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(40)
@@ -153,3 +158,4 @@ final class HomeHeaderView: UIView {
         }
     }
 }
+
