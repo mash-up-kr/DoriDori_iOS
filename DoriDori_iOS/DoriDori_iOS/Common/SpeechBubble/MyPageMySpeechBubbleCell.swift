@@ -19,6 +19,7 @@ struct MyPageMySpeechBubbleCellItem: MyPageMySpeechBubbleViewItemType {
 }
 
 final class MyPageMySpeechBubbleCell: UICollectionViewCell {
+    
     // MARK: - UI Components
     
     private let profileImageView: UIImageView = {
@@ -31,7 +32,7 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = MyPageMySpeechBubbleView(borderColor: .gray900)
+    private let speechBubble = MyPageMySpeechBubbleView()
     
     // MARK: - Init
     
@@ -56,6 +57,20 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
         self.levelView.configure(level: item.level)
     }
     
+    static func fittingSize(width: CGFloat, item: MyPageMySpeechBubbleCellItem) -> CGSize {
+        let cell = MyPageMySpeechBubbleCell()
+        cell.configure(item)
+        let targetSize = CGSize(width: width,
+                                height: UIView.layoutFittingCompressedSize.height)
+        return cell.contentView.systemLayoutSizeFitting(targetSize,
+                                                        withHorizontalFittingPriority: .required,
+                                                        verticalFittingPriority: .fittingSizeLevel)
+    }
+}
+
+// MARK: - Private functions
+
+extension MyPageMySpeechBubbleCell {
     
     private func setupLayouts() {
         self.contentView.addSubViews(self.speechBubble, self.profileImageView, self.levelView)
@@ -77,15 +92,5 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
             $0.top.equalTo(self.profileImageView.snp.bottom).offset(8)
             $0.centerX.equalTo(self.profileImageView.snp.centerX)
         }
-    }
-    
-    static func fittingSize(width: CGFloat, item: MyPageMySpeechBubbleCellItem) -> CGSize {
-        let cell = MyPageMySpeechBubbleCell()
-        cell.configure(item)
-        let targetSize = CGSize(width: width,
-                                height: UIView.layoutFittingCompressedSize.height)
-        return cell.contentView.systemLayoutSizeFitting(targetSize,
-                                                        withHorizontalFittingPriority: .required,
-                                                        verticalFittingPriority: .fittingSizeLevel)
     }
 }

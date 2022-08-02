@@ -129,6 +129,11 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
         self.setupHandButton(item.likeCount)
     }
+}
+
+// MARK: - Private functions
+
+extension MyPageMySpeechBubbleView {
     
     private func setupHandButton(_ count: Int) {
         if count == 0 {
@@ -156,6 +161,11 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
             .foregroundColor: UIColor.white
         ])
     }
+}
+
+// MARK: - Layouts
+
+extension MyPageMySpeechBubbleView {
     
     private func setupLayouts() {
         self.addSubViews(
@@ -200,7 +210,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
     private func layoutsUserInfo() {
         
         self.questionerNameLabel.snp.makeConstraints {
-            $0.height.equalTo(18).labeled("question name")
+            $0.height.equalTo(18)
             $0.leading.equalToSuperview().offset(18)
             $0.top.equalToSuperview().offset(18)
         }
