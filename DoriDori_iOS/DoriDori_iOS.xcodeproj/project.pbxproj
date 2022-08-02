@@ -35,9 +35,9 @@
 		A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */; };
 		A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */; };
 		A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */; };
-		A2655AE5289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE4289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift */; };
+		A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */; };
 		A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */; };
-		A2655AE92899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE82899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift */; };
+		A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */; };
 		A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */; };
 		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
 		A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */; };
@@ -126,9 +126,9 @@
 		A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleItemType.swift; sourceTree = "<group>"; };
 		A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleViewItemType.swift; sourceTree = "<group>"; };
 		A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewType.swift; sourceTree = "<group>"; };
-		A2655AE4289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggableSpeechBubbleViewType.swift; sourceTree = "<group>"; };
+		A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewTaggable.swift; sourceTree = "<group>"; };
 		A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentableSpeechBubbleViewType.swift; sourceTree = "<group>"; };
-		A2655AE82899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeableSpeechBubbleViewType.swift; sourceTree = "<group>"; };
+		A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewLikeable.swift; sourceTree = "<group>"; };
 		A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleCell.swift; sourceTree = "<group>"; };
@@ -297,9 +297,9 @@
 		A2655AEA28997A7100B03AA1 /* ViewType */ = {
 			isa = PBXGroup;
 			children = (
-				A2655AE82899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift */,
-				A2655AE4289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift */,
 				A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */,
+				A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */,
+				A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */,
 				A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */,
 			);
 			path = ViewType;
@@ -623,7 +623,7 @@
 			files = (
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
-				A2655AE5289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift in Sources */,
+				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
@@ -648,7 +648,7 @@
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
-				A2655AE92899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift in Sources */,
+				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,

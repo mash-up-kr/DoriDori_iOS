@@ -8,9 +8,9 @@
 import UIKit
 
 final class HomeMySpeechBubbleView: MySpeechBubbleView,
-                                    LikeableSpeechBubbleViewType,
-                                    TaggableSpeechBubbleViewType,
-                                    CommentableSpeechBubbleViewType {
+                                    SpeechBubbleViewLikeable,
+                                    SpeechBubbleViewTaggable,
+                                    SpeechBubbleViewCommentable {
     
     // MARK: - UIComponent
     

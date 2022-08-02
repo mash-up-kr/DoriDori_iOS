@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol CommentableSpeechBubbleViewType where Self: SpeechBubbleViewType {
+protocol SpeechBubbleViewCommentable where Self: SpeechBubbleViewType {
     func setupCommentButton(_ count: Int, at button: UIButton)
     var commentTitle: String { get }
 }
 
-extension CommentableSpeechBubbleViewType {
+extension SpeechBubbleViewCommentable {
     var commentTitle: String { "댓글" }
     func setupCommentButton(_ count: Int, at button: UIButton) {
         let buttonTitle: String

@@ -1,5 +1,5 @@
 //
-//  TaggableSpeechBubbleViewType.swift
+//  SpeechBubbleViewTaggable.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/08/02.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol TaggableSpeechBubbleViewType where Self: SpeechBubbleViewType {
+protocol SpeechBubbleViewTaggable where Self: SpeechBubbleViewType {
     func configureTagViews(_ tags: [String]) -> [KeywordView]
 }
 
-extension TaggableSpeechBubbleViewType {
+extension SpeechBubbleViewTaggable {
     func configureTagViews(_ tags: [String]) -> [KeywordView] {
         return tags.map { KeywordView(title: $0) }
     }

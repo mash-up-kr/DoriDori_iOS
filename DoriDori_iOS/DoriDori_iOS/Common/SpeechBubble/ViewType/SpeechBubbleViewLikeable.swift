@@ -1,5 +1,5 @@
 //
-//  LikeableSpeechBubbleViewType.swift
+//  SpeechBubbleViewLikeable.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/08/03.
@@ -12,12 +12,12 @@ enum LikeButtonType {
     case heart
 }
 
-protocol LikeableSpeechBubbleViewType where Self: SpeechBubbleViewType {
+protocol SpeechBubbleViewLikeable where Self: SpeechBubbleViewType {
     var likeButtonType: LikeButtonType { get }
     func setupLikeButton(_ count: Int, at button: UIButton)
 }
 
-extension LikeableSpeechBubbleViewType {
+extension SpeechBubbleViewLikeable {
     private func likeButtonImage(_ type: LikeButtonType) -> UIImage? {
         switch self.likeButtonType {
         case .heart: return UIImage(named: "heart")

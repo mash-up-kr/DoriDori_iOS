@@ -9,7 +9,7 @@ import UIKit
 
 final class MyPageMySpeechBubbleView: MySpeechBubbleView,
                                       SpeechBubbleViewType,
-                                      LikeableSpeechBubbleViewType {
+                                      SpeechBubbleViewLikeable {
     
     // MARK: - UIComponent
     
