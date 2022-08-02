@@ -24,7 +24,6 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         let label = UILabel()
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         label.textColor = UIColor.gray200
-        label.text = "매쉬업방위대"
         return label
     }()
     private let bracketImageView: UIImageView = {
@@ -35,16 +34,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         let label = UILabel()
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         label.textColor = UIColor.lime300
-        label.text = "감자도리도리"
         return label
-    }()
-    private let userInfoStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.spacing = 8
-        return stackView
     }()
     
     private let moreButton: UIButton = {
@@ -59,7 +49,6 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         label.font = UIFont.setKRFont(weight: .medium, size: 16)
         label.numberOfLines = 2
         label.lineBreakMode = .byCharWrapping
-        label.text = "#니모 의 절친 물고기입니다"
         return label
     }()
     
@@ -67,7 +56,6 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         let label = UILabel()
         label.textColor = .gray600
         label.font = UIFont.setKRFont(weight: .medium, size: 12)
-        label.text = "강남구"
         return label
     }()
     private let verticalSeperatedView: UIView = {
@@ -79,16 +67,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         let label = UILabel()
         label.textColor = .gray600
         label.font = UIFont.setKRFont(weight: .medium, size: 12)
-        label.text = "1 분ㅈ너"
         return label
-    }()
-    private let locationTimeStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 10
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        return stackView
     }()
     
     private let horizontalSeperatedView: UIView = {
@@ -98,7 +77,6 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
     }()
     private let handButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "hand_off"), for: .normal)
         return button
     }()
     private let buttonSeperaterView: UIView = {
@@ -119,7 +97,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 0
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.alignment = .center
         return stackView
     }()
@@ -167,7 +145,6 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
             self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
             self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
         }
-        self.layoutIfNeeded()
     }
     private func setupContent(_ content: String) {
         let textParagraphStype = NSMutableParagraphStyle()
@@ -179,44 +156,39 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
             .foregroundColor: UIColor.white
         ])
     }
+    
     private func setupLayouts() {
-       
-        self.layoutsUserInfo()
-        self.layoutsLocationAndTime()
-        self.layoutsButton()
-      
         self.addSubViews(
-            self.userInfoStackView,
+            self.questionerNameLabel,
+            self.bracketImageView,
+            self.userNameLabel,
             self.moreButton,
             self.contentLabel,
-            self.locationTimeStackView,
+            self.locationLabel,
+            self.verticalSeperatedView,
+            self.updatedTimeLabel,
             self.horizontalSeperatedView,
             self.buttonStackView
         )
-        
-        self.userInfoStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(18)
-            $0.leading.equalToSuperview().offset(16)
-        }
+        self.layoutsUserInfo()
         self.moreButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
+            $0.leading.greaterThanOrEqualTo(self.userNameLabel.snp.trailing).offset(4)
             $0.trailing.equalToSuperview().inset(18)
             $0.size.equalTo(24)
         }
         self.contentLabel.snp.makeConstraints {
-            $0.top.equalTo(self.userInfoStackView.snp.bottom).offset(18)
-            $0.leading.equalTo(self.userInfoStackView.snp.leading)
-            $0.trailing.equalToSuperview().inset(28)
+            $0.top.equalTo(self.questionerNameLabel.snp.bottom).offset(18)
+            $0.leading.equalTo(self.questionerNameLabel.snp.leading)
+            $0.trailing.equalToSuperview().inset(26)
         }
-        self.locationTimeStackView.snp.makeConstraints {
-            $0.top.equalTo(self.contentLabel.snp.bottom).offset(18)
-            $0.leading.equalTo(self.contentLabel.snp.leading)
-        }
+        self.layoutsLocationAndTime()
         self.horizontalSeperatedView.snp.makeConstraints {
-            $0.top.equalTo(self.locationTimeStackView.snp.bottom).offset(16)
+            $0.top.equalTo(self.locationLabel.snp.bottom).offset(16)
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(self.contentLabel)
         }
+        self.layoutsButtons()
         self.buttonStackView.snp.makeConstraints {
             $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
             $0.leading.equalToSuperview()
@@ -226,44 +198,57 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
     }
     
     private func layoutsUserInfo() {
-        self.userInfoStackView.addArrangedSubViews(
-            self.questionerNameLabel,
-            self.bracketImageView,
-            self.userNameLabel
-        )
-        self.questionerNameLabel.snp.makeConstraints { $0.height.equalTo(18) }
+        
+        self.questionerNameLabel.snp.makeConstraints {
+            $0.height.equalTo(18).labeled("question name")
+            $0.leading.equalToSuperview().offset(18)
+            $0.top.equalToSuperview().offset(18)
+        }
         self.bracketImageView.snp.makeConstraints {
+            $0.leading.equalTo(self.questionerNameLabel.snp.trailing).offset(8)
+            $0.centerY.equalTo(self.questionerNameLabel.snp.centerY)
             $0.width.equalTo(4)
             $0.height.equalTo(8)
         }
-        self.userNameLabel.snp.makeConstraints { $0.height.equalTo(18) }
+        self.userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.questionerNameLabel.snp.top)
+            $0.leading.equalTo(self.bracketImageView.snp.trailing).offset(8)
+            $0.height.equalTo(18)
+        }
     }
     
     private func layoutsLocationAndTime() {
-        self.locationTimeStackView.addArrangedSubViews(
-            self.locationLabel,
-            self.verticalSeperatedView,
-            self.updatedTimeLabel
-        )
-        self.locationLabel.snp.makeConstraints { $0.height.equalTo(16) }
-        self.verticalSeperatedView.snp.makeConstraints {
-            $0.height.equalTo(10)
-            $0.width.equalTo(1)
-        }
-        self.updatedTimeLabel.snp.makeConstraints { $0.height.equalTo(16) }
+        
+           self.locationLabel.snp.makeConstraints {
+               $0.height.equalTo(16)
+               $0.leading.equalToSuperview().offset(16)
+               $0.top.equalTo(self.contentLabel.snp.bottom).offset(18)
+           }
+           self.verticalSeperatedView.snp.makeConstraints {
+               $0.centerY.equalTo(self.locationLabel.snp.centerY)
+               $0.height.equalTo(10)
+               $0.width.equalTo(1)
+               $0.leading.equalTo(self.locationLabel.snp.trailing).offset(10)
+           }
+           self.updatedTimeLabel.snp.makeConstraints {
+               $0.height.equalTo(16)
+               $0.centerY.equalTo(self.locationLabel.snp.centerY)
+               $0.leading.equalTo(self.verticalSeperatedView.snp.trailing).offset(10)
+           }
     }
     
-    private func layoutsButton() {
+    private func layoutsButtons() {
         self.buttonStackView.addArrangedSubViews(
             self.handButton,
-            self.buttonSeperaterView,
             self.shareButton
         )
+        self.buttonStackView.addSubview(self.buttonSeperaterView)
         self.handButton.snp.makeConstraints { $0.height.equalTo(40) }
+        self.shareButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperaterView.snp.makeConstraints {
             $0.height.equalTo(24)
             $0.width.equalTo(1)
+            $0.center.equalTo(self.buttonStackView)
         }
-        self.shareButton.snp.makeConstraints { $0.height.equalTo(40) }
     }
 }

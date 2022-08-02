@@ -34,7 +34,7 @@ class MySpeechBubbleView: UIView {
         let bezierPath = UIBezierPath()
         bezierPath.lineWidth = borderWidth
         let bottom = rect.height - borderWidth
-        let right = rect.width - borderWidth - 10
+        let right = rect.width - 10
         let top = borderWidth
         let left = borderWidth
         

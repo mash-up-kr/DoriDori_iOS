@@ -31,7 +31,7 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = MyPageMySpeechBubbleView()
+    private let speechBubble = MyPageMySpeechBubbleView(borderColor: .gray900)
     
     // MARK: - Init
     
@@ -50,30 +50,35 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
     
     func configure(_ item: MyPageMySpeechBubbleCellItem) {
         self.speechBubble.configure(item)
-        self.profileImageView.kf.setImage(with: item.profileImageURL)
+        if let imageURL = item.profileImageURL {
+            self.profileImageView.kf.setImage(with: imageURL)
+        }
         self.levelView.configure(level: item.level)
     }
     
     
     private func setupLayouts() {
         self.contentView.addSubViews(self.speechBubble, self.profileImageView, self.levelView)
+   
         self.speechBubble.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
             $0.bottom.equalToSuperview()
         }
+        
         self.profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.size.equalTo(42)
             $0.leading.equalTo(self.speechBubble.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(30)
         }
+     
         self.levelView.snp.makeConstraints {
-            $0.top.equalTo(self.profileImageView.snp.bottom).offset(7)
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(8)
             $0.centerX.equalTo(self.profileImageView.snp.centerX)
-            $0.height.equalTo(18)
         }
     }
+    
     static func fittingSize(width: CGFloat, item: MyPageMySpeechBubbleCellItem) -> CGSize {
         let cell = MyPageMySpeechBubbleCell()
         cell.configure(item)
