@@ -68,10 +68,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         view.backgroundColor = UIColor.gray800
         return view
     }()
-    private let likeButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
+    private let likeButton = UIButton()
     private let buttonSeperaterView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray800
@@ -96,13 +93,14 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
     }()
     
     // MARK: - Properties
+    
     var likeButtonType: LikeButtonType { .heart }
     
     // MARK: - Init
     
     override init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         super.init(

@@ -294,6 +294,27 @@
 			path = MySpeechBubbleView;
 			sourceTree = "<group>";
 		};
+		A2655AEA28997A7100B03AA1 /* ViewType */ = {
+			isa = PBXGroup;
+			children = (
+				A2655AE82899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift */,
+				A2655AE4289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift */,
+				A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */,
+				A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */,
+			);
+			path = ViewType;
+			sourceTree = "<group>";
+		};
+		A2655AEB28997A7900B03AA1 /* ItemType */ = {
+			isa = PBXGroup;
+			children = (
+				A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */,
+				A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */,
+				A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */,
+			);
+			path = ItemType;
+			sourceTree = "<group>";
+		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,15 +330,10 @@
 		A2F92C6A288BD1E1000340F5 /* SpeechBubble */ = {
 			isa = PBXGroup;
 			children = (
-				A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */,
-				A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */,
-				A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */,
+				A2655AEB28997A7900B03AA1 /* ItemType */,
+				A2655AEA28997A7100B03AA1 /* ViewType */,
 				A2655ADB28996BD500B03AA1 /* MySpeechBubbleView */,
 				A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */,
-				A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */,
-				A2655AE4289972D400B03AA1 /* TaggableSpeechBubbleViewType.swift */,
-				A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */,
-				A2655AE82899751A00B03AA1 /* LikeableSpeechBubbleViewType.swift */,
 			);
 			path = SpeechBubble;
 			sourceTree = "<group>";

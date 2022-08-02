@@ -108,7 +108,7 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
     
     override init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         super.init(
@@ -150,7 +150,15 @@ extension MyPageOtherSpeechBubbleView {
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
         self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.refuseButton)
-        self.addSubViews(self.nameLabel, self.moreButton, self.tagStackView, self.contentLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
+        self.addSubViews(
+            self.nameLabel,
+            self.moreButton,
+            self.tagStackView,
+            self.contentLabel,
+            self.locationTimeStackView,
+            self.horizontalSeperatedView,
+            self.buttonStackView
+        )
         
         self.commentButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperatedView.snp.makeConstraints {

@@ -81,10 +81,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
         stackView.alignment = .center
         return stackView
     }()
-    private let handButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
+    private let handButton = UIButton()
     private let buttonSeperaterView1: UIView = {
         let view = UIView()
         view.backgroundColor = .gray800
