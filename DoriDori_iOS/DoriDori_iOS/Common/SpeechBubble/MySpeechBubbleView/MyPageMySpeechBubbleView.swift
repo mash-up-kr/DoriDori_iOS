@@ -7,15 +7,6 @@
 
 import UIKit
 
-protocol MyPageMySpeechBubbleViewItemType {
-    var questioner: String { get }
-    var userName: String { get }
-    var content: String { get }
-    var location: String { get }
-    var updatedTime: Int { get }
-    var likeCount: Int { get }
-}
-
 final class MyPageMySpeechBubbleView: MySpeechBubbleView {
     
     // MARK: - UIComponent

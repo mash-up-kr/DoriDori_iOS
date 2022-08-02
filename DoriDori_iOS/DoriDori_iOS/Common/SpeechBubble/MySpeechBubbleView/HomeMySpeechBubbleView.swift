@@ -151,7 +151,7 @@ extension HomeMySpeechBubbleView {
         self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.userNameLabel.text = item.userNmae
+        self.userNameLabel.text = item.userName
         self.setupHandButton(item.likeCount)
         self.setupCommentButton(item.commentCount)
         self.setupTagView(item.tags)

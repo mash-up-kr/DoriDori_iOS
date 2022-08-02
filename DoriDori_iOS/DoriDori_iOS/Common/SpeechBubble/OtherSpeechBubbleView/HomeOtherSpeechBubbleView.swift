@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol HomeSpeechBubbleItemType {
-    var content: String { get }
-    var userNmae: String { get }
-    var location: String { get }
-    var updatedTime: Int { get }
-    var likeCount: Int { get }
-    var commentCount: Int { get }
-    var tags: [String] { get }
-}
-
 final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     
     // MARK: - UIComponent
@@ -158,7 +148,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.userNameLabel.text = item.userNmae
+        self.userNameLabel.text = item.userName
         self.setupHandButton(item.likeCount)
         self.setupCommentButton(item.commentCount)
         self.setupTagView(item.tags)

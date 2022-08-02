@@ -1,41 +1,45 @@
 //
-//  MyPageSpeechBubbleCell.swift
+//  HomeOtherSpeechBubbleCell.swift
 //  DoriDori_iOS
 //
-//  Created by Seori on 2022/07/23.
+//  Created by Seori on 2022/07/25.
 //
 
 import UIKit
 import Kingfisher
 
-struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
-    let content: String
-    let location: String
-    let updatedTime: Int
+struct IdentifiedHomeSpeechBubbleCellItem: IdentifiedHomeSpeechBubbleCellItemType {
     let level: Int
-    let imageURL: URL?
-    let tags: [String]
-    let userName: String
-}
-
-struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
-    let content: String
     let location: String
     let updatedTime: Int
-    let tags: [String]
+    let profileImageURL: URL?
+    let content: String
     let userName: String
+    let likeCount: Int
+    let commentCount: Int
+    let tags: [String]
 }
 
-protocol IdentifiedMyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {
+struct AnonymousIdentifiedHomeOtherSpeechBubbleCellItem: AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType {
+    let location: String
+    let updatedTime: Int
+    let content: String
+    let userName: String
+    let likeCount: Int
+    let commentCount: Int
+    let tags: [String]
+}
+
+protocol IdentifiedHomeSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
+    var profileImageURL: URL? { get }
     var level: Int { get }
-    var imageURL: URL? { get }
 }
 
-protocol AnonymousMyPageSpeechBubbleCellItemType: MyPageSpeechBubbleItemType {
+protocol AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
 }
 
-final class MyPageSpeechBubbleCell: UICollectionViewCell {
-        
+final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
+    
     // MARK: - UI Components
     
     private let profileImageView: UIImageView = {
@@ -48,9 +52,9 @@ final class MyPageSpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = MyPageSpeechBubbleView()
+    private let speechBubble = HomeOtherSpeechBubbleView()
     
-    // MARK: Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,19 +69,20 @@ final class MyPageSpeechBubbleCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(_ item: MyPageSpeechBubbleItemType) {
+    
+    func configure(_ item: HomeSpeechBubbleItemType) {
         self.speechBubble.configure(item)
-        if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
-            self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
-            self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)
+        if let identifiedHomeOtherSpeechBubbleCellItem = item as? IdentifiedHomeSpeechBubbleCellItem {
+            self.profileImageView.kf.setImage(with: identifiedHomeOtherSpeechBubbleCellItem.profileImageURL)
+            self.levelView.configure(level: identifiedHomeOtherSpeechBubbleCellItem.level)
         }
-        if let _ = item as? AnonymousMyPageSpeechBubbleCellItem {
+        if let _ = item as? AnonymousIdentifiedHomeOtherSpeechBubbleCellItem {
             self.levelView.isHidden = true
         }
     }
     
-    static func fittingSize(width: CGFloat, item: MyPageSpeechBubbleItemType) -> CGSize {
-        let cell = MyPageSpeechBubbleCell()
+    static func fittingSize(width: CGFloat, item: HomeSpeechBubbleItemType) -> CGSize {
+        let cell = HomeOtherSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,
                                 height: UIView.layoutFittingCompressedSize.height)
@@ -89,19 +94,18 @@ final class MyPageSpeechBubbleCell: UICollectionViewCell {
 
 // MARK: - Private functions
 
-extension MyPageSpeechBubbleCell {
+extension HomeOtherSpeechBubbleCell {
     
     private func setupLayouts() {
-        self.contentView.addSubViews(self.profileImageView, self.levelView, self.speechBubble)
+        self.contentView.addSubViews( self.profileImageView, self.levelView, self.speechBubble)
         self.profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
             $0.top.equalToSuperview().offset(16)
             $0.size.equalTo(42)
         }
         self.levelView.snp.makeConstraints {
-            $0.top.equalTo(self.profileImageView.snp.bottom).offset(7)
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(8)
             $0.centerX.equalTo(self.profileImageView)
-            $0.height.equalTo(18)
         }
         self.speechBubble.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()

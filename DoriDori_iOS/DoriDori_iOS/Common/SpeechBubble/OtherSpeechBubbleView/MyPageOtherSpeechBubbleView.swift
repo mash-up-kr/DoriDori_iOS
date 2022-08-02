@@ -1,5 +1,5 @@
 //
-//  MyPageSpeechBubbleView.swift
+//  MyPageOtherSpeechBubbleView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/23.
@@ -7,15 +7,7 @@
 
 import UIKit
 
-protocol MyPageSpeechBubbleItemType {
-    var content: String { get }
-    var location: String { get }
-    var updatedTime: Int { get }
-    var tags: [String] { get }
-    var userName: String { get }
-}
-
-final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
+final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView {
     
     // MARK: - UIComponent
     
@@ -132,9 +124,9 @@ final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
 
 // MARK: - Private functions
 
-extension MyPageSpeechBubbleView {
+extension MyPageOtherSpeechBubbleView {
     
-    func configure(_ item: MyPageSpeechBubbleItemType) {
+    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.nameLabel.text = item.userName
         self.setupContent(item.content)
         self.locationLabel.text = item.location
