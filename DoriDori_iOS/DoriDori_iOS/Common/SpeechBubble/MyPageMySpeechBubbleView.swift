@@ -75,7 +75,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         view.backgroundColor = UIColor.gray800
         return view
     }()
-    private let handButton: UIButton = {
+    private let likeButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -137,18 +137,18 @@ extension MyPageMySpeechBubbleView {
     
     private func setupHandButton(_ count: Int) {
         if count == 0 {
-            self.handButton.setImage(UIImage(named: "hand_off"), for: .normal)
-            self.handButton.setTitle("궁금해요", for: .normal)
-            self.handButton.setTitleColor(.gray500, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
+            self.likeButton.setImage(UIImage(named: "heart")?.withTintColor(.gray600), for: .normal)
+            self.likeButton.setTitle("궁금해요", for: .normal)
+            self.likeButton.setTitleColor(.gray500, for: .normal)
+            self.likeButton.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
+            self.likeButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
         }
         else {
-            self.handButton.setImage(UIImage(named: "hand"), for: .normal)
-            self.handButton.setTitle(count.decimalString ?? "0", for: .normal)
-            self.handButton.setTitleColor(.lime300, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
+            self.likeButton.setImage(UIImage(named: "heart"), for: .normal)
+            self.likeButton.setTitle(count.decimalString ?? "0", for: .normal)
+            self.likeButton.setTitleColor(.lime300, for: .normal)
+            self.likeButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
+            self.likeButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
         }
     }
     private func setupContent(_ content: String) {
@@ -249,11 +249,11 @@ extension MyPageMySpeechBubbleView {
     
     private func layoutsButtons() {
         self.buttonStackView.addArrangedSubViews(
-            self.handButton,
+            self.likeButton,
             self.shareButton
         )
         self.buttonStackView.addSubview(self.buttonSeperaterView)
-        self.handButton.snp.makeConstraints { $0.height.equalTo(40) }
+        self.likeButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.shareButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperaterView.snp.makeConstraints {
             $0.height.equalTo(24)

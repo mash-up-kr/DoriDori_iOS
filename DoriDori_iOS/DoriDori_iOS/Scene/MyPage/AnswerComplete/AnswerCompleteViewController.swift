@@ -39,7 +39,7 @@ final class AnswerCompleteViewController: UIViewController {
         AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명")
     ]
     
-    let myItem = MyPageMySpeechBubbleCellItem(questioner: "감자도리도리", userName: "매쉬업 방위대~알까요잉메롱ㅋ", content: "ㅋㅋㅋㅋ니모를 찾아서예용,ㅋㅋㅋㅋ니모를 찾아서예용xxxxxx", location: "강남", updatedTime: 1, likeCount: 3, profileImageURL: nil, level: 5)
+    let myItem = MyPageMySpeechBubbleCellItem(questioner: "감자도리도리", userName: "매쉬업 방위대~알까요잉메롱ㅋ", content: "ㅋㅋㅋㅋ니모를 찾아서예용,ㅋㅋㅋㅋ니모를 찾아서예용xxxxxx", location: "강남", updatedTime: 1, likeCount: 0, profileImageURL: nil, level: 5)
 
     // MARK: Init
     
