@@ -35,4 +35,6 @@ extension UIColor {
     static let red100: UIColor = UIColor(named: "red100")!
     
     static let darkGray: UIColor = UIColor(named: "darkGray")!
+    
+    static let blue300: UIColor = UIColor(named: "blue300")!
 }
