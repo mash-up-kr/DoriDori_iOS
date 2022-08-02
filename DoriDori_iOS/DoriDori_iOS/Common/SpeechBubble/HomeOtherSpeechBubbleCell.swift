@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-struct IdentifiedHomeOtherSpeechBubbleCellItem: IdentifiedHomeOtherSpeechBubbleCellItemType {
+struct IdentifiedHomeSpeechBubbleCellItem: IdentifiedHomeSpeechBubbleCellItemType {
     let level: Int
     let location: String
     let updatedTime: Int
@@ -30,12 +30,12 @@ struct AnonymousIdentifiedHomeOtherSpeechBubbleCellItem: AnonymousIdentifiedHome
     let tags: [String]
 }
 
-protocol IdentifiedHomeOtherSpeechBubbleCellItemType: HomeOtherSpeechBubbleItemType {
+protocol IdentifiedHomeSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
     var profileImageURL: URL? { get }
     var level: Int { get }
 }
 
-protocol AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType: HomeOtherSpeechBubbleItemType {
+protocol AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
 }
 
 final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
@@ -70,9 +70,9 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
     }
     
     
-    func configure(_ item: HomeOtherSpeechBubbleItemType) {
+    func configure(_ item: HomeSpeechBubbleItemType) {
         self.speechBubble.configure(item)
-        if let identifiedHomeOtherSpeechBubbleCellItem = item as? IdentifiedHomeOtherSpeechBubbleCellItem {
+        if let identifiedHomeOtherSpeechBubbleCellItem = item as? IdentifiedHomeSpeechBubbleCellItem {
             self.profileImageView.kf.setImage(with: identifiedHomeOtherSpeechBubbleCellItem.profileImageURL)
             self.levelView.configure(level: identifiedHomeOtherSpeechBubbleCellItem.level)
         }
@@ -81,7 +81,7 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
         }
     }
     
-    static func fittingSize(width: CGFloat, item: HomeOtherSpeechBubbleItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: HomeSpeechBubbleItemType) -> CGSize {
         let cell = HomeOtherSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,

@@ -17,15 +17,11 @@ final class AnswerCompleteViewController: UIViewController {
         return collectionView
     }()
     
-    let datas: [HomeOtherSpeechBubbleItemType] = [
-        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다. 디즈니 영화 다 추천해주세요~~~ 안녕하세요:-)", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
-        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
-        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
-        IdentifiedHomeOtherSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        AnonymousIdentifiedHomeOtherSpeechBubbleCellItem(location: "관악구", updatedTime: 1, content: "메에에에에에롱ㅋ입니다.", userNmae: "익명", likeCount: 0, commentCount: 0, tags: []),
+    let datas: [IdentifiedHomeSpeechBubbleCellItemType] = [
+        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
+        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userNmae: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"])
     ]
     
     let myData: [MyPageSpeechBubbleItemType] = [
@@ -72,6 +68,7 @@ final class AnswerCompleteViewController: UIViewController {
         collectionView.register(MyPageSpeechBubbleCell.self)
         collectionView.register(HomeOtherSpeechBubbleCell.self)
         collectionView.register(MyPageMySpeechBubbleCell.self)
+        collectionView.register(HomeMySpeechBubbleViewCell.self)
     }
 }
 
@@ -89,7 +86,7 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: HomeOtherSpeechBubbleCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(type: HomeMySpeechBubbleViewCell.self, for: indexPath)
         cell.configure(datas[indexPath.item])
         return cell
     }
@@ -105,7 +102,7 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
     ) -> CGSize {
 //        let item = self.datas[indexPath.item]
 //        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
-        let size = HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: datas[indexPath.item])
+        let size = HomeMySpeechBubbleViewCell.fittingSize(width: collectionView.bounds.width, item: datas[indexPath.item])
         print(size)
         return size
     }

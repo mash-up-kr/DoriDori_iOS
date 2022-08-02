@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeOtherSpeechBubbleItemType {
+protocol HomeSpeechBubbleItemType {
     var content: String { get }
     var userNmae: String { get }
     var location: String { get }
@@ -154,7 +154,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ item: HomeOtherSpeechBubbleItemType) {
+    func configure(_ item: HomeSpeechBubbleItemType) {
         self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
