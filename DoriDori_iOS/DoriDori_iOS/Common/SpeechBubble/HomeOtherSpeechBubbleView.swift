@@ -80,6 +80,13 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         view.backgroundColor = UIColor.gray800
         return view
     }()
+    private let handStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        return stackView
+    }()
     private let handButton: UIButton = {
         let button = UIButton()
         return button
@@ -89,6 +96,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         view.backgroundColor = .gray800
         return view
     }()
+    
     private let commentButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "chat"), for: .normal)
@@ -100,6 +108,19 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         view.backgroundColor = .gray800
         return view
     }()
+    private let commentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private let buttonSeperatorStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "reply"), for: .normal)
@@ -109,10 +130,17 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
         return button
     }()
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        return stackView
+    }()
     
     override init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         super.init(
@@ -191,11 +219,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
             self.contentLabel,
             self.locationTimeStackView,
             self.horizontalSeperatedView,
-            self.handButton,
-            self.buttonSeperaterView1,
-            self.commentButton,
-            self.buttonSeperaterView2,
-            self.shareButton
+            self.buttonStackView
         )
         
         self.locationTimeStackView.addArrangedSubViews(
@@ -239,39 +263,29 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
             $0.height.equalTo(1)
         }
         
-        let speechBubbleWidth = UIScreen.main.bounds.width - 30 - 42 - 8 - 30 - 10 - 2
-        self.handButton.snp.makeConstraints {
+        self.layoutsButtons()
+    }
+    
+    private func layoutsButtons() {
+        self.handStackView.addArrangedSubViews(self.handButton, self.buttonSeperaterView1)
+        self.commentStackView.addArrangedSubViews(self.commentButton, self.buttonSeperaterView2)
+        self.buttonStackView.addArrangedSubViews(self.handStackView, self.commentStackView, self.shareButton)
+        [self.handButton, self.commentButton, self.shareButton].forEach { button in
+            button.snp.makeConstraints { $0.height.equalTo(40) }
+        }
+        [self.buttonSeperaterView1, self.buttonSeperaterView2].forEach { seperatorView in
+            seperatorView.snp.makeConstraints {
+                $0.width.equalTo(1)
+                $0.height.equalTo(24)
+                $0.centerY.equalToSuperview()
+            }
+        }
+        
+        self.buttonStackView.snp.makeConstraints {
             $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
             $0.leading.equalToSuperview().offset(10)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.height.equalTo(40)
+            $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
-        }
-        self.buttonSeperaterView1.snp.makeConstraints {
-            $0.centerY.equalTo(self.commentButton)
-            $0.leading.equalTo(self.handButton.snp.trailing)
-            $0.width.equalTo(1)
-            $0.height.equalTo(24)
-        }
-        self.commentButton.snp.makeConstraints{
-            $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
-            $0.leading.equalTo(self.buttonSeperaterView1.snp.trailing)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(40)
-        }
-        self.buttonSeperaterView2.snp.makeConstraints {
-            $0.centerY.equalTo(self.commentButton)
-            $0.leading.equalTo(self.commentButton.snp.trailing)
-            $0.width.equalTo(1)
-            $0.height.equalTo(24)
-        }
-        self.shareButton.snp.makeConstraints {
-            $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
-            $0.leading.equalTo(self.buttonSeperaterView2.snp.trailing)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(40)
         }
     }
 }
