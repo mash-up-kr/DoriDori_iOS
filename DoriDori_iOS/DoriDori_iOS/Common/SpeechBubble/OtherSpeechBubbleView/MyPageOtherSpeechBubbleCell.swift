@@ -65,7 +65,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(_ item: MyPageSpeechBubbleItemType) {
+    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.speechBubble.configure(item)
         if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
             self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
@@ -76,7 +76,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         }
     }
     
-    static func fittingSize(width: CGFloat, item: MyPageSpeechBubbleItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType) -> CGSize {
         let cell = MyPageOtherSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,

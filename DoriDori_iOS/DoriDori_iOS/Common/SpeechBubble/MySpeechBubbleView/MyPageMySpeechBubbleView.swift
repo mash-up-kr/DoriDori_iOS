@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class MyPageMySpeechBubbleView: MySpeechBubbleView {
+final class MyPageMySpeechBubbleView: MySpeechBubbleView,
+                                      SpeechBubbleViewType,
+                                      LikeableSpeechBubbleViewType {
     
     // MARK: - UIComponent
     
@@ -93,6 +95,9 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
         return stackView
     }()
     
+    // MARK: - Properties
+    var likeButtonType: LikeButtonType { .heart }
+    
     // MARK: - Init
     
     override init(
@@ -115,42 +120,10 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView {
     func configure(_ item: MyPageMySpeechBubbleViewItemType) {
         self.questionerNameLabel.text = item.questioner
         self.userNameLabel.text = item.userName
-        self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.setupHandButton(item.likeCount)
-    }
-}
-
-// MARK: - Private functions
-
-extension MyPageMySpeechBubbleView {
-    
-    private func setupHandButton(_ count: Int) {
-        if count == 0 {
-            self.likeButton.setImage(UIImage(named: "heart")?.withTintColor(.gray600), for: .normal)
-            self.likeButton.setTitle("궁금해요", for: .normal)
-            self.likeButton.setTitleColor(.gray500, for: .normal)
-            self.likeButton.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
-            self.likeButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-        else {
-            self.likeButton.setImage(UIImage(named: "heart"), for: .normal)
-            self.likeButton.setTitle(count.decimalString ?? "0", for: .normal)
-            self.likeButton.setTitleColor(.lime300, for: .normal)
-            self.likeButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-            self.likeButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-    }
-    private func setupContent(_ content: String) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+        self.setupContentLabel(item.content, at: self.contentLabel)
+        self.setupLikeButton(item.likeCount, at: self.likeButton)
     }
 }
 

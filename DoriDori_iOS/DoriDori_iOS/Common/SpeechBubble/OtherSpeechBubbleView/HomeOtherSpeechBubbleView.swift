@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
+final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
+                                       SpeechBubbleViewType,
+                                       TaggableSpeechBubbleViewType,
+                                       LikeableSpeechBubbleViewType,
+                                       CommentableSpeechBubbleViewType {
     
     // MARK: - UIComponent
     
@@ -128,6 +132,11 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         return stackView
     }()
     
+    // MARK: - Properties
+    var likeButtonType: LikeButtonType { .hand }
+    
+    // MARK: - Inits
+    
     override init(
         borderWidth: CGFloat = 1,
         borderColor: UIColor = .gray900,
@@ -143,62 +152,32 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Private functions
+
+extension HomeOtherSpeechBubbleView {
     
     func configure(_ item: HomeSpeechBubbleItemType) {
-        self.setupContent(item.content)
+        self.setupContentLabel(item.content, at: self.contentLabel)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
         self.userNameLabel.text = item.userName
-        self.setupHandButton(item.likeCount)
-        self.setupCommentButton(item.commentCount)
-        self.setupTagView(item.tags)
+        self.setupLikeButton(item.likeCount, at: self.handButton)
+        self.setupCommentButton(item.commentCount, at: self.commentButton)
+        self.setupTagStackView(item.tags)
     }
     
-    private func setupContent(_ content: String) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        textParagraphStype.lineBreakMode = .byCharWrapping
-        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+    private func setupTagStackView(_ tags: [String]) {
+        let tagViews = self.configureTagViews(tags)
+        self.tagStackView.isHidden = tagViews.isEmpty
+        tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
     }
-    
-    private func setupTagView(_ tags: [String]) {
-        if tags.isEmpty { self.tagStackView.isHidden = true }
-        tags.forEach { tag in
-            let tagView = KeywordView(title: tag)
-            self.tagStackView.addArrangedSubview(tagView)
-        }
-    }
-    
-    private func setupHandButton(_ count: Int) {
-        if count == 0 {
-            self.handButton.setImage(UIImage(named: "hand_off"), for: .normal)
-            self.handButton.setTitle("궁금해요", for: .normal)
-            self.handButton.setTitleColor(.gray500, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-        else {
-            self.handButton.setImage(UIImage(named: "hand"), for: .normal)
-            self.handButton.setTitle(count.decimalString ?? "0", for: .normal)
-            self.handButton.setTitleColor(.lime300, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-    }
-    
-    private func setupCommentButton(_ count: Int) {
-        let buttonTitle: String
-        if count == 0 { buttonTitle = "댓글" }
-        else { buttonTitle = count.decimalString ?? "0" }
-        self.commentButton.setTitle(buttonTitle, for: .normal)
-        self.commentButton.setTitleColor(.gray500, for: .normal)
-        self.commentButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-    }
+}
+
+// MARK: - Layouts
+
+extension HomeOtherSpeechBubbleView {
     
     private func setupLayouts() {
       

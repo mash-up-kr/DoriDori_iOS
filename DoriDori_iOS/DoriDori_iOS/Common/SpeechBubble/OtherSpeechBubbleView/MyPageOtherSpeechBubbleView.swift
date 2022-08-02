@@ -7,8 +7,10 @@
 
 import UIKit
 
-final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView {
-    
+final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
+                                         SpeechBubbleViewType,
+                                         TaggableSpeechBubbleViewType {
+
     // MARK: - UIComponent
     
     private let nameLabel: UILabel = {
@@ -128,30 +130,22 @@ extension MyPageOtherSpeechBubbleView {
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.nameLabel.text = item.userName
-        self.setupContent(item.content)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.setupTagView(item.tags)
+        self.setupTagStackView(item.tags)
+        self.setupContentLabel(item.content, at: self.contentLabel)
     }
-    
-    private func setupContent(_ content: String) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+
+    private func setupTagStackView(_ tags: [String]) {
+        let tagViews = self.configureTagViews(tags)
+        self.tagStackView.isHidden = tagViews.isEmpty
+        tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
     }
-    
-    private func setupTagView(_ tags: [String]) {
-        if tags.isEmpty { self.tagStackView.isHidden = true }
-        tags.forEach { tag in
-            let tagView = KeywordView(title: tag)
-            self.tagStackView.addArrangedSubview(tagView)
-        }
-    }
+}
+
+// MARK: - Layouts
+
+extension MyPageOtherSpeechBubbleView {
     
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
