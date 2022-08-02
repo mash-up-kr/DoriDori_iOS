@@ -1,5 +1,5 @@
 //
-//  MyPageSpeechBubbleView.swift
+//  MyPageOtherSpeechBubbleView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/23.
@@ -7,20 +7,14 @@
 
 import UIKit
 
-protocol MyPageSpeechBubbleItemType {
-    var text: String { get }
-    var location: String { get }
-    var updatedTime: Int { get }
-//    var tags: [String] { get }
-}
+final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
+                                         SpeechBubbleViewType,
+                                         SpeechBubbleViewTaggable {
 
-final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
-    
     // MARK: - UIComponent
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "익명"
         label.textColor = .gray200
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         return label
@@ -114,7 +108,7 @@ final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
     
     override init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         super.init(
@@ -132,29 +126,40 @@ final class MyPageSpeechBubbleView: OtherSpeechBubbleView {
 
 // MARK: - Private functions
 
-extension MyPageSpeechBubbleView {
+extension MyPageOtherSpeechBubbleView {
     
-    func configure(_ item: MyPageSpeechBubbleItemType) {
-        self.setupContent(item.text)
+    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
+        self.nameLabel.text = item.userName
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
+        self.setupTagStackView(item.tags)
+        self.setupContentLabel(item.content, at: self.contentLabel)
     }
-    
-    private func setupContent(_ content: String) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+
+    private func setupTagStackView(_ tags: [String]) {
+        let tagViews = self.configureTagViews(tags)
+        self.tagStackView.isHidden = tagViews.isEmpty
+        tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
     }
+}
+
+// MARK: - Layouts
+
+extension MyPageOtherSpeechBubbleView {
     
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
         self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.refuseButton)
-        self.addSubViews(views: self.nameLabel, self.contentLabel, self.locationTimeStackView, self.horizontalSeperatedView, self.buttonStackView)
+        self.addSubViews(
+            self.nameLabel,
+            self.moreButton,
+            self.tagStackView,
+            self.contentLabel,
+            self.locationTimeStackView,
+            self.horizontalSeperatedView,
+            self.buttonStackView
+        )
+        
         self.commentButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.buttonSeperatedView.snp.makeConstraints {
             $0.height.equalTo(24)
@@ -171,14 +176,23 @@ extension MyPageSpeechBubbleView {
             $0.top.equalToSuperview().offset(18)
             $0.leading.equalToSuperview().offset(26)
         }
+        self.moreButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(8)
+            $0.size.equalTo(24)
+        }
+        self.tagStackView.snp.makeConstraints {
+            $0.top.equalTo(self.nameLabel.snp.bottom).offset(4)
+            $0.leading.equalTo(self.nameLabel.snp.leading)
+        }
         self.contentLabel.snp.makeConstraints {
-            $0.top.equalTo(self.nameLabel.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(26)
+            $0.top.equalTo(self.tagStackView.snp.bottom).offset(16)
+            $0.leading.equalTo(self.nameLabel.snp.leading)
             $0.trailing.equalToSuperview().inset(16)
         }
         self.locationTimeStackView.snp.makeConstraints {
             $0.top.equalTo(self.contentLabel.snp.bottom).offset(16)
-            $0.leading.equalTo(self.contentLabel)
+            $0.leading.equalTo(self.nameLabel.snp.leading)
         }
         self.horizontalSeperatedView.snp.makeConstraints {
             $0.top.equalTo(self.locationTimeStackView.snp.bottom).offset(16)
@@ -188,6 +202,7 @@ extension MyPageSpeechBubbleView {
         self.buttonStackView.snp.makeConstraints {
             $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
             $0.leading.trailing.equalTo(self.contentLabel)
+            $0.bottom.equalToSuperview()
         }
     }
 }

@@ -33,10 +33,6 @@ final class KeywordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        debugPrint("\(String(describing: self)) deinit")
-    }
-    
     func configure(title: String) {
         self.titleLabel.text = title
     }

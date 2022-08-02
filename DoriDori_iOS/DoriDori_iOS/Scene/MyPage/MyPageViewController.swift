@@ -103,7 +103,7 @@ final class MyPageViewController: UIViewController {
     }
     
     private func setupLayouts() {
-        self.view.addSubViews(views: self.profileView, self.tabStackView, self.dividerView, self.selectedLineView, self.containerScrollView)
+        self.view.addSubViews(self.profileView, self.tabStackView, self.dividerView, self.selectedLineView, self.containerScrollView)
         self.profileView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()

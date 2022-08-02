@@ -15,7 +15,7 @@ class OtherSpeechBubbleView: UIView {
     
     init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         self.borderWidth = borderWidth
