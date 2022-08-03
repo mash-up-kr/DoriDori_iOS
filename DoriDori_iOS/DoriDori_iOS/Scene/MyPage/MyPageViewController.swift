@@ -10,6 +10,8 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+
+
 final class MyPageViewController: UIViewController {
 
     // MARK: - UIComponent
@@ -56,28 +58,28 @@ final class MyPageViewController: UIViewController {
         view.backgroundColor = .white
         return view
     }()
+
+    private let pageViewController = UIPageViewController(
+        transitionStyle: .scroll,
+        navigationOrientation: .horizontal
+    )
     
-    private let containerScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = .darkGray
-        return scrollView
-    }()
-    
-    private let containerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 0
-        stackView.alignment = .top
-        return stackView
-    }()
-    
-    var disposeBag = DisposeBag()
-    private var selectedButtonIndex: Int = 0
+    var disposeBag: DisposeBag
+    private let myPageCoordinator: Coordinator
+    private var selectedTab: MyPageTab
+    private let myPageTabs: [MyPageTab]
     
     // MARK: - Life cycle
     
-    init(myPageCoordinator: Coordinator) {
+    init(
+        myPageCoordinator: Coordinator,
+        myPageTabs: [MyPageTab],
+        initialSeletedTab: MyPageTab = .answerComplete
+    ) {
+        self.disposeBag = DisposeBag()
+        self.selectedTab = initialSeletedTab
+        self.myPageCoordinator = myPageCoordinator
+        self.myPageTabs = myPageTabs
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -91,19 +93,11 @@ final class MyPageViewController: UIViewController {
         self.view.backgroundColor = .gray900
         self.setupTabStackView()
         self.setupLayouts()
-        self.setupContentScrollView()
-        
-        let viewController1 = AnswerCompleteViewController(nibName: nil, bundle: nil)
-        self.addChild(viewController1)
-        self.containerStackView.addArrangedSubview(viewController1.view)
-        viewController1.view.snp.makeConstraints {
-            $0.width.equalTo(UIScreen.main.bounds.width)
-            $0.top.bottom.equalToSuperview()
-        }
+        self.setupPageViewController()
     }
     
     private func setupLayouts() {
-        self.view.addSubViews(self.profileView, self.tabStackView, self.dividerView, self.selectedLineView, self.containerScrollView)
+        self.view.addSubViews(self.profileView, self.tabStackView, self.dividerView, self.selectedLineView, self.pageViewController.view)
         self.profileView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -125,7 +119,7 @@ final class MyPageViewController: UIViewController {
             $0.width.equalTo(UIScreen.main.bounds.width / 3)
             $0.height.equalTo(2)
         }
-        self.containerScrollView.snp.makeConstraints {
+        self.pageViewController.view.snp.makeConstraints {
             $0.top.equalTo(self.dividerView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -137,13 +131,18 @@ final class MyPageViewController: UIViewController {
         }
     }
     
-    private func setupContentScrollView() {
-        self.containerScrollView.addSubview(self.containerStackView)
-        self.containerStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalTo(UIScreen.main.bounds.width)
-            $0.height.equalTo(3000)
-        }
+    private func setupPageViewController() {
+        self.pageViewController.dataSource = self
+        self.pageViewController.delegate = self
+        self.addChild(self.pageViewController)
+        self.pageViewController.didMove(toParent: self)
+        
+        let initalViewController = self.selectedTab.viewController
+        self.pageViewController.setViewControllers(
+            [initalViewController],
+            direction: .forward,
+            animated: true
+        )
     }
 
     // MARK: - Bind ViewModel
@@ -158,3 +157,72 @@ final class MyPageViewController: UIViewController {
         
     }
 }
+
+// MARK: - UIPageViewControllerDataSource
+
+extension MyPageViewController: UIPageViewControllerDataSource {
+    
+    private func findViewControllerIndex(
+        _ viewController: UIViewController,
+        at tabs: [MyPageTab]
+    ) -> Int? {
+        let currentViewControllerPageIndex: Int? = tabs.firstIndex { tab in
+            tab.viewController == viewController
+        }
+        return currentViewControllerPageIndex
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+//        guard let currentViewControllerPageIndex = self.findViewControllerIndex(viewController, at: self.myPageTabs) else { return nil }
+//        if currentViewControllerPageIndex == 0 { return nil }
+//        else { return self.myPageTabs[currentViewControllerPageIndex - 1].viewController }
+        return self.myPageTabs[1].viewController
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        guard let currentViewControllerPageIndex = self.findViewControllerIndex(viewController, at: self.myPageTabs) else { return nil }
+        if currentViewControllerPageIndex == self.myPageTabs.count - 1 { return nil }
+        else { return self.myPageTabs[currentViewControllerPageIndex + 1].viewController }
+    }
+}
+
+// MARK: - UIPageViewControllerDelegate
+
+extension MyPageViewController: UIPageViewControllerDelegate {
+    
+}
+
+/*
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct ViewControllerRepresentable: UIViewControllerRepresentable {
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return MyPageViewController(myPageCoordinator: MyPageCoordinator(navigationController: UINavigationController()))
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+}
+
+struct ViewController_Preview: PreviewProvider {
+    static var devices = ["iPhone 8", "iPhone 13 mini"]
+    static var previews: some View {
+        ForEach(devices, id: \.self) { device in
+            ViewControllerRepresentable()
+                .previewDevice(PreviewDevice(rawValue: device))
+                .previewDisplayName(device)
+        }
+        
+    }
+}
+#endif
+*/

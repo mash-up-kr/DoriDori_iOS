@@ -32,15 +32,10 @@ final class AppCoordinator: Coordinator {
             let navigationController = UINavigationController(rootViewController: secondViewController)
             viewController = navigationController
         case .myPage:
-            let navigationController: UINavigationController = .init()
-            let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
-            navigationController.viewControllers = [ MyPageViewController(myPageCoordinator: myPageCoordinator)]
-            viewController = navigationController
+            viewController = self.setupMyPageNavigationController()
         }
 
-        viewController.tabBarItem.title = tab.tabTitle
-        viewController.tabBarItem.image = tab.tabImage
-        viewController.tabBarItem.selectedImage = tab.selectedImage
+        self.setupTabItem(tab, at: viewController)
         return viewController
     }
 
@@ -55,3 +50,25 @@ final class AppCoordinator: Coordinator {
     }
 }
 
+// MARK: - Private functions
+
+extension AppCoordinator {
+    
+    private func setupMyPageNavigationController() -> UINavigationController {
+        let navigationController: UINavigationController = .init()
+        let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
+        navigationController.viewControllers = [
+            MyPageViewController(
+                myPageCoordinator: myPageCoordinator,
+                myPageTabs: MyPageTab.allCases
+            )
+        ]
+        return navigationController
+    }
+    
+    private func setupTabItem(_ tab: HomeTabType, at viewController: UINavigationController) {
+        viewController.tabBarItem.title = tab.tabTitle
+        viewController.tabBarItem.image = tab.tabImage
+        viewController.tabBarItem.selectedImage = tab.selectedImage
+    }
+}
