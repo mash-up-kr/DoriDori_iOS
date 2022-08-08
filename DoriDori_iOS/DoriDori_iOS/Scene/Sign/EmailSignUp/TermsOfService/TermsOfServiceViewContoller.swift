@@ -58,7 +58,7 @@ final class TermsOfServiceViewContoller: UIViewController {
     
     
     @IBAction func tapConfirmButton(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "EmailCertificationViewController") as? EmailCertificationViewController
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController
         else { return }
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -34,6 +34,11 @@ class EmailSignInViewController: UIViewController, StoryboardView {
 
     }
     
+    @IBAction func tapLoginButton(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermsOfServiceViewContoller") as? TermsOfServiceViewContoller
+        else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 
     
