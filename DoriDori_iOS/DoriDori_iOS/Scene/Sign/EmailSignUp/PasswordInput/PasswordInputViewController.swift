@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+class PasswordInputViewController: UIViewController {
+    // MARK: - Life cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    
+}

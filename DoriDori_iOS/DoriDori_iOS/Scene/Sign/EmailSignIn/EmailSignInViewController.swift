@@ -25,6 +25,7 @@ class EmailSignInViewController: UIViewController, StoryboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSetting()
+        configureSignUpNavigationBar()
     }
 
     // MARK: - Bind ViewModel
@@ -33,6 +34,8 @@ class EmailSignInViewController: UIViewController, StoryboardView {
 
     }
     
+    
+
     
 }
 

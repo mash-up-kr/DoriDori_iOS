@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */; };
 		6C1A66052889207A005A3314 /* TermsOfServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */; };
+		6C350E6B28A1567E005281C2 /* UIViewController+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
@@ -92,6 +93,7 @@
 /* Begin PBXFileReference section */
 		6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewContoller.swift; sourceTree = "<group>"; };
 		6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewModel.swift; sourceTree = "<group>"; };
+		6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extenstion.swift"; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */,
 				A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */,
 				A22FC8DF2879E70800F33D4F /* Rx+Extension.swift */,
+				6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */,
 				6C1A66052889207A005A3314 /* TermsOfServiceViewModel.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
+				6C350E6B28A1567E005281C2 /* UIViewController+Extenstion.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
 				A22FC8E4287A044900F33D4F /* MyQuestionCell.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,

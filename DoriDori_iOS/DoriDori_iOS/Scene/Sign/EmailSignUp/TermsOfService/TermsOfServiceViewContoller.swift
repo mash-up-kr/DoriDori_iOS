@@ -28,7 +28,7 @@ final class TermsOfServiceViewContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(viewModel: viewModel)
-
+        configureSignUpNavigationBar()
     }
     
     private func bind(viewModel: TermsOfServiceViewModel) {
@@ -54,6 +54,15 @@ final class TermsOfServiceViewContoller: UIViewController {
             self?.currentLocationAgreeButton.setImage(buttonImage, for: .normal)
         }.disposed(by: disposeBag)
     }
+
+    
+    
+    @IBAction func tapConfirmButton(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "EmailCertificationViewController") as? EmailCertificationViewController
+        else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
     
 }

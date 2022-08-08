@@ -20,6 +20,7 @@ final class EmailCertificationViewController: UIViewController, StoryboardView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSignUpNavigationBar()
     }
 
     // MARK: - Bind ViewModel
@@ -27,4 +28,13 @@ final class EmailCertificationViewController: UIViewController, StoryboardView {
     func bind(reactor viewModel: EmailCertificationViewModel) {
 
     }
+    
+
+    
+    @IBAction func tapConfirmButton(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PasswordInputViewController") as? PasswordInputViewController
+        else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

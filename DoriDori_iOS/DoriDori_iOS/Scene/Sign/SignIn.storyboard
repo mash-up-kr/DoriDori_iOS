@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -389,6 +389,9 @@
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="tapConfirmButton:" destination="eRl-Se-oQ7" eventType="touchUpInside" id="IDR-d3-FyU"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
                                                 <rect key="frame" x="29.999999999999993" y="392.66666666666669" width="124.33333333333331" height="20"/>
@@ -567,7 +570,7 @@
         <!--Email Certification View Controller-->
         <scene sceneID="AJ7-9D-UMk">
             <objects>
-                <viewController storyboardIdentifier="EmailSignUpViewController" id="S2E-8W-ItQ" customClass="EmailCertificationViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailCertificationViewController" id="S2E-8W-ItQ" customClass="EmailCertificationViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8c-e2-2hX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -627,6 +630,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapConfirmButton:" destination="S2E-8W-ItQ" eventType="touchUpInside" id="JHg-z9-Yww"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KSr-KW-x78"/>
@@ -648,10 +654,10 @@
             </objects>
             <point key="canvasLocation" x="1817" y="672"/>
         </scene>
-        <!--View Controller-->
+        <!--Password Input View Controller-->
         <scene sceneID="rj3-Yf-flo">
             <objects>
-                <viewController id="PBu-Kx-sp4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PasswordInputViewController" id="PBu-Kx-sp4" customClass="PasswordInputViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="385-YO-Ucs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
