@@ -11,6 +11,8 @@
 		6C1A66052889207A005A3314 /* TermsOfServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */; };
 		6C350E6B28A1567E005281C2 /* UIViewController+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */; };
 		6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */; };
+		6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */; };
+		6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C350E7328A164EC005281C2 /* Profile.storyboard */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
@@ -96,6 +98,8 @@
 		6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewModel.swift; sourceTree = "<group>"; };
 		6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extenstion.swift"; sourceTree = "<group>"; };
 		6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
+		6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewController.swift; sourceTree = "<group>"; };
+		6C350E7328A164EC005281C2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
@@ -188,12 +192,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6C350E6C28A158EE005281C2 /* NicknameProfile */ = {
+		6C350E6C28A158EE005281C2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				6C350E7328A164EC005281C2 /* Profile.storyboard */,
+				6C350E7028A16183005281C2 /* Profile */,
 				6C350E6D28A15994005281C2 /* Nickname */,
 			);
-			path = NicknameProfile;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		6C350E6D28A15994005281C2 /* Nickname */ = {
@@ -202,6 +208,14 @@
 				6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */,
 			);
 			path = Nickname;
+			sourceTree = "<group>";
+		};
+		6C350E7028A16183005281C2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		6C6529EE2895366100EB04B5 /* TermsOfService */ = {
@@ -358,7 +372,7 @@
 				CE5B134B287A11A600F10A20 /* WebView */,
 				A20A9E9328797B5C000ABFBB /* MyPage */,
 				6CB65B56287978F500C15E2B /* Sign */,
-				6C350E6C28A158EE005281C2 /* NicknameProfile */,
+				6C350E6C28A158EE005281C2 /* Profile */,
 				CE42D38628705BFC00C49548 /* HomeTabBar */,
 			);
 			path = Scene;
@@ -607,6 +621,7 @@
 				A22FC8BB2879BCB800F33D4F /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				A22FC8B72879BCB800F33D4F /* SpoqaHanSansNeo-Light.otf in Resources */,
 				6CB65B5A2879792000C15E2B /* SignIn.storyboard in Resources */,
+				6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */,
 				CEB265702875EA6800B9970B /* Colors.xcassets in Resources */,
 				A22FC8B82879BCB800F33D4F /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				A22FC8BA2879BCB800F33D4F /* SpoqaHanSansNeo-Medium.otf in Resources */,
@@ -643,6 +658,7 @@
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				6CB65B622879AAB300C15E2B /* EmailSignInViewController.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
+				6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */,
 				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,

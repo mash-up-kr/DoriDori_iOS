@@ -25,6 +25,10 @@ class EmailSignInViewController: UIViewController, StoryboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSetting()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureSignUpNavigationBar()
     }
 

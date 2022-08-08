@@ -11,12 +11,16 @@ class NicknameSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureSignUpNavigationBar()
+    }
+    
     @IBAction func tapConfirmButton(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "EmailCertificationViewController") as? EmailCertificationViewController
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileUploadViewController") as? ProfileUploadViewController
         else { return }
         navigationController?.pushViewController(vc, animated: true)
     }

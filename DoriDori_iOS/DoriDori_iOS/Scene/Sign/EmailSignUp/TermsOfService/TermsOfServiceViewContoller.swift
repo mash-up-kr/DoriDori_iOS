@@ -28,6 +28,9 @@ final class TermsOfServiceViewContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(viewModel: viewModel)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureSignUpNavigationBar()
     }
     
@@ -58,7 +61,8 @@ final class TermsOfServiceViewContoller: UIViewController {
     
     
     @IBAction func tapConfirmButton(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController
+        let storyboard = UIStoryboard.init(name: "Profile", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController
         else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
