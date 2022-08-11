@@ -13,6 +13,7 @@ import SnapKit
 import ReactorKit
 
 final class MyPageViewController: UIViewController, View {
+    
     // MARK: - UIComponent
     
     private let profileView: MyPageProfileView = MyPageProfileView()
@@ -41,14 +42,11 @@ final class MyPageViewController: UIViewController, View {
         return view
     }()
 
-//    private let pageViewController = UIPageViewController(
-//        transitionStyle: .scroll,
-//        navigationOrientation: .horizontal
-//    )
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
         return scrollView
     }()
     
@@ -61,7 +59,7 @@ final class MyPageViewController: UIViewController, View {
         return stackView
     }()
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var reactor: MyPageReactor
     var disposeBag: DisposeBag
@@ -69,13 +67,8 @@ final class MyPageViewController: UIViewController, View {
     private let didTapMyPageTab: PublishRelay<Int>
     private var myPageTabViewControllers: [UIViewController]
     private var myPageTabItmes: BehaviorRelay<[MyPageTabCollectionViewCell.Item]>
-    private var currentTabIndex: Int
     private let viewDidLoadStream: PublishRelay<Void>
-    private let currentTabViewController: BehaviorRelay<UIViewController?>
-    private let didScrollToTab: PublishRelay<Int>
-    private let shouldSelectIndex: PublishRelay<Int> = .init()
-    private var canObservePageViewControllerOffset: Bool = true
-    var lastOffsetX: CGFloat = .zero
+    private var lastOffsetX: CGFloat = .zero
     
     // MARK: - Life cycle
     
@@ -83,16 +76,13 @@ final class MyPageViewController: UIViewController, View {
         myPageCoordinator: Coordinator,
         reactor: MyPageReactor
     ) {
-        self.currentTabViewController = .init(value: nil)
         self.disposeBag = DisposeBag()
         self.myPageCoordinator = myPageCoordinator
+        self.reactor = reactor
         self.didTapMyPageTab = .init()
         self.myPageTabItmes = .init(value: [])
         self.myPageTabViewControllers = []
-        self.reactor = reactor
-        self.currentTabIndex = .init()
         self.viewDidLoadStream = .init()
-        self.didScrollToTab = .init()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -104,7 +94,6 @@ final class MyPageViewController: UIViewController, View {
         super.viewDidLoad()
         self.setupLayouts()
         self.setupViews()
-        self.scrollView.isPagingEnabled = true
         self.setupTabCollectionView(self.tabCollectionView)
         
         self.bind(reactor: self.reactor)
@@ -118,35 +107,26 @@ final class MyPageViewController: UIViewController, View {
     func bind(reactor: MyPageReactor) {
         self.bind(action: reactor.action)
         
-        reactor.state.map { $0.myPageTabItems}
+        reactor.state.map(\.myPageTabItems)
             .distinctUntilChanged()
-            .observe(on: MainScheduler.asyncInstance)
             .bind(to: self.myPageTabItmes)
             .disposed(by: self.disposeBag)
         
         reactor.pulse(\.$myPageTabs)
             .map { $0.map { $0.viewController} }
-            .bind(onNext: { [weak self] myPageTabViewControllers in
-                guard let self = self else { return }
-                self.myPageTabViewControllers = myPageTabViewControllers
-                myPageTabViewControllers.forEach { viewCon in
-                    self.contentStackView.addArrangedSubview(viewCon.view)
-                    self.addChild(viewCon)
-                    viewCon.didMove(toParent: self)
-                    viewCon.view.snp.makeConstraints {
-                        $0.width.equalTo(UIScreen.main.bounds.width)
-                        $0.height.equalToSuperview()
-                    }
-                }
-            })
+            .bind(with: self) { owner, myPageTabViewControllers in
+                owner.myPageTabViewControllers = myPageTabViewControllers
+                myPageTabViewControllers.forEach(owner.addArrangedSubContentViewController(_:))
+            }
             .disposed(by: self.disposeBag)
 
         reactor.state.map(\.selectedTabIndex)
             .distinctUntilChanged()
-            .withUnretained(self) { (owner: $0, index: $1) }
-            .bind(onNext: { owner, index in
+            .withLatestFrom(self.myPageTabItmes) { (index: $0, items: $1) }
+            .map(\.index)
+            .bind(with: self) { owner, index in
                 owner.updateSelectedTab(at: index)
-            })
+            }
             .disposed(by: self.disposeBag)
     }
 
@@ -159,9 +139,6 @@ final class MyPageViewController: UIViewController, View {
         
         self.didTapMyPageTab
             .distinctUntilChanged()
-            .do(onNext: { [weak self] index in
-                self?.currentTabIndex = index
-            })
             .map { MyPageReactor.Action.didSelectTab(index: $0) }
             .bind(to: action)
             .disposed(by: self.disposeBag)
@@ -175,12 +152,6 @@ final class MyPageViewController: UIViewController, View {
             .bind(onNext: { owner, _ in
                 owner.tabCollectionView.reloadData()
             })
-            .disposed(by: self.disposeBag)
-        
-        self.shouldSelectIndex
-            .bind(with: self) { owner, index in
-                owner.didTapMyPageTab.accept(index)
-            }
             .disposed(by: self.disposeBag)
         
         self.scrollView.rx.contentOffset
@@ -213,11 +184,22 @@ final class MyPageViewController: UIViewController, View {
 extension MyPageViewController {
     
     private func updateSelectedTab(at index: Int) {
+        let tabItemCount = CGFloat(self.myPageTabItmes.value.count)
         self.selectedLineView.snp.updateConstraints {
-            $0.leading.equalToSuperview().offset(index * (Int(self.tabCollectionView.bounds.width) / self.myPageTabItmes.value.count))
+            $0.leading.equalToSuperview().offset(CGFloat(index) * (self.tabCollectionView.bounds.width / tabItemCount))
             if self.selectedLineView.bounds.width == 0 {
-                $0.width.equalTo(UIScreen.main.bounds.width / 3)
+                $0.width.equalTo(self.view.bounds.width / tabItemCount)
             }
+        }
+    }
+    
+    private func addArrangedSubContentViewController(_ viewController: UIViewController) {
+        self.contentStackView.addArrangedSubview(viewController.view)
+        self.addChild(viewController)
+        viewController.didMove(toParent: self)
+        viewController.view.snp.makeConstraints {
+            $0.width.equalTo(self.view.bounds.width)
+            $0.height.equalToSuperview()
         }
     }
     
@@ -312,6 +294,10 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        CGSize(width: collectionView.bounds.width / 3, height: 52)
+        if self.myPageTabItmes.value.isEmpty { return .zero }
+        return CGSize(
+            width: collectionView.bounds.width / CGFloat(self.myPageTabItmes.value.count),
+            height: 52
+        )
     }
 }
