@@ -15,14 +15,18 @@ protocol ProfileKeywordViewDelegate: AnyObject {
 class ProfileKeywordView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var view: UIView!
+    
     public weak var delegate: ProfileKeywordViewDelegate?
     
     var index: Int = 0
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
-            loadView()
-        }
+        super.init(frame: frame)
+        loadView()
+        view.clipsToBounds = false
+    }
         
     required init?(coder: NSCoder) {
         super.init(coder: coder)
