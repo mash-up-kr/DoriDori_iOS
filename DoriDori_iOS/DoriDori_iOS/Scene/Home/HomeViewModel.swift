@@ -11,30 +11,35 @@ import ReactorKit
 final class HomeViewModel: Reactor {
     
     enum Action {
+        case requestHeaderViewData
         case locationCellDidTap(Bool)
     }
     
     enum Mutation {
         case setLocationCollectionViewReload(Bool)
+        case setLocationModels([MyWard])
     }
     
     struct State {
-        // TODO: - Label 관련 모델로 변경해야됨
-        @Pulse var lactaionListModel: [String] = []
+        var lactaionListModel: [MyWard] = []
         @Pulse var locationCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
     }
 
-    let initialState: State
+    let initialState: State = State()
     let repository: HomeRepositoryRequestable
 
     init(repository: HomeRepositoryRequestable) {
-        self.initialState = State()
         self.repository = repository
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
+        switch action {
+        case.requestHeaderViewData:
+            return requestHeaderViewData()
+        case .locationCellDidTap(_):
+            return .empty()
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -43,7 +48,20 @@ final class HomeViewModel: Reactor {
         switch mutation {
         case let .setLocationCollectionViewReload(locationCollectionViewNeedReload):
             newState.locationCollectionViewNeedReload = locationCollectionViewNeedReload
+        case let .setLocationModels(models):
+            newState.lactaionListModel = models
         }
-        return state
+        return newState
+    }
+    
+    private func requestHeaderViewData() -> Observable<Mutation> {
+        repository.requestHomeHeaderData()
+            .flatMap { models -> Observable<Mutation> in
+                .concat([
+                    .just(.setLocationModels(models)),
+                    .just(.setLocationCollectionViewReload(true))
+                ])
+            }
+            
     }
 }

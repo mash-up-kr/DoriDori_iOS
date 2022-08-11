@@ -16,6 +16,10 @@ final class LocationCollectionViewCell: UICollectionViewCell {
     let locationLabel: UILabel = {
         let label: UILabel = UILabel()
         label.font = UIFont.setKRFont(weight: .bold, size: 14)
+        label.layer.cornerRadius = 4
+        label.layer.borderWidth = 1
+        label.layer.borderColor = UIColor.gray800.cgColor
+        label.textAlignment = .center
         label.textColor = .white
         return label
     }()

@@ -19,7 +19,7 @@ final class HomeViewController: UIViewController {
      
     // MARK: - UIView
     let homeHeaderView: HomeHeaderView = HomeHeaderView()
-    var viewModel: HomeViewModel
+    private var viewModel: HomeViewModel?
 
     // MARK: - Life cycle
 
@@ -32,10 +32,9 @@ final class HomeViewController: UIViewController {
     }
     
     init() {
+        super.init(nibName: nil, bundle: nil)
         let homeRepository: HomeRepositoryRequestable = HomeRepository()
         viewModel = HomeViewModel(repository: homeRepository)
-        super.init(nibName: nil, bundle: nil)
-        bind(viewModel: viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -44,10 +43,11 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Bind ViewModel
 
-    func bind(viewModel: HomeViewModel) {
-        viewModel.pulse(\.$locationCollectionViewNeedReload)
+    func bind(reactor: HomeViewModel) {
+        viewModel?.pulse(\.$locationCollectionViewNeedReload)
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
+                print(#function)
                 owner.homeHeaderView.locationCollectionView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -55,6 +55,10 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Methods
     private func setupViews() {
+        if let viewModel = viewModel {
+            bind(reactor: viewModel)
+        }
+        
         self.view.addSubview(homeHeaderView)
     }
     
@@ -88,6 +92,13 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.locationLabel.text = labelList[indexPath.row]
         
         return cell
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: - Cell 클릭시 애니메이션
+        viewModel?.action.onNext(.requestHeaderViewData)
     }
 }
 

@@ -60,7 +60,6 @@ final class HomeHeaderView: UIView {
     let locationCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-//        layout.estimatedItemSize = .zero
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.register(LocationCollectionViewCell.self)

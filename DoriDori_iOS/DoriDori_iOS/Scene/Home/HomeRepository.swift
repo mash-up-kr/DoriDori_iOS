@@ -8,12 +8,12 @@
 import RxSwift
 
 protocol HomeRepositoryRequestable {
-    // TODO: - 데이터 타입에 맞게 수정
-    func request() -> Observable<Void>
+    func requestHomeHeaderData() -> Observable<[MyWard]>
 }
 
 struct HomeRepository: HomeRepositoryRequestable {
-    func request() -> Observable<Void> {
-        return Observable.just(())
+    // TODO: - API 붙여야됨
+    func requestHomeHeaderData() -> Observable<[MyWard]> {
+        return Observable.just([])
     }
 }
