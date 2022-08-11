@@ -29,6 +29,7 @@ final class ProfileKeywordViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSignUpNavigationBar()
         settingTextField()
         settingDummyData()
         keyboardSetting()
@@ -101,11 +102,11 @@ extension ProfileKeywordViewController: UITextFieldDelegate {
 
 extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
     func removeKeyword(_ view: ProfileKeywordView) {
-        //애니메이션 안먹음 ㅜㅜ
-        UIView.animate(withDuration: 0.4, animations: {
-            self.keywordStackView.removeArrangedSubview(view)
-            view.removeFromSuperview()
-            self.keywordCount -= 1
+        self.keywordStackView.removeArrangedSubview(view)
+        view.removeFromSuperview()
+        self.keywordCount -= 1
+        UIView.animate(withDuration: 0.3, animations: {
+            self.keywordStackView.layoutIfNeeded()
         })
         showToastMessage()
     }
