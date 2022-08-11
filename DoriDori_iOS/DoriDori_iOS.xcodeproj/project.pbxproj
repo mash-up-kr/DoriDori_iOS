@@ -13,6 +13,9 @@
 		6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */; };
 		6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */; };
 		6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C350E7328A164EC005281C2 /* Profile.storyboard */; };
+		6C58604928A2A04300D13AA9 /* ProfileKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */; };
+		6C5B741A28A3F89000D7DC9D /* ProfileKeywordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */; };
+		6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
@@ -100,6 +103,9 @@
 		6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewController.swift; sourceTree = "<group>"; };
 		6C350E7328A164EC005281C2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordViewController.swift; sourceTree = "<group>"; };
+		6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileKeywordView.xib; sourceTree = "<group>"; };
+		6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordView.swift; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 			isa = PBXGroup;
 			children = (
 				6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */,
+				6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */,
+				6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */,
+				6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 				A22FC8BA2879BCB800F33D4F /* SpoqaHanSansNeo-Medium.otf in Resources */,
 				A22FC8D22879BD9700F33D4F /* SF-Pro-Display-Light.otf in Resources */,
 				A22FC8D32879BD9700F33D4F /* SF-Pro-Display-Regular.otf in Resources */,
+				6C5B741A28A3F89000D7DC9D /* ProfileKeywordView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
@@ -663,6 +674,7 @@
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
+				6C58604928A2A04300D13AA9 /* ProfileKeywordViewController.swift in Sources */,
 				6C94FC682887C9F000DD77B6 /* EmailCertificationViewController.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,

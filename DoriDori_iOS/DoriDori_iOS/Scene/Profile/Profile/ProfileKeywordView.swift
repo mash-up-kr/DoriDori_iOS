@@ -1,59 +1,50 @@
 //
-//  ProfileKeywordView2.swift
+//  ProfileKeywordView.swift
 //  DoriDori_iOS
 //
-//  Created by 김지인 on 2022/08/10.
+//  Created by 김지인 on 2022/08/11.
 //
 
 import Foundation
 import UIKit
 
-final class ProfileKeywordView: UIView {
+protocol ProfileKeywordViewDelegate: AnyObject {
+    func removeKeyword(_ sender: ProfileKeywordView)
+}
+
+class ProfileKeywordView: UIView {
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.setEngFont(weight: .medium, size: 14)
-        return label
-    }()
+    @IBOutlet weak var titleLabel: UILabel!
+    public weak var delegate: ProfileKeywordViewDelegate?
     
-    // MARK: Init
+    var index: Int = 0
     
-    init() {
-        super.init(frame: .zero)
-        self.configureUI()
-        self.setUpLayouts()
-    }
-    
+    override init(frame: CGRect) {
+            super.init(frame: frame)
+            loadView()
+        }
+        
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        loadView()
     }
     
-    deinit {
-        debugPrint("\(String(describing: self)) deinit")
+    private func loadView() {
+        let view = Bundle.main.loadNibNamed("ProfileKeywordView",
+                                       owner: self,
+                                       options: nil)?.first as! UIView
+        view.frame = bounds
+        addSubview(view)
     }
     
     func configure(title: String) {
         self.titleLabel.text = title
     }
+        
     
-    private func configureUI() {
-        self.backgroundColor = .clear
-        self.layer.cornerRadius = 20
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.white.cgColor
-        self.clipsToBounds = true
-
+    @IBAction func tapRemoveButton(_ sender: UIButton) {
+        delegate?.removeKeyword(self)
+        print("remove")
     }
     
-    private func setUpLayouts() {
-        self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(12)
-            $0.bottom.equalToSuperview().inset(12)
-            $0.leading.equalToSuperview().offset(12)
-            $0.trailing.equalToSuperview().inset(12)
-        }
-    }
 }
-

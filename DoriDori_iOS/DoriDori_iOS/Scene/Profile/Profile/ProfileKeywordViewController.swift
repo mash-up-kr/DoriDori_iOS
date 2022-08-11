@@ -7,49 +7,49 @@
 
 import UIKit
 
+
 class ProfileKeywordViewController: UIViewController {
 
     @IBOutlet private weak var keywordStackView: UIStackView!
     @IBOutlet private weak var keywordTextField: UITextField!
     
-    let dummyData = ["MBTI", "HIddd", "어렵당"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeywordStackView()
         settingTextField()
     }
     
     private func settingTextField() {
         keywordTextField.delegate = self
     }
-    
-    private func setupKeywordStackView() {
-        dummyData.forEach {
-            let keywordView = ProfileKeywordView()
-            keywordView.configure(title: $0)
-            self.keywordStackView.addArrangedSubview(keywordView)
-        }
-    }
-    
-    func settingKeyword(_ keyword: String) {
+
+    //뒤에 추가됨
+    func settingKeyword(keyword: String) {
         let keywordView = ProfileKeywordView()
         keywordView.configure(title: keyword)
         self.keywordStackView.addArrangedSubview(keywordView)
+        keywordView.delegate = self
+
     }
     
-    @IBAction func tapEditButton(_ sender: UIButton) {
-        //지우기 버튼이 활성화 되야 함..
-    }
 }
 
 extension ProfileKeywordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(textField.text ?? "gg")
         if let keyword = textField.text {
-            settingKeyword(keyword)
+            settingKeyword(keyword: keyword)
         }
         return true
     }
 
+}
+
+extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
+    func removeKeyword(_ view: ProfileKeywordView) {
+        print("delegate remove", view)
+        self.keywordStackView.removeArrangedSubview(view)
+        view.removeFromSuperview() //hierarchy에서 제거하기 위함
+    }
+    
 }
