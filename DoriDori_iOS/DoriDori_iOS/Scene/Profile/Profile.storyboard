@@ -340,6 +340,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-uM-5MV">
+                                        <rect key="frame" x="74" y="0.0" width="8.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uxF-9K-bpd">
                                         <rect key="frame" x="-5" y="28" width="0.0" height="50"/>
                                         <subviews>
@@ -351,9 +357,12 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="eq5-sp-QcR"/>
+                                        </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-uM-5MV">
-                                        <rect key="frame" x="74" y="0.0" width="22.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-9P-mF5">
+                                        <rect key="frame" x="82.5" y="0.0" width="14" height="18"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -362,6 +371,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="uxF-9K-bpd" secondAttribute="bottom" id="1aA-kc-Lht"/>
+                                    <constraint firstItem="Cha-9P-mF5" firstAttribute="centerY" secondItem="cxe-d1-3Id" secondAttribute="centerY" id="AM2-od-dlN"/>
                                     <constraint firstItem="cxe-d1-3Id" firstAttribute="top" secondItem="Zwk-kv-1OB" secondAttribute="top" id="Z4y-cr-Ukz"/>
                                     <constraint firstItem="cxe-d1-3Id" firstAttribute="leading" secondItem="Zwk-kv-1OB" secondAttribute="leading" id="clM-Hb-KVh"/>
                                     <constraint firstItem="uQx-u0-qe4" firstAttribute="centerY" secondItem="cxe-d1-3Id" secondAttribute="centerY" id="gRT-iu-TMR"/>
@@ -369,6 +379,7 @@
                                     <constraint firstItem="brm-uM-5MV" firstAttribute="leading" secondItem="cxe-d1-3Id" secondAttribute="trailing" constant="3" id="nzA-wN-X3l"/>
                                     <constraint firstAttribute="trailing" secondItem="uQx-u0-qe4" secondAttribute="trailing" id="oyH-mu-1DM"/>
                                     <constraint firstItem="brm-uM-5MV" firstAttribute="centerY" secondItem="cxe-d1-3Id" secondAttribute="centerY" id="s8q-Ib-1rP"/>
+                                    <constraint firstItem="Cha-9P-mF5" firstAttribute="leading" secondItem="brm-uM-5MV" secondAttribute="trailing" id="tmk-Rt-0LA"/>
                                     <constraint firstItem="uxF-9K-bpd" firstAttribute="leading" secondItem="Zwk-kv-1OB" secondAttribute="leading" constant="-5" id="uqx-fE-sMA"/>
                                 </constraints>
                             </view>
@@ -394,6 +405,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="keywordCountLabel" destination="brm-uM-5MV" id="4uU-Yh-f3Z"/>
+                        <outlet property="keywordEditButton" destination="uQx-u0-qe4" id="Rky-pO-CTd"/>
                         <outlet property="keywordStackView" destination="uxF-9K-bpd" id="S6N-3w-LKp"/>
                         <outlet property="keywordTextField" destination="BSt-Ka-sMO" id="ywt-Ke-MwY"/>
                         <outlet property="startButtomBottomConstraint" destination="Tbh-JT-k2X" id="vFB-za-VE5"/>

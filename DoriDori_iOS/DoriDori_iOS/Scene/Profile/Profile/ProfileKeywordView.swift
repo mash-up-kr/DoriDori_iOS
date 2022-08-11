@@ -45,7 +45,6 @@ class ProfileKeywordView: UIView {
         
     @IBAction func tapRemoveButton(_ sender: UIButton) {
         delegate?.removeKeyword(self)
-        print("remove")
     }
     
 }

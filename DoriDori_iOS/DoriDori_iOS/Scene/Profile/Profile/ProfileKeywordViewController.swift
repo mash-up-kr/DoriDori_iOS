@@ -12,13 +12,20 @@ final class ProfileKeywordViewController: UIViewController {
     @IBOutlet private weak var keywordStackView: UIStackView!
     @IBOutlet private weak var keywordTextField: UITextField!
     @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var keywordEditButton: UIButton!
+    @IBOutlet private weak var keywordCountLabel: UILabel!
     @IBOutlet private weak var startButtomBottomConstraint: NSLayoutConstraint!
     
     private var keywordisEdit: Bool = false
     private let keyboardUpButtomConstraint: CGFloat = 20
     private let keyboardDownButtomConstraint: CGFloat = 54
+    private var keywordCount: Int = 1 {
+        didSet {
+            keywordCountLabel.text = String(keywordCount)
+        }
+    }
     
-    let dummy = ["넷플릭스","강아지", "MBTI"]
+    let dummy = ["넷플릭스"]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +52,7 @@ final class ProfileKeywordViewController: UIViewController {
         keywordView.configure(title: keyword)
         self.keywordStackView.addArrangedSubview(keywordView)
         keywordView.delegate = self
+        keywordCount += 1
     }
     
     private func removeButtonisEnable(_ state: Bool) {
@@ -83,8 +91,9 @@ final class ProfileKeywordViewController: UIViewController {
 
 extension ProfileKeywordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let keyword = textField.text {
+        if let keyword = textField.text, !(textField.text?.isEmpty ?? false)  {
             pushKeywordView(keyword: keyword)
+            keywordTextField.text = ""
         }
         return true
     }
@@ -96,6 +105,7 @@ extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
         UIView.animate(withDuration: 0.4, animations: {
             self.keywordStackView.removeArrangedSubview(view)
             view.removeFromSuperview()
+            self.keywordCount -= 1
         })
         showToastMessage()
     }
