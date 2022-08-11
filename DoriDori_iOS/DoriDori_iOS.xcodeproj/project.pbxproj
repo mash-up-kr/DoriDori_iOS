@@ -219,12 +219,20 @@
 		6C350E7028A16183005281C2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				6C5B741F28A54EDA00D7DC9D /* KeywordView */,
 				6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */,
 				6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		6C5B741F28A54EDA00D7DC9D /* KeywordView */ = {
+			isa = PBXGroup;
+			children = (
 				6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */,
 				6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */,
 			);
-			path = Profile;
+			path = KeywordView;
 			sourceTree = "<group>";
 		};
 		6C6529EE2895366100EB04B5 /* TermsOfService */ = {
