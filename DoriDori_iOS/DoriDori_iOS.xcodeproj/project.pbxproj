@@ -29,15 +29,27 @@
 		A22FC8E4287A044900F33D4F /* MyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E3287A044900F33D4F /* MyQuestionCell.swift */; };
 		A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E5287A046300F33D4F /* OtherQuestionCell.swift */; };
 		A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8E8287A10B800F33D4F /* AnswerCompleteViewController.swift */; };
+		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
+		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
+		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
+		A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */; };
+		A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */; };
+		A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */; };
+		A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */; };
+		A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */; };
+		A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */; };
+		A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */; };
+		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
+		A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
 		A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E428796DA5007D54DD /* Requestable.swift */; };
 		A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E628796DB1007D54DD /* ResponseModel.swift */; };
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */; };
-		A2F92C6E288BEED1000340F5 /* MyPageSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageSpeechBubbleView.swift */; };
+		A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
-		A2F92C72288C05F5000340F5 /* MyPageSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C71288C05F5000340F5 /* MyPageSpeechBubbleCell.swift */; };
+		A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C71288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift */; };
 		A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */; };
 		A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA0288EDA94000340F5 /* Int+Extension.swift */; };
 		A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */; };
@@ -114,15 +126,27 @@
 		A22FC8E3287A044900F33D4F /* MyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionCell.swift; sourceTree = "<group>"; };
 		A22FC8E5287A046300F33D4F /* OtherQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherQuestionCell.swift; sourceTree = "<group>"; };
 		A22FC8E8287A10B800F33D4F /* AnswerCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteViewController.swift; sourceTree = "<group>"; };
+		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
+		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
+		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
+		A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleItemType.swift; sourceTree = "<group>"; };
+		A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleViewItemType.swift; sourceTree = "<group>"; };
+		A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewType.swift; sourceTree = "<group>"; };
+		A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewTaggable.swift; sourceTree = "<group>"; };
+		A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentableSpeechBubbleViewType.swift; sourceTree = "<group>"; };
+		A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewLikeable.swift; sourceTree = "<group>"; };
+		A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechBubbleView.swift; sourceTree = "<group>"; };
+		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
+		A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleCell.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A2CF64E428796DA5007D54DD /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		A2CF64E628796DB1007D54DD /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubbleView.swift; sourceTree = "<group>"; };
-		A2F92C6D288BEED1000340F5 /* MyPageSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSpeechBubbleView.swift; sourceTree = "<group>"; };
+		A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
-		A2F92C71288C05F5000340F5 /* MyPageSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSpeechBubbleCell.swift; sourceTree = "<group>"; };
+		A2F92C71288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleCell.swift; sourceTree = "<group>"; };
 		A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92CA0288EDA94000340F5 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOtherSpeechBubbleCell.swift; sourceTree = "<group>"; };
@@ -258,6 +282,51 @@
 			path = AnswerComplete;
 			sourceTree = "<group>";
 		};
+		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
+			isa = PBXGroup;
+			children = (
+				A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */,
+				A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */,
+				A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */,
+				A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */,
+				A2F92C71288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift */,
+			);
+			path = OtherSpeechBubbleView;
+			sourceTree = "<group>";
+		};
+		A2655ADB28996BD500B03AA1 /* MySpeechBubbleView */ = {
+			isa = PBXGroup;
+			children = (
+				A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */,
+				A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */,
+				A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */,
+				A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */,
+				A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */,
+			);
+			path = MySpeechBubbleView;
+			sourceTree = "<group>";
+		};
+		A2655AEA28997A7100B03AA1 /* ViewType */ = {
+			isa = PBXGroup;
+			children = (
+				A2655AE228996EC800B03AA1 /* SpeechBubbleViewType.swift */,
+				A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */,
+				A2655AE4289972D400B03AA1 /* SpeechBubbleViewTaggable.swift */,
+				A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */,
+			);
+			path = ViewType;
+			sourceTree = "<group>";
+		};
+		A2655AEB28997A7900B03AA1 /* ItemType */ = {
+			isa = PBXGroup;
+			children = (
+				A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */,
+				A2655AE028996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift */,
+				A2655ADE28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift */,
+			);
+			path = ItemType;
+			sourceTree = "<group>";
+		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,11 +342,10 @@
 		A2F92C6A288BD1E1000340F5 /* SpeechBubble */ = {
 			isa = PBXGroup;
 			children = (
-				A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */,
-				A2F92C6D288BEED1000340F5 /* MyPageSpeechBubbleView.swift */,
-				A2F92C71288C05F5000340F5 /* MyPageSpeechBubbleCell.swift */,
-				A2F92C73288CF594000340F5 /* HomeOtherSpeechBubbleView.swift */,
-				A2F92CA2288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift */,
+				A2655AEB28997A7900B03AA1 /* ItemType */,
+				A2655AEA28997A7100B03AA1 /* ViewType */,
+				A2655ADB28996BD500B03AA1 /* MySpeechBubbleView */,
+				A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */,
 			);
 			path = SpeechBubble;
 			sourceTree = "<group>";
@@ -598,10 +666,13 @@
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
+				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
-				A2F92C6E288BEED1000340F5 /* MyPageSpeechBubbleView.swift in Sources */,
+				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
+				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
+				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A20A9EA02879A18E000ABFBB /* MyPageCollectionViewCell.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
@@ -613,14 +684,22 @@
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2F92C72288C05F5000340F5 /* MyPageSpeechBubbleCell.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
+				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
+				CEE7652328674750007FC892 /* HomeTabBarController.swift in Sources */,
 				A22FC8E6287A046300F33D4F /* OtherQuestionCell.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageViewModel.swift in Sources */,
 				A22FC8E4287A044900F33D4F /* MyQuestionCell.swift in Sources */,
+				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
+				A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */,
+				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
+				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
+				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
+				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
@@ -632,13 +711,16 @@
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
+				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
+				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
+				A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -824,6 +906,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49VF2WJUF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoriDori_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

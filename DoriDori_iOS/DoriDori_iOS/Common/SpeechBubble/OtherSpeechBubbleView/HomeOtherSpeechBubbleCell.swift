@@ -6,26 +6,41 @@
 //
 
 import UIKit
+import Kingfisher
 
-struct HomeOtherSpeechBubbleCellItem: HomeOtherSpeechBubbleCellItemType {
+struct IdentifiedHomeSpeechBubbleCellItem: IdentifiedHomeSpeechBubbleCellItemType {
     let level: Int
     let location: String
     let updatedTime: Int
-    let profileImageURL: String
+    let profileImageURL: URL?
     let content: String
-    let userNmae: String
+    let userName: String
     let likeCount: Int
     let commentCount: Int
     let tags: [String]
 }
 
-protocol HomeOtherSpeechBubbleCellItemType: HomeOtherSpeechBubbleItemType {
-    var profileImageURL: String { get }
+struct AnonymousIdentifiedHomeOtherSpeechBubbleCellItem: AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType {
+    let location: String
+    let updatedTime: Int
+    let content: String
+    let userName: String
+    let likeCount: Int
+    let commentCount: Int
+    let tags: [String]
+}
+
+protocol IdentifiedHomeSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
+    var profileImageURL: URL? { get }
     var level: Int { get }
 }
 
+protocol AnonymousIdentifiedHomeOtherSpeechBubbleCellItemType: HomeSpeechBubbleItemType {
+}
+
 final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
-    // MARK: UI Components
+    
+    // MARK: - UI Components
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,7 +54,7 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
     private let levelView = LevelView()
     private let speechBubble = HomeOtherSpeechBubbleView()
     
-    // MARK: Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,12 +70,18 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
     }
     
     
-    func configure(_ item: HomeOtherSpeechBubbleCellItemType) {
-        self.levelView.configure(level: item.level)
+    func configure(_ item: HomeSpeechBubbleItemType) {
         self.speechBubble.configure(item)
+        if let identifiedHomeOtherSpeechBubbleCellItem = item as? IdentifiedHomeSpeechBubbleCellItem {
+            self.profileImageView.kf.setImage(with: identifiedHomeOtherSpeechBubbleCellItem.profileImageURL)
+            self.levelView.configure(level: identifiedHomeOtherSpeechBubbleCellItem.level)
+        }
+        if let _ = item as? AnonymousIdentifiedHomeOtherSpeechBubbleCellItem {
+            self.levelView.isHidden = true
+        }
     }
     
-    static func fittingSize<Item: HomeOtherSpeechBubbleCellItemType>(width: CGFloat, item: Item) -> CGSize {
+    static func fittingSize(width: CGFloat, item: HomeSpeechBubbleItemType) -> CGSize {
         let cell = HomeOtherSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,
@@ -71,10 +92,12 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Private functions
+
 extension HomeOtherSpeechBubbleCell {
     
     private func setupLayouts() {
-        self.contentView.addSubViews(views: self.profileImageView, self.levelView, self.speechBubble)
+        self.contentView.addSubViews( self.profileImageView, self.levelView, self.speechBubble)
         self.profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
             $0.top.equalToSuperview().offset(16)

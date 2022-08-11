@@ -24,8 +24,8 @@ final class OtherQuestionCell: UICollectionViewCell {
     
     private let levelView: LevelView = .init(level: 3, backgroundColor: .lime400)
     
-    private let speechBubbleView: MyPageSpeechBubbleView = {
-        let view = MyPageSpeechBubbleView(
+    private let speechBubbleView: MyPageOtherSpeechBubbleView = {
+        let view = MyPageOtherSpeechBubbleView(
             borderWidth: 1,
             borderColor: .gray500,
             backgroundColor: .gray900
@@ -108,7 +108,7 @@ final class OtherQuestionCell: UICollectionViewCell {
     // MARK: - Layouts
     
     private func setupLayouts() {
-        self.addSubViews(views: self.profileImageView, self.levelView, self.speechBubbleView)
+        self.addSubViews(self.profileImageView, self.levelView, self.speechBubbleView)
 //        self.speechBubbleView.addSubViews(views: self.userNameLabel, self.keywordStackView, self.contentLabel, self.infoStackView, self.moreButton)
         
         self.profileImageView.snp.makeConstraints {

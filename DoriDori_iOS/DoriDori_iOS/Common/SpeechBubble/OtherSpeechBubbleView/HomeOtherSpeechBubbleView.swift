@@ -7,17 +7,11 @@
 
 import UIKit
 
-protocol HomeOtherSpeechBubbleItemType {
-    var content: String { get }
-    var userNmae: String { get }
-    var location: String { get }
-    var updatedTime: Int { get }
-    var likeCount: Int { get }
-    var commentCount: Int { get }
-    var tags: [String] { get }
-}
-
-final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
+final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
+                                       SpeechBubbleViewType,
+                                       SpeechBubbleViewTaggable,
+                                       SpeechBubbleViewLikeable,
+                                       SpeechBubbleViewCommentable {
     
     // MARK: - UIComponent
     
@@ -80,15 +74,20 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         view.backgroundColor = UIColor.gray800
         return view
     }()
-    private let handButton: UIButton = {
-        let button = UIButton()
-        return button
+    private let handStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        return stackView
     }()
+    private let handButton = UIButton()
     private let buttonSeperaterView1: UIView = {
         let view = UIView()
         view.backgroundColor = .gray800
         return view
     }()
+    
     private let commentButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "chat"), for: .normal)
@@ -100,6 +99,19 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         view.backgroundColor = .gray800
         return view
     }()
+    private let commentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private let buttonSeperatorStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "reply"), for: .normal)
@@ -109,10 +121,22 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
         button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
         return button
     }()
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    // MARK: - Properties
+    var likeButtonType: LikeButtonType { .hand }
+    
+    // MARK: - Inits
     
     override init(
         borderWidth: CGFloat = 1,
-        borderColor: UIColor = .gray500,
+        borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
         super.init(
@@ -125,77 +149,43 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Private functions
+
+extension HomeOtherSpeechBubbleView {
     
-    func configure(_ item: HomeOtherSpeechBubbleItemType) {
-        self.setupContent(item.content)
+    func configure(_ item: HomeSpeechBubbleItemType) {
+        self.setupContentLabel(item.content, at: self.contentLabel)
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.userNameLabel.text = item.userNmae
-        self.setupHandButton(item.likeCount)
-        self.setupCommentButton(item.commentCount)
-        self.setupTagView(item.tags)
+        self.userNameLabel.text = item.userName
+        self.setupLikeButton(item.likeCount, at: self.handButton)
+        self.setupCommentButton(item.commentCount, at: self.commentButton)
+        self.setupTagStackView(item.tags)
     }
     
-    private func setupContent(_ content: String) {
-        let textParagraphStype = NSMutableParagraphStyle()
-        textParagraphStype.maximumLineHeight = 25
-        textParagraphStype.minimumLineHeight = 25
-        textParagraphStype.lineBreakMode = .byCharWrapping
-        self.contentLabel.attributedText = NSMutableAttributedString(string: content, attributes: [
-            .font: UIFont.setKRFont(weight: .medium, size: 16),
-            .paragraphStyle: textParagraphStype,
-            .foregroundColor: UIColor.white
-        ])
+    private func setupTagStackView(_ tags: [String]) {
+        let tagViews = self.configureTagViews(tags)
+        self.tagStackView.isHidden = tagViews.isEmpty
+        tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
     }
-    
-    private func setupTagView(_ tags: [String]) {
-        if tags.isEmpty { self.tagStackView.isHidden = true }
-        tags.forEach { tag in
-            let tagView = KeywordView(title: tag)
-            self.tagStackView.addArrangedSubview(tagView)
-        }
-    }
-    
-    private func setupHandButton(_ count: Int) {
-        if count == 0 {
-            self.handButton.setImage(UIImage(named: "hand_off"), for: .normal)
-            self.handButton.setTitle("궁금해요", for: .normal)
-            self.handButton.setTitleColor(.gray500, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-        else {
-            self.handButton.setImage(UIImage(named: "hand"), for: .normal)
-            self.handButton.setTitle(count.decimalString ?? "0", for: .normal)
-            self.handButton.setTitleColor(.lime300, for: .normal)
-            self.handButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-            self.handButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
-        }
-    }
-    
-    private func setupCommentButton(_ count: Int) {
-        let buttonTitle: String
-        if count == 0 { buttonTitle = "댓글" }
-        else { buttonTitle = count.decimalString ?? "0" }
-        self.commentButton.setTitle(buttonTitle, for: .normal)
-        self.commentButton.setTitleColor(.gray500, for: .normal)
-        self.commentButton.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
-    }
+}
+
+// MARK: - Layouts
+
+extension HomeOtherSpeechBubbleView {
     
     private func setupLayouts() {
       
         self.addSubViews(
-            views: self.userNameLabel,
+            self.userNameLabel,
             self.moreButton,
             self.tagStackView,
             self.contentLabel,
             self.locationTimeStackView,
             self.horizontalSeperatedView,
-            self.handButton,
-            self.buttonSeperaterView1,
-            self.commentButton,
-            self.buttonSeperaterView2,
-            self.shareButton
+            self.buttonStackView
         )
         
         self.locationTimeStackView.addArrangedSubViews(
@@ -239,39 +229,29 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView {
             $0.height.equalTo(1)
         }
         
-        let speechBubbleWidth = UIScreen.main.bounds.width - 30 - 42 - 8 - 30 - 10 - 2
-        self.handButton.snp.makeConstraints {
+        self.layoutsButtons()
+    }
+    
+    private func layoutsButtons() {
+        self.handStackView.addArrangedSubViews(self.handButton, self.buttonSeperaterView1)
+        self.commentStackView.addArrangedSubViews(self.commentButton, self.buttonSeperaterView2)
+        self.buttonStackView.addArrangedSubViews(self.handStackView, self.commentStackView, self.shareButton)
+        [self.handButton, self.commentButton, self.shareButton].forEach { button in
+            button.snp.makeConstraints { $0.height.equalTo(40) }
+        }
+        [self.buttonSeperaterView1, self.buttonSeperaterView2].forEach { seperatorView in
+            seperatorView.snp.makeConstraints {
+                $0.width.equalTo(1)
+                $0.height.equalTo(24)
+                $0.centerY.equalToSuperview()
+            }
+        }
+        
+        self.buttonStackView.snp.makeConstraints {
             $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
             $0.leading.equalToSuperview().offset(10)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.height.equalTo(40)
+            $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
-        }
-        self.buttonSeperaterView1.snp.makeConstraints {
-            $0.centerY.equalTo(self.commentButton)
-            $0.leading.equalTo(self.handButton.snp.trailing)
-            $0.width.equalTo(1)
-            $0.height.equalTo(24)
-        }
-        self.commentButton.snp.makeConstraints{
-            $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
-            $0.leading.equalTo(self.buttonSeperaterView1.snp.trailing)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(40)
-        }
-        self.buttonSeperaterView2.snp.makeConstraints {
-            $0.centerY.equalTo(self.commentButton)
-            $0.leading.equalTo(self.commentButton.snp.trailing)
-            $0.width.equalTo(1)
-            $0.height.equalTo(24)
-        }
-        self.shareButton.snp.makeConstraints {
-            $0.top.equalTo(self.horizontalSeperatedView.snp.bottom)
-            $0.leading.equalTo(self.buttonSeperaterView2.snp.trailing)
-            $0.width.equalTo(speechBubbleWidth / 3)
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(40)
         }
     }
 }
