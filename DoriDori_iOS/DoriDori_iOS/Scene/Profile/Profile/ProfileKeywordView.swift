@@ -20,8 +20,6 @@ class ProfileKeywordView: UIView {
     
     public weak var delegate: ProfileKeywordViewDelegate?
     
-    var index: Int = 0
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
@@ -45,7 +43,6 @@ class ProfileKeywordView: UIView {
         self.titleLabel.text = title
     }
         
-    
     @IBAction func tapRemoveButton(_ sender: UIButton) {
         delegate?.removeKeyword(self)
         print("remove")
