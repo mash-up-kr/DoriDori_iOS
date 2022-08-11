@@ -1,0 +1,24 @@
+//
+//  UserInfoModel.swift
+//  DoriDori_iOS
+//
+//  Created by Seori on 2022/08/12.
+//
+
+import Foundation
+
+typealias UserID = String
+
+struct UserInfoModel: Codable {
+    var userID: UserID?
+    var nickname: String?
+    var profileDescription: String?
+    var tags: [String]?
+    var profileImageURL: String?
+    var level: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case nickname, profileDescription, tags, profileImageURL, level
+        case userID = "userId"
+    }
+}

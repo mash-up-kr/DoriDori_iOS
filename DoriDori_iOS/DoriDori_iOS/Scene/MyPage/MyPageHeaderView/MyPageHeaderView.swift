@@ -7,22 +7,24 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 final class MyPageProfileView: UIView {
     
     struct Item {
-        let title: String
+        let nickname: String
         let level: Int
+        let profileImageURL: String
+        let description: String
+        let tags: [String]
     }
     
     // MARK: - UIComponent
     
-    // Title
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = .setKRFont(weight: .medium, size: 24)
-        label.text = "매시업 방위대"
         return label
     }()
     
@@ -58,7 +60,6 @@ final class MyPageProfileView: UIView {
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.gray700.cgColor
         imageView.layer.borderWidth = 1
-        imageView.image = UIImage(named: "maedori3")
         return imageView
     }()
     
@@ -74,7 +75,6 @@ final class MyPageProfileView: UIView {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
-        label.text = "안녕하세요. 디즈니 영화 다 추천해드려요~"
         return label
     }()
     
@@ -85,8 +85,6 @@ final class MyPageProfileView: UIView {
         stackView.alignment = .leading
         return stackView
     }()
-    
-    let dummyKeywordTitle: [String] = ["디즈니", "영화", "애니메이션"]
 
     // MARK: - Init
     
@@ -94,7 +92,6 @@ final class MyPageProfileView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .gray900
         self.setupLayouts()
-        self.setupKeywordStackView()
     }
     
     required init?(coder: NSCoder) {
@@ -105,20 +102,22 @@ final class MyPageProfileView: UIView {
     // MARK: Configure
     
     func configure(_ item: MyPageProfileView.Item) {
-        self.titleLabel.text = item.title
+        self.titleLabel.text = item.nickname
         self.levelView.configure(level: item.level)
+        self.introduceLabel.text = item.description
+        self.setupKeywordStackView(tags: item.tags)
+        self.profileImageView.kf.setImage(with: URL(string: item.profileImageURL))
     }
     
     // MARK: Setup Layouts
     
-    private func setupKeywordStackView() {
-        (0..<3).forEach { index in
+    private func setupKeywordStackView(tags: [String]) {
+        tags.forEach { tag in
             let keywordView = KeywordView()
-            keywordView.configure(title: dummyKeywordTitle[index])
+            keywordView.configure(title: tag)
             self.keywordStackView.addArrangedSubview(keywordView)
         }
     }
-    
    
     
     private func setupLayouts() {

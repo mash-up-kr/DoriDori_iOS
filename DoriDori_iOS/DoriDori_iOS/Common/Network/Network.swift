@@ -9,10 +9,11 @@ import Alamofire
 import RxSwift
 
 typealias HTTPMethod = Alamofire.HTTPMethod
+typealias HTTPHeaders = Alamofire.HTTPHeaders
 
 struct Network {
     private let baseURL: String
-    init(baseURL: String) {
+    init(baseURL: String = "https://doridori.ga") {
         self.baseURL = baseURL
     }
 
@@ -25,7 +26,7 @@ struct Network {
                 "\(baseURL)\(api.path)",
                 method: api.method,
                 parameters: api.parameters,
-                headers: nil
+                headers: api.headers
             )
             .responseDecodable(
                 of: responseModel,

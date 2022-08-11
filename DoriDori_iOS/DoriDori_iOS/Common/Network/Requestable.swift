@@ -7,9 +7,10 @@
 import Foundation
 
 protocol Requestable {
-    typealias Parameter = [String: Any]?
+    typealias Parameter = [String: Any]
     var path: String { get }
-    var parameters: Parameter { get }
+    var parameters: Parameter? { get }
+    var headers: HTTPHeaders? { get }
     var method: HTTPMethod { get }
 }
 

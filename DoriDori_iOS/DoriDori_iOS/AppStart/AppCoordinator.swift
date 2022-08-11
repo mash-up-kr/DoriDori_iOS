@@ -57,7 +57,7 @@ extension AppCoordinator {
     private func setupMyPageNavigationController() -> UINavigationController {
         let navigationController: UINavigationController = .init()
         let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
-        let myPageViewModel = MyPageReactor(myPageTabs: MyPageTab.allCases)
+        let myPageViewModel = MyPageReactor(myPageTabs: MyPageTab.allCases, initialSeletedTab: .answerComplete, myPageRepository: MyPageRepository())
         navigationController.viewControllers = [
             MyPageViewController(
                 myPageCoordinator: myPageCoordinator,

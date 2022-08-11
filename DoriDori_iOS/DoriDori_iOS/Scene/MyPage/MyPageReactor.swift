@@ -31,13 +31,21 @@ final class MyPageReactor: Reactor {
     let initialState: State
     private var selectedTab: MyPageTab
     private let myPageTabs: [MyPageTab]
+    private let myPageRepository: MyPageRequestable
+    private let userID: UserID
+    private let disposeBag: DisposeBag
     
     init(
         myPageTabs: [MyPageTab],
-        initialSeletedTab: MyPageTab = .answerComplete
+        initialSeletedTab: MyPageTab,
+        myPageRepository: MyPageRequestable,
+        userID: UserID = "62d7f4776ad96c51d4330ea2"
     ) {
         self.myPageTabs = myPageTabs
         self.selectedTab = initialSeletedTab
+        self.myPageRepository = myPageRepository
+        self.userID = userID
+        self.disposeBag = DisposeBag()
         
         let selectedTabIndex: Int = myPageTabs.firstIndex(of: initialSeletedTab) ?? 0
         let tabItems = self.myPageTabs.enumerated().map { tabIndex, tab in
@@ -53,7 +61,17 @@ final class MyPageReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            return .just(.didSelectTab(index: self.initialState.selectedTabIndex))
+            self.myPageRepository.fetchMyProfile(userID: self.userID)
+                .subscribe { profileModel in
+                    print(profileModel)
+                } onFailure: { error in
+                    print(error)
+                }
+                .disposed(by: self.disposeBag)
+
+            return .concat(
+                .just(.didSelectTab(index: self.initialState.selectedTabIndex))
+            )
         case .didSelectTab(let index):
             return .just(.didSelectTab(index: index))
         case .didScrollToTab(let index):
