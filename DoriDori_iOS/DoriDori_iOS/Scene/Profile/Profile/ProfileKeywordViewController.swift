@@ -54,6 +54,24 @@ final class ProfileKeywordViewController: UIViewController {
         }
     }
     
+    private func showToastMessage() {
+        let toastLabel = UILabel(frame: CGRect(x: 55 , y: 668, width: 280, height: 38))
+            toastLabel.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 0.9)
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = UIFont.setEngFont(weight: .regular, size: 13)
+            toastLabel.textAlignment = .center;
+            toastLabel.text = "관심 분야가 삭제되었습니다."
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 4;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 4.0, delay: 0.2, options: .curveEaseOut,
+               animations: { toastLabel.alpha = 0.0 },
+               completion: { (isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+    }
+    
     @IBAction func tapProfileKeywordEdit(_ sender: UIButton) {
         keywordisEdit.toggle()
         let title = keywordisEdit ? "편집" : "편집 취소"
@@ -68,19 +86,19 @@ extension ProfileKeywordViewController: UITextFieldDelegate {
         if let keyword = textField.text {
             pushKeywordView(keyword: keyword)
         }
-        self.view.endEditing(true)
         return true
     }
-
 }
 
 extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
     func removeKeyword(_ view: ProfileKeywordView) {
-        print("delegate remove", view)
-        self.keywordStackView.removeArrangedSubview(view)
-        view.removeFromSuperview()
+        //애니메이션 안먹음 ㅜㅜ
+        UIView.animate(withDuration: 0.4, animations: {
+            self.keywordStackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        })
+        showToastMessage()
     }
-    
 }
 
 //MARK: - textField 편집시 Keyboard 설정
