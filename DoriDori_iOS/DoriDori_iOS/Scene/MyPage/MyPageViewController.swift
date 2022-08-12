@@ -68,6 +68,7 @@ final class MyPageViewController: UIViewController, View {
     private var myPageTabViewControllers: [UIViewController]
     private var myPageTabItmes: BehaviorRelay<[MyPageTabCollectionViewCell.Item]>
     private let viewDidLoadStream: PublishRelay<Void>
+    private let viewWillAppearStream: PublishRelay<Void>
     private var lastOffsetX: CGFloat = .zero
     
     // MARK: - Life cycle
@@ -83,6 +84,7 @@ final class MyPageViewController: UIViewController, View {
         self.myPageTabItmes = .init(value: [])
         self.myPageTabViewControllers = []
         self.viewDidLoadStream = .init()
+        self.viewWillAppearStream = .init()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -100,6 +102,11 @@ final class MyPageViewController: UIViewController, View {
         self.bind()
         
         self.viewDidLoadStream.accept(())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewWillAppearStream.accept(())
     }
 
     // MARK: - Bind ViewModel
@@ -128,12 +135,26 @@ final class MyPageViewController: UIViewController, View {
                 owner.updateSelectedTab(at: index)
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.state.map(\.profileItem)
+            .distinctUntilChanged()
+            .compactMap { $0 }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(with: self) { owner, profileItem in
+                owner.profileView.configure(profileItem)
+            }
+            .disposed(by: self.disposeBag)
     }
 
     private func bind(action: ActionSubject<MyPageReactor.Action>) {
         
         self.viewDidLoadStream
             .map { MyPageReactor.Action.viewDidLoad }
+            .bind(to: action)
+            .disposed(by: self.disposeBag)
+        
+        self.viewWillAppearStream
+            .map { MyPageReactor.Action.viewWillAppear }
             .bind(to: action)
             .disposed(by: self.disposeBag)
         

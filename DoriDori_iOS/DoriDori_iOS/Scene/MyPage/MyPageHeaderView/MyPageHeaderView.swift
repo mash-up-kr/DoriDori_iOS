@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 import Kingfisher
 
+struct MyPageProfileItem: Equatable {
+    let nickname: String
+    let level: Int
+    let profileImageURL: String?
+    let description: String
+    let tags: [String]
+}
+
 final class MyPageProfileView: UIView {
-    
-    struct Item {
-        let nickname: String
-        let level: Int
-        let profileImageURL: String
-        let description: String
-        let tags: [String]
-    }
     
     // MARK: - UIComponent
     
@@ -28,20 +28,28 @@ final class MyPageProfileView: UIView {
         return label
     }()
     
-    private let levelView = LevelView(level: 10)
+    private let levelView: LevelView = {
+       let levelView = LevelView()
+        levelView.isHidden = true
+        return levelView
+    }()
+    
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "arrow"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "share"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let settingButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named:"setting"), for: .normal)
+        button.isHidden = true
         return button
     }()
     
@@ -60,6 +68,7 @@ final class MyPageProfileView: UIView {
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.gray700.cgColor
         imageView.layer.borderWidth = 1
+        imageView.isHidden = true
         return imageView
     }()
     
@@ -101,12 +110,21 @@ final class MyPageProfileView: UIView {
     
     // MARK: Configure
     
-    func configure(_ item: MyPageProfileView.Item) {
+    func configure(_ item: MyPageProfileItem) {
         self.titleLabel.text = item.nickname
         self.levelView.configure(level: item.level)
         self.introduceLabel.text = item.description
         self.setupKeywordStackView(tags: item.tags)
-        self.profileImageView.kf.setImage(with: URL(string: item.profileImageURL))
+        if self.levelView.isHidden { self.levelView.isHidden = false }
+        if self.moreButton.isHidden { self.moreButton.isHidden = false }
+        if self.profileImageView.isHidden { self.profileImageView.isHidden = false }
+        if self.settingButton.isHidden { self.settingButton.isHidden = false }
+        if self.shareButton.isHidden { self.shareButton.isHidden = false }
+        if let profileImageURL = item.profileImageURL {
+            self.profileImageView.kf.setImage(with: URL(string: profileImageURL))
+        } else {
+            self.profileImageView.image = UIImage(named: "defaultProfileImage")
+        }
     }
     
     // MARK: Setup Layouts

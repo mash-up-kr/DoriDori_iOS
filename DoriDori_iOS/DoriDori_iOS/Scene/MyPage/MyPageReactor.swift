@@ -16,35 +16,36 @@ final class MyPageReactor: Reactor {
         case didTabSetting
         case didTapShare
         case didTapProfile
+                
         case viewDidLoad
+        case viewWillAppear
     }
     
     enum Mutation {
         case didSelectTab(index: Int)
+        case updateProrilfe(item: MyPageProfileItem)
     }
     struct State {
         @Pulse var myPageTabs: [MyPageTab]
         var selectedTabIndex: Int
         var myPageTabItems: [MyPageTabCollectionViewCell.Item]
+        var profileItem: MyPageProfileItem?
     }
 
     let initialState: State
     private var selectedTab: MyPageTab
     private let myPageTabs: [MyPageTab]
     private let myPageRepository: MyPageRequestable
-    private let userID: UserID
     private let disposeBag: DisposeBag
     
     init(
         myPageTabs: [MyPageTab],
         initialSeletedTab: MyPageTab,
-        myPageRepository: MyPageRequestable,
-        userID: UserID = "62d7f4776ad96c51d4330ea2"
+        myPageRepository: MyPageRequestable
     ) {
         self.myPageTabs = myPageTabs
         self.selectedTab = initialSeletedTab
         self.myPageRepository = myPageRepository
-        self.userID = userID
         self.disposeBag = DisposeBag()
         
         let selectedTabIndex: Int = myPageTabs.firstIndex(of: initialSeletedTab) ?? 0
@@ -54,24 +55,38 @@ final class MyPageReactor: Reactor {
         self.initialState = State(
             myPageTabs: myPageTabs,
             selectedTabIndex: selectedTabIndex,
-            myPageTabItems: tabItems
+            myPageTabItems: tabItems,
+            profileItem: nil
         )
+    }
+    
+    private func mutateViewWillAppear() -> Observable<Mutation> {
+        return self.myPageRepository.fetchMyProfile(userID: "62d7f4776ad96c51d4330ea2")
+            .catch({ error in
+                // TODO: error 디자인에 맞춰 수정 필요
+                return .empty()
+            })
+            .flatMapLatest({ profileModel -> Observable<Mutation> in
+                guard let nickname = profileModel.nickname,
+                      let level = profileModel.level,
+                      let tags = profileModel.tags else { return .empty() }
+                let profileViewItem = MyPageProfileItem(
+                    nickname: nickname,
+                    level: level,
+                    profileImageURL: profileModel.profileImageURL,
+                    description: profileModel.profileDescription ?? "",
+                    tags: tags
+                )
+                return .just(.updateProrilfe(item: profileViewItem))
+            })
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            self.myPageRepository.fetchMyProfile(userID: self.userID)
-                .subscribe { profileModel in
-                    print(profileModel)
-                } onFailure: { error in
-                    print(error)
-                }
-                .disposed(by: self.disposeBag)
-
-            return .concat(
-                .just(.didSelectTab(index: self.initialState.selectedTabIndex))
-            )
+            return .just(.didSelectTab(index: self.initialState.selectedTabIndex))
+        case .viewWillAppear:
+            return self.mutateViewWillAppear()
         case .didSelectTab(let index):
             return .just(.didSelectTab(index: index))
         case .didScrollToTab(let index):
@@ -99,6 +114,8 @@ final class MyPageReactor: Reactor {
             }
             _state.myPageTabItems = myPageTabItems
             _state.selectedTabIndex = selectedTabIndex
+        case .updateProrilfe(let profileItem):
+            _state.profileItem = profileItem
         }
         return _state
     }
