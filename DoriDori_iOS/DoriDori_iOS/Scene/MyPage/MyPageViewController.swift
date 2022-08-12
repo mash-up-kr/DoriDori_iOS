@@ -261,10 +261,10 @@ extension MyPageViewController {
             $0.height.equalTo(1)
         }
         self.selectedLineView.snp.makeConstraints {
-            $0.top.equalTo(self.tabCollectionView.snp.bottom)
             $0.leading.equalToSuperview()
             $0.width.equalTo(0)
             $0.height.equalTo(2)
+            $0.bottom.equalTo(self.tabCollectionView.snp.bottom)
         }
         self.scrollView.snp.makeConstraints {
             $0.top.equalTo(self.dividerView.snp.bottom)

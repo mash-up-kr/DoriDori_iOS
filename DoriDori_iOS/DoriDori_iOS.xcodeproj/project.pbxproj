@@ -10,7 +10,7 @@
 		A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */; };
 		A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9528797B6D000ABFBB /* MyPageReactor.swift */; };
 		A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */; };
-		A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */; };
+		A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9B287982B5000ABFBB /* MyPageProfileView.swift */; };
 		A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */; };
 		A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AD2879A62500F33D4F /* LevelView.swift */; };
 		A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */; };
@@ -112,7 +112,7 @@
 		A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A20A9E9528797B6D000ABFBB /* MyPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReactor.swift; sourceTree = "<group>"; };
 		A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
-		A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
+		A20A9E9B287982B5000ABFBB /* MyPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
 		A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		A22FC8AD2879A62500F33D4F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				A24FD0E828A5701300A003D1 /* Model */,
-				A20A9E9A28798226000ABFBB /* MyPageHeaderView */,
+				A20A9E9A28798226000ABFBB /* MyPageProfileView */,
 				A2DF0870289AD42000F2046C /* SeeAll */,
 				A2DF086F289AD3CE00F2046C /* QuestionReceived */,
 				A22FC8E7287A10A900F33D4F /* AnswerComplete */,
@@ -240,12 +240,12 @@
 			path = MyPage;
 			sourceTree = "<group>";
 		};
-		A20A9E9A28798226000ABFBB /* MyPageHeaderView */ = {
+		A20A9E9A28798226000ABFBB /* MyPageProfileView */ = {
 			isa = PBXGroup;
 			children = (
-				A20A9E9B287982B5000ABFBB /* MyPageHeaderView.swift */,
+				A20A9E9B287982B5000ABFBB /* MyPageProfileView.swift */,
 			);
-			path = MyPageHeaderView;
+			path = MyPageProfileView;
 			sourceTree = "<group>";
 		};
 		A22FC8AA2879A5DC00F33D4F /* LevelView */ = {
@@ -719,7 +719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
-				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
+				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
 				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
