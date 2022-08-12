@@ -21,7 +21,7 @@ final class ProfileKeywordViewController: UIViewController {
     private let keyboardDownButtomConstraint: CGFloat = 54
     private var keywordCount: Int = 1 {
         didSet {
-            keywordCountLabel.text = String(keywordCount)
+            keywordCountLabel.text = String(keywordCount-1)
         }
     }
     
@@ -53,7 +53,7 @@ final class ProfileKeywordViewController: UIViewController {
         keywordView.configure(title: keyword)
         self.keywordStackView.addArrangedSubview(keywordView)
         keywordView.delegate = self
-        keywordCount += 1
+        keywordCount = keywordStackView.arrangedSubviews.count
     }
     
     private func removeButtonisEnable(_ state: Bool) {
@@ -104,7 +104,7 @@ extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
     func removeKeyword(_ view: ProfileKeywordView) {
         self.keywordStackView.removeArrangedSubview(view)
         view.removeFromSuperview()
-        self.keywordCount -= 1
+        keywordCount = keywordStackView.arrangedSubviews.count
         UIView.animate(withDuration: 0.3, animations: {
             self.keywordStackView.layoutIfNeeded()
         })
@@ -119,7 +119,7 @@ extension ProfileKeywordViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc func keyboardWillShow(_ sender: Notification) {
+    @objc private func keyboardWillShow(_ sender: Notification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.startButtomBottomConstraint.constant = self.keyboardUpButtomConstraint + keyboardSize.height
@@ -128,14 +128,14 @@ extension ProfileKeywordViewController {
         }
     }
     
-    @objc func keyboardWillHide(_ sender: Notification) {
+    @objc private func keyboardWillHide(_ sender: Notification) {
         UIView.animate(withDuration: 0.3) {
             self.startButtomBottomConstraint.constant = self.keyboardDownButtomConstraint
             self.view.layoutIfNeeded()
         }
     }
 
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
 }

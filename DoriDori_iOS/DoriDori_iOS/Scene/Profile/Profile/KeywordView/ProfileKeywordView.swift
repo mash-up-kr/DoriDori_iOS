@@ -12,13 +12,14 @@ protocol ProfileKeywordViewDelegate: AnyObject {
     func removeKeyword(_ sender: ProfileKeywordView)
 }
 
-class ProfileKeywordView: UIView {
+final class ProfileKeywordView: UIView {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
-    @IBOutlet weak var view: UIView!
+    @IBOutlet private weak var view: UIView!
+
     
-    public weak var delegate: ProfileKeywordViewDelegate?
+    weak var delegate: ProfileKeywordViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +33,9 @@ class ProfileKeywordView: UIView {
     }
     
     private func loadView() {
-        let view = Bundle.main.loadNibNamed("ProfileKeywordView",
-                                       owner: self,
-                                       options: nil)?.first as! UIView
+        guard let view = Bundle.main.loadNibNamed("ProfileKeywordView",
+                                       owner: self, options: nil)?.first as? UIView
+                                        else { return }
         view.frame = bounds
         addSubview(view)
     }
