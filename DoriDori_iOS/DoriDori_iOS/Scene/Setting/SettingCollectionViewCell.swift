@@ -9,6 +9,8 @@ import UIKit
 
 final class SettingCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - UIComponents
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -28,6 +30,8 @@ final class SettingCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    // MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupLayouts()
@@ -44,6 +48,8 @@ final class SettingCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configure
+    
     func configure(title: String, subTitle: String?) {
         self.titleLabel.text = title
         if let subTitle = subTitle {
@@ -51,6 +57,11 @@ final class SettingCollectionViewCell: UICollectionViewCell {
             self.subTitleLabel.text = subTitle
         }
     }
+}
+
+// MARK: - Private functions
+
+extension SettingCollectionViewCell {
     
     private func setupLayouts() {
         self.contentView.addSubViews(self.titleLabel, self.subTitleLabel, self.underLineView)

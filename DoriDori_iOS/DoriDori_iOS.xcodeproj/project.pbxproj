@@ -35,6 +35,7 @@
 		A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */; };
 		A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */; };
 		A24FD0FD28A8BDE100A003D1 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */; };
+		A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -143,6 +144,7 @@
 		A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */,
 				A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */,
 				A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */,
+				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
+				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
 				A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,

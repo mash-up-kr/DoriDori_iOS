@@ -9,12 +9,16 @@ import UIKit
 
 final class SettingCollectionViewHeaderView: UICollectionReusableView {
 
+    // MARK: - UIComponents
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setKRFont(weight: .medium, size: 14)
         label.textColor = .gray400
         return label
     }()
+    
+    // MARK: - LifeCycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,10 +29,16 @@ final class SettingCollectionViewHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configure
+    
     func configure(title: String) {
         self.titleLabel.text = title
     }
-    
+}
+
+// MARK: - Private functions
+
+extension SettingCollectionViewHeaderView {
     private func setupLayouts() {
         self.addSubViews(self.titleLabel)
         

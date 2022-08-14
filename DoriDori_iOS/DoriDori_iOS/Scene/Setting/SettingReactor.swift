@@ -9,11 +9,9 @@ import ReactorKit
 import Foundation
 
 final class SettingReactor: Reactor {
-    var initialState: State
     
     enum Action {
         case viewDidLoad
-//        case didSelectItem(indexPath: IndexPath)
     }
     
     enum Mutation {
@@ -24,14 +22,23 @@ final class SettingReactor: Reactor {
         @Pulse var settingSections: [SettingSectionModel]
     }
     
+    // MARK: - Properties
+    
+    var initialState: State
+    
+    // MARK: - Init
+    
     init() {
         self.initialState = State(settingSections: [])
     }
     
+    deinit { debugPrint("\(self) deinit") }
+    
+    // MARK: - Functions
+    
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            print("viewDidLoad")
             return .just(.setSettingSections)
         }
     }

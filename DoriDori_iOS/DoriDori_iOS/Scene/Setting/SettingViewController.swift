@@ -37,11 +37,16 @@ final class SettingViewController: UIViewController, View {
         return collectionView
     }()
     
+    // MARK: - Properties
+    
     private let coordinator: SettingCoordinatable
     private let settingItems: BehaviorRelay<[SettingSectionModel]>
     private let viewDidLoadStream: PublishRelay<Void>
     var reactor: SettingReactor
     var disposeBag: DisposeBag
+    
+    // MARK: - Life Cycles
+    
     init(
         settingReactor: SettingReactor,
         coordinator: SettingCoordinatable
@@ -73,12 +78,23 @@ final class SettingViewController: UIViewController, View {
     }
     
     func bind(reactor: SettingReactor) {
+        self.bind(action: reactor.action)
+        self.bind(state: reactor.state)
+    }
+}
+
+// MARK: - Private functions
+
+extension SettingViewController {
+    private func bind(action: ActionSubject<SettingReactor.Action>) {
         self.viewDidLoadStream
             .map { SettingReactor.Action.viewDidLoad }
-            .bind(to: reactor.action)
+            .bind(to: action)
             .disposed(by: self.disposeBag)
-        
-        reactor.state.map(\.$settingSections)
+    }
+    
+    private func bind(state: Observable<SettingReactor.State>) {
+        state.map(\.$settingSections)
             .map { $0.value }
             .bind(to: self.settingItems)
             .disposed(by: self.disposeBag)
@@ -126,12 +142,14 @@ final class SettingViewController: UIViewController, View {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 
 extension SettingViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         self.settingItems.value.count
     }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -150,9 +168,17 @@ extension SettingViewController: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(kind: kind, type: SettingCollectionViewHeaderView.self, for: indexPath)
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                kind: kind,
+                type: SettingCollectionViewHeaderView.self,
+                for: indexPath
+            )
             let headerTitle = self.settingItems.value[safe: indexPath.section]?.title
             headerView.configure(title: headerTitle ?? "")
             return headerView
@@ -162,15 +188,21 @@ extension SettingViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension SettingViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         CGSize(width: collectionView.bounds.width, height: 52)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
         CGSize(width: collectionView.bounds.width, height: 64)
     }
-}
-
-extension SettingViewController: UICollectionViewDelegateFlowLayout {
-    
 }

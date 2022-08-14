@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct SettingSectionModel: Equatable {
-    let title: String
-    let settingItems: [SettingItem]
-}
-
 enum SettingItem: CaseIterable {
     case myLevel
     case modifyProfile

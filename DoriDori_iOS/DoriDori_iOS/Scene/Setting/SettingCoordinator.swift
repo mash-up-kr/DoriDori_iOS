@@ -23,7 +23,10 @@ final class SettingCoordinator: SettingCoordinatable {
     
     func start() {
         let settingReactor = SettingReactor()
-        let settingViewController = SettingViewController(settingReactor: settingReactor, coordinator: self)
+        let settingViewController = SettingViewController(
+            settingReactor: settingReactor,
+            coordinator: self
+        )
         settingViewController.modalPresentationStyle = .fullScreen
         self.navigationController.topViewController?.present(settingViewController, animated: true)
     }
