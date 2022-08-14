@@ -38,4 +38,14 @@ enum SettingItem: CaseIterable {
         case .withdraw: return "탈퇴하기"
         }
     }
+    
+    var subtitle: String? {
+        switch self {
+        case .versionInfo:
+            guard let dictionary = Bundle.main.infoDictionary,
+                  let version = dictionary["CFBundleShortVersionString"] as? String else { return nil }
+            return "V\(version)"
+        default: return nil
+        }
+    }
 }

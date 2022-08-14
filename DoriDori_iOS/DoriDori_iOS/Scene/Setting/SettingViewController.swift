@@ -96,7 +96,7 @@ final class SettingViewController: UIViewController, View {
     private func setupLayouts() {
         self.view.addSubViews(self.closeButton, self.navigationTitleLabel, self.collectionView)
         self.closeButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(58)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(14)
             $0.size.equalTo(24)
             $0.leading.equalToSuperview().offset(28)
         }
@@ -145,7 +145,7 @@ extension SettingViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(type: SettingCollectionViewCell.self, for: indexPath)
         if let item = self.settingItems.value[safe: indexPath.section]?.settingItems[safe: indexPath.item] {
-            cell.configure(title: item.title)
+            cell.configure(title: item.title, subTitle: item.subtitle)
         }
         return cell
     }

@@ -18,7 +18,7 @@ final class SettingCollectionViewCell: UICollectionViewCell {
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.lime300
-        label.font = UIFont.setEngFont(weight: .bold, size: 14)
+        label.font = UIFont.setKRFont(weight: .bold, size: 14)
         return label
     }()
     
@@ -44,11 +44,11 @@ final class SettingCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(title: String, subTitle: String? = nil) {
+    func configure(title: String, subTitle: String?) {
         self.titleLabel.text = title
         if let subTitle = subTitle {
-            self.subTitleLabel.text = subTitle
             self.subTitleLabel.isHidden = false
+            self.subTitleLabel.text = subTitle
         }
     }
     
@@ -66,7 +66,7 @@ final class SettingCollectionViewCell: UICollectionViewCell {
             $0.height.equalTo(1)
         }
         self.subTitleLabel.snp.makeConstraints {
-            $0.top.bottom.equalTo(self.titleLabel.snp.top)
+            $0.centerY.equalTo(self.titleLabel.snp.centerY)
             $0.trailing.equalToSuperview()
         }
     }
