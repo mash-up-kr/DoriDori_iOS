@@ -5,10 +5,11 @@
 //  Created by Seori on 2022/07/09.
 //
 
-import Foundation
 import UIKit
 import Kingfisher
 import RxRelay
+import RxSwift
+import RxCocoa
 
 struct MyPageProfileItem: Equatable {
     let nickname: String
@@ -16,7 +17,7 @@ struct MyPageProfileItem: Equatable {
     let profileImageURL: String?
     let description: String
     let tags: [String]
-    let didTapSettingButton: PublishRelay<Void>
+//    let didTapSettingButton: PublishRelay<Void>
     
     static func == (lhs: MyPageProfileItem, rhs: MyPageProfileItem) -> Bool {
         (lhs.level == rhs.level) &&
@@ -103,6 +104,9 @@ final class MyPageProfileView: UIView {
         stackView.alignment = .leading
         return stackView
     }()
+    
+    // MARK: - Properties
+    private let disposeBag = DisposeBag()
 
     // MARK: - Init
     
@@ -117,7 +121,7 @@ final class MyPageProfileView: UIView {
     }
     
     
-    // MARK: Configure
+    // MARK: - Configure
     
     func configure(_ item: MyPageProfileItem) {
         self.nicknameLabel.text = item.nickname
@@ -134,6 +138,16 @@ final class MyPageProfileView: UIView {
         } else {
             self.profileImageView.image = UIImage(named: "defaultProfileImage")
         }
+    }
+    
+    func bindAction(didTapSettingButton: PublishRelay<Void>, didTapShareButton: PublishRelay<Void>) {
+        self.settingButton.rx.throttleTap
+            .bind(to: didTapSettingButton)
+            .disposed(by: self.disposeBag)
+        
+        self.shareButton.rx.throttleTap
+            .bind(to: didTapShareButton)
+            .disposed(by: self.disposeBag)
     }
 }
 

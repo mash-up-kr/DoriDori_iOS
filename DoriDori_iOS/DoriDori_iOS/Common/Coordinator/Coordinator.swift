@@ -9,6 +9,7 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     var storyboard: UIStoryboard? { get }
+    var navigationController: UINavigationController { get }
     func start()
 }
 

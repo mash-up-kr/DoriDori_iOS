@@ -64,12 +64,6 @@ final class MyPageReactor: Reactor {
         )
     }
     
-    
-    private func bind() {
-        self.didTapSettingButton
-            .
-    }
-    
     private func mutateViewWillAppear() -> Observable<Mutation> {
         return self.myPageRepository.fetchMyProfile(userID: "62d7f4776ad96c51d4330ea2")
             .catch({ error in
@@ -85,8 +79,7 @@ final class MyPageReactor: Reactor {
                     level: level,
                     profileImageURL: profileModel.profileImageURL,
                     description: profileModel.profileDescription ?? "",
-                    tags: tags,
-                    didTapSettingButton: self.didTapSettingButton
+                    tags: tags
                 )
                 return .just(.updateProrilfe(item: profileViewItem))
             })

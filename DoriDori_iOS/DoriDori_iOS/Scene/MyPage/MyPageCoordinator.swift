@@ -7,19 +7,30 @@
 
 import UIKit
 
-protocol MyPageCoordinatable {
-    
+protocol MyPageCoordinatable: Coordinator {
+    func navigateToSetting()
 }
 
-final class MyPageCoordinator: Coordinator {
-    
-   
+final class MyPageCoordinator: MyPageCoordinatable {
+    var childCoordinatos: [Coordinator]
     let navigationController: UINavigationController
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-    }
-    func start() {
-        
+        self.childCoordinatos = []
     }
     
+    func start() {
+        let myPageViewModel = MyPageReactor(
+            myPageTabs: MyPageTab.allCases,
+            initialSeletedTab: .answerComplete,
+            myPageRepository: MyPageRepository()
+        )
+        let mypageViewController = MyPageViewController(myPageCoordinator: self, reactor: myPageViewModel)
+        navigationController.pushViewController(mypageViewController, animated: true)
+    }
+    func navigateToSetting() {
+        let settingCoordinator = SettingCoordinator(navigationController: self.navigationController)
+        settingCoordinator.start()
+    }
 }
