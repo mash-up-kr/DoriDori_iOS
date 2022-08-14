@@ -69,6 +69,7 @@ final class MyPageViewController: UIViewController, View {
     private var myPageTabItmes: BehaviorRelay<[MyPageTabCollectionViewCell.Item]>
     private let viewDidLoadStream: PublishRelay<Void>
     private let viewWillAppearStream: PublishRelay<Void>
+    
     private var lastOffsetX: CGFloat = .zero
     
     // MARK: - Life cycle

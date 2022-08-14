@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MyPageCoordinatable {
+    
+}
+
 final class MyPageCoordinator: Coordinator {
+    
+   
     let navigationController: UINavigationController
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -15,4 +21,5 @@ final class MyPageCoordinator: Coordinator {
     func start() {
         
     }
+    
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import ReactorKit
+import RxRelay
 
 final class MyPageReactor: Reactor {
     
@@ -37,6 +38,7 @@ final class MyPageReactor: Reactor {
     private let myPageTabs: [MyPageTab]
     private let myPageRepository: MyPageRequestable
     private let disposeBag: DisposeBag
+    private let didTapSettingButton: PublishRelay<Void>
     
     init(
         myPageTabs: [MyPageTab],
@@ -48,6 +50,8 @@ final class MyPageReactor: Reactor {
         self.myPageRepository = myPageRepository
         self.disposeBag = DisposeBag()
         
+        self.didTapSettingButton = .init()
+        
         let selectedTabIndex: Int = myPageTabs.firstIndex(of: initialSeletedTab) ?? 0
         let tabItems = self.myPageTabs.enumerated().map { tabIndex, tab in
             MyPageTabCollectionViewCell.Item(title: tab.title, isSelected: tabIndex == selectedTabIndex)
@@ -58,6 +62,12 @@ final class MyPageReactor: Reactor {
             myPageTabItems: tabItems,
             profileItem: nil
         )
+    }
+    
+    
+    private func bind() {
+        self.didTapSettingButton
+            .
     }
     
     private func mutateViewWillAppear() -> Observable<Mutation> {
@@ -75,7 +85,8 @@ final class MyPageReactor: Reactor {
                     level: level,
                     profileImageURL: profileModel.profileImageURL,
                     description: profileModel.profileDescription ?? "",
-                    tags: tags
+                    tags: tags,
+                    didTapSettingButton: self.didTapSettingButton
                 )
                 return .just(.updateProrilfe(item: profileViewItem))
             })

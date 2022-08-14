@@ -29,6 +29,11 @@
 		A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */; };
 		A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */; };
 		A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */; };
+		A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */; };
+		A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */; };
+		A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F628A63F0800A003D1 /* SettingReactor.swift */; };
+		A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */; };
+		A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -131,6 +136,11 @@
 		A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRepository.swift; sourceTree = "<group>"; };
 		A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRequest.swift; sourceTree = "<group>"; };
+		A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriSettingItem.swift; sourceTree = "<group>"; };
+		A24FD0F628A63F0800A003D1 /* SettingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReactor.swift; sourceTree = "<group>"; };
+		A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -321,6 +331,18 @@
 			path = APIs;
 			sourceTree = "<group>";
 		};
+		A24FD0F128A63E0800A003D1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */,
+				A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */,
+				A24FD0F628A63F0800A003D1 /* SettingReactor.swift */,
+				A24FD0F828A7EC8700A003D1 /* SettingCollectionViewCell.swift */,
+				A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +430,7 @@
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD0F128A63E0800A003D1 /* Setting */,
 				A24FD0EB28A5734200A003D1 /* Common */,
 				CE42D38628705BFC00C49548 /* MainTabBar */,
 				CE5B13312879AEC000F10A20 /* Home */,
@@ -728,6 +751,7 @@
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,
+				A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */,
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
@@ -752,6 +776,7 @@
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
+				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
@@ -759,6 +784,7 @@
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
+				A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
@@ -773,6 +799,7 @@
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
+				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
@@ -780,6 +807,7 @@
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
 				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
+				A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */,
 				A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
 			);
