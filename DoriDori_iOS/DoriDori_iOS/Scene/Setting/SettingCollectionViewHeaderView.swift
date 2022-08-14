@@ -35,7 +35,7 @@ final class SettingCollectionViewHeaderView: UICollectionReusableView {
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(40)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(4)
             $0.height.equalTo(20)
         }
     }

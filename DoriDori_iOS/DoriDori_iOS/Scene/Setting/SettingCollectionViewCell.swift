@@ -56,15 +56,16 @@ final class SettingCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubViews(self.titleLabel, self.subTitleLabel, self.underLineView)
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(12)
+            $0.leading.trailing.equalToSuperview()
         }
         self.underLineView.snp.makeConstraints {
-            $0.top.equalTo(self.titleLabel.snp.bottom)
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(13)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
-        self.underLineView.snp.makeConstraints {
+        self.subTitleLabel.snp.makeConstraints {
             $0.top.bottom.equalTo(self.titleLabel.snp.top)
             $0.trailing.equalToSuperview()
         }

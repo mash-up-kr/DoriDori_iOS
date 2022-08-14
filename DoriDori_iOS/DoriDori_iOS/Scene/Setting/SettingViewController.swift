@@ -39,12 +39,14 @@ final class SettingViewController: UIViewController, View {
     
     private let coordinator: SettingCoordinatable
     private let settingItems: BehaviorRelay<[SettingSectionModel]>
-    var reactor: SettingReactor?
+    private let viewDidLoadStream: PublishRelay<Void>
+    var reactor: SettingReactor
     var disposeBag: DisposeBag
     init(
         settingReactor: SettingReactor,
         coordinator: SettingCoordinatable
     ) {
+        self.viewDidLoadStream = .init()
         self.coordinator = coordinator
         self.reactor = settingReactor
         self.disposeBag = .init()
@@ -63,11 +65,23 @@ final class SettingViewController: UIViewController, View {
         self.view.backgroundColor = .darkGray
         self.setupLayouts()
         self.configure(self.collectionView)
+        
         self.bind()
+        self.bind(reactor: self.reactor)
+        
+        self.viewDidLoadStream.accept(())
     }
     
     func bind(reactor: SettingReactor) {
+        self.viewDidLoadStream
+            .map { SettingReactor.Action.viewDidLoad }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         
+        reactor.state.map(\.$settingSections)
+            .map { $0.value }
+            .bind(to: self.settingItems)
+            .disposed(by: self.disposeBag)
     }
     
     private func configure(_ collectionView: UICollectionView) {
@@ -92,7 +106,8 @@ final class SettingViewController: UIViewController, View {
         }
         self.collectionView.snp.makeConstraints {
             $0.top.equalTo(self.navigationTitleLabel.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -100,6 +115,12 @@ final class SettingViewController: UIViewController, View {
         self.closeButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.coordinator.dismiss(nil)
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.settingItems
+            .bind(with: self) { owner, sections in
+                owner.collectionView.reloadData()
             }
             .disposed(by: self.disposeBag)
     }
@@ -143,14 +164,10 @@ extension SettingViewController: UICollectionViewDataSource {
 
 extension SettingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 39)
+        CGSize(width: collectionView.bounds.width, height: 52)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 76)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        CGSize(width: collectionView.bounds.width, height: 64)
     }
 }
 
