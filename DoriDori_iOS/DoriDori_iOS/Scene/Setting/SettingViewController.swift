@@ -37,12 +37,15 @@ final class SettingViewController: UIViewController, View {
         return collectionView
     }()
     
+    private let coordinator: SettingCoordinatable
     private let settingItems: BehaviorRelay<[SettingSectionModel]>
     var reactor: SettingReactor?
     var disposeBag: DisposeBag
     init(
-        settingReactor: SettingReactor
+        settingReactor: SettingReactor,
+        coordinator: SettingCoordinatable
     ) {
+        self.coordinator = coordinator
         self.reactor = settingReactor
         self.disposeBag = .init()
         self.settingItems = .init(value: [])
@@ -53,10 +56,14 @@ final class SettingViewController: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit { debugPrint("\(self) deinit") }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .darkGray
         self.setupLayouts()
         self.configure(self.collectionView)
+        self.bind()
     }
     
     func bind(reactor: SettingReactor) {
@@ -66,6 +73,7 @@ final class SettingViewController: UIViewController, View {
     private func configure(_ collectionView: UICollectionView) {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .darkGray
         collectionView.register(SettingCollectionViewCell.self)
         collectionView.register(SettingCollectionViewHeaderView.self,
                                 supplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
@@ -76,6 +84,7 @@ final class SettingViewController: UIViewController, View {
         self.closeButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(58)
             $0.size.equalTo(24)
+            $0.leading.equalToSuperview().offset(28)
         }
         self.navigationTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.closeButton.snp.top)
@@ -85,6 +94,14 @@ final class SettingViewController: UIViewController, View {
             $0.top.equalTo(self.navigationTitleLabel.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func bind() {
+        self.closeButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.coordinator.dismiss(nil)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 

@@ -36,7 +36,7 @@ struct Network {
                     attributes: .concurrent
                 )
             ) { dataResponse in
-                debugPrint(dataResponse)
+//                debugPrint(dataResponse)
                 switch dataResponse.result {
                 case .success(let responseModel):
                     if let isSuccess = responseModel.success {

@@ -9,16 +9,17 @@ import UIKit
 
 protocol MyPageCoordinatable: Coordinator {
     func navigateToSetting()
+    func navigateToShare()
 }
 
 final class MyPageCoordinator: MyPageCoordinatable {
-    var childCoordinatos: [Coordinator]
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.childCoordinatos = []
     }
+    
+    deinit { debugPrint(" \(self) deinit") }
     
     func start() {
         let myPageViewModel = MyPageReactor(
@@ -29,8 +30,12 @@ final class MyPageCoordinator: MyPageCoordinatable {
         let mypageViewController = MyPageViewController(myPageCoordinator: self, reactor: myPageViewModel)
         navigationController.pushViewController(mypageViewController, animated: true)
     }
+    
     func navigateToSetting() {
-        let settingCoordinator = SettingCoordinator(navigationController: self.navigationController)
-        settingCoordinator.start()
+        SettingCoordinator(navigationController: self.navigationController).start()
+    }
+    
+    func navigateToShare() {
+        print(#function)
     }
 }

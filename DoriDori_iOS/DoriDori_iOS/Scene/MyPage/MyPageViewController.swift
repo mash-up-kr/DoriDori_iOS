@@ -142,7 +142,6 @@ final class MyPageViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         reactor.state.map(\.profileItem)
-            .debug("1")
             .compactMap { $0 }
             .distinctUntilChanged()
             .observe(on: MainScheduler.asyncInstance)
@@ -152,7 +151,6 @@ final class MyPageViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         reactor.state.map(\.profileItem)
-            .debug("2")
             .compactMap { $0 }
             .distinctUntilChanged()
             .take(1)
@@ -219,9 +217,14 @@ final class MyPageViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         self.didTapSettingButton
-            .debug("didTAp setting button")
             .bind(with: self) { owner, _ in
                 owner.myPageCoordinator.navigateToSetting()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapShareButton
+            .bind(with: self) { owner, _ in
+                owner.myPageCoordinator.navigateToShare()
             }
             .disposed(by: self.disposeBag)
     }
