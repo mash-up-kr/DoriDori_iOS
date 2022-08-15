@@ -191,6 +191,11 @@ extension SettingViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension SettingViewController: UICollectionViewDelegate {
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -198,6 +203,7 @@ extension SettingViewController: UICollectionViewDelegate {
     ) -> CGSize {
         CGSize(width: collectionView.bounds.width, height: 52)
     }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
