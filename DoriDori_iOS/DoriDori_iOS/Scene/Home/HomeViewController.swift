@@ -20,6 +20,18 @@ final class HomeViewController: UIViewController {
     // MARK: - UIView
     let homeHeaderView: HomeHeaderView = HomeHeaderView()
     private var viewModel: HomeViewModel?
+    
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .red
+        collectionView.register(HomeMySpeechBubbleViewCell.self)
+        collectionView.register(HomeOtherSpeechBubbleCell.self)
+        return collectionView
+    }()
+    
+    let locationCollectionViewDataSource = LocationCollectionViewDataSource()
 
     // MARK: - Life cycle
 
@@ -60,38 +72,25 @@ final class HomeViewController: UIViewController {
         }
         
         self.view.addSubview(homeHeaderView)
+        self.view.addSubview(collectionView)
     }
     
     private func setupConstrinats() {
         homeHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(44)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.height.equalTo(272)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(homeHeaderView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     private func setup() {
-        homeHeaderView.locationCollectionView.dataSource = self
+        homeHeaderView.locationCollectionView.dataSource = locationCollectionViewDataSource
         homeHeaderView.locationCollectionView.delegate = self
-    }
-}
-
-// MARK: - UICollectionViewDataSource + UICollectionViewDelegate
-extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return labelList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dequeued = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath)
-        
-        guard let cell = dequeued as? LocationCollectionViewCell else {
-            return dequeued
-        }
-        
-        cell.locationLabel.text = labelList[indexPath.row]
-        
-        return cell
     }
 }
 
