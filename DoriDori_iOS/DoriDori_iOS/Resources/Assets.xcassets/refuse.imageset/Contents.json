@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "_Icon=Icon [거절하기].png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "_Icon=Icon [거절하기]@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "_Icon=Icon [거절하기]@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "refuse.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

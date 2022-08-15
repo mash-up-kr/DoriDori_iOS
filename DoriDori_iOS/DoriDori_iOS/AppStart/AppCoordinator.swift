@@ -28,41 +28,48 @@ final class AppCoordinator: Coordinator {
             let navigationController = UINavigationController(rootViewController: firstViewController)
             viewController = navigationController
         case .home:
-            let secondViewController = ViewController(url: URL(string: "https://bangwidae-web-temp-glyfw73sw-kimbangg.vercel.app/open-inquiry")!)
-            let navigationController = UINavigationController(rootViewController: secondViewController)
+            let homeViewController = HomeViewController()
+            let navigationController = UINavigationController(rootViewController: homeViewController)
             viewController = navigationController
         case .myPage:
-            let navigationController: UINavigationController = .init()
-            let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
-            navigationController.viewControllers = [ MyPageViewController(myPageCoordinator: myPageCoordinator)]
-            viewController = navigationController
+            viewController = self.setupMyPageNavigationController()
         }
 
-        viewController.tabBarItem.title = tab.tabTitle
-        viewController.tabBarItem.image = tab.tabImage
-        viewController.tabBarItem.selectedImage = tab.selectedImage
+        self.setupTabItem(tab, at: viewController)
         return viewController
     }
 
     func start() {
         switch appStart {
         case .home:
-            let homeTabbarController = HomeTabBarController()
+            let mainTabbarController = MainTabBarController()
             let viewControllers = tabbarItems.map(createTabBarViewControllers(tab:))
-            homeTabbarController.setViewControllers(viewControllers, animated: false)
-            window?.rootViewController = homeTabbarController
-        case .siginIn:
-            let story = UIStoryboard(name: "SignIn", bundle: nil)
-            let reactor = SignInMainViewModel()
-            guard let vc = story.instantiateViewController(withIdentifier: "SignInMainViewController") as? SignInMainViewController else { return }
-            //네비게이션 설정
-            let navi = UINavigationController(rootViewController: vc)
-            navi.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navi.navigationBar.tintColor = UIColor.white
-            navi.navigationBar.topItem?.title = ""
-            vc.reactor = reactor
-            window?.rootViewController = navi
+            mainTabbarController.setViewControllers(viewControllers, animated: false)
+            window?.rootViewController = mainTabbarController
         }
     }
 }
 
+// MARK: - Private functions
+
+extension AppCoordinator {
+    
+    private func setupMyPageNavigationController() -> UINavigationController {
+        let navigationController: UINavigationController = .init()
+        let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
+        let myPageViewModel = MyPageReactor(myPageTabs: MyPageTab.allCases, initialSeletedTab: .answerComplete, myPageRepository: MyPageRepository())
+        navigationController.viewControllers = [
+            MyPageViewController(
+                myPageCoordinator: myPageCoordinator,
+                reactor: myPageViewModel
+            )
+        ]
+        return navigationController
+    }
+    
+    private func setupTabItem(_ tab: HomeTabType, at viewController: UINavigationController) {
+        viewController.tabBarItem.title = tab.tabTitle
+        viewController.tabBarItem.image = tab.tabImage
+        viewController.tabBarItem.selectedImage = tab.selectedImage
+    }
+}

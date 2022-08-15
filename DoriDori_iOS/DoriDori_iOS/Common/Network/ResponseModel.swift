@@ -7,7 +7,7 @@
 //
 import Foundation
 
-struct ResponseModel<Model: Decodable>: Decodable {
+struct ResponseModel<Model: Codable>: Codable {
     let success: Bool?
     let data: Model?
     let error: ErrorModel?

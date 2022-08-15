@@ -8,10 +8,8 @@
 import UIKit.UIView
 
 extension UIView {
-    func addSubViews(views: UIView...) {
-        views.forEach {
-            self.addSubview($0)
-        }
+    func addSubViews(_ views: UIView...) {
+        views.forEach(self.addSubview(_:))
     }
     
     @IBInspectable var cornerRadius: CGFloat {
@@ -24,7 +22,7 @@ extension UIView {
         }
     }
 
-    @IBInspectable var borderWidth: CGFloat {
+    @IBInspectable var _borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue
         }

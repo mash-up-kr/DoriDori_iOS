@@ -10,7 +10,7 @@ import UIKit
 enum AppStart {
     // TODO: - SignIn, Splash등 추가 예정
     case home
-    case siginIn
+//    case siginIn
 }
 
 struct CompositionRoot {

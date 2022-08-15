@@ -9,23 +9,24 @@ import Alamofire
 import RxSwift
 
 typealias HTTPMethod = Alamofire.HTTPMethod
+typealias HTTPHeaders = Alamofire.HTTPHeaders
 
 struct Network {
     private let baseURL: String
-    init(baseURL: String) {
+    init(baseURL: String = "https://doridori.ga") {
         self.baseURL = baseURL
     }
 
     func request<Model: Decodable>(
         api: Requestable,
         responseModel: ResponseModel<Model>.Type
-    ) -> Single<Model> {
-        Single<Model>.create { observer in
+    ) -> Observable<Model> {
+        Observable<Model>.create { observer in
             AF.request(
                 "\(baseURL)\(api.path)",
                 method: api.method,
                 parameters: api.parameters,
-                headers: nil
+                headers: api.headers
             )
             .responseDecodable(
                 of: responseModel,
@@ -41,16 +42,18 @@ struct Network {
                     if let isSuccess = responseModel.success {
                         if isSuccess {
                             if let data = responseModel.data {
-                                observer(.success(data))
-                            } else { observer(.failure(DoriDoriError.noData)) }
+                                observer.onNext(data)
+                            } else { observer.onError(DoriDoriError.noData) }
                         } else {
                             if let errModel = responseModel.error {
-                                observer(.failure(errModel))
-                            } else { observer(.failure(DoriDoriError.noErrorModel)) }
+                                observer.onError(errModel)
+                            } else {
+                                observer.onError(DoriDoriError.noErrorModel)
+                            }
                         }
-                    } else { observer(.failure(DoriDoriError.fieldError)) }
+                    } else { observer.onError(DoriDoriError.fieldError) }
                 case .failure(let AFError):
-                    observer(.failure(AFError))
+                    observer.onError(AFError)
                 }
             }
             return Disposables.create()
