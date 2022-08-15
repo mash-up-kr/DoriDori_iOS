@@ -47,7 +47,7 @@ final class TermsOfServiceViewContoller: UIViewController {
             let toogleColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
             let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
             self?.allAgreeButton.setImage(buttonImage, for: .selected)
-            self?.allAgreeOutLineView.borderColor = toogleColor
+            self?.allAgreeOutLineView.ibBorderColor = toogleColor
             //Setting finalAgree
             self?.finalAgreeButton.isEnabled = isValid
             self?.finalAgreeButton.backgroundColor = toogleColor

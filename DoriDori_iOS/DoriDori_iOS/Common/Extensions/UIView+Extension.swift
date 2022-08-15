@@ -12,7 +12,7 @@ extension UIView {
         views.forEach(self.addSubview(_:))
     }
     
-    @IBInspectable var cornerRadius: CGFloat {
+    @IBInspectable var ibCornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -22,7 +22,7 @@ extension UIView {
         }
     }
 
-    @IBInspectable var _borderWidth: CGFloat {
+    @IBInspectable var ibBorderWidth: CGFloat {
         set {
             layer.borderWidth = newValue
         }
@@ -31,7 +31,7 @@ extension UIView {
         }
     }
 
-    @IBInspectable var borderColor: UIColor? {
+    @IBInspectable var ibBorderColor: UIColor? {
         set {
             guard let uiColor = newValue else { return }
             layer.borderColor = uiColor.cgColor
