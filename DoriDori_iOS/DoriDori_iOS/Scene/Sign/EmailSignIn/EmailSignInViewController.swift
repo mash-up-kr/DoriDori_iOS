@@ -18,6 +18,9 @@ class EmailSignInViewController: UIViewController, StoryboardView {
     @IBOutlet weak var passwordFindButton: UIButton!    
     @IBOutlet weak var loginButtomConstraint: NSLayoutConstraint!
     
+    private let keyboardUpButtomConstraint: CGFloat = 20
+    private let keyboardDownButtomConstraint: CGFloat = 54
+
     var disposeBag = DisposeBag()
 
     // MARK: - Life cycle
@@ -53,14 +56,8 @@ extension EmailSignInViewController {
     func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        hideKeyboardWhenTappedBackground()
     }
-    
-    func hideKeyboardWhenTappedBackground() {
-         let tapEvent = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-         tapEvent.cancelsTouchesInView = false
-         view.addGestureRecognizer(tapEvent)
-    }
+
     
     @objc func keyboardWillShow(_ sender: Notification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -81,7 +78,4 @@ extension EmailSignInViewController {
        
     }
 
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }
