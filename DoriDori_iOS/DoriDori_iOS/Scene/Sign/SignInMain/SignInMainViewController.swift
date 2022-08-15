@@ -15,8 +15,6 @@ final class SignInMainViewController: UIViewController, StoryboardView {
         
     typealias Reactor = SignInMainViewModel
     
-    @IBOutlet private weak var appleLoginButton: UIButton!
-    @IBOutlet private weak var kakaoLoginButton: UIButton!
     @IBOutlet private weak var emailLoginButton: UIButton!
     @IBOutlet private weak var emailSignUpButton: UIButton!
     
@@ -33,11 +31,7 @@ final class SignInMainViewController: UIViewController, StoryboardView {
         let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
         var targetVC: UIViewController = .init()
         switch to {
-        case .apple:
-            print("apple")
-        case .kakao:
-            print("kakao")
-        case .email:
+        case .emailSignIn:
             guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignInViewController") as? EmailSignInViewController else { return }
             targetVC = vc
             navigationController?.pushViewController(targetVC, animated: true)
@@ -54,18 +48,8 @@ final class SignInMainViewController: UIViewController, StoryboardView {
 
     func bind(reactor viewModel: SignInMainViewModel) {
         
-        kakaoLoginButton.rx.tap
-            .map { .kakaoLoginButtonDidTap }
-            .bind(to: viewModel.action)
-            .disposed(by: disposeBag)
-        
-        appleLoginButton.rx.tap
-            .map { .appleLoginButtonDidTap }
-            .bind(to: viewModel.action)
-            .disposed(by: disposeBag)
-        
         emailLoginButton.rx.tap
-            .map { .emailLoginButtonDidTap }
+            .map { .emailSignInButtonDidTap }
             .bind(to: viewModel.action)
             .disposed(by: disposeBag)
         
