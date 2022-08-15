@@ -1,5 +1,5 @@
 //
-//  MyPageHeaderView.swift
+//  MyPageProfileView.swift
 //  DoriDori_iOS
 //
 //  Created by Seori on 2022/07/09.
@@ -7,39 +7,49 @@
 
 import Foundation
 import UIKit
+import Kingfisher
+
+struct MyPageProfileItem: Equatable {
+    let nickname: String
+    let level: Int
+    let profileImageURL: String?
+    let description: String
+    let tags: [String]
+}
 
 final class MyPageProfileView: UIView {
     
-    struct Item {
-        let title: String
-        let level: Int
-    }
-    
     // MARK: - UIComponent
     
-    // Title
-    private let titleLabel: UILabel = {
+    private let nicknameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .setKRFont(weight: .medium, size: 24)
-        label.text = "매시업 방위대"
+        label.font = .setKRFont(weight: .bold, size: 24)
         return label
     }()
     
-    private let levelView = LevelView(level: 10)
+    private let levelView: LevelView = {
+       let levelView = LevelView()
+        levelView.isHidden = true
+        return levelView
+    }()
+    
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "arrow"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "share"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let settingButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named:"setting"), for: .normal)
+        button.isHidden = true
         return button
     }()
     
@@ -51,18 +61,17 @@ final class MyPageProfileView: UIView {
         return stackView
     }()
     
-    // Profile
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 26
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.gray700.cgColor
         imageView.layer.borderWidth = 1
-        imageView.image = UIImage(named: "maedori3")
+        imageView.isHidden = true
         return imageView
     }()
     
-    private let keywordStackView: UIStackView = {
+    private let tagStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 6
@@ -70,11 +79,10 @@ final class MyPageProfileView: UIView {
         return stackView
     }()
     
-    private let introduceLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
-        label.text = "안녕하세요. 디즈니 영화 다 추천해드려요~"
         return label
     }()
     
@@ -85,8 +93,6 @@ final class MyPageProfileView: UIView {
         stackView.alignment = .leading
         return stackView
     }()
-    
-    let dummyKeywordTitle: [String] = ["디즈니", "영화", "애니메이션"]
 
     // MARK: - Init
     
@@ -94,7 +100,6 @@ final class MyPageProfileView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .gray900
         self.setupLayouts()
-        self.setupKeywordStackView()
     }
     
     required init?(coder: NSCoder) {
@@ -104,45 +109,59 @@ final class MyPageProfileView: UIView {
     
     // MARK: Configure
     
-    func configure(_ item: MyPageProfileView.Item) {
-        self.titleLabel.text = item.title
+    func configure(_ item: MyPageProfileItem) {
+        self.nicknameLabel.text = item.nickname
         self.levelView.configure(level: item.level)
-    }
-    
-    // MARK: Setup Layouts
-    
-    private func setupKeywordStackView() {
-        (0..<3).forEach { index in
-            let keywordView = KeywordView()
-            keywordView.configure(title: dummyKeywordTitle[index])
-            self.keywordStackView.addArrangedSubview(keywordView)
+        self.descriptionLabel.text = item.description
+        self.setupTagViews(tags: item.tags)
+        if self.levelView.isHidden { self.levelView.isHidden = false }
+        if self.moreButton.isHidden { self.moreButton.isHidden = false }
+        if self.profileImageView.isHidden { self.profileImageView.isHidden = false }
+        if self.settingButton.isHidden { self.settingButton.isHidden = false }
+        if self.shareButton.isHidden { self.shareButton.isHidden = false }
+        if let profileImageURL = item.profileImageURL {
+            self.profileImageView.kf.setImage(with: URL(string: profileImageURL))
+        } else {
+            self.profileImageView.image = UIImage(named: "defaultProfileImage")
         }
     }
-    
+}
+
+// MARK: - Privates
+
+extension MyPageProfileView {
+
+    private func setupTagViews(tags: [String]) {
+        tags.forEach { tag in
+            let keywordView = KeywordView()
+            keywordView.configure(title: tag)
+            self.tagStackView.addArrangedSubview(keywordView)
+        }
+    }
    
     
     private func setupLayouts() {
-        [self.settingButton, self.shareButton].forEach {
+        [self.shareButton, self.settingButton].forEach {
             self.buttonStackView.addArrangedSubview($0)
         }
-        [self.keywordStackView, self.introduceLabel].forEach {
+        [self.tagStackView, self.descriptionLabel].forEach {
             self.profileStackView.addArrangedSubview($0)
         }
         
-        self.addSubViews(self.titleLabel, self.levelView, self.moreButton, self.buttonStackView, self.profileImageView, self.profileStackView)
+        self.addSubViews(self.nicknameLabel, self.levelView, self.moreButton, self.buttonStackView, self.profileImageView, self.profileStackView)
         
-        self.titleLabel.snp.makeConstraints {
+        self.nicknameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(30)
         }
         
         self.levelView.snp.makeConstraints {
-            $0.centerY.equalTo(self.titleLabel.snp.centerY)
-            $0.leading.equalTo(self.titleLabel.snp.trailing).offset(8)
+            $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
+            $0.leading.equalTo(self.nicknameLabel.snp.trailing).offset(8)
         }
         
         self.moreButton.snp.makeConstraints {
-            $0.centerY.equalTo(self.titleLabel.snp.centerY)
+            $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
             $0.leading.equalTo(self.levelView.snp.trailing).offset(8)
             $0.width.equalTo(10)
             $0.height.equalTo(22)
@@ -154,7 +173,7 @@ final class MyPageProfileView: UIView {
         }
         
         self.profileImageView.snp.makeConstraints {
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(32)
+            $0.top.equalTo(self.nicknameLabel.snp.bottom).offset(32)
             $0.leading.equalToSuperview().offset(30)
             $0.size.equalTo(52)
         }

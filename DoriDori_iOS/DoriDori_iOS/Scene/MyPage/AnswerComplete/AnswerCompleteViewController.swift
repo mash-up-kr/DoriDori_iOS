@@ -49,7 +49,6 @@ final class AnswerCompleteViewController: UIViewController {
         }
         self.collectionView.reloadData()
         self.collectionView.backgroundColor = .darkGray
-        self.view.backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
@@ -103,7 +102,7 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
 //        let item = self.datas[indexPath.item]
 //        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
         let size = MyPageMySpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: self.myItem)
-        print(size)
+//        print(size)
         return size
     }
 }

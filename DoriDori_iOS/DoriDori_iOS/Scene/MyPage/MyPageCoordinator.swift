@@ -13,5 +13,6 @@ final class MyPageCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     func start() {
+        
     }
 }
