@@ -26,6 +26,7 @@ struct Network {
                 "\(baseURL)\(api.path)",
                 method: api.method,
                 parameters: api.parameters,
+                encoding: JSONEncoding.default,
                 headers: api.headers
             )
             .responseDecodable(

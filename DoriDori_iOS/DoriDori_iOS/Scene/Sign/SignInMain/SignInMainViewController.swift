@@ -43,7 +43,7 @@ final class SignInMainViewController: UIViewController, StoryboardView {
             navigationController?.pushViewController(targetVC, animated: true)
 
         case .emailSignup:
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailCertificationViewController") as? EmailCertificationViewController else { return }
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController else { return }
             targetVC = vc
             navigationController?.pushViewController(targetVC, animated: true)
         }

@@ -573,10 +573,10 @@
             </objects>
             <point key="canvasLocation" x="1007" y="1459"/>
         </scene>
-        <!--Email Certification View Controller-->
+        <!--Email Sign Up View Controller-->
         <scene sceneID="AJ7-9D-UMk">
             <objects>
-                <viewController storyboardIdentifier="EmailCertificationViewController" id="S2E-8W-ItQ" customClass="EmailCertificationViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailSignUpViewController" id="S2E-8W-ItQ" customClass="EmailSignUpViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8c-e2-2hX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,8 +610,19 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw">
                                         <rect key="frame" x="0.0" y="120" width="315" height="70"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aBK-Ij-ZzI">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
+                                            </textField>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="aBK-Ij-ZzI" secondAttribute="bottom" id="D0F-nK-438"/>
+                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="top" secondItem="6gC-NK-wqw" secondAttribute="top" id="Prm-KE-k2p"/>
+                                            <constraint firstAttribute="trailing" secondItem="aBK-Ij-ZzI" secondAttribute="trailing" id="Xk1-dx-Y14"/>
+                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="leading" secondItem="6gC-NK-wqw" secondAttribute="leading" id="aJx-Zi-WQF"/>
                                             <constraint firstAttribute="height" constant="70" id="ckL-Iw-AQh"/>
                                         </constraints>
                                     </view>
@@ -655,6 +666,10 @@
                             <constraint firstItem="nah-sJ-Bxj" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="vrE-5b-dVY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="authNumberTextField" destination="aBK-Ij-ZzI" id="fkm-TW-GN4"/>
+                        <outlet property="emailTextField" destination="G2n-8b-X1u" id="JeG-fC-nqo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNB-KD-ImO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

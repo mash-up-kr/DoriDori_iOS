@@ -8,7 +8,7 @@
 import Foundation
 import ReactorKit
 
-final class EmailCertificationViewModel: Reactor {
+final class EmailSignUpViewModel: Reactor {
     
     enum Action {
         
