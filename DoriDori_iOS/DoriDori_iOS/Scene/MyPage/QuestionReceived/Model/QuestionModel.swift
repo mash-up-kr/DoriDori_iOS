@@ -21,3 +21,7 @@ struct QuestionModel: Codable {
         case location = "representativeAddress"
     }
 }
+
+struct ReceivedQuestionModel: Codable {
+    var questions: [QuestionModel]
+}

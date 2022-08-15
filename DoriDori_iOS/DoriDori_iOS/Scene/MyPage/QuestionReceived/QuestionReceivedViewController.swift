@@ -28,6 +28,7 @@ final class QuestionReceivedViewController: UIViewController,
     var reactor: QuestionReceivedReactor
     var disposeBag: DisposeBag
     private let viewDidLoadStream: PublishRelay<Void>
+    private let questions: BehaviorRelay<[MyPageOtherSpeechBubbleItemType]>
     
     // MARK: - LifeCycels
     
@@ -37,6 +38,7 @@ final class QuestionReceivedViewController: UIViewController,
         self.reactor = questionReceivedReactor
         self.disposeBag = .init()
         self.viewDidLoadStream = .init()
+        self.questions = .init(value: [])
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,8 +51,8 @@ final class QuestionReceivedViewController: UIViewController,
         super.viewDidLoad()
         self.setupLayouts()
         self.configure(self.collectionView)
-        self.bind(reactor: self.reactor)
         self.bind()
+        self.bind(reactor: self.reactor)
         
         self.viewDidLoadStream.accept(())
     }
@@ -73,11 +75,18 @@ extension QuestionReceivedViewController {
     }
     
     private func bind(state: Observable<QuestionReceivedReactor.State>) {
-        
+        state.map(\.questions)
+            .bind(to: self.questions)
+            .disposed(by: self.disposeBag)
     }
     
     private func bind() {
-       
+        self.questions
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(with: self) { owner, _ in
+                owner.collectionView.reloadData()
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func setupLayouts() {
@@ -103,14 +112,16 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-return 1
+        self.questions.value.count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        guard let item = self.questions.value[safe: indexPath.item] as? IdentifiedMyPageSpeechBubbleCellItem else { fatalError("can not find item") }
         let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
+        cell.configure(item)
         return cell
     }
 }
@@ -118,7 +129,18 @@ return 1
 // MARK: - UICollectionViewDelegate
 
 extension QuestionReceivedViewController: UICollectionViewDelegate {
-    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        guard let item = self.questions.value[safe: indexPath.item] else { fatalError("can not find item") }
+        let size = MyPageOtherSpeechBubbleCell.fittingSize(
+            width: collectionView.bounds.width,
+            item: item
+        )
+        return size
+    }
 }
 
 extension QuestionReceivedViewController: UICollectionViewDelegateFlowLayout {

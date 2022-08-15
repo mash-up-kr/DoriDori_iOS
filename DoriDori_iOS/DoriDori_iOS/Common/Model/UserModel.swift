@@ -14,7 +14,7 @@ struct UserModel: Codable {
     var profileImageURL: String?
     var level: Int
     
-    enum CodingKeys: CodingKey, String {
+    enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case profileImageURL = "profileImageUrl"
         case nickname, tags, level

@@ -15,10 +15,11 @@ final class QuestionReceivedReactor: Reactor {
         case viewDidLoad
     }
     enum Mutation {
-        
+        case updateReceviedQuestion(questions: [MyPageOtherSpeechBubbleItemType])
     }
     
     struct State {
+        var questions: [MyPageOtherSpeechBubbleItemType]
     }
     
     private let myPageRepository: MyPageRequestable
@@ -27,15 +28,54 @@ final class QuestionReceivedReactor: Reactor {
         myPageRepository: MyPageRequestable
     ) {
         self.myPageRepository = myPageRepository
-        self.initialState = .init()
+        self.initialState = .init(questions: [])
     }
     
+    private func fetchReceivedQuestion(size: Int) -> Observable<Mutation> {
+        return self.myPageRepository.fetchReceivedQuestion(size: size)
+            .flatMapLatest { [weak self] receivedQeustions -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                let qeustionItems = receivedQeustions.compactMap(self.setupQuestionItem(_:))
+                return .just(Self.Mutation.updateReceviedQuestion(questions: qeustionItems))
+            }
+    }
+    
+    private func setupQuestionItem(_ question: QuestionModel) -> MyPageOtherSpeechBubbleItemType? {
+        guard let isAnonymous = question.anonymous else { return nil }
+        if isAnonymous {
+            return AnonymousMyPageSpeechBubbleCellItem(
+                content: question.content ?? "",
+                location: question.location ?? "",
+                updatedTime: 1,
+                tags: [],
+                userName: question.fromUser?.nickname ?? ""
+            )
+        } else {
+            return IdentifiedMyPageSpeechBubbleCellItem(
+                content: question.content ?? "",
+                location: question.location ?? "",
+                updatedTime: 1,
+                level: question.fromUser?.level ?? 0,
+                imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
+                tags: question.fromUser?.tags ?? [],
+                userName: question.fromUser?.nickname ?? ""
+            )
+        }
+    }
+   
     func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
+        switch action {
+        case .viewDidLoad:
+            return self.fetchReceivedQuestion(size: 20)
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var _state = state
+        switch mutation {
+        case .updateReceviedQuestion(let question):
+            _state.questions = question
+        }
         return _state
     }
 }

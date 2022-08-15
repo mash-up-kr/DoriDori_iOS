@@ -61,7 +61,7 @@ final class MyPageReactor: Reactor {
     }
     
     private func mutateViewWillAppear() -> Observable<Mutation> {
-        return self.myPageRepository.fetchMyProfile(userID: "62d7f4776ad96c51d4330ea2")
+        return self.myPageRepository.fetchMyProfile(userID: devUserID)
             .catch({ error in
                 // TODO: error 디자인에 맞춰 수정 필요
                 return .empty()
