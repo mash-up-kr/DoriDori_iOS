@@ -17,8 +17,3 @@ protocol Requestable {
 extension Requestable {
     var method: HTTPMethod { .get }
 }
-extension Requestable {
-    var headers: HTTPHeaders? {
-        ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE3NTQyMzE0MTQsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.qYld9Je775prztT4oGWZ-4FDYg27TVJ24h1mQZG0fiE"]
-    }
-}
