@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
                                          SpeechBubbleViewType,
@@ -104,6 +105,11 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         return stackView
     }()
     
+    private let disposeBag: DisposeBag
+    var didTapMoreButton: (() -> Void)?
+    var didTapCommentButton: (() -> Void)?
+    var didTapRefuseButton: (() -> Void)?
+    
     // MARK: - Init
     
     override init(
@@ -111,22 +117,20 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
+        self.disposeBag = .init()
         super.init(
             borderWidth: borderWidth,
             borderColor: borderColor,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        self.bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-// MARK: - Private functions
-
-extension MyPageOtherSpeechBubbleView {
+    
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.nameLabel.text = item.userName
@@ -135,7 +139,32 @@ extension MyPageOtherSpeechBubbleView {
         self.setupTagStackView(item.tags)
         self.setupContentLabel(item.content, at: self.contentLabel)
     }
+}
 
+// MARK: - Private functions
+
+extension MyPageOtherSpeechBubbleView {
+    
+    private func bind() {
+        self.moreButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.didTapMoreButton?()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.commentButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.didTapCommentButton?()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.refuseButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.didTapRefuseButton?()
+            }
+            .disposed(by: self.disposeBag)
+    }
+    
     private func setupTagStackView(_ tags: [String]) {
         let tagViews = self.configureTagViews(tags)
         self.tagStackView.isHidden = tagViews.isEmpty

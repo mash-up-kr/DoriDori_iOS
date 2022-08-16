@@ -29,12 +29,18 @@ final class QuestionReceivedViewController: UIViewController,
     var disposeBag: DisposeBag
     private let viewDidLoadStream: PublishRelay<Void>
     private let questions: BehaviorRelay<[MyPageOtherSpeechBubbleItemType]>
+    private let didTapMoreButton: PublishRelay<Int>
+    private let didTapCommentButton: PublishRelay<Int>
+    private let didTapRefuseButton: PublishRelay<Int>
     
     // MARK: - LifeCycels
     
     init(
         questionReceivedReactor: QuestionReceivedReactor
     ) {
+        self.didTapMoreButton = .init()
+        self.didTapCommentButton = .init()
+        self.didTapRefuseButton = .init()
         self.reactor = questionReceivedReactor
         self.disposeBag = .init()
         self.viewDidLoadStream = .init()
@@ -87,6 +93,32 @@ extension QuestionReceivedViewController {
                 owner.collectionView.reloadData()
             }
             .disposed(by: self.disposeBag)
+        
+        self.didTapMoreButton
+            .map { index -> UIAlertController in
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                alertController.addAction(UIAlertAction(title: "신고하기", style: .default, handler: { _ in
+                    print("\(index) 번 째에 신고하기가 눌렸다!")
+                }))
+                alertController.addAction(UIAlertAction(title: "취소", style: .cancel))
+                return alertController
+            }
+            .bind(with: self) { owner, alertcontroller in
+                owner.present(alertcontroller, animated: true)
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapCommentButton
+            .bind(with: self) { owner, index in
+                print(index, "번 째 답변하기가 눌렸다!")
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapRefuseButton
+            .bind(with: self) { owner, index in
+                print("\(index) 번 째 거절하기가 눌렸다!")
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func setupLayouts() {
@@ -119,8 +151,18 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let item = self.questions.value[safe: indexPath.item] as? IdentifiedMyPageSpeechBubbleCellItem else { fatalError("can not find item") }
+        guard let item = self.questions.value[safe: indexPath.item] else { fatalError("can not find item") }
         let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
+        
+        cell.didTapMoreButton = { [weak self] in
+            self?.didTapMoreButton.accept(indexPath.item)
+        }
+        cell.didTapCommentButton = { [weak self] in
+            self?.didTapCommentButton.accept(indexPath.item)
+        }
+        cell.didTapRefuseButton = { [weak self] in
+            self?.didTapRefuseButton.accept(indexPath.item)
+        }
         cell.configure(item)
         return cell
     }

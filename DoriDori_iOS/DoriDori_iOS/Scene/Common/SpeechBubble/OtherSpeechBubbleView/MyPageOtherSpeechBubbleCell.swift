@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RxRelay
 
 struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
     let content: String
@@ -50,7 +51,14 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     private let levelView = LevelView()
     private let speechBubble = MyPageOtherSpeechBubbleView()
     
-    // MARK: Init
+    
+    // MARK: - Properties
+    
+    var didTapMoreButton: (() -> Void)?
+    var didTapCommentButton: (() -> Void)?
+    var didTapRefuseButton: (() -> Void)?
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,10 +71,17 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.didTapMoreButton = nil
+        self.didTapCommentButton = nil
+        self.didTapRefuseButton = nil
     }
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.speechBubble.configure(item)
+        self.speechBubble.didTapMoreButton = self.didTapMoreButton
+        self.speechBubble.didTapRefuseButton = self.didTapRefuseButton
+        self.speechBubble.didTapCommentButton = self.didTapCommentButton
+        
         if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
             self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
             self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)
