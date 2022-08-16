@@ -96,11 +96,10 @@ extension QuestionReceivedViewController {
         
         self.didTapMoreButton
             .map { index -> UIAlertController in
-                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                alertController.addAction(UIAlertAction(title: "신고하기", style: .default, handler: { _ in
+                let reportAction = ActionSheetAction(title: "신고하기") { _ in
                     print("\(index) 번 째에 신고하기가 눌렸다!")
-                }))
-                alertController.addAction(UIAlertAction(title: "취소", style: .cancel))
+                }
+                let alertController = ActionSheetAlertController(actionModels: reportAction, neededCancel: true).configure()
                 return alertController
             }
             .bind(with: self) { owner, alertcontroller in

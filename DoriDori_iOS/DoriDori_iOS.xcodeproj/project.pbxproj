@@ -35,6 +35,7 @@
 		A24FD10928AA895F00A003D1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD10828AA895F00A003D1 /* UserModel.swift */; };
 		A24FD10B28AA8A9900A003D1 /* ReceivedQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD10A28AA8A9900A003D1 /* ReceivedQuestionRequest.swift */; };
 		A24FD10D28AA9B4200A003D1 /* DoriDoriDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD10C28AA9B4200A003D1 /* DoriDoriDateFormatter.swift */; };
+		A24FD11428ABFF3300A003D1 /* ActionSheetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -143,6 +144,7 @@
 		A24FD10828AA895F00A003D1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		A24FD10A28AA8A9900A003D1 /* ReceivedQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedQuestionRequest.swift; sourceTree = "<group>"; };
 		A24FD10C28AA9B4200A003D1 /* DoriDoriDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriDateFormatter.swift; sourceTree = "<group>"; };
+		A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAlertController.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		A24FD0EB28A5734200A003D1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD11228ABFF1C00A003D1 /* ActionSheetAlertController */,
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
@@ -348,6 +351,14 @@
 				A24FD10828AA895F00A003D1 /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A24FD11228ABFF1C00A003D1 /* ActionSheetAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */,
+			);
+			path = ActionSheetAlertController;
 			sourceTree = "<group>";
 		};
 		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
@@ -759,6 +770,7 @@
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
+				A24FD11428ABFF3300A003D1 /* ActionSheetAlertController.swift in Sources */,
 				A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
