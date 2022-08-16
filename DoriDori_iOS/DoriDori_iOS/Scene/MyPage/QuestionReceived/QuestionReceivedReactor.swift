@@ -7,6 +7,8 @@
 
 import Foundation
 import ReactorKit
+import RxSwift
+import RxRelay
 
 final class QuestionReceivedReactor: Reactor {
     var initialState: State
@@ -42,11 +44,12 @@ final class QuestionReceivedReactor: Reactor {
     
     private func setupQuestionItem(_ question: QuestionModel) -> MyPageOtherSpeechBubbleItemType? {
         guard let isAnonymous = question.anonymous else { return nil }
+        guard let createdAt = DoriDoriDateFormatter(dateString: question.createdAt ?? "").createdAtText() else { return nil }
         if isAnonymous {
             return AnonymousMyPageSpeechBubbleCellItem(
                 content: question.content ?? "",
                 location: question.location ?? "",
-                updatedTime: 1,
+                createdAt: createdAt,
                 tags: [],
                 userName: question.fromUser?.nickname ?? ""
             )
@@ -54,7 +57,7 @@ final class QuestionReceivedReactor: Reactor {
             return IdentifiedMyPageSpeechBubbleCellItem(
                 content: question.content ?? "",
                 location: question.location ?? "",
-                updatedTime: 1,
+                createdAt: createdAt,
                 level: question.fromUser?.level ?? 0,
                 imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
                 tags: question.fromUser?.tags ?? [],

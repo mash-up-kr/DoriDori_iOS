@@ -119,7 +119,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         self.questionerNameLabel.text = item.questioner
         self.userNameLabel.text = item.userName
         self.locationLabel.text = item.location
-        self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
+        self.updatedTimeLabel.text = item.createdAt
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.likeButton)
     }

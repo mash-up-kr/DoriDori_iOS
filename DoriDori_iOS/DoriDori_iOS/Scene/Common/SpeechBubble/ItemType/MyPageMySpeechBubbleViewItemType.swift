@@ -12,6 +12,6 @@ protocol MyPageMySpeechBubbleViewItemType {
     var userName: String { get }
     var content: String { get }
     var location: String { get }
-    var updatedTime: Int { get }
+    var createdAt: String { get }
     var likeCount: Int { get }
 }

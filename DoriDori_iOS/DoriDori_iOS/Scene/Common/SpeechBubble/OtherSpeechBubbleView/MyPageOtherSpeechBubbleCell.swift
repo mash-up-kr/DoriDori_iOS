@@ -11,7 +11,7 @@ import Kingfisher
 struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
     let content: String
     let location: String
-    let updatedTime: Int
+    let createdAt: String
     let level: Int
     let imageURL: URL?
     let tags: [String]
@@ -21,7 +21,7 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
 struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
     let content: String
     let location: String
-    let updatedTime: Int
+    let createdAt: String
     let tags: [String]
     let userName: String
 }

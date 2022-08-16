@@ -131,7 +131,7 @@ extension MyPageOtherSpeechBubbleView {
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.nameLabel.text = item.userName
         self.locationLabel.text = item.location
-        self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
+        self.updatedTimeLabel.text = item.createdAt
         self.setupTagStackView(item.tags)
         self.setupContentLabel(item.content, at: self.contentLabel)
     }

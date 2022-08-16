@@ -12,7 +12,7 @@ struct MyPageMySpeechBubbleCellItem: MyPageMySpeechBubbleViewItemType {
     let userName: String
     let content: String
     let location: String
-    let updatedTime: Int
+    let createdAt: String
     let likeCount: Int
     let profileImageURL: URL?
     let level: Int
