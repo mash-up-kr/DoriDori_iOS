@@ -71,6 +71,8 @@
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
 		CE6A451328AA35E40084B106 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451228AA35E40084B106 /* DevDatas.swift */; };
 		CE6A451528AA43510084B106 /* LocationCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */; };
+		CE6A451728AA9E790084B106 /* HomeCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451628AA9E790084B106 /* HomeCollectionViewDataSource.swift */; };
+		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
@@ -171,6 +173,8 @@
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = ../../../../../../Downloads/DevDatas.swift; sourceTree = "<group>"; };
 		CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CE6A451628AA9E790084B106 /* HomeCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
 		CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */,
+				CE6A451628AA9E790084B106 /* HomeCollectionViewDataSource.swift */,
 				CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */,
 				CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */,
 			);
@@ -552,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				CECB0C3E28A2BE2B00A48D82 /* MyWard.swift */,
+				CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -753,6 +759,7 @@
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				CE6A451528AA43510084B106 /* LocationCollectionViewDataSource.swift in Sources */,
+				CE6A451728AA9E790084B106 /* HomeCollectionViewDataSource.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
@@ -777,6 +784,7 @@
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
+				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
