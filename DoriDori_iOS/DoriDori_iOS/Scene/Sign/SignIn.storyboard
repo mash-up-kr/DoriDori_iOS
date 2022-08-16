@@ -614,9 +614,6 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tapConfirmButton:" destination="S2E-8W-ItQ" eventType="touchUpInside" id="JHg-z9-Yww"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KSr-KW-x78"/>
@@ -636,6 +633,7 @@
                     <connections>
                         <outlet property="authNumberTextField" destination="aBK-Ij-ZzI" id="fkm-TW-GN4"/>
                         <outlet property="emailTextField" destination="G2n-8b-X1u" id="JeG-fC-nqo"/>
+                        <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNB-KD-ImO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
