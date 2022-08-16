@@ -8,10 +8,17 @@
 import UIKit
 
 final class LocationCollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    var labelList: [String] = ["구로구", "영등포구", "안녕하세요", "만나서반가워", "헬로", "바이", "만나서반가워", "헬로", "바이", "만나서반가워", "헬로", "바이"]
+
+    private var viewModel: HomeViewModel?
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    private var numberOfItems: Int { viewModel?.locationListNumberOfModel ?? 0 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        labelList.count
+        numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,8 +28,7 @@ final class LocationCollectionViewDataSource: NSObject, UICollectionViewDataSour
             return dequeued
         }
         
-        cell.locationLabel.text = labelList[indexPath.row]
-        
+        cell.locationLabel.text = viewModel?.currentState.lactaionListModel[indexPath.row].name
         return cell
     }
 }

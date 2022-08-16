@@ -14,8 +14,6 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Variable
     var disposeBag = DisposeBag()
-    
-    private let labelList: [String] = ["구로구", "영등포구", "안녕하세요", "만나서반가워", "헬로", "바이", "만나서반가워", "헬로", "바이", "만나서반가워", "헬로", "바이"]
      
     // MARK: - UIView
     let homeHeaderView: HomeHeaderView = HomeHeaderView()
@@ -25,13 +23,14 @@ final class HomeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .clear
         collectionView.register(HomeMySpeechBubbleViewCell.self)
         collectionView.register(HomeOtherSpeechBubbleCell.self)
         return collectionView
     }()
     
-    let locationCollectionViewDataSource = LocationCollectionViewDataSource()
+    private var locationCollectionViewDataSource: UICollectionViewDataSource?
+    private var homeCollectionViewDataSource: UICollectionViewDataSource?
 
     // MARK: - Life cycle
 
@@ -69,6 +68,8 @@ final class HomeViewController: UIViewController {
     private func setupViews() {
         if let viewModel = viewModel {
             bind(reactor: viewModel)
+            locationCollectionViewDataSource = LocationCollectionViewDataSource(viewModel: viewModel)
+            homeCollectionViewDataSource = HomeCollectionViewDataSource(viewModel: viewModel)
         }
         
         self.view.addSubview(homeHeaderView)
@@ -90,6 +91,7 @@ final class HomeViewController: UIViewController {
     
     private func setup() {
         homeHeaderView.locationCollectionView.dataSource = locationCollectionViewDataSource
+        collectionView.dataSource = homeCollectionViewDataSource
         homeHeaderView.locationCollectionView.delegate = self
     }
 }
@@ -97,7 +99,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: - Cell 클릭시 애니메이션
-        viewModel?.action.onNext(.requestHeaderViewData)
     }
 }
 
@@ -108,7 +109,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             return .zero
         }
 
-        cell.locationLabel.text = labelList[indexPath.row]
         cell.locationLabel.sizeToFit()
 
         let cellWidth = cell.locationLabel.frame.width + 20

@@ -14,6 +14,6 @@ protocol HomeRepositoryRequestable {
 struct HomeRepository: HomeRepositoryRequestable {
     // TODO: - API 붙여야됨
     func requestHomeHeaderData() -> Observable<[MyWard]> {
-        return Observable.just([])
+        Network().request(api: MyWardRequest(), responseModel: ResponseModel<[MyWard]>.self)
     }
 }

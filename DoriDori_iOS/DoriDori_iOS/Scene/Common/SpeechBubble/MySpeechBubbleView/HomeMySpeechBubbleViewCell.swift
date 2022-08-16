@@ -38,17 +38,19 @@ final class HomeMySpeechBubbleViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(_ item: IdentifiedHomeSpeechBubbleCellItemType) {
-        self.speechBubble.configure(item)
-        self.profileImageView.kf.setImage(with: item.profileImageURL)
-        self.levelView.configure(level: item.level)
+    func configure(item: HomeSpeech) {
+        speechBubble.configure(item)
+        profileImageView.kf.setImage(with: URL(string: item.user.profileImageURL))
+        levelView.configure(level: item.user.level)
     }
     
-    static func fittingSize(width: CGFloat, item: IdentifiedHomeSpeechBubbleCellItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: HomeSpeech) -> CGSize {
         let cell = HomeMySpeechBubbleViewCell()
-        cell.configure(item)
-        let targetSize = CGSize(width: width,
-                                height: UIView.layoutFittingCompressedSize.height)
+        cell.configure(item: item)
+        let targetSize = CGSize(
+            width: width,
+            height: UIView.layoutFittingCompressedSize.height
+        )
         return cell.contentView.systemLayoutSizeFitting(targetSize,
                                                         withHorizontalFittingPriority: .required,
                                                         verticalFittingPriority: .fittingSizeLevel)

@@ -19,7 +19,7 @@ struct HomeSpeech: Codable {
     let likeCount, commentCount: Int
     let userLiked: Bool
     let longitude, latitude: Double
-    let representativeAddress: String
+    let address: String
     let anonymous: Bool
     let createdAt, updatedAt: String
 }

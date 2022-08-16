@@ -22,13 +22,15 @@ final class HomeViewModel: Reactor {
     
     struct State {
         var lactaionListModel: [MyWard] = []
+        var homeSpeechModel: [HomeSpeech] = []
         @Pulse var locationCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
     }
 
     let initialState: State = State()
     let repository: HomeRepositoryRequestable
-
+    var locationListNumberOfModel: Int { currentState.lactaionListModel.count }
+    
     init(repository: HomeRepositoryRequestable) {
         self.repository = repository
     }
@@ -54,7 +56,7 @@ final class HomeViewModel: Reactor {
         return newState
     }
     
-    private func requestHeaderViewData() -> Observable<Mutation> {
+    func requestHeaderViewData() -> Observable<Mutation> {
         repository.requestHomeHeaderData()
             .flatMap { models -> Observable<Mutation> in
                 .concat([
@@ -62,6 +64,5 @@ final class HomeViewModel: Reactor {
                     .just(.setLocationCollectionViewReload(true))
                 ])
             }
-            
     }
 }
