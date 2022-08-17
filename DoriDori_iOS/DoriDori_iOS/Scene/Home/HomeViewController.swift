@@ -93,6 +93,13 @@ final class HomeViewController: UIViewController {
         homeHeaderView.locationCollectionView.dataSource = locationCollectionViewDataSource
         collectionView.dataSource = homeCollectionViewDataSource
         homeHeaderView.locationCollectionView.delegate = self
+        
+        if let viewModel = viewModel {
+            rx.viewWillAppear
+                .map { _ in .requestHeaderViewData }
+                .bind(to: viewModel.action)
+                .disposed(by: disposeBag)
+        }
     }
 }
 
@@ -110,9 +117,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         }
 
         cell.locationLabel.sizeToFit()
-
         let cellWidth = cell.locationLabel.frame.width + 20
-
-        return CGSize(width: cellWidth, height: 34)
+        
+        // TODO: - Size 수정 예정
+        return CGSize(width: 50, height: 34)
     }
 }
