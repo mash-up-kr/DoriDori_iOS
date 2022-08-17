@@ -73,8 +73,8 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         view.backgroundColor = .gray800
         return view
     }()
-    private let commentButton: UIButton = {
-        let button = UIButton()
+    private let commentButton: KeyInputButton = {
+        let button = KeyInputButton(frame: .zero)
         button.setImage(UIImage(named: "comment"), for: .normal)
         button.setTitle("답변하기", for: .normal)
         button.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
@@ -109,6 +109,9 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
     var didTapMoreButton: (() -> Void)?
     var didTapCommentButton: (() -> Void)?
     var didTapRefuseButton: (() -> Void)?
+    var keyInputView: UIView? {
+        didSet { self.commentButton.inputAccessoryView = keyInputView }
+    }
     
     // MARK: - Init
     
@@ -155,6 +158,8 @@ extension MyPageOtherSpeechBubbleView {
         self.commentButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.didTapCommentButton?()
+                owner.commentButton.becomeFirstResponder()
+                print(owner.commentButton.inputView)
             }
             .disposed(by: self.disposeBag)
         

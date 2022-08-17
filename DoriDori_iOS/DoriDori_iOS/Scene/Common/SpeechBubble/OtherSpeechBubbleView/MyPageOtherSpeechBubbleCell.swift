@@ -56,6 +56,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     
     var didTapMoreButton: (() -> Void)?
     var didTapCommentButton: (() -> Void)?
+    var keyInputView: UIView?
     var didTapRefuseButton: (() -> Void)?
     
     // MARK: - Init
@@ -78,6 +79,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.speechBubble.configure(item)
+        self.speechBubble.keyInputView = self.keyInputView
         self.speechBubble.didTapMoreButton = self.didTapMoreButton
         self.speechBubble.didTapRefuseButton = self.didTapRefuseButton
         self.speechBubble.didTapCommentButton = self.didTapCommentButton

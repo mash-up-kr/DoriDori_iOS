@@ -31,7 +31,7 @@ final class ActionSheetAlertController {
         title: String? = nil,
         message: String? = nil,
         actionModels: ActionSheetAction...,
-        neededCancel: Bool,
+        neededCancel: Bool = true,
         tintColor: UIColor = .lime300
     ) {
         self.title = title
