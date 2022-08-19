@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Photos
+import RSKImageCropper
 
 class ProfileUploadViewController: UIViewController {
+    
+    @IBOutlet private weak var profileView: UIImageView!
+    @IBOutlet private weak var imageUploadButton: UIButton!
 
     @IBOutlet private weak var profileView: UIImageView!
     @IBOutlet private weak var uploadPictureButton: UIButton!
@@ -49,3 +54,5 @@ extension ProfileUploadViewController: UIImagePickerControllerDelegate & UINavig
         self.dismiss(animated: true)
     }
 }
+
+
