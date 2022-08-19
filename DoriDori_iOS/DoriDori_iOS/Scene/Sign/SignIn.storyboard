@@ -555,42 +555,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nah-sJ-Bxj">
-                                <rect key="frame" x="30" y="134.66666666666666" width="315" height="189.99999999999997"/>
+                                <rect key="frame" x="30" y="134.66666666666663" width="315" height="250"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G2n-8b-X1u">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="G2n-8b-X1u" secondAttribute="bottom" id="6GD-dy-22e"/>
-                                            <constraint firstItem="G2n-8b-X1u" firstAttribute="leading" secondItem="OOw-eb-yzb" secondAttribute="leading" id="XuR-xg-m9D"/>
-                                            <constraint firstAttribute="height" constant="70" id="gtD-X0-tJX"/>
-                                            <constraint firstAttribute="trailing" secondItem="G2n-8b-X1u" secondAttribute="trailing" id="k2r-vW-cvW"/>
-                                            <constraint firstItem="G2n-8b-X1u" firstAttribute="top" secondItem="OOw-eb-yzb" secondAttribute="top" id="v2p-vz-HQH"/>
+                                            <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw">
-                                        <rect key="frame" x="0.0" y="120" width="315" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aBK-Ij-ZzI">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
-                                            </textField>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150.00000000000003" width="315" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="aBK-Ij-ZzI" secondAttribute="bottom" id="D0F-nK-438"/>
-                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="top" secondItem="6gC-NK-wqw" secondAttribute="top" id="Prm-KE-k2p"/>
-                                            <constraint firstAttribute="trailing" secondItem="aBK-Ij-ZzI" secondAttribute="trailing" id="Xk1-dx-Y14"/>
-                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="leading" secondItem="6gC-NK-wqw" secondAttribute="leading" id="aJx-Zi-WQF"/>
-                                            <constraint firstAttribute="height" constant="70" id="ckL-Iw-AQh"/>
+                                            <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -631,8 +609,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="authNumberTextField" destination="aBK-Ij-ZzI" id="fkm-TW-GN4"/>
-                        <outlet property="emailTextField" destination="G2n-8b-X1u" id="JeG-fC-nqo"/>
+                        <outlet property="authNumberTextField" destination="6gC-NK-wqw" id="y3K-De-pVI"/>
+                        <outlet property="emailTextField" destination="OOw-eb-yzb" id="Pb6-SY-l0Z"/>
                         <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
                     </connections>
                 </viewController>
