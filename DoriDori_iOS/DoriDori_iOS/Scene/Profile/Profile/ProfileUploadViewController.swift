@@ -9,9 +9,12 @@ import UIKit
 
 class ProfileUploadViewController: UIViewController {
 
+    @IBOutlet private weak var profileView: UIImageView!
+    @IBOutlet private weak var uploadPictureButton: UIButton!
+    private let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,15 +22,30 @@ class ProfileUploadViewController: UIViewController {
         configureSignUpNavigationBar()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func openLibrary() {
+        imagePicker.modalPresentationStyle = .fullScreen
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: false)
     }
-    */
+    
+    @IBAction func tapPhotoUpload(_ sender: UIButton) {
+        openLibrary()
+    }
+    
+}
 
+extension ProfileUploadViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileView.layer.cornerRadius = profileView.frame.height / 2
+            profileView.contentMode = .scaleToFill
+            profileView.image = image
+        }
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
 }

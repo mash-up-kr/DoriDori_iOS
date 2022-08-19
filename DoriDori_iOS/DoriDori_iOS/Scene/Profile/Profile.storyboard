@@ -207,6 +207,9 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapPhotoUpload:" destination="rem-xg-qgG" eventType="touchUpInside" id="PdW-ta-hr0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,6 +251,10 @@
                             <constraint firstItem="m8i-nF-7uh" firstAttribute="trailing" secondItem="1T9-kD-SU6" secondAttribute="trailing" constant="30" id="xC1-9K-7fc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileView" destination="w9G-X1-kAj" id="dfU-Kv-A1C"/>
+                        <outlet property="uploadPictureButton" destination="fhn-XR-3yp" id="Sre-0O-VWq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u54-2T-ej2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
