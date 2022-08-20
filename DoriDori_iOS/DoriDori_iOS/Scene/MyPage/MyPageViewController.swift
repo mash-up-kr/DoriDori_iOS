@@ -63,18 +63,21 @@ final class MyPageViewController: UIViewController, View {
     
     var reactor: MyPageReactor
     var disposeBag: DisposeBag
-    private let myPageCoordinator: Coordinator
+    private let myPageCoordinator: MyPageCoordinatable
     private let didTapMyPageTab: PublishRelay<Int>
     private var myPageTabViewControllers: [UIViewController]
     private var myPageTabItmes: BehaviorRelay<[MyPageTabCollectionViewCell.Item]>
     private let viewDidLoadStream: PublishRelay<Void>
     private let viewWillAppearStream: PublishRelay<Void>
+    private let didTapSettingButton: PublishRelay<Void>
+    private let didTapShareButton: PublishRelay<Void>
+    
     private var lastOffsetX: CGFloat = .zero
     
     // MARK: - Life cycle
     
     init(
-        myPageCoordinator: Coordinator,
+        myPageCoordinator: MyPageCoordinatable,
         reactor: MyPageReactor
     ) {
         self.disposeBag = DisposeBag()
@@ -85,6 +88,8 @@ final class MyPageViewController: UIViewController, View {
         self.myPageTabViewControllers = []
         self.viewDidLoadStream = .init()
         self.viewWillAppearStream = .init()
+        self.didTapSettingButton = .init()
+        self.didTapShareButton = .init()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -137,11 +142,24 @@ final class MyPageViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         reactor.state.map(\.profileItem)
-            .distinctUntilChanged()
             .compactMap { $0 }
+            .distinctUntilChanged()
             .observe(on: MainScheduler.asyncInstance)
             .bind(with: self) { owner, profileItem in
                 owner.profileView.configure(profileItem)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.state.map(\.profileItem)
+            .compactMap { $0 }
+            .distinctUntilChanged()
+            .take(1)
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(with: self) { owner, _ in
+                owner.profileView.bindAction(
+                    didTapSettingButton: owner.didTapSettingButton,
+                    didTapShareButton: owner.didTapShareButton
+                )
             }
             .disposed(by: self.disposeBag)
     }
@@ -196,6 +214,18 @@ final class MyPageViewController: UIViewController, View {
             })
             .distinctUntilChanged()
             .bind(to: self.didTapMyPageTab)
+            .disposed(by: self.disposeBag)
+        
+        self.didTapSettingButton
+            .bind(with: self) { owner, _ in
+                owner.myPageCoordinator.navigateToSetting()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapShareButton
+            .bind(with: self) { owner, _ in
+                owner.myPageCoordinator.navigateToShare()
+            }
             .disposed(by: self.disposeBag)
     }
 }
