@@ -77,6 +77,8 @@
 		CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13332879AED500F10A20 /* HomeViewModel.swift */; };
 		CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */; };
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
+		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
+		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
@@ -183,6 +185,8 @@
 		CE5B13332879AED500F10A20 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		CE6A452028ABEB6D0084B106 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
 		CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -498,6 +502,15 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		CE6A451F28ABEB670084B106 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A452028ABEB6D0084B106 /* UserDefault.swift */,
+				CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
 		CEAAA585285A2A4C00D8D3EA = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +564,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CE6A451F28ABEB670084B106 /* UserDefault */,
 				A24FD0EC28A5735400A003D1 /* APIs */,
 				A24FD0E328A56C0200A003D1 /* Coordinator */,
 				A2CF64DD28796D72007D54DD /* Network */,
@@ -765,6 +779,7 @@
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
+				CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
@@ -805,6 +820,7 @@
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
+				CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
