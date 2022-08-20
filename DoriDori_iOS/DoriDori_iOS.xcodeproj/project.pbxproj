@@ -85,6 +85,7 @@
 		CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */; };
 		CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75328B1217400E4A3CD /* Scheme.swift */; };
 		CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */; };
+		CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */; };
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
@@ -199,6 +200,7 @@
 		CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeParser.swift; sourceTree = "<group>"; };
 		CE6FF75328B1217400E4A3CD /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
 		CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeExecuter.swift; sourceTree = "<group>"; };
+		CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */,
 				A2F92CA0288EDA94000340F5 /* Int+Extension.swift */,
 				A2DF0877289C2DA700F2046C /* Array+Extension.swift */,
+				CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */,
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,

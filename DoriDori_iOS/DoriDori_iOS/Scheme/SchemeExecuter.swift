@@ -5,13 +5,14 @@
 //  Created by JeongMinho on 2022/08/20.
 //
 
-import Foundation
+import UIKit
 
 struct SchemeExecuter {
     private let schemeType: SchemeType
     
     init(schemeType: SchemeType) {
         self.schemeType = schemeType
+        prepareSchemeExecuter()
     }
     
     func execute() {
@@ -21,5 +22,15 @@ struct SchemeExecuter {
         case .mypage_other:
             print("MYPAGE_OTHER")
         }
+    }
+    
+    private func prepareSchemeExecuter() {
+        guard
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+            let presentedViewController = sceneDelegate.window?.rootViewController?.presentedViewController else {
+                return
+            }
+        
+        presentedViewController.dismissOrPopupViewController(animated: true, completion: nil)
     }
 }
