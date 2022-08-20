@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Szt-8f-QZb" customClass="ErrorView" customModule="DoriDori_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인터넷에  연결되지 않았어요 !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-nl-JOh">
+                    <rect key="frame" x="125" y="330" width="164" height="50.5"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연결 확인 후 다시 시도해 주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5S-0s-57L">
+                    <rect key="frame" x="120.5" y="392.5" width="173.5" height="16.5"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tji-cu-ifm">
+                    <rect key="frame" x="147.5" y="449" width="119" height="48"/>
+                    <color key="backgroundColor" name="lime300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="CtQ-ob-BrH"/>
+                        <constraint firstAttribute="width" constant="119" id="pCl-Jd-p5d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="새로고침">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedRefreshButton:" destination="Szt-8f-QZb" eventType="touchUpInside" id="koA-ed-CgR"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error_dori" translatesAutoresizingMaskIntoConstraints="NO" id="58n-iB-zWF">
+                    <rect key="frame" x="132" y="150" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="FaJ-v5-vsW"/>
+                        <constraint firstAttribute="width" constant="150" id="nwC-dV-asz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="J0N-3e-URh"/>
+            <color key="backgroundColor" name="darkGray"/>
+            <constraints>
+                <constraint firstItem="58n-iB-zWF" firstAttribute="top" secondItem="Szt-8f-QZb" secondAttribute="top" constant="150" id="C68-IY-tpc"/>
+                <constraint firstItem="Tji-cu-ifm" firstAttribute="centerX" secondItem="Szt-8f-QZb" secondAttribute="centerX" id="RDo-Ap-ksm"/>
+                <constraint firstItem="m5S-0s-57L" firstAttribute="top" secondItem="Mnr-nl-JOh" secondAttribute="bottom" constant="12" id="TzR-HX-cNI"/>
+                <constraint firstItem="m5S-0s-57L" firstAttribute="centerX" secondItem="Szt-8f-QZb" secondAttribute="centerX" id="WdD-Ip-HV2"/>
+                <constraint firstItem="Mnr-nl-JOh" firstAttribute="centerX" secondItem="Szt-8f-QZb" secondAttribute="centerX" id="cXN-FB-GE9"/>
+                <constraint firstItem="58n-iB-zWF" firstAttribute="centerX" secondItem="Szt-8f-QZb" secondAttribute="centerX" id="eZh-pw-FoS"/>
+                <constraint firstItem="Mnr-nl-JOh" firstAttribute="top" secondItem="58n-iB-zWF" secondAttribute="bottom" constant="30" id="qqV-6r-u01"/>
+                <constraint firstItem="Tji-cu-ifm" firstAttribute="top" secondItem="m5S-0s-57L" secondAttribute="bottom" constant="40" id="unK-E1-yAb"/>
+            </constraints>
+            <connections>
+                <outlet property="mainTitleLabel" destination="Mnr-nl-JOh" id="jpm-3V-ziE"/>
+                <outlet property="refreshButton" destination="Tji-cu-ifm" id="H0Y-9c-Y1W"/>
+                <outlet property="subTitleLabel" destination="m5S-0s-57L" id="HnN-IM-9tD"/>
+            </connections>
+            <point key="canvasLocation" x="-291.304347826087" y="454.6875"/>
+        </view>
+        <viewController id="8X9-sM-3KD" customClass="ErrorViewController" customModule="DoriDori_iOS" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="c6Z-lW-eYe" customClass="ErrorView" customModule="DoriDori_iOS" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <viewLayoutGuide key="safeArea" id="YuQ-zY-LcE"/>
+                <color key="backgroundColor" name="darkGray"/>
+            </view>
+            <connections>
+                <outlet property="errorView" destination="c6Z-lW-eYe" id="pYj-js-5Jb"/>
+            </connections>
+            <point key="canvasLocation" x="499" y="455"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="error_dori" width="75" height="74"/>
+        <namedColor name="darkGray">
+            <color red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lime300">
+            <color red="0.85882352941176465" green="0.97254901960784312" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
