@@ -24,7 +24,7 @@ final class MyPageRepository: MyPageRequestable {
 
     func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]> {
         Network().request(
-            api: MyAnswerCompleteReques(lastQuestionID: QuestionID?, size: Int),
+            api: MyAnswerCompleteRequest(lastQuestionID: QuestionID?, size: Int),
             responseModel: ResponseModel<[QuestionModel]>.self
         )
     }
