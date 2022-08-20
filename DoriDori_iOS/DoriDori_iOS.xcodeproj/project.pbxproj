@@ -83,6 +83,8 @@
 		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
 		CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74F28B11A7900E4A3CD /* URLContant.swift */; };
 		CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */; };
+		CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75328B1217400E4A3CD /* Scheme.swift */; };
+		CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */; };
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
@@ -195,6 +197,8 @@
 		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
 		CE6FF74F28B11A7900E4A3CD /* URLContant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContant.swift; sourceTree = "<group>"; };
 		CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeParser.swift; sourceTree = "<group>"; };
+		CE6FF75328B1217400E4A3CD /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
+		CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeExecuter.swift; sourceTree = "<group>"; };
 		CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 			children = (
 				CE6FF74F28B11A7900E4A3CD /* URLContant.swift */,
 				CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */,
+				CE6FF75328B1217400E4A3CD /* Scheme.swift */,
+				CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */,
 			);
 			path = Scheme;
 			sourceTree = "<group>";
@@ -857,10 +863,12 @@
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
+				CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */,
 				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 				A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */,
 				A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */,
+				CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,8 +8,19 @@
 import Foundation
 
 struct URLConstant {
-    enum Scheme: String {
+    enum Host: String {
         case doridori
+        
+        init?(string: String?) {
+            guard let rawValue = string?.lowercased() else {
+                return nil
+            }
+            self.init(rawValue: rawValue)
+        }
+    }
+    
+    enum Scheme: String {
+        case main
         
         init?(string: String?) {
             guard let rawValue = string?.lowercased() else {

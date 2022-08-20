@@ -15,16 +15,16 @@ final class URLSchemeParser: SchemeParser {
     func parse(data: Any) -> SchemeType? {
         guard
             let url = data as? URL,
-            url.scheme == URLConstant.Scheme.doridori.rawValue,
+            url.scheme == URLConstant.Host.doridori.rawValue,
             let scheme = URLConstant.Scheme(string: url.host)
         else {
-                return nil
-            }
+            return nil
+        }
         
         let path = URLConstant.Path(rawValue: url.path)
         
         switch scheme {
-        case .doridori:
+        case .main:
             switch path {
             case .question:
                 return .question
