@@ -24,14 +24,14 @@ final class MyPageRepository: MyPageRequestable {
 
     func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]> {
         Network().request(
-            api: MyAnswerCompleteRequest(lastQuestionID: QuestionID?, size: Int),
+            api: MyAnswerCompleteRequest(lastQuestionID: lastQuestionID, size: size),
             responseModel: ResponseModel<[QuestionModel]>.self
         )
     }
 
     func fetchAnswerCompleteQuestions(userID: UserID, lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]> {
         Network().request(
-            api: AnswerCompleteRequest(userID: UserID, lastQuestionID: QuestionID?, size: Int),
+            api: AnswerCompleteRequest(userID: userID, lastQuestionID: lastQuestionID, size: size),
             responseModel: ResponseModel<[QuestionModel]>.self
         )
     }
