@@ -18,7 +18,7 @@ struct QuestionModel: Codable {
     var fromUser: QuestionUserModel?
     var toUser: QuestionUserModel?
     var answer: AnswerModel?
-    var createdAt: Int { get }
+    var createdAt: Int
 }
 
 struct AnswerModel: Codable {
@@ -28,7 +28,7 @@ struct AnswerModel: Codable {
     var user: QuestionUserModel?
     var likeCount: Int?
     var userLiked: Bool?
-    var createdAt: Int { get }
+    var createdAt: Int
 }
 
 
