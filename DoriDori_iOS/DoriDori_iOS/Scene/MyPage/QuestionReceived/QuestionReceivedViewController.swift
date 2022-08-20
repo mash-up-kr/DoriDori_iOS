@@ -52,6 +52,11 @@ final class QuestionReceivedViewController: UIViewController,
         return textField
     }()
     
+    private let indicatorView: DoriDoriActivityIndicator = {
+        let indicator = DoriDoriActivityIndicator()
+        return indicator
+    }()
+    
     // MARK: - Properties
     
     var reactor: QuestionReceivedReactor
@@ -96,6 +101,22 @@ final class QuestionReceivedViewController: UIViewController,
     func bind(reactor: QuestionReceivedReactor) {
         self.bind(action: reactor.action)
         self.bind(state: reactor.state)
+        
+        reactor.pulse(\.$updateLoading)
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self, onNext: { owner, _ in
+                owner.indicatorView.startAnimating()
+            })
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$updateLoading)
+            .filter { !$0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.indicatorView.stopAnimating()
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -114,6 +135,7 @@ extension QuestionReceivedViewController {
         state.map(\.questions)
             .bind(to: self.questions)
             .disposed(by: self.disposeBag)
+        
     }
     
     private func bind() {
@@ -224,7 +246,7 @@ extension QuestionReceivedViewController {
             $0.leading.equalTo(self.commentTextField.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().inset(30)
         }
-        self.view.addSubViews(self.collectionView, self.commentView)
+        self.view.addSubViews(self.collectionView, self.commentView, self.indicatorView)
         self.collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -232,6 +254,10 @@ extension QuestionReceivedViewController {
             $0.bottom.equalToSuperview().inset(0)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(58)
+        }
+        self.indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(48)
         }
     }
     

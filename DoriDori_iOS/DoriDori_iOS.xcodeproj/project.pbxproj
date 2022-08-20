@@ -37,6 +37,7 @@
 		A24FD10D28AA9B4200A003D1 /* DoriDoriDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD10C28AA9B4200A003D1 /* DoriDoriDateFormatter.swift */; };
 		A24FD11428ABFF3300A003D1 /* ActionSheetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */; };
 		A24FD11628AD669900A003D1 /* KeyInputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11528AD669900A003D1 /* KeyInputButton.swift */; };
+		A24FD11A28B0B97000A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -147,6 +148,7 @@
 		A24FD10C28AA9B4200A003D1 /* DoriDoriDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriDateFormatter.swift; sourceTree = "<group>"; };
 		A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAlertController.swift; sourceTree = "<group>"; };
 		A24FD11528AD669900A003D1 /* KeyInputButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyInputButton.swift; sourceTree = "<group>"; };
+		A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
+				A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
+				A24FD11A28B0B97000A003D1 /* DoriDoriActivityIndicator.swift in Sources */,
 				A24FD10328AA29DC00A003D1 /* QuestionReceivedReactor.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,

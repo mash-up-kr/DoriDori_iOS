@@ -17,10 +17,12 @@ final class QuestionReceivedReactor: Reactor {
         case viewDidLoad
     }
     enum Mutation {
+        case updateLoadingIndicator(isLoading: Bool)
         case updateReceviedQuestion(questions: [MyPageOtherSpeechBubbleItemType])
     }
     
     struct State {
+        @Pulse var updateLoading: Bool = false
         var questions: [MyPageOtherSpeechBubbleItemType]
     }
     
@@ -38,7 +40,11 @@ final class QuestionReceivedReactor: Reactor {
             .flatMapLatest { [weak self] receivedQeustions -> Observable<Mutation> in
                 guard let self = self else { return .empty() }
                 let qeustionItems = receivedQeustions.compactMap(self.setupQuestionItem(_:))
-                return .just(Self.Mutation.updateReceviedQuestion(questions: qeustionItems))
+                return .concat(
+                    .just(Self.Mutation.updateLoadingIndicator(isLoading: true)),
+                    .just(Self.Mutation.updateReceviedQuestion(questions: qeustionItems)),
+                    .just(Self.Mutation.updateLoadingIndicator(isLoading: false))
+                )
             }
     }
     
@@ -76,6 +82,8 @@ final class QuestionReceivedReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var _state = state
         switch mutation {
+        case .updateLoadingIndicator(let update):
+            _state.updateLoading = update
         case .updateReceviedQuestion(let question):
             _state.questions = question
         }

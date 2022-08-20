@@ -73,8 +73,8 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         view.backgroundColor = .gray800
         return view
     }()
-    private let commentButton: KeyInputButton = {
-        let button = KeyInputButton(frame: .zero)
+    private let commentButton: UIButton = {
+        let button = UIButton(frame: .zero)
         button.setImage(UIImage(named: "comment"), for: .normal)
         button.setTitle("답변하기", for: .normal)
         button.titleLabel?.font = UIFont.setKRFont(weight: .medium, size: 12)
@@ -109,9 +109,9 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
     var didTapMoreButton: (() -> Void)?
     var didTapCommentButton: (() -> Void)?
     var didTapRefuseButton: (() -> Void)?
-    var keyInputView: UIView? {
-        didSet { self.commentButton.inputAccessoryView = keyInputView }
-    }
+//    var keyInputView: UIView? {
+//        didSet { self.commentButton.inputAccessoryView = keyInputView }
+//    }
     
     // MARK: - Init
     

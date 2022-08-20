@@ -79,7 +79,6 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
         self.speechBubble.configure(item)
-        self.speechBubble.keyInputView = self.keyInputView
         self.speechBubble.didTapMoreButton = self.didTapMoreButton
         self.speechBubble.didTapRefuseButton = self.didTapRefuseButton
         self.speechBubble.didTapCommentButton = self.didTapCommentButton
