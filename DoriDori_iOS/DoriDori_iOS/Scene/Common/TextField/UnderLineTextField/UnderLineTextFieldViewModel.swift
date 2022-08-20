@@ -93,7 +93,6 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
             stringCountIsHidden = false
             totalStringCount = 7
         case .authNumber:
-            errorMessage = .authNumber
             inputPlaceHolder = .authNumber
         }
     }

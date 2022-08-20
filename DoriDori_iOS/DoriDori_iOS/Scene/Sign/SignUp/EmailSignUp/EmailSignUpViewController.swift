@@ -59,49 +59,49 @@ final class EmailSignUpViewController: UIViewController {
         
         
         let output = viewModel.transform(input: input)
+        
         output.isValidEmail.bind { [weak self] isValid in
             self?.sendToAuthNumberButton.isEnabled = isValid
             self?.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
             self?.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
         }.disposed(by: disposeBag)
         
+        output.inputAuthNumber.bind { [weak self] isValid in
+            self?.sendToAuthNumberButton.isEnabled = isValid
+            self?.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+            self?.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
+        }.disposed(by: disposeBag)
         
-        output.sendEmail.subscribe(onNext: { [weak self] _ in
+        output.sendEmail.bind(onNext: { [weak self] _ in
             self?.authNumberTextField.isHidden = false
             self?.sendToAuthNumberButton.isEnabled = true
             self?.sendToAuthNumberButton.setTitle("확인", for: .normal)
             self?.sendToAuthNumberButton.backgroundColor = UIColor(named: "gray700")
             self?.emailTextField.textField.isEnabled = false
             self?.emailTextField.iconImageView.isHidden = false
+            self?.emailTextField.underLineView.backgroundColor = UIColor(named: "gray700")
             self?.emailTextField.iconImageView.image = UIImage(named: "check_circle")
         }).disposed(by: self.disposeBag)
         
-        output.finalConfirm.subscribe(onNext: { [weak self] _ in
-            self?.sendToAuthNumberButton.backgroundColor = UIColor(named: "lime300")
+        output.finalConfirm.bind(onNext: { [weak self] _ in
             guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordInputViewController") as? PasswordInputViewController else { return }
             self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
         
-    }
-    
-    // MARK: - Configure
-    private func settingKeyboard() {
-        emailTextField.textField.becomeFirstResponder()
-        emailTextField.textField.delegate = self
-        authNumberTextField.textField.delegate = self
+        output.errorMessage.emit(onNext: { [weak self] str in
+            self?.authNumberTextField.errorLabel.isHidden = false
+            self?.authNumberTextField.errorLabel.text = str
+            self?.authNumberTextField.underLineView.backgroundColor = UIColor(named: "red500")
+        }).disposed(by: disposeBag)
+        
     }
     
 }
 
-extension EmailSignUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField.textField { authNumberTextField.textField.becomeFirstResponder() }
-        return true
-    }
-}
 
 extension EmailSignUpViewController {
     func keyboardSetting() {
+        emailTextField.textField.becomeFirstResponder()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }

@@ -28,7 +28,7 @@ extension String {
     }
     
     var authNumberCheck: Bool {
-        //인증번호 받아서 맞는지 체크
-        return true
+        if self.count >= 1 { return true }
+        else { return false }
     }
 }

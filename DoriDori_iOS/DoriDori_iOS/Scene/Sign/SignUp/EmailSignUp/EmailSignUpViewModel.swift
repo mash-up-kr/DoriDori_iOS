@@ -6,7 +6,7 @@
 //
 
 import RxSwift
-import RxRelay
+import RxCocoa
 
 final class EmailSignUpViewModel: ViewModelProtocol {
     
@@ -21,13 +21,20 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     
     struct Output {
         let isValidEmail: Observable<Bool>
+        let inputAuthNumber: Observable<Bool>
         let sendEmail: Observable<Void>
         let finalConfirm: Observable<Void>
+        let errorMessage: Signal<String>
     }
     
     func transform(input: Input) -> Output {
         let buttonisValidOutput = input.email.map { str -> Bool in
             if str.emailValidCheck { return true }
+            else { return false }
+        }
+        
+        let inputAuthNumberOutput = input.authNumber.map { str -> Bool in
+            if str.count >= 1 { return true }
             else { return false }
         }
         
@@ -47,6 +54,8 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                     })}
             .observe(on: MainScheduler.instance)
         
+        let errorRelay = PublishRelay<String>()
+        
         let confirmOutput = input.sendButtonTap
             .filter { [weak self] _ in
                 self?.buttonType.value == .checkAuthNumber
@@ -55,7 +64,13 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                 guard let self = self else { return .empty() }
                 return self.repository.confirmAuthNumber(email: email, authNumber: authNumber)
                     .catch({ error in
-                        print(error) // TODO: 서버 에러
+                        guard let errorModel = error.toErrorModel else { return .empty() }
+                        if errorModel.code == "CERTIFICATE_FAILED" {
+                            guard let errorMsg = errorModel.message else {
+                                return .empty()
+                            }
+                            errorRelay.accept(errorMsg)
+                        }
                         return .empty()
                     }).map { _ in
                         return
@@ -64,7 +79,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                     })}
             .observe(on: MainScheduler.instance)
         
-        return Output(isValidEmail: buttonisValidOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput)
+        return Output(isValidEmail: buttonisValidOutput, inputAuthNumber: inputAuthNumberOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput, errorMessage: errorRelay.asSignal())
     }
     
 }

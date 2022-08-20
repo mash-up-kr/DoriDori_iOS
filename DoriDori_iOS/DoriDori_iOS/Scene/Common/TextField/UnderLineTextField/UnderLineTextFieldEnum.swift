@@ -26,6 +26,5 @@ enum TextFieldErrorMessage: String {
     case email = "이메일 주소를 확인해주세요."
     case password = "비밀번호를 확인해주세요."
     case nickname = "닉네임은 7자리 이내로 설정해주세요."
-    case authNumber = "인증번호를 확인해주세요."
 }
 
