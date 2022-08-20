@@ -30,6 +30,8 @@
 		A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */; };
 		A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */; };
 		A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0EF28A57B4500A003D1 /* DevDatas.swift */; };
+		A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD11E28B0C3BD00A003D1 /* Toast */; };
+		A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -135,6 +137,7 @@
 		A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRequest.swift; sourceTree = "<group>"; };
 		A24FD0EF28A57B4500A003D1 /* DevDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDatas.swift; sourceTree = "<group>"; };
+		A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
 				CE58A80E28796C8900928091 /* SnapKit in Frameworks */,
 				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
+				A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */,
 				CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +319,7 @@
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
+				A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -604,6 +609,7 @@
 				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 				CE58A80D28796C8900928091 /* SnapKit */,
+				A24FD11E28B0C3BD00A003D1 /* Toast */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -684,6 +690,7 @@
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -791,6 +798,7 @@
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
+				A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
@@ -1121,6 +1129,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
@@ -1172,6 +1188,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A24FD11E28B0C3BD00A003D1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		CE58A7EE2877279C00928091 /* FlexLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
