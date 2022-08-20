@@ -10,6 +10,8 @@ import RxSwift
 
 protocol MyPageRequestable: AnyObject {
     func fetchMyProfile(userID: UserID) -> Observable<UserInfoModel>
+    func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
+    func fetchAnswerCompleteQuestions(userID: UserID, lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
 }
 
 final class MyPageRepository: MyPageRequestable {
@@ -22,7 +24,7 @@ final class MyPageRepository: MyPageRequestable {
 
     func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]> {
         Network().request(
-            api: MyAnswerCompleteRequest(lastQuestionID: QuestionID?, size: Int),
+            api: MyAnswerCompleteReques(lastQuestionID: QuestionID?, size: Int),
             responseModel: ResponseModel<[QuestionModel]>.self
         )
     }
