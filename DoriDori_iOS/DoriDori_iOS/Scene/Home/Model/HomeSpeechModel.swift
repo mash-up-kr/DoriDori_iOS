@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct HomeSpeechs<HomeSpeech: Codable>: Codable {
-    let speech: [HomeSpeech]
+struct HomeSpeechs: Codable {
+    let homeSpeech: [HomeSpeech]
     let hasNext: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case homeSpeech = "values"
+        case hasNext
+    }
 }
 
 struct HomeSpeech: Codable {
@@ -19,7 +24,7 @@ struct HomeSpeech: Codable {
     let likeCount, commentCount: Int
     let userLiked: Bool
     let longitude, latitude: Double
-    let address: String
+    let representativeAddress: String
     let anonymous: Bool
     let createdAt, updatedAt: String
 }

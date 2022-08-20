@@ -12,18 +12,22 @@ final class HomeViewModel: Reactor {
     
     enum Action {
         case requestHeaderViewData
+        case reqeustHomeData
         case locationCellDidTap(Bool)
     }
     
     enum Mutation {
         case setLocationCollectionViewReload(Bool)
+        case setHomeCollectionViewReload(Bool)
         case setLocationModels([MyWard])
+        case setHomeModels(HomeSpeechs)
     }
     
     struct State {
         var lactaionListModel: [MyWard] = []
-        var homeSpeechModel: [HomeSpeech] = []
+        var homeSpeechModel: HomeSpeechs?
         @Pulse var locationCollectionViewNeedReload: Bool = false
+        @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
     }
 
@@ -41,6 +45,8 @@ final class HomeViewModel: Reactor {
             return requestHeaderViewData()
         case .locationCellDidTap(_):
             return .empty()
+        case .reqeustHomeData:
+            return requestHomeData()
         }
     }
 
@@ -50,9 +56,14 @@ final class HomeViewModel: Reactor {
         switch mutation {
         case let .setLocationCollectionViewReload(locationCollectionViewNeedReload):
             newState.locationCollectionViewNeedReload = locationCollectionViewNeedReload
+        case let .setHomeCollectionViewReload(homeCollectionViewNeedReload):
+            newState.homeCollectionViewNeedReload = homeCollectionViewNeedReload
         case let .setLocationModels(models):
             newState.lactaionListModel = models
+        case let .setHomeModels(models):
+            newState.homeSpeechModel = models
         }
+        
         return newState
     }
     
@@ -62,6 +73,16 @@ final class HomeViewModel: Reactor {
                 .concat([
                     .just(.setLocationModels(models)),
                     .just(.setLocationCollectionViewReload(true))
+                ])
+            }
+    }
+    
+    func requestHomeData() -> Observable<Mutation> {
+        repository.requestHomeData(lastId: "62f26bb63af9661d5f868d25", latitude: 37.504030, longitude: 127.024099, meterDistance: 250, size: 20)
+            .flatMap { models -> Observable<Mutation> in
+                .concat([
+                    .just(.setHomeModels(models)),
+                    .just(.setHomeCollectionViewReload(true))
                 ])
             }
     }

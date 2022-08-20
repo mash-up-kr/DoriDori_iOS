@@ -21,7 +21,7 @@ final class HomeViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.register(HomeMySpeechBubbleViewCell.self)
@@ -58,8 +58,14 @@ final class HomeViewController: UIViewController {
         viewModel?.pulse(\.$locationCollectionViewNeedReload)
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
-                print(#function)
                 owner.homeHeaderView.locationCollectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel?.pulse(\.$homeCollectionViewNeedReload)
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
     }
@@ -72,8 +78,8 @@ final class HomeViewController: UIViewController {
             homeCollectionViewDataSource = HomeCollectionViewDataSource(viewModel: viewModel)
         }
         
-        self.view.addSubview(homeHeaderView)
-        self.view.addSubview(collectionView)
+        view.addSubview(homeHeaderView)
+        view.addSubview(collectionView)
     }
     
     private func setupConstrinats() {
@@ -99,6 +105,11 @@ final class HomeViewController: UIViewController {
                 .map { _ in .requestHeaderViewData }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
+            
+            rx.viewWillAppear
+                .map { _ in .reqeustHomeData }
+                .bind(to: viewModel.action)
+                .disposed(by: disposeBag)
         }
     }
 }
@@ -110,16 +121,16 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath) as? LocationCollectionViewCell else {
-            return .zero
-        }
-
-        cell.locationLabel.sizeToFit()
-        let cellWidth = cell.locationLabel.frame.width + 20
-        
-        // TODO: - Size 수정 예정
-        return CGSize(width: 50, height: 34)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath) as? LocationCollectionViewCell else {
+//            return .zero
+//        }
+//
+//        cell.locationLabel.sizeToFit()
+////        let cellWidth = cell.locationLabel.frame.width + 20
+//        
+//        // TODO: - Size 수정 예정
+//        return CGSize(width: 50, height: 34)
+//    }
 }

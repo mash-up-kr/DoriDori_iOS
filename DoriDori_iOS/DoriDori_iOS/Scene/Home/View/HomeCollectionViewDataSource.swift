@@ -20,13 +20,25 @@ final class HomeCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: HomeMySpeechBubbleViewCell.self, for: indexPath)
+        let dequeued = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMySpeechBubbleViewCell.identifier, for: indexPath)
         
-        guard let item = viewModel?.currentState.homeSpeechModel[indexPath.row] else {
-            return UICollectionViewCell()
+        guard let cell = dequeued as? HomeMySpeechBubbleViewCell else {
+            return dequeued
         }
         
+        guard let item = viewModel?.currentState.homeSpeechModel?.homeSpeech[indexPath.row] else {
+            return UICollectionViewCell()
+        }
+
         cell.configure(item: item)
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: 270, height: 188)
     }
 }

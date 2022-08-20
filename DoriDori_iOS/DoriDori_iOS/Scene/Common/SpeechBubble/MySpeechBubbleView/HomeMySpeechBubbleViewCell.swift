@@ -22,6 +22,7 @@ final class HomeMySpeechBubbleViewCell: UICollectionViewCell {
     }()
     private let levelView = LevelView()
     private let speechBubble = HomeMySpeechBubbleView()
+    static let identifier = "HomeMySpeechBubbleViewCell"
     
     // MARK: Init
     
@@ -67,7 +68,7 @@ extension HomeMySpeechBubbleViewCell {
             $0.leading.equalToSuperview().offset(30)
         }
         self.profileImageView.snp.makeConstraints {
-            $0.leading.equalTo(self.speechBubble.snp.trailing).offset(8)
+            $0.leading.equalTo(self.speechBubble.snp.trailing).offset(18)
             $0.top.equalToSuperview().offset(16)
             $0.size.equalTo(42)
             $0.trailing.equalToSuperview().inset(30)
