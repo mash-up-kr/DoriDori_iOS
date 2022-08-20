@@ -611,6 +611,7 @@
                     <connections>
                         <outlet property="authNumberTextField" destination="6gC-NK-wqw" id="y3K-De-pVI"/>
                         <outlet property="emailTextField" destination="OOw-eb-yzb" id="Pb6-SY-l0Z"/>
+                        <outlet property="sendButtonButtomConstraint" destination="Glv-bS-unC" id="ayH-YH-Yvh"/>
                         <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
                     </connections>
                 </viewController>

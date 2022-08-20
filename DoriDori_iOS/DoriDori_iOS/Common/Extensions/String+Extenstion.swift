@@ -29,6 +29,6 @@ extension String {
     
     var authNumberCheck: Bool {
         //인증번호 받아서 맞는지 체크
-        return false
+        return true
     }
 }
