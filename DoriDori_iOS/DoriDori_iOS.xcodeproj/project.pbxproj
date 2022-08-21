@@ -39,6 +39,9 @@
 		A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */; };
 		A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12228B0FEB500A003D1 /* QuestionModel.swift */; };
 		A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */; };
+		A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */; };
+		A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */; };
+		A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13128B223E400A003D1 /* DropDownView.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -153,6 +156,9 @@
 		A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		A24FD12228B0FEB500A003D1 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteRequest.swift; sourceTree = "<group>"; };
+		A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCoordinator.swift; sourceTree = "<group>"; };
+		A24FD13128B223E400A003D1 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -334,6 +340,7 @@
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
+				A24FD13128B223E400A003D1 /* DropDownView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -359,6 +366,15 @@
 				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A24FD12C28B213CC00A003D1 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */,
+				A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */,
+			);
+			path = Question;
 			sourceTree = "<group>";
 		};
 		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
@@ -449,6 +465,7 @@
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD12C28B213CC00A003D1 /* Question */,
 				A24FD0F128A63E0800A003D1 /* Setting */,
 				A24FD0EB28A5734200A003D1 /* Common */,
 				CE42D38628705BFC00C49548 /* MainTabBar */,
@@ -801,6 +818,7 @@
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
+				A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
@@ -835,6 +853,8 @@
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
+				A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */,
+				A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */,
 				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,

@@ -37,5 +37,6 @@ final class MyPageCoordinator: MyPageCoordinatable {
     
     func navigateToShare() {
         print(#function)
+        QuestionCoordinator(navigationController: self.navigationController).start()
     }
 }
