@@ -10,6 +10,9 @@ import RxSwift
 
 typealias HTTPMethod = Alamofire.HTTPMethod
 typealias HTTPHeaders = Alamofire.HTTPHeaders
+typealias ParameterEncoding = Alamofire.ParameterEncoding
+typealias URLEncoding = Alamofire.URLEncoding
+typealias JSONEncoding = Alamofire.JSONEncoding
 
 struct Network {
     private let baseURL: String
@@ -26,6 +29,7 @@ struct Network {
                 "\(baseURL)\(api.path)",
                 method: api.method,
                 parameters: api.parameters,
+                encoding: api.encoding,
                 headers: api.headers
             )
             .responseDecodable(
@@ -36,7 +40,7 @@ struct Network {
                     attributes: .concurrent
                 )
             ) { dataResponse in
-//                debugPrint(dataResponse)
+                debugPrint(dataResponse)
                 switch dataResponse.result {
                 case .success(let responseModel):
                     if let isSuccess = responseModel.success {

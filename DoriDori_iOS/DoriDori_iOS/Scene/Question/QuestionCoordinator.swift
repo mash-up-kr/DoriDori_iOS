@@ -8,7 +8,7 @@
 import UIKit
 
 enum QuestionType {
-    case user
+    case user(userID: UserID)
     case community
 }
 
@@ -26,8 +26,15 @@ final class QuestionCoordinator: Coordinator {
     }
     
     func start() {
-        let qeustionReactor = QuestionReactor(questionType: self.questionType)
-        let questionViewController = QuestionViewController(reactor: qeustionReactor)
+        let questionRepository = QuestionRepository()
+        let qeustionReactor = QuestionReactor(
+            questionType: self.questionType,
+            questionRepository: questionRepository
+        )
+        let questionViewController = QuestionViewController(
+            reactor: qeustionReactor,
+            coordinator: self
+        )
         navigationController.pushViewController(questionViewController, animated: true)
     }
 }

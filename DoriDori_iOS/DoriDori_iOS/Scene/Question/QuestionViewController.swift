@@ -100,12 +100,17 @@ final class QuestionViewController: UIViewController,
     }
     
     let reactor: QuestionReactor
+    let coordinator: QuestionCoordinator
     var disposeBag: DisposeBag
     
     // MARK: - LifeCycles
     
-    init(reactor: QuestionReactor) {
+    init(
+        reactor: QuestionReactor,
+        coordinator: QuestionCoordinator
+    ) {
         self.reactor = reactor
+        self.coordinator = coordinator
         self.disposeBag = .init()
         super.init(nibName: nil, bundle: nil)
     }
@@ -118,6 +123,7 @@ final class QuestionViewController: UIViewController,
         super.viewDidLoad()
         self.setupLayouts()
         self.bind(reactor: self.reactor)
+        self.bind()
         self.view.backgroundColor = .darkGray
     }
     
@@ -126,9 +132,31 @@ final class QuestionViewController: UIViewController,
     }
     
     func bind(reactor: QuestionReactor) {
+        
+        Observable.merge(
+            self.registButton.rx.throttleTap.asObservable(),
+            self.registNavigationButton.rx.throttleTap.asObservable()
+        )
+        .map { _ in return }
+        .map { QuestionReactor.Action.didTapRegistQuestion }
+        .bind(to: reactor.action)
+        .disposed(by: self.disposeBag)
+        
         self.textView.rx.text.orEmpty
             .map { QuestionReactor.Action.didEditing(text: $0) }
             .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        
+        // MARK: State binding
+        
+        reactor.pulse(\.$shouldPopViewController)
+            .compactMap { $0 }
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.coordinator.popViewController(animated: true)
+            }
             .disposed(by: self.disposeBag)
         
         reactor.pulse(\.$textCount)
@@ -138,6 +166,7 @@ final class QuestionViewController: UIViewController,
             .disposed(by: self.disposeBag)
         
         let canRegistQuestion = reactor.pulse(\.$canRegistQuestion)
+            .distinctUntilChanged()
             .do(onNext: { [weak self] canRegist in
                 self?.registNavigationButton.isUserInteractionEnabled = canRegist
                 self?.registButton.isUserInteractionEnabled = canRegist
@@ -169,7 +198,11 @@ final class QuestionViewController: UIViewController,
 extension QuestionViewController {
     
     private func bind() {
-        
+        self.navigationBackButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.coordinator.popViewController(animated: true)
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func setupLayouts() {

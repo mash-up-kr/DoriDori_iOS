@@ -12,8 +12,10 @@ protocol Requestable {
     var parameters: Parameter? { get }
     var headers: HTTPHeaders? { get }
     var method: HTTPMethod { get }
+    var encoding: ParameterEncoding { get }
 }
 
 extension Requestable {
     var method: HTTPMethod { .get }
+    var encoding: ParameterEncoding { URLEncoding.default }
 }
