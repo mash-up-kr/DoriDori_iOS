@@ -8,7 +8,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ReactorKit
 
 enum ButtonType {
     case sendEmail
@@ -55,8 +54,8 @@ final class EmailSignUpViewController: UIViewController {
     private func bind(_ viewModel: EmailSignUpViewModel) {
         let input = EmailSignUpViewModel.Input(email: emailTextField.textField.rx.text.orEmpty.asObservable(),
                                                authNumber: authNumberTextField.textField.rx.text.orEmpty.asObservable(),
-                                               sendButtonTap: sendToAuthNumberButton.rx.tap.asObservable())
-        
+                                               sendButtonTap: sendToAuthNumberButton.rx.tap.asObservable(),
+                                               authNumberResendButton: authNumberTextField.authNumberResendButton.rx.tap.asObservable())
         
         let output = viewModel.transform(input: input)
                 
@@ -89,7 +88,7 @@ final class EmailSignUpViewController: UIViewController {
             self?.authNumberTextField.errorLabel.text = str
             self?.authNumberTextField.underLineView.backgroundColor = UIColor(named: "red500")
         }).disposed(by: disposeBag)
-        
+                
     }
     
     private func buttonValid(_ isValid: Bool) {
@@ -107,8 +106,7 @@ extension EmailSignUpViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    
+
     @objc func keyboardWillShow(_ sender: Notification) {
         let keyboardButtonSpace: Int = 20
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -127,5 +125,4 @@ extension EmailSignUpViewController {
         }
         
     }
-    
 }

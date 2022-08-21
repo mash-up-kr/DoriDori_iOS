@@ -17,6 +17,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         let email: Observable<String>
         let authNumber: Observable<String>
         let sendButtonTap: Observable<Void>
+        let authNumberResendButton: Observable<Void>
     }
     
     struct Output {
@@ -38,9 +39,13 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             else { return false }
         }
         
-        let sendEmailOutput = input.sendButtonTap.filter { [weak self] _ in
+        let sendEmailTap = input.sendButtonTap.filter { [weak self] _ in
             self?.buttonType.value == .sendEmail
-        }.withLatestFrom(input.email)
+        }
+        
+        let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
+            .merge()
+            .withLatestFrom(input.email)
             .flatMapLatest { [weak self] email -> Observable<Void> in
                 guard let self = self else { return .empty() }
                 return self.repository.requestEmail(email: email)
@@ -55,7 +60,6 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             .observe(on: MainScheduler.instance)
         
         let errorRelay = PublishRelay<String>()
-        
         let confirmOutput = input.sendButtonTap
             .filter { [weak self] _ in
                 self?.buttonType.value == .checkAuthNumber

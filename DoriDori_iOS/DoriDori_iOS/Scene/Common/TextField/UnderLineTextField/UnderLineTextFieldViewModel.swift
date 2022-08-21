@@ -15,18 +15,19 @@ import RxCocoa
 
 class UnderLineTextFieldViewModel: ViewModelProtocol {
     
-    let inputContentType: UITextContentType
-    let returnKeyType: UIReturnKeyType
-    let keyboardType: UIKeyboardType
+    var inputContentType: UITextContentType
+    var returnKeyType: UIReturnKeyType
+    var keyboardType: UIKeyboardType
     var isSecureTextEntry: Bool {
         return inputContentType == .password
     }
     var titleLabelType: TextFieldType
-
     var inputPlaceHolder: TextFieldPlaceHolder = .email
     var errorMessage: TextFieldErrorMessage = .email
     var stringCountIsHidden: Bool = true
     var totalStringCount: Int = 0
+    var authNumberTimer: Bool = true
+    var authNumberResend: Bool = true
 
     struct Input {
         let inputString: Observable<String>
@@ -94,6 +95,8 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
             totalStringCount = 7
         case .authNumber:
             inputPlaceHolder = .authNumber
+            authNumberTimer = false
+            authNumberResend = false
         }
     }
     

@@ -11,16 +11,22 @@ import RxCocoa
 
 class UnderLineTextField: DesignView {
     
-    @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var textField: UITextField!
-    @IBOutlet public weak var underLineView: UIView!
-    @IBOutlet public weak var errorLabel: UILabel!
-    @IBOutlet public weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var underLineView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
     
     //글자수 카운트
     @IBOutlet weak var stringCountStackView: UIStackView!
     @IBOutlet weak var nowStringCountLabel: UILabel!
     @IBOutlet weak var totalStringCountLabel: UILabel!
+    
+    //인증번호
+    @IBOutlet weak var authNumbertimerLabel: UILabel!
+    @IBOutlet weak var authNumberResendStackView: UIStackView!
+    @IBOutlet weak var authNumberResendButton: UIButton!
+    
     
     private let disposeBag = DisposeBag()
     var viewModel = UnderLineTextFieldViewModel() {
@@ -35,7 +41,6 @@ class UnderLineTextField: DesignView {
     }
     
     private func bind(viewModel: UnderLineTextFieldViewModel) {
-            
         let input = UnderLineTextFieldViewModel.Input(
             inputString: textField.rx.text.orEmpty.filter({ !$0.isEmpty })
                                         .distinctUntilChanged()
@@ -72,11 +77,9 @@ class UnderLineTextField: DesignView {
                 self?.iconImageView.image = UIImage(named: "error")
             }
         }).disposed(by: disposeBag)
-
     }
-
-    
-    func configure(viewModel: UnderLineTextFieldViewModel) {
+ 
+    private func configure(viewModel: UnderLineTextFieldViewModel) {
         titleLabel.text = viewModel.titleLabelType.rawValue
         errorLabel.text = viewModel.errorMessage.rawValue
         textField.textContentType = viewModel.inputContentType
@@ -86,6 +89,8 @@ class UnderLineTextField: DesignView {
         textField.placeholder = viewModel.inputPlaceHolder.rawValue
         stringCountStackView.isHidden = viewModel.stringCountIsHidden
         totalStringCountLabel.text = "\(viewModel.totalStringCount)"
+        authNumbertimerLabel.isHidden = viewModel.authNumberTimer
+        authNumberResendStackView.isHidden = viewModel.authNumberResend
     }
     
 }

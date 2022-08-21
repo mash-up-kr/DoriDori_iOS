@@ -7,9 +7,17 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="authNumberResendButton" destination="0CF-KB-3xr" id="s7L-7B-tJ2"/>
+                <outlet property="authNumberResendStackView" destination="OLY-XZ-WJb" id="NCN-2P-Mvi"/>
+                <outlet property="authNumbertimerLabel" destination="C8L-aT-uVu" id="WDI-QY-rEr"/>
                 <outlet property="errorLabel" destination="OBN-xq-9jj" id="HRd-MS-nCC"/>
                 <outlet property="iconImageView" destination="SNk-rW-aj0" id="fJ7-cr-pcW"/>
                 <outlet property="nowStringCountLabel" destination="kLA-dF-I6N" id="yNC-H6-Oak"/>
@@ -91,6 +99,32 @@
                         <constraint firstAttribute="height" constant="18" id="npC-RE-gQX"/>
                     </constraints>
                 </stackView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22:33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8L-aT-uVu">
+                    <rect key="frame" x="480" y="37.5" width="33" height="16"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
+                    <color key="textColor" name="gray600"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OLY-XZ-WJb">
+                    <rect key="frame" x="425" y="87" width="88" height="18"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CF-KB-3xr">
+                            <rect key="frame" x="0.0" y="0.0" width="88" height="17"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="인증번호 재전송">
+                                <color key="titleColor" name="gray500"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGV-Rt-aTz">
+                            <rect key="frame" x="0.0" y="17" width="88" height="1"/>
+                            <color key="backgroundColor" name="gray500"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="mFG-I8-C4G"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" name="darkGray"/>
             <constraints>
@@ -99,7 +133,12 @@
                 <constraint firstItem="Izh-oH-eb4" firstAttribute="top" secondItem="TfK-eB-kvr" secondAttribute="bottom" constant="8" id="AM7-68-Xfg"/>
                 <constraint firstItem="yEz-sJ-0f7" firstAttribute="top" secondItem="OBN-xq-9jj" secondAttribute="top" id="Hvk-7e-Xm5"/>
                 <constraint firstAttribute="trailing" secondItem="yEz-sJ-0f7" secondAttribute="trailing" id="IIW-XP-Ik7"/>
+                <constraint firstItem="OLY-XZ-WJb" firstAttribute="top" secondItem="frj-Bk-yym" secondAttribute="bottom" constant="8" id="IzR-gU-JMn"/>
                 <constraint firstItem="frj-Bk-yym" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ke7-Jl-UxX"/>
+                <constraint firstAttribute="bottom" secondItem="OLY-XZ-WJb" secondAttribute="bottom" id="NRd-Qy-9s3"/>
+                <constraint firstAttribute="trailing" secondItem="OLY-XZ-WJb" secondAttribute="trailing" id="QOA-t6-9CF"/>
+                <constraint firstItem="C8L-aT-uVu" firstAttribute="centerY" secondItem="Izh-oH-eb4" secondAttribute="centerY" id="QPY-RT-fcz"/>
+                <constraint firstAttribute="trailing" secondItem="C8L-aT-uVu" secondAttribute="trailing" id="Qlg-rM-5BU"/>
                 <constraint firstAttribute="trailing" secondItem="TfK-eB-kvr" secondAttribute="trailing" id="TDr-Za-Gia"/>
                 <constraint firstAttribute="trailing" secondItem="SNk-rW-aj0" secondAttribute="trailing" id="Xy4-K3-ze8"/>
                 <constraint firstItem="SNk-rW-aj0" firstAttribute="leading" secondItem="Izh-oH-eb4" secondAttribute="trailing" id="Z6L-iC-rzF"/>
@@ -124,6 +163,9 @@
         </namedColor>
         <namedColor name="gray500">
             <color red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray600">
+            <color red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray700">
             <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
