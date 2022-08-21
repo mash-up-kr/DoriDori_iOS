@@ -82,6 +82,11 @@
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
 		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
+		CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74F28B11A7900E4A3CD /* URLContant.swift */; };
+		CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */; };
+		CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75328B1217400E4A3CD /* Scheme.swift */; };
+		CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */; };
+		CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */; };
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
@@ -193,6 +198,11 @@
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CE6A452028ABEB6D0084B106 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
+		CE6FF74F28B11A7900E4A3CD /* URLContant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContant.swift; sourceTree = "<group>"; };
+		CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeParser.swift; sourceTree = "<group>"; };
+		CE6FF75328B1217400E4A3CD /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
+		CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeExecuter.swift; sourceTree = "<group>"; };
+		CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -520,6 +530,17 @@
 			path = UserDefault;
 			sourceTree = "<group>";
 		};
+		CE6FF74E28B11A5200E4A3CD /* Scheme */ = {
+			isa = PBXGroup;
+			children = (
+				CE6FF74F28B11A7900E4A3CD /* URLContant.swift */,
+				CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */,
+				CE6FF75328B1217400E4A3CD /* Scheme.swift */,
+				CE6FF75528B1220600E4A3CD /* SchemeExecuter.swift */,
+			);
+			path = Scheme;
+			sourceTree = "<group>";
+		};
 		CEAAA585285A2A4C00D8D3EA = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE7651D28674582007FC892 /* AppStart */,
+				CE6FF74E28B11A5200E4A3CD /* Scheme */,
 				CE42D38528705BEE00C49548 /* Scene */,
 				CEB2656B2875E9B500B9970B /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
@@ -593,6 +615,7 @@
 				A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */,
 				A2F92CA0288EDA94000340F5 /* Int+Extension.swift */,
 				A2DF0877289C2DA700F2046C /* Array+Extension.swift */,
+				CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -773,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */,
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
@@ -784,6 +808,7 @@
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,
+				CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */,
 				A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */,
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
@@ -824,6 +849,7 @@
 				A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */,
 				A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */,
 				A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */,
+				CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
@@ -845,10 +871,12 @@
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
+				CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */,
 				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,
 				CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */,
 				A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */,
 				A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */,
+				CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
