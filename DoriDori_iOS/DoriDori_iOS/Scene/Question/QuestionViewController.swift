@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import ReactorKit
+import RxCocoa
+import RxSwift
 
-final class QuestionViewController: UIViewController {
+final class QuestionViewController: UIViewController,
+                                    View {
     
     // MARK: - UIComponents
     
@@ -95,10 +99,25 @@ final class QuestionViewController: UIViewController {
         set { super.hidesBottomBarWhenPushed = newValue }
     }
     
+    let reactor: QuestionReactor
+    var disposeBag: DisposeBag
+    
     // MARK: - LifeCycles
+    
+    init(reactor: QuestionReactor) {
+        self.reactor = reactor
+        self.disposeBag = .init()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayouts()
+        self.bind(reactor: self.reactor)
         self.view.backgroundColor = .darkGray
     }
     
@@ -106,14 +125,64 @@ final class QuestionViewController: UIViewController {
         debugPrint("\(self) deinit")
     }
     
+    func bind(reactor: QuestionReactor) {
+        self.textView.rx.text.orEmpty
+            .map { QuestionReactor.Action.didEditing(text: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$textCount)
+            .bind(with: self) { owner, textCount in
+                owner.textCountLabel.text = textCount
+            }
+            .disposed(by: self.disposeBag)
+        
+        let canRegistQuestion = reactor.pulse(\.$canRegistQuestion)
+            .do(onNext: { [weak self] canRegist in
+                self?.registNavigationButton.isUserInteractionEnabled = canRegist
+                self?.registButton.isUserInteractionEnabled = canRegist
+            })
+            .share()
+                
+        canRegistQuestion
+            .filter { $0 }
+            .bind(with: self) { owner, _ in
+                owner.registButton.setTitleColor(.darkGray, for: .normal)
+                owner.registButton.backgroundColor = .lime300
+                owner.registNavigationButton.setTitleColor(.lime300, for: .normal)
+            }
+            .disposed(by: self.disposeBag)
+        
+        canRegistQuestion
+            .filter { !$0 }
+            .bind(with: self) { owner, _ in
+                owner.registButton.setTitleColor(.gray300, for: .normal)
+                owner.registButton.backgroundColor = .gray700
+                owner.registNavigationButton.setTitleColor(.gray700, for: .normal)
+            }
+            .disposed(by: self.disposeBag)
+    }
 }
 
 // MARK: - Private functions
 
 extension QuestionViewController {
     
+    private func bind() {
+        
+    }
+    
     private func setupLayouts() {
-        self.view.addSubViews(self.navigationBackButton, self.navigationTitle, self.registNavigationButton, self.selectView, self.textView, self.textCountLabel, self.dividerView, self.registButtonContainerView)
+        self.view.addSubViews(
+            self.navigationBackButton,
+            self.navigationTitle,
+            self.registNavigationButton,
+            self.selectView,
+            self.textView,
+            self.textCountLabel,
+            self.dividerView,
+            self.registButtonContainerView
+        )
         self.registButtonContainerView.addSubview(self.registButton)
         self.selectView.addSubViews(self.nicknameDropDownView, self.wardDropDownView)
         
@@ -153,7 +222,7 @@ extension QuestionViewController {
             $0.height.equalTo(1)
         }
         self.registButtonContainerView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
         }
         self.registButton.snp.makeConstraints {

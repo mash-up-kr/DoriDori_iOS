@@ -7,17 +7,27 @@
 
 import UIKit
 
+enum QuestionType {
+    case user
+    case community
+}
+
 final class QuestionCoordinator: Coordinator {
+    
+    private let questionType: QuestionType
     let navigationController: UINavigationController
-    func start() {
-        let questionViewController = QuestionViewController(nibName: nil, bundle: nil)
-        navigationController.pushViewController(questionViewController, animated: true)
-    }
     
     init(
-        navigationController: UINavigationController
+        navigationController: UINavigationController,
+        questionType: QuestionType
     ) {
+        self.questionType = questionType
         self.navigationController = navigationController
     }
     
+    func start() {
+        let qeustionReactor = QuestionReactor(questionType: self.questionType)
+        let questionViewController = QuestionViewController(reactor: qeustionReactor)
+        navigationController.pushViewController(questionViewController, animated: true)
+    }
 }

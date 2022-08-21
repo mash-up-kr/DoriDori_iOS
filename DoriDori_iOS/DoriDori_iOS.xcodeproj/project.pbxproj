@@ -42,6 +42,7 @@
 		A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */; };
 		A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */; };
 		A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13128B223E400A003D1 /* DropDownView.swift */; };
+		A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13328B227AE00A003D1 /* QuestionReactor.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -159,6 +160,7 @@
 		A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCoordinator.swift; sourceTree = "<group>"; };
 		A24FD13128B223E400A003D1 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		A24FD13328B227AE00A003D1 /* QuestionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactor.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */,
 				A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */,
+				A24FD13328B227AE00A003D1 /* QuestionReactor.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
+				A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
 				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,
