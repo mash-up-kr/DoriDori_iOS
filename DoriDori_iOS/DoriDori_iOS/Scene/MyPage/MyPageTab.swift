@@ -27,7 +27,10 @@ enum MyPageTab: Equatable,
         case .questionReceived:
             let myPageRepository = MyPageRepository()
             let questionReceivedReactor = QuestionReceivedReactor(myPageRepository: myPageRepository)
-            return QuestionReceivedViewController(questionReceivedReactor: questionReceivedReactor)
+            return QuestionReceivedViewController(
+                questionReceivedReactor: questionReceivedReactor,
+                myPageRepository: myPageRepository
+            )
         case .seeAll: return SeeAllViewController()
         }
     }

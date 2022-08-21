@@ -15,15 +15,19 @@ final class QuestionReceivedReactor: Reactor {
     
     enum Action {
         case viewDidLoad
+        case commentRegist(text: String)
+        case didTapDeny(questionID: String)
     }
     enum Mutation {
         case updateLoadingIndicator(isLoading: Bool)
         case updateReceviedQuestion(questions: [MyPageOtherSpeechBubbleItemType])
+        case toast(text: String)
     }
     
     struct State {
         @Pulse var updateLoading: Bool = false
-        var questions: [MyPageOtherSpeechBubbleItemType]
+        @Pulse var toast: String?
+        @Pulse var questions: [MyPageOtherSpeechBubbleItemType]
     }
     
     private let myPageRepository: MyPageRequestable
@@ -34,6 +38,37 @@ final class QuestionReceivedReactor: Reactor {
         self.myPageRepository = myPageRepository
         self.initialState = .init(questions: [])
     }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .viewDidLoad:
+            return self.fetchReceivedQuestion(size: 20)
+        case .commentRegist(let text):
+            if text.isEmpty { return .just(.toast(text: "1글자 이상 적어주세요!")) }
+            else { return .just(.updateReceviedQuestion(questions: [])) }
+        case .didTapDeny(let questionID):
+            return self.denyQuestion(questionID: questionID)
+        }
+    }
+
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var _state = state
+        switch mutation {
+        case .updateLoadingIndicator(let update):
+            _state.updateLoading = update
+        case .updateReceviedQuestion(let questions):
+            _state.questions = questions
+        case .toast(let text):
+            _state.toast = text
+        }
+        return _state
+    }
+}
+
+// MARK: - Private functions
+
+extension QuestionReceivedReactor {
     
     private func fetchReceivedQuestion(size: Int) -> Observable<Mutation> {
         return self.myPageRepository.fetchReceivedQuestion(size: size)
@@ -48,11 +83,35 @@ final class QuestionReceivedReactor: Reactor {
             }
     }
     
+    private func denyQuestion(questionID: String) -> Observable<Mutation> {
+        return self.myPageRepository.denyQuestion(questionID: questionID)
+            .catch { error in
+                print(error)
+                return .empty()
+            }
+            .flatMap { [weak self] _ -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                var _questions = self.currentState.questions
+                let index: Int? = self.currentState.questions.firstIndex { question in
+                    return question.questionID == questionID
+                }
+                guard let index = index else { return .empty() }
+                _questions.remove(at: index)
+                return .concat(
+                    .just(.updateLoadingIndicator(isLoading: true)),
+                    .just(.updateReceviedQuestion(questions: _questions)),
+                    .just(.updateLoadingIndicator(isLoading: false))
+                )
+            }
+    }
+    
     private func setupQuestionItem(_ question: QuestionModel) -> MyPageOtherSpeechBubbleItemType? {
         guard let isAnonymous = question.anonymous else { return nil }
-        guard let createdAt = DoriDoriDateFormatter(dateString: question.createdAt ?? "").createdAtText() else { return nil }
+        guard let createdAt = DoriDoriDateFormatter(dateString: question.createdAt ?? "").createdAtText(),
+              let questionID = question.id else { return nil }
         if isAnonymous {
             return AnonymousMyPageSpeechBubbleCellItem(
+                questionID: questionID,
                 content: question.content ?? "",
                 location: question.location ?? "",
                 createdAt: createdAt,
@@ -61,6 +120,7 @@ final class QuestionReceivedReactor: Reactor {
             )
         } else {
             return IdentifiedMyPageSpeechBubbleCellItem(
+                questionID: questionID,
                 content: question.content ?? "",
                 location: question.location ?? "",
                 createdAt: createdAt,
@@ -72,21 +132,4 @@ final class QuestionReceivedReactor: Reactor {
         }
     }
    
-    func mutate(action: Action) -> Observable<Mutation> {
-        switch action {
-        case .viewDidLoad:
-            return self.fetchReceivedQuestion(size: 20)
-        }
-    }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var _state = state
-        switch mutation {
-        case .updateLoadingIndicator(let update):
-            _state.updateLoading = update
-        case .updateReceviedQuestion(let question):
-            _state.questions = question
-        }
-        return _state
-    }
 }

@@ -109,9 +109,6 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
     var didTapMoreButton: (() -> Void)?
     var didTapCommentButton: (() -> Void)?
     var didTapRefuseButton: (() -> Void)?
-//    var keyInputView: UIView? {
-//        didSet { self.commentButton.inputAccessoryView = keyInputView }
-//    }
     
     // MARK: - Init
     
@@ -158,8 +155,6 @@ extension MyPageOtherSpeechBubbleView {
         self.commentButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.didTapCommentButton?()
-                owner.commentButton.becomeFirstResponder()
-                print(owner.commentButton.inputView)
             }
             .disposed(by: self.disposeBag)
         

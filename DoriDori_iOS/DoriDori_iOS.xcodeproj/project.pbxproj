@@ -38,6 +38,10 @@
 		A24FD11428ABFF3300A003D1 /* ActionSheetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */; };
 		A24FD11628AD669900A003D1 /* KeyInputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11528AD669900A003D1 /* KeyInputButton.swift */; };
 		A24FD11A28B0B97000A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */; };
+		A24FD11C28B0BF0400A003D1 /* DoriDoriToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD11B28B0BF0400A003D1 /* DoriDoriToastView.swift */; };
+		A24FD12728B1410900A003D1 /* DoriDoriAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12628B1410900A003D1 /* DoriDoriAlert.swift */; };
+		A24FD12928B15D6600A003D1 /* QuestionReceivedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12828B15D6600A003D1 /* QuestionReceivedRepository.swift */; };
+		A24FD12B28B1601300A003D1 /* QuestionDenyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12A28B1601300A003D1 /* QuestionDenyRequest.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -149,6 +153,10 @@
 		A24FD11328ABFF3300A003D1 /* ActionSheetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAlertController.swift; sourceTree = "<group>"; };
 		A24FD11528AD669900A003D1 /* KeyInputButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyInputButton.swift; sourceTree = "<group>"; };
 		A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
+		A24FD11B28B0BF0400A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
+		A24FD12628B1410900A003D1 /* DoriDoriAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriAlert.swift; sourceTree = "<group>"; };
+		A24FD12828B15D6600A003D1 /* QuestionReceivedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReceivedRepository.swift; sourceTree = "<group>"; };
+		A24FD12A28B1601300A003D1 /* QuestionDenyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDenyRequest.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -329,6 +337,8 @@
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
 				A24FD11928B0B97000A003D1 /* DoriDoriActivityIndicator.swift */,
+				A24FD11B28B0BF0400A003D1 /* DoriDoriToastView.swift */,
+				A24FD12628B1410900A003D1 /* DoriDoriAlert.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -338,6 +348,7 @@
 			children = (
 				A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */,
 				A24FD10A28AA8A9900A003D1 /* ReceivedQuestionRequest.swift */,
+				A24FD12A28B1601300A003D1 /* QuestionDenyRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -430,6 +441,7 @@
 				A24FD10428AA890200A003D1 /* Model */,
 				A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */,
 				A24FD10228AA29DC00A003D1 /* QuestionReceivedReactor.swift */,
+				A24FD12828B15D6600A003D1 /* QuestionReceivedRepository.swift */,
 			);
 			path = QuestionReceived;
 			sourceTree = "<group>";
@@ -777,6 +789,7 @@
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
 				A24FD11428ABFF3300A003D1 /* ActionSheetAlertController.swift in Sources */,
+				A24FD12928B15D6600A003D1 /* QuestionReceivedRepository.swift in Sources */,
 				A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
@@ -784,6 +797,7 @@
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
+				A24FD12728B1410900A003D1 /* DoriDoriAlert.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				A24FD11A28B0B97000A003D1 /* DoriDoriActivityIndicator.swift in Sources */,
 				A24FD10328AA29DC00A003D1 /* QuestionReceivedReactor.swift in Sources */,
@@ -827,6 +841,7 @@
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
+				A24FD11C28B0BF0400A003D1 /* DoriDoriToastView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
@@ -836,6 +851,7 @@
 				A24FD10B28AA8A9900A003D1 /* ReceivedQuestionRequest.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
+				A24FD12B28B1601300A003D1 /* QuestionDenyRequest.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
 				A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */,

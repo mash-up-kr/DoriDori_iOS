@@ -66,12 +66,19 @@ final class QuestionReceivedViewController: UIViewController,
     private let didTapMoreButton: PublishRelay<Int>
     private let didTapCommentButton: PublishRelay<Int>
     private let didTapRefuseButton: PublishRelay<Int>
+    private let didTapDenyButton: PublishRelay<String> // questionID로 변경필요
+    private let commentText: PublishRelay<String>
+    private let myPageRepository: MyPageRequestable
     
     // MARK: - LifeCycels
     
     init(
-        questionReceivedReactor: QuestionReceivedReactor
+        questionReceivedReactor: QuestionReceivedReactor,
+        myPageRepository: MyPageRequestable
     ) {
+        self.didTapDenyButton = .init()
+        self.myPageRepository = myPageRepository
+        self.commentText = .init()
         self.didTapMoreButton = .init()
         self.didTapCommentButton = .init()
         self.didTapRefuseButton = .init()
@@ -117,6 +124,19 @@ final class QuestionReceivedViewController: UIViewController,
                 owner.indicatorView.stopAnimating()
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$questions)
+            .bind(to: self.questions)
+            .disposed(by: self.disposeBag)
+        
+        
+        reactor.pulse(\.$toast)
+            .compactMap { $0 }
+            .map { DoriDoriToastView(text: $0) }
+            .bind(with: self) { owner, toastView in
+                
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -129,44 +149,53 @@ extension QuestionReceivedViewController {
             .map { QuestionReceivedReactor.Action.viewDidLoad }
             .bind(to: action)
             .disposed(by: self.disposeBag)
+        
+        self.commentText
+            .map { QuestionReceivedReactor.Action.commentRegist(text: $0) }
+            .bind(to: action)
+            .disposed(by: self.disposeBag)
+        
+        
+        self.didTapDenyButton
+            .map { QuestionReceivedReactor.Action.didTapDeny(questionID: $0) }
+            .bind(to: action)
+            .disposed(by: self.disposeBag)
     }
     
     private func bind(state: Observable<QuestionReceivedReactor.State>) {
-        state.map(\.questions)
-            .bind(to: self.questions)
-            .disposed(by: self.disposeBag)
+
+
         
     }
     
     private func bind() {
 
         
-//
-//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-//            .compactMap { noti -> CGFloat? in
-//                guard let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil }
-//                      let keyboardRectangle = keyboardFrame.cgRectValue
-//                      return keyboardRectangle.height
-//            }
-//            .bind(with: self) { owner, height in
-//                print("height", height)
-//                owner.commentView.isHidden = false
-//                owner.commentView.snp.remakeConstraints { make in
-//                    make.bottom.equalToSuperview().inset(height)
-//                    make.height.equalTo(58)
-//                    make.leading.trailing.equalToSuperview()
-//                }
-//            }
-//            .disposed(by: self.disposeBag)
-//
-//        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-//            .bind(with: self) { owner, _ in
-//                owner.commentView.isHidden = true
-//                owner.commentView.snp.updateConstraints { make in
-//                    make.bottom.equalToSuperview().inset(0)
-//                }
-//            }
-//            .disposed(by: self.disposeBag)
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .compactMap { noti -> CGFloat? in
+                guard let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil }
+                      let keyboardRectangle = keyboardFrame.cgRectValue
+                      return keyboardRectangle.height
+            }
+            .bind(with: self) { owner, height in
+                print("height", height)
+                owner.commentView.isHidden = false
+                owner.commentView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(height)
+                    make.height.equalTo(58)
+                    make.leading.trailing.equalToSuperview()
+                }
+            }
+            .disposed(by: self.disposeBag)
+
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .bind(with: self) { owner, _ in
+                owner.commentView.isHidden = true
+                owner.commentView.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(0)
+                }
+            }
+            .disposed(by: self.disposeBag)
         
         self.questions
             .observe(on: MainScheduler.asyncInstance)
@@ -190,12 +219,7 @@ extension QuestionReceivedViewController {
         
         self.didTapCommentButton
             .bind(with: self) { owner, index in
-                print(index, "번 째 답변하기가 눌렸다!")
-//                owner.commentView.isHidden = false
-//                owner.commentTextField.becomeFirstResponder()
-//                owner.fakeTexTifled.becomeFirstResponder()
-//                print(owner.commentView.frame)
-//                print(owner.commentView)
+                owner.commentTextField.becomeFirstResponder()
             }
             .disposed(by: self.disposeBag)
         
@@ -217,16 +241,24 @@ extension QuestionReceivedViewController {
             .disposed(by: self.disposeBag)
         
         self.didTapRefuseButton
-            .bind(with: self) { owner, index in
-                print("\(index) 번 째 거절하기가 눌렸다!")
+            .compactMap { [weak self] index -> String? in
+                guard let self = self else { return nil }
+                return self.questions.value[safe: index]?.questionID
+            }
+            .bind(with: self) { owner, questionID in
+                DoriDoriAlert(title: NSAttributedString(string: "익명의 질문을 거절합니다."), message: "삭제한 질문은 복구할 수 없어요!", normalAction: .init(title: "취소", action: { [weak owner] in
+                    owner?.dismiss(animated: true)
+                }), emphasisAction: .init(title: "거절하기", action: {
+                    [weak owner] in
+                    owner?.didTapDenyButton.accept(questionID)
+                    owner?.dismiss(animated: true)
+                })).show()
             }
             .disposed(by: self.disposeBag)
         
         self.registButton.rx.throttleTap
-            .bind(with: self) { owner, _ in
-                owner.fakeTexTifled.resignFirstResponder()
-//                owner.commentView.isHidden = true
-            }
+            .withLatestFrom(self.commentTextField.rx.text.orEmpty)
+            .bind(to: self.commentText)
             .disposed(by: self.disposeBag)
 
     }

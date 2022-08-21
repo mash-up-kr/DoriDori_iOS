@@ -11,6 +11,7 @@ import RxSwift
 protocol MyPageRequestable: AnyObject {
     func fetchMyProfile(userID: UserID) -> Observable<UserInfoModel>
     func fetchReceivedQuestion(size: Int) -> Observable<[QuestionModel]>
+    func denyQuestion(questionID: String) -> Observable<Void>
 }
 
 final class MyPageRepository: MyPageRequestable {
@@ -26,4 +27,13 @@ final class MyPageRepository: MyPageRequestable {
             responseModel: ResponseModel<ReceivedQuestionModel>.self
         ).map(\.questions)
     }
+    func denyQuestion(questionID: String) -> Observable<Void> {
+        return Network().request(
+            api: QuestionDenyRequest(questionID: questionID),
+            responseModel: ResponseModel<EmptyModel>.self
+        ).map { _ in return }
+    }
+}
+
+struct EmptyModel: Codable {
 }

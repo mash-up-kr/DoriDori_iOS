@@ -13,4 +13,5 @@ protocol MyPageOtherSpeechBubbleItemType {
     var createdAt: String { get }
     var tags: [String] { get }
     var userName: String { get }
+    var questionID: String { get }
 }

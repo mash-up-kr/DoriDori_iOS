@@ -10,6 +10,7 @@ import Kingfisher
 import RxRelay
 
 struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
+    let questionID: String
     let content: String
     let location: String
     let createdAt: String
@@ -20,6 +21,7 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
 }
 
 struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
+    let questionID: String
     let content: String
     let location: String
     let createdAt: String
