@@ -28,7 +28,7 @@ extension String {
     }
     
     var authNumberCheck: Bool {
-        if self.count >= 1 { return true }
+        if self.count >= 1 && !self.isEmpty { return true }
         else { return false }
     }
 }

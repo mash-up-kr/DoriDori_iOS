@@ -59,17 +59,13 @@ final class EmailSignUpViewController: UIViewController {
         
         
         let output = viewModel.transform(input: input)
-        
+                
         output.isValidEmail.bind { [weak self] isValid in
-            self?.sendToAuthNumberButton.isEnabled = isValid
-            self?.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
-            self?.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
+            self?.buttonValid(isValid)
         }.disposed(by: disposeBag)
         
         output.inputAuthNumber.bind { [weak self] isValid in
-            self?.sendToAuthNumberButton.isEnabled = isValid
-            self?.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
-            self?.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
+            self?.buttonValid(isValid)
         }.disposed(by: disposeBag)
         
         output.sendEmail.bind(onNext: { [weak self] _ in
@@ -94,6 +90,12 @@ final class EmailSignUpViewController: UIViewController {
             self?.authNumberTextField.underLineView.backgroundColor = UIColor(named: "red500")
         }).disposed(by: disposeBag)
         
+    }
+    
+    private func buttonValid(_ isValid: Bool) {
+        self.sendToAuthNumberButton.isEnabled = isValid
+        self.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+        self.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
     }
     
 }

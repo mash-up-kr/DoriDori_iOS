@@ -34,7 +34,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         }
         
         let inputAuthNumberOutput = input.authNumber.map { str -> Bool in
-            if str.count >= 1 { return true }
+            if str.authNumberCheck { return true }
             else { return false }
         }
         
