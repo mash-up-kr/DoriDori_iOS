@@ -9,18 +9,14 @@ import Foundation
 import ReactorKit
 
 enum SignInButtonType {
-    case apple
-    case kakao
-    case email
+    case emailSignIn
     case emailSignup
 }
 
 final class SignInMainViewModel: Reactor {
     
     enum Action {
-        case kakaoLoginButtonDidTap
-        case appleLoginButtonDidTap
-        case emailLoginButtonDidTap
+        case emailSignInButtonDidTap
         case emailSignupButtonDidTap
     }
     
@@ -41,14 +37,8 @@ final class SignInMainViewModel: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .kakaoLoginButtonDidTap:
-            return .just(.router(to: .kakao))
-            
-        case .appleLoginButtonDidTap:
-            return .just(.router(to: .apple))
-            
-        case .emailLoginButtonDidTap:
-            return .just(.router(to: .email))
+        case .emailSignInButtonDidTap:
+            return .just(.router(to: .emailSignIn))
             
         case .emailSignupButtonDidTap:
             return .just(.router(to: .emailSignup))

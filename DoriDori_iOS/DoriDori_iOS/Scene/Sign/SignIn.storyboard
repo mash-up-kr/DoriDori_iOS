@@ -34,50 +34,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CjZ-em-D0Z">
-                                <rect key="frame" x="30" y="512" width="315" height="246"/>
+                                <rect key="frame" x="30" y="640" width="315" height="118"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djE-YY-hTG">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="54"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="9Wj-YB-LMF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Apple로 로그인">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6O-DQ-pfz">
-                                        <rect key="frame" x="0.0" y="64" width="315" height="54"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="uzF-gp-Puz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="카카오로 로그인">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiE-KS-Kul">
-                                        <rect key="frame" x="0.0" y="128" width="315" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="1qj-q1-TSi"/>
                                         </constraints>
@@ -99,10 +59,19 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="_borderWidth">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-a5-QAD">
-                                        <rect key="frame" x="0.0" y="192" width="315" height="54"/>
+                                        <rect key="frame" x="0.0" y="64" width="315" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="ByD-XP-KsZ"/>
                                         </constraints>
@@ -129,10 +98,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="appleLoginButton" destination="djE-YY-hTG" id="HVU-b8-MM6"/>
                         <outlet property="emailLoginButton" destination="BiE-KS-Kul" id="Ah3-ob-6zS"/>
                         <outlet property="emailSignUpButton" destination="G1e-a5-QAD" id="J5W-1n-yR8"/>
-                        <outlet property="kakaoLoginButton" destination="x6O-DQ-pfz" id="Kol-BH-Hpd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -588,42 +555,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nah-sJ-Bxj">
-                                <rect key="frame" x="30" y="134.66666666666666" width="315" height="189.99999999999997"/>
+                                <rect key="frame" x="30" y="134.66666666666663" width="315" height="250"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G2n-8b-X1u">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="G2n-8b-X1u" secondAttribute="bottom" id="6GD-dy-22e"/>
-                                            <constraint firstItem="G2n-8b-X1u" firstAttribute="leading" secondItem="OOw-eb-yzb" secondAttribute="leading" id="XuR-xg-m9D"/>
-                                            <constraint firstAttribute="height" constant="70" id="gtD-X0-tJX"/>
-                                            <constraint firstAttribute="trailing" secondItem="G2n-8b-X1u" secondAttribute="trailing" id="k2r-vW-cvW"/>
-                                            <constraint firstItem="G2n-8b-X1u" firstAttribute="top" secondItem="OOw-eb-yzb" secondAttribute="top" id="v2p-vz-HQH"/>
+                                            <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw">
-                                        <rect key="frame" x="0.0" y="120" width="315" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aBK-Ij-ZzI">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
-                                            </textField>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150.00000000000003" width="315" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="aBK-Ij-ZzI" secondAttribute="bottom" id="D0F-nK-438"/>
-                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="top" secondItem="6gC-NK-wqw" secondAttribute="top" id="Prm-KE-k2p"/>
-                                            <constraint firstAttribute="trailing" secondItem="aBK-Ij-ZzI" secondAttribute="trailing" id="Xk1-dx-Y14"/>
-                                            <constraint firstItem="aBK-Ij-ZzI" firstAttribute="leading" secondItem="6gC-NK-wqw" secondAttribute="leading" id="aJx-Zi-WQF"/>
-                                            <constraint firstAttribute="height" constant="70" id="ckL-Iw-AQh"/>
+                                            <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -647,9 +592,6 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tapConfirmButton:" destination="S2E-8W-ItQ" eventType="touchUpInside" id="JHg-z9-Yww"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KSr-KW-x78"/>
@@ -667,8 +609,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="authNumberTextField" destination="aBK-Ij-ZzI" id="fkm-TW-GN4"/>
-                        <outlet property="emailTextField" destination="G2n-8b-X1u" id="JeG-fC-nqo"/>
+                        <outlet property="authNumberTextField" destination="6gC-NK-wqw" id="y3K-De-pVI"/>
+                        <outlet property="emailTextField" destination="OOw-eb-yzb" id="Pb6-SY-l0Z"/>
+                        <outlet property="sendButtonButtomConstraint" destination="Glv-bS-unC" id="ayH-YH-Yvh"/>
+                        <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNB-KD-ImO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -782,9 +726,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

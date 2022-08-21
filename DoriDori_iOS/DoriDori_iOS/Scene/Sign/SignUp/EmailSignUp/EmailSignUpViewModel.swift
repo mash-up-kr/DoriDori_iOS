@@ -5,33 +5,85 @@
 //  Created by 김지인 on 2022/07/20.
 //
 
-import Foundation
-import ReactorKit
+import RxSwift
+import RxCocoa
 
-final class EmailSignUpViewModel: Reactor {
+final class EmailSignUpViewModel: ViewModelProtocol {
     
-    enum Action {
+    private let repository: EmailCertificationRepository = .init()
+    private let buttonType: BehaviorRelay<ButtonType> = .init(value: .sendEmail)
+    
+    struct Input {
+        let email: Observable<String>
+        let authNumber: Observable<String>
+        let sendButtonTap: Observable<Void>
+        let authNumberResendButton: Observable<Void>
+    }
+    
+    struct Output {
+        let isValidEmail: Observable<Bool>
+        let inputAuthNumber: Observable<Bool>
+        let sendEmail: Observable<Void>
+        let finalConfirm: Observable<Void>
+        let errorMessage: Signal<String>
+    }
+    
+    func transform(input: Input) -> Output {
+        let buttonisValidOutput = input.email.map { str -> Bool in
+            if str.emailValidCheck { return true }
+            else { return false }
+        }
         
-    }
-    enum Mutation {
+        let inputAuthNumberOutput = input.authNumber.map { str -> Bool in
+            if str.authNumberCheck { return true }
+            else { return false }
+        }
         
-    }
-    struct State {
+        let sendEmailTap = input.sendButtonTap.filter { [weak self] _ in
+            self?.buttonType.value == .sendEmail
+        }
         
+        let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
+            .merge()
+            .withLatestFrom(input.email)
+            .flatMapLatest { [weak self] email -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                return self.repository.requestEmail(email: email)
+                    .catch({ error in
+                        print(error) // TODO: 서버 에러
+                        return .empty()
+                    }).map { _ in
+                        return
+                    }.do(onNext: { [weak self] _ in
+                        self?.buttonType.accept(.checkAuthNumber)
+                    })}
+            .observe(on: MainScheduler.instance)
+        
+        let errorRelay = PublishRelay<String>()
+        let confirmOutput = input.sendButtonTap
+            .filter { [weak self] _ in
+                self?.buttonType.value == .checkAuthNumber
+            }.withLatestFrom(Observable.combineLatest(input.email, input.authNumber) { ($0, $1) })
+            .flatMapLatest { [weak self] email, authNumber -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                return self.repository.confirmAuthNumber(email: email, authNumber: authNumber)
+                    .catch({ error in
+                        guard let errorModel = error.toErrorModel else { return .empty() }
+                        if errorModel.code == "CERTIFICATE_FAILED" {
+                            guard let errorMsg = errorModel.message else {
+                                return .empty()
+                            }
+                            errorRelay.accept(errorMsg)
+                        }
+                        return .empty()
+                    }).map { _ in
+                        return
+                    }.do(onNext: { [weak self] _ in
+                        self?.buttonType.accept(.sendEmail)
+                    })}
+            .observe(on: MainScheduler.instance)
+        
+        return Output(isValidEmail: buttonisValidOutput, inputAuthNumber: inputAuthNumberOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput, errorMessage: errorRelay.asSignal())
     }
-
-    let initialState: State
-
-    init() {
-        self.initialState = State()
-    }
-
-    func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
-    }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        return state
-    }
+    
 }
