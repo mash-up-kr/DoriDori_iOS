@@ -94,7 +94,8 @@ final class EmailSignUpViewController: UIViewController {
     private func buttonValid(_ isValid: Bool) {
         self.sendToAuthNumberButton.isEnabled = isValid
         self.sendToAuthNumberButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
-        self.sendToAuthNumberButton.setTitleColor(UIColor(named: "darkGray"), for: .normal)
+        let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
+        self.sendToAuthNumberButton.setTitleColor(buttonTitleColor, for: .normal)
     }
     
 }
