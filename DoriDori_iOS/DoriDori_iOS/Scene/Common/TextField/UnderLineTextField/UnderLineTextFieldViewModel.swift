@@ -6,12 +6,9 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-
 
 class UnderLineTextFieldViewModel: ViewModelProtocol {
     
@@ -28,6 +25,26 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     var totalStringCount: Int = 0
     var authNumberTimer: Bool = true
     var authNumberResend: Bool = true
+    
+    enum TextFieldType: String {
+        case email = "이메일"
+        case password = "비밀번호"
+        case nickname = "닉네임"
+        case authNumber = "인증번호"
+    }
+
+    enum TextFieldPlaceHolder: String {
+        case email = "DoriDori@naver.com"
+        case password = "비밀번호 입력"
+        case nickname = "ex) 도리를 찾아서"
+        case authNumber = "6자리 숫자"
+    }
+
+    enum TextFieldErrorMessage: String {
+        case email = "이메일 주소를 확인해주세요."
+        case password = "비밀번호를 확인해주세요."
+        case nickname = "닉네임은 7자리 이내로 설정해주세요."
+    }
 
     struct Input {
         let inputString: Observable<String>
@@ -78,9 +95,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         return Output(inputIsValid: validCheckOutput)
     }
     
-  
-
-    private func configureTextField(_ type: TextFieldType) {
+      private func configureTextField(_ type: TextFieldType) {
         switch type {
         case .email:
             errorMessage = .email

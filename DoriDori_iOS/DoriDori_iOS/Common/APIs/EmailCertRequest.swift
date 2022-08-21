@@ -7,7 +7,9 @@
 
 import Foundation
 
-class EmailCertRequest: Requestable {
+struct EmailCertRequest: Requestable {
+    var headers: HTTPHeaders?
+    
     private let email: String
     private let certificationNumber: String
     

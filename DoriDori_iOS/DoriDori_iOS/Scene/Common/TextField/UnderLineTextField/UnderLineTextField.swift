@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class UnderLineTextField: DesignView {
+class UnderLineTextField: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -36,8 +36,22 @@ class UnderLineTextField: DesignView {
         }
     }
 
-    override func loaded() {
-        super.loaded()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadView()
+    }
+        
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadView()
+    }
+    
+    private func loadView() {
+        guard let view = Bundle.main.loadNibNamed("UnderLineTextField",
+                                       owner: self, options: nil)?.first as? UIView
+                                        else { return }
+        view.frame = bounds
+        addSubview(view)
     }
     
     private func bind(viewModel: UnderLineTextFieldViewModel) {
