@@ -5,8 +5,24 @@
 //  Created by 김지인 on 2022/07/30.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
 
-class PasswordViewModel {
+final class PasswordViewModel: ViewModelProtocol {
+    struct Input {
+        let password: Observable<String>
+        let passwordConfirm: Observable<String>
+        let confirmButtonTap: Observable<Void>
+    }
     
+    struct Output {
+        let pwConfirmState: Observable<Bool>
+    }
+    
+    func transform(input: Input) -> Output {
+        let pwConfirmState = Observable.combineLatest(input.password.filter { !$0.isEmpty }, input.passwordConfirm.filter { !$0.isEmpty }) { p1, p2 in
+            p1 == p2 && p1.passwordValidCheck
+        }
+        return Output(pwConfirmState: pwConfirmState)
+    }
 }
