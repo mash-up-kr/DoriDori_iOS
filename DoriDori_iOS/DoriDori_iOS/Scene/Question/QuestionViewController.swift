@@ -9,6 +9,8 @@ import UIKit
 import ReactorKit
 import RxCocoa
 import RxSwift
+import RxGesture
+import DropDown
 
 final class QuestionViewController: UIViewController,
                                     View {
@@ -46,6 +48,7 @@ final class QuestionViewController: UIViewController,
     
     private let nicknameDropDownView = DropDownView(title: "닉네임")
     private let wardDropDownView = DropDownView(title: "현위치")
+    private let dropDownView = DropDown()
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
@@ -124,6 +127,7 @@ final class QuestionViewController: UIViewController,
         self.setupLayouts()
         self.bind(reactor: self.reactor)
         self.bind()
+        self.configure(self.dropDownView)
         self.view.backgroundColor = .darkGray
     }
     
@@ -197,10 +201,40 @@ final class QuestionViewController: UIViewController,
 
 extension QuestionViewController {
     
+    private func configure(_ dropDown: DropDown) {
+        dropDown.cornerRadius = 10
+        dropDown.width = 128
+        dropDown.textColor = .white
+        dropDown.backgroundColor = UIColor.gray800
+        dropDown.selectedTextColor = .lime300
+        dropDown.selectionBackgroundColor = .gray800
+        dropDown.cellHeight = 40
+    }
+    
     private func bind() {
         self.navigationBackButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.coordinator.popViewController(animated: true)
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.nicknameDropDownView.rx.tapGesture()
+            .when(.recognized)
+            .bind(with: self) { owner, _ in
+                owner.dropDownView.anchorView = owner.nicknameDropDownView
+                owner.dropDownView.bottomOffset = CGPoint(x: 0, y: (owner.dropDownView.anchorView?.plainView.bounds.height)!)
+                owner.dropDownView.dataSource = ["익명", "닉네임"]
+                owner.dropDownView.show()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.wardDropDownView.rx.tapGesture()
+            .when(.recognized)
+            .bind(with: self) { owner, _ in
+                owner.dropDownView.anchorView = owner.wardDropDownView
+                owner.dropDownView.bottomOffset = CGPoint(x: 0, y: (owner.dropDownView.anchorView?.plainView.bounds.height)!)
+                owner.dropDownView.dataSource = ["현위치", "강남구", "서초구", "관악구", "집", "본가", "마음속", "침대속", "도리도리", "도도도리리리"]
+                owner.dropDownView.show()
             }
             .disposed(by: self.disposeBag)
     }
