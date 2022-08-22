@@ -5,33 +5,20 @@
 //  Created by 김지인 on 2022/07/20.
 //
 
-import Foundation
-import ReactorKit
+import UIKit
 
-final class EmailSignInViewModel: Reactor {
+class EmailSignInViewModel: ViewModelProtocol {
+    struct Input {
+        
+    }
     
-    enum Action {
+    struct Output {
+        
         
     }
-    enum Mutation {
-        
+    
+    func transform(input: Input) -> Output {
+        return Output()
     }
-    struct State {
-        
-    }
-
-    let initialState: State
-
-    init() {
-        self.initialState = State()
-    }
-
-    func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
-    }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        return state
-    }
+    
 }

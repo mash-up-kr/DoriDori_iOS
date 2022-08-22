@@ -120,36 +120,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="gkj-4d-zL0">
-                                <rect key="frame" x="30" y="134.66666666666666" width="315" height="161.99999999999997"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozD-EX-Tlk">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ozD-EX-Tlk" secondAttribute="trailing" id="HC8-kT-ZS4"/>
-                                            <constraint firstAttribute="height" constant="70" id="LiT-TT-m4I"/>
-                                            <constraint firstItem="ozD-EX-Tlk" firstAttribute="top" secondItem="Fab-yM-Zf3" secondAttribute="top" id="PKT-8a-nsD"/>
-                                            <constraint firstAttribute="bottom" secondItem="ozD-EX-Tlk" secondAttribute="bottom" id="S7Z-Y1-pbW"/>
-                                            <constraint firstItem="ozD-EX-Tlk" firstAttribute="leading" secondItem="Fab-yM-Zf3" secondAttribute="leading" id="uYC-CX-9vb"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW">
-                                        <rect key="frame" x="0.0" y="92" width="315" height="70"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="cYA-q7-90S"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="132.66666666666666" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="LiT-TT-m4I"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="282.66666666666669" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-p3-aUA">
                                 <rect key="frame" x="54" y="664" width="274" height="10"/>
                                 <subviews>
@@ -226,18 +210,21 @@
                         <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
                         <color key="backgroundColor" name="darkGray"/>
                         <constraints>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="2B9-Qf-7jB"/>
                             <constraint firstItem="Yq1-p3-aUA" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="54" id="APF-4k-6ju"/>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="Ecj-hr-KSg"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="wI5-eu-s2n" secondAttribute="trailing" constant="30" id="IBd-gp-0Ld"/>
                             <constraint firstItem="w1i-dn-95g" firstAttribute="top" secondItem="99Z-CD-qDP" secondAttribute="top" constant="30" id="JqX-tY-3Z1"/>
-                            <constraint firstItem="gkj-4d-zL0" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="LmV-Qq-8qp"/>
                             <constraint firstItem="wI5-eu-s2n" firstAttribute="top" secondItem="Yq1-p3-aUA" secondAttribute="bottom" constant="30" id="O0S-qx-Cfj"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="Yq1-p3-aUA" secondAttribute="trailing" constant="47" id="PUp-wI-U0J"/>
                             <constraint firstItem="wI5-eu-s2n" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="WcJ-VA-ilq"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="a1H-Cj-Sb6"/>
                             <constraint firstAttribute="bottom" secondItem="wI5-eu-s2n" secondAttribute="bottom" constant="54" id="dGT-uF-19R"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="eS6-M7-9jS"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" constant="30" id="fJL-4B-gEj"/>
-                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="gkj-4d-zL0" secondAttribute="trailing" constant="30" id="oUd-cY-3Um"/>
                             <constraint firstItem="w1i-dn-95g" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="pD9-XL-r0A"/>
-                            <constraint firstItem="gkj-4d-zL0" firstAttribute="top" secondItem="w1i-dn-95g" secondAttribute="bottom" constant="32" id="q7d-6G-dVP"/>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="top" secondItem="Fab-yM-Zf3" secondAttribute="bottom" constant="50" id="xS2-yq-ASW"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="top" secondItem="w1i-dn-95g" secondAttribute="bottom" constant="30" id="zK5-Qa-Icq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uzc-Ab-ds7"/>
@@ -245,8 +232,11 @@
                         <outlet property="emailFindButton" destination="RpO-8x-h3Z" id="4na-DS-g4C"/>
                         <outlet property="emailPwFindStackView" destination="Yq1-p3-aUA" id="Yry-aR-GgO"/>
                         <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
+                        <outlet property="emailTextField" destination="Fab-yM-Zf3" id="u1i-3l-t2r"/>
+                        <outlet property="loginBUtton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>
                         <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
                         <outlet property="passwordFindButton" destination="GgA-VY-mcZ" id="MWR-7T-xGt"/>
+                        <outlet property="passwordTextField" destination="wb8-Zo-YUW" id="aE8-8U-v1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0i-nB-gtP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

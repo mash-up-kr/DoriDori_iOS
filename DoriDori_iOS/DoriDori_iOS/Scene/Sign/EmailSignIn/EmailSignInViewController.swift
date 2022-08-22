@@ -6,17 +6,19 @@
 //
 
 import UIKit
-import ReactorKit
+import RxSwift
 
-
-class EmailSignInViewController: UIViewController, StoryboardView {
-    typealias Reactor = EmailSignInViewModel
-
-    @IBOutlet weak var emailPwFindStackView: UIStackView!
-    @IBOutlet weak var emailSignUpButton: UIButton!
-    @IBOutlet weak var emailFindButton: UIButton!
-    @IBOutlet weak var passwordFindButton: UIButton!    
-    @IBOutlet weak var loginButtomConstraint: NSLayoutConstraint!
+final class EmailSignInViewController: UIViewController {
+    @IBOutlet private weak var emailTextField: UnderLineTextField!
+    @IBOutlet private weak var passwordTextField: UnderLineTextField!
+    
+    //하단
+    @IBOutlet private weak var emailPwFindStackView: UIStackView!
+    @IBOutlet private weak var emailSignUpButton: UIButton!
+    @IBOutlet private weak var emailFindButton: UIButton!
+    @IBOutlet private weak var passwordFindButton: UIButton!
+    @IBOutlet private weak var loginButtomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var loginBUtton: UIButton!
     
     private let keyboardUpButtomConstraint: CGFloat = 20
     private let keyboardDownButtomConstraint: CGFloat = 54
@@ -37,7 +39,7 @@ class EmailSignInViewController: UIViewController, StoryboardView {
 
     // MARK: - Bind ViewModel
 
-    func bind(reactor viewModel: EmailSignInViewModel) {
+    func bind(viewModel: EmailSignInViewModel) {
 
     }
     
