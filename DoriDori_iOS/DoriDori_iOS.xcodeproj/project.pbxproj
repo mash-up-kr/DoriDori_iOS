@@ -55,6 +55,7 @@
 		A24FD14E28B3571200A003D1 /* AnonymousDropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */; };
 		A24FD15128B3C2F300A003D1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15028B3C2F300A003D1 /* LocationManager.swift */; };
 		A24FD15328B3F8E600A003D1 /* CLLocationManger+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */; };
+		A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -183,6 +184,7 @@
 		A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousDropDownItem.swift; sourceTree = "<group>"; };
 		A24FD15028B3C2F300A003D1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManger+Rx.swift"; sourceTree = "<group>"; };
+		A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationError.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				A24FD15028B3C2F300A003D1 /* LocationManager.swift */,
 				A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */,
+				A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */,
 			);
 			path = LocationManager;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,
 				A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */,
+				A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */,
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,

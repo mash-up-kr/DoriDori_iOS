@@ -147,7 +147,7 @@ final class QuestionViewController: UIViewController,
         debugPrint("\(self) deinit")
     }
     
-    func bind(reactor: QuestionReactor) {
+    private func bind(action: ActionSubject<QuestionReactor.Action>) {
         
         Observable.merge(
             self.registButton.rx.throttleTap.asObservable(),
@@ -155,17 +155,17 @@ final class QuestionViewController: UIViewController,
         )
         .map { _ in return }
         .map { QuestionReactor.Action.didTapRegistQuestion }
-        .bind(to: reactor.action)
+        .bind(to: action)
         .disposed(by: self.disposeBag)
         
         self.textView.rx.text.orEmpty
             .map { QuestionReactor.Action.didEditing(text: $0) }
-            .bind(to: reactor.action)
+            .bind(to: action)
             .disposed(by: self.disposeBag)
         
         self.didSelectNicknameItem
             .map { QuestionReactor.Action.didSelectNicknameItem(index: $0) }
-            .bind(to: reactor.action)
+            .bind(to: action)
             .disposed(by: self.disposeBag)
  
         self.didSelectWardItem
@@ -175,8 +175,12 @@ final class QuestionViewController: UIViewController,
         
         self.viewDidLoadStream
             .map { QuestionReactor.Action.viewDidLoad }
-            .bind(to: reactor.action)
+            .bind(to: action)
             .disposed(by: self.disposeBag)
+    }
+    
+    func bind(reactor: QuestionReactor) {
+        self.bind(action: reactor.action)
         
         // MARK: State binding
         
@@ -270,6 +274,12 @@ final class QuestionViewController: UIViewController,
             }
             .disposed(by: self.disposeBag)
         
+        reactor.pulse(\.$text)
+            .bind(with: self) { owner, text in
+                owner.textView.text = text
+            }
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$myWardDropDownDataSources)
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
@@ -293,6 +303,20 @@ final class QuestionViewController: UIViewController,
             .bind(with: self) { owner, questionType in
                 owner.wardDropDownView.isHidden = true
                 owner.wardDropDown.isHidden = true
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$isLoading)
+            .filter { $0 }
+            .bind(with: self) { owner, _ in
+                // TODO: 브랜치 머지하면 인디케이터 start함수 추가
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$isLoading)
+            .filter { !$0 }
+            .bind(with: self) { owner, _ in
+                // TODO: 브랜치 머지하면 인디케이터 stop 함수 추가
             }
             .disposed(by: self.disposeBag)
     }
@@ -406,6 +430,7 @@ extension QuestionViewController {
         self.registButtonContainerView.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(74)
         }
         self.registButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(20)

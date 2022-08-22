@@ -99,7 +99,7 @@ final class QuestionReactor: Reactor {
             if text.isEmpty { _state.canRegistQuestion = false }
             else { _state.canRegistQuestion = true }
             _state.textCount = self.setupTextCount(count: text.count)
-            _state.text = text
+            _state.text = String(text.prefix(Self.Constant.maxTextCount))
         case .postQuestion:
             _state.shouldPopViewController = true
         case .wardListItems(let wards):
@@ -137,6 +137,11 @@ final class QuestionReactor: Reactor {
         }
         return _state
     }
+}
+
+// MARK: - Private functions
+
+extension QuestionReactor {
     
     private func setupTextCount(count: Int) -> String {
         return "\(count)/\(Self.Constant.maxTextCount)"
@@ -194,11 +199,11 @@ final class QuestionReactor: Reactor {
     private func transformModelsToItems(wardModels: [MyWardModel]) -> Observable<Mutation> {
        return self.locationManager.getLocation()
             .take(1)
-            .debug("🍀")
             .flatMapLatest { result -> Observable<Mutation> in
                 switch result {
                 case .failure(let error):
-                    print("🍀", error.errorDescription)
+                    // TODO: 권한 설정 허용해달라는 팝업 넣어야됨
+                    debugPrint(error.errorDescription)
                     return .empty()
                 case .success(let location):
                     var items = [MyWardDropDownItem(
@@ -207,7 +212,6 @@ final class QuestionReactor: Reactor {
                         latitude: location.latitude,
                         isSelected: true)
                     ]
-                    print("🍀 현위치 latitude \(location.latitude), longitude: \(location.longitude)")
 
                     let wardItems = wardModels.compactMap { ward -> MyWardDropDownItem? in
                         guard let name = ward.name,
