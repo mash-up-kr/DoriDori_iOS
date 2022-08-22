@@ -19,7 +19,7 @@ struct QuestionToUserRequest: Requestable {
     var path: String { "/api/v1/questions" }
     var parameters: Parameter? {
         [
-            "userId": self.userID,
+            "toUserId": self.userID,
             "content": self.content,
             "longitude": self.longitude,
             "latitude": self.latitude,

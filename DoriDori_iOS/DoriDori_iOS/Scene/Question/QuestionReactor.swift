@@ -34,6 +34,7 @@ final class QuestionReactor: Reactor {
     }
     
     struct State {
+        @Pulse var questionType: QuestionType
         @Pulse var text: String
         @Pulse var textCount: String
         @Pulse var canRegistQuestion: Bool
@@ -45,7 +46,6 @@ final class QuestionReactor: Reactor {
     }
     
     let initialState: State
-    private let questionType: QuestionType
     private let questionRepository: QuestionRequestable
     
     init(
@@ -53,8 +53,8 @@ final class QuestionReactor: Reactor {
         questionRepository: QuestionRequestable
     ) {
         self.questionRepository = questionRepository
-        self.questionType = questionType
         self.initialState = .init(
+            questionType: questionType,
             text: "",
             textCount: "0/\(Constant.maxTextCount)",
             canRegistQuestion: false,
@@ -76,7 +76,7 @@ final class QuestionReactor: Reactor {
         case .didEditing(let text):
             return .just(.didEditing(text: text))
         case .didTapRegistQuestion:
-            return self.postQuestion(questionType: self.questionType)
+            return self.postQuestion(questionType: self.currentState.questionType)
         case .viewDidLoad:
             return self.fetchWradList()
         case .didSelectNicknameItem(let index):
@@ -144,7 +144,7 @@ final class QuestionReactor: Reactor {
                 content: self.currentState.text,
                 longitude: self.currentState.location?.longitude ?? 127.024099,
                 latitude: self.currentState.location?.latitude ?? 37.504030,
-                anonymous: false
+                anonymous: self.currentState.isAnonymous
             )
             .map { _ in return }
         case .community:

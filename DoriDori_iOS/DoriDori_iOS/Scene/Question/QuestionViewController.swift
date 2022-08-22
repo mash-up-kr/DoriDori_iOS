@@ -243,7 +243,6 @@ final class QuestionViewController: UIViewController,
             .withLatestFrom(reactor.pulse(\.$myWardDropDownDataSources))
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, dataSource in
-                print("🤔 datasource를 클릭했다.", dataSource)
                 owner.wardDropDown.anchorView = owner.wardDropDownView
                 if let offsetY = owner.wardDropDown.anchorView?.plainView.bounds.height {
                     owner.wardDropDown.bottomOffset = CGPoint(x: 0, y: offsetY)
@@ -280,6 +279,19 @@ final class QuestionViewController: UIViewController,
                         return
                     }
                 }
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$questionType)
+            .filter { questionType in
+                switch questionType {
+                case .user: return true
+                default: return false
+                }
+            }
+            .bind(with: self) { owner, questionType in
+                owner.wardDropDownView.isHidden = true
+                owner.wardDropDown.isHidden = true
             }
             .disposed(by: self.disposeBag)
     }
@@ -332,12 +344,10 @@ extension QuestionViewController {
             .disposed(by: self.disposeBag)
         
         self.nicknameDropDown.selectionAction = { [weak self] index, _ in
-            print("🤔닉네임에서 선택된 인덱스는 \(index)")
             self?.didSelectNicknameItem.accept(index)
             self?.nicknameDropDownView.shouldChangeToggleImage(isDropDowned: false)
         }
         self.wardDropDown.selectionAction = { [weak self] index, _ in
-            print("🤔와드에서 선택된 인덱스는 \(index)")
             self?.didSelectWardItem.accept(index)
             self?.wardDropDownView.shouldChangeToggleImage(isDropDowned: false)
         }
