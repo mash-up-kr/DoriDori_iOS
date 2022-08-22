@@ -48,7 +48,8 @@ final class QuestionViewController: UIViewController,
     
     private let nicknameDropDownView = DropDownView(title: "닉네임")
     private let wardDropDownView = DropDownView(title: "현위치")
-    private let dropDownView = DropDown()
+    private let nicknameDropDown = DropDown()
+    private let wardDropDown = DropDown()
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
@@ -105,6 +106,9 @@ final class QuestionViewController: UIViewController,
     let reactor: QuestionReactor
     let coordinator: QuestionCoordinator
     var disposeBag: DisposeBag
+    private let viewDidLoadStream: PublishRelay<Void>
+    private let didSelectNicknameItem: PublishRelay<Int>
+    private let didSelectWardItem: PublishRelay<Int>
     
     // MARK: - LifeCycles
     
@@ -112,9 +116,12 @@ final class QuestionViewController: UIViewController,
         reactor: QuestionReactor,
         coordinator: QuestionCoordinator
     ) {
+        self.viewDidLoadStream = .init()
         self.reactor = reactor
         self.coordinator = coordinator
         self.disposeBag = .init()
+        self.didSelectNicknameItem = .init()
+        self.didSelectWardItem = .init()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -127,8 +134,12 @@ final class QuestionViewController: UIViewController,
         self.setupLayouts()
         self.bind(reactor: self.reactor)
         self.bind()
-        self.configure(self.dropDownView)
+        self.configure(self.nicknameDropDown)
+        self.configure(self.wardDropDown)
+        self.configureDropDownToggle()
         self.view.backgroundColor = .darkGray
+        
+        self.viewDidLoadStream.accept(())
     }
     
     deinit {
@@ -151,6 +162,20 @@ final class QuestionViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didSelectNicknameItem
+            .map { QuestionReactor.Action.didSelectNicknameItem(index: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+ 
+        self.didSelectWardItem
+            .map { QuestionReactor.Action.didSelectWradItem(index: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        self.viewDidLoadStream
+            .map { QuestionReactor.Action.viewDidLoad }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         
         // MARK: State binding
         
@@ -194,21 +219,109 @@ final class QuestionViewController: UIViewController,
                 owner.registNavigationButton.setTitleColor(.gray700, for: .normal)
             }
             .disposed(by: self.disposeBag)
+        
+        self.nicknameDropDownView.rx.tapGesture()
+            .when(.recognized)
+            .withLatestFrom(reactor.pulse(\.$nicknameDropDownDataSource))
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, dataSource in
+                owner.nicknameDropDown.anchorView = owner.nicknameDropDownView
+                if let offsetY = owner.nicknameDropDown.anchorView?.plainView.bounds.height {
+                    owner.nicknameDropDown.bottomOffset = CGPoint(x: 0, y: offsetY)
+                } else { owner.nicknameDropDown.bottomOffset = .zero }
+                
+                owner.nicknameDropDown.dataSource = dataSource.map { $0.name }
+                if let selectedIndex = owner.findSelectedIndex(at: dataSource) {
+                    owner.nicknameDropDown.selectRow(selectedIndex)
+                }
+                owner.nicknameDropDown.show()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.wardDropDownView.rx.tapGesture()
+            .when(.recognized)
+            .withLatestFrom(reactor.pulse(\.$myWardDropDownDataSources))
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, dataSource in
+                print("🤔 datasource를 클릭했다.", dataSource)
+                owner.wardDropDown.anchorView = owner.wardDropDownView
+                if let offsetY = owner.wardDropDown.anchorView?.plainView.bounds.height {
+                    owner.wardDropDown.bottomOffset = CGPoint(x: 0, y: offsetY)
+                } else { owner.wardDropDown.bottomOffset = .zero }
+                
+                owner.wardDropDown.dataSource = dataSource.map { $0.name }
+                if let selectedIndex = owner.findSelectedIndex(at: dataSource) {
+                    owner.wardDropDown.selectRow(selectedIndex)
+                }
+                owner.wardDropDown.show()
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$nicknameDropDownDataSource)
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, dataSource in
+                dataSource.forEach { item in
+                    if item.isSelected {
+                        owner.nicknameDropDownView.update(title: item.name)
+                        return
+                    }
+                }
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$myWardDropDownDataSources)
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, dataSource in
+                dataSource.forEach { item in
+                    if item.isSelected {
+                        owner.wardDropDownView.update(title: item.name)
+                        return
+                    }
+                }
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 
 // MARK: - Private functions
 
 extension QuestionViewController {
+
+    private func findSelectedIndex(at dropdownItems: [DropDownItemType]) -> Int? {
+        var selectedIndex: Int?
+        dropdownItems.enumerated().forEach { index, item in
+            if item.isSelected { selectedIndex = index }
+            return
+        }
+        return selectedIndex
+    }
     
     private func configure(_ dropDown: DropDown) {
         dropDown.cornerRadius = 10
         dropDown.width = 128
         dropDown.textColor = .white
         dropDown.backgroundColor = UIColor.gray800
+        dropDown.textFont = UIFont.setKRFont(weight: .regular, size: 14) ?? .systemFont(ofSize: 14, weight: .regular)
         dropDown.selectedTextColor = .lime300
         dropDown.selectionBackgroundColor = .gray800
         dropDown.cellHeight = 40
+    }
+    
+    private func configureDropDownToggle() {
+        self.wardDropDown.willShowAction = { [weak self] in
+            self?.wardDropDownView.shouldChangeToggleImage(isDropDowned: true)
+        }
+        self.wardDropDown.cancelAction = { [weak self] in
+            self?.wardDropDownView.shouldChangeToggleImage(isDropDowned: false)
+        }
+        self.nicknameDropDown.willShowAction = { [weak self] in
+            self?.nicknameDropDownView.shouldChangeToggleImage(isDropDowned: true)
+        }
+        self.nicknameDropDown.cancelAction = { [weak self] in
+            self?.nicknameDropDownView.shouldChangeToggleImage(isDropDowned: false)
+        }
     }
     
     private func bind() {
@@ -218,25 +331,16 @@ extension QuestionViewController {
             }
             .disposed(by: self.disposeBag)
         
-        self.nicknameDropDownView.rx.tapGesture()
-            .when(.recognized)
-            .bind(with: self) { owner, _ in
-                owner.dropDownView.anchorView = owner.nicknameDropDownView
-                owner.dropDownView.bottomOffset = CGPoint(x: 0, y: (owner.dropDownView.anchorView?.plainView.bounds.height)!)
-                owner.dropDownView.dataSource = ["익명", "닉네임"]
-                owner.dropDownView.show()
-            }
-            .disposed(by: self.disposeBag)
-        
-        self.wardDropDownView.rx.tapGesture()
-            .when(.recognized)
-            .bind(with: self) { owner, _ in
-                owner.dropDownView.anchorView = owner.wardDropDownView
-                owner.dropDownView.bottomOffset = CGPoint(x: 0, y: (owner.dropDownView.anchorView?.plainView.bounds.height)!)
-                owner.dropDownView.dataSource = ["현위치", "강남구", "서초구", "관악구", "집", "본가", "마음속", "침대속", "도리도리", "도도도리리리"]
-                owner.dropDownView.show()
-            }
-            .disposed(by: self.disposeBag)
+        self.nicknameDropDown.selectionAction = { [weak self] index, _ in
+            print("🤔닉네임에서 선택된 인덱스는 \(index)")
+            self?.didSelectNicknameItem.accept(index)
+            self?.nicknameDropDownView.shouldChangeToggleImage(isDropDowned: false)
+        }
+        self.wardDropDown.selectionAction = { [weak self] index, _ in
+            print("🤔와드에서 선택된 인덱스는 \(index)")
+            self?.didSelectWardItem.accept(index)
+            self?.wardDropDownView.shouldChangeToggleImage(isDropDowned: false)
+        }
     }
     
     private func setupLayouts() {

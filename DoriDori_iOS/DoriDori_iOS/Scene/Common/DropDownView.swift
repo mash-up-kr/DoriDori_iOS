@@ -19,7 +19,7 @@ final class DropDownView: UIView {
         return label
     }()
     
-    private let downImageView: UIImageView = {
+    private let toggleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "arrow_down")
         return imageView
@@ -39,6 +39,17 @@ final class DropDownView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func shouldChangeToggleImage(isDropDowned: Bool) {
+        var image: UIImage?
+        if isDropDowned { image = UIImage(named: "arrow_up") }
+        else { image = UIImage(named: "arrow_down")}
+        self.toggleImageView.image = image
+    }
+    
+    func update(title: String) {
+        self.titleLabel.text = title
+    }
 }
 
 // MARK: - Private functions
@@ -54,13 +65,13 @@ extension DropDownView {
     }
     
     private func setupLayouts() {
-        self.addSubViews(self.titleLabel, self.downImageView)
+        self.addSubViews(self.titleLabel, self.toggleImageView)
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.leading.equalToSuperview().offset(12)
             $0.bottom.equalToSuperview().inset(8)
         }
-        self.downImageView.snp.makeConstraints {
+        self.toggleImageView.snp.makeConstraints {
             $0.top.bottom.equalTo(self.titleLabel)
             $0.leading.equalTo(self.titleLabel.snp.trailing)
             $0.trailing.equalToSuperview().inset(6)

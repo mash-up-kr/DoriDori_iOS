@@ -9,18 +9,19 @@ import Foundation
 import RxSwift
 
 protocol QuestionRequestable: AnyObject {
-    func postQuestion(userID: UserID, content: String,                 longitude: Double, latititude: Double, anonymous: Bool) -> Observable<EmptyModel>
+    func postQuestion(userID: UserID, content: String, longitude: Double, latitude: Double, anonymous: Bool) -> Observable<EmptyModel>
     func postQuestion(content: String, longitude: Double, latitude: Double, anonymous: Bool) -> Observable<EmptyModel>
+    func fetchMyWardList() -> Observable<[MyWardModel]>
 }
 
 final class QuestionRepository: QuestionRequestable {
-    func postQuestion(userID: UserID, content: String,                 longitude: Double, latititude: Double, anonymous: Bool) -> Observable<EmptyModel> {
+    func postQuestion(userID: UserID, content: String, longitude: Double, latitude: Double, anonymous: Bool) -> Observable<EmptyModel> {
         Network().request(
             api: QuestionToUserRequest(
                 userID: userID,
                 content: content,
-                longtitude:                 longitude,
-                latitude: latititude,
+                longtitude: longitude,
+                latitude: latitude,
                 anonymous: anonymous
             ),
             responseModel: ResponseModel<EmptyModel>.self
@@ -37,6 +38,13 @@ final class QuestionRepository: QuestionRequestable {
                     anonymous: anonymous
                 ),
             responseModel: ResponseModel<EmptyModel>.self
+        )
+    }
+    
+    func fetchMyWardList() -> Observable<[MyWardModel]> {
+        Network().request(
+            api: MyWardListRequest(),
+            responseModel: ResponseModel<[MyWardModel]>.self
         )
     }
 }
