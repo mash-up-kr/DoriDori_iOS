@@ -18,18 +18,21 @@ final class EmailSignInViewController: UIViewController {
     @IBOutlet private weak var emailFindButton: UIButton!
     @IBOutlet private weak var passwordFindButton: UIButton!
     @IBOutlet private weak var loginButtomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var loginBUtton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
     
     private let keyboardUpButtomConstraint: CGFloat = 20
     private let keyboardDownButtomConstraint: CGFloat = 54
 
-    var disposeBag = DisposeBag()
+    private let viewModel: EmailSignInViewModel = .init()
+    private var disposeBag = DisposeBag()
 
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSetting()
+        settingViewModel()
+        bind(viewModel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,19 +41,42 @@ final class EmailSignInViewController: UIViewController {
     }
 
     // MARK: - Bind ViewModel
-
-    func bind(viewModel: EmailSignInViewModel) {
-
+    private func settingViewModel() {
+        emailTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .email,
+                                                               inputContentType: .emailAddress,
+                                                               returnKeyType: .default,
+                                                               keyboardType: .emailAddress)
+        passwordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .password,
+                                                                    inputContentType: .password,
+                                                                    returnKeyType: .default,
+                                                                    keyboardType: .default)
     }
     
-    @IBAction func tapLoginButton(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermsOfServiceViewContoller") as? TermsOfServiceViewContoller
-        else { return }
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
+    private func bind(_ viewModel: EmailSignInViewModel) {
+        let input = EmailSignInViewModel.Input(email: emailTextField.textField.rx.text.orEmpty.asObservable(),
+                                               password: passwordTextField.textField.rx.text.orEmpty.asObservable(),
+                                               loginButtonTap: loginButton.rx.tap.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        output.buttonIsValid.bind { [weak self] isValid in
+            self?.loginButton.isEnabled = isValid
+            self?.loginButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+            let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
+            self?.loginButton.setTitleColor(buttonTitleColor, for: .normal)
+        }.disposed(by: disposeBag)
+        
+        output.signIn.bind { [weak self]_ in
+            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }.disposed(by: disposeBag)
+        
+        output.errorMessage.emit(onNext: { [weak self] str in
+            let alert = UIAlertController(title: "로그인", message: str, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirmAction)
+            self?.present(alert, animated: true)
+        }).disposed(by: disposeBag)
 
-    
+    }
 }
 
 //MARK: - textField 편집시 Keyboard 설정

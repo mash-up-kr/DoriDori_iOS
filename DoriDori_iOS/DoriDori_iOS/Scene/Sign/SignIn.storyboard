@@ -202,9 +202,6 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tapLoginButton:" destination="Gns-NG-izc" eventType="touchUpInside" id="ATl-CJ-HdH"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
@@ -233,8 +230,8 @@
                         <outlet property="emailPwFindStackView" destination="Yq1-p3-aUA" id="Yry-aR-GgO"/>
                         <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
                         <outlet property="emailTextField" destination="Fab-yM-Zf3" id="u1i-3l-t2r"/>
-                        <outlet property="loginBUtton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>
                         <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
+                        <outlet property="loginButton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>
                         <outlet property="passwordFindButton" destination="GgA-VY-mcZ" id="MWR-7T-xGt"/>
                         <outlet property="passwordTextField" destination="wb8-Zo-YUW" id="aE8-8U-v1U"/>
                     </connections>
