@@ -16,13 +16,20 @@ final class PasswordViewModel: ViewModelProtocol {
     }
     
     struct Output {
-        let pwConfirmState: Observable<Bool>
+        let passwordIsValid: Observable<Bool>
+        let finalConfirm: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
-        let pwConfirmState = Observable.combineLatest(input.password.filter { !$0.isEmpty }, input.passwordConfirm.filter { !$0.isEmpty }) { p1, p2 in
+        
+        let passwordIsValid = input.passwordConfirm.map {
+            $0.passwordValidCheck
+        }
+        
+        let finalConfirm = Observable.combineLatest(input.password.filter { !$0.isEmpty }, input.passwordConfirm.filter { !$0.isEmpty }) { p1, p2 in
             p1 == p2 && p1.passwordValidCheck
         }
-        return Output(pwConfirmState: pwConfirmState)
+        
+        return Output(passwordIsValid: passwordIsValid, finalConfirm: finalConfirm)
     }
 }

@@ -76,24 +76,16 @@ class UnderLineTextField: UIView {
         
         editingEndObservable.flatMap { [weak self] _ -> Observable<Bool> in
             self?.underLineView.backgroundColor = UIColor(named: "gray800")
-            self?.iconImageView.isHidden = true
             self?.errorLabel.isHidden = true
             return outputValidObservable
         }.filter({ [weak self] _ in
             self?.viewModel.titleLabelType != .passwordConfirm
         }).bind(onNext: { [weak self] isValid in
-            self?.iconImageView.isHidden = isValid
+            self?.iconImageView.isHidden = false
             self?.errorLabel.isHidden = isValid
-            print(isValid)
-            if isValid {
-                self?.underLineView.backgroundColor = UIColor(named: "lime300")
-                self?.textField.tintColor = UIColor(named: "lime300")
-            }
-            else {
-                self?.underLineView.backgroundColor = .red
-                self?.textField.tintColor = .red
-                self?.iconImageView.image = UIImage(named: "error")
-            }
+            self?.underLineView.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
+            self?.textField.tintColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
+            self?.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
         }).disposed(by: disposeBag)
     }
     

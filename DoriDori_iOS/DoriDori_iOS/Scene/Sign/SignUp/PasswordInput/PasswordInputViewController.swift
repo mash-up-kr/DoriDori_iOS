@@ -31,11 +31,11 @@ final class PasswordViewController: UIViewController {
     // MARK: - Bind
     private func settingViewModel() {
         passwordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .password,
-                                                               inputContentType: .password,
-                                                               keyboardType: .default)
+                                                                  inputContentType: .password,
+                                                                  keyboardType: .default)
         passwordConfirmTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .passwordConfirm,
-                                                                    inputContentType: .password,
-                                                                    keyboardType: .default)
+                                                                         inputContentType: .password,
+                                                                         keyboardType: .default)
     }
     
     private func bind(_ viewModel: PasswordViewModel) {
@@ -44,17 +44,24 @@ final class PasswordViewController: UIViewController {
                                             confirmButtonTap: confirmButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         
-        output.pwConfirmState.bind { [weak self] isValid in
-            print(isValid)
+        output.finalConfirm.bind { [weak self] isValid in
             self?.confirmButton.isEnabled = isValid
             self?.confirmButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
             let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
             self?.confirmButton.setTitleColor(buttonTitleColor, for: .normal)
+            
+            //비밀번호 확인 에러 처리
+            self?.passwordConfirmTextField.errorLabel.isHidden = isValid
+            self?.passwordConfirmTextField.underLineView.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
+            self?.passwordConfirmTextField.textField.tintColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
+            self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
         }.disposed(by: disposeBag)
         
-        // TODO: 비밀번호 확인 bind 처리 할 것
-
+        output.passwordIsValid.bind { [weak self] isValid in
+            self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage()
+        }.disposed(by: disposeBag)
+        
     }
-
+    
     
 }
