@@ -28,7 +28,7 @@ final class QuestionCoordinator: Coordinator {
     func start() {
         let questionRepository = QuestionRepository()
         let qeustionReactor = QuestionReactor(
-            questionType: .user(userID: "62f8b253c9900a7cb9e90021"),
+            questionType: .community,
             questionRepository: questionRepository
         )
         let questionViewController = QuestionViewController(

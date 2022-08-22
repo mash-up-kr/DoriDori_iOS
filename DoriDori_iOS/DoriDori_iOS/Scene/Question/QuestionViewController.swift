@@ -53,6 +53,7 @@ final class QuestionViewController: UIViewController,
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
+        textView.backgroundColor = .darkGray
         textView.inputAccessoryView = self.registButtonContainerView
         textView.tintColor = .lime300
         textView.font = UIFont.setKRFont(weight: .regular, size: 16)

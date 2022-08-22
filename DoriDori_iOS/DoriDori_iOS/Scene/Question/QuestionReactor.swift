@@ -31,9 +31,11 @@ final class QuestionReactor: Reactor {
         case wardListItems(wards: [MyWardDropDownItem])
         case didSelectNicknameItem(index: Int)
         case didSelectWradItem(index: Int)
+        case update(isLoading: Bool)
     }
     
     struct State {
+        @Pulse var isLoading: Bool
         @Pulse var questionType: QuestionType
         @Pulse var text: String
         @Pulse var textCount: String
@@ -45,6 +47,7 @@ final class QuestionReactor: Reactor {
         @Pulse var nicknameDropDownDataSource: [AnonymousDropDownItem]
     }
     
+    let locationManager = LocationManager()
     let initialState: State
     private let questionRepository: QuestionRequestable
     
@@ -54,6 +57,7 @@ final class QuestionReactor: Reactor {
     ) {
         self.questionRepository = questionRepository
         self.initialState = .init(
+            isLoading: false,
             questionType: questionType,
             text: "",
             textCount: "0/\(Constant.maxTextCount)",
@@ -89,6 +93,8 @@ final class QuestionReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var _state = state
         switch mutation {
+        case .update(let isLoading):
+            _state.isLoading = isLoading
         case .didEditing(let text):
             if text.isEmpty { _state.canRegistQuestion = false }
             else { _state.canRegistQuestion = true }
@@ -98,6 +104,10 @@ final class QuestionReactor: Reactor {
             _state.shouldPopViewController = true
         case .wardListItems(let wards):
             _state.myWardDropDownDataSources = wards
+            _state.location = (
+                longitude: wards.first?.longitude ?? .zero,
+                latitude: wards.first?.latitude ?? .zero
+            )
         case .didSelectWradItem(let selectedIndex):
             let myWardDropDownDataSources = _state.myWardDropDownDataSources.enumerated().map { index, item -> MyWardDropDownItem in
                 var _item = item
@@ -106,8 +116,6 @@ final class QuestionReactor: Reactor {
                     if let longitude = item.longitude,
                        let latitude = item.latitude {
                         _state.location = (longitude: longitude, latitude: latitude)
-                    } else {
-                        // TODO: 현 위치 가져와서 저장하기
                     }
                 }
                 return _item
@@ -134,24 +142,24 @@ final class QuestionReactor: Reactor {
         return "\(count)/\(Self.Constant.maxTextCount)"
     }
     
-    // TODO: 위치 정보가 없으면 현 위치로 보내자.
     private func postQuestion(questionType: QuestionType) -> Observable<Mutation> {
         let questionObservable: Observable<Void>
+        guard let location = self.currentState.location else { return .empty() }
         switch questionType {
         case .user(let userID):
             questionObservable = self.questionRepository.postQuestion(
                 userID: userID,
                 content: self.currentState.text,
-                longitude: self.currentState.location?.longitude ?? 127.024099,
-                latitude: self.currentState.location?.latitude ?? 37.504030,
+                longitude: location.longitude,
+                latitude: location.latitude,
                 anonymous: self.currentState.isAnonymous
             )
             .map { _ in return }
         case .community:
             questionObservable = self.questionRepository.postQuestion(
                 content: self.currentState.text,
-                longitude: self.currentState.location?.longitude ?? 127.024099,
-                latitude: self.currentState.location?.latitude ?? 37.504030,
+                longitude: location.longitude,
+                latitude: location.latitude,
                 anonymous: self.currentState.isAnonymous
             )
             .map { _ in return }
@@ -165,40 +173,56 @@ final class QuestionReactor: Reactor {
                 return .just(.postQuestion)
             }
     }
+    
     private func fetchWradList() -> Observable<Mutation> {
         self.questionRepository.fetchMyWardList()
             .catch { error in
                 print(error)
                 return .empty()
             }
+            .observe(on: MainScheduler.instance)
             .flatMapLatest { [weak self] wards -> Observable<Mutation> in
                 guard let self = self else { return .empty() }
-                let items = self.transformModelsToItems(wardModels: wards)
-                return .just(.wardListItems(wards: items))
+                return .concat(
+                    .just(.update(isLoading: true)),
+                    self.transformModelsToItems(wardModels: wards),
+                    .just(.update(isLoading: false))
+                )
             }
     }
     
-    private func transformModelsToItems(wardModels: [MyWardModel]) -> [MyWardDropDownItem] {
-        var items: [MyWardDropDownItem] = [
-            MyWardDropDownItem(
-                name: "현위치",
-                longitude: nil,
-                latitude: nil,
-                isSelected: true
-            )
-        ]
-        let wardItems = wardModels.compactMap { ward -> MyWardDropDownItem? in
-            guard let name = ward.name,
-                  let longitude = ward.longitude,
-                  let latitude = ward.latitude else { return nil }
-            return MyWardDropDownItem(
-                name: name,
-                longitude: longitude,
-                latitude: latitude,
-                isSelected: false
-            )
-        }
-        items.append(contentsOf: wardItems)
-        return items
+    private func transformModelsToItems(wardModels: [MyWardModel]) -> Observable<Mutation> {
+       return self.locationManager.getLocation()
+            .take(1)
+            .debug("🍀")
+            .flatMapLatest { result -> Observable<Mutation> in
+                switch result {
+                case .failure(let error):
+                    print("🍀", error.errorDescription)
+                    return .empty()
+                case .success(let location):
+                    var items = [MyWardDropDownItem(
+                        name: "현위치",
+                        longitude: location.longitude,
+                        latitude: location.latitude,
+                        isSelected: true)
+                    ]
+                    print("🍀 현위치 latitude \(location.latitude), longitude: \(location.longitude)")
+
+                    let wardItems = wardModels.compactMap { ward -> MyWardDropDownItem? in
+                        guard let name = ward.name,
+                              let longitude = ward.longitude,
+                              let latitude = ward.latitude else { return nil }
+                        return MyWardDropDownItem(
+                            name: name,
+                            longitude: longitude,
+                            latitude: latitude,
+                            isSelected: false
+                        )
+                    }
+                    items.append(contentsOf: wardItems)
+                    return .just(.wardListItems(wards: items))
+                }
+            }
     }
 }
