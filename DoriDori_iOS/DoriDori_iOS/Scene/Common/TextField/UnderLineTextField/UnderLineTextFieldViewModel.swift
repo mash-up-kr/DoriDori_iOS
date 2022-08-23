@@ -86,10 +86,10 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
                 boolValue = str.passwordValidCheck
             case .nickname:
                 boolValue = str.nicknameValidCheck
-            case .passwordConfirm:
-                return false
-            case .none, .authNumber:
+            case .passwordConfirm, .none:
                 break
+            case .authNumber:
+                boolValue = str.authNumberCheck
             }
             return boolValue
         }

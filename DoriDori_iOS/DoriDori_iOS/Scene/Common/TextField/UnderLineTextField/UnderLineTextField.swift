@@ -85,7 +85,11 @@ class UnderLineTextField: UIView {
             self?.errorLabel.isHidden = isValid
             self?.underLineView.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
             self?.textField.tintColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
-            self?.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
+            if self?.viewModel.titleLabelType == .authNumber {
+                self?.iconImageView.image = isValid ? UIImage() : UIImage(named: "error")
+            } else {
+                self?.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
+            }
         }).disposed(by: disposeBag)
     }
     
