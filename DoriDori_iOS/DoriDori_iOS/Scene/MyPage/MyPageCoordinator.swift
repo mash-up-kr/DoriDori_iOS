@@ -37,5 +37,6 @@ final class MyPageCoordinator: MyPageCoordinatable {
     
     func navigateToShare() {
         print(#function)
+        self.navigationController.pushViewController(OtherPageViewController(nibName: nil, bundle: nil), animated: true)
     }
 }
