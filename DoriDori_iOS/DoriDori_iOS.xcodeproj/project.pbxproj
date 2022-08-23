@@ -40,6 +40,9 @@
 		A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12228B0FEB500A003D1 /* QuestionModel.swift */; };
 		A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */; };
 		A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13728B2336B00A003D1 /* EmptyModel.swift */; };
+		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
+		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
+		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -160,6 +163,9 @@
 		A24FD12228B0FEB500A003D1 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteRequest.swift; sourceTree = "<group>"; };
 		A24FD13728B2336B00A003D1 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
+		A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
+		A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		A24FD16C28B51A0700A003D1 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -355,6 +361,7 @@
 			children = (
 				A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */,
 				A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */,
+				A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -371,6 +378,15 @@
 				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A24FD16928B519C400A003D1 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */,
+				A24FD16C28B51A0700A003D1 /* RefreshModel.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
@@ -421,6 +437,7 @@
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD16928B519C400A003D1 /* Authentication */,
 				A2CF64E428796DA5007D54DD /* Requestable.swift */,
 				A2CF64E228796D99007D54DD /* Network.swift */,
 				A2CF64E628796DB1007D54DD /* ResponseModel.swift */,
@@ -804,6 +821,7 @@
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
+				A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */,
 				A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
@@ -832,6 +850,7 @@
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
+				A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */,
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
@@ -864,6 +883,7 @@
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
