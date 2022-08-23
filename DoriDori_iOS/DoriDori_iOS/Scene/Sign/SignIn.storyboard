@@ -9,6 +9,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sign In Main View Controller-->
         <scene sceneID="GzV-lN-fg7">
@@ -265,21 +273,21 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="822"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-5i-WJz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="740.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="742.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-FZ-hoS">
-                                                <rect key="frame" x="30" y="30" width="315" height="28.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <rect key="frame" x="30" y="30" width="315" height="30.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-pm-DZP">
-                                                <rect key="frame" x="30" y="88.666666666666657" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="90.333333333333343" width="315" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="약관에 모두 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-vv-oFz">
-                                                        <rect key="frame" x="43.999999999999993" y="17.333333333333343" width="105.33333333333331" height="19.333333333333329"/>
+                                                        <rect key="frame" x="44" y="17.333333333333172" width="111" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="16"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -310,10 +318,19 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-BS-B8A">
-                                                <rect key="frame" x="29.999999999999993" y="184.66666666666666" width="111.33333333333331" height="20"/>
+                                                <rect key="frame" x="30" y="186.33333333333334" width="115" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-H9-fEF">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -325,17 +342,17 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-uF-xkS">
-                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="83.333333333333314" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="87" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-qk-DYN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="20"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-9I-X6K">
-                                                                <rect key="frame" x="48.666666666666671" y="0.0" width="34.666666666666671" height="20"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <rect key="frame" x="51.666666666666671" y="0.0" width="35.333333333333329" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -344,7 +361,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-kp-LTx">
-                                                <rect key="frame" x="30" y="634.66666666666663" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="636.33333333333337" width="315" height="54"/>
                                                 <color key="backgroundColor" name="gray700"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="3xc-9u-f5D"/>
@@ -367,7 +384,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
-                                                <rect key="frame" x="29.999999999999993" y="380.66666666666669" width="124.33333333333331" height="20"/>
+                                                <rect key="frame" x="30" y="382.33333333333331" width="163" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPo-w3-TAK">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -379,128 +396,88 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-lW-sJi">
-                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="96.333333333333314" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="135" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현 위치 추적 허용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96.333333333333329" height="20"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm1-fZ-Fwh">
+                                                                <rect key="frame" x="99.666666666666657" y="0.0" width="35.333333333333343" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxr-6w-Tm9">
-                                                <rect key="frame" x="30" y="218.66666666666669" width="315" height="120"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VU-f0-Qlj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="347.33333333333331"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkD-5Z-Zjc">
-                                                                <rect key="frame" x="12" y="16" width="291" height="315.33333333333331"/>
-                                                                <string key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</string>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="AkD-5Z-Zjc" secondAttribute="trailing" constant="12" id="9oY-ee-sOz"/>
-                                                            <constraint firstItem="AkD-5Z-Zjc" firstAttribute="top" secondItem="4VU-f0-Qlj" secondAttribute="top" constant="16" id="jVQ-hB-gfs"/>
-                                                            <constraint firstItem="AkD-5Z-Zjc" firstAttribute="leading" secondItem="4VU-f0-Qlj" secondAttribute="leading" constant="12" id="lpG-BA-eAx"/>
-                                                            <constraint firstAttribute="bottom" secondItem="AkD-5Z-Zjc" secondAttribute="bottom" constant="16" id="q0D-30-x1j"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-ux-9dZ">
+                                                <rect key="frame" x="30" y="220.33333333333331" width="315" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="4VU-f0-Qlj" secondAttribute="trailing" id="02d-Rj-U79"/>
-                                                    <constraint firstItem="4VU-f0-Qlj" firstAttribute="top" secondItem="Kxr-6w-Tm9" secondAttribute="top" id="9Af-CT-mJS"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4VU-f0-Qlj" secondAttribute="bottom" id="Eu7-ZC-WSl"/>
-                                                    <constraint firstAttribute="height" constant="120" id="Mkc-VU-0y2"/>
-                                                    <constraint firstItem="4VU-f0-Qlj" firstAttribute="width" secondItem="Kxr-6w-Tm9" secondAttribute="width" id="RAg-Ty-06e"/>
-                                                    <constraint firstItem="4VU-f0-Qlj" firstAttribute="leading" secondItem="Kxr-6w-Tm9" secondAttribute="leading" id="uJ3-hg-mLz"/>
+                                                    <constraint firstAttribute="height" constant="120" id="NZa-hD-r7L"/>
                                                 </constraints>
-                                                <viewLayoutGuide key="contentLayoutGuide" id="DQz-sL-7kN"/>
-                                                <viewLayoutGuide key="frameLayoutGuide" id="sgP-yy-Ac3"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" name="gray500"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
                                                         <color key="value" name="gray800"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </scrollView>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeI-zV-dQG">
-                                                <rect key="frame" x="30" y="414.66666666666669" width="315" height="120.00000000000006"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9O-7K-K1E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="347.33333333333331"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75g-iV-bPE">
-                                                                <rect key="frame" x="12" y="16" width="291" height="315.33333333333331"/>
-                                                                <string key="text">본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다. 본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.본 이용약관은 가나다라마사 이용약관의 동의하셔야 합니다.</string>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="75g-iV-bPE" firstAttribute="top" secondItem="D9O-7K-K1E" secondAttribute="top" constant="16" id="1uE-rx-Uw7"/>
-                                                            <constraint firstItem="75g-iV-bPE" firstAttribute="leading" secondItem="D9O-7K-K1E" secondAttribute="leading" constant="12" id="9NR-Fd-9UB"/>
-                                                            <constraint firstAttribute="bottom" secondItem="75g-iV-bPE" secondAttribute="bottom" constant="16" id="WVc-QS-YWS"/>
-                                                            <constraint firstAttribute="trailing" secondItem="75g-iV-bPE" secondAttribute="trailing" constant="12" id="qpU-FL-5xw"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="Ewm-u6-8S0"/>
-                                                    <constraint firstItem="D9O-7K-K1E" firstAttribute="top" secondItem="oeI-zV-dQG" secondAttribute="top" id="INF-J7-NsE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="D9O-7K-K1E" secondAttribute="trailing" id="QqR-Pm-BEW"/>
-                                                    <constraint firstAttribute="bottom" secondItem="D9O-7K-K1E" secondAttribute="bottom" id="ZXP-Wf-XyN"/>
-                                                    <constraint firstItem="D9O-7K-K1E" firstAttribute="width" secondItem="oeI-zV-dQG" secondAttribute="width" id="nrl-MP-Qlr"/>
-                                                    <constraint firstItem="D9O-7K-K1E" firstAttribute="leading" secondItem="oeI-zV-dQG" secondAttribute="leading" id="zrz-yi-cxZ"/>
-                                                </constraints>
-                                                <viewLayoutGuide key="contentLayoutGuide" id="sMy-OB-zj1"/>
-                                                <viewLayoutGuide key="frameLayoutGuide" id="u1W-99-jKq"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27W-We-bFc">
+                                                <rect key="frame" x="30" y="416.33333333333331" width="315" height="119.99999999999994"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="5bM-cd-d6U"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" name="gray500"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
                                                         <color key="value" name="gray800"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </scrollView>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" name="darkGray"/>
                                         <constraints>
-                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="top" secondItem="Kxr-6w-Tm9" secondAttribute="bottom" constant="42" id="1kn-p9-abM"/>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="leading" secondItem="XVb-FZ-hoS" secondAttribute="leading" id="23W-ec-JLF"/>
                                             <constraint firstItem="ItB-mU-iwI" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="2gw-az-3P2"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="trailing" secondItem="5eC-ux-9dZ" secondAttribute="trailing" id="4H3-zF-6Kn"/>
                                             <constraint firstAttribute="trailing" secondItem="Z2q-kp-LTx" secondAttribute="trailing" constant="30" id="4IN-PK-E7H"/>
+                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="top" secondItem="5eC-ux-9dZ" secondAttribute="bottom" constant="42" id="4nk-RV-hKy"/>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" id="DHn-nk-cmY"/>
+                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="top" secondItem="27W-We-bFc" secondAttribute="bottom" constant="100" id="Ful-W9-hdg"/>
                                             <constraint firstItem="bgH-BS-B8A" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="G8y-IH-CaN"/>
-                                            <constraint firstItem="oeI-zV-dQG" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="Gdd-Xn-HDb"/>
                                             <constraint firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" constant="30" id="Krb-wm-SLb"/>
-                                            <constraint firstItem="Kxr-6w-Tm9" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="N2A-OQ-Upf"/>
-                                            <constraint firstItem="oeI-zV-dQG" firstAttribute="top" secondItem="ItB-mU-iwI" secondAttribute="bottom" constant="14" id="NRs-s5-crr"/>
-                                            <constraint firstAttribute="trailing" secondItem="oeI-zV-dQG" secondAttribute="trailing" constant="30" id="Ngm-aX-yX1"/>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="top" secondItem="bgH-BS-B8A" secondAttribute="bottom" constant="14" id="LcV-QE-w6J"/>
                                             <constraint firstItem="bgH-BS-B8A" firstAttribute="top" secondItem="b9W-pm-DZP" secondAttribute="bottom" constant="42" id="RSH-uZ-xbt"/>
                                             <constraint firstItem="b9W-pm-DZP" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="TkN-rI-tl8"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="leading" secondItem="5eC-ux-9dZ" secondAttribute="leading" id="a22-2E-7D2"/>
                                             <constraint firstAttribute="bottom" secondItem="Z2q-kp-LTx" secondAttribute="bottom" constant="52" id="aGa-BX-C8J"/>
-                                            <constraint firstItem="Kxr-6w-Tm9" firstAttribute="top" secondItem="bgH-BS-B8A" secondAttribute="bottom" constant="14" id="bYG-v6-BIo"/>
-                                            <constraint firstAttribute="trailing" secondItem="Kxr-6w-Tm9" secondAttribute="trailing" constant="30" id="bef-kj-dlI"/>
                                             <constraint firstItem="XVb-FZ-hoS" firstAttribute="top" secondItem="G7T-5i-WJz" secondAttribute="top" constant="30" id="eik-g0-KbW"/>
                                             <constraint firstItem="Z2q-kp-LTx" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="eoX-U0-UDc"/>
-                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="top" secondItem="oeI-zV-dQG" secondAttribute="bottom" constant="100" id="jYq-pz-iVX"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="top" secondItem="ItB-mU-iwI" secondAttribute="bottom" constant="14" id="hjn-U8-BtX"/>
                                             <constraint firstItem="b9W-pm-DZP" firstAttribute="top" secondItem="XVb-FZ-hoS" secondAttribute="bottom" constant="30" id="n60-qa-otG"/>
                                             <constraint firstItem="XVb-FZ-hoS" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="tjt-6h-78P"/>
                                             <constraint firstAttribute="trailing" secondItem="b9W-pm-DZP" secondAttribute="trailing" constant="30" id="xs8-ZZ-zA1"/>
@@ -531,14 +508,18 @@
                     <connections>
                         <outlet property="allAgreeButton" destination="zRL-7Z-A1y" id="2bn-96-ubD"/>
                         <outlet property="allAgreeOutLineView" destination="b9W-pm-DZP" id="pKU-Zt-yGu"/>
-                        <outlet property="compulsoryAgreeButton" destination="wW1-H9-fEF" id="Wq0-Ux-WZV"/>
-                        <outlet property="currentLocationAgreeButton" destination="PPo-w3-TAK" id="sCz-EH-rgd"/>
                         <outlet property="finalAgreeButton" destination="Z2q-kp-LTx" id="yWL-SQ-Vzm"/>
+                        <outlet property="locationAgreeButton" destination="PPo-w3-TAK" id="DCP-VO-56T"/>
+                        <outlet property="locationAgreeContent" destination="27W-We-bFc" id="4bF-1X-RRW"/>
+                        <outlet property="locationAgreeLabel" destination="WeU-9E-Uod" id="oQm-sr-R8U"/>
+                        <outlet property="useAgreeButton" destination="wW1-H9-fEF" id="YTs-ix-YRH"/>
+                        <outlet property="useAgreeContent" destination="5eC-ux-9dZ" id="j0Z-9U-3cm"/>
+                        <outlet property="useAgreeLabel" destination="Z0o-qk-DYN" id="3JB-6W-0cE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgy-18-rSi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="1459"/>
+            <point key="canvasLocation" x="1005.6" y="1458.6206896551726"/>
         </scene>
         <!--Email Sign Up View Controller-->
         <scene sceneID="AJ7-9D-UMk">
