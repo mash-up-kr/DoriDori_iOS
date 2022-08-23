@@ -27,36 +27,35 @@ final class TermsOfServiceViewContoller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind(viewModel: viewModel)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSignUpNavigationBar()
     }
     
-    private func bind(viewModel: TermsOfServiceViewModel) {
-        let input = TermsOfServiceViewModel.Input(allAgree: allAgreeButton.rx.tap.scan(false) { (lastState, newValue) in
-            !lastState
-        }.asObservable())
-        
-        let output = viewModel.transform(input: input)
-        output.isValidButton.bind { [weak self] isValid in
-            //Setting allAgree
-            self?.allAgreeButton.isSelected = isValid
-            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
-            let toogleColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
-            let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
-            self?.allAgreeButton.setImage(buttonImage, for: .selected)
-            self?.allAgreeOutLineView.ibBorderColor = toogleColor
-            //Setting finalAgree
-            self?.finalAgreeButton.isEnabled = isValid
-            self?.finalAgreeButton.backgroundColor = toogleColor
-            self?.finalAgreeButton.setTitleColor(buttonTitleColor, for: .normal)
-            //Setting Other
-            self?.compulsoryAgreeButton.setImage(buttonImage, for: .normal)
-            self?.currentLocationAgreeButton.setImage(buttonImage, for: .normal)
-        }.disposed(by: disposeBag)
-    }
+//    private func bind(viewModel: TermsOfServiceViewModel) {
+//        let input = TermsOfServiceViewModel.Input(allAgree: allAgreeButton.rx.tap.scan(false) { (lastState, newValue) in
+//            !lastState
+//        }.asObservable())
+//
+//        let output = viewModel.transform(input: input)
+//        output.isValidButton.bind { [weak self] isValid in
+//            //Setting allAgree
+//            self?.allAgreeButton.isSelected = isValid
+//            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+//            let toogleColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
+//            let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
+//            self?.allAgreeButton.setImage(buttonImage, for: .selected)
+//            self?.allAgreeOutLineView.ibBorderColor = toogleColor
+//            //Setting finalAgree
+//            self?.finalAgreeButton.isEnabled = isValid
+//            self?.finalAgreeButton.backgroundColor = toogleColor
+//            self?.finalAgreeButton.setTitleColor(buttonTitleColor, for: .normal)
+//            //Setting Other
+//            self?.compulsoryAgreeButton.setImage(buttonImage, for: .normal)
+//            self?.currentLocationAgreeButton.setImage(buttonImage, for: .normal)
+//        }.disposed(by: disposeBag)
+//    }
 
     
     

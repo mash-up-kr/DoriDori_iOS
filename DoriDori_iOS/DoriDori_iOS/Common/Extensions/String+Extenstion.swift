@@ -22,9 +22,8 @@ extension String {
     
     var nicknameValidCheck: Bool {
         //한글영어특수문자 상관없이 띄어쓰기 포함 7자이하
-        let nicknamereg = "^[a-zA-Z0-9가-힣 `~!@#$%^&*()\\-_=+\\[{\\]}\\\\|;:'\",<.>/?//s]{1,7}$"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", nicknamereg)
-        return predicate.evaluate(with: self)
+        if self.count >= 1 && self.count <= 7 && !self.isEmpty { return true }
+        else { return false }
     }
     
     var authNumberCheck: Bool {

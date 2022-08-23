@@ -38,29 +38,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2gl-Ja-qzO">
-                                <rect key="frame" x="30" y="135" width="354" height="70"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-CE-OMo">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHk-of-xuT">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="70"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="SHk-of-xuT" secondAttribute="trailing" id="1k7-vh-Eha"/>
-                                            <constraint firstItem="SHk-of-xuT" firstAttribute="leading" secondItem="A5e-CE-OMo" secondAttribute="leading" id="Bgf-5I-r4p"/>
-                                            <constraint firstAttribute="height" constant="70" id="D6K-zZ-vr6"/>
-                                            <constraint firstAttribute="bottom" secondItem="SHk-of-xuT" secondAttribute="bottom" id="slM-MD-6Mp"/>
-                                            <constraint firstItem="SHk-of-xuT" firstAttribute="top" secondItem="A5e-CE-OMo" secondAttribute="top" id="wcr-8t-qrU"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-CE-OMo" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="138" width="354" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="D6K-zZ-vr6"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WT5-0K-Zhl">
                                 <rect key="frame" x="30" y="788" width="354" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
@@ -80,25 +64,26 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tapConfirmButton:" destination="c7g-hx-sg9" eventType="touchUpInside" id="pcV-uB-82e"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AyY-5F-Sb1"/>
                         <color key="backgroundColor" name="darkGray"/>
                         <constraints>
                             <constraint firstItem="xgO-bg-iHB" firstAttribute="leading" secondItem="AyY-5F-Sb1" secondAttribute="leading" constant="30" id="08E-Zh-vNv"/>
+                            <constraint firstItem="AyY-5F-Sb1" firstAttribute="trailing" secondItem="A5e-CE-OMo" secondAttribute="trailing" constant="30" id="4Nr-mA-GaT"/>
                             <constraint firstAttribute="bottom" secondItem="WT5-0K-Zhl" secondAttribute="bottom" constant="54" id="4df-VJ-Gnv"/>
                             <constraint firstItem="AyY-5F-Sb1" firstAttribute="trailing" secondItem="WT5-0K-Zhl" secondAttribute="trailing" constant="30" id="Ega-NT-f5D"/>
+                            <constraint firstItem="A5e-CE-OMo" firstAttribute="leading" secondItem="AyY-5F-Sb1" secondAttribute="leading" constant="30" id="Jk7-r1-D1x"/>
                             <constraint firstItem="AyY-5F-Sb1" firstAttribute="trailing" secondItem="xgO-bg-iHB" secondAttribute="trailing" constant="30" id="NX3-D1-w30"/>
-                            <constraint firstItem="2gl-Ja-qzO" firstAttribute="leading" secondItem="xgO-bg-iHB" secondAttribute="leading" id="XII-hz-OAG"/>
                             <constraint firstItem="xgO-bg-iHB" firstAttribute="top" secondItem="AyY-5F-Sb1" secondAttribute="top" constant="30" id="aKx-kE-vL1"/>
-                            <constraint firstItem="2gl-Ja-qzO" firstAttribute="top" secondItem="xgO-bg-iHB" secondAttribute="bottom" constant="32" id="c4c-ny-vM4"/>
                             <constraint firstItem="WT5-0K-Zhl" firstAttribute="leading" secondItem="AyY-5F-Sb1" secondAttribute="leading" constant="30" id="e4O-zq-rqV"/>
-                            <constraint firstItem="2gl-Ja-qzO" firstAttribute="trailing" secondItem="xgO-bg-iHB" secondAttribute="trailing" id="sox-OS-jnb"/>
+                            <constraint firstItem="A5e-CE-OMo" firstAttribute="top" secondItem="xgO-bg-iHB" secondAttribute="bottom" constant="35" id="gkJ-ab-ZVS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="WT5-0K-Zhl" id="yxW-jm-0s0"/>
+                        <outlet property="nicknameTextField" destination="A5e-CE-OMo" id="fhc-0o-f5R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usx-km-f3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
