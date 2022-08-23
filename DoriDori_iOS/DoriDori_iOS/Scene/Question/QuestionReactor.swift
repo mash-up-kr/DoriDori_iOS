@@ -8,8 +8,6 @@
 import Foundation
 import ReactorKit
 
-typealias Location = (longitude: Double, latitude: Double)
-
 final class QuestionReactor: Reactor {
     
     enum Constant {
@@ -47,14 +45,16 @@ final class QuestionReactor: Reactor {
         @Pulse var nicknameDropDownDataSource: [AnonymousDropDownItem]
     }
     
-    let locationManager = LocationManager()
+    let locationManager: LocationManager
     let initialState: State
     private let questionRepository: QuestionRequestable
     
     init(
         questionType: QuestionType,
-        questionRepository: QuestionRequestable
+        questionRepository: QuestionRequestable,
+        locationManager: LocationManager
     ) {
+        self.locationManager = locationManager
         self.questionRepository = questionRepository
         self.initialState = .init(
             isLoading: false,

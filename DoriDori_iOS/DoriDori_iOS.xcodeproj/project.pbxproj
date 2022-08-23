@@ -53,9 +53,11 @@
 		A24FD14928B3558700A003D1 /* MyWardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14828B3558700A003D1 /* MyWardModel.swift */; };
 		A24FD14B28B356A100A003D1 /* MyWardDropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14A28B356A100A003D1 /* MyWardDropDownItem.swift */; };
 		A24FD14E28B3571200A003D1 /* AnonymousDropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */; };
-		A24FD15128B3C2F300A003D1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15028B3C2F300A003D1 /* LocationManager.swift */; };
+		A24FD15128B3C2F300A003D1 /* DoriDoriLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */; };
 		A24FD15328B3F8E600A003D1 /* CLLocationManger+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */; };
 		A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */; };
+		A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */; };
+		A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15D28B4B01300A003D1 /* QuestionType.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -182,9 +184,11 @@
 		A24FD14828B3558700A003D1 /* MyWardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardModel.swift; sourceTree = "<group>"; };
 		A24FD14A28B356A100A003D1 /* MyWardDropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardDropDownItem.swift; sourceTree = "<group>"; };
 		A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousDropDownItem.swift; sourceTree = "<group>"; };
-		A24FD15028B3C2F300A003D1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationManager.swift; sourceTree = "<group>"; };
 		A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManger+Rx.swift"; sourceTree = "<group>"; };
 		A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationError.swift; sourceTree = "<group>"; };
+		A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A24FD15D28B4B01300A003D1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -408,6 +412,7 @@
 				A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */,
 				A24FD13328B227AE00A003D1 /* QuestionReactor.swift */,
 				A24FD13528B2325B00A003D1 /* QuestionRepository.swift */,
+				A24FD15D28B4B01300A003D1 /* QuestionType.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -432,9 +437,10 @@
 		A24FD14F28B3C2E300A003D1 /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				A24FD15028B3C2F300A003D1 /* LocationManager.swift */,
+				A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */,
 				A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */,
 				A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */,
+				A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */,
 			);
 			path = LocationManager;
 			sourceTree = "<group>";
@@ -901,6 +907,7 @@
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
 				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
+				A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
@@ -928,9 +935,10 @@
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
-				A24FD15128B3C2F300A003D1 /* LocationManager.swift in Sources */,
+				A24FD15128B3C2F300A003D1 /* DoriDoriLocationManager.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */,
 				A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */,

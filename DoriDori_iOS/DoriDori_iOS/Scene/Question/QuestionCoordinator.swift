@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum QuestionType {
-    case user(userID: UserID)
-    case community
-}
-
 final class QuestionCoordinator: Coordinator {
     
     private let questionType: QuestionType
@@ -27,9 +22,11 @@ final class QuestionCoordinator: Coordinator {
     
     func start() {
         let questionRepository = QuestionRepository()
+        let locationManager = DoriDoriLocationManager()
         let qeustionReactor = QuestionReactor(
-            questionType: .community,
-            questionRepository: questionRepository
+            questionType: self.questionType,
+            questionRepository: questionRepository,
+            locationManager: locationManager
         )
         let questionViewController = QuestionViewController(
             reactor: qeustionReactor,
