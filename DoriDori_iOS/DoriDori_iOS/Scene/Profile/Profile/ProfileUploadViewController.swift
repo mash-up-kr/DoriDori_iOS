@@ -7,16 +7,11 @@
 
 import UIKit
 import Photos
-import RSKImageCropper
 
 class ProfileUploadViewController: UIViewController {
     
     @IBOutlet private weak var profileView: UIImageView!
-    @IBOutlet private weak var imageUploadButton: UIButton!
-
-    @IBOutlet private weak var profileView: UIImageView!
     @IBOutlet private weak var uploadPictureButton: UIButton!
-    private let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +23,74 @@ class ProfileUploadViewController: UIViewController {
     }
     
     private func openLibrary() {
-        imagePicker.modalPresentationStyle = .fullScreen
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        present(imagePicker, animated: false)
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            imagePicker.modalPresentationStyle = .fullScreen
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true)
+            
+        }
     }
     
     @IBAction func tapPhotoUpload(_ sender: UIButton) {
-        openLibrary()
+        requestPHPhotoLibraryAuthorization {
+            self.openLibrary()
+        }
+    }
+    
+    private func requestPHPhotoLibraryAuthorization(completion: @escaping () -> Void) {
+        if #available(iOS 14, *) {
+            switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                    switch status {
+                    case .authorized, .limited:
+                        completion()
+                        print("권한이 부여 됬습니다. 앨범 사용이 가능합니다")
+                    case .denied:
+                        print("권한이 거부 됬습니다. 앨범 사용 불가합니다.")
+                    default:
+                        print("그 밖의 권한이 부여 되었습니다.")
+                    }
+                }
+            case .authorized: //모든 권한 허용
+                completion()
+            case .limited: //선택한 사진만 허용
+                print("limited")
+            case .denied: //거부
+                let alert = UIAlertController(title: "사진", message: "권한이 거부 되어 앨범 사용이 불가합니다.", preferredStyle: UIAlertController.Style.alert)
+                let defaultAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+                alert.addAction(defaultAction)
+                self.present(alert, animated: true)
+            default:
+                print("Unimplemented")
+            }
+        }
+        else { //14이전
+            switch PHPhotoLibrary.authorizationStatus() {
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization({ (status) in
+                    switch status {
+                    case .authorized:
+                        print("권한이 부여 됬습니다. 앨범 사용이 가능합니다")
+                    case .denied:
+                        print("권한이 거부 됬습니다. 앨범 사용 불가합니다.")
+                    default:
+                        print("그 밖의 권한이 부여 되었습니다.")
+                    }
+                })
+            case .restricted:
+                print("restricted")
+            case .denied:
+                print("denined")
+            case .authorized:
+                print("autorized")
+            default:
+                print("unKnown")
+            }
+            
+        }
     }
     
 }

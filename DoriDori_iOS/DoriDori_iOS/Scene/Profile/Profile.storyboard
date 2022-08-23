@@ -213,7 +213,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="tapPhotoUpload:" destination="rem-xg-qgG" eventType="touchUpInside" id="PdW-ta-hr0"/>
+                                            <action selector="tapPhotoUpload:" destination="rem-xg-qgG" eventType="touchUpInside" id="81k-DA-ySe"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -257,8 +257,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="profileView" destination="w9G-X1-kAj" id="dfU-Kv-A1C"/>
-                        <outlet property="uploadPictureButton" destination="fhn-XR-3yp" id="Sre-0O-VWq"/>
+                        <outlet property="profileView" destination="w9G-X1-kAj" id="cpV-bo-ISa"/>
+                        <outlet property="uploadPictureButton" destination="fhn-XR-3yp" id="ZCi-PB-gJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u54-2T-ej2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

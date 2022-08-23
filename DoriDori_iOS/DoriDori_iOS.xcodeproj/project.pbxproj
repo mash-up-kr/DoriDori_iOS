@@ -13,7 +13,6 @@
 		6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */; };
 		6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */; };
 		6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C350E7328A164EC005281C2 /* Profile.storyboard */; };
-		6C5B82D128A5E3A4004B9234 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B82D028A5E3A4004B9234 /* InfoPlist.strings */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
@@ -101,7 +100,6 @@
 		6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewController.swift; sourceTree = "<group>"; };
 		6C350E7328A164EC005281C2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		6C5B82D028A5E3A4004B9234 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
 				CE58A80E28796C8900928091 /* SnapKit in Frameworks */,
-				6C5B82DD28A62665004B9234 /* RSKImageCropper in Frameworks */,
 				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
 				CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */,
 			);
@@ -198,7 +195,6 @@
 		6C350E6C28A158EE005281C2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				6C5B82D028A5E3A4004B9234 /* InfoPlist.strings */,
 				6C350E7328A164EC005281C2 /* Profile.storyboard */,
 				6C350E7028A16183005281C2 /* Profile */,
 				6C350E6D28A15994005281C2 /* Nickname */,
@@ -218,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */,
-				6C5B82E028A63108004B9234 /* ProfileUploadViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -362,7 +357,6 @@
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				6C5B82D928A5EEB3004B9234 /* DevDatas.swift */,
 				A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */,
 				A2CF64E028796D8B007D54DD /* ErrorModel.swift */,
 				A2CF64E228796D99007D54DD /* Network.swift */,
@@ -524,7 +518,6 @@
 				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 				CE58A80D28796C8900928091 /* SnapKit */,
-				6C5B82DC28A62665004B9234 /* RSKImageCropper */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -606,7 +599,6 @@
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				6C5B82DB28A62665004B9234 /* XCRemoteSwiftPackageReference "RSKImageCropper" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -627,7 +619,6 @@
 				CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */,
 				A22FC8CE2879BD9700F33D4F /* SF-Pro-Display-Bold.otf in Resources */,
 				A22FC8CF2879BD9700F33D4F /* SF-Pro-Display-Medium.otf in Resources */,
-				6C5B82D128A5E3A4004B9234 /* InfoPlist.strings in Resources */,
 				A22FC8BB2879BCB800F33D4F /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				A22FC8B72879BCB800F33D4F /* SpoqaHanSansNeo-Light.otf in Resources */,
 				6CB65B5A2879792000C15E2B /* SignIn.storyboard in Resources */,
@@ -661,7 +652,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C5B82DA28A5EEB3004B9234 /* DevDatas.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageHeaderView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
@@ -700,7 +690,6 @@
 				6CB65B5B2879792000C15E2B /* SignInMainViewController.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
-				6C5B82E128A63108004B9234 /* ProfileUploadViewModel.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */,
@@ -1027,14 +1016,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6C5B82DB28A62665004B9234 /* XCRemoteSwiftPackageReference "RSKImageCropper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ruslanskorb/RSKImageCropper.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
@@ -1086,11 +1067,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6C5B82DC28A62665004B9234 /* RSKImageCropper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C5B82DB28A62665004B9234 /* XCRemoteSwiftPackageReference "RSKImageCropper" */;
-			productName = RSKImageCropper;
-		};
 		CE58A7EE2877279C00928091 /* FlexLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
