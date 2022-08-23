@@ -28,9 +28,8 @@ final class TermsOfServiceViewContoller: UIViewController {
     private var disposeBag = DisposeBag()
     private var agreeBool: Bool = false
     
-
+    
     // MARK: - Life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(viewModel: viewModel)
@@ -48,48 +47,52 @@ final class TermsOfServiceViewContoller: UIViewController {
     }
     
     private func bind(viewModel: TermsOfServiceViewModel) {
-        
         let input = TermsOfServiceViewModel.Input(allAgree: allAgreeButton.rx.tap.asObservable(),
                                                   useAgree: useAgreeButton.rx.tap.asObservable(),
                                                   locationAgree: locationAgreeButton.rx.tap.asObservable())
-
+        
         let output = viewModel.transform(input: input)
+        
+        // Button
+        output.allAgreeOutput.drive(onNext: { [weak self] isValid in
+            self?.allAgreeOutLineView.ibBorderColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+            self?.allAgreeButton.setImage(buttonImage, for: .normal)
+        }).disposed(by: disposeBag)
+        
+        output.useAgreeOutput.drive(onNext: {[weak self] isValid in
+            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+            self?.useAgreeButton.setImage(buttonImage, for: .normal)
+        }).disposed(by: disposeBag)
+        
+        output.locationAgreeOutput.drive(onNext: {[weak self] isValid in
+            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+            self?.locationAgreeButton.setImage(buttonImage, for: .normal)
+        }).disposed(by: disposeBag)
+        
+        output.buttonOutput.bind(onNext: { [weak self] isValid in
+            self?.finalAgreeButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+            let titleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
+            self?.finalAgreeButton.setTitleColor(titleColor, for: .normal)
+            self?.finalAgreeButton.isEnabled = isValid
+        }).disposed(by: disposeBag)
+        
+        //Content
         output.useContent.bind(onNext: { [weak self] data in
             DispatchQueue.main.async {
                 self?.useAgreeLabel.text = data.title
                 self?.useAgreeContent.text = data.content
             }
         }).disposed(by: disposeBag)
-
+        
         output.locationContent.bind(onNext: { [weak self] data in
             print(data.content)
             DispatchQueue.main.async {
                 self?.locationAgreeLabel.text = data.title
                 self?.locationAgreeContent.text = data.content
             }
-            
         }).disposed(by: disposeBag)
-        
-//            let output = viewModel.transform(input: input)
-//        output.isValidButton.bind { [weak self] isValid in
-//            //Setting allAgree
-//            self?.allAgreeButton.isSelected = isValid
-//            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
-//            let toogleColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
-//            let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
-//            self?.allAgreeButton.setImage(buttonImage, for: .selected)
-//            self?.allAgreeOutLineView.ibBorderColor = toogleColor
-//            //Setting finalAgree
-//            self?.finalAgreeButton.isEnabled = isValid
-//            self?.finalAgreeButton.backgroundColor = toogleColor
-//            self?.finalAgreeButton.setTitleColor(buttonTitleColor, for: .normal)
-//            //Setting Other
-//            self?.compulsoryAgreeButton.setImage(buttonImage, for: .normal)
-//            self?.currentLocationAgreeButton.setImage(buttonImage, for: .normal)
-//        }.disposed(by: disposeBag)
     }
-
-    
     
     @IBAction func tapConfirmButton(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: "Profile", bundle: nil)
@@ -97,7 +100,5 @@ final class TermsOfServiceViewContoller: UIViewController {
         else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-
-    
+ 
 }
