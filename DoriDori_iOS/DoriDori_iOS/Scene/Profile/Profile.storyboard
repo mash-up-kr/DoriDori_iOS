@@ -118,6 +118,15 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" name="lime400"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                        <color key="value" name="lime400"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tapNextButton:" destination="rem-xg-qgG" eventType="touchUpInside" id="6rV-nX-XNj"/>
@@ -262,7 +271,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAJ-Kr-wVK" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="160.5" width="354" height="100"/>
+                                <rect key="frame" x="30" y="153.5" width="354" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="qhk-Nc-CMU"/>
@@ -362,7 +371,7 @@
                         <color key="backgroundColor" name="darkGray"/>
                         <constraints>
                             <constraint firstItem="iAJ-H5-Cuz" firstAttribute="leading" secondItem="vT2-iC-fMV" secondAttribute="leading" constant="30" id="3NU-Vc-aLF"/>
-                            <constraint firstItem="LAJ-Kr-wVK" firstAttribute="top" secondItem="i4Y-Ry-km8" secondAttribute="bottom" constant="30" id="4Uu-xc-VV1"/>
+                            <constraint firstItem="LAJ-Kr-wVK" firstAttribute="top" secondItem="i4Y-Ry-km8" secondAttribute="bottom" constant="23" id="4Uu-xc-VV1"/>
                             <constraint firstItem="085-RL-1yp" firstAttribute="leading" secondItem="QXL-3d-7O4" secondAttribute="leading" constant="30" id="6N5-YD-PIH"/>
                             <constraint firstItem="i4Y-Ry-km8" firstAttribute="top" secondItem="iAJ-H5-Cuz" secondAttribute="bottom" constant="8" id="D6m-wA-U9Z"/>
                             <constraint firstItem="Zwk-kv-1OB" firstAttribute="leading" secondItem="085-RL-1yp" secondAttribute="leading" id="F6e-Le-cn4"/>
@@ -391,10 +400,10 @@
             </objects>
             <point key="canvasLocation" x="4123" y="1426"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Intro View Controller-->
         <scene sceneID="A3J-p3-OmZ">
             <objects>
-                <viewController id="RYt-or-PbE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileIntroViewController" id="RYt-or-PbE" customClass="ProfileIntroViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xyE-rT-hth">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -419,7 +428,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="건너뛰기">
+                                <state key="normal" title="다음">
                                     <color key="titleColor" name="lime300"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -432,13 +441,23 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" name="lime400"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                        <color key="value" name="lime400"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="nextButton:" destination="RYt-or-PbE" eventType="touchUpInside" id="Fao-mL-WUr"/>
                                     <action selector="tapNextButton:" destination="rem-xg-qgG" eventType="touchUpInside" id="3Gj-TC-c8H"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPM-1o-rpt" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="160.5" width="354" height="100"/>
+                                <rect key="frame" x="30" y="153.5" width="354" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LZ5-ma-ROW"/>
@@ -452,7 +471,7 @@
                             <constraint firstItem="cIh-Sn-BM3" firstAttribute="top" secondItem="dAa-GN-UKq" secondAttribute="top" constant="30" id="Cvb-1f-bt4"/>
                             <constraint firstItem="tO6-F8-YV0" firstAttribute="trailing" secondItem="cIh-Sn-BM3" secondAttribute="trailing" id="GQV-f8-c3d"/>
                             <constraint firstItem="tO6-F8-YV0" firstAttribute="leading" secondItem="cIh-Sn-BM3" secondAttribute="leading" id="Xnk-fz-knA"/>
-                            <constraint firstItem="bPM-1o-rpt" firstAttribute="top" secondItem="tO6-F8-YV0" secondAttribute="bottom" constant="30" id="Xve-wi-3QW"/>
+                            <constraint firstItem="bPM-1o-rpt" firstAttribute="top" secondItem="tO6-F8-YV0" secondAttribute="bottom" constant="23" id="Xve-wi-3QW"/>
                             <constraint firstItem="cIh-Sn-BM3" firstAttribute="leading" secondItem="dAa-GN-UKq" secondAttribute="leading" constant="30" id="cbp-UO-b7L"/>
                             <constraint firstAttribute="bottom" secondItem="Vv5-xz-qEl" secondAttribute="bottom" constant="54" id="fuK-AZ-SCP"/>
                             <constraint firstItem="dAa-GN-UKq" firstAttribute="trailing" secondItem="Vv5-xz-qEl" secondAttribute="trailing" constant="30" id="ho5-sg-P3K"/>
@@ -462,6 +481,10 @@
                             <constraint firstItem="dAa-GN-UKq" firstAttribute="trailing" secondItem="cIh-Sn-BM3" secondAttribute="trailing" constant="30" id="zkA-Yg-dxa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="Vv5-xz-qEl" id="elc-fm-A9k"/>
+                        <outlet property="profileIntroTextField" destination="bPM-1o-rpt" id="Z4w-qW-6bt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqN-tb-UbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
