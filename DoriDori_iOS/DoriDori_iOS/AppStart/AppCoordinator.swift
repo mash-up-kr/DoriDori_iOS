@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
+final class AppCoordinator {
 
     private let appStart: AppStart
     private let window: UIWindow?
@@ -55,16 +55,9 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator {
     
     private func setupMyPageNavigationController() -> UINavigationController {
-        let navigationController: UINavigationController = .init()
-        let myPageCoordinator = MyPageCoordinator(navigationController: navigationController)
-        let myPageViewModel = MyPageReactor(myPageTabs: MyPageTab.allCases, initialSeletedTab: .answerComplete, myPageRepository: MyPageRepository())
-        navigationController.viewControllers = [
-            MyPageViewController(
-                myPageCoordinator: myPageCoordinator,
-                reactor: myPageViewModel
-            )
-        ]
-        return navigationController
+        let myPageCoordinator = MyPageCoordinator(navigationController: .init())
+        myPageCoordinator.start()
+        return myPageCoordinator.navigationController
     }
     
     private func setupTabItem(_ tab: HomeTabType, at viewController: UINavigationController) {
