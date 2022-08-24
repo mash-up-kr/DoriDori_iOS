@@ -30,8 +30,6 @@ final class NicknameSettingViewController: UIViewController {
     // MARK: - Bind
     private func settingViewModel() {
         nicknameTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .nickname,
-                                                                  inputContentType: .nickname,
-                                                               returnKeyType: .default,
                                                                keyboardType: .default)
 
     }

@@ -44,6 +44,8 @@ class UnderLineTextField: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()
+        textField.delegate = self
+
     }
     
     private func loadView() {
@@ -78,7 +80,10 @@ class UnderLineTextField: UIView {
             self?.underLineView.backgroundColor = UIColor(named: "gray800")
             self?.iconImageView.isHidden = true
             return outputValidObservable
-        }.bind(onNext: { [weak self] isValid in
+        }.filter({ [weak self] _ in
+            self?.viewModel.titleLabelType == .email && self?.viewModel.titleLabelType == .password && self?.viewModel.titleLabelType == .authNumber
+        })
+        .bind(onNext: { [weak self] isValid in
             self?.iconImageView.isHidden = isValid
             self?.errorLabel.isHidden = isValid
             if isValid {
@@ -94,7 +99,9 @@ class UnderLineTextField: UIView {
     }
  
     private func configure(viewModel: UnderLineTextFieldViewModel) {
-        titleLabel.text = viewModel.titleLabelType.rawValue
+        if viewModel.titleLabelType != .profile && viewModel.titleLabelType != .profileKeyword {
+            titleLabel.text = viewModel.titleLabelType.rawValue
+        }
         errorLabel.text = viewModel.errorMessage.rawValue
         textField.textContentType = viewModel.inputContentType
         textField.returnKeyType = viewModel.returnKeyType
@@ -109,3 +116,17 @@ class UnderLineTextField: UIView {
     
 }
 
+extension UnderLineTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+           guard let textFieldText = textField.text,
+                 let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                       return false
+               }
+        let changeText = textFieldText.replacingCharacters(in: rangeOfTextToReplace, with: string)
+        let totalCount = self.viewModel.totalStringCount
+        if changeText.count <= totalCount {
+            self.nowStringCountLabel.text = String(changeText.count)
+        }
+        return changeText.count <= totalCount
+       }
+}

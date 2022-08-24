@@ -43,12 +43,10 @@ final class EmailSignUpViewController: UIViewController {
     private func settingViewModel() {
         emailTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .email,
                                                                inputContentType: .emailAddress,
-                                                               returnKeyType: .default,
                                                                keyboardType: .emailAddress)
         authNumberTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .authNumber,
                                                                     inputContentType: .oneTimeCode,
-                                                                    returnKeyType: .default,
-                                                                    keyboardType: .numberPad)
+                                                                                                                                keyboardType: .numberPad)
     }
     
     private func bind(_ viewModel: EmailSignUpViewModel) {

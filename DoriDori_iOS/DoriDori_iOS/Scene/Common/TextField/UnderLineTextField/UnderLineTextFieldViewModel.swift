@@ -13,7 +13,7 @@ import RxCocoa
 class UnderLineTextFieldViewModel: ViewModelProtocol {
     
     var inputContentType: UITextContentType
-    var returnKeyType: UIReturnKeyType
+    var returnKeyType: UIReturnKeyType = .default
     var keyboardType: UIKeyboardType
     var isSecureTextEntry: Bool {
         return inputContentType == .password
@@ -31,21 +31,24 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         case password = "비밀번호"
         case nickname = "닉네임"
         case authNumber = "인증번호"
+        case profile, profileKeyword
     }
-
+    
     enum TextFieldPlaceHolder: String {
         case email = "DoriDori@naver.com"
         case password = "비밀번호 입력"
         case nickname = "ex) 도리를 찾아서"
         case authNumber = "6자리 숫자"
+        case profile = "ex) 안녕하세요! 도리도리입니다."
+        case profileKeyword = "ex) MBTI, 카페, 연애"
     }
-
+    
     enum TextFieldErrorMessage: String {
         case email = "이메일 주소를 확인해주세요."
         case password = "비밀번호를 확인해주세요."
         case nickname = "닉네임은 7자리 이내로 설정해주세요."
     }
-
+    
     struct Input {
         let inputString: Observable<String>
     }
@@ -53,22 +56,19 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     struct Output {
         let inputIsValid: Observable<Bool>
     }
-   
+    
     init() {
         self.titleLabelType = .email
         self.inputContentType = .emailAddress
-        self.returnKeyType = .default
         self.keyboardType = .default
     }
     
     init(titleLabelType: TextFieldType,
          inputContentType: UITextContentType = .emailAddress,
-         returnKeyType: UIReturnKeyType = .default,
          keyboardType: UIKeyboardType = .default) {
-
+        
         self.titleLabelType = titleLabelType
         self.inputContentType = inputContentType
-        self.returnKeyType = returnKeyType
         self.keyboardType = keyboardType
         configureTextField(titleLabelType)
     }
@@ -76,7 +76,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     func transform(input: Input) -> Output {
         var boolValue: Bool = false
         let validCheckOutput = input.inputString.map { [weak self] str -> Bool in
-            if str.isEmpty { return false } 
+            if str.isEmpty { return false }
             switch self?.titleLabelType {
             case .email:
                 boolValue = str.emailValidCheck
@@ -86,7 +86,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
                 boolValue = str.nicknameValidCheck
             case .authNumber:
                 boolValue = str.authNumberCheck
-            case .none:
+            case .none, .profile, .profileKeyword:
                 return false
             }
             return boolValue
@@ -95,7 +95,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         return Output(inputIsValid: validCheckOutput)
     }
     
-      private func configureTextField(_ type: TextFieldType) {
+    private func configureTextField(_ type: TextFieldType) {
         switch type {
         case .email:
             errorMessage = .email
@@ -112,6 +112,14 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
             inputPlaceHolder = .authNumber
             authNumberTimer = false
             authNumberResend = false
+        case .profile:
+            inputPlaceHolder = .profile
+            stringCountIsHidden = false
+            totalStringCount = 10
+        case .profileKeyword:
+            inputPlaceHolder = .profileKeyword
+            stringCountIsHidden = false
+            totalStringCount = 5
         }
     }
     
