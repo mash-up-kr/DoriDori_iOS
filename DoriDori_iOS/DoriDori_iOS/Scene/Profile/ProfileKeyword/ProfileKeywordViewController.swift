@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ProfileKeywordViewController: UIViewController {
 
@@ -16,7 +18,6 @@ final class ProfileKeywordViewController: UIViewController {
     @IBOutlet private weak var keywordCountLabel: UILabel!
     @IBOutlet private weak var startButtomBottomConstraint: NSLayoutConstraint!
     
-    private var keywordisEdit: Bool = false
     private let keyboardUpButtomConstraint: CGFloat = 20
     private let keyboardDownButtomConstraint: CGFloat = 54
     private var keywordCount: Int = 1 {
@@ -24,6 +25,9 @@ final class ProfileKeywordViewController: UIViewController {
             keywordCountLabel.text = String(keywordCount-1)
         }
     }
+    
+    private let viewModel: ProfileKeywordViewModel = .init()
+    private var disposeBag = DisposeBag()
        
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -31,13 +35,26 @@ final class ProfileKeywordViewController: UIViewController {
         configureSignUpNavigationBar()
         keyboardSetting()
         settingViewModel()
-        settingViewModel()
+        bind(viewModel)
+        keywordTextField.delegate = self
     }
     
     private func settingViewModel() {
-        keywordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profileKeyword, inputContentType: .nickname, keyboardType: .default)
+        keywordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profileKeyword,
+                                                                  keyboardType: .default)
     }
-
+    
+    private func bind(_ viewModel: ProfileKeywordViewModel) {
+        let output = viewModel.transform(input: ProfileKeywordViewModel.Input(keyword: keywordTextField.textField.rx.text.orEmpty.asObservable(),
+                                                                 editTap: keywordEditButton.rx.tap.asObservable()))
+        output.editState.drive(onNext: { [weak self] state in
+            self?.keywordStackView.isHidden = state
+            let title = state ? "편집" : "편집 취소"
+            self?.keywordEditButton.setTitle(title, for: .normal)
+        }).disposed(by: disposeBag)
+    }
+     
+    
     private func pushKeywordView(keyword: String) {
         let keywordView = ProfileKeywordView()
         keywordView.configure(title: keyword)
@@ -55,10 +72,10 @@ final class ProfileKeywordViewController: UIViewController {
     
     
     @IBAction func tapProfileKeywordEdit(_ sender: UIButton) {
-        keywordisEdit.toggle()
-        let title = keywordisEdit ? "편집" : "편집 취소"
-        sender.setTitle(title, for: .normal)
-        removeButtonisEnable(keywordisEdit)
+//        keywordisEdit.toggle()
+//        let title = keywordisEdit ? "편집" : "편집 취소"
+//        sender.setTitle(title, for: .normal)
+//        removeButtonisEnable(keywordisEdit)
     }
 }
 
@@ -73,6 +90,19 @@ extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
         })
     }
 }
+
+extension ProfileKeywordViewController: UnderLineTextFieldDelegate {
+    func addKeyword(_ keyword: String) {
+        print("change !! \(keyword)")
+        let keywordView = ProfileKeywordView()
+        keywordView.configure(title: keyword)
+        self.keywordStackView.addArrangedSubview(keywordView)
+        keywordView.delegate = self
+        keywordCount = keywordStackView.arrangedSubviews.count
+    }
+}
+
+
 
 //MARK: - textField 편집시 Keyboard 설정
 extension ProfileKeywordViewController {

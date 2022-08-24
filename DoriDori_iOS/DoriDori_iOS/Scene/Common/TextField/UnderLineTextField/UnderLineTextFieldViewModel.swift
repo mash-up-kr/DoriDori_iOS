@@ -12,7 +12,7 @@ import RxCocoa
 
 class UnderLineTextFieldViewModel: ViewModelProtocol {
     
-    var inputContentType: UITextContentType
+    var inputContentType: UITextContentType = .nickname
     var returnKeyType: UIReturnKeyType = .default
     var keyboardType: UIKeyboardType
     var isSecureTextEntry: Bool {
@@ -61,6 +61,14 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         self.titleLabelType = .email
         self.inputContentType = .emailAddress
         self.keyboardType = .default
+    }
+    
+    init(titleLabelType: TextFieldType,
+         keyboardType: UIKeyboardType = .default) {
+        
+        self.titleLabelType = titleLabelType
+        self.keyboardType = keyboardType
+        configureTextField(titleLabelType)
     }
     
     init(titleLabelType: TextFieldType,

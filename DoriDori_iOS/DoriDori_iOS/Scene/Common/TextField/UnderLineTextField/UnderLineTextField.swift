@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol UnderLineTextFieldDelegate: AnyObject {
+    func addKeyword(_ keyword: String)
+}
+
 class UnderLineTextField: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +31,7 @@ class UnderLineTextField: UIView {
     @IBOutlet weak var authNumberResendStackView: UIStackView!
     @IBOutlet weak var authNumberResendButton: UIButton!
     
-    
+    weak var delegate: UnderLineTextFieldDelegate?
     private let disposeBag = DisposeBag()
     var viewModel = UnderLineTextFieldViewModel() {
         didSet {
@@ -129,4 +133,12 @@ extension UnderLineTextField: UITextFieldDelegate {
         }
         return changeText.count <= totalCount
        }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if self.viewModel.titleLabelType == .profileKeyword {
+            guard let keyword = textField.text else { return false }
+            delegate?.addKeyword(keyword)
+        }
+        return true
+    }
 }

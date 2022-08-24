@@ -25,12 +25,10 @@ final class ProfileIntroViewController: UIViewController {
     // MARK: - Bind
     private func settingViewModel() {
         profileIntroTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profile,
-                                                                      inputContentType: .nickname,
                                                                       keyboardType: .default)
     }
     
     private func bind(_ viewModel: ProfileIntroViewModel) {
-        
         
         let input = ProfileIntroViewModel.Input(profile: profileIntroTextField.textField.rx.text.orEmpty.asObservable(),
                                                 profileStringCount: profileIntroTextField.viewModel.totalStringCount)
