@@ -16,6 +16,7 @@ struct UserInfoModel: Codable {
     var tags: [String]?
     var profileImageURL: String?
     var level: Int?
+    var representativeWard: String?
     
     enum CodingKeys: String, CodingKey {
         case nickname, profileDescription, tags, profileImageURL, level

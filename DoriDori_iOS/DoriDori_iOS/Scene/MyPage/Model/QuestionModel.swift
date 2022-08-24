@@ -11,29 +11,29 @@ typealias QuestionID = String
 typealias AnswerID = String
 
 struct QuestionModel: Codable {
-    var questionID: QuestionID?
+    var id: QuestionID?
     var content: String?
     var representativeAddress: String?
     var anonymous: Bool?
     var fromUser: QuestionUserModel?
     var toUser: QuestionUserModel?
     var answer: AnswerModel?
-    var createdAt: Int
+    var createdAt: String?
 }
 
 struct AnswerModel: Codable {
-    var answerID: AnswerID?
+    var id: AnswerID?
     var content: String?
     var representativeAddress: String?
     var user: QuestionUserModel?
     var likeCount: Int?
     var userLiked: Bool?
-    var createdAt: Int
+    var createdAt: String?
 }
 
 
 struct QuestionUserModel: Codable {
-    var userID: UserID?
+    var id: UserID?
     var nickname: String?
     var profileDescription: String?
     var tags: [String]?

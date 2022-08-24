@@ -25,6 +25,7 @@ final class OtherProfileView: UIView {
     private let navigationBackButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "left"), for: .normal)
+        button.isHidden = true
         return button
     }()
     
@@ -95,6 +96,7 @@ final class OtherProfileView: UIView {
         button.layer.cornerRadius = 8
         button.titleLabel?.textColor = .white
         button.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
+        button.isHidden = true
         return button
     }()
     
@@ -122,12 +124,14 @@ final class OtherProfileView: UIView {
         self.descriptionLabel.text = item.description
         if let wardName = item.representativeWard {
             self.wardView.configure(wardName: wardName)
+            self.wardView.isHidden = false
         }
         self.setupTagViews(tags: item.tags)
-        if self.wardView.isHidden { self.wardView.isHidden = false }
         if self.levelView.isHidden { self.levelView.isHidden = false }
         if self.profileImageView.isHidden { self.profileImageView.isHidden = false }
         if self.shareButton.isHidden { self.shareButton.isHidden = false }
+        if self.navigationBackButton.isHidden { self.navigationBackButton.isHidden = false }
+        if self.questionButton.isHidden { self.questionButton.isHidden = false }
         if let profileImageURL = item.profileImageURL {
             self.profileImageView.kf.setImage(with: URL(string: profileImageURL))
         } else {

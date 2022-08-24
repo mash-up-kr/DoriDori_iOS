@@ -7,8 +7,9 @@
 
 import UIKit
 
-struct MyPageMySpeechBubbleCellItem: MyPageMySpeechBubbleViewItemType {
-    let questioner: String
+struct MyPageMySpeechBubbleCellItem: MyPageMySpeechBubbleViewItemType,
+                                     MyPageBubbleItemType {
+//    let questioner: String
     let userName: String
     let content: String
     let location: String

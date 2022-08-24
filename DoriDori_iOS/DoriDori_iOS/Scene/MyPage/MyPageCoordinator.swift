@@ -37,6 +37,6 @@ final class MyPageCoordinator: MyPageCoordinatable {
     
     func navigateToShare() {
         print(#function)
-        self.navigationController.pushViewController(OtherPageViewController(nibName: nil, bundle: nil), animated: true)
+        OtherPageCoordinator(navigationController: self.navigationController, userID: "62f8b253c9900a7cb9e90021").start()
     }
 }
