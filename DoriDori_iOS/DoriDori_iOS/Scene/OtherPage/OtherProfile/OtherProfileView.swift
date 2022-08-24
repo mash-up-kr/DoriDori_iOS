@@ -41,22 +41,12 @@ final class OtherProfileView: UIView {
         return levelView
     }()
     
-    private let representiveWardView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 1
+    private let wardView: ProfileWardView = {
+        let view = ProfileWardView()
+        view.isHidden = true
         return view
     }()
     
-    private let representiveWareLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.setKRFont(weight: .regular, size: 12)
-        label.textColor = .white
-        return label
-    }()
-    
-
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "share"), for: .normal)
@@ -126,11 +116,15 @@ final class OtherProfileView: UIView {
     
     // MARK: - Configure
     
-    func configure(_ item: MyPageProfileItem) {
+    func configure(_ item: OtherProfileItem) {
         self.nicknameLabel.text = item.nickname
         self.levelView.configure(level: item.level)
         self.descriptionLabel.text = item.description
+        if let wardName = item.representativeWard {
+            self.wardView.configure(wardName: wardName)
+        }
         self.setupTagViews(tags: item.tags)
+        if self.wardView.isHidden { self.wardView.isHidden = false }
         if self.levelView.isHidden { self.levelView.isHidden = false }
         if self.profileImageView.isHidden { self.profileImageView.isHidden = false }
         if self.shareButton.isHidden { self.shareButton.isHidden = false }
@@ -161,16 +155,11 @@ extension OtherProfileView {
     }
     
     private func setupLayouts() {
-        self.representiveWardView.addSubview(self.representiveWareLabel)
-        self.representiveWareLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(3)
-            $0.leading.trailing.equalToSuperview().inset(9.5)
-        }
         [self.tagStackView, self.descriptionLabel].forEach {
             self.profileStackView.addArrangedSubview($0)
         }
         
-        self.addSubViews(self.navigationBackButton, self.nicknameLabel, self.levelView, self.representiveWardView, self.shareButton, self.profileImageView, self.profileStackView, self.questionButton)
+        self.addSubViews(self.navigationBackButton, self.nicknameLabel, self.levelView, self.wardView, self.shareButton, self.profileImageView, self.profileStackView, self.questionButton)
         self.navigationBackButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(23)
@@ -185,7 +174,7 @@ extension OtherProfileView {
             $0.leading.equalTo(self.nicknameLabel.snp.trailing).offset(8)
         }
 
-        self.representiveWardView.snp.makeConstraints {
+        self.wardView.snp.makeConstraints {
             $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
             $0.leading.equalTo(self.levelView.snp.trailing).offset(8)
         }
