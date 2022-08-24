@@ -34,7 +34,7 @@ struct Network {
     ) -> Observable<Model> {
 
         return Observable<Model>.create { observer in
-            let authentication = self.fetchAuthentication()
+            guard let authentication = self.fetchAuthentication() else { return Disposables.create() }
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(authentication.accessToken)"
             ]
@@ -101,9 +101,9 @@ extension Network {
     }
     
     
-    private func fetchAuthentication() -> (accessToken: AccessToken, refreshToken: RefreshToken) {
-        let accessToken = UserDefaults.accessToken
-        let refrehToken = UserDefaults.refreshToken
+    private func fetchAuthentication() -> (accessToken: AccessToken, refreshToken: RefreshToken)? {
+        guard let accessToken = UserDefaults.accessToken,
+              let refrehToken = UserDefaults.refreshToken else { return nil }
         return (accessToken, refrehToken)
     }
 
