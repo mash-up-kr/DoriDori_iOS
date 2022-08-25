@@ -2,11 +2,10 @@
 //  EmptyModel.swift
 //  DoriDori_iOS
 //
-//  Created by 김지인 on 2022/08/15.
+//  Created by Seori on 2022/08/21.
 //
 
 import Foundation
 
 struct EmptyModel: Codable {
-    
 }

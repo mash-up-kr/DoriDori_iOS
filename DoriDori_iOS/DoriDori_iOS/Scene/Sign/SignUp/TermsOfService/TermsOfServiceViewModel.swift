@@ -70,7 +70,7 @@ final class TermsOfServiceViewModel {
         
         let buttonOutput = Observable.combineLatest(allAgreeRelay, useAgreeRelay, locationAgreeRelay) { $0 && $1 && $2 }
                 
-        let terms = self.repostiory.fetchTermsOfSerice().share()
+        let terms = self.repostiory.fetchTermsOfService().share()
         
         let useContent = terms.compactMap { $0[safe: 0] }
             .map { model in

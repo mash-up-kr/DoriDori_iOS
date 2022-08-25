@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 
 protocol TermsOfServiceRequestable: AnyObject {
-    func fetchTermsOfSerice() -> Observable<[TermsModel]>
+    func fetchTermsOfService() -> Observable<[TermsModel]>
 }
 
 final class TermsOfServiceRepository: TermsOfServiceRequestable {
-    func fetchTermsOfSerice() -> Observable<[TermsModel]> {
+    func fetchTermsOfService() -> Observable<[TermsModel]> {
         Network().request(api: TermsOfServiceRequest(), responseModel: ResponseModel<[TermsModel]>.self)
     }
 }

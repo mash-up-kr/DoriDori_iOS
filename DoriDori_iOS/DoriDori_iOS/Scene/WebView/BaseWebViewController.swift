@@ -24,14 +24,15 @@ class BaseWebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print(#function)
         setupWkWebView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(#function)
         setupViews()
+        setupCookies()
         setupConstraints()
     }
     
@@ -51,5 +52,16 @@ class BaseWebViewController: UIViewController {
         }
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    private func setupCookies() {
+        guard let cookie = HTTPCookie(properties: [
+            .domain: "https://mash-up-bangwidae-web-temp-9pcf7l7bh-kimbangg.vercel.app",
+            .path: "/open-inquiry",
+            .name: "zz",
+            .value: dummyAccessToken
+        ]) else { return }
+        self.webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+        print("cookie", cookie)
     }
 }
