@@ -10,7 +10,6 @@ protocol Requestable {
     typealias Parameter = [String: Any]
     var path: String { get }
     var parameters: Parameter? { get }
-    var headers: HTTPHeaders? { get }
     var method: HTTPMethod { get }
     var encoding: ParameterEncoding { get }
 }
