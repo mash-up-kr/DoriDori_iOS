@@ -10,7 +10,7 @@ import SnapKit
 import WebKit
 
 // 필요시에 여기에서 navigation header를 지정해야한다.
-class BaseWebViewController: UIViewController, WKNavigationDelegate {
+final class BaseWebViewController: UIViewController, WKNavigationDelegate {
 //
 //    private let backButton: UIButton = {
 //        let button = UIButton()
@@ -49,9 +49,9 @@ class BaseWebViewController: UIViewController, WKNavigationDelegate {
         let contentController = WKUserContentController()
         if let cookie = HTTPCookie(properties: [
             .domain: "https://dori-dori.netlify.app",
-            .path: "/open-inquiry",
-            .name: "doridori",
-            .value: dummyAccessToken,
+            .path: "/open-inquiry",   // ?? 모르겠음
+            .name: "doridori accessToken",  // cookie의 이름
+            .value: dummyAccessToken,    // cookie에 보낼 값
             .maximumAge: 7200   // cookie지속 시간
         ]) {
             let configuraction = WKWebViewConfiguration()
@@ -89,7 +89,6 @@ class BaseWebViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
-        setupConstraints()
     }
     
     // 로딩중 옵저빙

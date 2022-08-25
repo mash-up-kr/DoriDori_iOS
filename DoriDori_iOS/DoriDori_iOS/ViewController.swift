@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: BaseWebViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-    }
-}
+//class ViewController: BaseWebViewController {
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        // Do any additional setup after loading the view.
+//
+//    }
+//}
 

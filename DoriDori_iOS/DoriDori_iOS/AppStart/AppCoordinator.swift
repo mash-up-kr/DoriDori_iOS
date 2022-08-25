@@ -24,8 +24,7 @@ final class AppCoordinator {
         switch tab {
         // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
         case .notification:
-            let firstViewController = ViewController(url: URL(string: "https://deploy-preview-46--dori-dori.netlify.app/question-detail")!)
-            let navigationController = UINavigationController(rootViewController: firstViewController)
+            let navigationController = UINavigationController(rootViewController: NavigationWebViewController(url:  URL(string: "https://deploy-preview-46--dori-dori.netlify.app/question-detail")!))
             viewController = navigationController
         case .home:
             let homeViewController = HomeViewController()
