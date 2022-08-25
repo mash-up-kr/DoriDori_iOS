@@ -25,7 +25,8 @@ final class NicknameSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureSignUpNavigationBar()
+        navigationItem.title = "입장하기"
+        navigationController?.navigationBar.topItem?.title = ""
     }
     // MARK: - Bind
     private func settingViewModel() {

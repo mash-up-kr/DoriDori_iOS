@@ -22,6 +22,12 @@ final class ProfileIntroViewController: UIViewController {
         bind(viewModel)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "입장하기"
+        navigationController?.navigationBar.topItem?.title = ""
+    }
+    
     // MARK: - Bind
     private func settingViewModel() {
         profileIntroTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profile,

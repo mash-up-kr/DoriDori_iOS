@@ -30,11 +30,16 @@ final class ProfileKeywordViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSignUpNavigationBar()
         keyboardSetting()
         settingViewModel()
         bind(viewModel)
         keywordTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "입장하기"
+        navigationController?.navigationBar.topItem?.title = ""
     }
     
     private func settingViewModel() {
