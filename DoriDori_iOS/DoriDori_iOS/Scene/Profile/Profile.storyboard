@@ -313,9 +313,6 @@
                                         <state key="normal" title="편집">
                                             <color key="titleColor" name="gray600"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tapProfileKeywordEdit:" destination="HnH-mH-eli" eventType="touchUpInside" id="5Mo-Kj-Zc2"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 관심 분야" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-d1-3Id">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="18"/>
@@ -398,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnR-Z2-phV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4123" y="1426"/>
+            <point key="canvasLocation" x="4121.739130434783" y="1425.6696428571429"/>
         </scene>
         <!--Profile Intro View Controller-->
         <scene sceneID="A3J-p3-OmZ">

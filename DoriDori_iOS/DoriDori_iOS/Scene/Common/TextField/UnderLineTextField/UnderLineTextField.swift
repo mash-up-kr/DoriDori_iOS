@@ -137,7 +137,11 @@ extension UnderLineTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if self.viewModel.titleLabelType == .profileKeyword {
             guard let keyword = textField.text else { return false }
-            delegate?.addKeyword(keyword)
+            if !keyword.isEmpty {
+                delegate?.addKeyword(keyword)
+                textField.text = ""
+                nowStringCountLabel.text = "0"
+            }
         }
         return true
     }

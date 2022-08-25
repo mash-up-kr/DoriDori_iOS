@@ -10,19 +10,15 @@ import RxCocoa
 
 final class ProfileKeywordViewModel: ViewModelProtocol {
     
-    private let keywordEdit: BehaviorRelay<Bool> = .init(value: false)
+    private let keywordEdit: BehaviorRelay<Bool> = .init(value: true)
     private var disposeBag = DisposeBag()
     
     struct Input {
-        let keyword: Observable<String>
         let editTap: Observable<Void>
     }
     
     struct Output {
-//        let keywordList: Observable<[String]>
-//        let btnIsEnable: Signal<Bool>
         let editState: Driver<Bool>
-
     }
     
     func transform(input: Input) -> Output {
@@ -31,7 +27,8 @@ final class ProfileKeywordViewModel: ViewModelProtocol {
             edit.toggle()
             self?.keywordEdit.accept(edit)
         }).disposed(by: disposeBag)
-        
+
         return Output(editState: keywordEdit.asDriver())
     }
+    
 }
