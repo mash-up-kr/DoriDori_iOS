@@ -81,11 +81,20 @@ final class EmailSignUpViewController: UIViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
         
-        output.errorMessage.emit(onNext: { [weak self] str in
+        output.emailErrorMsg.emit(onNext: { [weak self] str in
+            self?.emailTextField.errorLabel.isHidden = false
+            self?.emailTextField.errorLabel.text = str
+            self?.emailTextField.underLineView.backgroundColor = UIColor(named: "red500")
+            self?.buttonValid(false)
+        }).disposed(by: disposeBag)
+        
+        output.authErrorMsg.emit(onNext: { [weak self] str in
             self?.authNumberTextField.errorLabel.isHidden = false
             self?.authNumberTextField.errorLabel.text = str
             self?.authNumberTextField.underLineView.backgroundColor = UIColor(named: "red500")
+            self?.buttonValid(false)
         }).disposed(by: disposeBag)
+   
                 
     }
     

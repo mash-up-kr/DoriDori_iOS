@@ -25,7 +25,8 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         let inputAuthNumber: Observable<Bool>
         let sendEmail: Observable<Void>
         let finalConfirm: Observable<Void>
-        let errorMessage: Signal<String>
+        let authErrorMsg: Signal<String>
+        let emailErrorMsg: Signal<String>
     }
     
     func transform(input: Input) -> Output {
@@ -41,6 +42,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             self?.buttonType.value == .sendEmail
         }
         
+        let emailErrorRelay = PublishRelay<String>()
         let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
             .merge()
             .withLatestFrom(input.email)
@@ -48,7 +50,13 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                 guard let self = self else { return .empty() }
                 return self.repository.requestEmail(email: email)
                     .catch({ error in
-                        print(error) // TODO: 서버 에러
+                        guard let errorModel = error.toErrorModel else { return .empty() }
+                        if errorModel.code == "DUPLICATED_USER" {
+                            guard let errorMsg = errorModel.message else {
+                                return .empty()
+                            }
+                            emailErrorRelay.accept(errorMsg)
+                        }
                         return .empty()
                     }).map { _ in
                         return
@@ -57,7 +65,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                     })}
             .observe(on: MainScheduler.instance)
         
-        let errorRelay = PublishRelay<String>()
+        let authErrorRelay = PublishRelay<String>()
         let confirmOutput = input.sendButtonTap
             .filter { [weak self] _ in
                 self?.buttonType.value == .checkAuthNumber
@@ -71,7 +79,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                             guard let errorMsg = errorModel.message else {
                                 return .empty()
                             }
-                            errorRelay.accept(errorMsg)
+                            authErrorRelay.accept(errorMsg)
                         }
                         return .empty()
                     }).map { _ in
@@ -81,7 +89,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                     })}
             .observe(on: MainScheduler.instance)
         
-        return Output(isValidEmail: buttonisValidOutput, inputAuthNumber: inputAuthNumberOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput, errorMessage: errorRelay.asSignal())
+        return Output(isValidEmail: buttonisValidOutput, inputAuthNumber: inputAuthNumberOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput, authErrorMsg: authErrorRelay.asSignal(), emailErrorMsg: emailErrorRelay.asSignal())
     }
     
 }
