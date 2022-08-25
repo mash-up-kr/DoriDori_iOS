@@ -104,7 +104,6 @@
 		A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */; };
 		A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0875289ADA1700F2046C /* MyPageTab.swift */; };
 		A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0877289C2DA700F2046C /* Array+Extension.swift */; };
-		A2E105DA28B7D34F00CC6498 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105D928B7D34F00CC6498 /* DevDatas.swift */; };
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */; };
 		A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
@@ -268,7 +267,6 @@
 		A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReceivedViewController.swift; sourceTree = "<group>"; };
 		A2DF0875289ADA1700F2046C /* MyPageTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTab.swift; sourceTree = "<group>"; };
 		A2DF0877289C2DA700F2046C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		A2E105D928B7D34F00CC6498 /* DevDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDatas.swift; sourceTree = "<group>"; };
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -721,7 +719,6 @@
 				A2CF64E028796D8B007D54DD /* ErrorModel.swift */,
 				A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */,
 				A24FD13728B2336B00A003D1 /* EmptyModel.swift */,
-				A2E105D928B7D34F00CC6498 /* DevDatas.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1173,7 +1170,6 @@
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
-				A2E105DA28B7D34F00CC6498 /* DevDatas.swift in Sources */,
 				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
 				A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */,
 				A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */,
