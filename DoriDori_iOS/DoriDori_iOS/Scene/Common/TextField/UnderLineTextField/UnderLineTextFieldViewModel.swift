@@ -20,7 +20,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     }
     var titleLabelType: TextFieldType
     var inputPlaceHolder: TextFieldPlaceHolder = .email
-    var errorMessage: TextFieldErrorMessage = .email
+    var errorMsgAndTypeCheck: TextFieldErrorMessage = .email
     var stringCountIsHidden: Bool = true
     var totalStringCount: Int = 0
     var authNumberTimer: Bool = true
@@ -29,6 +29,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     enum TextFieldType: String {
         case email = "이메일"
         case password = "비밀번호"
+        case passwordConfirm = "비밀번호 확인"
         case nickname = "닉네임"
         case authNumber = "인증번호"
         case profile, profileKeyword
@@ -36,7 +37,8 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     
     enum TextFieldPlaceHolder: String {
         case email = "DoriDori@naver.com"
-        case password = "비밀번호 입력"
+        case password = "6~20자 비밀번호 입력"
+        case passwordConfirm = "비밀번호 확인"
         case nickname = "ex) 도리를 찾아서"
         case authNumber = "6자리 숫자"
         case profile = "ex) 안녕하세요! 도리도리입니다."
@@ -73,6 +75,7 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     
     init(titleLabelType: TextFieldType,
          inputContentType: UITextContentType = .emailAddress,
+         returnKeyType: UIReturnKeyType = .default,
          keyboardType: UIKeyboardType = .default) {
         
         self.titleLabelType = titleLabelType
@@ -92,6 +95,8 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
                 boolValue = str.passwordValidCheck
             case .nickname:
                 boolValue = str.nicknameValidCheck
+            case .passwordConfirm, .none:
+                break
             case .authNumber:
                 boolValue = str.authNumberCheck
             case .none, .profile, .profileKeyword:
@@ -106,13 +111,16 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
     private func configureTextField(_ type: TextFieldType) {
         switch type {
         case .email:
-            errorMessage = .email
+            errorMsgAndTypeCheck = .email
             inputPlaceHolder = .email
         case .password:
-            errorMessage = .password
+            errorMsgAndTypeCheck = .password
             inputPlaceHolder = .password
+        case .passwordConfirm:
+            errorMsgAndTypeCheck = .password
+            inputPlaceHolder = .passwordConfirm
         case .nickname:
-            errorMessage = .nickname
+            errorMsgAndTypeCheck = .nickname
             inputPlaceHolder = .nickname
             stringCountIsHidden = false
             totalStringCount = 7

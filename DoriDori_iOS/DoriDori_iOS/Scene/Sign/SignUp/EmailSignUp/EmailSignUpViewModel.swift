@@ -30,13 +30,11 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     
     func transform(input: Input) -> Output {
         let buttonisValidOutput = input.email.map { str -> Bool in
-            if str.emailValidCheck { return true }
-            else { return false }
+            str.emailValidCheck
         }
         
         let inputAuthNumberOutput = input.authNumber.map { str -> Bool in
-            if str.authNumberCheck { return true }
-            else { return false }
+            str.authNumberCheck
         }
         
         let sendEmailTap = input.sendButtonTap.filter { [weak self] _ in

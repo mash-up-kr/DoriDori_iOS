@@ -77,7 +77,7 @@ final class EmailSignUpViewController: UIViewController {
         }).disposed(by: self.disposeBag)
         
         output.finalConfirm.bind(onNext: { [weak self] _ in
-            guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordInputViewController") as? PasswordInputViewController else { return }
+            guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
             self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
         
