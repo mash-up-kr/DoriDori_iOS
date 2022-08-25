@@ -84,7 +84,7 @@ class UnderLineTextField: UIView {
             self?.errorLabel.isHidden = true
             return outputValidObservable
         }.filter({ [weak self] _ in
-            self?.viewModel.titleLabelType == .email && self?.viewModel.titleLabelType == .password && self?.viewModel.titleLabelType == .authNumber
+            self?.viewModel.titleLabelType == .email && self?.viewModel.titleLabelType == .password && self?.viewModel.titleLabelType == .authNumber && self?.viewModel.titleLabelType == .passwordConfirm
         })
         .bind(onNext: { [weak self] isValid in
             self?.iconImageView.isHidden = isValid
@@ -128,7 +128,8 @@ extension UnderLineTextField: UITextFieldDelegate {
         if changeText.count <= totalCount {
             self.nowStringCountLabel.text = String(changeText.count)
         }
-        return changeText.count <= totalCount
+        return true
+//        return changeText.count <= totalCount
        }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -61,6 +61,12 @@ final class PasswordViewController: UIViewController {
             self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage()
         }.disposed(by: disposeBag)
         
+        confirmButton.rx.tap.bind { [weak self] _ in
+            let stroyboard = UIStoryboard(name: "Profile", bundle: nil)
+            guard let vc = stroyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }.disposed(by: disposeBag)
+        
     }
     
     

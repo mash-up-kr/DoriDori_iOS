@@ -65,6 +65,11 @@ final class ProfileKeywordViewController: UIViewController {
             let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
             self?.startButton.setTitleColor(buttonTitleColor, for: .normal)
         }).disposed(by: disposeBag)
+        
+        startButton.rx.tap.bind { [weak self] _ in
+            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }.disposed(by: disposeBag)
+
     }
     
     private func removeButtonisEnable(_ state: Bool) {
@@ -73,6 +78,8 @@ final class ProfileKeywordViewController: UIViewController {
             view.removeButton.isHidden = state
         }
     }
+    
+    
 }
 
 

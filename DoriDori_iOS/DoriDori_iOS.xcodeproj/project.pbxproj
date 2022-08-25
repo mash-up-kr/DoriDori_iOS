@@ -10,19 +10,23 @@
 		6C0172B928AA2A460081DDD4 /* EmailSignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172B828AA2A460081DDD4 /* EmailSignUpRepository.swift */; };
 		6C0172BB28AA2B320081DDD4 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172BA28AA2B320081DDD4 /* EmptyModel.swift */; };
 		6C0172BD28AA2BE80081DDD4 /* EmailSignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */; };
+		6C15850228B761C1009E03A6 /* EmailCertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15850128B761C1009E03A6 /* EmailCertRequest.swift */; };
 		6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */; };
 		6C1A66052889207A005A3314 /* TermsOfServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */; };
 		6C25B8D328B24F4B00F59D65 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C25B8D228B24F4B00F59D65 /* DevDatas.swift */; };
+		6C266F3028B674E5003DE150 /* ProfileIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C266F2F28B674E5003DE150 /* ProfileIntroViewController.swift */; };
+		6C266F3228B67520003DE150 /* ProfileIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C266F3128B67520003DE150 /* ProfileIntroViewModel.swift */; };
 		6C296CA028B35F9800E1BFD2 /* EmailSignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C296C9F28B35F9800E1BFD2 /* EmailSignInRequest.swift */; };
 		6C296CA228B360BD00E1BFD2 /* EmailSignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C296CA128B360BD00E1BFD2 /* EmailSignInRepository.swift */; };
 		6C296CA828B3631E00E1BFD2 /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C296CA728B3631E00E1BFD2 /* AuthenticationDelegate.swift */; };
 		6C296CAA28B3657F00E1BFD2 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C296CA928B3657F00E1BFD2 /* TokenData.swift */; };
-		6C266F3028B674E5003DE150 /* ProfileIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C266F2F28B674E5003DE150 /* ProfileIntroViewController.swift */; };
-		6C266F3228B67520003DE150 /* ProfileIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C266F3128B67520003DE150 /* ProfileIntroViewModel.swift */; };
 		6C350E6B28A1567E005281C2 /* UIViewController+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6A28A1567E005281C2 /* UIViewController+Extenstion.swift */; };
 		6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */; };
 		6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */; };
 		6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C350E7328A164EC005281C2 /* Profile.storyboard */; };
+		6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */; };
+		6C3D0B6928B48F8A0076450B /* TermsOfServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */; };
+		6C3D0B6C28B4919A0076450B /* TermsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6B28B4919A0076450B /* TermsModel.swift */; };
 		6C3D0B7628B53BB40076450B /* NicknameSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B7528B53BB40076450B /* NicknameSettingViewModel.swift */; };
 		6C58604928A2A04300D13AA9 /* ProfileKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */; };
 		6C5B741A28A3F89000D7DC9D /* ProfileKeywordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */; };
@@ -34,7 +38,6 @@
 		6C5E72BE28AFCE0300013C2B /* String+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E72BD28AFCE0200013C2B /* String+Extenstion.swift */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
-		6C8E50E328ABDDA00025942A /* EmailCertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E50E228ABDDA00025942A /* EmailCertRequest.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
 		6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */; };
 		6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */; };
@@ -148,6 +151,7 @@
 		6C0172B828AA2A460081DDD4 /* EmailSignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpRepository.swift; sourceTree = "<group>"; };
 		6C0172BA28AA2B320081DDD4 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpRequest.swift; sourceTree = "<group>"; };
+		6C15850128B761C1009E03A6 /* EmailCertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCertRequest.swift; sourceTree = "<group>"; };
 		6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewContoller.swift; sourceTree = "<group>"; };
 		6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewModel.swift; sourceTree = "<group>"; };
 		6C25B8D228B24F4B00F59D65 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevDatas.swift; sourceTree = "<group>"; };
@@ -161,6 +165,9 @@
 		6C350E6E28A159B5005281C2 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewController.swift; sourceTree = "<group>"; };
 		6C350E7328A164EC005281C2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceRequest.swift; sourceTree = "<group>"; };
+		6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceRepository.swift; sourceTree = "<group>"; };
+		6C3D0B6B28B4919A0076450B /* TermsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsModel.swift; sourceTree = "<group>"; };
 		6C3D0B7528B53BB40076450B /* NicknameSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewModel.swift; sourceTree = "<group>"; };
 		6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordViewController.swift; sourceTree = "<group>"; };
 		6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileKeywordView.xib; sourceTree = "<group>"; };
@@ -172,7 +179,6 @@
 		6C5E72BD28AFCE0200013C2B /* String+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extenstion.swift"; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
-		6C8E50E228ABDDA00025942A /* EmailCertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCertRequest.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
@@ -297,11 +303,11 @@
 		6C296CA628B362D600E1BFD2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				6C8E50E228ABDDA00025942A /* EmailCertRequest.swift */,
 				6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */,
 				6C296C9F28B35F9800E1BFD2 /* EmailSignInRequest.swift */,
 				6C296CA728B3631E00E1BFD2 /* AuthenticationDelegate.swift */,
 				6C296CA928B3657F00E1BFD2 /* TokenData.swift */,
+				6C15850128B761C1009E03A6 /* EmailCertRequest.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -333,6 +339,15 @@
 				6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */,
 			);
 			path = ProfileUpload;
+			sourceTree = "<group>";
+		};
+		6C3D0B6A28B4918A0076450B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */,
+				6C3D0B6B28B4919A0076450B /* TermsModel.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		6C5B741F28A54EDA00D7DC9D /* KeywordView */ = {
@@ -374,6 +389,7 @@
 		6C6529EE2895366100EB04B5 /* TermsOfService */ = {
 			isa = PBXGroup;
 			children = (
+				6C3D0B6A28B4918A0076450B /* Data */,
 				6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */,
 				6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */,
 			);
@@ -555,6 +571,7 @@
 			children = (
 				6C296CA628B362D600E1BFD2 /* Auth */,
 				A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */,
+				6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -967,6 +984,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C5E72B928AFCCB200013C2B /* UnderLineTextFieldViewModel.swift in Sources */,
+				6C3D0B6C28B4919A0076450B /* TermsModel.swift in Sources */,
 				6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */,
 				6C0172B928AA2A460081DDD4 /* EmailSignUpRepository.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
@@ -999,6 +1017,7 @@
 				A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */,
 				A2DF0872289AD44C00F2046C /* SeeAllViewController.swift in Sources */,
 				6C266F3228B67520003DE150 /* ProfileIntroViewModel.swift in Sources */,
+				6C15850228B761C1009E03A6 /* EmailCertRequest.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
@@ -1030,8 +1049,8 @@
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
+				6C3D0B6928B48F8A0076450B /* TermsOfServiceRepository.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
-				6C8E50E328ABDDA00025942A /* EmailCertRequest.swift in Sources */,
 				6C3D0B7628B53BB40076450B /* NicknameSettingViewModel.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				6CB65B5C2879792000C15E2B /* SignInMainViewModel.swift in Sources */,
@@ -1040,6 +1059,7 @@
 				6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */,
 				6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */,
 				6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */,
+				6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */,
 				6CB65B5B2879792000C15E2B /* SignInMainViewController.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
 				6C266F3028B674E5003DE150 /* ProfileIntroViewController.swift in Sources */,

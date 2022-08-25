@@ -21,7 +21,7 @@ class ProfileUploadViewController: UIViewController {
     
 
     @IBAction func tapNextButton(_ sender: UIButton) {
-        guard let profileKeywordVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileKeywordViewController") as? ProfileKeywordViewController
+        guard let profileKeywordVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileIntroViewController") as? ProfileIntroViewController
         else { return }
         navigationController?.pushViewController(profileKeywordVC, animated: true)
     }
