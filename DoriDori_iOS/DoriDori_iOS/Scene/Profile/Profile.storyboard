@@ -129,7 +129,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="tapNextButton:" destination="rem-xg-qgG" eventType="touchUpInside" id="6rV-nX-XNj"/>
+                                    <action selector="tapNextButton:" destination="rem-xg-qgG" eventType="touchUpInside" id="fWd-T5-t62"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필로 나를 표현해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1T9-kD-SU6">
@@ -150,6 +150,11 @@
                                     <constraint firstAttribute="height" constant="250" id="51O-VC-zIK"/>
                                     <constraint firstAttribute="width" constant="250" id="cBo-Co-R5J"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ewZ-AW-vXs">
                                 <rect key="frame" x="130.5" y="507" width="153.5" height="23"/>
@@ -204,6 +209,9 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapPhotoUpload:" destination="rem-xg-qgG" eventType="touchUpInside" id="81k-DA-ySe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -221,6 +229,15 @@
                                         <color key="value" name="gray500"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                        <color key="value" name="gray700"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
@@ -245,6 +262,11 @@
                             <constraint firstItem="m8i-nF-7uh" firstAttribute="trailing" secondItem="1T9-kD-SU6" secondAttribute="trailing" constant="30" id="xC1-9K-7fc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="88A-up-EnN" id="Lro-dW-MvL"/>
+                        <outlet property="profileView" destination="w9G-X1-kAj" id="cpV-bo-ISa"/>
+                        <outlet property="uploadPictureButton" destination="fhn-XR-3yp" id="ZCi-PB-gJk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u54-2T-ej2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
