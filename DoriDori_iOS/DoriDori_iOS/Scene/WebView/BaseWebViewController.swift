@@ -9,49 +9,46 @@ import UIKit
 import SnapKit
 import WebKit
 
-// 필요시에 여기에서 navigation header를 지정해야한다.
+enum DoriDoriWeb {
+    case questionDetail(id: QuestionID)
+    case profileSetting
+    case share
+    case myLevel
+    case alarmSetting
+    case ward
+    
+    var path: String {
+        switch self {
+        case .questionDetail(let id): return "/question-detail?questionId=\(id)"
+        case .profileSetting: return "/setting/my-profile"
+        case .share: return "/open-inquiry"
+        case .myLevel: return "/my-level"
+        case .alarmSetting: return "/setting/alarm"
+        case .ward: return "/my-ward"
+        }
+    }
+}
+
+
 final class BaseWebViewController: UIViewController, WKNavigationDelegate {
-//
-//    private let backButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "left"), for: .normal)
-//        return button
-//    }()
-//
-//    private let titleLabel: UILabel = {
-//        let label = UILabel()
-//
-//        return label
-//    }()
-//
-//
-//    private func setLayouts() {
-//        self.view.addSubViews(self.backButton, self.titleLabel)
-//        self.backButton.snp.makeConstraints {
-//            $0.top.equalTo(self.view.safeAreaLayoutGuide)
-//            $0.leading.equalToSuperview().offset(10)
-//            $0.size.equalTo(24)
-//        }
-//
-//        self.titleLabel.snp.makeConstraints {
-//            $0.top.equalTo(self.backButton.snp.top)
-//            $0.centerX.equalToSuperview()
-//            $0.centerY.equalTo(self.backButton)
-//        }
-//    }
     
-    
+    private enum Constant {
+        static let estimatedProgress = "estimatedProgress"
+    }
+
+    private let domain: String = "https://dori-dori.netlify.app"
     private var webView: WKWebView!
-    private let url: URL
+    private let path: String
     
-    init(url: URL) {
-        self.url = url
+    private let activityIndicator = DoriDoriActivityIndicator()
+    init(path: String) {
+        self.path = path
         let contentController = WKUserContentController()
         if let cookie = HTTPCookie(properties: [
-            .domain: "https://dori-dori.netlify.app",
+            .domain: self.domain,
             .path: "/open-inquiry",   // ?? 모르겠음
-            .name: "doridori accessToken",  // cookie의 이름
-            .value: dummyAccessToken,    // cookie에 보낼 값
+            .name: "accessToken",  // cookie의 이름
+            .value: UserDefaults.accessToken ?? dummyAccessToken,    // cookie에 보낼 값
             .maximumAge: 7200   // cookie지속 시간
         ]) {
             let configuraction = WKWebViewConfiguration()
@@ -88,31 +85,57 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        self.setupView()
+        self.activityIndicator.startAnimating()
     }
     
-    // 로딩중 옵저빙
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            print("웹뷰 로딩 중")
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        if keyPath == Constant.estimatedProgress {
+            guard let loadingValue = change?[.newKey] as? Double else { return }
+            if loadingValue == 1.0 {
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
     
-    // 로드 및 로딩중 옵저버 등록
+    private func setupView() {
+        self.webView.isOpaque = false
+        self.webView.backgroundColor = UIColor.clear
+        self.webView.addSubview(self.activityIndicator)
+        self.activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(48)
+        }
+    }
+    
+
     private func setupWkWebView() {
-        let request = URLRequest(url: url)
+        guard let webURL = URL(string: "\(self.domain)\(self.path)") else { return }
+        let request = URLRequest(url: webURL)
         webView.load(request)
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-        
-        
+        webView.addObserver(
+            self,
+            forKeyPath: #keyPath(WKWebView.estimatedProgress),
+            options: .new,
+            context: nil
+        )
     }
-
 }
 
+// MARK: -  WKScriptMessageHandler
+
 extension BaseWebViewController: WKScriptMessageHandler {
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    func userContentController(
+        _ userContentController: WKUserContentController,
+        didReceive message: WKScriptMessage
+    ) {
         print(message, "message")
         print(message.body, "body")
         guard message.name == "Common",
@@ -126,7 +149,6 @@ extension BaseWebViewController: WKScriptMessageHandler {
         print("ddeep link to url", url)
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
             return
         }
     }

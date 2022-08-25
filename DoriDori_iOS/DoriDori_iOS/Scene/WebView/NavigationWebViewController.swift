@@ -13,7 +13,7 @@ final class NavigationWebViewController: UIViewController {
     
     private let navigationBarView: UIView = {
         let view = UIView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .gray900
         return view
     }()
     
@@ -33,10 +33,10 @@ final class NavigationWebViewController: UIViewController {
     private let webViewController: BaseWebViewController
     
     init(
-        url: URL,
+        path: String,
         title: String? = nil
     ) {
-        self.webViewController = BaseWebViewController(url: url)
+        self.webViewController = BaseWebViewController(path: path)
         self.navigationTitleLabel.text = title
         super.init(nibName: nil, bundle: nil)
     }
@@ -48,7 +48,7 @@ final class NavigationWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayouts()
-        self.view.backgroundColor = .darkGray
+        self.view.backgroundColor = .gray900
         self.navigationController?.navigationBar.isHidden = true
     }
     
