@@ -15,6 +15,7 @@ final class PasswordViewController: UIViewController {
     @IBOutlet private weak var confirmButton: UIButton!
     
     private let viewModel: PasswordViewModel = .init()
+    private let signUpViewModel: SignUpViewModel = .init()
     private var disposeBag = DisposeBag()
     
     // MARK: - Life cycle
@@ -61,12 +62,23 @@ final class PasswordViewController: UIViewController {
         output.passwordIsValid.bind { [weak self] isValid in
             self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage()
         }.disposed(by: disposeBag)
+
+        let confirmBtnOb = confirmButton.rx.tap.asObservable().share()
+        confirmBtnOb.withLatestFrom(input.password)
+            .bind { [weak self] pw in
+                guard let self = self else { return }
+                self.signUpViewModel.password.onNext(pw)
+//                let stroyboard = UIStoryboard(name: "Profile", bundle: nil)
+//                guard let vc = stroyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
+//                self.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: disposeBag)
         
-        confirmButton.rx.tap.bind { [weak self] _ in
-            let stroyboard = UIStoryboard(name: "Profile", bundle: nil)
-            guard let vc = stroyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }.disposed(by: disposeBag)
+        //회원가입
+        let signUp = signUpViewModel.transform().signUpAPIOutput
+        Observable.of(confirmBtnOb, signUp).merge()
+            .bind { _ in
+                print("회원가입 성공 !!! ")
+            }.disposed(by: disposeBag)
         
     }
     

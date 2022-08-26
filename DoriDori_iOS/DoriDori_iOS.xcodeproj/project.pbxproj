@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C0172B928AA2A460081DDD4 /* EmailSignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172B828AA2A460081DDD4 /* EmailSignUpRepository.swift */; };
-		6C0172BD28AA2BE80081DDD4 /* EmailSignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */; };
+		6C0172B928AA2A460081DDD4 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172B828AA2A460081DDD4 /* SignUpRepository.swift */; };
+		6C0172BD28AA2BE80081DDD4 /* EmailSendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0172BC28AA2BE80081DDD4 /* EmailSendRequest.swift */; };
 		6C15850228B761C1009E03A6 /* EmailCertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15850128B761C1009E03A6 /* EmailCertRequest.swift */; };
 		6C15850428B76A83009E03A6 /* ProfileUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15850328B76A83009E03A6 /* ProfileUploadViewModel.swift */; };
 		6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */; };
@@ -24,9 +24,11 @@
 		6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */; };
 		6C350E7428A164EC005281C2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C350E7328A164EC005281C2 /* Profile.storyboard */; };
 		6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */; };
-		6C3D0B6928B48F8A0076450B /* TermsOfServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */; };
 		6C3D0B6C28B4919A0076450B /* TermsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B6B28B4919A0076450B /* TermsModel.swift */; };
 		6C3D0B7628B53BB40076450B /* NicknameSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D0B7528B53BB40076450B /* NicknameSettingViewModel.swift */; };
+		6C564FDC28B8E8BE00A91959 /* EmailSignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C564FDB28B8E8BE00A91959 /* EmailSignUpRequest.swift */; };
+		6C564FDF28B8EBEC00A91959 /* EmailSignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C564FDE28B8EBEC00A91959 /* EmailSignUpModel.swift */; };
+		6C564FE128B8F9DF00A91959 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C564FE028B8F9DF00A91959 /* SignUpViewModel.swift */; };
 		6C58604928A2A04300D13AA9 /* ProfileKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */; };
 		6C5B741A28A3F89000D7DC9D /* ProfileKeywordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */; };
 		6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */; };
@@ -169,8 +171,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6C0172B828AA2A460081DDD4 /* EmailSignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpRepository.swift; sourceTree = "<group>"; };
-		6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpRequest.swift; sourceTree = "<group>"; };
+		6C0172B828AA2A460081DDD4 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
+		6C0172BC28AA2BE80081DDD4 /* EmailSendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSendRequest.swift; sourceTree = "<group>"; };
 		6C15850128B761C1009E03A6 /* EmailCertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCertRequest.swift; sourceTree = "<group>"; };
 		6C15850328B76A83009E03A6 /* ProfileUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewModel.swift; sourceTree = "<group>"; };
 		6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewContoller.swift; sourceTree = "<group>"; };
@@ -187,9 +189,11 @@
 		6C350E7128A1619F005281C2 /* ProfileUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploadViewController.swift; sourceTree = "<group>"; };
 		6C350E7328A164EC005281C2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceRequest.swift; sourceTree = "<group>"; };
-		6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceRepository.swift; sourceTree = "<group>"; };
 		6C3D0B6B28B4919A0076450B /* TermsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsModel.swift; sourceTree = "<group>"; };
 		6C3D0B7528B53BB40076450B /* NicknameSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewModel.swift; sourceTree = "<group>"; };
+		6C564FDB28B8E8BE00A91959 /* EmailSignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpRequest.swift; sourceTree = "<group>"; };
+		6C564FDE28B8EBEC00A91959 /* EmailSignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpModel.swift; sourceTree = "<group>"; };
+		6C564FE028B8F9DF00A91959 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		6C58604828A2A04300D13AA9 /* ProfileKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordViewController.swift; sourceTree = "<group>"; };
 		6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileKeywordView.xib; sourceTree = "<group>"; };
 		6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordView.swift; sourceTree = "<group>"; };
@@ -346,11 +350,12 @@
 		6C296CA628B362D600E1BFD2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				6C0172BC28AA2BE80081DDD4 /* EmailSignUpRequest.swift */,
+				6C0172BC28AA2BE80081DDD4 /* EmailSendRequest.swift */,
 				6C296C9F28B35F9800E1BFD2 /* EmailSignInRequest.swift */,
 				6C296CA728B3631E00E1BFD2 /* AuthenticationDelegate.swift */,
 				6C296CA928B3657F00E1BFD2 /* TokenData.swift */,
 				6C15850128B761C1009E03A6 /* EmailCertRequest.swift */,
+				6C564FDB28B8E8BE00A91959 /* EmailSignUpRequest.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -385,13 +390,13 @@
 			path = ProfileUpload;
 			sourceTree = "<group>";
 		};
-		6C3D0B6A28B4918A0076450B /* Data */ = {
+		6C564FDD28B8EB9600A91959 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6C3D0B6828B48F8A0076450B /* TermsOfServiceRepository.swift */,
 				6C3D0B6B28B4919A0076450B /* TermsModel.swift */,
+				6C564FDE28B8EBEC00A91959 /* EmailSignUpModel.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6C5B741F28A54EDA00D7DC9D /* KeywordView */ = {
@@ -430,20 +435,18 @@
 			path = UnderLineTextField;
 			sourceTree = "<group>";
 		};
-		6C6529EE2895366100EB04B5 /* TermsOfService */ = {
+		6C6529EE2895366100EB04B5 /* Terms */ = {
 			isa = PBXGroup;
 			children = (
-				6C3D0B6A28B4918A0076450B /* Data */,
 				6C1A660228892054005A3314 /* TermsOfServiceViewContoller.swift */,
 				6C1A66042889207A005A3314 /* TermsOfServiceViewModel.swift */,
 			);
-			path = TermsOfService;
+			path = Terms;
 			sourceTree = "<group>";
 		};
 		6C6529EF2895366A00EB04B5 /* EmailSignUp */ = {
 			isa = PBXGroup;
 			children = (
-				6C0172B828AA2A460081DDD4 /* EmailSignUpRepository.swift */,
 				6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */,
 				6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */,
 			);
@@ -481,7 +484,10 @@
 		6C94FC632887C9DD00DD77B6 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				6C6529EE2895366100EB04B5 /* TermsOfService */,
+				6C564FE028B8F9DF00A91959 /* SignUpViewModel.swift */,
+				6C0172B828AA2A460081DDD4 /* SignUpRepository.swift */,
+				6C564FDD28B8EB9600A91959 /* Model */,
+				6C6529EE2895366100EB04B5 /* Terms */,
 				6C6529EF2895366A00EB04B5 /* EmailSignUp */,
 				6C6529F1289536D400EB04B5 /* PasswordInput */,
 			);
@@ -1100,12 +1106,12 @@
 				6C5E72B928AFCCB200013C2B /* UnderLineTextFieldViewModel.swift in Sources */,
 				6C3D0B6C28B4919A0076450B /* TermsModel.swift in Sources */,
 				6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */,
-				6C0172B928AA2A460081DDD4 /* EmailSignUpRepository.swift in Sources */,
+				6C0172B928AA2A460081DDD4 /* SignUpRepository.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
 				6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */,
 				6CB65B622879AAB300C15E2B /* EmailSignInViewController.swift in Sources */,
 				6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */,
-				6C0172BD28AA2BE80081DDD4 /* EmailSignUpRequest.swift in Sources */,
+				6C0172BD28AA2BE80081DDD4 /* EmailSendRequest.swift in Sources */,
 				6C58604928A2A04300D13AA9 /* ProfileKeywordViewController.swift in Sources */,
 				6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */,
 				6CFC979C28B7C2830057F14D /* DevDatas.swift in Sources */,
@@ -1161,6 +1167,7 @@
 				A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */,
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
+				6C564FDF28B8EBEC00A91959 /* EmailSignUpModel.swift in Sources */,
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
 				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
@@ -1178,7 +1185,6 @@
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
-				6C3D0B6928B48F8A0076450B /* TermsOfServiceRepository.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				6C3D0B7628B53BB40076450B /* NicknameSettingViewModel.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
@@ -1189,6 +1195,7 @@
 				6C15850428B76A83009E03A6 /* ProfileUploadViewModel.swift in Sources */,
 				6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */,
 				6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */,
+				6C564FE128B8F9DF00A91959 /* SignUpViewModel.swift in Sources */,
 				6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */,
 				6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */,
 				6CB65B5B2879792000C15E2B /* SignInMainViewController.swift in Sources */,
@@ -1204,6 +1211,7 @@
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
+				6C564FDC28B8E8BE00A91959 /* EmailSignUpRequest.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,
 				6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,

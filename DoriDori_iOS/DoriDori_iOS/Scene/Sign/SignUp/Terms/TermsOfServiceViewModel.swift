@@ -10,7 +10,7 @@ import RxCocoa
 
 final class TermsOfServiceViewModel {
     
-    private let repostiory: TermsOfServiceRepository = .init()
+    private let repostiory: SignUpRepository = .init()
     private let allAgreeRelay: BehaviorRelay<Bool> = .init(value: false)
     private let useAgreeRelay: BehaviorRelay<Bool> = .init(value: false)
     private let locationAgreeRelay: BehaviorRelay<Bool> = .init(value: false)
@@ -37,6 +37,7 @@ final class TermsOfServiceViewModel {
     }
     
     func transform(input: Input) -> Output {
+        
         var all = self.allAgreeRelay.value
         var use = self.useAgreeRelay.value
         var location = self.locationAgreeRelay.value

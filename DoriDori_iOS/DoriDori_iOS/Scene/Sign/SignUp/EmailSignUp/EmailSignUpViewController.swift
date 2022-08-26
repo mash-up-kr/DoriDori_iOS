@@ -24,6 +24,7 @@ final class EmailSignUpViewController: UIViewController {
     @IBOutlet private weak var sendButtonButtomConstraint: NSLayoutConstraint!
     
     private let viewModel: EmailSignUpViewModel = .init()
+    private let signUpViewModel: SignUpViewModel = .init()
     private var disposeBag = DisposeBag()
     
     // MARK: - Life cycle
@@ -77,10 +78,6 @@ final class EmailSignUpViewController: UIViewController {
             self?.emailTextField.iconImageView.image = UIImage(named: "check_circle")
         }).disposed(by: self.disposeBag)
         
-        output.finalConfirm.bind(onNext: { [weak self] _ in
-            guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }).disposed(by: disposeBag)
         
         output.emailErrorMsg.emit(onNext: { [weak self] str in
             self?.emailTextField.errorLabel.isHidden = false
@@ -96,6 +93,12 @@ final class EmailSignUpViewController: UIViewController {
             self?.buttonValid(false)
         }).disposed(by: disposeBag)
    
+        output.finalConfirm.withLatestFrom(input.email)
+            .bind(onNext: { [weak self] email in
+                self?.signUpViewModel.email.onNext(email)
+                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }).disposed(by: disposeBag)
                 
     }
     

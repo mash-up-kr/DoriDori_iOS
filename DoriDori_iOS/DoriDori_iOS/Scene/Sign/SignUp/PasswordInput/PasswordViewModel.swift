@@ -9,6 +9,10 @@ import RxSwift
 import RxCocoa
 
 final class PasswordViewModel: ViewModelProtocol {
+    
+    private let repository: SignUpRepository = .init()
+    private let signUpViewModel: SignUpViewModel = .init()
+
     struct Input {
         let password: Observable<String>
         let passwordConfirm: Observable<String>

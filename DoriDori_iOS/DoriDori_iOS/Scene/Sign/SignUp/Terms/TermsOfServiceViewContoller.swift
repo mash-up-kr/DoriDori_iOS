@@ -25,9 +25,9 @@ final class TermsOfServiceViewContoller: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     
     private var viewModel: TermsOfServiceViewModel = .init()
+    private let signUpViewModel: SignUpViewModel = .init()
+    private var termsIds: [String] = []
     private var disposeBag = DisposeBag()
-    private var agreeBool: Bool = false
-    
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -83,6 +83,7 @@ final class TermsOfServiceViewContoller: UIViewController {
             DispatchQueue.main.async {
                 self?.useAgreeLabel.text = data.title
                 self?.useAgreeContent.text = data.content
+                self?.termsIds.append(data.id)
             }
         }).disposed(by: disposeBag)
         
@@ -90,13 +91,16 @@ final class TermsOfServiceViewContoller: UIViewController {
             DispatchQueue.main.async {
                 self?.locationAgreeLabel.text = data.title
                 self?.locationAgreeContent.text = data.content
+                self?.termsIds.append(data.id)
             }
         }).disposed(by: disposeBag)
         
         nextButton.rx.tap.bind { [weak self] _ in
-            guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController
+            guard let self = self else { return }
+            self.signUpViewModel.termsIds.onNext(self.termsIds)
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController
             else { return }
-            self?.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
     }
     

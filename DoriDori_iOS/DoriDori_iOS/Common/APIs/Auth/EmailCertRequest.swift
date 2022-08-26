@@ -8,13 +8,13 @@
 import Foundation
 
 struct EmailCertRequest: Requestable {
-    var headers: HTTPHeaders?
     
     private let email: String
     private let certificationNumber: String
     
     var path: String { "/api/v1/auth/mail/cert" }
     var parameters: Parameter? { [ "email": email , "certificationNumber": certificationNumber] }
+    var encoding: ParameterEncoding { JSONEncoding.default }
     var method: HTTPMethod = .post
 
     init(email: String, certificationNumber: String) {

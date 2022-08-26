@@ -10,7 +10,7 @@ import RxCocoa
 
 final class EmailSignUpViewModel: ViewModelProtocol {
     
-    private let repository: EmailCertificationRepository = .init()
+    private let repository: SignUpRepository = .init()
     private let buttonType: BehaviorRelay<ButtonType> = .init(value: .sendEmail)
     
     struct Input {

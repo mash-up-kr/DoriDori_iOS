@@ -16,7 +16,8 @@ struct EmailSignInRequest: Requestable {
     var path: String { "/api/v1/auth/login" }
     var parameters: Parameter? { [ "email": email, "loginType": loginType, "password": password ] }
     var method: HTTPMethod = .post
-    
+    var encoding: ParameterEncoding { JSONEncoding.default }
+
     init(email: String, loginType: String, password: String) {
         self.email = email
         self.loginType = loginType
