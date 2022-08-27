@@ -9,7 +9,7 @@ import RxSwift
 
 protocol SignUpReqestable: AnyObject {
     func fetchTermsOfService() -> Observable<[TermsModel]>
-    func requestEmail(email: String) -> Observable<EmptyModel>
+    func requestEmailSend(email: String) -> Observable<EmptyModel>
     func confirmAuthNumber(email: String, authNumber: String) -> Observable<EmptyModel>
     func requestSignUp(email: String, password: String, termsIds: [String]) -> Observable<EmailSignUpModel>
 }
@@ -20,7 +20,7 @@ final class SignUpRepository: SignUpReqestable {
         Network().request(api: TermsOfServiceRequest(), responseModel: ResponseModel<[TermsModel]>.self)
     }
     
-    func requestEmail(email: String) -> Observable<EmptyModel> {
+    func requestEmailSend(email: String) -> Observable<EmptyModel> {
         Network().request(api: EmailSendRequest.init(email: email), responseModel: ResponseModel<EmptyModel>.self)
     }
     

@@ -48,7 +48,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             .withLatestFrom(input.email)
             .flatMapLatest { [weak self] email -> Observable<Void> in
                 guard let self = self else { return .empty() }
-                return self.repository.requestEmail(email: email)
+                return self.repository.requestEmailSend(email: email)
                     .catch({ error in
                         guard let errorModel = error.toErrorModel else { return .empty() }
                         if errorModel.code == "DUPLICATED_USER" {
