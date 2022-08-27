@@ -84,6 +84,8 @@
 		CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */; };
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
 		CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */; };
+		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
+		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
 		CE6A451528AA43510084B106 /* LocationCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */; };
 		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
@@ -210,6 +212,8 @@
 		CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = DoriDori_iOS/Common/Network/DevDatas.swift; sourceTree = SOURCE_ROOT; };
+		CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLike.swift; sourceTree = "<group>"; };
+		CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = /Downloads/DevDatas.swift; sourceTree = "<absolute>"; };
 		CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewImplement.swift; sourceTree = "<group>"; };
 		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */,
 				A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */,
 				A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */,
+				CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -680,6 +685,7 @@
 			children = (
 				CECB0C3E28A2BE2B00A48D82 /* MyWard.swift */,
 				CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */,
+				CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -908,6 +914,7 @@
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
+				CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
 				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
 				A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */,
@@ -923,6 +930,7 @@
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
+				CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,

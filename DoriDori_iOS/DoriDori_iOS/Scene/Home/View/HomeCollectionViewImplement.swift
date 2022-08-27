@@ -42,4 +42,10 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
         let size = HomeMySpeechBubbleViewCell.fittingSize(width: collectionView.frame.width, item: (viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row])!)
         return size
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row] else {
+            return
+        }
+    }
 }

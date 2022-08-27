@@ -8,7 +8,7 @@
 import Foundation
 
 struct HomeSpeechs: Codable {
-    let homeSpeech: [HomeSpeech]
+    let homeSpeech: [HomeSpeechInfo]
     let hasNext: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -17,13 +17,13 @@ struct HomeSpeechs: Codable {
     }
 }
 
-struct HomeSpeech: Codable {
+struct HomeSpeechInfo: Codable {
     let id: String
     let user: UserInfo
     let content: String
     let likeCount, commentCount: Int
     let userLiked: Bool
-    let longitude, latitude: Double
+    let longitude, latitude: Double?
     let representativeAddress: String
     let anonymous: Bool
     let createdAt, updatedAt: String

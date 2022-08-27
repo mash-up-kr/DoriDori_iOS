@@ -14,6 +14,9 @@ final class HomeViewModel: Reactor {
         case requestHeaderViewData
         case reqeustHomeData
         case locationCellDidTap(Bool)
+        case like(id: String)
+        case dislike(id: String)
+        case comment(postId: String)
     }
     
     enum Mutation {
@@ -47,6 +50,12 @@ final class HomeViewModel: Reactor {
             return .empty()
         case .reqeustHomeData:
             return requestHomeData()
+        case let .like(id):
+            return like(id: id)
+        case let .dislike(id: id):
+            return dislike(id: id)
+        case let .comment(postId: postId):
+            return comment(postId: postId)
         }
     }
 
@@ -78,12 +87,33 @@ final class HomeViewModel: Reactor {
     }
     
     func requestHomeData() -> Observable<Mutation> {
-        repository.requestHomeData(lastId: "62f26bb63af9661d5f868d25", latitude: 37.504030, longitude: 127.024099, meterDistance: 250, size: 20)
+        repository.requestHomeData(lastId: nil, latitude: 37.497175, longitude: 127.027926, meterDistance: 1000, size: 20)
             .flatMap { models -> Observable<Mutation> in
                 .concat([
                     .just(.setHomeModels(models)),
                     .just(.setHomeCollectionViewReload(true))
                 ])
+            }
+    }
+    
+    func like(id: String) -> Observable<Mutation> {
+        repository.like(id: id)
+            .flatMap { _ -> Observable<Mutation> in
+                    .just(.setHomeCollectionViewReload(true))
+            }
+    }
+    
+    func dislike(id: String) -> Observable<Mutation> {
+        repository.dislike(id: id)
+            .flatMap { _ -> Observable<Mutation> in
+                    .just(.setHomeCollectionViewReload(true))
+            }
+    }
+    
+    func comment(postId: String) -> Observable<Mutation> {
+        repository.comment(postId: postId)
+            .flatMap { _ -> Observable<Mutation> in
+                    .just(.setHomeCollectionViewReload(true))
             }
     }
 }

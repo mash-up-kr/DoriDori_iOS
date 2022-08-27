@@ -115,9 +115,3 @@ final class HomeViewController: UIViewController {
         }
     }
 }
-
-extension HomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: - Cell 클릭시 애니메이션
-    }
-}
