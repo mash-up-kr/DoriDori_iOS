@@ -9,26 +9,6 @@ import UIKit
 import SnapKit
 import WebKit
 
-enum DoriDoriWeb {
-    case questionDetail(id: QuestionID)
-    case profileSetting
-    case share
-    case myLevel
-    case alarmSetting
-    case ward
-    
-    var path: String {
-        switch self {
-        case .questionDetail(let id): return "/question-detail?questionId=\(id)"
-        case .profileSetting: return "/setting/my-profile"
-        case .share: return "/open-inquiry"
-        case .myLevel: return "/my-level"
-        case .alarmSetting: return "/setting/alarm"
-        case .ward: return "/my-ward"
-        }
-    }
-}
-
 
 final class BaseWebViewController: UIViewController, WKNavigationDelegate {
     

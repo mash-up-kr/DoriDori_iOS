@@ -68,6 +68,7 @@
 		A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0877289C2DA700F2046C /* Array+Extension.swift */; };
 		A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */; };
 		A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */; };
+		A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */; };
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */; };
 		A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
@@ -194,6 +195,7 @@
 		A2DF0877289C2DA700F2046C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTypeWebViewController.swift; sourceTree = "<group>"; };
 		A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
+		A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriWeb.swift; sourceTree = "<group>"; };
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */,
 				A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */,
 				A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */,
+				A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
+				A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,

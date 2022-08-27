@@ -14,6 +14,7 @@ enum WebViewNavigateStyle {
 
 protocol WebViewCoordinatable: Coordinator {
     func close()
+    func pop()
 }
 
 final class WebViewCoordinator: WebViewCoordinatable {
@@ -43,7 +44,8 @@ final class WebViewCoordinator: WebViewCoordinatable {
     }
     
     private func startPushTypeWebViewController() {
-        
+        let viewController = NavigationWebViewController(type: self.type, title: nil)
+        self.navigationController.pushViewController(viewController, animated: true)
     }
     
     private func startPresentTypeWebViewController() {
@@ -55,6 +57,10 @@ final class WebViewCoordinator: WebViewCoordinatable {
     
     func close() {
         self.navigationController.topViewController?.dismiss(animated: true)
+    }
+    
+    func pop() {
+        self.navigationController.popViewController(animated: true)
     }
     
 }
