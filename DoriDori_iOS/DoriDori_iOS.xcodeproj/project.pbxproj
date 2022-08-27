@@ -58,6 +58,7 @@
 		A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */; };
 		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
 		A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */; };
+		A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -67,6 +68,9 @@
 		A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */; };
 		A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0875289ADA1700F2046C /* MyPageTab.swift */; };
 		A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0877289C2DA700F2046C /* Array+Extension.swift */; };
+		A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */; };
+		A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */; };
+		A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */; };
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */; };
 		A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
@@ -95,7 +99,6 @@
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
-		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
 		CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */; };
 		CEAAA5A9285A2A4D00D8D3EA /* DoriDori_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */; };
 		CEAAA5B3285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */; };
@@ -182,6 +185,7 @@
 		A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleCell.swift; sourceTree = "<group>"; };
+		A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWebViewController.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -191,6 +195,9 @@
 		A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReceivedViewController.swift; sourceTree = "<group>"; };
 		A2DF0875289ADA1700F2046C /* MyPageTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTab.swift; sourceTree = "<group>"; };
 		A2DF0877289C2DA700F2046C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTypeWebViewController.swift; sourceTree = "<group>"; };
+		A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
+		A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriWeb.swift; sourceTree = "<group>"; };
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -216,7 +223,6 @@
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEAAA595285A2A4C00D8D3EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEAAA59F285A2A4D00D8D3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -547,6 +553,10 @@
 			isa = PBXGroup;
 			children = (
 				CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */,
+				A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */,
+				A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */,
+				A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */,
+				A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -599,7 +609,6 @@
 				CE42D38528705BEE00C49548 /* Scene */,
 				CEB2656B2875E9B500B9970B /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
-				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
 				CEAAA59F285A2A4D00D8D3EA /* Info.plist */,
 			);
 			path = DoriDori_iOS;
@@ -853,7 +862,6 @@
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */,
 				A2DF0872289AD44C00F2046C /* SeeAllViewController.swift in Sources */,
-				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
@@ -866,7 +874,9 @@
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
 				A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */,
+				A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
+				A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */,
 				A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */,
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
@@ -875,6 +885,7 @@
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
+				A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
@@ -886,6 +897,7 @@
 				CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
+				A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
