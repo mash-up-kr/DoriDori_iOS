@@ -15,6 +15,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>testeststestestest</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>testeststestestest</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Regular.otf</string>
