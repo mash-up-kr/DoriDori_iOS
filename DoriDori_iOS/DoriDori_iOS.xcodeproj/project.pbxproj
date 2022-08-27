@@ -86,6 +86,7 @@
 		CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */; };
 		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
 		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
+		CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A0FB228BA939C00E1E644 /* Lottie */; };
 		CE6A451528AA43510084B106 /* LocationCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */; };
 		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
@@ -259,6 +260,7 @@
 				CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */,
 				CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */,
 				CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */,
+				CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
 				CE58A80E28796C8900928091 /* SnapKit in Frameworks */,
 				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
@@ -727,6 +729,7 @@
 				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 				CE58A80D28796C8900928091 /* SnapKit */,
+				CE6A0FB228BA939C00E1E644 /* Lottie */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -807,6 +810,7 @@
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -1287,6 +1291,14 @@
 				kind = branch;
 			};
 		};
+		CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CEAAA5C1285A2BDB00D8D3EA /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -1341,6 +1353,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CE6A0FB228BA939C00E1E644 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		CEAAA5C2285A2BDB00D8D3EA /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
