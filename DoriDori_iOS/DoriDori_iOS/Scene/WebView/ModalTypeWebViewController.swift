@@ -5,8 +5,9 @@
 //  Created by Seori on 2022/08/27.
 //
 
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ModalTypeWebViewController: UIViewController {
     
@@ -27,14 +28,18 @@ final class ModalTypeWebViewController: UIViewController {
         return button
     }()
     
+    private let disposeBag: DisposeBag
     private let webViewController: BaseWebViewController
     private let type: DoriDoriWeb
+    private let coordinator: WebViewCoordinatable
     
     init(
         type: DoriDoriWeb,
-        title: String? = nil
+        coordinator: WebViewCoordinatable
     ) {
+        self.coordinator = coordinator
         self.type = type
+        self.disposeBag = .init()
         self.webViewController = BaseWebViewController(path: type.path)
         super.init(nibName: nil, bundle: nil)
     }
@@ -46,8 +51,9 @@ final class ModalTypeWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayouts()
-        self.view.backgroundColor = .gray900
+        self.view.backgroundColor = .darkGray
         self.navigationController?.navigationBar.isHidden = true
+        self.bind()
     }
     
     private func setupLayouts() {
@@ -78,5 +84,13 @@ final class ModalTypeWebViewController: UIViewController {
             $0.size.equalTo(24)
             $0.trailing.equalToSuperview().inset(27)
         }
+    }
+    
+    private func bind() {
+        self.closeButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.coordinator.close()
+            }
+            .disposed(by: self.disposeBag)
     }
 }
