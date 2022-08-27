@@ -40,16 +40,14 @@ final class DoriDoriToastView: UIView {
     
     func show() {
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate
-                as? SceneDelegate,
-              let tabBar = sceneDelegate.window?.rootViewController as? UITabBarController else {
+                as? SceneDelegate else {
             return
         }
-        let y = (UIScreen.main.bounds.height - (tabBar.tabBar.bounds.height + 20))
         let x = UIScreen.main.bounds.width / 2
         sceneDelegate.window?.showToast(
             self,
             duration: self.duration,
-            point: CGPoint(x: x, y: y),
+            point: CGPoint(x: x, y: 58),
             completion: nil
         )
     }
