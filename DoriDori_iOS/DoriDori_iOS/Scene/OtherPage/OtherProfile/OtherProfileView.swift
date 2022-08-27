@@ -139,10 +139,22 @@ final class OtherProfileView: UIView {
         }
     }
     
-    func bindAction(didTapShareButton: PublishRelay<Void>) {
+    func bindAction(
+        didTapShareButton: PublishRelay<Void>,
+        didTapBackButton: PublishRelay<Void>,
+        didTapQuestionButton: PublishRelay<Void>
+    ) {
         
         self.shareButton.rx.throttleTap
             .bind(to: didTapShareButton)
+            .disposed(by: self.disposeBag)
+        
+        self.navigationBackButton.rx.throttleTap
+            .bind(to: didTapBackButton)
+            .disposed(by: self.disposeBag)
+        
+        self.questionButton.rx.throttleTap
+            .bind(to: didTapQuestionButton)
             .disposed(by: self.disposeBag)
     }
 }

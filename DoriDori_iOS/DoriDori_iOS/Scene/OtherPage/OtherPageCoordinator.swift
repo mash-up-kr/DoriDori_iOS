@@ -8,9 +8,17 @@
 import Foundation
 import UIKit
 
-final class OtherPageCoordinator: Coordinator {
-    var navigationController: UINavigationController
+protocol OtherPageCoordinatable: Coordinator {
+    func pop()
+    func navigateToQuestionDetail(questionID: QuestionID)
+    func navigateToProfileShare()
+    func navigateToQuestion()
+}
+
+final class OtherPageCoordinator: OtherPageCoordinatable {
+    let navigationController: UINavigationController
     private let userID: UserID
+    
     init(
         navigationController: UINavigationController,
         userID: UserID
@@ -26,4 +34,30 @@ final class OtherPageCoordinator: Coordinator {
         self.navigationController.pushViewController(otherPageViewController, animated: true)
     }
     
+    func pop() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
+    func navigateToQuestionDetail(questionID: QuestionID) {
+        WebViewCoordinator(
+            navigationController: self.navigationController,
+            type: .questionDetail(id: questionID),
+            navigateStyle: .push
+        ).start()
+    }
+    
+    func navigateToProfileShare() {
+        WebViewCoordinator(
+            navigationController: self.navigationController,
+            type: .share,
+            navigateStyle: .push
+        ).start()
+    }
+    
+    func navigateToQuestion() {
+        QuestionCoordinator(
+            navigationController: self.navigationController,
+            questionType: .user(userID: self.userID)
+        ).start()
+    }
 }

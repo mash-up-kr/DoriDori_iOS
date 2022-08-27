@@ -30,20 +30,27 @@ final class OtherPageViewController: UIViewController,
         set { super.hidesBottomBarWhenPushed = newValue }
     }
     private let viewDidLoadStream: PublishRelay<Void>
+    private let didTapShareButton: PublishRelay<Void>
+    private let didTapBackButton: PublishRelay<Void>
+    private let didTapQuestionButton: PublishRelay<Void>
     private let reactor: OtherPageReactor
-    private let coordinator: OtherPageCoordinator
+    private let coordinator: OtherPageCoordinatable
     var disposeBag: DisposeBag
     
     // MARK: - LifeCycles
     
     init(
         reactor: OtherPageReactor,
-        coordinator: OtherPageCoordinator
+        coordinator: OtherPageCoordinatable
     ) {
         self.reactor = reactor
         self.coordinator = coordinator
         self.viewDidLoadStream = .init()
         self.disposeBag = .init()
+        self.didTapShareButton = .init()
+        self.didTapBackButton = .init()
+        self.didTapQuestionButton = .init()
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,7 +62,7 @@ final class OtherPageViewController: UIViewController,
         super.viewDidLoad()
         self.setupLayouts()
         self.setupUI()
-//        self.profileView.configure(OtherProfileItem(nickname: "도리를찾아서", level: 1, profileImageURL: nil, description: "ㅇㄴ녕하세요 디즈니 영화 다 추천해드려요", tags: ["디즈니", "영화", "애니메이션"], representativeWard: "강남구"))
+        self.bind()
         self.bind(reactor: self.reactor)
         self.viewDidLoadStream.accept(())
     }
@@ -68,6 +75,11 @@ final class OtherPageViewController: UIViewController,
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, profileItem in
                 owner.profileView.configure(profileItem)
+                owner.profileView.bindAction(
+                    didTapShareButton: owner.didTapShareButton,
+                    didTapBackButton: owner.didTapBackButton,
+                    didTapQuestionButton: owner.didTapQuestionButton
+                )
             }
             .disposed(by: self.disposeBag)
     }
@@ -79,7 +91,25 @@ final class OtherPageViewController: UIViewController,
             .disposed(by: self.disposeBag)
     }
     
-
+    private func bind() {
+        self.didTapShareButton
+            .bind(with: self) { owner, _ in
+                owner.coordinator.navigateToProfileShare()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapBackButton
+            .bind(with: self) { owner, _ in
+                owner.coordinator.pop()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.didTapQuestionButton
+            .bind(with: self) { owner, _ in
+                owner.coordinator.navigateToQuestion()
+            }
+            .disposed(by: self.disposeBag)
+    }
 
     private func setupLayouts() {
         let contentViewController = OtherProfileContentViewController()
