@@ -14,6 +14,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
     
     private enum Constant {
         static let estimatedProgress = "estimatedProgress"
+        static let messageName = "DoriDori"
     }
 
     private let domain: String = "https://dori-dori.netlify.app"
@@ -25,28 +26,24 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
         self.path = path
         let contentController = WKUserContentController()
         if let cookie = HTTPCookie(properties: [
-            .domain: self.domain,
-            .path: "/open-inquiry",   // ?? 모르겠음
-            .name: "accessToken",  // cookie의 이름
-            .value: UserDefaults.accessToken ?? "",    // cookie에 보낼 값
-            .maximumAge: 7200   // cookie지속 시간
+            .domain: "dori-dori.netlify.app",
+            .path: path,
+            .name: "accessToken",
+            .value: "Bearer \(UserDefaults.accessToken ?? "")",
+            .maximumAge: 7200
         ]) {
             let configuraction = WKWebViewConfiguration()
             let webViewDataStore = WKWebsiteDataStore.nonPersistent()
             webViewDataStore.httpCookieStore.setCookie(cookie)
             configuraction.websiteDataStore = webViewDataStore
-            
             configuraction.userContentController = contentController
-            
             self.webView = WKWebView(frame: .zero, configuration: configuraction)
-            
-            print(cookie)
         }
         else { self.webView = WKWebView() }
 
         
         super.init(nibName: nil, bundle: nil)
-        contentController.add(self, name: "Common")
+        contentController.add(self, name: Constant.messageName)
     }
     
     required init?(coder: NSCoder) {
@@ -59,8 +56,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(#function)
-        setupWkWebView()
+        self.setupWkWebView()
     }
     
     override func viewDidLoad() {
@@ -118,17 +114,12 @@ extension BaseWebViewController: WKScriptMessageHandler {
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        print(message, "message")
-        print(message.body, "body")
-        guard message.name == "Common",
+        guard message.name == Constant.messageName,
               let messages = message.body as? [String: Any],
               let cmd = messages["cmd"],
               let params = messages["parameters"] as? [String: String],
               let deeplink = params["value"] else { return }
-        print("cmd", cmd)
-        print("deeeplink", deeplink)
         guard let url = URL(string: deeplink) else { return }
-        print("ddeep link to url", url)
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
             return

@@ -33,6 +33,10 @@ final class OtherPageReactor: Reactor {
         self.initialState = .init()
     }
     
+    deinit {
+        debugPrint("\(self) deinit")
+    }
+    
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:

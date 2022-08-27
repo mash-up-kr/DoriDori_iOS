@@ -43,6 +43,11 @@ final class NavigationWebViewController: UIViewController {
     private let disposeBag: DisposeBag
     private let coordinator: WebViewCoordinatable
     
+    override var hidesBottomBarWhenPushed: Bool {
+        get { self.navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+    
     init(
         type: DoriDoriWeb,
         title: String? = nil,
