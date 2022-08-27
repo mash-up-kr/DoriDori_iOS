@@ -26,9 +26,9 @@ enum DoriDoriWeb {
         case .myLevel: return "/my-level"
         case .alarmSetting: return "/setting/alarm"
         case .ward: return "/my-ward"
-        case .notice: return "/my-ward"
-        case .terms: return "/my-ward"
-        case .openSource: return "/my-ward"
+        case .notice: return "/setting/notice"
+        case .terms: return "/setting/terms"
+        case .openSource: return "/open-source"
         }
     }
 }
