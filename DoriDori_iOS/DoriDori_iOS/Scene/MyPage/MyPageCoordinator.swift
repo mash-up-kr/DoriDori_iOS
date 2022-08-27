@@ -36,6 +36,6 @@ final class MyPageCoordinator: MyPageCoordinatable {
     }
     
     func navigateToShare() {
-        print(#function)
+        
     }
 }
