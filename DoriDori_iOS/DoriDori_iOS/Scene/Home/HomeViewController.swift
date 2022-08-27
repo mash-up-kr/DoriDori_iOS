@@ -29,8 +29,8 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
-    private var locationCollectionViewDataSource: UICollectionViewDataSource?
-    private var homeCollectionViewDataSource: UICollectionViewDataSource?
+    private var locationCollectionViewImplement: LocationCollectionViewImplement?
+    private var homeCollectionViewImplement: HomeCollectionViewImplement?
 
     // MARK: - Life cycle
 
@@ -72,12 +72,6 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Methods
     private func setupViews() {
-        if let viewModel = viewModel {
-            bind(reactor: viewModel)
-            locationCollectionViewDataSource = LocationCollectionViewDataSource(viewModel: viewModel)
-            homeCollectionViewDataSource = HomeCollectionViewDataSource(viewModel: viewModel)
-        }
-        
         view.addSubview(homeHeaderView)
         view.addSubview(collectionView)
     }
@@ -86,19 +80,27 @@ final class HomeViewController: UIViewController {
         homeHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(44)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(272)
+            $0.height.equalTo(212)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(homeHeaderView.snp.bottom)
+            $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     private func setup() {
-        homeHeaderView.locationCollectionView.dataSource = locationCollectionViewDataSource
-        collectionView.dataSource = homeCollectionViewDataSource
-        homeHeaderView.locationCollectionView.delegate = self
+        if let viewModel = viewModel {
+            bind(reactor: viewModel)
+            locationCollectionViewImplement = LocationCollectionViewImplement(viewModel: viewModel)
+            homeCollectionViewImplement = HomeCollectionViewImplement(viewModel: viewModel)
+        }
+        
+        homeHeaderView.locationCollectionView.dataSource = locationCollectionViewImplement
+        homeHeaderView.locationCollectionView.delegate = locationCollectionViewImplement
+        
+        collectionView.dataSource = homeCollectionViewImplement
+        collectionView.delegate = homeCollectionViewImplement
         
         if let viewModel = viewModel {
             rx.viewWillAppear
@@ -118,19 +120,4 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: - Cell 클릭시 애니메이션
     }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath) as? LocationCollectionViewCell else {
-//            return .zero
-//        }
-//
-//        cell.locationLabel.sizeToFit()
-////        let cellWidth = cell.locationLabel.frame.width + 20
-//        
-//        // TODO: - Size 수정 예정
-//        return CGSize(width: 50, height: 34)
-//    }
 }

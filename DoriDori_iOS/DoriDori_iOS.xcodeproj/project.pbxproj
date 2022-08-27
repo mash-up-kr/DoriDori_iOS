@@ -83,12 +83,12 @@
 		CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13332879AED500F10A20 /* HomeViewModel.swift */; };
 		CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */; };
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
-		CE6A451328AA35E40084B106 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451228AA35E40084B106 /* DevDatas.swift */; };
-		CE6A451528AA43510084B106 /* LocationCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */; };
+		CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */; };
+		CE6A451528AA43510084B106 /* LocationCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */; };
 		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
 		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
-		CE6A452628ABF59B0084B106 /* HomeCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452528ABF59B0084B106 /* HomeCollectionViewDataSource.swift */; };
+		CE6A452628ABF59B0084B106 /* HomeCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */; };
 		CE6A452828ABFD550084B106 /* MyWardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452728ABFD550084B106 /* MyWardRequest.swift */; };
 		CE6FF74328AD274D00E4A3CD /* Rx+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74228AD274D00E4A3CD /* Rx+UIViewController.swift */; };
 		CE6FF74828B0B51400E4A3CD /* HomeSpeechsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */; };
@@ -209,12 +209,13 @@
 		CE5B13332879AED500F10A20 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
-		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = ../../../../../../Downloads/DevDatas.swift; sourceTree = "<group>"; };
-		CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = DoriDori_iOS/Common/Network/DevDatas.swift; sourceTree = SOURCE_ROOT; };
+		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = /Downloads/DevDatas.swift; sourceTree = "<absolute>"; };
+		CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewImplement.swift; sourceTree = "<group>"; };
 		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
 		CE6A452028ABEB6D0084B106 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
-		CE6A452528ABF59B0084B106 /* HomeCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewImplement.swift; sourceTree = "<group>"; };
 		CE6A452728ABFD550084B106 /* MyWardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardRequest.swift; sourceTree = "<group>"; };
 		CE6FF74228AD274D00E4A3CD /* Rx+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UIViewController.swift"; sourceTree = "<group>"; };
 		CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechsRequest.swift; sourceTree = "<group>"; };
@@ -464,6 +465,7 @@
 			children = (
 				A24FD16928B519C400A003D1 /* Authentication */,
 				A2CF64E428796DA5007D54DD /* Requestable.swift */,
+				CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */,
 				A2CF64E228796D99007D54DD /* Network.swift */,
 				A2CF64E628796DB1007D54DD /* ResponseModel.swift */,
 				A2CF64E028796D8B007D54DD /* ErrorModel.swift */,
@@ -548,8 +550,8 @@
 		CE5B13362879B16F00F10A20 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE6A452528ABF59B0084B106 /* HomeCollectionViewDataSource.swift */,
-				CE6A451428AA43510084B106 /* LocationCollectionViewDataSource.swift */,
+				CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */,
+				CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */,
 				CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */,
 				CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */,
 			);
@@ -562,6 +564,14 @@
 				CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		CE6A0FA928BA1AE000E1E644 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A451228AA35E40084B106 /* DevDatas.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		CE6A451F28ABEB670084B106 /* UserDefault */ = {
@@ -591,6 +601,7 @@
 				CEAAA5A7285A2A4D00D8D3EA /* DoriDori_iOSTests */,
 				CEAAA5B1285A2A4D00D8D3EA /* DoriDori_iOSUITests */,
 				CEAAA58F285A2A4C00D8D3EA /* Products */,
+				CE6A0FA928BA1AE000E1E644 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -861,7 +872,7 @@
 				CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
-				CE6A451328AA35E40084B106 /* DevDatas.swift in Sources */,
+				CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
 				A24FD0FD28A8BDE100A003D1 /* SettingCoordinator.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
@@ -878,7 +889,7 @@
 				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
-				CE6A451528AA43510084B106 /* LocationCollectionViewDataSource.swift in Sources */,
+				CE6A451528AA43510084B106 /* LocationCollectionViewImplement.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
 				A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */,
@@ -893,7 +904,7 @@
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
-				CE6A452628ABF59B0084B106 /* HomeCollectionViewDataSource.swift in Sources */,
+				CE6A452628ABF59B0084B106 /* HomeCollectionViewImplement.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,

@@ -1,12 +1,12 @@
 //
-//  HomeCollectionViewDataSource.swift
+//  HomeCollectionViewImplement.swift
 //  DoriDori_iOS
 //
 //  Created by JeongMinho on 2022/08/17.
 //
 import UIKit
 
-final class HomeCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     private var viewModel: HomeViewModel?
     private var numberOfItems: Int { viewModel?.locationListNumberOfModel ?? 0 }
@@ -39,6 +39,7 @@ final class HomeCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: 270, height: 188)
+        let size = HomeMySpeechBubbleViewCell.fittingSize(width: collectionView.frame.width, item: (viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row])!)
+        return size
     }
 }

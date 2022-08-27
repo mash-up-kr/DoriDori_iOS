@@ -1,5 +1,5 @@
 //
-//  LocationCollectionViewDataSource.swift
+//  LocationCollectionViewImplement.swift
 //  DoriDori_iOS
 //
 //  Created by JeongMinho on 2022/08/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LocationCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class LocationCollectionViewImplement: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
 
     private var viewModel: HomeViewModel?
     
@@ -30,5 +30,18 @@ final class LocationCollectionViewDataSource: NSObject, UICollectionViewDataSour
         
         cell.locationLabel.text = viewModel?.currentState.lactaionListModel[indexPath.row].name
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath) as? LocationCollectionViewCell else {
+            return .zero
+        }
+
+        cell.locationLabel.sizeToFit()
+        let cellWidth = cell.locationLabel.frame.width + 20
+        
+        // TODO: - Size 수정 예정
+        return CGSize(width: cellWidth, height: 34)
     }
 }
