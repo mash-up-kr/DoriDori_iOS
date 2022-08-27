@@ -55,7 +55,7 @@ class BaseWebViewController: UIViewController {
     }
     
     private func setupCookies() {
-        guard let accessToken = UserDefaults.accessToken else { return }
+        let accessToken = UserDefaults.accessToken
         guard let cookie = HTTPCookie(properties: [
             .domain: "https://mash-up-bangwidae-web-temp-9pcf7l7bh-kimbangg.vercel.app",
             .path: "/open-inquiry",
