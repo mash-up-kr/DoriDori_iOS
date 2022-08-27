@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MyPageOtherSpeechBubbleItemType {
+protocol MyPageOtherSpeechBubbleItemType: MyPageBubbleItemType {
     var content: String { get }
     var location: String { get }
     var updatedTime: Int { get }

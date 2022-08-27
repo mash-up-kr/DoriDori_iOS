@@ -15,6 +15,7 @@ final class OtherProfileContentReactor: Reactor {
         case viewDidLoad
     }
     enum Mutation {
+        case quetsions([MyPageBubbleItemType])
     }
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
@@ -38,22 +39,27 @@ final class OtherProfileContentReactor: Reactor {
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
-        
-        return .init()
+        var _state = state
+        switch mutation {
+        case .quetsions(let questions):
+            _state.questionAndAnswer = questions
+        }
+        return _state
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            self.repository.fetchQuestionAndAnswer(size: 20, userID: self.userID)
+            return self.repository
+                .fetchQuestionAndAnswer(size: 20, userID: self.userID)
                 .catch { error in
                     print(error)
                     return .empty()
                 }
-            /*
-                .map { response in
+                .flatMapLatest { response -> Observable<Mutation> in
                     let quetsions = response.questions ?? []
-                    quetsions.compactMap { question -> MyPageBubbleItemType? in
+                    var _questions: [MyPageBubbleItemType] = []
+                    let questionItems = quetsions.compactMap { question -> [MyPageBubbleItemType]? in
                         guard let isAnonymousQuestion = question.anonymous else { return nil }
                         let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
                         if isAnonymousQuestion {
@@ -70,7 +76,7 @@ final class OtherProfileContentReactor: Reactor {
                                 location: question.representativeAddress ?? "",
                                 updatedTime: 1,
                                 level: question.fromUser?.level ?? 1,
-                                imageURL: question.fromUser?.profileImageURL,
+                                imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
                                 tags: question.fromUser?.tags ?? [],
                                 userName: question.fromUser?.nickname ?? ""
                             )
@@ -86,11 +92,15 @@ final class OtherProfileContentReactor: Reactor {
                             profileImageURL: URL(string: question.answer?.user?.profileImageURL ?? ""),
                             level: question.answer?.user?.level ?? 1
                         )
+                        let myPageBubble: [MyPageBubbleItemType] = [otherSpeechBubbleItem, mySpeechBubbleItem]
+                        return myPageBubble
                     }
-             
+                    questionItems.forEach { questions in
+                        _questions.append(contentsOf: questions)
+                    }
+                    
+                    return .just(.quetsions(_questions))
                 }
-             */
         }
-        return .empty()
     }
 }

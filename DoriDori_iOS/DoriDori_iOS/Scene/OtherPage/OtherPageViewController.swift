@@ -116,9 +116,13 @@ final class OtherPageViewController: UIViewController,
     }
 
     private func setupLayouts() {
-        let contentViewController = OtherProfileContentViewController()
+        let reactor = OtherProfileContentReactor(repository: OtherPageRepository(), userID: "62f8b253c9900a7cb9e90021")
+        let contentViewController = OtherProfileContentViewController(reactor: reactor)
         
         self.view.addSubViews(self.profileView, self.profileDividerView, contentViewController.view)
+        self.addChild(contentViewController)
+        contentViewController.didMove(toParent: self)
+        
         self.profileView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
