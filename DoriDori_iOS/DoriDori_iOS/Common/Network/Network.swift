@@ -106,8 +106,8 @@ extension Network {
     
     
     private func fetchAuthentication() -> (accessToken: AccessToken, refreshToken: RefreshToken)? {
-        let accessToken = UserDefaults.accessToken
-        let refrehToken = UserDefaults.refreshToken
+        let accessToken = UserDefaults.accessToken ?? ""
+        let refrehToken = UserDefaults.refreshToken ?? ""
         return (accessToken, refrehToken)
     }
 

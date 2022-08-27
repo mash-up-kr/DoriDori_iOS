@@ -14,7 +14,6 @@ final class NicknameSettingViewController: UIViewController {
     @IBOutlet private weak var confirmButton: UIButton!
     
     private let viewModel: NicknameSettingViewModel = .init()
-    private let profileViewModel: ProfileViewModel = .init()
     private var disposeBag = DisposeBag()
     
     // MARK: - LifeCycle

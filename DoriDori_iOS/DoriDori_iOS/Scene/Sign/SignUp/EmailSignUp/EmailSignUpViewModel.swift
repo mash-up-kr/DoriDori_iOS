@@ -13,6 +13,11 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     private let repository: SignUpRepository = .init()
     private let buttonType: BehaviorRelay<ButtonType> = .init(value: .sendEmail)
     
+    enum SignUpError: String {
+        case duplicate = "DUPLICATED_USER"
+        case certFailed = "CERTIFICATE_FAILED"
+    }
+        
     struct Input {
         let email: Observable<String>
         let authNumber: Observable<String>
@@ -23,7 +28,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     struct Output {
         let isValidEmail: Observable<Bool>
         let inputAuthNumber: Observable<Bool>
-        let sendEmail: Observable<Void>
+        let sendEmail: Observable<Bool>
         let finalConfirm: Observable<Void>
         let authErrorMsg: Signal<String>
         let emailErrorMsg: Signal<String>
@@ -46,21 +51,19 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
             .merge()
             .withLatestFrom(input.email)
-            .flatMapLatest { [weak self] email -> Observable<Void> in
+            .flatMapLatest { [weak self] email -> Observable<Bool> in
                 guard let self = self else { return .empty() }
                 return self.repository.requestEmailSend(email: email)
                     .catch({ error in
                         guard let errorModel = error.toErrorModel else { return .empty() }
-                        if errorModel.code == "DUPLICATED_USER" {
+                        if errorModel.code == SignUpError.duplicate.rawValue {
                             guard let errorMsg = errorModel.message else {
                                 return .empty()
                             }
                             emailErrorRelay.accept(errorMsg)
                         }
                         return .empty()
-                    }).map { _ in
-                        return
-                    }.do(onNext: { [weak self] _ in
+                    }).do(onNext: { [weak self] _ in
                         self?.buttonType.accept(.checkAuthNumber)
                     })}
             .observe(on: MainScheduler.instance)
@@ -75,7 +78,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                 return self.repository.confirmAuthNumber(email: email, authNumber: authNumber)
                     .catch({ error in
                         guard let errorModel = error.toErrorModel else { return .empty() }
-                        if errorModel.code == "CERTIFICATE_FAILED" {
+                        if errorModel.code == SignUpError.certFailed.rawValue {
                             guard let errorMsg = errorModel.message else {
                                 return .empty()
                             }

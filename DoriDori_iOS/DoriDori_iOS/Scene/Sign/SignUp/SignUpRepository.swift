@@ -9,9 +9,9 @@ import RxSwift
 
 protocol SignUpReqestable: AnyObject {
     func fetchTermsOfService() -> Observable<[TermsModel]>
-    func requestEmailSend(email: String) -> Observable<EmptyModel>
-    func confirmAuthNumber(email: String, authNumber: String) -> Observable<EmptyModel>
-    func requestSignUp(email: String, password: String, termsIds: [String]) -> Observable<EmailSignUpModel>
+    func requestEmailSend(email: String) -> Observable<Bool>
+    func confirmAuthNumber(email: String, authNumber: String) -> Observable<Bool>
+    func requestSignUp(email: String, password: String, termsIds: [String]) -> Observable<TokenData>
 }
 
 final class SignUpRepository: SignUpReqestable {
@@ -20,15 +20,15 @@ final class SignUpRepository: SignUpReqestable {
         Network().request(api: TermsOfServiceRequest(), responseModel: ResponseModel<[TermsModel]>.self)
     }
     
-    func requestEmailSend(email: String) -> Observable<EmptyModel> {
-        Network().request(api: EmailSendRequest.init(email: email), responseModel: ResponseModel<EmptyModel>.self)
+    func requestEmailSend(email: String) -> Observable<Bool> {
+        Network().request(api: EmailSendRequest.init(email: email), responseModel: ResponseModel<Bool>.self)
     }
     
-    func confirmAuthNumber(email: String, authNumber: String) -> Observable<EmptyModel> {
-        Network().request(api: EmailCertRequest.init(email: email, certificationNumber: authNumber), responseModel: ResponseModel<EmptyModel>.self)
+    func confirmAuthNumber(email: String, authNumber: String) -> Observable<Bool> {
+        Network().request(api: EmailCertRequest.init(email: email, certificationNumber: authNumber), responseModel: ResponseModel<Bool>.self)
     }
     
-    func requestSignUp(email: String, password: String, termsIds: [String]) -> Observable<EmailSignUpModel> {
-        Network().request(api: EmailSignUpRequest.init(email: email, password: password, termsIds: termsIds), responseModel: ResponseModel<EmailSignUpModel>.self)
+    func requestSignUp(email: String, password: String, termsIds: [String]) -> Observable<TokenData> {
+        Network().request(api: EmailSignUpRequest.init(email: email, password: password, termsIds: termsIds), responseModel: ResponseModel<TokenData>.self)
     }
 }

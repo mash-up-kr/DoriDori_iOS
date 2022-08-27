@@ -12,6 +12,7 @@ struct EmailSendRequest: Requestable {
     private let email: String
     var path: String { "/api/v1/auth/mail/send" }
     var parameters: Parameter? { [ "email": email ] }
+    var encoding: ParameterEncoding { JSONEncoding.default }
     var method: HTTPMethod = .post
     
     init(email: String) {
