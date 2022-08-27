@@ -67,6 +67,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         self.setupView()
         self.activityIndicator.startAnimating()
+        self.webView.scrollView.contentOffset = .zero
     }
     
     override func observeValue(
@@ -87,6 +88,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.clear
         self.webView.addSubview(self.activityIndicator)
+        self.navigationController?.navigationBar.isHidden = true
         self.activityIndicator.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalTo(48)

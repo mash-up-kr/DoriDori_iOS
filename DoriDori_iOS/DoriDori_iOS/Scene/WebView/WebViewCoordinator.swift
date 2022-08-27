@@ -44,7 +44,7 @@ final class WebViewCoordinator: WebViewCoordinatable {
     }
     
     private func startPushTypeWebViewController() {
-        let viewController = NavigationWebViewController(type: self.type, title: nil)
+        let viewController = NavigationWebViewController(type: self.type, title: nil, coordinator: self)
         self.navigationController.pushViewController(viewController, animated: true)
     }
     

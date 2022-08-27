@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class NavigationWebViewController: UIViewController {
     
@@ -38,11 +40,16 @@ final class NavigationWebViewController: UIViewController {
     
     private let webViewController: BaseWebViewController
     private let type: DoriDoriWeb
+    private let disposeBag: DisposeBag
+    private let coordinator: WebViewCoordinatable
     
     init(
         type: DoriDoriWeb,
-        title: String? = nil
+        title: String? = nil,
+        coordinator: WebViewCoordinatable
     ) {
+        self.coordinator = coordinator
+        self.disposeBag = .init()
         self.type = type
         self.webViewController = BaseWebViewController(path: type.path)
         self.navigationTitleLabel.text = title
@@ -56,8 +63,18 @@ final class NavigationWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayouts()
-        self.view.backgroundColor = .gray900
+        
+        switch self.type {
+        case .questionDetail:
+            self.view.backgroundColor = .gray900
+            self.navigationBarView.backgroundColor = .gray900
+        default:
+            self.view.backgroundColor = .darkGray
+            self.navigationBarView.backgroundColor = .darkGray
+        }
+        
         self.navigationController?.navigationBar.isHidden = true
+        self.bind()
     }
     
     private func setupLayouts() {
@@ -103,5 +120,13 @@ final class NavigationWebViewController: UIViewController {
             $0.size.equalTo(24)
             $0.trailing.equalToSuperview().inset(20)
         }
+    }
+    
+    private func bind() {
+        self.backButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.coordinator.pop()
+            }
+            .disposed(by: self.disposeBag)
     }
 }
