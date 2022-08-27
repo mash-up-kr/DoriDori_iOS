@@ -24,7 +24,7 @@ final class AppCoordinator {
         switch tab {
         // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
         case .notification:
-            let navigationController = UINavigationController(rootViewController: NavigationWebViewController(path: DoriDoriWeb.questionDetail(id: "63063e418661dd2541ce8e10").path))
+            let navigationController = UINavigationController(rootViewController: NavigationWebViewController(type: .questionDetail(id: "63063e418661dd2541ce8e10")))
             viewController = navigationController
         case .home:
             let homeViewController = HomeViewController()

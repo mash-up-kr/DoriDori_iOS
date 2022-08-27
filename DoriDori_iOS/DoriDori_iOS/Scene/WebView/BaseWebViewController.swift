@@ -48,7 +48,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
             .domain: self.domain,
             .path: "/open-inquiry",   // ?? 모르겠음
             .name: "accessToken",  // cookie의 이름
-            .value: UserDefaults.accessToken ?? dummyAccessToken,    // cookie에 보낼 값
+            .value: UserDefaults.accessToken ?? "",    // cookie에 보낼 값
             .maximumAge: 7200   // cookie지속 시간
         ]) {
             let configuraction = WKWebViewConfiguration()

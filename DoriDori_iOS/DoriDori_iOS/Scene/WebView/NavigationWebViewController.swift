@@ -30,13 +30,21 @@ final class NavigationWebViewController: UIViewController {
         return label
     }()
     
+    private let questionMoreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "more"), for: .normal)
+        return button
+    }()
+    
     private let webViewController: BaseWebViewController
+    private let type: DoriDoriWeb
     
     init(
-        path: String,
+        type: DoriDoriWeb,
         title: String? = nil
     ) {
-        self.webViewController = BaseWebViewController(path: path)
+        self.type = type
+        self.webViewController = BaseWebViewController(path: type.path)
         self.navigationTitleLabel.text = title
         super.init(nibName: nil, bundle: nil)
     }
@@ -77,6 +85,23 @@ final class NavigationWebViewController: UIViewController {
         self.navigationTitleLabel.snp.makeConstraints {
             $0.centerY.equalTo(self.backButton.snp.centerY)
             $0.centerX.equalToSuperview()
+        }
+        
+        switch self.type {
+        case .questionDetail:
+            self.setupQuestionDetailView()
+        default: break
+        }
+       
+    }
+    
+    // 질문상세보기
+    private func setupQuestionDetailView() {
+        self.navigationBarView.addSubview(self.questionMoreButton)
+        self.questionMoreButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(24)
+            $0.trailing.equalToSuperview().inset(20)
         }
     }
 }
