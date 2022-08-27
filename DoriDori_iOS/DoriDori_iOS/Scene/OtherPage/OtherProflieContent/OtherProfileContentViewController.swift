@@ -10,7 +10,8 @@ import RxSwift
 import RxRelay
 import ReactorKit
 
-final class OtherProfileContentViewController: UIViewController, View {
+final class OtherProfileContentViewController: UIViewController {
+    
     
     
     private let collectionView: UICollectionView = {

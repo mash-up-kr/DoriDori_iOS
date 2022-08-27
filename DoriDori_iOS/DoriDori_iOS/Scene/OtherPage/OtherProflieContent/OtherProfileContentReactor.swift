@@ -46,34 +46,34 @@ final class OtherProfileContentReactor: Reactor {
                     print(error)
                     return .empty()
                 }
-                .map { response in
-                    let quetsions = response.questions ?? []
-                    quetsions.compactMap { question -> MyPageBubbleItemType? in
-                        guard let isAnonymousQuestion = question.anonymous else { return nil }
-                        let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
-                        if isAnonymousQuestion {
-                            otherSpeechBubbleItem = AnonymousMyPageSpeechBubbleCellItem(
-                                content: question.content ?? "",
-                                location: question.representativeAddress ?? "",
-                                updatedTime: 1,
-                                tags: question.fromUser?.tags ?? [],
-                                userName: question.fromUser?.nickname ?? ""
-                            )
-                        } else {
-                            otherSpeechBubbleItem = IdentifiedMyPageSpeechBubbleCellItem(
-                                content: question.content ?? "",
-                                location: question.representativeAddress ?? "",
-                                updatedTime: 1,
-                                level: question.fromUser?.level ?? 1,
-                                imageURL: question.fromUser?.profileImageURL,
-                                tags: question.fromUser?.tags ?? [],
-                                userName: question.fromUser?.nickname ?? ""
-                            )
-                        }
-                        
-                        let mySpeechBubbleItem = MyPageMySpeechBubbleCellItem(userName: question.answer?.user?.nickname ?? "", content: question.answer?.content ?? "", location: question.answer., updatedTime: <#T##Int#>, likeCount: <#T##Int#>, profileImageURL: <#T##URL?#>, level: <#T##Int#>)
-                    }
-                }
+//                .map { response in
+//                    let quetsions = response.questions ?? []
+//                    quetsions.compactMap { question -> MyPageBubbleItemType? in
+//                        guard let isAnonymousQuestion = question.anonymous else { return nil }
+//                        let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
+//                        if isAnonymousQuestion {
+//                            otherSpeechBubbleItem = AnonymousMyPageSpeechBubbleCellItem(
+//                                content: question.content ?? "",
+//                                location: question.representativeAddress ?? "",
+//                                updatedTime: 1,
+//                                tags: question.fromUser?.tags ?? [],
+//                                userName: question.fromUser?.nickname ?? ""
+//                            )
+//                        } else {
+//                            otherSpeechBubbleItem = IdentifiedMyPageSpeechBubbleCellItem(
+//                                content: question.content ?? "",
+//                                location: question.representativeAddress ?? "",
+//                                updatedTime: 1,
+//                                level: question.fromUser?.level ?? 1,
+//                                imageURL: question.fromUser?.profileImageURL,
+//                                tags: question.fromUser?.tags ?? [],
+//                                userName: question.fromUser?.nickname ?? ""
+//                            )
+//                        }
+//
+//                        let mySpeechBubbleItem = MyPageMySpeechBubbleCellItem(userName: question.answer?.user?.nickname ?? "", content: question.answer?.content ?? "", location: question.answer., updatedTime: <#T##Int#>, likeCount: <#T##Int#>, profileImageURL: <#T##URL?#>, level: <#T##Int#>)
+//                    }
+//                }
         }
         return .empty()
     }
