@@ -29,7 +29,6 @@
 		A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */; };
 		A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */; };
 		A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */; };
-		A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0EF28A57B4500A003D1 /* DevDatas.swift */; };
 		A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */; };
 		A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */; };
 		A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F628A63F0800A003D1 /* SettingReactor.swift */; };
@@ -154,7 +153,6 @@
 		A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRepository.swift; sourceTree = "<group>"; };
 		A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRequest.swift; sourceTree = "<group>"; };
-		A24FD0EF28A57B4500A003D1 /* DevDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDatas.swift; sourceTree = "<group>"; };
 		A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriSettingItem.swift; sourceTree = "<group>"; };
 		A24FD0F628A63F0800A003D1 /* SettingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReactor.swift; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				A2CF64E428796DA5007D54DD /* Requestable.swift */,
 				A2CF64E228796D99007D54DD /* Network.swift */,
 				A2CF64E628796DB1007D54DD /* ResponseModel.swift */,
-				A24FD0EF28A57B4500A003D1 /* DevDatas.swift */,
 				A2CF64E028796D8B007D54DD /* ErrorModel.swift */,
 				A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */,
 				A24FD13728B2336B00A003D1 /* EmptyModel.swift */,
@@ -836,7 +833,6 @@
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
 				A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */,
-				A24FD0F028A57B4500A003D1 /* DevDatas.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,

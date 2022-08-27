@@ -34,10 +34,14 @@ struct Network {
     ) -> Observable<Model> {
 
         return Observable<Model>.create { observer in
-            guard let authentication = self.fetchAuthentication() else { return Disposables.create() }
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer \(authentication.accessToken)"
-            ]
+            var headers: HTTPHeaders?
+            var refreshToken: RefreshToken?
+            if let authentication = self.fetchAuthentication() {
+                headers = [
+                    "Authorization": "Bearer \(authentication.accessToken)"
+                ]
+                refreshToken = authentication.refreshToken
+            }
             AF.request(
                 "\(baseURL)\(api.path)",
                 method: api.method,
@@ -58,7 +62,7 @@ struct Network {
                 case .success(let response):
                     self.parseResponse(
                         response: response,
-                        refreshToken: authentication.refreshToken,
+                        refreshToken: refreshToken,
                         api: api,
                         responseModel: responseModel,
                         to: observer
@@ -110,11 +114,12 @@ extension Network {
     
     private func parseResponse<Model: Codable>(
         response: ResponseModel<Model>,
-        refreshToken: RefreshToken,
+        refreshToken: RefreshToken?,
         api: Requestable,
         responseModel: ResponseModel<Model>.Type,
         to observer: AnyObserver<Model>
     ) {
+        guard let refreshToken = refreshToken else { return }
         if let isSuccess = response.success {
             if isSuccess {
                 if let data = response.data {
