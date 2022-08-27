@@ -12,12 +12,12 @@ typealias RefreshToken = String
 
 extension UserDefaults {
     // 앞으로 여기에 key 값으로 추가 부탁드릴게요!
-    @UserDefault(key: "accessToken", defaultValue: nil)
+    @OptionalUserDefault(key: "accessToken")
     static var accessToken: AccessToken?
     
-    @UserDefault(key: "refreshToken", defaultValue: nil)
+    @OptionalUserDefault(key: "refreshToken")
     static var refreshToken: RefreshToken?
     
-    @UserDefault(key: "userID", defaultValue: nil)
+    @OptionalUserDefault(key: "userID")
     static var userID: UserID?
 }

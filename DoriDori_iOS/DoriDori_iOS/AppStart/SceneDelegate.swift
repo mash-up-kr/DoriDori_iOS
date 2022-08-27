@@ -27,6 +27,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.dependency = CompositionRoot.resolve(window: newWindow, appStart: .home)
         self.window = dependency.window
         self.window?.makeKeyAndVisible()
+
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
