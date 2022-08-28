@@ -29,6 +29,12 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
+    private let homeEmptyView: HomeEmptyView = {
+        let emptyView: HomeEmptyView = HomeEmptyView()
+        emptyView.backgroundColor = .red
+        return emptyView
+    }()
+    
     private var locationCollectionViewImplement: LocationCollectionViewImplement?
     private var homeCollectionViewImplement: HomeCollectionViewImplement?
 
@@ -37,6 +43,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        collectionView.isHidden = true
         setupViews()
         setupConstrinats()
         setup()
@@ -68,12 +75,26 @@ final class HomeViewController: UIViewController {
                 owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
+        
+        viewModel?.pulse(\.$homeEmptyState)
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, check in
+                if check {
+                    owner.collectionView.isHidden = true
+                    owner.homeEmptyView.isHidden = false
+                } else {
+                    owner.collectionView.isHidden = false
+                    owner.homeEmptyView.isHidden = true
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Methods
     private func setupViews() {
         view.addSubview(homeHeaderView)
         view.addSubview(collectionView)
+        view.addSubview(homeEmptyView)
     }
     
     private func setupConstrinats() {
@@ -84,6 +105,11 @@ final class HomeViewController: UIViewController {
         }
         
         collectionView.snp.makeConstraints {
+            $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        homeEmptyView.snp.makeConstraints {
             $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalToSuperview()
         }

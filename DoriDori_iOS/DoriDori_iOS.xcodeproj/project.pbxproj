@@ -87,6 +87,7 @@
 		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
 		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
 		CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A0FB228BA939C00E1E644 /* Lottie */; };
+		CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */; };
 		CE6A451528AA43510084B106 /* LocationCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */; };
 		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
@@ -215,6 +216,7 @@
 		CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = DoriDori_iOS/Common/Network/DevDatas.swift; sourceTree = SOURCE_ROOT; };
 		CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLike.swift; sourceTree = "<group>"; };
 		CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
+		CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
 		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = /Downloads/DevDatas.swift; sourceTree = "<absolute>"; };
 		CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewImplement.swift; sourceTree = "<group>"; };
 		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				CE6A451428AA43510084B106 /* LocationCollectionViewImplement.swift */,
 				CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */,
 				CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */,
+				CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -941,6 +944,7 @@
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */,
 				A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
 				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,

@@ -24,6 +24,7 @@ final class HomeViewModel: Reactor {
         case setHomeCollectionViewReload(Bool)
         case setLocationModels([MyWard])
         case setHomeModels(HomeSpeechs)
+        case setHomeEmptyState(Bool)
     }
     
     struct State {
@@ -32,6 +33,7 @@ final class HomeViewModel: Reactor {
         @Pulse var locationCollectionViewNeedReload: Bool = false
         @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
+        @Pulse var homeEmptyState: Bool = false
     }
 
     let initialState: State = State()
@@ -71,12 +73,14 @@ final class HomeViewModel: Reactor {
             newState.lactaionListModel = models
         case let .setHomeModels(models):
             newState.homeSpeechModel = models
+        case let .setHomeEmptyState(homeEmptyState):
+            newState.homeEmptyState = homeEmptyState
         }
         
         return newState
     }
     
-    func requestHeaderViewData() -> Observable<Mutation> {
+    private func requestHeaderViewData() -> Observable<Mutation> {
         repository.requestHomeHeaderData()
             .flatMap { models -> Observable<Mutation> in
                 .concat([
@@ -86,31 +90,35 @@ final class HomeViewModel: Reactor {
             }
     }
     
-    func requestHomeData() -> Observable<Mutation> {
+    private func requestHomeData() -> Observable<Mutation> {
         repository.requestHomeData(lastId: nil, latitude: 37.497175, longitude: 127.027926, meterDistance: 1000, size: 20)
             .flatMap { models -> Observable<Mutation> in
-                .concat([
+                if models.homeSpeech.isEmpty {
+                    return .just(.setHomeEmptyState(true))
+                }
+                return .concat([
                     .just(.setHomeModels(models)),
+                    .just(.setHomeEmptyState(false)),
                     .just(.setHomeCollectionViewReload(true))
                 ])
             }
     }
     
-    func like(id: String) -> Observable<Mutation> {
+    private func like(id: String) -> Observable<Mutation> {
         repository.like(id: id)
             .flatMap { _ -> Observable<Mutation> in
                     .just(.setHomeCollectionViewReload(true))
             }
     }
     
-    func dislike(id: String) -> Observable<Mutation> {
+    private func dislike(id: String) -> Observable<Mutation> {
         repository.dislike(id: id)
             .flatMap { _ -> Observable<Mutation> in
                     .just(.setHomeCollectionViewReload(true))
             }
     }
     
-    func comment(postId: String) -> Observable<Mutation> {
+    private func comment(postId: String) -> Observable<Mutation> {
         repository.comment(postId: postId)
             .flatMap { _ -> Observable<Mutation> in
                     .just(.setHomeCollectionViewReload(true))
