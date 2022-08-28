@@ -12,6 +12,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     
     private let repository: SignUpRepository = .init()
     private let buttonType: BehaviorRelay<ButtonType> = .init(value: .sendEmail)
+    private var disposeBag = DisposeBag()
     
     enum SignUpError: String {
         case duplicate = "DUPLICATED_USER"
@@ -48,6 +49,11 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         }
         
         let emailErrorRelay = PublishRelay<String>()
+        
+        input.authNumberResendButton.bind { _ in
+            DoriDoriToastView.init(text: "인증번호가 재전송 되었습니다.").show()
+        }.disposed(by: disposeBag)
+        
         let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
             .merge()
             .withLatestFrom(input.email)

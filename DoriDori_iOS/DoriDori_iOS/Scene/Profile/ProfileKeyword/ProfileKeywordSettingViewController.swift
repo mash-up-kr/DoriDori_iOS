@@ -121,7 +121,7 @@ extension ProfileKeywordSettingViewController: ProfileKeywordViewDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.keywordStackView.layoutIfNeeded()
         })
-        
+        DoriDoriToastView.init(text: "관심분야가 삭제되었습니다.", duration: 2.0).show()
     }
 }
 
