@@ -42,6 +42,7 @@ final class SettingViewController: UIViewController, View {
     private let coordinator: SettingCoordinatable
     private let settingItems: BehaviorRelay<[SettingSectionModel]>
     private let viewDidLoadStream: PublishRelay<Void>
+    private let didTapSettingItem: PublishRelay<IndexPath>
     var reactor: SettingReactor
     var disposeBag: DisposeBag
     
@@ -51,6 +52,7 @@ final class SettingViewController: UIViewController, View {
         settingReactor: SettingReactor,
         coordinator: SettingCoordinatable
     ) {
+        self.didTapSettingItem = .init()
         self.viewDidLoadStream = .init()
         self.coordinator = coordinator
         self.reactor = settingReactor
@@ -68,6 +70,7 @@ final class SettingViewController: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .darkGray
+        self.navigationController?.navigationBar.isHidden = true
         self.setupLayouts()
         self.configure(self.collectionView)
         
@@ -79,7 +82,18 @@ final class SettingViewController: UIViewController, View {
     
     func bind(reactor: SettingReactor) {
         self.bind(action: reactor.action)
-        self.bind(state: reactor.state)
+        
+        reactor.pulse(\.$navigateWeb)
+            .compactMap { $0 }
+            .bind(with: self) { owner, webType in
+                owner.coordinator.navigateToWebView(type: webType)
+            }
+            .disposed(by: self.disposeBag)
+        
+        
+        reactor.pulse(\.$settingSections)
+            .bind(to: self.settingItems)
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -91,12 +105,10 @@ extension SettingViewController {
             .map { SettingReactor.Action.viewDidLoad }
             .bind(to: action)
             .disposed(by: self.disposeBag)
-    }
-    
-    private func bind(state: Observable<SettingReactor.State>) {
-        state.map(\.$settingSections)
-            .map { $0.value }
-            .bind(to: self.settingItems)
+        
+        self.didTapSettingItem
+            .map { SettingReactor.Action.didTap(indexPath: $0) }
+            .bind(to: action)
             .disposed(by: self.disposeBag)
     }
     
@@ -191,6 +203,12 @@ extension SettingViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension SettingViewController: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        self.didTapSettingItem.accept(indexPath)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
