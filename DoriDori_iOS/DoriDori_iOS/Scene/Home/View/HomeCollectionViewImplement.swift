@@ -9,7 +9,7 @@ import UIKit
 final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     private var viewModel: HomeViewModel?
-    private var numberOfItems: Int { viewModel?.locationListNumberOfModel ?? 0 }
+    private var numberOfItems: Int { viewModel?.homeListNumberOfModel ?? 0 }
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel

@@ -11,24 +11,19 @@ import ReactorKit
 final class HomeViewModel: Reactor {
     
     enum Action {
-        case requestHeaderViewData
         case reqeustHomeData
-        case locationCellDidTap(Bool)
         case like(id: String)
         case dislike(id: String)
         case comment(postId: String)
     }
     
     enum Mutation {
-        case setLocationCollectionViewReload(Bool)
         case setHomeCollectionViewReload(Bool)
-        case setLocationModels([MyWard])
         case setHomeModels(HomeSpeechs)
         case setHomeEmptyState(Bool)
     }
     
     struct State {
-        var lactaionListModel: [MyWard] = []
         var homeSpeechModel: HomeSpeechs?
         @Pulse var locationCollectionViewNeedReload: Bool = false
         @Pulse var homeCollectionViewNeedReload: Bool = false
@@ -38,7 +33,7 @@ final class HomeViewModel: Reactor {
 
     let initialState: State = State()
     let repository: HomeRepositoryRequestable
-    var locationListNumberOfModel: Int { currentState.lactaionListModel.count }
+    var homeListNumberOfModel: Int { currentState.homeSpeechModel?.homeSpeech.count ?? 0 }
     
     init(repository: HomeRepositoryRequestable) {
         self.repository = repository
@@ -46,10 +41,6 @@ final class HomeViewModel: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case.requestHeaderViewData:
-            return requestHeaderViewData()
-        case .locationCellDidTap(_):
-            return .empty()
         case .reqeustHomeData:
             return requestHomeData()
         case let .like(id):
@@ -65,12 +56,8 @@ final class HomeViewModel: Reactor {
         var newState = state
         
         switch mutation {
-        case let .setLocationCollectionViewReload(locationCollectionViewNeedReload):
-            newState.locationCollectionViewNeedReload = locationCollectionViewNeedReload
         case let .setHomeCollectionViewReload(homeCollectionViewNeedReload):
             newState.homeCollectionViewNeedReload = homeCollectionViewNeedReload
-        case let .setLocationModels(models):
-            newState.lactaionListModel = models
         case let .setHomeModels(models):
             newState.homeSpeechModel = models
         case let .setHomeEmptyState(homeEmptyState):
@@ -78,16 +65,6 @@ final class HomeViewModel: Reactor {
         }
         
         return newState
-    }
-    
-    private func requestHeaderViewData() -> Observable<Mutation> {
-        repository.requestHomeHeaderData()
-            .flatMap { models -> Observable<Mutation> in
-                .concat([
-                    .just(.setLocationModels(models)),
-                    .just(.setLocationCollectionViewReload(true))
-                ])
-            }
     }
     
     private func requestHomeData() -> Observable<Mutation> {

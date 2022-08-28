@@ -34,8 +34,7 @@ final class HomeViewController: UIViewController {
         emptyView.backgroundColor = .red
         return emptyView
     }()
-    
-    private var locationCollectionViewImplement: LocationCollectionViewImplement?
+
     private var homeCollectionViewImplement: HomeCollectionViewImplement?
 
     // MARK: - Life cycle
@@ -62,13 +61,6 @@ final class HomeViewController: UIViewController {
     // MARK: - Bind ViewModel
 
     func bind(reactor: HomeViewModel) {
-        viewModel?.pulse(\.$locationCollectionViewNeedReload)
-            .observe(on: MainScheduler.instance)
-            .bind(with: self) { owner, _ in
-                owner.homeHeaderView.locationCollectionView.reloadData()
-            }
-            .disposed(by: disposeBag)
-        
         viewModel?.pulse(\.$homeCollectionViewNeedReload)
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
@@ -101,7 +93,7 @@ final class HomeViewController: UIViewController {
         homeHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(44)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(212)
+            $0.height.equalTo(152)
         }
         
         collectionView.snp.makeConstraints {
@@ -118,22 +110,13 @@ final class HomeViewController: UIViewController {
     private func setup() {
         if let viewModel = viewModel {
             bind(reactor: viewModel)
-            locationCollectionViewImplement = LocationCollectionViewImplement(viewModel: viewModel)
             homeCollectionViewImplement = HomeCollectionViewImplement(viewModel: viewModel)
         }
-        
-        homeHeaderView.locationCollectionView.dataSource = locationCollectionViewImplement
-        homeHeaderView.locationCollectionView.delegate = locationCollectionViewImplement
         
         collectionView.dataSource = homeCollectionViewImplement
         collectionView.delegate = homeCollectionViewImplement
         
         if let viewModel = viewModel {
-            rx.viewWillAppear
-                .map { _ in .requestHeaderViewData }
-                .bind(to: viewModel.action)
-                .disposed(by: disposeBag)
-            
             rx.viewWillAppear
                 .map { _ in .reqeustHomeData }
                 .bind(to: viewModel.action)
