@@ -30,7 +30,6 @@ final class ProfileKeywordSettingViewModel: ViewModelProtocol {
         let editState: Driver<Bool>
         let profileOutput: Driver<Bool>
         let errorMsg: Signal<String>
-
     }
     
     func transform(input: Input) -> Output {

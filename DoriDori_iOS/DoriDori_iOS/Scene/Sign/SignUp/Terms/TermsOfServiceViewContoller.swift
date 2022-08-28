@@ -25,7 +25,6 @@ final class TermsOfServiceViewContoller: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     
     private var viewModel: TermsOfServiceViewModel = .init()
-    private let signUpViewModel: SignUpViewModel = .init()
     private var termsIds: [String] = []
     private var disposeBag = DisposeBag()
     
@@ -97,9 +96,9 @@ final class TermsOfServiceViewContoller: UIViewController {
         
         nextButton.rx.tap.bind { [weak self] _ in
             guard let self = self else { return }
-            self.signUpViewModel.termsIds.onNext(self.termsIds)
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "EmailSignUpViewController") as? EmailSignUpViewController
             else { return }
+            vc.termsIds = self.termsIds
             self.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
     }

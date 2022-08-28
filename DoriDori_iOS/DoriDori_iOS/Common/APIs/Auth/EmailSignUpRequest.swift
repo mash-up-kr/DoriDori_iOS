@@ -13,7 +13,7 @@ struct EmailSignUpRequest: Requestable {
     private let password: String
     private let termsIds: [String]
     
-    var path: String { "https://doridori.ga/api/v1/user/join" }
+    var path: String { "/api/v1/user/join" }
     var parameters: Parameter? { ["email": email, "password": password, "termsIds": termsIds] }
     var encoding: ParameterEncoding { JSONEncoding.default }
     var method: HTTPMethod = .post

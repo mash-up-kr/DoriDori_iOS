@@ -24,8 +24,8 @@ final class EmailSignUpViewController: UIViewController {
     @IBOutlet private weak var sendButtonButtomConstraint: NSLayoutConstraint!
     
     private let viewModel: EmailSignUpViewModel = .init()
-    private let signUpViewModel: SignUpViewModel = .init()
     private var disposeBag = DisposeBag()
+    var termsIds: [String] = []
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -95,9 +95,11 @@ final class EmailSignUpViewController: UIViewController {
    
         output.finalConfirm.withLatestFrom(input.email)
             .bind(onNext: { [weak self] email in
-                self?.signUpViewModel.email.onNext(email)
-                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
-                self?.navigationController?.pushViewController(vc, animated: true)
+                guard let self = self else { return }
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
+                vc.termsIds = self.termsIds
+                vc.email = email
+                self.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
                 
     }
