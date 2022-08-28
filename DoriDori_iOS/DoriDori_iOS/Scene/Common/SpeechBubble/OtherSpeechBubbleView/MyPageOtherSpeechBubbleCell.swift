@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
+    let questionID: QuestionID
     let content: String
     let location: String
     let updatedTime: Int
@@ -19,6 +20,7 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
 }
 
 struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
+    let questionID: QuestionID
     let content: String
     let location: String
     let updatedTime: Int

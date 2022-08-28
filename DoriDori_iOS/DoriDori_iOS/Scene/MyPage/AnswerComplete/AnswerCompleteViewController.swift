@@ -17,23 +17,6 @@ final class AnswerCompleteViewController: UIViewController {
         return collectionView
     }()
     
-    let datas: [IdentifiedHomeSpeechBubbleCellItemType] = [
-        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userName: "쿠쿠루삥뽕", likeCount:312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userName: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userName: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"]),
-        IdentifiedHomeSpeechBubbleCellItem(level: 2, location: "강남구", updatedTime: 12, profileImageURL: nil, content: "홈질문입니다.홈질문", userName: "쿠쿠루삥뽕", likeCount: 12312, commentCount: 12, tags: ["메롱", "ㅋㅋ", "담엔술먹자"])
-    ]
-    
-    let myData: [MyPageOtherSpeechBubbleItemType] = [
-        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
-        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
-        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
-        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
-        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
-        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명"),
-        IdentifiedMyPageSpeechBubbleCellItem(content: "메롱킹받지? kg", location: "서초구", updatedTime: 2, level: 2, imageURL: nil, tags: ["킹", "받", "지요?"], userName: "킹킹"),
-        AnonymousMyPageSpeechBubbleCellItem(content: "익명으로 질문할게요. 개발 재밌나요?!!ㅋㅋ 더 보고싶으면 질문을 클릭해봐여~", location: "강남구", updatedTime: 1, tags: [], userName: "익명")
-    ]
     
 //    let myItem = MyPageMySpeechBubbleCellItem(questioner: "감자도리도리", userName: "매쉬업 방위대~알까요잉메롱ㅋ", content: "ㅋㅋㅋㅋ니모를 찾아서예용,ㅋㅋㅋㅋ니모를 찾아서예용xxxxxx", location: "강남", updatedTime: 1, likeCount: 0, profileImageURL: nil, level: 5)
 

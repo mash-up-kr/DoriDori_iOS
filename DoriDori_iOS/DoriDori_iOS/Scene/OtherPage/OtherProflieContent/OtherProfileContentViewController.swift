@@ -23,14 +23,20 @@ final class OtherProfileContentViewController: UIViewController,
     }()
     
     private let viewDidLoadStream: PublishRelay<Void>
+    private let didSelectItem: PublishRelay<IndexPath>
+    private let cellWillDisplay: PublishRelay<IndexPath>
     private let reactor: OtherProfileContentReactor
     var disposeBag: DisposeBag
     private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
-    
+    private let coordinator: OtherPageCoordinatable
     init(
-        reactor: OtherProfileContentReactor
+        reactor: OtherProfileContentReactor,
+        coordinator: OtherPageCoordinatable
     ) {
+        self.coordinator = coordinator
         self.questionItems = .init(value: [])
+        self.didSelectItem = .init()
+        self.cellWillDisplay = .init()
         self.disposeBag = .init()
         self.reactor = reactor
         self.viewDidLoadStream = .init()
@@ -51,8 +57,20 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didSelectItem
+            .map { OtherProfileContentReactor.Action.didSelect($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: self.questionItems)
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateQuestionID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, questionID in
+                owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            }
             .disposed(by: self.disposeBag)
     }
     
@@ -60,6 +78,7 @@ final class OtherProfileContentViewController: UIViewController,
         super.viewDidLoad()
         self.view.backgroundColor = .darkGray
         self.configure(self.collectionView)
+        self.setupLayouts()
         self.bind()
         self.bind(reactor: self.reactor)
         
@@ -138,15 +157,31 @@ extension OtherProfileContentViewController: UICollectionViewDelegate {
         }
         return .zero
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.cellWillDisplay.accept(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.didSelectItem.accept(indexPath)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension OtherProfileContentViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         12
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
         UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
 }

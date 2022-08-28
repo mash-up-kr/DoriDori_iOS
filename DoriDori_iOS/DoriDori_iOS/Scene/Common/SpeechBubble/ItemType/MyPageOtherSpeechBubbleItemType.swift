@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MyPageOtherSpeechBubbleItemType: MyPageBubbleItemType {
+    var questionID: QuestionID { get }
     var content: String { get }
     var location: String { get }
     var updatedTime: Int { get }

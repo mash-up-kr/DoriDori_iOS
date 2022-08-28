@@ -13,12 +13,15 @@ import ReactorKit
 final class OtherProfileContentReactor: Reactor {
     enum Action {
         case viewDidLoad
+        case didSelect(IndexPath)
     }
     enum Mutation {
         case quetsions([MyPageBubbleItemType])
+        case didSelect(QuestionID)
     }
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
+        @Pulse var navigateQuestionID: QuestionID?
     }
     
     var initialState: State
@@ -43,6 +46,8 @@ final class OtherProfileContentReactor: Reactor {
         switch mutation {
         case .quetsions(let questions):
             _state.questionAndAnswer = questions
+        case .didSelect(let questionID):
+            _state.navigateQuestionID = questionID
         }
         return _state
     }
@@ -64,6 +69,7 @@ final class OtherProfileContentReactor: Reactor {
                         let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
                         if isAnonymousQuestion {
                             otherSpeechBubbleItem = AnonymousMyPageSpeechBubbleCellItem(
+                                questionID: question.id ?? "",
                                 content: question.content ?? "",
                                 location: question.representativeAddress ?? "",
                                 updatedTime: 1,
@@ -72,6 +78,7 @@ final class OtherProfileContentReactor: Reactor {
                             )
                         } else {
                             otherSpeechBubbleItem = IdentifiedMyPageSpeechBubbleCellItem(
+                                questionID: question.id ?? "",
                                 content: question.content ?? "",
                                 location: question.representativeAddress ?? "",
                                 updatedTime: 1,
@@ -83,6 +90,7 @@ final class OtherProfileContentReactor: Reactor {
                         }
 
                         let mySpeechBubbleItem = MyPageMySpeechBubbleCellItem(
+                            questionID: question.answer?.id ?? "",
                             questioner: question.fromUser?.nickname ?? "",
                             userName: question.answer?.user?.nickname ?? "",
                             content: question.answer?.content ?? "",
@@ -101,6 +109,15 @@ final class OtherProfileContentReactor: Reactor {
                     
                     return .just(.quetsions(_questions))
                 }
+        case .didSelect(let indexPath):
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
+                return .just(.didSelect(myAnswer.questionID))
+            }
+            if let question = question as? MyPageOtherSpeechBubbleItemType {
+                return .just(.didSelect(question.questionID))
+            }
+            return .empty()
         }
     }
 }

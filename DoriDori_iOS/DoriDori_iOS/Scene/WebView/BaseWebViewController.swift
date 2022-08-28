@@ -32,6 +32,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
             .value: "Bearer \(UserDefaults.accessToken ?? "")",
             .maximumAge: 7200
         ]) {
+            print(cookie)
             let configuraction = WKWebViewConfiguration()
             let webViewDataStore = WKWebsiteDataStore.nonPersistent()
             webViewDataStore.httpCookieStore.setCookie(cookie)

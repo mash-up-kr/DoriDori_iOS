@@ -117,7 +117,7 @@ final class OtherPageViewController: UIViewController,
 
     private func setupLayouts() {
         let reactor = OtherProfileContentReactor(repository: OtherPageRepository(), userID: "62f8b253c9900a7cb9e90021")
-        let contentViewController = OtherProfileContentViewController(reactor: reactor)
+        let contentViewController = OtherProfileContentViewController(reactor: reactor, coordinator: self.coordinator)
         
         self.view.addSubViews(self.profileView, self.profileDividerView, contentViewController.view)
         self.addChild(contentViewController)
