@@ -10,16 +10,14 @@ import Foundation
 struct ProfileRequest: Requestable {
     private let description: String
     private let tags: [String]
-    private let representativeWardId: String?
     
-    var path: String { "/api/v1/user/nickname" }
-    var parameters: Parameter? { ["description": description, "tags": tags, "representativeWardId": representativeWardId ?? ""] }
+    var path: String { "/api/v1/user/profile" }
+    var parameters: Parameter? { ["description": description, "tags": tags] }
     var encoding: ParameterEncoding { JSONEncoding.default }
     var method: HTTPMethod = .post
     
-    init(description: String, tags: [String], representativeWardId: String?) {
+    init(description: String, tags: [String]) {
         self.description = description
         self.tags = tags
-        self.representativeWardId = representativeWardId
     }
 }

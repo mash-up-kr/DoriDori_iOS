@@ -20,6 +20,6 @@ final class ProfileRepository: ProfileReqeustable {
     }
     
     func updateProfile(description: String, tags: [String], representativeWardId: String?) -> Observable<Bool> {
-        Network().request(api: ProfileRequest(description: description, tags: tags, representativeWardId: nil), responseModel: ResponseModel<Bool>.self)
+        Network().request(api: ProfileRequest(description: description, tags: tags), responseModel: ResponseModel<Bool>.self)
     }
 }

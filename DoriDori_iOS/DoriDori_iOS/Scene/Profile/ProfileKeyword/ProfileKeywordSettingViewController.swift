@@ -9,8 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class ProfileKeywordViewController: UIViewController {
-        
+
+final class ProfileKeywordSettingViewController: UIViewController {
+    
     @IBOutlet private weak var keywordStackView: UIStackView!
     @IBOutlet private weak var keywordTextField: UnderLineTextField!
     @IBOutlet private weak var startButton: UIButton!
@@ -24,8 +25,9 @@ final class ProfileKeywordViewController: UIViewController {
     private let keywordCount: BehaviorRelay<Int> = .init(value: 1)
     private let buttonIsEnable: BehaviorRelay<Bool> = .init(value: false)
     
-    private let viewModel: ProfileKeywordViewModel = .init()
+    private let viewModel: ProfileKeywordSettingViewModel = .init()
     private var disposeBag = DisposeBag()
+    var profileIntro: String = ""
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -47,8 +49,12 @@ final class ProfileKeywordViewController: UIViewController {
                                                                  keyboardType: .default)
     }
     
-    private func bind(_ viewModel: ProfileKeywordViewModel) {
-        let output = viewModel.transform(input: ProfileKeywordViewModel.Input(editTap: keywordEditButton.rx.tap.asObservable()))
+    private func bind(_ viewModel: ProfileKeywordSettingViewModel) {
+        let output = viewModel.transform(input: ProfileKeywordSettingViewModel.Input(
+            editTap: keywordEditButton.rx.tap.asObservable(),
+            startTap: startButton.rx.tap.asObservable(),
+            description: Observable.just(profileIntro))
+        )
         
         output.editState.drive(onNext: { [weak self] state in
             self?.keywordStackView.arrangedSubviews.forEach {
@@ -63,7 +69,6 @@ final class ProfileKeywordViewController: UIViewController {
             self?.keywordCountLabel.text = String(count - 1)
         }).disposed(by: disposeBag)
         
-        
         buttonIsEnable.asDriver().drive(onNext: { [weak self] isValid in
             self?.startButton.isEnabled = isValid
             self?.startButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
@@ -71,10 +76,26 @@ final class ProfileKeywordViewController: UIViewController {
             self?.startButton.setTitleColor(buttonTitleColor, for: .normal)
         }).disposed(by: disposeBag)
         
+        
         startButton.rx.tap.bind { [weak self] _ in
-            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+            var tags: [String] = []
+            self?.keywordStackView.arrangedSubviews.forEach { view in
+                guard let keyword = view as? ProfileKeywordView else { return }
+                tags.append(keyword.tagName)
+            }
+            viewModel.tags.accept(tags)
         }.disposed(by: disposeBag)
-
+        
+        output.errorMsg.emit(onNext: { [weak self] str in
+            // TODO: 프로필 설정시 발생되는 에러 팝업 구현
+            print("에러 발생", str)
+        }).disposed(by: disposeBag)
+        
+        output.profileOutput.drive(onNext: { [weak self] _ in
+            // TODO: 위치정보 허락 여부
+            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }).disposed(by: disposeBag)
+        
     }
     
     private func removeButtonisEnable(_ state: Bool) {
@@ -84,11 +105,10 @@ final class ProfileKeywordViewController: UIViewController {
         }
     }
     
-    
 }
 
 
-extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
+extension ProfileKeywordSettingViewController: ProfileKeywordViewDelegate {
     func removeKeyword(_ view: ProfileKeywordView) {
         if keywordCount.value == keywordLimit {
             buttonIsEnable.accept(true)
@@ -101,10 +121,11 @@ extension ProfileKeywordViewController: ProfileKeywordViewDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.keywordStackView.layoutIfNeeded()
         })
+        
     }
 }
 
-extension ProfileKeywordViewController: UnderLineTextFieldDelegate {
+extension ProfileKeywordSettingViewController: UnderLineTextFieldDelegate {
     func addKeyword(_ keyword: String) {
         if keywordCount.value == keywordLimit {
             buttonIsEnable.accept(true)
@@ -121,10 +142,8 @@ extension ProfileKeywordViewController: UnderLineTextFieldDelegate {
     }
 }
 
-
-
 //MARK: - textField 편집시 Keyboard 설정
-extension ProfileKeywordViewController {
+extension ProfileKeywordSettingViewController {
     private func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)

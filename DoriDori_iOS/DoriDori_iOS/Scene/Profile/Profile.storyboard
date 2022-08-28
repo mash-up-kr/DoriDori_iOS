@@ -272,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="2504.8000000000002" y="1426.8472906403942"/>
         </scene>
-        <!--Profile Keyword View Controller-->
+        <!--Profile Keyword Setting View Controller-->
         <scene sceneID="R0D-kD-uYh">
             <objects>
-                <viewController storyboardIdentifier="ProfileKeywordViewController" id="HnH-mH-eli" customClass="ProfileKeywordViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileKeywordSettingViewController" id="HnH-mH-eli" customClass="ProfileKeywordSettingViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vT2-iC-fMV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

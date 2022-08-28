@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 
+
 final class ProfileIntroViewController: UIViewController {
     
     @IBOutlet private weak var profileIntroTextField: UnderLineTextField!
@@ -47,10 +48,13 @@ final class ProfileIntroViewController: UIViewController {
             self?.nextButton.setTitleColor(buttonTitleColor, for: .normal)
         }).disposed(by: disposeBag)
         
-        nextButton.rx.tap.bind { [weak self] _ in
-            guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileKeywordViewController") as? ProfileKeywordViewController else { return }
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }.disposed(by: disposeBag)
+        
+        nextButton.rx.tap.withLatestFrom(input.profile)
+            .bind { [weak self] intro in
+                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileKeywordSettingViewController") as? ProfileKeywordSettingViewController else { return }
+                vc.profileIntro = intro
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: disposeBag)
         
     }
 

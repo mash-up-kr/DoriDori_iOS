@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 protocol ProfileKeywordViewDelegate: AnyObject {
     func removeKeyword(_ sender: ProfileKeywordView)
@@ -17,7 +18,7 @@ final class ProfileKeywordView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet private weak var view: UIView!
-
+    var tagName: String = ""
     
     weak var delegate: ProfileKeywordViewDelegate?
     
@@ -42,6 +43,8 @@ final class ProfileKeywordView: UIView {
     
     func configure(title: String) {
         self.titleLabel.text = title
+        self.tagName = title
+        
     }
         
     @IBAction func tapRemoveButton(_ sender: UIButton) {
