@@ -1,27 +1,33 @@
 //
-//  MyPageProfileView.swift
+//  OtherProfileView.swift
 //  DoriDori_iOS
 //
-//  Created by Seori on 2022/07/09.
+//  Created by Seori on 2022/08/24.
 //
 
 import UIKit
-import Kingfisher
-import RxRelay
 import RxSwift
 import RxCocoa
 
-struct MyPageProfileItem: Equatable {
+struct OtherProfileItem: Equatable {
     let nickname: String
     let level: Int
     let profileImageURL: String?
     let description: String
     let tags: [String]
+    let representativeWard: String? // TODO: 어떻게 내려주는지 낼 아침에 물어봐야지~
 }
 
-final class MyPageProfileView: UIView {
+final class OtherProfileView: UIView {
     
     // MARK: - UIComponent
+    
+    private let navigationBackButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "left"), for: .normal)
+        button.isHidden = true
+        return button
+    }()
     
     private let nicknameLabel: UILabel = {
         let label = UILabel()
@@ -36,31 +42,17 @@ final class MyPageProfileView: UIView {
         return levelView
     }()
     
-    private let moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "arrow"), for: .normal)
-        button.isHidden = true
-        return button
+    private let wardView: ProfileWardView = {
+        let view = ProfileWardView()
+        view.isHidden = true
+        return view
     }()
+    
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "share"), for: .normal)
         button.isHidden = true
         return button
-    }()
-    private let settingButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named:"setting"), for: .normal)
-        button.isHidden = true
-        return button
-    }()
-    
-    private let buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 24
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        return stackView
     }()
     
     private let profileImageView: UIImageView = {
@@ -96,9 +88,22 @@ final class MyPageProfileView: UIView {
         return stackView
     }()
     
+    private let questionButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("질문하기", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.gray700.cgColor
+        button.layer.cornerRadius = 8
+        button.titleLabel?.textColor = .white
+        button.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
+        button.isHidden = true
+        return button
+    }()
+    
     // MARK: - Properties
+    
     private let disposeBag = DisposeBag()
-
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -111,19 +116,22 @@ final class MyPageProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Configure
     
-    func configure(_ item: MyPageProfileItem) {
+    func configure(_ item: OtherProfileItem) {
         self.nicknameLabel.text = item.nickname
         self.levelView.configure(level: item.level)
         self.descriptionLabel.text = item.description
+        if let wardName = item.representativeWard {
+            self.wardView.configure(wardName: wardName)
+            self.wardView.isHidden = false
+        }
         self.setupTagViews(tags: item.tags)
         if self.levelView.isHidden { self.levelView.isHidden = false }
-        if self.moreButton.isHidden { self.moreButton.isHidden = false }
         if self.profileImageView.isHidden { self.profileImageView.isHidden = false }
-        if self.settingButton.isHidden { self.settingButton.isHidden = false }
         if self.shareButton.isHidden { self.shareButton.isHidden = false }
+        if self.navigationBackButton.isHidden { self.navigationBackButton.isHidden = false }
+        if self.questionButton.isHidden { self.questionButton.isHidden = false }
         if let profileImageURL = item.profileImageURL {
             self.profileImageView.kf.setImage(with: URL(string: profileImageURL))
         } else {
@@ -131,21 +139,29 @@ final class MyPageProfileView: UIView {
         }
     }
     
-    func bindAction(didTapSettingButton: PublishRelay<Void>, didTapShareButton: PublishRelay<Void>) {
-        self.settingButton.rx.throttleTap
-            .bind(to: didTapSettingButton)
-            .disposed(by: self.disposeBag)
+    func bindAction(
+        didTapShareButton: PublishRelay<Void>,
+        didTapBackButton: PublishRelay<Void>,
+        didTapQuestionButton: PublishRelay<Void>
+    ) {
         
         self.shareButton.rx.throttleTap
             .bind(to: didTapShareButton)
+            .disposed(by: self.disposeBag)
+        
+        self.navigationBackButton.rx.throttleTap
+            .bind(to: didTapBackButton)
+            .disposed(by: self.disposeBag)
+        
+        self.questionButton.rx.throttleTap
+            .bind(to: didTapQuestionButton)
             .disposed(by: self.disposeBag)
     }
 }
 
 // MARK: - Privates
 
-extension MyPageProfileView {
-
+extension OtherProfileView {
     private func setupTagViews(tags: [String]) {
         tags.forEach { tag in
             let keywordView = KeywordView()
@@ -153,38 +169,36 @@ extension MyPageProfileView {
             self.tagStackView.addArrangedSubview(keywordView)
         }
     }
-   
     
     private func setupLayouts() {
-        [self.shareButton, self.settingButton].forEach {
-            self.buttonStackView.addArrangedSubview($0)
-        }
         [self.tagStackView, self.descriptionLabel].forEach {
             self.profileStackView.addArrangedSubview($0)
         }
         
-        self.addSubViews(self.nicknameLabel, self.levelView, self.moreButton, self.buttonStackView, self.profileImageView, self.profileStackView)
-        
+        self.addSubViews(self.navigationBackButton, self.nicknameLabel, self.levelView, self.wardView, self.shareButton, self.profileImageView, self.profileStackView, self.questionButton)
+        self.navigationBackButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(23)
+        }
         self.nicknameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
-            $0.leading.equalToSuperview().offset(30)
+            $0.leading.equalTo(self.navigationBackButton.snp.trailing).offset(4)
         }
         
         self.levelView.snp.makeConstraints {
             $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
             $0.leading.equalTo(self.nicknameLabel.snp.trailing).offset(8)
         }
-        
-        self.moreButton.snp.makeConstraints {
+
+        self.wardView.snp.makeConstraints {
             $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
             $0.leading.equalTo(self.levelView.snp.trailing).offset(8)
-            $0.width.equalTo(10)
-            $0.height.equalTo(22)
         }
-       
-        self.buttonStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().inset(24)
+        
+        self.shareButton.snp.makeConstraints {
+            $0.centerY.equalTo(self.nicknameLabel.snp.centerY)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.size.equalTo(24)
         }
         
         self.profileImageView.snp.makeConstraints {
@@ -196,6 +210,12 @@ extension MyPageProfileView {
         self.profileStackView.snp.makeConstraints {
             $0.centerY.equalTo(self.profileImageView.snp.centerY)
             $0.leading.equalTo(self.profileImageView.snp.trailing).offset(8)
+        }
+        self.questionButton.snp.makeConstraints {
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.height.equalTo(34)
         }
     }
 }
