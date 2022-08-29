@@ -51,7 +51,7 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
         WebViewCoordinator(
             navigationController: self.navigationController,
             type: .share,
-            navigateStyle: .push
+            navigateStyle: .present
         ).start()
     }
     
