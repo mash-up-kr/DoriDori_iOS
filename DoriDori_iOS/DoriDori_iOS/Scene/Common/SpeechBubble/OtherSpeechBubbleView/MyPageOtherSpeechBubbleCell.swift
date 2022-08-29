@@ -7,8 +7,13 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxRelay
+import RxGesture
 
 struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellItemType {
+    let userID: UserID
+    let questionID: QuestionID
     let content: String
     let location: String
     let updatedTime: Int
@@ -19,6 +24,8 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
 }
 
 struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemType {
+    let userID: UserID
+    let questionID: QuestionID
     let content: String
     let location: String
     let updatedTime: Int
@@ -50,6 +57,8 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     private let levelView = LevelView()
     private let speechBubble = MyPageOtherSpeechBubbleView()
     
+    private var disposeBag = DisposeBag()
+    
     // MARK: Init
     
     override init(frame: CGRect) {
@@ -63,6 +72,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.disposeBag = .init()
     }
     
     func configure(_ item: MyPageOtherSpeechBubbleItemType) {
@@ -74,6 +84,14 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         if let _ = item as? AnonymousMyPageSpeechBubbleCellItem {
             self.levelView.isHidden = true
         }
+    }
+    
+    func bindAction(didTapProfile: PublishRelay<IndexPath>, at indexPath: IndexPath) {
+        self.profileImageView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in return indexPath }
+            .bind(to: didTapProfile)
+            .disposed(by: self.disposeBag)
     }
     
     static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType) -> CGSize {
