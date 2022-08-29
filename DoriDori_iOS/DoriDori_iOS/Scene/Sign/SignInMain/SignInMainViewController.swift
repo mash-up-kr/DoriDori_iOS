@@ -29,11 +29,9 @@ final class SignInMainViewController: UIViewController, StoryboardView {
     
     private func router(to: SignInButtonType) {
         let storyboard = UIStoryboard.init(name: "SignIn", bundle: nil)
-        let st = UIStoryboard.init(name: "Profile", bundle: nil)
-        var targetVC: UIViewController = .init()
         switch to {
         case .emailSignIn:
-            guard let vc = st.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
             navigationController?.pushViewController(vc, animated: true)
 
         case .emailSignup:
