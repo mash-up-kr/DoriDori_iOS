@@ -15,7 +15,7 @@ extension String {
     }
             
     var passwordValidCheck: Bool {
-        let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}"
+        let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}" // 영어+숫자+특수문자 6 ~ 20
         let predicate = NSPredicate(format: "SELF MATCHES %@", passwordreg)
         return predicate.evaluate(with: self)
     }

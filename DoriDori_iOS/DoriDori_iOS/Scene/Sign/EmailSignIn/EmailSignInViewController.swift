@@ -116,7 +116,6 @@ extension EmailSignInViewController {
     @objc func keyboardWillShow(_ sender: Notification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                self.emailPwFindStackView.isHidden = true
                 self.loginButtomConstraint.constant = 28 + keyboardSize.height
                 self.view.layoutIfNeeded()
             })
@@ -125,7 +124,6 @@ extension EmailSignInViewController {
     
     @objc func keyboardWillHide(_ sender: Notification) {
         UIView.animate(withDuration: 0.3) {
-            self.emailPwFindStackView.isHidden = false
             self.loginButtomConstraint.constant = 54
             self.view.layoutIfNeeded()
         }

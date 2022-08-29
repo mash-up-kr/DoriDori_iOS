@@ -31,16 +31,12 @@ final class EmailSignInViewModel: ViewModelProtocol {
         
         let emailIsValid = input.email.filter { !$0.isEmpty }
             .map { email -> Bool in
-                let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-                let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-                return predicate.evaluate(with: email)
+                email.emailValidCheck
             }
         
         let passwordIsValid = input.password.filter { !$0.isEmpty }
             .map { pw -> Bool in
-                let passwordreg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}"
-                let predicate = NSPredicate(format: "SELF MATCHES %@", passwordreg)
-                return predicate.evaluate(with: pw)
+                pw.passwordValidCheck
             }
         
            

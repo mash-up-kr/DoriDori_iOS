@@ -13,6 +13,7 @@ final class PasswordViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: UnderLineTextField!
     @IBOutlet private weak var passwordConfirmTextField: UnderLineTextField!
     @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var confirmButtonButtomConstraint: NSLayoutConstraint!
     
     private let viewModel: PasswordViewModel = .init()
     var email: String = ""
@@ -24,6 +25,7 @@ final class PasswordViewController: UIViewController {
         super.viewDidLoad()
         settingViewModel()
         bind(viewModel)
+        keyboardSetting()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,22 +51,47 @@ final class PasswordViewController: UIViewController {
                                             confirmTap: confirmButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         
-        output.pwIsValid.bind { [weak self] isValid in
-            self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage()
-        }.disposed(by: disposeBag)
+        passwordTextField.textField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(output.pwIsValid)
+            .filter { $0 }
+            .bind { [weak self] _ in
+                guard let self = self?.passwordTextField else { return }
+                self.errorLabel.text = "비밀번호로 사용이 가능해요."
+                self.errorLabel.textColor = UIColor(named: "lime300")
+            }.disposed(by: disposeBag)
+        
+        passwordTextField.textField.rx.controlEvent(.editingDidEnd)
+            .withLatestFrom(output.pwIsValid)
+            .bind { [weak self] isValid in
+                guard let self = self?.passwordTextField else { return }
+                if !isValid {
+                    self.errorLabel.text = "비밀번호를 확인해주세요."
+                    self.errorLabel.textColor = UIColor(named: "red500")
+                    self.underLineView.backgroundColor = UIColor(named: "red500")
+                    self.iconImageView.image = UIImage(named: "error")
+                } else {
+                    self.iconImageView.image = UIImage(named: "check_circle")
+                    self.errorLabel.text = ""
+                }
+            }.disposed(by: disposeBag)
+        
         
         output.pwConfirmIsValid.bind { [weak self] isValid in
             self?.confirmButton.isEnabled = isValid
             self?.confirmButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
             let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
             self?.confirmButton.setTitleColor(buttonTitleColor, for: .normal)
-            
-            //비밀번호 확인 에러 처리
-            self?.passwordConfirmTextField.errorLabel.isHidden = isValid
-            self?.passwordConfirmTextField.underLineView.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
-            self?.passwordConfirmTextField.textField.tintColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
-            self?.passwordConfirmTextField.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
         }.disposed(by: disposeBag)
+        
+        passwordConfirmTextField.textField.rx.controlEvent(.editingDidEnd)
+            .withLatestFrom(output.pwConfirmIsValid)
+            .filter { !$0 }
+            .bind { [weak self] isValid in
+                self?.passwordConfirmTextField.errorLabel.text = "비밀번호를 확인해주세요."
+                self?.passwordConfirmTextField.errorLabel.tintColor = UIColor(named: "red500")
+                self?.passwordConfirmTextField.underLineView.backgroundColor = UIColor(named: "red500")
+                self?.passwordConfirmTextField.iconImageView.image = UIImage(named: "error")
+            }.disposed(by: disposeBag)
         
         output.signUpOutput.bind { [weak self] tokenData in
             UserDefaults.accessToken = tokenData.accessToken
@@ -76,7 +103,34 @@ final class PasswordViewController: UIViewController {
             guard let vc = stroyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
             self?.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
-
+        
     }
 }
+
+extension PasswordViewController {
+    func keyboardSetting() {
+        passwordTextField.textField.becomeFirstResponder()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
+    @objc func keyboardWillShow(_ sender: Notification) {
+        let keyboardButtonSpace: Int = 20
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.confirmButtonButtomConstraint.constant = CGFloat(keyboardButtonSpace) + keyboardSize.height
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        let buttonButtomConstraintSize: Int = 54
+        UIView.animate(withDuration: 0.3) {
+            self.confirmButtonButtomConstraint.constant = CGFloat(buttonButtomConstraintSize)
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+}
+

@@ -15,9 +15,7 @@ enum ButtonType {
 }
 
 final class EmailSignUpViewController: UIViewController {
-    
-    typealias Reactor = EmailSignUpViewModel
-    
+        
     @IBOutlet private weak var emailTextField: UnderLineTextField!
     @IBOutlet private weak var authNumberTextField: UnderLineTextField!
     @IBOutlet private weak var sendToAuthNumberButton: UIButton!
@@ -59,6 +57,16 @@ final class EmailSignUpViewController: UIViewController {
         
         let output = viewModel.transform(input: input)
                 
+        emailTextField.textField.rx.controlEvent(.editingDidEnd)
+            .withLatestFrom(output.isValidEmail)
+            .bind { [weak self] isValid in
+                if !isValid {
+                    self?.emailTextField.errorLabel.text = "이메일 주소를 확인해주세요."
+                    self?.emailTextField.underLineView.backgroundColor = UIColor(named: "red500")
+                    self?.emailTextField.iconImageView.image = UIImage(named: "error")
+                }
+            }.disposed(by: disposeBag)
+        
         output.isValidEmail.bind { [weak self] isValid in
             self?.buttonValid(isValid)
         }.disposed(by: disposeBag)

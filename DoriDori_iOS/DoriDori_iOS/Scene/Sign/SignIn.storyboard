@@ -495,7 +495,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlM-Ee-yft">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlM-Ee-yft">
                                 <rect key="frame" x="30" y="704" width="315" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
                                 <constraints>
@@ -609,6 +609,7 @@
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="tjK-qw-KkQ" id="yGJ-fC-BPV"/>
+                        <outlet property="confirmButtonButtomConstraint" destination="Ru6-Zp-ufa" id="Gv8-13-i1l"/>
                         <outlet property="passwordConfirmTextField" destination="H2w-DK-S6G" id="nAy-bp-Eyv"/>
                         <outlet property="passwordTextField" destination="Bsb-La-m5M" id="IhR-Ro-5L5"/>
                     </connections>

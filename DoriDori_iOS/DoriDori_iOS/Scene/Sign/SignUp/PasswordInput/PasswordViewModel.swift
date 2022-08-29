@@ -29,11 +29,12 @@ final class PasswordViewModel: ViewModelProtocol {
     
     func transform(input: Input) -> Output {
         
-        let pwValid = input.passwordConfirm.map {
-            $0.passwordValidCheck
+        let pwValid = input.password
+            .map { str -> Bool in
+                str.passwordValidCheck
         }
         
-        let pwConfirmValid = Observable.combineLatest(input.password.filter { !$0.isEmpty }, input.passwordConfirm.filter { !$0.isEmpty }) { p1, p2 in
+        let pwConfirmValid = Observable.combineLatest(input.password, input.passwordConfirm) { p1, p2 in
             p1 == p2 && p1.passwordValidCheck
         }
         
