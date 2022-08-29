@@ -86,7 +86,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
             viewModel.tags.accept(tags)
         }.disposed(by: disposeBag)
         
-        output.errorMsg.emit(onNext: { [weak self] str in
+        output.errorMsg.emit(onNext: {  str in
             // TODO: 프로필 설정시 발생되는 에러 팝업 구현
             print("에러 발생", str)
         }).disposed(by: disposeBag)

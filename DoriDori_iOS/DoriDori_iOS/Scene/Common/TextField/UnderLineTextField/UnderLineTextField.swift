@@ -36,7 +36,7 @@ class UnderLineTextField: UIView {
     var viewModel = UnderLineTextFieldViewModel() {
         didSet {
             configure(viewModel: viewModel)
-            bind(viewModel: viewModel)
+            bind()
         }
     }
 
@@ -60,43 +60,21 @@ class UnderLineTextField: UIView {
         addSubview(view)
     }
     
-    private func bind(viewModel: UnderLineTextFieldViewModel) {
-        let input = UnderLineTextFieldViewModel.Input(
-            inputString: textField.rx.text.orEmpty.filter({ !$0.isEmpty })
-                .asObservable()
-        )
+    private func bind() {
+        textField.rx.controlEvent([.editingDidBegin, .editingChanged])
+            .asObservable()
+            .bind(onNext: { [weak self] _ in
+                self?.underLineView.backgroundColor = UIColor(named: "lime300")
+                self?.errorLabel.text = ""
+                self?.iconImageView.image = UIImage()
+            }).disposed(by: disposeBag)
         
-        let output = viewModel.transform(input: input)
-        let outputValidObservable = output.inputIsValid.asObservable().share()
-        let changeObservable = textField.rx.controlEvent([.editingDidBegin, .editingChanged]).asObservable()
+        textField.rx.controlEvent(.editingDidEnd)
+            .asObservable()
+            .bind(onNext: { [weak self] _ in
+                self?.underLineView.backgroundColor = UIColor(named: "gray800")
+            }).disposed(by: disposeBag)
         
-        changeObservable.bind(onNext: { [weak self] _ in
-            self?.underLineView.backgroundColor = UIColor(named: "lime300")
-            self?.textField.tintColor = UIColor(named: "lime300")
-            self?.iconImageView.isHidden = true
-            self?.errorLabel.isHidden = true
-        }).disposed(by: disposeBag)
-        
-        let editingEndObservable = textField.rx.controlEvent([.editingDidEnd]).asObservable()
-        
-        editingEndObservable.flatMap { [weak self] _ -> Observable<Bool> in
-            self?.underLineView.backgroundColor = UIColor(named: "gray800")
-            self?.errorLabel.isHidden = true
-            return outputValidObservable
-        }.filter({ [weak self] _ in
-            self?.viewModel.titleLabelType == .email && self?.viewModel.titleLabelType == .password && self?.viewModel.titleLabelType == .authNumber && self?.viewModel.titleLabelType == .passwordConfirm
-        })
-        .bind(onNext: { [weak self] isValid in
-            self?.iconImageView.isHidden = isValid
-            self?.errorLabel.isHidden = isValid
-            self?.underLineView.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
-            self?.textField.tintColor = isValid ? UIColor(named: "lime300") : UIColor(named: "red500")
-            if self?.viewModel.titleLabelType == .authNumber {
-                self?.iconImageView.image = isValid ? UIImage() : UIImage(named: "error")
-            } else {
-                self?.iconImageView.image = isValid ? UIImage(named: "check_circle") : UIImage(named: "error")
-            }
-        }).disposed(by: disposeBag)
     }
     
     private func configure(viewModel: UnderLineTextFieldViewModel) {

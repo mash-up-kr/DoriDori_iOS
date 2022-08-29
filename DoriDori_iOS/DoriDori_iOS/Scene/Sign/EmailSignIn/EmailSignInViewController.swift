@@ -54,11 +54,36 @@ final class EmailSignInViewController: UIViewController {
     }
     
     private func bind(_ viewModel: EmailSignInViewModel) {
-        let input = EmailSignInViewModel.Input(email: emailTextField.textField.rx.text.orEmpty.asObservable(),
-                                               password: passwordTextField.textField.rx.text.orEmpty.asObservable(),
-                                               loginButtonTap: loginButton.rx.tap.asObservable())
+        guard let email = emailTextField.textField else { return }
+        guard let password = passwordTextField.textField else { return }
         
+        
+        let input = EmailSignInViewModel.Input(email: email.rx.text.orEmpty.asObservable(),
+                                               password: password.rx.text.orEmpty.asObservable(),
+                                               loginButtonTap: loginButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
+        
+        email.rx.controlEvent(.editingDidEnd)
+            .withLatestFrom(output.emailIsValid)
+            .filter { !$0 }
+            .bind { [weak self] _ in
+                guard let self = self?.emailTextField else { return }
+                self.errorLabel.text = "이메일 주소를 확인해주세요."
+                self.underLineView.backgroundColor = UIColor(named: "red500")
+                self.iconImageView.image = UIImage(named: "error")
+            }.disposed(by: disposeBag)
+        
+        password.rx.controlEvent(.editingDidEnd)
+            .withLatestFrom(output.passwordIsValid)
+            .filter { !$0 }
+            .bind { [weak self] _ in
+                guard let self = self?.passwordTextField else { return }
+                self.errorLabel.text = "비밀번호를 확인해주세요."
+                self.underLineView.backgroundColor = UIColor(named: "red500")
+                self.iconImageView.image = UIImage(named: "error")
+            }.disposed(by: disposeBag)
+       
+        
         output.buttonIsValid.bind { [weak self] isValid in
             self?.loginButton.isEnabled = isValid
             self?.loginButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")

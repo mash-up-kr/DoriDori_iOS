@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class UnderLineTextFieldViewModel: ViewModelProtocol {
+class UnderLineTextFieldViewModel {
     
     var inputContentType: UITextContentType = .nickname
     var returnKeyType: UIReturnKeyType = .default
@@ -51,14 +51,6 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         case nickname = "닉네임은 7자리 이내로 설정해주세요."
     }
     
-    struct Input {
-        let inputString: Observable<String>
-    }
-    
-    struct Output {
-        let inputIsValid: Observable<Bool>
-    }
-    
     init() {
         self.titleLabelType = .email
         self.inputContentType = .emailAddress
@@ -82,30 +74,6 @@ class UnderLineTextFieldViewModel: ViewModelProtocol {
         self.inputContentType = inputContentType
         self.keyboardType = keyboardType
         configureTextField(titleLabelType)
-    }
-    
-    func transform(input: Input) -> Output {
-        var boolValue: Bool = false
-        let validCheckOutput = input.inputString.map { [weak self] str -> Bool in
-            if str.isEmpty { return false }
-            switch self?.titleLabelType {
-            case .email:
-                boolValue = str.emailValidCheck
-            case .password:
-                boolValue = str.passwordValidCheck
-            case .nickname:
-                boolValue = str.nicknameValidCheck
-            case .passwordConfirm, .none:
-                break
-            case .authNumber:
-                boolValue = str.authNumberCheck
-            case .none, .profile, .profileKeyword:
-                return false
-            }
-            return boolValue
-        }
-        
-        return Output(inputIsValid: validCheckOutput)
     }
     
     private func configureTextField(_ type: TextFieldType) {

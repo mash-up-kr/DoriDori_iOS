@@ -142,55 +142,6 @@
                                     <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-p3-aUA">
-                                <rect key="frame" x="54" y="664" width="274" height="10"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-Vj-hKF">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="10"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="QnR-fi-sab"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="tintColor" name="gray500"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="이메일 가입"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ato-Xv-KM8">
-                                        <rect key="frame" x="81.666666666666657" y="0.0" width="4" height="10"/>
-                                        <color key="tintColor" name="gray500"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="LOu-p3-PzF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="gray500"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpO-8x-h3Z">
-                                        <rect key="frame" x="103" y="0.0" width="60" height="10"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="tintColor" name="gray500"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="이메일 찾기"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZw-Rf-wM6">
-                                        <rect key="frame" x="180.66666666666666" y="0.0" width="4" height="10"/>
-                                        <color key="tintColor" name="gray500"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="PIw-Ce-cr3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="gray500"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgA-VY-mcZ">
-                                        <rect key="frame" x="202" y="0.0" width="72" height="10"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="tintColor" name="gray500"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="비밀번호 찾기"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI5-eu-s2n">
                                 <rect key="frame" x="30" y="704" width="315" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
@@ -211,19 +162,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-Vj-hKF">
+                                <rect key="frame" x="155.66666666666666" y="646" width="64" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="QnR-fi-sab"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" name="gray500"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="이메일 가입"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
                         <color key="backgroundColor" name="darkGray"/>
                         <constraints>
                             <constraint firstItem="wb8-Zo-YUW" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="2B9-Qf-7jB"/>
-                            <constraint firstItem="Yq1-p3-aUA" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="54" id="APF-4k-6ju"/>
                             <constraint firstItem="wb8-Zo-YUW" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="Ecj-hr-KSg"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="wI5-eu-s2n" secondAttribute="trailing" constant="30" id="IBd-gp-0Ld"/>
                             <constraint firstItem="w1i-dn-95g" firstAttribute="top" secondItem="99Z-CD-qDP" secondAttribute="top" constant="30" id="JqX-tY-3Z1"/>
-                            <constraint firstItem="wI5-eu-s2n" firstAttribute="top" secondItem="Yq1-p3-aUA" secondAttribute="bottom" constant="30" id="O0S-qx-Cfj"/>
-                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="Yq1-p3-aUA" secondAttribute="trailing" constant="47" id="PUp-wI-U0J"/>
+                            <constraint firstItem="wI5-eu-s2n" firstAttribute="top" secondItem="a7R-Vj-hKF" secondAttribute="bottom" constant="30" id="S48-K0-wPE"/>
                             <constraint firstItem="wI5-eu-s2n" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="WcJ-VA-ilq"/>
                             <constraint firstItem="Fab-yM-Zf3" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="a1H-Cj-Sb6"/>
+                            <constraint firstItem="a7R-Vj-hKF" firstAttribute="centerX" secondItem="OT4-ab-n2U" secondAttribute="centerX" id="bLt-l1-vxK"/>
                             <constraint firstAttribute="bottom" secondItem="wI5-eu-s2n" secondAttribute="bottom" constant="54" id="dGT-uF-19R"/>
                             <constraint firstItem="Fab-yM-Zf3" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="eS6-M7-9jS"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" constant="30" id="fJL-4B-gEj"/>
@@ -234,19 +194,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="uzc-Ab-ds7"/>
                     <connections>
-                        <outlet property="emailFindButton" destination="RpO-8x-h3Z" id="4na-DS-g4C"/>
-                        <outlet property="emailPwFindStackView" destination="Yq1-p3-aUA" id="Yry-aR-GgO"/>
                         <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
                         <outlet property="emailTextField" destination="Fab-yM-Zf3" id="u1i-3l-t2r"/>
                         <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
                         <outlet property="loginButton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>
-                        <outlet property="passwordFindButton" destination="GgA-VY-mcZ" id="MWR-7T-xGt"/>
                         <outlet property="passwordTextField" destination="wb8-Zo-YUW" id="aE8-8U-v1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0i-nB-gtP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="13"/>
+            <point key="canvasLocation" x="1008.8" y="12.561576354679804"/>
         </scene>
         <!--Terms Of Service View Contoller-->
         <scene sceneID="9z7-8Y-b84">
@@ -260,16 +217,16 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="822"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-5i-WJz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="740"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="742.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-FZ-hoS">
-                                                <rect key="frame" x="30" y="30" width="315" height="28"/>
+                                                <rect key="frame" x="30" y="30" width="315" height="30.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-pm-DZP">
-                                                <rect key="frame" x="30" y="88" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="90.333333333333343" width="315" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="약관에 모두 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-vv-oFz">
                                                         <rect key="frame" x="44" y="17.333333333333172" width="111" height="21"/>
@@ -317,7 +274,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-BS-B8A">
-                                                <rect key="frame" x="29.999999999999993" y="184" width="108.33333333333331" height="20"/>
+                                                <rect key="frame" x="30" y="186.33333333333334" width="115" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-H9-fEF">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -329,16 +286,16 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-uF-xkS">
-                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="80.333333333333314" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="87" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-qk-DYN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-9I-X6K">
-                                                                <rect key="frame" x="48.666666666666664" y="0.0" width="31.666666666666664" height="20"/>
+                                                                <rect key="frame" x="51.666666666666671" y="0.0" width="35.333333333333329" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
@@ -348,7 +305,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-kp-LTx">
-                                                <rect key="frame" x="30" y="634" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="636.33333333333337" width="315" height="54"/>
                                                 <color key="backgroundColor" name="gray700"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="3xc-9u-f5D"/>
@@ -368,7 +325,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
-                                                <rect key="frame" x="30" y="380" width="156.33333333333334" height="20"/>
+                                                <rect key="frame" x="30" y="382.33333333333331" width="163" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPo-w3-TAK">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -380,16 +337,16 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-lW-sJi">
-                                                        <rect key="frame" x="28" y="0.0" width="128.33333333333334" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="135" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현 위치 추적 허용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96.666666666666671" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm1-fZ-Fwh">
-                                                                <rect key="frame" x="96.666666666666657" y="0.0" width="31.666666666666657" height="20"/>
+                                                                <rect key="frame" x="99.666666666666657" y="0.0" width="35.333333333333343" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
@@ -399,7 +356,7 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-ux-9dZ">
-                                                <rect key="frame" x="30" y="218" width="315" height="120"/>
+                                                <rect key="frame" x="30" y="220.33333333333331" width="315" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="NZa-hD-r7L"/>
@@ -421,7 +378,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27W-We-bFc">
-                                                <rect key="frame" x="30" y="414" width="315" height="120"/>
+                                                <rect key="frame" x="30" y="416.33333333333331" width="315" height="119.99999999999994"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="5bM-cd-d6U"/>
