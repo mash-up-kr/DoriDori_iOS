@@ -25,7 +25,6 @@ final class HomeViewModel: Reactor {
     
     struct State {
         var homeSpeechModel: HomeSpeechs?
-        @Pulse var locationCollectionViewNeedReload: Bool = false
         @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
         @Pulse var homeEmptyState: Bool = false
