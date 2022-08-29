@@ -53,6 +53,7 @@ final class ProfileIntroViewController: UIViewController {
         
         nextButton.rx.tap.withLatestFrom(input.profile)
             .bind { [weak self] intro in
+                self?.profileIntroTextField.textField.resignFirstResponder()
                 guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileKeywordSettingViewController") as? ProfileKeywordSettingViewController else { return }
                 vc.profileIntro = intro
                 self?.navigationController?.pushViewController(vc, animated: true)

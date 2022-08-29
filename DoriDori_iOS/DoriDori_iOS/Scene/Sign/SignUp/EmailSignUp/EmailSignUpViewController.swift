@@ -112,6 +112,7 @@ final class EmailSignUpViewController: UIViewController {
         output.finalConfirm.withLatestFrom(input.email)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
+                self.authNumberTextField.textField.resignFirstResponder()
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as? PasswordViewController else { return }
                 vc.termsIds = self.termsIds
                 vc.email = email

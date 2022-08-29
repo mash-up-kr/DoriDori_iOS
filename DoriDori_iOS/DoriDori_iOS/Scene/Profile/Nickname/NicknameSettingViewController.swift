@@ -58,7 +58,7 @@ final class NicknameSettingViewController: UIViewController {
         
         output.nicknameOutput.drive(onNext: { [weak self] success in
             if success {
-                
+                self?.nicknameTextField.textField.resignFirstResponder()
                 guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileIntroViewController") as? ProfileIntroViewController
                 else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)

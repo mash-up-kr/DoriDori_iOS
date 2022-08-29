@@ -98,7 +98,7 @@ final class PasswordViewController: UIViewController {
             UserDefaults.refreshToken = tokenData.refreshToken
             UserDefaults.userID = tokenData.userId
             print("회원가입 성공!! \(tokenData)")
-            
+            self?.passwordConfirmTextField.textField.resignFirstResponder()
             let stroyboard = UIStoryboard(name: "Profile", bundle: nil)
             guard let vc = stroyboard.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
             self?.navigationController?.pushViewController(vc, animated: true)

@@ -33,7 +33,7 @@ final class SignInMainViewController: UIViewController, StoryboardView {
         var targetVC: UIViewController = .init()
         switch to {
         case .emailSignIn:
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "EmailSignInViewController") as? EmailSignInViewController else { return }
+            guard let vc = st.instantiateViewController(withIdentifier: "NicknameSettingViewController") as? NicknameSettingViewController else { return }
             navigationController?.pushViewController(vc, animated: true)
 
         case .emailSignup:

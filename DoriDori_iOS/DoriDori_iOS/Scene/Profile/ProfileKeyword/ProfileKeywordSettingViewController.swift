@@ -93,6 +93,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
         
         output.profileOutput.drive(onNext: { [weak self] _ in
             // TODO: 위치정보 허락 여부
+            self?.keywordTextField.textField.resignFirstResponder()
             self?.navigationController?.pushViewController(HomeViewController(), animated: true)
         }).disposed(by: disposeBag)
         
