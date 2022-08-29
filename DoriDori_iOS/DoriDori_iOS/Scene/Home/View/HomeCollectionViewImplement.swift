@@ -72,8 +72,8 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
 }
 
 extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
-    func likeButtonDidTap() {
-        print("좋아요 버튼 눌림")
+    func likeButtonDidTap(id: String) {
+        viewModel?.action.onNext(.dislike(id: id))
     }
     
     func commentButtonDidTap() {

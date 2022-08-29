@@ -10,7 +10,7 @@ import RxSwift
 
 
 protocol HomeSpeechBubleViewDelegate: AnyObject {
-    func likeButtonDidTap()
+    func likeButtonDidTap(id: String)
     func commentButtonDidTap()
     func shareButtonDidTap()
 }
@@ -143,6 +143,7 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
     var likeButtonType: LikeButtonType { .hand }
     weak var delegate: HomeSpeechBubleViewDelegate?
     private let disposeBag = DisposeBag()
+    private var homeSpeechInfo: HomeSpeechInfo?
     
     override init(
         borderWidth: CGFloat = 1,
@@ -165,6 +166,7 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
 extension HomeMySpeechBubbleView {
     
     func configure(_ item: HomeSpeechInfo) {
+        homeSpeechInfo = item
         self.locationLabel.text = item.representativeAddress
         self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
         self.userNameLabel.text = item.user.nickname
@@ -188,7 +190,8 @@ extension HomeMySpeechBubbleView {
         handButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.delegate?.likeButtonDidTap()
+                guard let info = owner.homeSpeechInfo else { return }
+                owner.delegate?.likeButtonDidTap(id: info.id)
             })
             .disposed(by: disposeBag)
         

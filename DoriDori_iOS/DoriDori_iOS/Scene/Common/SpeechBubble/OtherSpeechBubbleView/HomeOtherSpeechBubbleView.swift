@@ -134,6 +134,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
     var likeButtonType: LikeButtonType { .hand }
     weak var delegate: HomeSpeechBubleViewDelegate?
     private let disposeBag = DisposeBag()
+    private var homeSpeechInfo: HomeSpeechInfo?
     
     // MARK: - Inits
     
@@ -160,6 +161,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
 extension HomeOtherSpeechBubbleView {
     
     func configure(_ item: HomeSpeechInfo) {
+        homeSpeechInfo = item        
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.locationLabel.text = item.representativeAddress
         self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
@@ -267,7 +269,8 @@ extension HomeOtherSpeechBubbleView {
         handButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.delegate?.likeButtonDidTap()
+                guard let info = owner.homeSpeechInfo else { return }
+                owner.delegate?.likeButtonDidTap(id: info.id )
             })
             .disposed(by: disposeBag)
         
