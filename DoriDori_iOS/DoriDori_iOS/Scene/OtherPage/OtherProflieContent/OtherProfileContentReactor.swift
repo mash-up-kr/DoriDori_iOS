@@ -62,14 +62,10 @@ final class OtherProfileContentReactor: Reactor {
     }
     
     private func fetchQuestionAndAnswer(size: Int = 20, userID: UserID, lastID: String?) -> Observable<Mutation> {
-        return self.shouldFetchQuestionAndAnswer
+        return self.repository.fetchQuestionAndAnswer(size: 20, userID: self.userID)
             .do(onNext: { [weak self] _ in
                 self?.isRequesting = true
             })
-            .flatMapLatest { [weak self] lastID -> Observable<AnswerCompleteModel> in
-                guard let self = self else { return .empty() }
-                return self.repository.fetchQuestionAndAnswer(size: 20, userID: self.userID)
-            }
             .catch { error in
                 print(error)
                 return .empty()
