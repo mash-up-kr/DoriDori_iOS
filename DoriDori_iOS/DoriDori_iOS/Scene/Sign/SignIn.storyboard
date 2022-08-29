@@ -162,16 +162,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-Vj-hKF">
-                                <rect key="frame" x="155.66666666666666" y="645" width="64" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="QnR-fi-sab"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="13"/>
-                                <color key="tintColor" name="gray500"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="이메일 가입"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
                         <color key="backgroundColor" name="darkGray"/>
@@ -180,10 +170,8 @@
                             <constraint firstItem="wb8-Zo-YUW" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="Ecj-hr-KSg"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="wI5-eu-s2n" secondAttribute="trailing" constant="30" id="IBd-gp-0Ld"/>
                             <constraint firstItem="w1i-dn-95g" firstAttribute="top" secondItem="99Z-CD-qDP" secondAttribute="top" constant="30" id="JqX-tY-3Z1"/>
-                            <constraint firstItem="wI5-eu-s2n" firstAttribute="top" secondItem="a7R-Vj-hKF" secondAttribute="bottom" constant="30" id="S48-K0-wPE"/>
                             <constraint firstItem="wI5-eu-s2n" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="WcJ-VA-ilq"/>
                             <constraint firstItem="Fab-yM-Zf3" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="a1H-Cj-Sb6"/>
-                            <constraint firstItem="a7R-Vj-hKF" firstAttribute="centerX" secondItem="OT4-ab-n2U" secondAttribute="centerX" id="bLt-l1-vxK"/>
                             <constraint firstAttribute="bottom" secondItem="wI5-eu-s2n" secondAttribute="bottom" constant="54" id="dGT-uF-19R"/>
                             <constraint firstItem="Fab-yM-Zf3" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="eS6-M7-9jS"/>
                             <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" constant="30" id="fJL-4B-gEj"/>
@@ -194,7 +182,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="uzc-Ab-ds7"/>
                     <connections>
-                        <outlet property="emailSignUpButton" destination="a7R-Vj-hKF" id="mcP-jL-npX"/>
                         <outlet property="emailTextField" destination="Fab-yM-Zf3" id="u1i-3l-t2r"/>
                         <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
                         <outlet property="loginButton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>

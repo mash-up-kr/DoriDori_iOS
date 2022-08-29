@@ -12,6 +12,7 @@ final class NicknameSettingViewController: UIViewController {
     
     @IBOutlet private weak var nicknameTextField: UnderLineTextField!
     @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var buttomBottomConstraint: NSLayoutConstraint!
     
     private let viewModel: NicknameSettingViewModel = .init()
     private var disposeBag = DisposeBag()
@@ -21,6 +22,7 @@ final class NicknameSettingViewController: UIViewController {
         super.viewDidLoad()
         settingViewModel()
         bind(viewModel)
+        keyboardSetting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +30,7 @@ final class NicknameSettingViewController: UIViewController {
         navigationItem.title = "입장하기"
         navigationController?.navigationBar.topItem?.title = ""
     }
+    
     // MARK: - Bind
     private func settingViewModel() {
         nicknameTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .nickname,
@@ -55,7 +58,7 @@ final class NicknameSettingViewController: UIViewController {
         
         output.nicknameOutput.drive(onNext: { [weak self] success in
             if success {
-                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileUploadViewController") as? ProfileUploadViewController
+                guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileIntroViewController") as? ProfileIntroViewController
                 else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)
             } else {
@@ -70,8 +73,30 @@ final class NicknameSettingViewController: UIViewController {
         self.confirmButton.setTitleColor(titleColor, for: .normal)
         self.confirmButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray800")
     }
-    
-    
-    
-    
 }
+
+extension NicknameSettingViewController {
+    func keyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.buttomBottomConstraint.constant = keyboardSize.height
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        let buttonButtomConstraintSize: Int = 54
+        UIView.animate(withDuration: 0.3) {
+            self.buttomBottomConstraint.constant = CGFloat(buttonButtomConstraintSize)
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+}
+

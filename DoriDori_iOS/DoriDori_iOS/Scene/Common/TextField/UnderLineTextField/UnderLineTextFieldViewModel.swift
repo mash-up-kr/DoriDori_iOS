@@ -84,9 +84,13 @@ class UnderLineTextFieldViewModel {
         case .password:
             errorMsgAndTypeCheck = .password
             inputPlaceHolder = .password
+            stringCountIsHidden = false
+            totalStringCount = 20
         case .passwordConfirm:
             errorMsgAndTypeCheck = .password
             inputPlaceHolder = .passwordConfirm
+            stringCountIsHidden = false
+            totalStringCount = 20
         case .nickname:
             errorMsgAndTypeCheck = .nickname
             inputPlaceHolder = .nickname

@@ -127,17 +127,17 @@ extension ProfileKeywordSettingViewController: ProfileKeywordViewDelegate {
 
 extension ProfileKeywordSettingViewController: UnderLineTextFieldDelegate {
     func addKeyword(_ keyword: String) {
-        if keywordCount.value == keywordLimit {
-            buttonIsEnable.accept(true)
-        } else {
-            buttonIsEnable.accept(false)
-        }
         if keywordStackView.arrangedSubviews.count <= keywordLimit {
+            if keywordCount.value == keywordLimit {
+                buttonIsEnable.accept(true)
+            }
             let keywordView = ProfileKeywordView()
             keywordView.configure(title: keyword)
             self.keywordStackView.addArrangedSubview(keywordView)
             keywordView.delegate = self
             keywordCount.accept(keywordStackView.arrangedSubviews.count)
+        } else {
+            DoriDoriToastView.init(text: "키워드는 3개까지 가능합니다").show()
         }
     }
 }

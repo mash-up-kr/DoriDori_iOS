@@ -49,7 +49,6 @@ class UnderLineTextField: UIView {
         super.init(coder: coder)
         loadView()
         textField.delegate = self
-
     }
     
     private func loadView() {
@@ -106,8 +105,11 @@ extension UnderLineTextField: UITextFieldDelegate {
         if changeText.count <= totalCount {
             self.nowStringCountLabel.text = String(changeText.count)
         }
-        return true
-//        return changeText.count <= totalCount
+        if !self.viewModel.stringCountIsHidden {
+            return changeText.count <= totalCount
+        } else {
+            return true
+        }
        }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

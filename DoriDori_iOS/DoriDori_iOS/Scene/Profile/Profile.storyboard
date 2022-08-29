@@ -81,6 +81,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttomBottomConstraint" destination="4df-VJ-Gnv" id="Pdf-Ku-U5p"/>
                         <outlet property="confirmButton" destination="WT5-0K-Zhl" id="yxW-jm-0s0"/>
                         <outlet property="nicknameTextField" destination="A5e-CE-OMo" id="fhc-0o-f5R"/>
                     </connections>
@@ -497,6 +498,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonBottomConstraint" destination="fuK-AZ-SCP" id="BoC-8y-DV8"/>
                         <outlet property="nextButton" destination="Vv5-xz-qEl" id="elc-fm-A9k"/>
                         <outlet property="profileIntroTextField" destination="bPM-1o-rpt" id="Z4w-qW-6bt"/>
                     </connections>

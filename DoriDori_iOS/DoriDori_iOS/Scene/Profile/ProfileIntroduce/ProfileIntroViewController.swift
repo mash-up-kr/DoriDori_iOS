@@ -13,6 +13,7 @@ final class ProfileIntroViewController: UIViewController {
     
     @IBOutlet private weak var profileIntroTextField: UnderLineTextField!
     @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var buttonBottomConstraint: NSLayoutConstraint!
     
     private let viewModel: ProfileIntroViewModel = .init()
     private var disposeBag = DisposeBag()
@@ -21,13 +22,14 @@ final class ProfileIntroViewController: UIViewController {
         super.viewDidLoad()
         settingViewModel()
         bind(viewModel)
+        keyboardSetting()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationItem.title = "입장하기"
+//        navigationController?.navigationBar.topItem?.title = ""
+//    }
     
     // MARK: - Bind
     private func settingViewModel() {
@@ -56,6 +58,22 @@ final class ProfileIntroViewController: UIViewController {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: disposeBag)
         
+    }
+
+}
+
+extension ProfileIntroViewController {
+    func keyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.buttonBottomConstraint.constant = keyboardSize.height
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 
 }
