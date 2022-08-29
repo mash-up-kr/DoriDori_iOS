@@ -23,7 +23,7 @@ final class MyPageCoordinator: MyPageCoordinatable {
     
     func start() {
         let myPageViewModel = MyPageReactor(
-            myPageTabs: MyPageTab.allCases,
+            myPageTabs: [MyPageTab.answerComplete, .questionReceived],
             initialSeletedTab: .answerComplete,
             myPageRepository: MyPageRepository()
         )
@@ -36,7 +36,10 @@ final class MyPageCoordinator: MyPageCoordinatable {
     }
     
     func navigateToShare() {
-        print(#function)
-        OtherPageCoordinator(navigationController: self.navigationController, userID: "62f8b253c9900a7cb9e90021").start()
+        WebViewCoordinator(
+            navigationController: self.navigationController,
+            type: .share,
+            navigateStyle: .present
+        ).start()
     }
 }

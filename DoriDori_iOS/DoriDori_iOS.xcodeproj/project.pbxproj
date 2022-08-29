@@ -12,6 +12,8 @@
 		A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */; };
 		A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9B287982B5000ABFBB /* MyPageProfileView.swift */; };
 		A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */; };
+		A21188F128BD0A16008A48C0 /* MyProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188F028BD0A16008A48C0 /* MyProfileRequest.swift */; };
+		A21188F328BD0B43008A48C0 /* WardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188F228BD0B43008A48C0 /* WardModel.swift */; };
 		A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AD2879A62500F33D4F /* LevelView.swift */; };
 		A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */; };
 		A22FC8B72879BCB800F33D4F /* SpoqaHanSansNeo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A22FC8B22879BCB700F33D4F /* SpoqaHanSansNeo-Light.otf */; };
@@ -29,8 +31,6 @@
 		A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */; };
 		A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */; };
 		A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */; };
-		A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD11E28B0C3BD00A003D1 /* Toast */; };
-		A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */; };
 		A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */; };
 		A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */; };
 		A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F628A63F0800A003D1 /* SettingReactor.swift */; };
@@ -38,22 +38,16 @@
 		A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */; };
 		A24FD0FD28A8BDE100A003D1 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */; };
 		A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */; };
+		A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD11E28B0C3BD00A003D1 /* Toast */; };
+		A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */; };
 		A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12228B0FEB500A003D1 /* QuestionModel.swift */; };
 		A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */; };
-		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
 		A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */; };
 		A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */; };
 		A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13128B223E400A003D1 /* DropDownView.swift */; };
 		A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13328B227AE00A003D1 /* QuestionReactor.swift */; };
 		A24FD13628B2325B00A003D1 /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13528B2325B00A003D1 /* QuestionRepository.swift */; };
 		A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13728B2336B00A003D1 /* EmptyModel.swift */; };
-		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
-		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
-		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
-		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
-		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
-		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
-		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
 		A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */; };
 		A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */; };
 		A24FD13F28B284F900A003D1 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD13E28B284F900A003D1 /* DropDown */; };
@@ -67,6 +61,10 @@
 		A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */; };
 		A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */; };
 		A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15D28B4B01300A003D1 /* QuestionType.swift */; };
+		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
+		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
+		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
+		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
 		A24FD17028B542C600A003D1 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16F28B542C600A003D1 /* OtherProfileView.swift */; };
 		A24FD17528B5430F00A003D1 /* OtherPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17428B5430F00A003D1 /* OtherPageViewController.swift */; };
 		A24FD17728B5432000A003D1 /* OtherPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17628B5432000A003D1 /* OtherPageReactor.swift */; };
@@ -171,6 +169,8 @@
 		A20A9E9828797B93000ABFBB /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
 		A20A9E9B287982B5000ABFBB /* MyPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
 		A20A9E9D28798336000ABFBB /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		A21188F028BD0A16008A48C0 /* MyProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileRequest.swift; sourceTree = "<group>"; };
+		A21188F228BD0B43008A48C0 /* WardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardModel.swift; sourceTree = "<group>"; };
 		A22FC8AD2879A62500F33D4F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A22FC8B22879BCB700F33D4F /* SpoqaHanSansNeo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.otf"; sourceTree = "<group>"; };
@@ -195,20 +195,15 @@
 		A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
+		A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
 		A24FD12228B0FEB500A003D1 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteRequest.swift; sourceTree = "<group>"; };
-		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
 		A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCoordinator.swift; sourceTree = "<group>"; };
 		A24FD13128B223E400A003D1 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		A24FD13328B227AE00A003D1 /* QuestionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactor.swift; sourceTree = "<group>"; };
 		A24FD13528B2325B00A003D1 /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
 		A24FD13728B2336B00A003D1 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
-		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
-		A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
-		A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
-		A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
-		A24FD16C28B51A0700A003D1 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAtCommunityRequest.swift; sourceTree = "<group>"; };
 		A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionToUserRequest.swift; sourceTree = "<group>"; };
 		A24FD14528B3554000A003D1 /* MyWardListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardListRequest.swift; sourceTree = "<group>"; };
@@ -220,6 +215,10 @@
 		A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationError.swift; sourceTree = "<group>"; };
 		A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A24FD15D28B4B01300A003D1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
+		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
+		A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
+		A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		A24FD16C28B51A0700A003D1 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		A24FD16F28B542C600A003D1 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		A24FD17428B5430F00A003D1 /* OtherPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageViewController.swift; sourceTree = "<group>"; };
 		A24FD17628B5432000A003D1 /* OtherPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageReactor.swift; sourceTree = "<group>"; };
@@ -411,6 +410,7 @@
 			children = (
 				A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */,
 				A24FD12228B0FEB500A003D1 /* QuestionModel.swift */,
+				A21188F228BD0B43008A48C0 /* WardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,6 +438,7 @@
 				A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */,
 				A24FD14528B3554000A003D1 /* MyWardListRequest.swift */,
 				A24FD18128B6705600A003D1 /* AnswerCompleteModel.swift */,
+				A21188F028BD0A16008A48C0 /* MyProfileRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -454,23 +455,6 @@
 				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		A24FD16428B4B48A00A003D1 /* ActivityIndicator */ = {
-			isa = PBXGroup;
-			children = (
-				A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */,
-			);
-			path = ActivityIndicator;
-			sourceTree = "<group>";
-		};
-		A24FD16928B519C400A003D1 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */,
-				A24FD16C28B51A0700A003D1 /* RefreshModel.swift */,
-			);
-			path = Authentication;
 			sourceTree = "<group>";
 		};
 		A24FD12C28B213CC00A003D1 /* Question */ = {
@@ -513,6 +497,23 @@
 				A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */,
 			);
 			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		A24FD16428B4B48A00A003D1 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		A24FD16928B519C400A003D1 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */,
+				A24FD16C28B51A0700A003D1 /* RefreshModel.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		A24FD16E28B542B400A003D1 /* OtherProfile */ = {
@@ -994,6 +995,7 @@
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
+				A21188F328BD0B43008A48C0 /* WardModel.swift in Sources */,
 				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
@@ -1071,6 +1073,7 @@
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */,
+				A21188F128BD0A16008A48C0 /* MyProfileRequest.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */,
 				A24FD14628B3554000A003D1 /* MyWardListRequest.swift in Sources */,
