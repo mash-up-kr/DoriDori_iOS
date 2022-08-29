@@ -21,11 +21,12 @@ enum MyPageTab: Equatable,
         }
     }
     
-    var viewController: UIViewController {
-        switch self {
-        case .answerComplete: return AnswerCompleteViewController()
-        case .questionReceived: return QuestionReceivedViewController()
-        case .seeAll: return SeeAllViewController()
-        }
-    }
+//    var viewController: UIViewController.Type {
+//        switch self {
+//        case .answerComplete:
+//            return AnswerCompleteViewController.self
+//        case .questionReceived: return QuestionReceivedViewController.self
+//        case .seeAll: return SeeAllViewController.self
+//        }
+//    }
 }

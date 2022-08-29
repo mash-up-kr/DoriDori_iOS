@@ -6,36 +6,82 @@
 //
 
 import UIKit
+import RxRelay
+import ReactorKit
 
-final class AnswerCompleteViewController: UIViewController {
+final class AnswerCompleteViewController: UIViewController,
+                                            View {
     
     // MARK: - UI Component
     
     private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .darkGray
         return collectionView
     }()
-    
-    
-//    let myItem = MyPageMySpeechBubbleCellItem(questioner: "감자도리도리", userName: "매쉬업 방위대~알까요잉메롱ㅋ", content: "ㅋㅋㅋㅋ니모를 찾아서예용,ㅋㅋㅋㅋ니모를 찾아서예용xxxxxx", location: "강남", updatedTime: 1, likeCount: 0, profileImageURL: nil, level: 5)
 
+    private let viewDidLoadStream: PublishRelay<Void>
+    let reactor: AnswerCompleteReactor
+    var disposeBag: DisposeBag
+    private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
+    private let didTapProfile: PublishRelay<IndexPath>
+    
     // MARK: Init
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.configure(self.collectionView)
+        self.setupLayouts()
+        self.bind()
+        self.bind(reactor: self.reactor)
+        self.viewDidLoadStream.accept(())
+    }
+    
+    
+    init(
+        coordinator: MyPageCoordinatable,
+        reactor: AnswerCompleteReactor
+    ) {
+        self.reactor = reactor
+        self.viewDidLoadStream = .init()
+        self.disposeBag = .init()
+        self.didTapProfile = .init()
+        self.questionItems = .init(value: [])
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupLayouts() {
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-        self.collectionView.reloadData()
-        self.collectionView.backgroundColor = .darkGray
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func bind(reactor: AnswerCompleteReactor) {
+        self.viewDidLoadStream
+            .map { AnswerCompleteReactor.Action.viewDidLoad }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$questionAndAnswer)
+            .bind(to: questionItems)
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func bind() {
+        self.questionItems
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, items in
+                owner.collectionView.reloadData()
+            }
+            .disposed(by: self.disposeBag)
     }
     
     // MARK: - Private functions
@@ -48,9 +94,7 @@ final class AnswerCompleteViewController: UIViewController {
     
     private func register(_ collectionView: UICollectionView) {
         collectionView.register(MyPageOtherSpeechBubbleCell.self)
-        collectionView.register(HomeOtherSpeechBubbleCell.self)
         collectionView.register(MyPageMySpeechBubbleCell.self)
-        collectionView.register(HomeMySpeechBubbleViewCell.self)
     }
 }
 
@@ -61,16 +105,28 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        1
+        self.questionItems.value.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
-//        cell.configure(self.myItem)
-        return cell
+        guard let item = self.questionItems.value[safe: indexPath.item] else { fatalError("can not find item")
+        }
+        if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
+            let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
+            cell.configure(otherSpeechBubbleItem)
+            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+            return cell
+        }
+        
+        if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
+            let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
+            cell.configure(mySpeechBubbleItem)
+            return cell
+        }
+        fatalError("can not casting itemtype")
     }
 }
 
@@ -82,11 +138,14 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-//        let item = self.datas[indexPath.item]
-//        return HomeOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: item)
-//        let size = MyPageMySpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: self.myItem)
-//        print(size)
-//        return size
+        guard let item = self.questionItems.value[safe: indexPath.item] else { fatalError("can not find item")
+        }
+        if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
+            return MyPageOtherSpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: otherSpeechBubbleItem)
+        }
+        if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
+            return MyPageMySpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: mySpeechBubbleItem)
+        }
         return .zero
     }
 }
@@ -100,5 +159,12 @@ extension AnswerCompleteViewController: UICollectionViewDelegateFlowLayout {
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
         12
+    }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
 }

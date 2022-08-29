@@ -125,10 +125,20 @@ final class MyPageViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         reactor.pulse(\.$myPageTabs)
-            .map { $0.map { $0.viewController} }
-            .bind(with: self) { owner, myPageTabViewControllers in
-                owner.myPageTabViewControllers = myPageTabViewControllers
-                myPageTabViewControllers.forEach(owner.addArrangedSubContentViewController(_:))
+            .bind(with: self) { owner, tabs in
+                tabs.forEach { tab in
+                    switch tab {
+                    case .questionReceived:
+                        let vc = QuestionReceivedViewController(nibName: nil, bundle: nil)
+                        self.addArrangedSubContentViewController(vc)
+                    case .answerComplete:
+                        let answerCompleteRepository = MyPageRepository()
+                        let answerCompleteReactor = AnswerCompleteReactor(repository: answerCompleteRepository)
+                        let viewController = AnswerCompleteViewController(coordinator: self.myPageCoordinator, reactor: answerCompleteReactor)
+                        self.addArrangedSubContentViewController(viewController)
+                    default: break
+                    }
+                }
             }
             .disposed(by: self.disposeBag)
 
