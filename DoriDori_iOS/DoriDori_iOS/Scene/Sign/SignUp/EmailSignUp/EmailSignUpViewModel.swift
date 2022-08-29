@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import Foundation
 
 final class EmailSignUpViewModel: ViewModelProtocol {
     
@@ -30,7 +31,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         let isValidEmail: Observable<Bool>
         let inputAuthNumber: Observable<Bool>
         let sendEmailTap: Observable<Void>
-        let sendEmailOutput: Observable<Bool>
+        let sendEmailOutput: Observable<String>
         let finalConfirm: Observable<Void>
         let authErrorMsg: Signal<String>
         let emailErrorMsg: Signal<String>
@@ -49,13 +50,20 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             self?.buttonType.value == .sendEmail
         }
         
-        
+        let timer = Observable.combineLatest(Observable.just(180), Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)) { ($0, $1) }
+            .map { start, mil -> String in
+                let time = start - mil
+                let minute = time / 60
+                let second = time % 60
+                return NSString(format: "%02d:%02d", minute, second ) as String
+            }
+    
+        // 이메일 전송
         let emailErrorRelay = PublishRelay<String>()
-        
         let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
             .merge()
             .withLatestFrom(input.email)
-            .flatMapLatest { [weak self] email -> Observable<Bool> in
+            .flatMapLatest { [weak self] email -> Observable<Void> in
                 guard let self = self else { return .empty() }
                 return self.repository.requestEmailSend(email: email)
                     .catch({ error in
@@ -67,10 +75,13 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                             emailErrorRelay.accept(errorMsg)
                         }
                         return .empty()
-                    }).do(onNext: { [weak self] _ in
+                    }).map { _ in
+                        return
+                    }.do(onNext: { [weak self] _ in
                         self?.buttonType.accept(.checkAuthNumber)
                     })}
             .observe(on: MainScheduler.instance)
+            .flatMap { timer }
         
         let authErrorRelay = PublishRelay<String>()
         let confirmOutput = input.sendButtonTap
@@ -104,5 +115,6 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                       authErrorMsg: authErrorRelay.asSignal(),
                       emailErrorMsg: emailErrorRelay.asSignal())
     }
+
     
 }
