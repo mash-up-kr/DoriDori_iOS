@@ -83,9 +83,8 @@ final class EmailSignUpViewController: UIViewController {
             self?.indicator.startAnimating()
         }.disposed(by: self.disposeBag)
         
-        output.sendEmailOutput.bind { [weak self] time in
-                self?.authNumberTextField.authNumbertimerLabel.text = time
-                self?.indicator.stopAnimating()
+        output.sendEmailOutput.bind { [weak self] _ in
+//                self?.authNumberTextField.authNumbertimerLabel.text = time
                 self?.authNumberTextField.isHidden = false
                 self?.sendToAuthNumberButton.setTitle("확인", for: .normal)
                 self?.buttonValid(false)

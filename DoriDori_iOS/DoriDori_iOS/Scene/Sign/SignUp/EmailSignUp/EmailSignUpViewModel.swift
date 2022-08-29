@@ -31,7 +31,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
         let isValidEmail: Observable<Bool>
         let inputAuthNumber: Observable<Bool>
         let sendEmailTap: Observable<Void>
-        let sendEmailOutput: Observable<String>
+        let sendEmailOutput: Observable<Void>
         let finalConfirm: Observable<Void>
         let authErrorMsg: Signal<String>
         let emailErrorMsg: Signal<String>
@@ -81,7 +81,7 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                         self?.buttonType.accept(.checkAuthNumber)
                     })}
             .observe(on: MainScheduler.instance)
-            .flatMap { timer }
+//            .flatMap { timer }
         
         let authErrorRelay = PublishRelay<String>()
         let confirmOutput = input.sendButtonTap

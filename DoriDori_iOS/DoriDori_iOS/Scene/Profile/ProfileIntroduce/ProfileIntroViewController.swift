@@ -25,11 +25,11 @@ final class ProfileIntroViewController: UIViewController {
         keyboardSetting()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationItem.title = "입장하기"
-//        navigationController?.navigationBar.topItem?.title = ""
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "입장하기"
+        navigationController?.navigationBar.topItem?.title = ""
+    }
     
     // MARK: - Bind
     private func settingViewModel() {
@@ -65,16 +65,29 @@ final class ProfileIntroViewController: UIViewController {
 
 extension ProfileIntroViewController {
     func keyboardSetting() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     @objc func keyboardWillShow(_ sender: Notification) {
+        let keyboardButtonSpace: Int = 20
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                self.buttonBottomConstraint.constant = keyboardSize.height
+                self.buttonBottomConstraint.constant = CGFloat(keyboardButtonSpace) + keyboardSize.height
                 self.view.layoutIfNeeded()
             })
         }
     }
 
+    @objc func keyboardWillHide(_ sender: Notification) {
+        let buttonButtomConstraintSize: Int = 54
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBottomConstraint.constant = CGFloat(buttonButtomConstraintSize)
+            self.view.layoutIfNeeded()
+        }
+        
+    }
 }
+
+
+
