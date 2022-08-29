@@ -9,4 +9,5 @@ import Foundation
 
 struct AnswerCompleteModel: Codable {
     var questions: [QuestionModel]?
+    var hasNext: Bool?
 }
