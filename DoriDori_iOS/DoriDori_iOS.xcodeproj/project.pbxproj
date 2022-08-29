@@ -43,6 +43,7 @@
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
 		6C86264228BCE9D600865FFA /* ProfileDefaultReqeust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86264128BCE9D600865FFA /* ProfileDefaultReqeust.swift */; };
+		6C86264628BD279700865FFA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C86264528BD279700865FFA /* Launch Screen.storyboard */; };
 		6C89C77F28B9ECA100A0EB59 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89C77E28B9ECA100A0EB59 /* ProfileModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
 		6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */; };
@@ -236,6 +237,7 @@
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		6C86264128BCE9D600865FFA /* ProfileDefaultReqeust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDefaultReqeust.swift; sourceTree = "<group>"; };
+		6C86264528BD279700865FFA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6C89C77E28B9ECA100A0EB59 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
@@ -892,6 +894,7 @@
 				A20A9E9328797B5C000ABFBB /* MyPage */,
 				6CB65B56287978F500C15E2B /* Sign */,
 				6C350E6C28A158EE005281C2 /* Profile */,
+				6C86264528BD279700865FFA /* Launch Screen.storyboard */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */,
 				A22FC8CE2879BD9700F33D4F /* SF-Pro-Display-Bold.otf in Resources */,
 				A22FC8CF2879BD9700F33D4F /* SF-Pro-Display-Medium.otf in Resources */,
+				6C86264628BD279700865FFA /* Launch Screen.storyboard in Resources */,
 				A22FC8BB2879BCB800F33D4F /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				A22FC8B72879BCB800F33D4F /* SpoqaHanSansNeo-Light.otf in Resources */,
 				6CB65B5A2879792000C15E2B /* SignIn.storyboard in Resources */,
