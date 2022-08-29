@@ -42,10 +42,12 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
         switch homeCellType {
         case .my:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMySpeechBubbleViewCell.identifier, for: indexPath) as? HomeMySpeechBubbleViewCell else { return UICollectionViewCell() }
+            cell.speechBubble.delegate = self
             cell.configure(item: item)
             return cell
         case .other:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeOtherSpeechBubbleCell.identifier, for: indexPath) as? HomeOtherSpeechBubbleCell else { return UICollectionViewCell() }
+            cell.speechBubble.delegate = self
             cell.configure(item)
             return cell
         case .none:
@@ -66,5 +68,19 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
         guard let item = viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row] else {
             return
         }
+    }
+}
+
+extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
+    func likeButtonDidTap() {
+        print("좋아요 버튼 눌림")
+    }
+    
+    func commentButtonDidTap() {
+        print("댓글 버튼 눌림")
+    }
+    
+    func shareButtonDidTap() {
+        print("공유 버튼 눌림")
     }
 }

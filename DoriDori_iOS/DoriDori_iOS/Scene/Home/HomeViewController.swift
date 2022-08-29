@@ -80,6 +80,12 @@ final class HomeViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel?.state
+            .map { "지금 여기는 \(String($0.wardTitle))!" }
+            .distinctUntilChanged()
+            .bind(to: homeHeaderView.wardTitleLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Methods
@@ -115,6 +121,7 @@ final class HomeViewController: UIViewController {
         
         collectionView.dataSource = homeCollectionViewImplement
         collectionView.delegate = homeCollectionViewImplement
+        
         
         if let viewModel = viewModel {
             rx.viewWillAppear

@@ -21,7 +21,7 @@ final class HomeMySpeechBubbleViewCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = HomeMySpeechBubbleView()
+    let speechBubble = HomeMySpeechBubbleView()
     static let identifier = "HomeMySpeechBubbleViewCell"
     
     // MARK: Init

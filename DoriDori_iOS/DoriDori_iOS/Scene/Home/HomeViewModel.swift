@@ -21,10 +21,12 @@ final class HomeViewModel: Reactor {
         case setHomeCollectionViewReload(Bool)
         case setHomeModels(HomeSpeechs)
         case setHomeEmptyState(Bool)
+        case setWardTitleLabel(String)
     }
     
     struct State {
         var homeSpeechModel: HomeSpeechs?
+        var wardTitle: String = ""
         @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
         @Pulse var homeEmptyState: Bool = false
@@ -61,6 +63,8 @@ final class HomeViewModel: Reactor {
             newState.homeSpeechModel = models
         case let .setHomeEmptyState(homeEmptyState):
             newState.homeEmptyState = homeEmptyState
+        case let .setWardTitleLabel(title):
+            newState.wardTitle = title
         }
         
         return newState
@@ -72,9 +76,11 @@ final class HomeViewModel: Reactor {
                 if models.homeSpeech.isEmpty {
                     return .just(.setHomeEmptyState(true))
                 }
+                let wardTitle = models.homeSpeech.first?.representativeAddress ?? ""
                 return .concat([
                     .just(.setHomeModels(models)),
                     .just(.setHomeEmptyState(false)),
+                    .just(.setWardTitleLabel(wardTitle)),
                     .just(.setHomeCollectionViewReload(true))
                 ])
             }

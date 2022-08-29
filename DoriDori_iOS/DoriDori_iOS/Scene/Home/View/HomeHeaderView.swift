@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+import RxSwift
 
 enum WardState {
     case currentLocation(location: String)

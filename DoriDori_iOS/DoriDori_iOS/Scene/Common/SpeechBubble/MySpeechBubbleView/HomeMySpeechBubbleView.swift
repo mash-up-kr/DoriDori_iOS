@@ -6,6 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+
+
+protocol HomeSpeechBubleViewDelegate: AnyObject {
+    func likeButtonDidTap()
+    func commentButtonDidTap()
+    func shareButtonDidTap()
+}
 
 final class HomeMySpeechBubbleView: MySpeechBubbleView,
                                     SpeechBubbleViewLikeable,
@@ -133,6 +141,8 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
     
     // MARK: - Properties
     var likeButtonType: LikeButtonType { .hand }
+    weak var delegate: HomeSpeechBubleViewDelegate?
+    private let disposeBag = DisposeBag()
     
     override init(
         borderWidth: CGFloat = 1,
@@ -145,6 +155,7 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        bind()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -164,13 +175,36 @@ extension HomeMySpeechBubbleView {
     }
     
     private func setupTagStackView(_ tags: [String]) {
-        guard tags.count != tagStackView.arrangedSubviews.count else {
-            return 
+        tagStackView.arrangedSubviews.forEach { view in
+            NSLayoutConstraint.deactivate(self.constraints.filter({ $0.firstItem === view || $0.secondItem === view }))
+            view.removeFromSuperview()
         }
-        
         let tagViews = self.configureTagViews(tags)
         self.tagStackView.isHidden = tagViews.isEmpty
         tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
+    }
+    
+    private func bind() {
+        handButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.likeButtonDidTap()
+            })
+            .disposed(by: disposeBag)
+        
+        commentButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.commentButtonDidTap()
+            })
+            .disposed(by: disposeBag)
+        
+        shareButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.shareButtonDidTap()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
