@@ -29,10 +29,13 @@ final class OtherProfileContentViewController: UIViewController,
     var disposeBag: DisposeBag
     private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
     private let coordinator: OtherPageCoordinatable
+    private let didTapProfile: PublishRelay<IndexPath>
+
     init(
         reactor: OtherProfileContentReactor,
         coordinator: OtherPageCoordinatable
     ) {
+        self.didTapProfile = .init()
         self.coordinator = coordinator
         self.questionItems = .init(value: [])
         self.didSelectItem = .init()
@@ -62,6 +65,12 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        
+        self.didTapProfile
+            .map { OtherProfileContentReactor.Action.didTapProfile($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: self.questionItems)
             .disposed(by: self.disposeBag)
@@ -70,6 +79,14 @@ final class OtherProfileContentViewController: UIViewController,
             .compactMap { $0 }
             .bind(with: self) { owner, questionID in
                 owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateUserID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, userID in
+                print("userID", userID)
+                owner.coordinator.navigateToOtherPage(userID: userID)
             }
             .disposed(by: self.disposeBag)
     }
@@ -106,6 +123,7 @@ final class OtherProfileContentViewController: UIViewController,
                 owner.collectionView.reloadData()
             }
             .disposed(by: self.disposeBag)
+        
     }
 }
 
@@ -128,6 +146,7 @@ extension OtherProfileContentViewController: UICollectionViewDataSource {
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
             let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
             cell.configure(otherSpeechBubbleItem)
+            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
             return cell
         }
         if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {

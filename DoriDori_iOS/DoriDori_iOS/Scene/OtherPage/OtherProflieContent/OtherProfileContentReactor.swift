@@ -15,14 +15,17 @@ final class OtherProfileContentReactor: Reactor {
         case viewDidLoad
         case didSelect(IndexPath)
         case willDisplayCell(IndexPath)
+        case didTapProfile(IndexPath)
     }
     enum Mutation {
         case quetsions([MyPageBubbleItemType])
         case didSelect(QuestionID)
+        case didTap(UserID)
     }
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
         @Pulse var navigateQuestionID: QuestionID?
+        @Pulse var navigateUserID: UserID?
     }
     private var hasNext: Bool = false
     private var lastID: String?
@@ -57,6 +60,8 @@ final class OtherProfileContentReactor: Reactor {
             }
         case .didSelect(let questionID):
             _state.navigateQuestionID = questionID
+        case .didTap(let userID):
+            _state.navigateUserID = userID
         }
         return _state
     }
@@ -88,6 +93,7 @@ final class OtherProfileContentReactor: Reactor {
             let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
             if isAnonymousQuestion {
                 otherSpeechBubbleItem = AnonymousMyPageSpeechBubbleCellItem(
+                    userID: question.fromUser?.id ?? "",
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
@@ -97,6 +103,7 @@ final class OtherProfileContentReactor: Reactor {
                 )
             } else {
                 otherSpeechBubbleItem = IdentifiedMyPageSpeechBubbleCellItem(
+                    userID: question.fromUser?.id ?? "",
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
@@ -109,6 +116,7 @@ final class OtherProfileContentReactor: Reactor {
             }
 
             let mySpeechBubbleItem = MyPageMySpeechBubbleCellItem(
+                userID: question.toUser?.id ?? "",
                 questionID: question.answer?.id ?? "",
                 questioner: question.fromUser?.nickname ?? "",
                 userName: question.answer?.user?.nickname ?? "",
@@ -144,7 +152,16 @@ final class OtherProfileContentReactor: Reactor {
                 return .just(.didSelect(question.questionID))
             }
             return .empty()
-            
+         
+        case .didTapProfile(let indexPath):
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
+                return .just(.didTap(myAnswer.userID))
+            }
+            if let question = question as? MyPageOtherSpeechBubbleItemType {
+                return .just(.didTap(question.userID))
+            }
+            return .empty()
         case .willDisplayCell(let indexPath):
             if (self.currentState.questionAndAnswer.count < ( indexPath.item + 5)) && self.hasNext {
                 return self.fetchQuestionAndAnswer(

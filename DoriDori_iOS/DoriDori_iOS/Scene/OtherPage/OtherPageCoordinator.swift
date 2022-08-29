@@ -11,6 +11,7 @@ import UIKit
 protocol OtherPageCoordinatable: Coordinator {
     func pop()
     func navigateToQuestionDetail(questionID: QuestionID)
+    func navigateToOtherPage(userID: UserID)
     func navigateToProfileShare()
     func navigateToQuestion()
 }
@@ -59,5 +60,8 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
             navigationController: self.navigationController,
             questionType: .user(userID: self.userID)
         ).start()
+    }
+    func navigateToOtherPage(userID: UserID) {
+        self.start()
     }
 }
