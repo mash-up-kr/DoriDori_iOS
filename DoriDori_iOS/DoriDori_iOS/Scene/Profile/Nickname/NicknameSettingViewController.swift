@@ -58,6 +58,7 @@ final class NicknameSettingViewController: UIViewController {
         
         output.nicknameOutput.drive(onNext: { [weak self] success in
             if success {
+                
                 guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "ProfileIntroViewController") as? ProfileIntroViewController
                 else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -65,6 +66,11 @@ final class NicknameSettingViewController: UIViewController {
                 print("닉네임 설정 실패")
             }
         }).disposed(by: disposeBag)
+        
+        output.defaultProfile.bind { output in
+            let msg = output ? "기본 프로필 사진 성공" : "실패"
+            print(msg)
+        }.disposed(by: disposeBag)
     }
     
     private func buttonValid(_ isValid: Bool) {
@@ -76,15 +82,16 @@ final class NicknameSettingViewController: UIViewController {
 }
 
 extension NicknameSettingViewController {
-    func keyboardSetting() {
+        func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
+        let keyboardButtonSpace: Int = 20
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                self.buttomBottomConstraint.constant = keyboardSize.height
+                self.buttomBottomConstraint.constant = CGFloat(keyboardButtonSpace) + keyboardSize.height
                 self.view.layoutIfNeeded()
             })
         }

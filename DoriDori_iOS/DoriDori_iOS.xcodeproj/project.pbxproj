@@ -42,6 +42,7 @@
 		6C5E72BE28AFCE0300013C2B /* String+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E72BD28AFCE0200013C2B /* String+Extenstion.swift */; };
 		6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */; };
 		6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */; };
+		6C86264228BCE9D600865FFA /* ProfileDefaultReqeust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86264128BCE9D600865FFA /* ProfileDefaultReqeust.swift */; };
 		6C89C77F28B9ECA100A0EB59 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89C77E28B9ECA100A0EB59 /* ProfileModel.swift */; };
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
 		6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */; };
@@ -234,6 +235,7 @@
 		6C5E72BD28AFCE0200013C2B /* String+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extenstion.swift"; sourceTree = "<group>"; };
 		6C6529EA2895364B00EB04B5 /* PasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputViewController.swift; sourceTree = "<group>"; };
 		6C6529EC2895365A00EB04B5 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		6C86264128BCE9D600865FFA /* ProfileDefaultReqeust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDefaultReqeust.swift; sourceTree = "<group>"; };
 		6C89C77E28B9ECA100A0EB59 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				6C564FE728B9223D00A91959 /* NicknameRequest.swift */,
 				6C564FE928B9224C00A91959 /* ProfileRequest.swift */,
 				6C564FEB28B9225C00A91959 /* ProfileImageRequest.swift */,
+				6C86264128BCE9D600865FFA /* ProfileDefaultReqeust.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1241,6 +1244,7 @@
 				6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */,
 				6C0172B928AA2A460081DDD4 /* SignUpRepository.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
+				6C86264228BCE9D600865FFA /* ProfileDefaultReqeust.swift in Sources */,
 				6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */,
 				6C564FE828B9223D00A91959 /* NicknameRequest.swift in Sources */,
 				6CB65B622879AAB300C15E2B /* EmailSignInViewController.swift in Sources */,

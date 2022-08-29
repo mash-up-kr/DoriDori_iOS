@@ -24,6 +24,7 @@ final class NicknameSettingViewModel: ViewModelProtocol {
     
     struct Output {
         let buttonOutput: Observable<Bool>
+        let defaultProfile: Observable<Bool>
         let nicknameOutput: Driver<Bool>
         let errorMsg: Signal<String>
     }
@@ -47,7 +48,12 @@ final class NicknameSettingViewModel: ViewModelProtocol {
                 }
         }
         
-        return Output(buttonOutput: output, nicknameOutput: nickname.asDriver(onErrorJustReturn: false), errorMsg: errorRelay.asSignal())
+        let defaultProfile = self.repository.defaultProfile()
+        
+        return Output(buttonOutput: output,
+                      defaultProfile: defaultProfile,
+                      nicknameOutput: nickname.asDriver(onErrorJustReturn: false),
+                      errorMsg: errorRelay.asSignal())
 
         
     }
