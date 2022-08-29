@@ -463,25 +463,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nah-sJ-Bxj">
-                                <rect key="frame" x="30" y="136.33333333333337" width="315" height="250"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="149.99999999999997" width="315" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="136.33333333333334" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlM-Ee-yft">
                                 <rect key="frame" x="30" y="704" width="315" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
@@ -502,24 +490,41 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="286.33333333333331" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-xb-ruJ">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <color key="color" name="lime300"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KSr-KW-x78"/>
                         <color key="backgroundColor" name="darkGray"/>
                         <constraints>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="top" secondItem="G8n-4V-baU" secondAttribute="bottom" constant="32" id="44Q-DN-Kmr"/>
+                            <constraint firstItem="BCf-xb-ruJ" firstAttribute="centerY" secondItem="m8c-e2-2hX" secondAttribute="centerY" id="53S-df-7Ck"/>
                             <constraint firstAttribute="bottom" secondItem="jlM-Ee-yft" secondAttribute="bottom" constant="54" id="Glv-bS-unC"/>
                             <constraint firstItem="KSr-KW-x78" firstAttribute="trailing" secondItem="jlM-Ee-yft" secondAttribute="trailing" constant="30" id="LN6-vd-XTZ"/>
-                            <constraint firstItem="nah-sJ-Bxj" firstAttribute="top" secondItem="G8n-4V-baU" secondAttribute="bottom" constant="32" id="LNx-EC-dY7"/>
                             <constraint firstItem="G8n-4V-baU" firstAttribute="top" secondItem="KSr-KW-x78" secondAttribute="top" constant="30" id="SyI-xO-XZA"/>
                             <constraint firstItem="KSr-KW-x78" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" constant="30" id="W4B-C2-rlO"/>
                             <constraint firstItem="jlM-Ee-yft" firstAttribute="leading" secondItem="KSr-KW-x78" secondAttribute="leading" constant="30" id="ZP3-b0-Jys"/>
-                            <constraint firstItem="nah-sJ-Bxj" firstAttribute="leading" secondItem="G8n-4V-baU" secondAttribute="leading" id="pgp-fc-YUF"/>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="leading" secondItem="G8n-4V-baU" secondAttribute="leading" id="fjG-ix-fXS"/>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="gYN-up-uGd"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="leading" secondItem="G8n-4V-baU" secondAttribute="leading" id="oMf-lC-A5W"/>
                             <constraint firstItem="G8n-4V-baU" firstAttribute="leading" secondItem="KSr-KW-x78" secondAttribute="leading" constant="30" id="quH-k4-eLf"/>
-                            <constraint firstItem="nah-sJ-Bxj" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="vrE-5b-dVY"/>
+                            <constraint firstItem="BCf-xb-ruJ" firstAttribute="centerX" secondItem="m8c-e2-2hX" secondAttribute="centerX" id="uto-I0-ulr"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="zA4-mC-5YK"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="top" secondItem="OOw-eb-yzb" secondAttribute="bottom" constant="50" id="zIW-0t-tYA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="authNumberTextField" destination="6gC-NK-wqw" id="y3K-De-pVI"/>
                         <outlet property="emailTextField" destination="OOw-eb-yzb" id="Pb6-SY-l0Z"/>
+                        <outlet property="indicator" destination="BCf-xb-ruJ" id="w9P-om-DdB"/>
                         <outlet property="sendButtonButtomConstraint" destination="Glv-bS-unC" id="ayH-YH-Yvh"/>
                         <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
                     </connections>
@@ -542,13 +547,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-La-m5M" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="136.33333333333334" width="315" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="lAQ-N6-qIB"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-DK-S6G" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
                                 <rect key="frame" x="30" y="286.33333333333331" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -576,6 +574,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-La-m5M" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="136.33333333333334" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="lAQ-N6-qIB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tGo-Ma-9j1"/>
                         <color key="backgroundColor" name="darkGray"/>

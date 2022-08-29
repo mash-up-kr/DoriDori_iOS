@@ -20,7 +20,7 @@ final class EmailSignUpViewController: UIViewController {
     @IBOutlet private weak var authNumberTextField: UnderLineTextField!
     @IBOutlet private weak var sendToAuthNumberButton: UIButton!
     @IBOutlet private weak var sendButtonButtomConstraint: NSLayoutConstraint!
-    
+    @IBOutlet private weak var indicator: UIActivityIndicatorView!
     private let viewModel: EmailSignUpViewModel = .init()
     private var disposeBag = DisposeBag()
     var termsIds: [String] = []
@@ -32,6 +32,7 @@ final class EmailSignUpViewController: UIViewController {
         settingViewModel()
         keyboardSetting()
         bind(viewModel)
+        self.view.bringSubviewToFront(self.indicator)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,11 +76,18 @@ final class EmailSignUpViewController: UIViewController {
             self?.buttonValid(isValid)
         }.disposed(by: disposeBag)
         
-        output.sendEmail.bind(onNext: { [weak self] _ in
+        Observable.of(output.sendEmailTap, input.authNumberResendButton)
+            .merge()
+            .bind { [weak self] _ in
+            self?.indicator.isHidden = false
+            self?.indicator.startAnimating()
+        }.disposed(by: self.disposeBag)
+        
+        output.sendEmailOutput.bind(onNext: { [weak self] _ in
+            self?.indicator.stopAnimating()
             self?.authNumberTextField.isHidden = false
-            self?.sendToAuthNumberButton.isEnabled = true
             self?.sendToAuthNumberButton.setTitle("확인", for: .normal)
-            self?.sendToAuthNumberButton.backgroundColor = UIColor(named: "gray700")
+            self?.buttonValid(false)
             self?.emailTextField.textField.isEnabled = false
             self?.emailTextField.iconImageView.isHidden = false
             self?.emailTextField.underLineView.backgroundColor = UIColor(named: "gray700")

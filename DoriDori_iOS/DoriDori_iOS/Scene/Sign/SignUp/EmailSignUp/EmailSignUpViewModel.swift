@@ -29,7 +29,8 @@ final class EmailSignUpViewModel: ViewModelProtocol {
     struct Output {
         let isValidEmail: Observable<Bool>
         let inputAuthNumber: Observable<Bool>
-        let sendEmail: Observable<Bool>
+        let sendEmailTap: Observable<Void>
+        let sendEmailOutput: Observable<Bool>
         let finalConfirm: Observable<Void>
         let authErrorMsg: Signal<String>
         let emailErrorMsg: Signal<String>
@@ -48,11 +49,8 @@ final class EmailSignUpViewModel: ViewModelProtocol {
             self?.buttonType.value == .sendEmail
         }
         
-        let emailErrorRelay = PublishRelay<String>()
         
-        input.authNumberResendButton.bind { _ in
-            DoriDoriToastView.init(text: "인증번호가 재전송 되었습니다.").show()
-        }.disposed(by: disposeBag)
+        let emailErrorRelay = PublishRelay<String>()
         
         let sendEmailOutput = Observable.of(input.authNumberResendButton, sendEmailTap)
             .merge()
@@ -98,7 +96,13 @@ final class EmailSignUpViewModel: ViewModelProtocol {
                     })}
             .observe(on: MainScheduler.instance)
         
-        return Output(isValidEmail: buttonisValidOutput, inputAuthNumber: inputAuthNumberOutput, sendEmail: sendEmailOutput, finalConfirm: confirmOutput, authErrorMsg: authErrorRelay.asSignal(), emailErrorMsg: emailErrorRelay.asSignal())
+        return Output(isValidEmail: buttonisValidOutput,
+                      inputAuthNumber: inputAuthNumberOutput,
+                      sendEmailTap: sendEmailTap,
+                      sendEmailOutput: sendEmailOutput,
+                      finalConfirm: confirmOutput,
+                      authErrorMsg: authErrorRelay.asSignal(),
+                      emailErrorMsg: emailErrorRelay.asSignal())
     }
     
 }
