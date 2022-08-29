@@ -29,7 +29,12 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
-    private var locationCollectionViewImplement: LocationCollectionViewImplement?
+    private let homeEmptyView: HomeEmptyView = {
+        let emptyView: HomeEmptyView = HomeEmptyView()
+        emptyView.backgroundColor = .red
+        return emptyView
+    }()
+
     private var homeCollectionViewImplement: HomeCollectionViewImplement?
 
     // MARK: - Life cycle
@@ -37,6 +42,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        collectionView.isHidden = true
         setupViews()
         setupConstrinats()
         setup()
@@ -55,18 +61,30 @@ final class HomeViewController: UIViewController {
     // MARK: - Bind ViewModel
 
     func bind(reactor: HomeViewModel) {
-        viewModel?.pulse(\.$locationCollectionViewNeedReload)
-            .observe(on: MainScheduler.instance)
-            .bind(with: self) { owner, _ in
-                owner.homeHeaderView.locationCollectionView.reloadData()
-            }
-            .disposed(by: disposeBag)
-        
         viewModel?.pulse(\.$homeCollectionViewNeedReload)
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 owner.collectionView.reloadData()
             }
+            .disposed(by: disposeBag)
+        
+        viewModel?.pulse(\.$homeEmptyState)
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, check in
+                if check {
+                    owner.collectionView.isHidden = true
+                    owner.homeEmptyView.isHidden = false
+                } else {
+                    owner.collectionView.isHidden = false
+                    owner.homeEmptyView.isHidden = true
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel?.state
+            .map { "지금 여기는 \(String($0.wardTitle))!" }
+            .distinctUntilChanged()
+            .bind(to: homeHeaderView.wardTitleLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -74,16 +92,22 @@ final class HomeViewController: UIViewController {
     private func setupViews() {
         view.addSubview(homeHeaderView)
         view.addSubview(collectionView)
+        view.addSubview(homeEmptyView)
     }
     
     private func setupConstrinats() {
         homeHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(44)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(212)
+            $0.height.equalTo(152)
         }
         
         collectionView.snp.makeConstraints {
+            $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        homeEmptyView.snp.makeConstraints {
             $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -92,32 +116,18 @@ final class HomeViewController: UIViewController {
     private func setup() {
         if let viewModel = viewModel {
             bind(reactor: viewModel)
-            locationCollectionViewImplement = LocationCollectionViewImplement(viewModel: viewModel)
             homeCollectionViewImplement = HomeCollectionViewImplement(viewModel: viewModel)
         }
-        
-        homeHeaderView.locationCollectionView.dataSource = locationCollectionViewImplement
-        homeHeaderView.locationCollectionView.delegate = locationCollectionViewImplement
         
         collectionView.dataSource = homeCollectionViewImplement
         collectionView.delegate = homeCollectionViewImplement
         
+        
         if let viewModel = viewModel {
-            rx.viewWillAppear
-                .map { _ in .requestHeaderViewData }
-                .bind(to: viewModel.action)
-                .disposed(by: disposeBag)
-            
             rx.viewWillAppear
                 .map { _ in .reqeustHomeData }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
         }
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: - Cell 클릭시 애니메이션
     }
 }

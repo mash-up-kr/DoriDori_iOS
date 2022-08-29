@@ -130,7 +130,9 @@ extension Network {
             if isSuccess {
                 if let data = response.data {
                     observer.onNext(data)
-                } else { observer.onError(DoriDoriError.noData) }
+                } else {
+                    observer.onError(DoriDoriError.noData)
+                }
             } else {
                 if let errModel = response.error {
                     if errModel.code == DoriDoriError.TOKEN_EXPIRED.rawValue {

@@ -8,8 +8,15 @@ import UIKit
 
 final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
+    enum HomeCellType {
+        case my
+        case other
+    }
+    
     private var viewModel: HomeViewModel?
-    private var numberOfItems: Int { viewModel?.locationListNumberOfModel ?? 0 }
+    private var numberOfItems: Int { viewModel?.homeListNumberOfModel ?? 0 }
+    
+    private var homeCellType: HomeCellType?
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -20,18 +27,32 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dequeued = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMySpeechBubbleViewCell.identifier, for: indexPath)
         
-        guard let cell = dequeued as? HomeMySpeechBubbleViewCell else {
-            return dequeued
+        // TODO: - 회원가입 후 저장된 내 userid와 비교
+        if viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row]?.user.id == "" {
+            homeCellType = .my
+        } else {
+            homeCellType = .other
         }
         
         guard let item = viewModel?.currentState.homeSpeechModel?.homeSpeech[indexPath.row] else {
             return UICollectionViewCell()
         }
-
-        cell.configure(item: item)
-        return cell
+        
+        switch homeCellType {
+        case .my:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMySpeechBubbleViewCell.identifier, for: indexPath) as? HomeMySpeechBubbleViewCell else { return UICollectionViewCell() }
+            cell.speechBubble.delegate = self
+            cell.configure(item: item)
+            return cell
+        case .other:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeOtherSpeechBubbleCell.identifier, for: indexPath) as? HomeOtherSpeechBubbleCell else { return UICollectionViewCell() }
+            cell.speechBubble.delegate = self
+            cell.configure(item)
+            return cell
+        case .none:
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(
@@ -41,5 +62,25 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
     ) -> CGSize {
         let size = HomeMySpeechBubbleViewCell.fittingSize(width: collectionView.frame.width, item: (viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row])!)
         return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row] else {
+            return
+        }
+    }
+}
+
+extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
+    func likeButtonDidTap(id: String) {
+        viewModel?.action.onNext(.dislike(id: id))
+    }
+    
+    func commentButtonDidTap() {
+        print("댓글 버튼 눌림")
+    }
+    
+    func shareButtonDidTap() {
+        print("공유 버튼 눌림")
     }
 }
