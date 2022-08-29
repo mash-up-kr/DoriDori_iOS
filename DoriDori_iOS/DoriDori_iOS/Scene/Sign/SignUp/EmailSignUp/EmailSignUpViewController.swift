@@ -85,6 +85,7 @@ final class EmailSignUpViewController: UIViewController {
         
         output.sendEmailOutput.bind { [weak self] _ in
 //                self?.authNumberTextField.authNumbertimerLabel.text = time
+                self?.indicator.stopAnimating()
                 self?.authNumberTextField.isHidden = false
                 self?.sendToAuthNumberButton.setTitle("확인", for: .normal)
                 self?.buttonValid(false)
@@ -95,6 +96,7 @@ final class EmailSignUpViewController: UIViewController {
             }.disposed(by: self.disposeBag)
             
         output.emailErrorMsg.emit(onNext: { [weak self] str in
+            self?.indicator.stopAnimating()
             self?.emailTextField.errorLabel.isHidden = false
             self?.emailTextField.errorLabel.text = str
             self?.emailTextField.underLineView.backgroundColor = UIColor(named: "red500")
