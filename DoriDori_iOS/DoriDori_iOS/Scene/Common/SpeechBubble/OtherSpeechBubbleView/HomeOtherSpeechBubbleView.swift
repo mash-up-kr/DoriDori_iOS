@@ -164,7 +164,7 @@ extension HomeOtherSpeechBubbleView {
         homeSpeechInfo = item        
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.locationLabel.text = item.representativeAddress
-        self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
+        self.updatedTimeLabel.text = item.updatedAt
         self.userNameLabel.text = item.user.nickname
         self.setupLikeButton(item.likeCount, at: self.handButton)
         self.setupCommentButton(item.commentCount, at: self.commentButton)

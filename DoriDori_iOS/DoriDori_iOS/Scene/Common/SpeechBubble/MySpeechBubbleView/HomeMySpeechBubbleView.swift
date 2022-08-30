@@ -168,7 +168,7 @@ extension HomeMySpeechBubbleView {
     func configure(_ item: HomeSpeechInfo) {
         homeSpeechInfo = item
         self.locationLabel.text = item.representativeAddress
-        self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
+        self.updatedTimeLabel.text = item.updatedAt
         self.userNameLabel.text = item.user.nickname
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.handButton)

@@ -16,7 +16,7 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
     let questionID: QuestionID
     let content: String
     let location: String
-    let updatedTime: Int
+    let updatedTime: String
     let level: Int
     let imageURL: URL?
     let tags: [String]
@@ -28,7 +28,7 @@ struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemT
     let questionID: QuestionID
     let content: String
     let location: String
-    let updatedTime: Int
+    let updatedTime: String
     let tags: [String]
     let userName: String
 }

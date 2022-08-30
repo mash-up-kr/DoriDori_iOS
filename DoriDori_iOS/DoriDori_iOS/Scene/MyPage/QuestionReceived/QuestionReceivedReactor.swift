@@ -195,13 +195,15 @@ extension QuestionReceivedReactor {
         guard let questions = response.questions else { return [] }
         return questions.compactMap { question -> MyPageOtherSpeechBubbleItemType? in
             guard let isAnonymousQuestion = question.anonymous else { return nil }
+            guard let createdAt = question.createdAt,
+                  let updatedTime = DoriDoriDateFormatter(dateString: createdAt).createdAtText() else { return nil }
             if isAnonymousQuestion {
                 return AnonymousMyPageSpeechBubbleCellItem(
                     userID: question.fromUser?.id ?? "",
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     tags: question.fromUser?.tags ?? [],
                     userName: question.fromUser?.nickname ?? ""
                 )
@@ -211,7 +213,7 @@ extension QuestionReceivedReactor {
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     level: question.fromUser?.level ?? 1,
                     imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
                     tags: question.fromUser?.tags ?? [],
