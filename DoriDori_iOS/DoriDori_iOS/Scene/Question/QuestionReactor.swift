@@ -45,7 +45,7 @@ final class QuestionReactor: Reactor {
         @Pulse var nicknameDropDownDataSource: [AnonymousDropDownItem]
     }
     
-    let locationManager: LocationManager
+    private let locationManager: LocationManager
     let initialState: State
     private let questionRepository: QuestionRequestable
     
