@@ -43,8 +43,8 @@ final class AppCoordinator {
             window?.rootViewController = mainTabbarController
         case .siginIn:
             let story = UIStoryboard(name: "SignIn", bundle: nil)
-            let reactor = SignInMainViewModel()
-            guard let vc = story.instantiateViewController(withIdentifier: "SignInMainViewController") as? SignInMainViewController else { return }
+            let reactor = WelcomeViewModel()
+            guard let vc = story.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController else { return }
             //네비게이션 설정
             let navi = UINavigationController(rootViewController: vc)
             navi.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]

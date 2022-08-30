@@ -48,8 +48,8 @@
 		6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */; };
 		6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */; };
 		6CB65B5A2879792000C15E2B /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB65B572879792000C15E2B /* SignIn.storyboard */; };
-		6CB65B5B2879792000C15E2B /* SignInMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B582879792000C15E2B /* SignInMainViewController.swift */; };
-		6CB65B5C2879792000C15E2B /* SignInMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B592879792000C15E2B /* SignInMainViewModel.swift */; };
+		6CB65B5B2879792000C15E2B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B582879792000C15E2B /* WelcomeViewController.swift */; };
+		6CB65B5C2879792000C15E2B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B592879792000C15E2B /* WelcomeViewModel.swift */; };
 		6CB65B622879AAB300C15E2B /* EmailSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B612879AAB300C15E2B /* EmailSignInViewController.swift */; };
 		6CB7E6D828B66C340046103E /* ProfileKeywordSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7E6D728B66C340046103E /* ProfileKeywordSettingViewModel.swift */; };
 		A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */; };
@@ -270,8 +270,8 @@
 		6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
 		6CB65B572879792000C15E2B /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
-		6CB65B582879792000C15E2B /* SignInMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMainViewController.swift; sourceTree = "<group>"; };
-		6CB65B592879792000C15E2B /* SignInMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMainViewModel.swift; sourceTree = "<group>"; };
+		6CB65B582879792000C15E2B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		6CB65B592879792000C15E2B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		6CB65B612879AAB300C15E2B /* EmailSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewController.swift; sourceTree = "<group>"; };
 		6CB7E6D728B66C340046103E /* ProfileKeywordSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordSettingViewModel.swift; sourceTree = "<group>"; };
 		A20A9E9428797B6D000ABFBB /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -467,7 +467,6 @@
 			children = (
 				6C3D0B6628B48E6E0076450B /* TermsOfServiceRequest.swift */,
 				6C0172BC28AA2BE80081DDD4 /* EmailSendRequest.swift */,
-				CE3316C028BE38D300FAF82C /* TokenData.swift */,
 				6C296C9F28B35F9800E1BFD2 /* EmailSignInRequest.swift */,
 				6C15850128B761C1009E03A6 /* EmailCertRequest.swift */,
 				6C564FDB28B8E8BE00A91959 /* EmailSignUpRequest.swift */,
@@ -510,6 +509,7 @@
 		6C564FDD28B8EB9600A91959 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE3316C028BE38D300FAF82C /* TokenData.swift */,
 				6C3D0B6B28B4919A0076450B /* TermsModel.swift */,
 				6C564FDE28B8EBEC00A91959 /* EmailSignUpModel.swift */,
 				6C564FF328B926A500A91959 /* TokenModel.swift */,
@@ -609,20 +609,19 @@
 			path = EmailSignIn;
 			sourceTree = "<group>";
 		};
-		6C94FC5C2887C72C00DD77B6 /* SignInMain */ = {
+		6C94FC5C2887C72C00DD77B6 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				6CB65B582879792000C15E2B /* SignInMainViewController.swift */,
-				6CB65B592879792000C15E2B /* SignInMainViewModel.swift */,
+				6CB65B582879792000C15E2B /* WelcomeViewController.swift */,
+				6CB65B592879792000C15E2B /* WelcomeViewModel.swift */,
 			);
-			path = SignInMain;
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		6C94FC632887C9DD00DD77B6 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				6C0172B828AA2A460081DDD4 /* SignUpRepository.swift */,
-				6C564FDD28B8EB9600A91959 /* Model */,
 				6C6529EE2895366100EB04B5 /* Terms */,
 				6C6529EF2895366A00EB04B5 /* EmailSignUp */,
 				6C6529F1289536D400EB04B5 /* PasswordInput */,
@@ -634,7 +633,8 @@
 			isa = PBXGroup;
 			children = (
 				6CB65B572879792000C15E2B /* SignIn.storyboard */,
-				6C94FC5C2887C72C00DD77B6 /* SignInMain */,
+				6C564FDD28B8EB9600A91959 /* Model */,
+				6C94FC5C2887C72C00DD77B6 /* Welcome */,
 				6C94FC532887C6B400DD77B6 /* EmailSignIn */,
 				6C94FC632887C9DD00DD77B6 /* SignUp */,
 			);
@@ -844,8 +844,8 @@
 			children = (
 				A24FD16028B4B2E000A003D1 /* AlertViewController.swift */,
 				A24FD16228B4B3ED00A003D1 /* AlertAction.swift */,
-				A219F63628BE48190065C1F9 /* AlertModel.swift */,
 				A219F63828BE48290065C1F9 /* TextFieldAlertViewController.swift */,
+				A219F63628BE48190065C1F9 /* AlertModel.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -1476,7 +1476,7 @@
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				6C3D0B7628B53BB40076450B /* NicknameSettingViewModel.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
-				6CB65B5C2879792000C15E2B /* SignInMainViewModel.swift in Sources */,
+				6CB65B5C2879792000C15E2B /* WelcomeViewModel.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
 				A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */,
 				A21188F128BD0A16008A48C0 /* MyProfileRequest.swift in Sources */,
@@ -1488,6 +1488,7 @@
 				6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */,
 				6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */,
 				6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */,
+				6CB65B5B2879792000C15E2B /* WelcomeViewController.swift in Sources */,
 				A219F63928BE48290065C1F9 /* TextFieldAlertViewController.swift in Sources */,
 				6CB65B5B2879792000C15E2B /* SignInMainViewController.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,

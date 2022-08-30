@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Sign In Main View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="GzV-lN-fg7">
             <objects>
-                <viewController storyboardIdentifier="SignInMainViewController" id="vKn-9P-Ny8" customClass="SignInMainViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="vKn-9P-Ny8" customClass="WelcomeViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,20 +123,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일로 입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-dn-95g">
-                                <rect key="frame" x="30" y="74" width="315" height="30.333333333333329"/>
+                                <rect key="frame" x="30" y="74" width="315" height="28"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="134.33333333333334" width="315" height="100"/>
+                                <rect key="frame" x="30" y="132" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LiT-TT-m4I"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="284.33333333333331" width="315" height="100"/>
+                                <rect key="frame" x="30" y="282" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
