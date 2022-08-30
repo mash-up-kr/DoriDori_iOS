@@ -10,7 +10,7 @@ import RxRelay
 import ReactorKit
 
 final class AnswerCompleteViewController: UIViewController,
-                                            View {
+                                          View {
     
     // MARK: - UI Component
     
@@ -65,7 +65,7 @@ final class AnswerCompleteViewController: UIViewController,
     private func setupLayouts() {
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
+            $0.top.equalToSuperview()
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -227,6 +227,6 @@ extension AnswerCompleteViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
 }
