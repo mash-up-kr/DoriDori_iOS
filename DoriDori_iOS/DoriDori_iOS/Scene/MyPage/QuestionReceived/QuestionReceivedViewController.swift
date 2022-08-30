@@ -79,9 +79,8 @@ final class QuestionReceivedViewController: UIViewController,
             .disposed(by: self.disposeBag)
         
         self.didTapDenyButton
-            .subscribe(onNext: { indexPath in
-                print("didTapDenyButton", indexPath)
-            })
+            .map { QuestionReceivedReactor.Action.didTapDeny($0) }
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
         self.didTapCommentButton

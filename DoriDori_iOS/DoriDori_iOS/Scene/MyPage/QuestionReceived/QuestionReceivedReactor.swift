@@ -78,17 +78,22 @@ final class QuestionReceivedReactor: Reactor {
                     return .just(.questions(questionItems))
                 }
         case .didTapProfile(let indexPath):
-            guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return .empty() }
+            guard let question = self.question(at: indexPath) else { return .empty() }
             return .just(.didTapProfile(question.userID))
         case .didTapDeny(let indexPath):
-            print("didTApDeny")
+            guard let question = self.question(at: indexPath) else { return .empty() }
         case .didTapComment(let indexPath):
             print("didTapcomment")
         case .didSelectCell(let indexPath):
-            guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return .empty() }
+            guard let question = self.question(at: indexPath) else { return .empty() }
             return .just(.didSelectQuestion(question.questionID))
         }
         return .empty()
+    }
+    
+    private func question(at indexPath: IndexPath) -> MyPageOtherSpeechBubbleItemType? {
+        guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return nil }
+        return question
     }
     
     func reduce(state: State, mutation: Mutation) -> State {

@@ -18,6 +18,7 @@
 		A21188F728BDB7D8008A48C0 /* QuestionReceivedReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188F628BDB7D8008A48C0 /* QuestionReceivedReactor.swift */; };
 		A21188F928BDDF88008A48C0 /* ReceivedQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188F828BDDF88008A48C0 /* ReceivedQuestionModel.swift */; };
 		A21188FB28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188FA28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift */; };
+		A21188FD28BDF0CD008A48C0 /* QuestionDenyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21188FC28BDF0CD008A48C0 /* QuestionDenyRequest.swift */; };
 		A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AD2879A62500F33D4F /* LevelView.swift */; };
 		A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */; };
 		A22FC8B72879BCB800F33D4F /* SpoqaHanSansNeo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A22FC8B22879BCB700F33D4F /* SpoqaHanSansNeo-Light.otf */; };
@@ -179,6 +180,7 @@
 		A21188F628BDB7D8008A48C0 /* QuestionReceivedReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReceivedReactor.swift; sourceTree = "<group>"; };
 		A21188F828BDDF88008A48C0 /* ReceivedQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedQuestionModel.swift; sourceTree = "<group>"; };
 		A21188FA28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedQuestionRequest.swift; sourceTree = "<group>"; };
+		A21188FC28BDF0CD008A48C0 /* QuestionDenyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDenyRequest.swift; sourceTree = "<group>"; };
 		A22FC8AD2879A62500F33D4F /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		A22FC8AF2879AA3F00F33D4F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A22FC8B22879BCB700F33D4F /* SpoqaHanSansNeo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.otf"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				A24FD14528B3554000A003D1 /* MyWardListRequest.swift */,
 				A21188F028BD0A16008A48C0 /* MyProfileRequest.swift */,
 				A21188FA28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift */,
+				A21188FC28BDF0CD008A48C0 /* QuestionDenyRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
 				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
 				A24FD17F28B6618800A003D1 /* OtherPageRepository.swift in Sources */,
+				A21188FD28BDF0CD008A48C0 /* QuestionDenyRequest.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
