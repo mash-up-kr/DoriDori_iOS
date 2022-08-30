@@ -164,6 +164,9 @@ extension HomeMySpeechBubbleView {
     }
     
     private func setupTagStackView(_ tags: [String]) {
+        self.tagStackView.arrangedSubviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
         let tagViews = self.configureTagViews(tags)
         self.tagStackView.isHidden = tagViews.isEmpty
         tagViews.forEach(self.tagStackView.addArrangedSubview(_:))

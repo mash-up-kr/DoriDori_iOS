@@ -31,11 +31,13 @@ final class QuestionReceivedViewController: UIViewController,
     private let didTapDenyButton: PublishRelay<IndexPath>
     private let didTapCommentButton: PublishRelay<IndexPath>
     private let didSelectCell: PublishRelay<IndexPath>
+    private let willDisplayCell: PublishRelay<IndexPath>
     
     init(
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.willDisplayCell = .init()
         self.didSelectCell = .init()
         self.didTapDenyButton = .init()
         self.didTapCommentButton = .init()
@@ -88,6 +90,11 @@ final class QuestionReceivedViewController: UIViewController,
             .subscribe(onNext: { indexPath in
                 print("didTapCommentButton", indexPath)
             })
+            .disposed(by: self.disposeBag)
+        
+        self.willDisplayCell
+            .map { QuestionReceivedReactor.Action.willDisplayCell($0) }
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
         self.didSelectCell
@@ -220,6 +227,14 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         self.didSelectCell.accept(indexPath)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        self.willDisplayCell.accept(indexPath)
     }
 }
 

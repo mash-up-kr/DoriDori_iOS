@@ -15,10 +15,11 @@ struct ReceivedQuestionRequest: Requestable {
     }
     
     var parameters: Parameter? {
-        [
-        "size": self.size,
-         "questionID": self.lastID
-        ]
+        var params: [String: Any] = ["size": self.size]
+        if let lastID = self.lastID {
+            params["lastId"] = lastID
+        }
+        return params
     }
     
     init(

@@ -15,6 +15,7 @@ final class QuestionReceivedReactor: Reactor {
         case didTapDeny(IndexPath)
         case didTapComment(IndexPath)
         case didSelectCell(IndexPath)
+        case willDisplayCell(IndexPath)
         case didTapDenyCancel
         case didTapDenyAction(QuestionID)
         case didRefresh
@@ -27,6 +28,7 @@ final class QuestionReceivedReactor: Reactor {
         case alert(AlertModel)
         case shouldDismissPresentedViewController
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
+        case didDenyQuestion([MyPageOtherSpeechBubbleItemType])
     }
     
     struct State {
@@ -42,58 +44,29 @@ final class QuestionReceivedReactor: Reactor {
     
     private var lastQuestionID: QuestionID?
     private let myPageRepository: MyPageRequestable
+    private var hasNext: Bool = false
+    private var isRequesting: Bool = false
+    
     init(
         myPageRepository: MyPageRequestable
     ) {
         self.myPageRepository = myPageRepository
         self.initialState = .init()
     }
-    private func configureCells(response: ReceivedQuestionModel) -> [MyPageOtherSpeechBubbleItemType] {
-        guard let questions = response.questions else { return [] }
-        return questions.compactMap { question -> MyPageOtherSpeechBubbleItemType? in
-            guard let isAnonymousQuestion = question.anonymous else { return nil }
-            if isAnonymousQuestion {
-                return AnonymousMyPageSpeechBubbleCellItem(
-                    userID: question.fromUser?.id ?? "",
-                    questionID: question.id ?? "",
-                    content: question.content ?? "",
-                    location: question.representativeAddress ?? "",
-                    updatedTime: 1,
-                    tags: question.fromUser?.tags ?? [],
-                    userName: question.fromUser?.nickname ?? ""
-                )
-            } else {
-                return IdentifiedMyPageSpeechBubbleCellItem(
-                    userID: question.fromUser?.id ?? "",
-                    questionID: question.id ?? "",
-                    content: question.content ?? "",
-                    location: question.representativeAddress ?? "",
-                    updatedTime: 1,
-                    level: question.fromUser?.level ?? 1,
-                    imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
-                    tags: question.fromUser?.tags ?? [],
-                    userName: question.fromUser?.nickname ?? ""
-                )
-            }
-        }
-    }
+  
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            return self.myPageRepository.fetchReceivedQuestions(
-                size: 20,
-                lastQuestionID: self.lastQuestionID
-            )
-                .catch { error in
-                    print(error)
-                    return .empty()
+            return self.fetchReceivedQuestions(size: 20, lastID: self.lastQuestionID)
+        case .willDisplayCell(let indexPath):
+            if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
+                if !isRequesting {
+                    return self.fetchReceivedQuestions(
+                        size: 20,
+                        lastID: self.lastQuestionID
+                    )
                 }
-                .flatMapLatest { [weak self] response -> Observable<Mutation> in
-                    guard let self = self else { return .empty() }
-                    let questionItems = self.configureCells(response: response)
-                    return .just(.questions(questionItems))
-                }
-            
+            }
         case .didTapProfile(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
             return .just(.didTapProfile(question.userID))
@@ -129,7 +102,7 @@ final class QuestionReceivedReactor: Reactor {
                     _questions.remove(at: index)
                     return .concat(
                         .just(.shouldDismissPresentedViewController),
-                        .just(.questions(_questions))
+                        .just(.didDenyQuestion(_questions))
                     )
                 }
             
@@ -157,15 +130,16 @@ final class QuestionReceivedReactor: Reactor {
         return .empty()
     }
     
-    private func question(at indexPath: IndexPath) -> MyPageOtherSpeechBubbleItemType? {
-        guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return nil }
-        return question
-    }
-    
     func reduce(state: State, mutation: Mutation) -> State {
         var _state = state
         switch mutation {
         case .questions(let questions):
+            if _state.receivedQuestions.isEmpty {
+                _state.receivedQuestions = questions
+            } else {
+                _state.receivedQuestions.append(contentsOf: questions)
+            }
+        case .didDenyQuestion(let questions):
             _state.receivedQuestions = questions
         case .didTapProfile(let userID):
             _state.navigateUserID = userID
@@ -180,5 +154,65 @@ final class QuestionReceivedReactor: Reactor {
             _state.endRefreshing = true
         }
         return _state
+    }
+}
+
+// MARK: - Private functions
+
+extension QuestionReceivedReactor {
+    
+    private func question(at indexPath: IndexPath) -> MyPageOtherSpeechBubbleItemType? {
+        guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return nil }
+        return question
+    }
+    
+    private func configureCells(response: ReceivedQuestionModel) -> [MyPageOtherSpeechBubbleItemType] {
+        guard let questions = response.questions else { return [] }
+        return questions.compactMap { question -> MyPageOtherSpeechBubbleItemType? in
+            guard let isAnonymousQuestion = question.anonymous else { return nil }
+            if isAnonymousQuestion {
+                return AnonymousMyPageSpeechBubbleCellItem(
+                    userID: question.fromUser?.id ?? "",
+                    questionID: question.id ?? "",
+                    content: question.content ?? "",
+                    location: question.representativeAddress ?? "",
+                    updatedTime: 1,
+                    tags: question.fromUser?.tags ?? [],
+                    userName: question.fromUser?.nickname ?? ""
+                )
+            } else {
+                return IdentifiedMyPageSpeechBubbleCellItem(
+                    userID: question.fromUser?.id ?? "",
+                    questionID: question.id ?? "",
+                    content: question.content ?? "",
+                    location: question.representativeAddress ?? "",
+                    updatedTime: 1,
+                    level: question.fromUser?.level ?? 1,
+                    imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
+                    tags: question.fromUser?.tags ?? [],
+                    userName: question.fromUser?.nickname ?? ""
+                )
+            }
+        }
+    }
+    
+    private func fetchReceivedQuestions(size: Int, lastID: QuestionID?) -> Observable<Mutation> {
+        self.isRequesting = true
+        return self.myPageRepository.fetchReceivedQuestions(
+            size: size,
+            lastQuestionID: lastID
+            )
+            .catch { error in
+                print(error)
+                return .empty()
+            }
+            .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                let questionItems = self.configureCells(response: response)
+                self.hasNext = response.hasNext ?? false
+                self.isRequesting = false
+                self.lastQuestionID = response.questions?.last?.id
+                return .just(.questions(questionItems))
+            }
     }
 }
