@@ -98,7 +98,7 @@ class UnderLineTextFieldViewModel {
             totalStringCount = 7
         case .authNumber:
             inputPlaceHolder = .authNumber
-            authNumberTimer = false
+            authNumberTimer = true //구현하면 false로 바꿔야함 
             authNumberResend = false
         case .profile:
             inputPlaceHolder = .profile

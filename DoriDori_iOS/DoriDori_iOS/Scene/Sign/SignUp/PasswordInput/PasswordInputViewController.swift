@@ -41,6 +41,8 @@ final class PasswordViewController: UIViewController {
         passwordConfirmTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .passwordConfirm,
                                                                          inputContentType: .password,
                                                                          keyboardType: .default)
+        passwordTextField.errorLabel.text = "영문(대/소문자)/특수문자/숫자 사용가능"
+        passwordTextField.errorLabel.textColor = .gray600
     }
     
     private func bind(_ viewModel: PasswordViewModel) {

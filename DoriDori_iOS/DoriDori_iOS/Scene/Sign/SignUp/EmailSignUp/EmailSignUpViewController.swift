@@ -47,7 +47,7 @@ final class EmailSignUpViewController: UIViewController {
                                                                keyboardType: .emailAddress)
         authNumberTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .authNumber,
                                                                     inputContentType: .oneTimeCode,
-                                                                                                                                keyboardType: .numberPad)
+                                                                    keyboardType: .numberPad)
     }
     
     private func bind(_ viewModel: EmailSignUpViewModel) {
