@@ -29,6 +29,7 @@ final class AnswerCompleteReactor: Reactor {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
         @Pulse var navigateQuestionID: QuestionID?
         @Pulse var navigateUserID: UserID?
+        @Pulse var endRefreshing: Bool?
     }
     
     private let repository: MyPageRequestable
@@ -48,10 +49,14 @@ final class AnswerCompleteReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchAnswerComplete()
+            
         case .willDisplayCell(let indexPath):
             if (self.currentState.questionAndAnswer.count < ( indexPath.item + 5)) && self.hasNext {
-                return self.fetchAnswerComplete()
-            } else { return .just(.questionAndAnswers([])) }
+                if !isRequesting {
+                    return self.fetchAnswerComplete()
+                }
+            }
+            
         case .didSelectCell(let indexPath):
             guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
             if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
@@ -61,6 +66,7 @@ final class AnswerCompleteReactor: Reactor {
                 return .just(.didSelect(question.questionID))
             }
             return .empty()
+            
         case .didTapProfile(let indexPath):
             guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
             if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
@@ -71,8 +77,10 @@ final class AnswerCompleteReactor: Reactor {
             }
             return .empty()
         }
-
+        
+        return .empty()
     }
+    
     private func configureCells(response: AnswerCompleteModel) -> [MyPageBubbleItemType] {
         let quetsions = response.questions ?? []
         var _questions: [MyPageBubbleItemType] = []
@@ -125,6 +133,7 @@ final class AnswerCompleteReactor: Reactor {
     }
     
     private func fetchAnswerComplete() -> Observable<Mutation> {
+        self.isRequesting = true
         return self.repository
             .fetchMyAnswerCompleteQuestions(
                 lastQuestionID: self.lastQuestionID,
@@ -138,6 +147,7 @@ final class AnswerCompleteReactor: Reactor {
                 guard let self = self else { return .empty() }
                 guard let hasNext = response.hasNext else { return .empty() }
                 self.hasNext = hasNext
+                self.lastQuestionID = response.questions?.last?.id
                 let _questions = self.configureCells(response: response)
                 self.isRequesting = false
                 return .just(.questionAndAnswers(_questions))
@@ -148,7 +158,11 @@ final class AnswerCompleteReactor: Reactor {
         var _state = state
         switch mutation {
         case .questionAndAnswers(let questions):
-            _state.questionAndAnswer = questions
+            if _state.questionAndAnswer.isEmpty {
+                _state.questionAndAnswer = questions
+            } else {
+                _state.questionAndAnswer.append(contentsOf: questions)
+            }
         case .didSelect(let questionID):
             _state.navigateQuestionID = questionID
         case .didTap(let userID):

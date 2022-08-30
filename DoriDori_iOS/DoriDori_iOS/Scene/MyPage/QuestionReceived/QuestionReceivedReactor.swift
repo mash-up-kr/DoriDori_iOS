@@ -58,6 +58,7 @@ final class QuestionReceivedReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchReceivedQuestions(size: 20, lastID: self.lastQuestionID)
+            
         case .willDisplayCell(let indexPath):
             if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
                 if !isRequesting {
