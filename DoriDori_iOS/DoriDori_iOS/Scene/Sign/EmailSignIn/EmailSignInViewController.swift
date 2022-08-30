@@ -91,11 +91,13 @@ final class EmailSignInViewController: UIViewController {
             self?.loginButton.setTitleColor(buttonTitleColor, for: .normal)
         }.disposed(by: disposeBag)
         
-        output.signIn.bind { [weak self] tokenData in
+        output.signIn.bind { tokenData in
             UserDefaults.accessToken = tokenData.accessToken
             UserDefaults.refreshToken = tokenData.refreshToken
             UserDefaults.userID = tokenData.userId
-            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+              var window = sceneDelegate.window else { return }
+            window = CompositionRoot.resolve(window: window, appStart: .home).window
         }.disposed(by: disposeBag)
         
         output.errorMessage.emit(onNext: { str in

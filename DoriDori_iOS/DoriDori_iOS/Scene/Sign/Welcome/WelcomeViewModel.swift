@@ -13,7 +13,7 @@ enum SignInButtonType {
     case emailSignup
 }
 
-final class SignInMainViewModel: Reactor {
+final class WelcomeViewModel: Reactor {
     
     enum Action {
         case emailSignInButtonDidTap
