@@ -170,6 +170,7 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
             let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
             cell.configure(mySpeechBubbleItem)
+            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
             return cell
         }
         fatalError("can not casting itemtype")
