@@ -94,8 +94,6 @@ final class QuestionReceivedViewController: UIViewController,
         collectionView.delegate = self
         collectionView.register(MyPageOtherSpeechBubbleCell.self)
     }
-    
-
 }
 
 // MARK: - UICollectionViewDataSource
@@ -134,7 +132,8 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
         }
         return MyPageOtherSpeechBubbleCell.fittingSize(
             width: collectionView.bounds.width,
-            item: item
+            item: item,
+            shouldHideButtonstackView: false
         )
     }
 }
@@ -154,6 +153,6 @@ extension QuestionReceivedViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
 }

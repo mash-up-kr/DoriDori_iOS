@@ -94,9 +94,9 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
             .disposed(by: self.disposeBag)
     }
     
-    static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) -> CGSize {
         let cell = MyPageOtherSpeechBubbleCell()
-        cell.configure(item)
+        cell.configure(item, shouldHideButtonstackView: shouldHideButtonstackView)
         let targetSize = CGSize(width: width,
                                 height: UIView.layoutFittingCompressedSize.height)
         return cell.contentView.systemLayoutSizeFitting(targetSize,
