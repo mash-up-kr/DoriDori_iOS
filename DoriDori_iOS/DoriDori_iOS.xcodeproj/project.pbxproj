@@ -172,6 +172,7 @@
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
 		CE5E72B628BE3991002E97B9 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E72B428BE3991002E97B9 /* RefreshModel.swift */; };
 		CE5E72B728BE3991002E97B9 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E72B528BE3991002E97B9 /* AuthenticationRepository.swift */; };
+		CE5E72BB28BE4AA5002E97B9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E72BA28BE4AA5002E97B9 /* HomeCoordinator.swift */; };
 		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
 		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
 		CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A0FB228BA939C00E1E644 /* Lottie */; };
@@ -385,6 +386,7 @@
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CE5E72B428BE3991002E97B9 /* RefreshModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshModel.swift; path = Authentication/RefreshModel.swift; sourceTree = "<group>"; };
 		CE5E72B528BE3991002E97B9 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationRepository.swift; path = Authentication/AuthenticationRepository.swift; sourceTree = "<group>"; };
+		CE5E72BA28BE4AA5002E97B9 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLike.swift; sourceTree = "<group>"; };
 		CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
@@ -1024,6 +1026,7 @@
 				CE5B13322879AED500F10A20 /* HomeViewController.swift */,
 				CE5B13332879AED500F10A20 /* HomeViewModel.swift */,
 				CECB0C3A28A2AF4D00A48D82 /* HomeRepository.swift */,
+				CE5E72BA28BE4AA5002E97B9 /* HomeCoordinator.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1485,6 +1488,7 @@
 				6C266F3028B674E5003DE150 /* ProfileIntroViewController.swift in Sources */,
 				CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
+				CE5E72BB28BE4AA5002E97B9 /* HomeCoordinator.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
 				A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */,

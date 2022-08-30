@@ -17,9 +17,11 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
     private var numberOfItems: Int { viewModel?.homeListNumberOfModel ?? 0 }
     
     private var homeCellType: HomeCellType?
+    private let navigationController: UINavigationController
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: HomeViewModel, naviagationController: UINavigationController) {
         self.viewModel = viewModel
+        self.navigationController = naviagationController
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,8 +82,9 @@ extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
         }
     }
     
-    func commentButtonDidTap() {
-        print("댓글 버튼 눌림")
+    func commentButtonDidTap(postId: String) {
+        WebViewCoordinator(navigationController: navigationController, type: .questionDetail(id: postId), navigateStyle: .push)
+            .start()
     }
     
     func shareButtonDidTap() {
