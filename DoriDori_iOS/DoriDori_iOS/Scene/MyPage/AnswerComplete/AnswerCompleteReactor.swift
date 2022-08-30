@@ -15,12 +15,20 @@ final class AnswerCompleteReactor: Reactor {
     
     enum Action {
         case viewDidLoad
+        case willDisplayCell(IndexPath)
+        case didSelectCell(IndexPath)
+        case didTapProfile(IndexPath)
     }
+    
     enum Mutation {
         case questionAndAnswers([MyPageBubbleItemType])
+        case didSelect(QuestionID)
+        case didTap(UserID)
     }
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
+        @Pulse var navigateQuestionID: QuestionID?
+        @Pulse var navigateUserID: UserID?
     }
     
     private let repository: MyPageRequestable
@@ -40,6 +48,28 @@ final class AnswerCompleteReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchAnswerComplete()
+        case .willDisplayCell(let indexPath):
+            if (self.currentState.questionAndAnswer.count < ( indexPath.item + 5)) && self.hasNext {
+                return self.fetchAnswerComplete()
+            } else { return .just(.questionAndAnswers([])) }
+        case .didSelectCell(let indexPath):
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
+                return .just(.didSelect(myAnswer.questionID))
+            }
+            if let question = question as? MyPageOtherSpeechBubbleItemType {
+                return .just(.didSelect(question.questionID))
+            }
+            return .empty()
+        case .didTapProfile(let indexPath):
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
+                return .just(.didTap(myAnswer.userID))
+            }
+            if let question = question as? MyPageOtherSpeechBubbleItemType {
+                return .just(.didTap(question.userID))
+            }
+            return .empty()
         }
 
     }
@@ -119,6 +149,10 @@ final class AnswerCompleteReactor: Reactor {
         switch mutation {
         case .questionAndAnswers(let questions):
             _state.questionAndAnswer = questions
+        case .didSelect(let questionID):
+            _state.navigateQuestionID = questionID
+        case .didTap(let userID):
+            _state.navigateUserID = userID
         }
         return _state
     }

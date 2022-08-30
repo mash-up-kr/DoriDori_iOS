@@ -24,11 +24,13 @@ final class AnswerCompleteViewController: UIViewController,
     private let viewDidLoadStream: PublishRelay<Void>
     let reactor: AnswerCompleteReactor
     var disposeBag: DisposeBag
+    private let coordinator: MyPageCoordinatable
     private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
     private let didTapProfile: PublishRelay<IndexPath>
+    private let willDisplayCell: PublishRelay<IndexPath>
+    private let didSelectCell: PublishRelay<IndexPath>
     
-    // MARK: Init
-    
+    // MARK: - LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,10 @@ final class AnswerCompleteViewController: UIViewController,
         coordinator: MyPageCoordinatable,
         reactor: AnswerCompleteReactor
     ) {
+        self.didSelectCell = .init()
+        self.willDisplayCell = .init()
         self.reactor = reactor
+        self.coordinator = coordinator
         self.viewDidLoadStream = .init()
         self.disposeBag = .init()
         self.didTapProfile = .init()
@@ -70,8 +75,32 @@ final class AnswerCompleteViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapProfile
+            .map { AnswerCompleteReactor.Action.didTapProfile($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        self.didSelectCell
+            .map { AnswerCompleteReactor.Action.didSelectCell($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: questionItems)
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateUserID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, userID in
+                owner.coordinator.navigateToOtherPage(userID: userID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateQuestionID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, questionID in
+                owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            }
             .disposed(by: self.disposeBag)
     }
     
@@ -147,6 +176,21 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
             return MyPageMySpeechBubbleCell.fittingSize(width: collectionView.bounds.width, item: mySpeechBubbleItem)
         }
         return .zero
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        self.willDisplayCell.accept(indexPath)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        self.didSelectCell.accept(indexPath)
     }
 }
 
