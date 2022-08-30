@@ -14,7 +14,6 @@ final class HomeViewModel: Reactor {
         case reqeustHomeData
         case like(id: String)
         case dislike(id: String)
-        case comment(postId: String)
     }
     
     enum Mutation {
@@ -48,8 +47,6 @@ final class HomeViewModel: Reactor {
             return like(id: id)
         case let .dislike(id: id):
             return dislike(id: id)
-        case let .comment(postId: postId):
-            return comment(postId: postId)
         }
     }
 
@@ -88,22 +85,17 @@ final class HomeViewModel: Reactor {
     
     private func like(id: String) -> Observable<Mutation> {
         repository.like(id: id)
-            .flatMap { _ -> Observable<Mutation> in
-                    .just(.setHomeCollectionViewReload(true))
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
             }
     }
     
     private func dislike(id: String) -> Observable<Mutation> {
         repository.dislike(id: id)
-            .flatMap { _ -> Observable<Mutation> in
-                    .just(.setHomeCollectionViewReload(true))
-            }
-    }
-    
-    private func comment(postId: String) -> Observable<Mutation> {
-        repository.comment(postId: postId)
-            .flatMap { _ -> Observable<Mutation> in
-                    .just(.setHomeCollectionViewReload(true))
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
             }
     }
 }
