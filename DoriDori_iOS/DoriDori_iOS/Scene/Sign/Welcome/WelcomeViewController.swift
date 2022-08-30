@@ -11,9 +11,9 @@ import RxCocoa
 import ReactorKit
 
 
-final class SignInMainViewController: UIViewController, StoryboardView {
+final class WelcomeViewController: UIViewController, StoryboardView {
         
-    typealias Reactor = SignInMainViewModel
+    typealias Reactor = WelcomeViewModel
     
     @IBOutlet private weak var emailLoginButton: UIButton!
     @IBOutlet private weak var emailSignUpButton: UIButton!
@@ -43,7 +43,7 @@ final class SignInMainViewController: UIViewController, StoryboardView {
 
     // MARK: - Bind ViewModel
 
-    func bind(reactor viewModel: SignInMainViewModel) {
+    func bind(reactor viewModel: WelcomeViewModel) {
         
         emailLoginButton.rx.tap
             .map { .emailSignInButtonDidTap }
