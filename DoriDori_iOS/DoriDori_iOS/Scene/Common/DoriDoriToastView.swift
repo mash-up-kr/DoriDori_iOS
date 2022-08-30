@@ -34,6 +34,20 @@ final class DoriDoriToastView: UIView {
         self.clipsToBounds = true
     }
     
+    init(
+        text: String,
+        bgColor: UIColor,
+        duration: TimeInterval = 4.0
+    ) {
+        self.duration = duration
+        super.init(frame: CGRect(x: 0, y: 0, width: 256, height: 38))
+        self.textLabel.text = text
+        self.setupLayouts()
+        self.backgroundColor = bgColor
+        self.layer.cornerRadius = 4
+        self.clipsToBounds = true
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -24,11 +24,16 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let newWindow = self.window else { return }
         
-        self.dependency = CompositionRoot.resolve(window: newWindow, appStart: .home)
+        self.dependency = CompositionRoot.resolve(window: newWindow, appStart: .siginIn)
         self.window = dependency.window
         self.window?.makeKeyAndVisible()
+        
+//        UserDefaults.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE3NTQyMzE0MTQsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.qYld9Je775prztT4oGWZ-4FDYg27TVJ24h1mQZG0fiE"
+//        UserDefaults.refreshToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE2NzYyMTY2NDYsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.SjS4nCB9AfiRG3v8cbYUdUIXsrJSbePZM-mIyjOBsiA"
 
     }
+    
+ 
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else {

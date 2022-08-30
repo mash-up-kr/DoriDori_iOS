@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Sign In Main View Controller-->
+        <scene sceneID="GzV-lN-fg7">
+            <objects>
+                <viewController storyboardIdentifier="SignInMainViewController" id="vKn-9P-Ny8" customClass="SignInMainViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-1Z-SSM">
+                                <rect key="frame" x="30" y="90" width="315" height="60.333333333333343"/>
+                                <string key="text">도리도리,
+내 근처 사람에게 물어보세요</string>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeMadori" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-YX-etJ">
+                                <rect key="frame" x="22.666666666666657" y="260.33333333333331" width="330" height="259.99999999999994"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="664-ge-LWN"/>
+                                    <constraint firstAttribute="width" constant="330" id="eEK-A6-GJS"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CjZ-em-D0Z">
+                                <rect key="frame" x="30" y="640" width="315" height="118"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiE-KS-Kul">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="1qj-q1-TSi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일로 로그인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="_borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-a5-QAD">
+                                        <rect key="frame" x="0.0" y="64" width="315" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="ByD-XP-KsZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일로 회원가입">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="CjZ-em-D0Z" secondAttribute="trailing" constant="30" id="0zS-LC-A93"/>
+                            <constraint firstItem="QI1-1Z-SSM" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="6vR-nA-Ioq"/>
+                            <constraint firstItem="CjZ-em-D0Z" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="ADC-Jt-Fsd"/>
+                            <constraint firstAttribute="bottom" secondItem="CjZ-em-D0Z" secondAttribute="bottom" constant="54" id="B5Z-Lx-XzJ"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="top" secondItem="QI1-1Z-SSM" secondAttribute="bottom" constant="110" id="OYB-9a-YrI"/>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="QI1-1Z-SSM" secondAttribute="trailing" constant="30" id="RP4-c3-9yp"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="centerX" secondItem="BNZ-bO-rhc" secondAttribute="centerX" id="YgB-mM-KrM"/>
+                            <constraint firstItem="QI1-1Z-SSM" firstAttribute="top" secondItem="HgA-Aw-ocO" secondAttribute="top" constant="46" id="xL1-c0-cDD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailLoginButton" destination="BiE-KS-Kul" id="Ah3-ob-6zS"/>
+                        <outlet property="emailSignUpButton" destination="G1e-a5-QAD" id="J5W-1n-yR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="205"/>
+        </scene>
+        <!--Email Sign In View Controller-->
+        <scene sceneID="t8Y-Ve-PpA">
+            <objects>
+                <viewController storyboardIdentifier="EmailSignInViewController" id="Gns-NG-izc" customClass="EmailSignInViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OT4-ab-n2U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일로 입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-dn-95g">
+                                <rect key="frame" x="30" y="74" width="315" height="30.333333333333329"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="134.33333333333334" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="LiT-TT-m4I"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="284.33333333333331" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI5-eu-s2n">
+                                <rect key="frame" x="30" y="704" width="315" height="54"/>
+                                <color key="backgroundColor" name="gray700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="gLA-qq-ihp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" name="gray300"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="99Z-CD-qDP"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="2B9-Qf-7jB"/>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="Ecj-hr-KSg"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="wI5-eu-s2n" secondAttribute="trailing" constant="30" id="IBd-gp-0Ld"/>
+                            <constraint firstItem="w1i-dn-95g" firstAttribute="top" secondItem="99Z-CD-qDP" secondAttribute="top" constant="30" id="JqX-tY-3Z1"/>
+                            <constraint firstItem="wI5-eu-s2n" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="WcJ-VA-ilq"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="leading" secondItem="w1i-dn-95g" secondAttribute="leading" id="a1H-Cj-Sb6"/>
+                            <constraint firstAttribute="bottom" secondItem="wI5-eu-s2n" secondAttribute="bottom" constant="54" id="dGT-uF-19R"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" id="eS6-M7-9jS"/>
+                            <constraint firstItem="99Z-CD-qDP" firstAttribute="trailing" secondItem="w1i-dn-95g" secondAttribute="trailing" constant="30" id="fJL-4B-gEj"/>
+                            <constraint firstItem="w1i-dn-95g" firstAttribute="leading" secondItem="99Z-CD-qDP" secondAttribute="leading" constant="30" id="pD9-XL-r0A"/>
+                            <constraint firstItem="wb8-Zo-YUW" firstAttribute="top" secondItem="Fab-yM-Zf3" secondAttribute="bottom" constant="50" id="xS2-yq-ASW"/>
+                            <constraint firstItem="Fab-yM-Zf3" firstAttribute="top" secondItem="w1i-dn-95g" secondAttribute="bottom" constant="30" id="zK5-Qa-Icq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uzc-Ab-ds7"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Fab-yM-Zf3" id="u1i-3l-t2r"/>
+                        <outlet property="loginButtomConstraint" destination="dGT-uF-19R" id="ah4-vj-m4u"/>
+                        <outlet property="loginButton" destination="wI5-eu-s2n" id="q32-A1-Xgm"/>
+                        <outlet property="passwordTextField" destination="wb8-Zo-YUW" id="aE8-8U-v1U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0i-nB-gtP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008.8" y="12.561576354679804"/>
+        </scene>
+        <!--Terms Of Service View Contoller-->
+        <scene sceneID="9z7-8Y-b84">
+            <objects>
+                <viewController storyboardIdentifier="TermsOfServiceViewContoller" id="eRl-Se-oQ7" customClass="TermsOfServiceViewContoller" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DaG-Xd-dTX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIF-hC-Gmm">
+                                <rect key="frame" x="0.0" y="44" width="375" height="822"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-5i-WJz">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="742.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-FZ-hoS">
+                                                <rect key="frame" x="30" y="30" width="315" height="30.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-pm-DZP">
+                                                <rect key="frame" x="30" y="90.333333333333343" width="315" height="54"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="약관에 모두 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-vv-oFz">
+                                                        <rect key="frame" x="44" y="17.333333333333172" width="111" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRL-7Z-A1y">
+                                                        <rect key="frame" x="16" y="17" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="2Tk-2X-oUx"/>
+                                                            <constraint firstAttribute="width" constant="20" id="fN3-ay-xYO"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="5HA-L4-2jf"/>
+                                                    <constraint firstItem="zRL-7Z-A1y" firstAttribute="leading" secondItem="b9W-pm-DZP" secondAttribute="leading" constant="16" id="DZP-dr-8vv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zRL-7Z-A1y" secondAttribute="bottom" constant="17" id="Fbz-3b-UK4"/>
+                                                    <constraint firstItem="zRL-7Z-A1y" firstAttribute="top" secondItem="b9W-pm-DZP" secondAttribute="top" constant="17" id="dqy-go-TjM"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-BS-B8A">
+                                                <rect key="frame" x="30" y="186.33333333333334" width="115" height="20"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-H9-fEF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="vyd-LB-btM"/>
+                                                            <constraint firstAttribute="height" constant="20" id="z8Y-PJ-Hfb"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-uF-xkS">
+                                                        <rect key="frame" x="28" y="0.0" width="87" height="20"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-qk-DYN">
+                                                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-9I-X6K">
+                                                                <rect key="frame" x="51.666666666666671" y="0.0" width="35.333333333333329" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" name="lime300"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-kp-LTx">
+                                                <rect key="frame" x="30" y="636.33333333333337" width="315" height="54"/>
+                                                <color key="backgroundColor" name="gray700"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="3xc-9u-f5D"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="약관 동의">
+                                                    <color key="titleColor" name="gray300"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
+                                                <rect key="frame" x="30" y="382.33333333333331" width="163" height="20"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPo-w3-TAK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="fSD-qs-kLc"/>
+                                                            <constraint firstAttribute="width" constant="20" id="pLS-Vn-203"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="checkbox_outline" title=" "/>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-lW-sJi">
+                                                        <rect key="frame" x="28" y="0.0" width="135" height="20"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현 위치 추적 허용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
+                                                                <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm1-fZ-Fwh">
+                                                                <rect key="frame" x="99.666666666666657" y="0.0" width="35.333333333333343" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" name="lime300"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-ux-9dZ">
+                                                <rect key="frame" x="30" y="220.33333333333331" width="315" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="NZa-hD-r7L"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" name="gray500"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27W-We-bFc">
+                                                <rect key="frame" x="30" y="416.33333333333331" width="315" height="119.99999999999994"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="5bM-cd-d6U"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" name="gray500"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="darkGray"/>
+                                        <constraints>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="leading" secondItem="XVb-FZ-hoS" secondAttribute="leading" id="23W-ec-JLF"/>
+                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="2gw-az-3P2"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="trailing" secondItem="5eC-ux-9dZ" secondAttribute="trailing" id="4H3-zF-6Kn"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z2q-kp-LTx" secondAttribute="trailing" constant="30" id="4IN-PK-E7H"/>
+                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="top" secondItem="5eC-ux-9dZ" secondAttribute="bottom" constant="42" id="4nk-RV-hKy"/>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" id="DHn-nk-cmY"/>
+                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="top" secondItem="27W-We-bFc" secondAttribute="bottom" constant="100" id="Ful-W9-hdg"/>
+                                            <constraint firstItem="bgH-BS-B8A" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="G8y-IH-CaN"/>
+                                            <constraint firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" constant="30" id="Krb-wm-SLb"/>
+                                            <constraint firstItem="5eC-ux-9dZ" firstAttribute="top" secondItem="bgH-BS-B8A" secondAttribute="bottom" constant="14" id="LcV-QE-w6J"/>
+                                            <constraint firstItem="bgH-BS-B8A" firstAttribute="top" secondItem="b9W-pm-DZP" secondAttribute="bottom" constant="42" id="RSH-uZ-xbt"/>
+                                            <constraint firstItem="b9W-pm-DZP" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="TkN-rI-tl8"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="leading" secondItem="5eC-ux-9dZ" secondAttribute="leading" id="a22-2E-7D2"/>
+                                            <constraint firstAttribute="bottom" secondItem="Z2q-kp-LTx" secondAttribute="bottom" constant="52" id="aGa-BX-C8J"/>
+                                            <constraint firstItem="XVb-FZ-hoS" firstAttribute="top" secondItem="G7T-5i-WJz" secondAttribute="top" constant="30" id="eik-g0-KbW"/>
+                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="eoX-U0-UDc"/>
+                                            <constraint firstItem="27W-We-bFc" firstAttribute="top" secondItem="ItB-mU-iwI" secondAttribute="bottom" constant="14" id="hjn-U8-BtX"/>
+                                            <constraint firstItem="b9W-pm-DZP" firstAttribute="top" secondItem="XVb-FZ-hoS" secondAttribute="bottom" constant="30" id="n60-qa-otG"/>
+                                            <constraint firstItem="XVb-FZ-hoS" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="tjt-6h-78P"/>
+                                            <constraint firstAttribute="trailing" secondItem="b9W-pm-DZP" secondAttribute="trailing" constant="30" id="xs8-ZZ-zA1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="G7T-5i-WJz" secondAttribute="trailing" id="52e-Fc-g9v"/>
+                                    <constraint firstItem="G7T-5i-WJz" firstAttribute="width" secondItem="TIF-hC-Gmm" secondAttribute="width" id="8d4-ZR-CKS"/>
+                                    <constraint firstAttribute="bottom" secondItem="G7T-5i-WJz" secondAttribute="bottom" id="WLd-Kn-ix1"/>
+                                    <constraint firstItem="G7T-5i-WJz" firstAttribute="top" secondItem="TIF-hC-Gmm" secondAttribute="top" id="cJJ-17-AwI"/>
+                                    <constraint firstItem="G7T-5i-WJz" firstAttribute="leading" secondItem="TIF-hC-Gmm" secondAttribute="leading" id="iQf-y2-hXz"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="q4Y-gK-efC"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="cb4-OG-SsR"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="G5D-ac-IVw"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="G5D-ac-IVw" firstAttribute="bottom" secondItem="TIF-hC-Gmm" secondAttribute="bottom" id="3gv-hA-oXc"/>
+                            <constraint firstItem="TIF-hC-Gmm" firstAttribute="leading" secondItem="G5D-ac-IVw" secondAttribute="leading" id="jU9-0c-AyC"/>
+                            <constraint firstItem="G5D-ac-IVw" firstAttribute="trailing" secondItem="TIF-hC-Gmm" secondAttribute="trailing" id="taH-d0-FwZ"/>
+                            <constraint firstItem="TIF-hC-Gmm" firstAttribute="top" secondItem="G5D-ac-IVw" secondAttribute="top" id="uub-rq-yXd"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="900"/>
+                    <connections>
+                        <outlet property="allAgreeButton" destination="zRL-7Z-A1y" id="2bn-96-ubD"/>
+                        <outlet property="allAgreeOutLineView" destination="b9W-pm-DZP" id="pKU-Zt-yGu"/>
+                        <outlet property="locationAgreeButton" destination="PPo-w3-TAK" id="DCP-VO-56T"/>
+                        <outlet property="locationAgreeContent" destination="27W-We-bFc" id="4bF-1X-RRW"/>
+                        <outlet property="locationAgreeLabel" destination="WeU-9E-Uod" id="oQm-sr-R8U"/>
+                        <outlet property="nextButton" destination="Z2q-kp-LTx" id="yWL-SQ-Vzm"/>
+                        <outlet property="useAgreeButton" destination="wW1-H9-fEF" id="YTs-ix-YRH"/>
+                        <outlet property="useAgreeContent" destination="5eC-ux-9dZ" id="j0Z-9U-3cm"/>
+                        <outlet property="useAgreeLabel" destination="Z0o-qk-DYN" id="3JB-6W-0cE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgy-18-rSi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005.6" y="1458.6206896551726"/>
+        </scene>
+        <!--Email Sign Up View Controller-->
+        <scene sceneID="AJ7-9D-UMk">
+            <objects>
+                <viewController storyboardIdentifier="EmailSignUpViewController" id="S2E-8W-ItQ" customClass="EmailSignUpViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m8c-e2-2hX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 인증이 필요해요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8n-4V-baU">
+                                <rect key="frame" x="30" y="74" width="315" height="30.333333333333329"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="136.33333333333334" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlM-Ee-yft">
+                                <rect key="frame" x="30" y="704" width="315" height="54"/>
+                                <color key="backgroundColor" name="gray700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="UTQ-ln-oYR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="인증번호 전송">
+                                    <color key="titleColor" name="gray300"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="286.33333333333331" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-xb-ruJ">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <color key="color" name="lime300"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KSr-KW-x78"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="top" secondItem="G8n-4V-baU" secondAttribute="bottom" constant="32" id="44Q-DN-Kmr"/>
+                            <constraint firstItem="BCf-xb-ruJ" firstAttribute="centerY" secondItem="m8c-e2-2hX" secondAttribute="centerY" id="53S-df-7Ck"/>
+                            <constraint firstAttribute="bottom" secondItem="jlM-Ee-yft" secondAttribute="bottom" constant="54" id="Glv-bS-unC"/>
+                            <constraint firstItem="KSr-KW-x78" firstAttribute="trailing" secondItem="jlM-Ee-yft" secondAttribute="trailing" constant="30" id="LN6-vd-XTZ"/>
+                            <constraint firstItem="G8n-4V-baU" firstAttribute="top" secondItem="KSr-KW-x78" secondAttribute="top" constant="30" id="SyI-xO-XZA"/>
+                            <constraint firstItem="KSr-KW-x78" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" constant="30" id="W4B-C2-rlO"/>
+                            <constraint firstItem="jlM-Ee-yft" firstAttribute="leading" secondItem="KSr-KW-x78" secondAttribute="leading" constant="30" id="ZP3-b0-Jys"/>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="leading" secondItem="G8n-4V-baU" secondAttribute="leading" id="fjG-ix-fXS"/>
+                            <constraint firstItem="OOw-eb-yzb" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="gYN-up-uGd"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="leading" secondItem="G8n-4V-baU" secondAttribute="leading" id="oMf-lC-A5W"/>
+                            <constraint firstItem="G8n-4V-baU" firstAttribute="leading" secondItem="KSr-KW-x78" secondAttribute="leading" constant="30" id="quH-k4-eLf"/>
+                            <constraint firstItem="BCf-xb-ruJ" firstAttribute="centerX" secondItem="m8c-e2-2hX" secondAttribute="centerX" id="uto-I0-ulr"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="trailing" secondItem="G8n-4V-baU" secondAttribute="trailing" id="zA4-mC-5YK"/>
+                            <constraint firstItem="6gC-NK-wqw" firstAttribute="top" secondItem="OOw-eb-yzb" secondAttribute="bottom" constant="50" id="zIW-0t-tYA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authNumberTextField" destination="6gC-NK-wqw" id="y3K-De-pVI"/>
+                        <outlet property="emailTextField" destination="OOw-eb-yzb" id="Pb6-SY-l0Z"/>
+                        <outlet property="indicator" destination="BCf-xb-ruJ" id="w9P-om-DdB"/>
+                        <outlet property="sendButtonButtomConstraint" destination="Glv-bS-unC" id="ayH-YH-Yvh"/>
+                        <outlet property="sendToAuthNumberButton" destination="jlM-Ee-yft" id="eav-5a-Nov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XNB-KD-ImO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="703"/>
+        </scene>
+        <!--Password View Controller-->
+        <scene sceneID="rj3-Yf-flo">
+            <objects>
+                <viewController storyboardIdentifier="PasswordViewController" id="PBu-Kx-sp4" customClass="PasswordViewController" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="385-YO-Ucs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 입력해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dos-MV-OOJ">
+                                <rect key="frame" x="30" y="74" width="315" height="30.333333333333329"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-DK-S6G" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="286.33333333333331" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="UKG-Nj-Tzm"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjK-qw-KkQ">
+                                <rect key="frame" x="30" y="704" width="315" height="54"/>
+                                <color key="backgroundColor" name="gray700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="fML-X7-8D4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="확인">
+                                    <color key="titleColor" name="gray300"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-La-m5M" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
+                                <rect key="frame" x="30" y="136.33333333333334" width="315" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="lAQ-N6-qIB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tGo-Ma-9j1"/>
+                        <color key="backgroundColor" name="darkGray"/>
+                        <constraints>
+                            <constraint firstItem="dos-MV-OOJ" firstAttribute="top" secondItem="tGo-Ma-9j1" secondAttribute="top" constant="30" id="638-gS-jcj"/>
+                            <constraint firstItem="Bsb-La-m5M" firstAttribute="top" secondItem="dos-MV-OOJ" secondAttribute="bottom" constant="32" id="GYw-yg-CUw"/>
+                            <constraint firstItem="H2w-DK-S6G" firstAttribute="top" secondItem="Bsb-La-m5M" secondAttribute="bottom" constant="50" id="Gw0-Fl-Ej2"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="trailing" secondItem="Bsb-La-m5M" secondAttribute="trailing" constant="30" id="Qbd-uX-csh"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="trailing" secondItem="tjK-qw-KkQ" secondAttribute="trailing" constant="30" id="QcX-zs-62I"/>
+                            <constraint firstAttribute="bottom" secondItem="tjK-qw-KkQ" secondAttribute="bottom" constant="54" id="Ru6-Zp-ufa"/>
+                            <constraint firstItem="H2w-DK-S6G" firstAttribute="leading" secondItem="Bsb-La-m5M" secondAttribute="leading" id="Y4I-Y7-8AA"/>
+                            <constraint firstItem="Bsb-La-m5M" firstAttribute="leading" secondItem="tGo-Ma-9j1" secondAttribute="leading" constant="30" id="Yxr-t4-CEn"/>
+                            <constraint firstItem="tGo-Ma-9j1" firstAttribute="trailing" secondItem="dos-MV-OOJ" secondAttribute="trailing" constant="30" id="ZqX-us-4iE"/>
+                            <constraint firstItem="H2w-DK-S6G" firstAttribute="trailing" secondItem="Bsb-La-m5M" secondAttribute="trailing" id="dVm-fw-VZB"/>
+                            <constraint firstItem="dos-MV-OOJ" firstAttribute="leading" secondItem="tGo-Ma-9j1" secondAttribute="leading" constant="30" id="gPe-q4-oQz"/>
+                            <constraint firstItem="tjK-qw-KkQ" firstAttribute="leading" secondItem="tGo-Ma-9j1" secondAttribute="leading" constant="30" id="rD2-XA-2zz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="tjK-qw-KkQ" id="yGJ-fC-BPV"/>
+                        <outlet property="confirmButtonButtomConstraint" destination="Ru6-Zp-ufa" id="Gv8-13-i1l"/>
+                        <outlet property="passwordConfirmTextField" destination="H2w-DK-S6G" id="nAy-bp-Eyv"/>
+                        <outlet property="passwordTextField" destination="Bsb-La-m5M" id="IhR-Ro-5L5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzK-PK-t0e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1817" y="703"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkbox_outline" width="20" height="20"/>
+        <image name="homeMadori" width="990" height="780"/>
+        <namedColor name="darkGray">
+            <color red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray300">
+            <color red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray500">
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray700">
+            <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray800">
+            <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lime300">
+            <color red="0.85882352941176465" green="0.97254901960784312" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -46,7 +46,19 @@ final class AppCoordinator {
             let viewControllers = tabbarItems.map(createTabBarViewControllers(tab:))
             mainTabbarController.setViewControllers(viewControllers, animated: false)
             window?.rootViewController = mainTabbarController
+        case .siginIn:
+            let story = UIStoryboard(name: "SignIn", bundle: nil)
+            let reactor = SignInMainViewModel()
+            guard let vc = story.instantiateViewController(withIdentifier: "SignInMainViewController") as? SignInMainViewController else { return }
+            //네비게이션 설정
+            let navi = UINavigationController(rootViewController: vc)
+            navi.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navi.navigationBar.tintColor = UIColor.white
+            navi.navigationBar.topItem?.title = ""
+            vc.reactor = reactor
+            window?.rootViewController = navi
         }
+        
     }
 }
 
