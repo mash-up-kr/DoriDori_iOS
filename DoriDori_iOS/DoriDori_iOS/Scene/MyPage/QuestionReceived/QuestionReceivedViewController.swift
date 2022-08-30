@@ -143,7 +143,9 @@ final class QuestionReceivedViewController: UIViewController,
             }
             .disposed(by: self.disposeBag)
         
-        self.textField.rx.text.orEmpty
+        self.registButton.rx.throttleTap
+            .asObservable()
+            .withLatestFrom(self.textField.rx.text.orEmpty)
             .withLatestFrom(self.didTapCommentButton) { ($0, $1) }
             .map { content, indexPath -> QuestionReceivedReactor.Action in
                 QuestionReceivedReactor.Action.comment(
@@ -214,6 +216,7 @@ final class QuestionReceivedViewController: UIViewController,
         
         reactor.pulse(\.$showToast)
             .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, toast in
                 DoriDoriToastView(text: toast).show()
             }
@@ -224,6 +227,9 @@ final class QuestionReceivedViewController: UIViewController,
         self.questions
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, questions in
+                if owner.textField.isFirstResponder {
+                    owner.textField.resignFirstResponder()
+                }
                 owner.collectionView.reloadData()
             }
             .disposed(by: self.disposeBag)

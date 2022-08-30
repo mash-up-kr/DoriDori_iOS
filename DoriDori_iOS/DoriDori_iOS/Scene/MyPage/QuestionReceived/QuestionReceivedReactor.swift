@@ -48,6 +48,7 @@ final class QuestionReceivedReactor: Reactor {
     private let myPageRepository: MyPageRequestable
     private var hasNext: Bool = false
     private var isRequesting: Bool = false
+    private var isFetchMore: Bool = false
     
     init(
         myPageRepository: MyPageRequestable
@@ -64,6 +65,7 @@ final class QuestionReceivedReactor: Reactor {
         case .willDisplayCell(let indexPath):
             if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
                 if !isRequesting {
+                    self.isFetchMore = true
                     return self.fetchReceivedQuestions(
                         size: 20,
                         lastID: self.lastQuestionID
@@ -112,15 +114,21 @@ final class QuestionReceivedReactor: Reactor {
                 }
             
         case .comment(let content, let indexPath):
+            if content.count < 1 { return .just(.toast(text: "1글자 이상 입력해주세요")) }
             guard let question = self.question(at: indexPath) else { return .empty() }
-            let questionID = question.questionID
             return self.myPageRepository.postComment(to: question.questionID, content: content, location: (127.29, 36.48))
                 .catch { error in
                     print(error)
                     return .empty()
                 }
-                .flatMap { _ -> Observable<Mutation> in
-                    return .just(.toast(text: "답변이 등록되었습니다"))
+                .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    var _questions = self.currentState.receivedQuestions
+                    _questions.remove(at: indexPath.item)
+                    return .concat(
+                        .just(.toast(text: "답변이 등록되었습니다")),
+                        .just(.questions(_questions))
+                    )
                 }
             
         case .didSelectCell(let indexPath):
@@ -148,10 +156,11 @@ final class QuestionReceivedReactor: Reactor {
         var _state = state
         switch mutation {
         case .questions(let questions):
-            if _state.receivedQuestions.isEmpty {
-                _state.receivedQuestions = questions
-            } else {
+            if self.isFetchMore {
                 _state.receivedQuestions.append(contentsOf: questions)
+                self.isFetchMore = false
+            } else {
+                _state.receivedQuestions = questions
             }
         case .didDenyQuestion(let questions):
             _state.receivedQuestions = questions

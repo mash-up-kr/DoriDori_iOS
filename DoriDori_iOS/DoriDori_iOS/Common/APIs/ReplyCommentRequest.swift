@@ -12,7 +12,8 @@ struct ReplyCommentRequest: Requestable {
     private let content: String
     private let location: Location
     var path: String { "/api/v1/questions/\(self.questionID)/answer"}
-    
+    var method: HTTPMethod { .post }
+    var encoding: ParameterEncoding { JSONEncoding.default }
     var parameters: Parameter? {
         [
             "content": content,
