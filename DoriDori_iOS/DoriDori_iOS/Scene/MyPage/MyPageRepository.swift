@@ -13,6 +13,7 @@ protocol MyPageRequestable: AnyObject {
     func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<AnswerCompleteModel>
     func fetchAnswerCompleteQuestions(userID: UserID, lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
     func fetchReceivedQuestions(size: Int, lastQuestionID: QuestionID?) -> Observable<ReceivedQuestionModel>
+    func denyQuestion(questionID: QuestionID) -> Observable<String>
 }
 
 final class MyPageRepository: MyPageRequestable {
@@ -41,6 +42,12 @@ final class MyPageRepository: MyPageRequestable {
         Network().request(
             api: ReceivedQuestionRequest(size: size, lastID: lastQuestionID),
             responseModel: ResponseModel<ReceivedQuestionModel>.self
+        )
+    }
+    func denyQuestion(questionID: QuestionID) -> Observable<String> {
+        Network().request(
+            api: QuestionDenyRequest(questionID: questionID),
+            responseModel: ResponseModel<String>.self
         )
     }
 }

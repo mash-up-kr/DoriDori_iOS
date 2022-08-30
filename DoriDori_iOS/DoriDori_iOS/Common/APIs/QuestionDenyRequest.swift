@@ -8,12 +8,12 @@
 import Foundation
 
 struct QuestionDenyRequest: Requestable {
-    var path: String { "/api/v1/questions/\(self.userID)/deny" }
+    var path: String { "/api/v1/questions/\(self.questionID)/deny" }
     var parameters: Parameter? { nil }
     var method: HTTPMethod { .post }
     
-    private let userID: UserID
-    init(userID: UserID) {
-        self.userID = userID
+    private let questionID: QuestionID
+    init(questionID: QuestionID) {
+        self.questionID = questionID
     }
 }

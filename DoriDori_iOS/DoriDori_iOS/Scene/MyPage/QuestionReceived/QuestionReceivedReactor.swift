@@ -82,6 +82,17 @@ final class QuestionReceivedReactor: Reactor {
             return .just(.didTapProfile(question.userID))
         case .didTapDeny(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
+            return self.myPageRepository.denyQuestion(questionID: question.questionID)
+                .catch { error in
+                    print(error)
+                    return .empty()
+                }
+                .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    var _questions = self.currentState.receivedQuestions
+                    _questions.remove(at: indexPath.item)
+                    return .just(.questions(_questions))
+                }
         case .didTapComment(let indexPath):
             print("didTapcomment")
         case .didSelectCell(let indexPath):
