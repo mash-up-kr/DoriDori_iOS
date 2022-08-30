@@ -9,6 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct AlertModel {
+    let title: String
+        let message: String
+        let normalAction: AlertAction
+        let emphasisAction: AlertAction
+}
+
 final class AlertViewController: UIViewController {
     
     private let alertView: UIView = {
@@ -67,21 +74,21 @@ final class AlertViewController: UIViewController {
     private let emphasisAction: AlertAction
     
     init(
-        title: NSAttributedString,
-        message: String,
-        normalAction: AlertAction,
-        emphasisAction: AlertAction
+        model: AlertModel
     ) {
         self.disposeBag = .init()
- 
-     
-        self.normalAction = normalAction
-        self.emphasisAction = emphasisAction
+        self.normalAction = model.normalAction
+        self.emphasisAction = model.emphasisAction
         super.init(nibName: nil, bundle: nil)
-        self.normalButton.setTitle(normalAction.title, for: .normal)
-        self.emphasisButton.setTitle(emphasisAction.title, for: .normal)
-        self.titleLabel.attributedText = title
-        self.messageLabel.text = message
+        self.normalButton.setTitle(model.normalAction.title, for: .normal)
+        self.emphasisButton.setTitle(model.emphasisAction.title, for: .normal)
+        self.titleLabel.text = model.title
+        self.messageLabel.text = model.message
+        
+        self.initialization()
+    }
+    
+    private func initialization() {
         self.setupView()
         self.setupLayouts()
         self.bind()

@@ -47,11 +47,14 @@ final class OtherPageReactor: Reactor {
                     return .empty()
                 }
                 .flatMapLatest { response -> Observable<Mutation> in
-                    guard let nickname = response.nickname,
-                          let level = response.level,
-                          let description = response.profileDescription,
-                          let tags = response.tags else { return .empty() }
-                    let item = OtherProfileItem(nickname: nickname, level: level, profileImageURL: response.profileImageURL, description: description, tags: tags, representativeWard: response.representativeWard)
+                    let item = OtherProfileItem(
+                        nickname: response.nickname ?? "",
+                        level: response.level ?? 0,
+                        profileImageURL: response.profileImageURL,
+                        description: response.profileDescription ?? "",
+                        tags: response.tags ?? [],
+                        representativeWard: response.representativeWard?.name
+                    )
                     return .just(.updateProfile(item: item))
                 }
         }

@@ -31,7 +31,16 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
     func start() {
         let otherPageRepository = OtherPageRepository()
         let otherPageReactor = OtherPageReactor(repository: otherPageRepository, userID: self.userID)
-        let otherPageViewController = OtherPageViewController(reactor: otherPageReactor, coordinator: self)
+        let contentReactor = OtherProfileContentReactor(repository: otherPageRepository, userID: self.userID)
+        let contentViewController = OtherProfileContentViewController(
+            reactor: contentReactor,
+            coordinator: self
+        )
+        let otherPageViewController = OtherPageViewController(
+            reactor: otherPageReactor,
+            coordinator: self,
+            contentViewController: contentViewController
+        )
         self.navigationController.pushViewController(otherPageViewController, animated: true)
     }
     

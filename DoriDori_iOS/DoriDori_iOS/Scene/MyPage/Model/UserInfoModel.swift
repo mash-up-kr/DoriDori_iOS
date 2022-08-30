@@ -16,10 +16,12 @@ struct UserInfoModel: Codable {
     var tags: [String]?
     var profileImageURL: String?
     var level: Int?
-    var representativeWard: String?
+    var representativeWard: MyWardModel?
     
     enum CodingKeys: String, CodingKey {
-        case nickname, profileDescription, tags, profileImageURL, level
+        case nickname, profileDescription, tags, level
         case userID = "userId"
+        case profileImageURL = "profileImageUrl"
     }
 }
+
