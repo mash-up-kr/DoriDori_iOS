@@ -91,7 +91,10 @@ final class EmailSignInViewController: UIViewController {
             self?.loginButton.setTitleColor(buttonTitleColor, for: .normal)
         }.disposed(by: disposeBag)
         
-        output.signIn.bind { [weak self]_ in
+        output.signIn.bind { [weak self] tokenData in
+            UserDefaults.accessToken = tokenData.accessToken
+            UserDefaults.refreshToken = tokenData.refreshToken
+            UserDefaults.userID = tokenData.userId
             self?.navigationController?.pushViewController(HomeViewController(), animated: true)
         }.disposed(by: disposeBag)
         
