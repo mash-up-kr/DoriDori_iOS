@@ -70,7 +70,9 @@ final class QuestionReceivedReactor: Reactor {
             }
         case .didTapProfile(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
-            return .just(.didTapProfile(question.userID))
+            if question is IdentifiedMyPageSpeechBubbleCellItem {  // 익명이면 상대방 페이지로 넘어가지못하게
+                return .just(.didTapProfile(question.userID))
+            }
             
         case .didTapDeny(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }

@@ -12,7 +12,6 @@ import RxRelay
 
 final class AnswerCompleteReactor: Reactor {
     
-    
     enum Action {
         case viewDidLoad
         case willDisplayCell(IndexPath)
@@ -72,11 +71,10 @@ final class AnswerCompleteReactor: Reactor {
             
         case .didTapProfile(let indexPath):
             guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
-            if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
-                return .just(.didTap(myAnswer.userID))
-            }
             if let question = question as? MyPageOtherSpeechBubbleItemType {
-                return .just(.didTap(question.userID))
+                if question is IdentifiedMyPageSpeechBubbleCellItem {  // 익명이 아닐 때만..
+                    return .just(.didTap(question.userID))
+                }
             }
             return .empty()
         case .didRefresh:
