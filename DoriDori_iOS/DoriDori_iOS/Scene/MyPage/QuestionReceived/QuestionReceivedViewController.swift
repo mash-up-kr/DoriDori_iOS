@@ -111,6 +111,22 @@ final class QuestionReceivedViewController: UIViewController,
                 owner.coordiantor.navigateToQuestionDetail(questionID: questionID)
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$alert)
+            .compactMap { $0 }
+            .bind(with: self) { owner, alertModel in
+                AlertViewController(model: alertModel)
+                    .show()
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$shouldDismissPresentedViewController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func bind() {

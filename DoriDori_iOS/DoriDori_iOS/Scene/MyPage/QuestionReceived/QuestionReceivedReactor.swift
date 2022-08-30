@@ -15,18 +15,24 @@ final class QuestionReceivedReactor: Reactor {
         case didTapDeny(IndexPath)
         case didTapComment(IndexPath)
         case didSelectCell(IndexPath)
+        case didTapDenyCancel
+        case didTapDenyAction(QuestionID)
     }
     
     enum Mutation {
         case questions([MyPageOtherSpeechBubbleItemType])
         case didTapProfile(UserID)
         case didSelectQuestion(QuestionID)
+        case alert(AlertModel)
+        case shouldDismissPresentedViewController
     }
     
     struct State {
         @Pulse var receivedQuestions: [MyPageOtherSpeechBubbleItemType] = []
         @Pulse var navigateQuestionID: QuestionID?
         @Pulse var navigateUserID: UserID?
+        @Pulse var alert: AlertModel?
+        @Pulse var shouldDismissPresentedViewController: Void?
     }
     
     var initialState: State
@@ -82,7 +88,19 @@ final class QuestionReceivedReactor: Reactor {
             return .just(.didTapProfile(question.userID))
         case .didTapDeny(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
-            return self.myPageRepository.denyQuestion(questionID: question.questionID)
+            let alertModel = AlertModel(
+                title: "\(question.userName)의 질문을 거절합니다",
+                message: "삭제한 질문은 복구할 수 없어요!",
+                normalAction: AlertAction(title: "취소", action: {
+                self.action.onNext(.didTapDenyCancel)
+            }), emphasisAction: AlertAction(title: "거절하기", action: {
+                self.action.onNext(.didTapDenyAction(question.questionID))
+            }))
+            return .just(.alert(alertModel))
+        case .didTapDenyCancel:
+            return .just(.shouldDismissPresentedViewController)
+        case .didTapDenyAction(let questionID):
+            return self.myPageRepository.denyQuestion(questionID: questionID)
                 .catch { error in
                     print(error)
                     return .empty()
@@ -90,8 +108,16 @@ final class QuestionReceivedReactor: Reactor {
                 .flatMapLatest { [weak self] _ -> Observable<Mutation> in
                     guard let self = self else { return .empty() }
                     var _questions = self.currentState.receivedQuestions
-                    _questions.remove(at: indexPath.item)
-                    return .just(.questions(_questions))
+                    let index: Int? = _questions.firstIndex { item in
+                        return item.questionID == questionID
+                    }
+                    guard let index = index else { return .empty() }
+                    _questions.remove(at: index)
+                    print("index", index, "번째 거절 성공")
+                    return .concat(
+                        .just(.shouldDismissPresentedViewController),
+                        .just(.questions(_questions))
+                    )
                 }
         case .didTapComment(let indexPath):
             print("didTapcomment")
@@ -116,6 +142,10 @@ final class QuestionReceivedReactor: Reactor {
             _state.navigateUserID = userID
         case .didSelectQuestion(let questionID):
             _state.navigateQuestionID = questionID
+        case .alert(let alertModel):
+            _state.alert = alertModel
+        case .shouldDismissPresentedViewController:
+            _state.shouldDismissPresentedViewController = ()
         }
         return _state
     }
