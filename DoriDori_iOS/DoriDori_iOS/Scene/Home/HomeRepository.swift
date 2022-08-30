@@ -11,8 +11,8 @@ import Foundation
 protocol HomeRepositoryRequestable {
     func requestHomeHeaderData() -> Observable<[MyWard]>
     func requestHomeData(lastId: String?, latitude: Double, longitude: Double, meterDistance: Double, size: Int) -> Observable<HomeSpeechs>
-    func like(id: String) -> Observable<HomeLike>
-    func dislike(id: String) -> Observable<HomeLike>
+    func like(id: String) -> Observable<Bool>
+    func dislike(id: String) -> Observable<Bool>
     func comment(postId: String) -> Observable<HomeSpeechInfo>
 }
 
@@ -27,12 +27,12 @@ struct HomeRepository: HomeRepositoryRequestable {
         Network().request(api: HomeSpeechsReqeust(lastId: lastId, latitude: latitude, longitude: longitude, meterDistance: meterDistance, size: size), responseModel: ResponseModel<HomeSpeechs>.self)
     }
     
-    func like(id: String) -> Observable<HomeLike> {
-        Network().request(api: HomeLikeRequest(id: id), responseModel: ResponseModel<HomeLike>.self)
+    func like(id: String) -> Observable<Bool> {
+        Network().request(api: HomeLikeRequest(id: id), responseModel: ResponseModel<Bool>.self)
     }
     
-    func dislike(id: String) -> Observable<HomeLike> {
-        Network().request(api: HomeDislikeRequest(id: id), responseModel: ResponseModel<HomeLike>.self)
+    func dislike(id: String) -> Observable<Bool> {
+        Network().request(api: HomeDislikeRequest(id: id), responseModel: ResponseModel<Bool>.self)
     }
     
     func comment(postId: String) -> Observable<HomeSpeechInfo> {
