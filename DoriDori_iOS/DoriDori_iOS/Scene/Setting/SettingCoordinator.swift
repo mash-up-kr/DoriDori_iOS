@@ -10,13 +10,16 @@ import UIKit
 
 protocol SettingCoordinatable: Coordinator {
     func dismiss(_ completion: (() -> Void)?)
+    func navigateToWebView(type: DoriDoriWeb)
 }
 
 final class SettingCoordinator: SettingCoordinatable {
     let navigationController: UINavigationController
+    let innerNavigationController: UINavigationController 
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.innerNavigationController = UINavigationController()
     }
     
     deinit { debugPrint("\(self) deinit") }
@@ -27,11 +30,20 @@ final class SettingCoordinator: SettingCoordinatable {
             settingReactor: settingReactor,
             coordinator: self
         )
-        settingViewController.modalPresentationStyle = .fullScreen
-        self.navigationController.topViewController?.present(settingViewController, animated: true)
+        innerNavigationController.viewControllers = [settingViewController]
+        innerNavigationController.modalPresentationStyle = .overFullScreen
+        self.navigationController.present(innerNavigationController, animated: true)
     }
     
     func dismiss(_ completion: (() -> Void)?) {
         self.navigationController.topViewController?.dismiss(animated: true, completion: completion)
+    }
+    
+    func navigateToWebView(type: DoriDoriWeb) {
+        WebViewCoordinator(
+            navigationController: self.innerNavigationController,
+            type: type,
+            navigateStyle: .push
+        ).start()
     }
 }

@@ -29,6 +29,8 @@
 		A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */; };
 		A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0E928A5702D00A003D1 /* UserInfoModel.swift */; };
 		A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */; };
+		A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD11E28B0C3BD00A003D1 /* Toast */; };
+		A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */; };
 		A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F228A63E2E00A003D1 /* SettingViewController.swift */; };
 		A24FD0F528A63E4B00A003D1 /* DoriDoriSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F428A63E4B00A003D1 /* DoriDoriSettingItem.swift */; };
 		A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0F628A63F0800A003D1 /* SettingReactor.swift */; };
@@ -38,11 +40,44 @@
 		A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */; };
 		A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12228B0FEB500A003D1 /* QuestionModel.swift */; };
 		A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */; };
+		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
+		A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */; };
+		A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */; };
+		A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13128B223E400A003D1 /* DropDownView.swift */; };
+		A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13328B227AE00A003D1 /* QuestionReactor.swift */; };
+		A24FD13628B2325B00A003D1 /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13528B2325B00A003D1 /* QuestionRepository.swift */; };
 		A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13728B2336B00A003D1 /* EmptyModel.swift */; };
+		A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16028B4B2E000A003D1 /* AlertViewController.swift */; };
+		A24FD16328B4B3ED00A003D1 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16228B4B3ED00A003D1 /* AlertAction.swift */; };
+		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
+		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
+		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
 		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
 		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
 		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
 		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
+		A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */; };
+		A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */; };
+		A24FD13F28B284F900A003D1 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD13E28B284F900A003D1 /* DropDown */; };
+		A24FD14428B3504E00A003D1 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD14328B3504E00A003D1 /* RxGesture */; };
+		A24FD14628B3554000A003D1 /* MyWardListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14528B3554000A003D1 /* MyWardListRequest.swift */; };
+		A24FD14928B3558700A003D1 /* MyWardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14828B3558700A003D1 /* MyWardModel.swift */; };
+		A24FD14B28B356A100A003D1 /* MyWardDropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14A28B356A100A003D1 /* MyWardDropDownItem.swift */; };
+		A24FD14E28B3571200A003D1 /* AnonymousDropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */; };
+		A24FD15128B3C2F300A003D1 /* DoriDoriLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */; };
+		A24FD15328B3F8E600A003D1 /* CLLocationManger+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */; };
+		A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */; };
+		A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */; };
+		A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD15D28B4B01300A003D1 /* QuestionType.swift */; };
+		A24FD17028B542C600A003D1 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16F28B542C600A003D1 /* OtherProfileView.swift */; };
+		A24FD17528B5430F00A003D1 /* OtherPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17428B5430F00A003D1 /* OtherPageViewController.swift */; };
+		A24FD17728B5432000A003D1 /* OtherPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17628B5432000A003D1 /* OtherPageReactor.swift */; };
+		A24FD17928B5437400A003D1 /* OtherPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17828B5437400A003D1 /* OtherPageCoordinator.swift */; };
+		A24FD17B28B65C2800A003D1 /* ProfileWardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17A28B65C2800A003D1 /* ProfileWardView.swift */; };
+		A24FD17D28B65F5400A003D1 /* OtherProfileContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17C28B65F5400A003D1 /* OtherProfileContentViewController.swift */; };
+		A24FD17F28B6618800A003D1 /* OtherPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD17E28B6618700A003D1 /* OtherPageRepository.swift */; };
+		A24FD18228B6705700A003D1 /* AnswerCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD18128B6705600A003D1 /* AnswerCompleteModel.swift */; };
+		A24FD18528B6747B00A003D1 /* OtherProfileContentReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD18428B6747B00A003D1 /* OtherProfileContentReactor.swift */; };
 		A2655AD72899534200B03AA1 /* HomeMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */; };
 		A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */; };
 		A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */; };
@@ -56,6 +91,7 @@
 		A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */; };
 		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
 		A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */; };
+		A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -65,6 +101,9 @@
 		A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */; };
 		A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0875289ADA1700F2046C /* MyPageTab.swift */; };
 		A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF0877289C2DA700F2046C /* Array+Extension.swift */; };
+		A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */; };
+		A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */; };
+		A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */; };
 		A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */; };
 		A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */; };
 		A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */; };
@@ -103,7 +142,6 @@
 		CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */; };
 		CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */; };
 		CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */; };
-		CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA595285A2A4C00D8D3EA /* ViewController.swift */; };
 		CEAAA59B285A2A4D00D8D3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */; };
 		CEAAA5A9285A2A4D00D8D3EA /* DoriDori_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5A8285A2A4D00D8D3EA /* DoriDori_iOSTests.swift */; };
 		CEAAA5B3285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */; };
@@ -171,11 +209,40 @@
 		A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		A24FD12228B0FEB500A003D1 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteRequest.swift; sourceTree = "<group>"; };
-		A24FD13728B2336B00A003D1 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
+		A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCoordinator.swift; sourceTree = "<group>"; };
+		A24FD13128B223E400A003D1 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		A24FD13328B227AE00A003D1 /* QuestionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactor.swift; sourceTree = "<group>"; };
+		A24FD13528B2325B00A003D1 /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
+		A24FD13728B2336B00A003D1 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
+		A24FD16028B4B2E000A003D1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A24FD16228B4B3ED00A003D1 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
+		A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
 		A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
 		A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		A24FD16C28B51A0700A003D1 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
+		A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAtCommunityRequest.swift; sourceTree = "<group>"; };
+		A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionToUserRequest.swift; sourceTree = "<group>"; };
+		A24FD14528B3554000A003D1 /* MyWardListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardListRequest.swift; sourceTree = "<group>"; };
+		A24FD14828B3558700A003D1 /* MyWardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardModel.swift; sourceTree = "<group>"; };
+		A24FD14A28B356A100A003D1 /* MyWardDropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardDropDownItem.swift; sourceTree = "<group>"; };
+		A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousDropDownItem.swift; sourceTree = "<group>"; };
+		A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationManager.swift; sourceTree = "<group>"; };
+		A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManger+Rx.swift"; sourceTree = "<group>"; };
+		A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriLocationError.swift; sourceTree = "<group>"; };
+		A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A24FD15D28B4B01300A003D1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
+		A24FD16F28B542C600A003D1 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
+		A24FD17428B5430F00A003D1 /* OtherPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageViewController.swift; sourceTree = "<group>"; };
+		A24FD17628B5432000A003D1 /* OtherPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageReactor.swift; sourceTree = "<group>"; };
+		A24FD17828B5437400A003D1 /* OtherPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageCoordinator.swift; sourceTree = "<group>"; };
+		A24FD17A28B65C2800A003D1 /* ProfileWardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWardView.swift; sourceTree = "<group>"; };
+		A24FD17C28B65F5400A003D1 /* OtherProfileContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileContentViewController.swift; sourceTree = "<group>"; };
+		A24FD17E28B6618700A003D1 /* OtherPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPageRepository.swift; sourceTree = "<group>"; };
+		A24FD18128B6705600A003D1 /* AnswerCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompleteModel.swift; sourceTree = "<group>"; };
+		A24FD18428B6747B00A003D1 /* OtherProfileContentReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileContentReactor.swift; sourceTree = "<group>"; };
 		A2655AD62899534200B03AA1 /* HomeMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2655AD82899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMySpeechBubbleViewCell.swift; sourceTree = "<group>"; };
 		A2655ADC28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechBubbleItemType.swift; sourceTree = "<group>"; };
@@ -189,6 +256,7 @@
 		A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleCell.swift; sourceTree = "<group>"; };
+		A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWebViewController.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -198,6 +266,9 @@
 		A2DF0873289AD46400F2046C /* QuestionReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReceivedViewController.swift; sourceTree = "<group>"; };
 		A2DF0875289ADA1700F2046C /* MyPageTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTab.swift; sourceTree = "<group>"; };
 		A2DF0877289C2DA700F2046C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTypeWebViewController.swift; sourceTree = "<group>"; };
+		A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
+		A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriWeb.swift; sourceTree = "<group>"; };
 		A2F92C6B288BD1F4000340F5 /* OtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6D288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOtherSpeechBubbleView.swift; sourceTree = "<group>"; };
 		A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -233,7 +304,6 @@
 		CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoriDori_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA591285A2A4C00D8D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAAA593285A2A4C00D8D3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEAAA595285A2A4C00D8D3EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEAAA59A285A2A4D00D8D3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEAAA59F285A2A4D00D8D3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAAA5A4285A2A4D00D8D3EA /* DoriDori_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */,
+				A24FD13F28B284F900A003D1 /* DropDown in Frameworks */,
 				CE58A7F12877279C00928091 /* FlexLayoutYoga in Frameworks */,
 				CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */,
 				CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */,
@@ -263,7 +334,9 @@
 				CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
 				CE58A80E28796C8900928091 /* SnapKit in Frameworks */,
+				A24FD14428B3504E00A003D1 /* RxGesture in Frameworks */,
 				CE58A7F32877279C00928091 /* FlexLayoutYogaKit in Frameworks */,
+				A24FD11F28B0C3BD00A003D1 /* Toast in Frameworks */,
 				CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,10 +443,13 @@
 		A24FD0EB28A5734200A003D1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD15F28B4B2CD00A003D1 /* Alert */,
 				A24FD16428B4B48A00A003D1 /* ActivityIndicator */,
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
 				A22FC8AA2879A5DC00F33D4F /* LevelView */,
+				A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */,
+				A24FD13128B223E400A003D1 /* DropDownView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -387,6 +463,10 @@
 				A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */,
 				A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */,
 				CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */,
+				A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */,
+				A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */,
+				A24FD14528B3554000A003D1 /* MyWardListRequest.swift */,
+				A24FD18128B6705600A003D1 /* AnswerCompleteModel.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -405,6 +485,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		A24FD15F28B4B2CD00A003D1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16028B4B2E000A003D1 /* AlertViewController.swift */,
+				A24FD16228B4B3ED00A003D1 /* AlertAction.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		A24FD16428B4B48A00A003D1 /* ActivityIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +509,87 @@
 				A24FD16C28B51A0700A003D1 /* RefreshModel.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		A24FD12C28B213CC00A003D1 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD14C28B356E700A003D1 /* DropDownItem */,
+				A24FD14728B3557D00A003D1 /* Model */,
+				A24FD12D28B213DB00A003D1 /* QuestionViewController.swift */,
+				A24FD12F28B21D7800A003D1 /* QuestionCoordinator.swift */,
+				A24FD13328B227AE00A003D1 /* QuestionReactor.swift */,
+				A24FD13528B2325B00A003D1 /* QuestionRepository.swift */,
+				A24FD15D28B4B01300A003D1 /* QuestionType.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		A24FD14728B3557D00A003D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD14828B3558700A003D1 /* MyWardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A24FD14C28B356E700A003D1 /* DropDownItem */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD14A28B356A100A003D1 /* MyWardDropDownItem.swift */,
+				A24FD14D28B3571200A003D1 /* AnonymousDropDownItem.swift */,
+			);
+			path = DropDownItem;
+			sourceTree = "<group>";
+		};
+		A24FD14F28B3C2E300A003D1 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD15028B3C2F300A003D1 /* DoriDoriLocationManager.swift */,
+				A24FD15228B3F8E600A003D1 /* CLLocationManger+Rx.swift */,
+				A24FD15428B4046200A003D1 /* DoriDoriLocationError.swift */,
+				A24FD15B28B4AFAF00A003D1 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		A24FD16E28B542B400A003D1 /* OtherProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16F28B542C600A003D1 /* OtherProfileView.swift */,
+				A24FD17A28B65C2800A003D1 /* ProfileWardView.swift */,
+			);
+			path = OtherProfile;
+			sourceTree = "<group>";
+		};
+		A24FD17328B542FF00A003D1 /* OtherPage */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD18328B6745E00A003D1 /* OtherProflieContent */,
+				A24FD18028B663B600A003D1 /* Model */,
+				A24FD16E28B542B400A003D1 /* OtherProfile */,
+				A24FD17428B5430F00A003D1 /* OtherPageViewController.swift */,
+				A24FD17628B5432000A003D1 /* OtherPageReactor.swift */,
+				A24FD17828B5437400A003D1 /* OtherPageCoordinator.swift */,
+				A24FD17E28B6618700A003D1 /* OtherPageRepository.swift */,
+			);
+			path = OtherPage;
+			sourceTree = "<group>";
+		};
+		A24FD18028B663B600A003D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A24FD18328B6745E00A003D1 /* OtherProflieContent */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD17C28B65F5400A003D1 /* OtherProfileContentViewController.swift */,
+				A24FD18428B6747B00A003D1 /* OtherProfileContentReactor.swift */,
+			);
+			path = OtherProflieContent;
 			sourceTree = "<group>";
 		};
 		A2655ADA28996BCA00B03AA1 /* OtherSpeechBubbleView */ = {
@@ -512,6 +682,8 @@
 		CE42D38528705BEE00C49548 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD12C28B213CC00A003D1 /* Question */,
+				A24FD17328B542FF00A003D1 /* OtherPage */,
 				A24FD0F128A63E0800A003D1 /* Setting */,
 				A24FD0EB28A5734200A003D1 /* Common */,
 				CE42D38628705BFC00C49548 /* MainTabBar */,
@@ -569,6 +741,10 @@
 			isa = PBXGroup;
 			children = (
 				CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */,
+				A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */,
+				A2E105DD28BA0A5800CC6498 /* ModalTypeWebViewController.swift */,
+				A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */,
+				A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -630,7 +806,6 @@
 				CE42D38528705BEE00C49548 /* Scene */,
 				CEB2656B2875E9B500B9970B /* Common */,
 				CE42D38728705E5F00C49548 /* Resources */,
-				CEAAA595285A2A4C00D8D3EA /* ViewController.swift */,
 				CEAAA59F285A2A4D00D8D3EA /* Info.plist */,
 			);
 			path = DoriDori_iOS;
@@ -656,6 +831,7 @@
 		CEB2656B2875E9B500B9970B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD14F28B3C2E300A003D1 /* LocationManager */,
 				CE6A451F28ABEB670084B106 /* UserDefault */,
 				A24FD0EC28A5735400A003D1 /* APIs */,
 				A24FD0E328A56C0200A003D1 /* Coordinator */,
@@ -730,6 +906,9 @@
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 				CE58A80D28796C8900928091 /* SnapKit */,
 				CE6A0FB228BA939C00E1E644 /* Lottie */,
+				A24FD11E28B0C3BD00A003D1 /* Toast */,
+				A24FD13E28B284F900A003D1 /* DropDown */,
+				A24FD14328B3504E00A003D1 /* RxGesture */,
 			);
 			productName = DoriDori_iOS;
 			productReference = CEAAA58E285A2A4C00D8D3EA /* DoriDori_iOS.app */;
@@ -811,6 +990,9 @@
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				A24FD13D28B284F900A003D1 /* XCRemoteSwiftPackageReference "DropDown" */,
+				A24FD14228B3504D00A003D1 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = CEAAA58F285A2A4C00D8D3EA /* Products */;
 			projectDirPath = "";
@@ -863,11 +1045,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */,
+				A24FD14B28B356A100A003D1 /* MyWardDropDownItem.swift in Sources */,
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
 				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
+				A24FD16328B4B3ED00A003D1 /* AlertAction.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
 				A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */,
@@ -876,6 +1060,7 @@
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,
 				CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */,
 				A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */,
+				A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */,
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
@@ -887,66 +1072,95 @@
 				A24FD0FD28A8BDE100A003D1 /* SettingCoordinator.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */,
+				A24FD15328B3F8E600A003D1 /* CLLocationManger+Rx.swift in Sources */,
 				A2DF0872289AD44C00F2046C /* SeeAllViewController.swift in Sources */,
 				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
 				CE6FF74328AD274D00E4A3CD /* Rx+UIViewController.swift in Sources */,
+				A24FD17B28B65C2800A003D1 /* ProfileWardView.swift in Sources */,
 				A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
+				A24FD18228B6705700A003D1 /* AnswerCompleteModel.swift in Sources */,
+				A24FD17528B5430F00A003D1 /* OtherPageViewController.swift in Sources */,
+				A24FD17D28B65F5400A003D1 /* OtherProfileContentViewController.swift in Sources */,
 				A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
+				A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */,
 				A2CF64E328796D99007D54DD /* Network.swift in Sources */,
 				A20A9E9728797B6D000ABFBB /* MyPageReactor.swift in Sources */,
 				A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */,
 				A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */,
+				A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
 				CE6A452828ABFD550084B106 /* MyWardRequest.swift in Sources */,
+				A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */,
+				A24FD18528B6747B00A003D1 /* OtherProfileContentReactor.swift in Sources */,
+				A24FD17928B5437400A003D1 /* OtherPageCoordinator.swift in Sources */,
 				A2655ADD28996D9E00B03AA1 /* HomeSpeechBubbleItemType.swift in Sources */,
+				A24FD14928B3558700A003D1 /* MyWardModel.swift in Sources */,
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
 				CE6FF74828B0B51400E4A3CD /* HomeSpeechsRequest.swift in Sources */,
 				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
+				A24FD17F28B6618800A003D1 /* OtherPageRepository.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
+				A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
 				CE6A452628ABF59B0084B106 /* HomeCollectionViewImplement.swift in Sources */,
+				A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */,
+				A24FD17028B542C600A003D1 /* OtherProfileView.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
 				CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
+				A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */,
 				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
+				A24FD14E28B3571200A003D1 /* AnonymousDropDownItem.swift in Sources */,
 				A24FD12528B0FEE400A003D1 /* AnswerCompleteRequest.swift in Sources */,
 				A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */,
 				A24FD0F728A63F0800A003D1 /* SettingReactor.swift in Sources */,
 				CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */,
 				A20A9E9628797B6D000ABFBB /* MyPageViewController.swift in Sources */,
+				A24FD13628B2325B00A003D1 /* QuestionRepository.swift in Sources */,
 				CECB0C3F28A2BE2B00A48D82 /* MyWard.swift in Sources */,
+				A2E105E228BA139B00CC6498 /* DoriDoriWeb.swift in Sources */,
 				A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */,
 				A22FC8E02879E70800F33D4F /* Rx+Extension.swift in Sources */,
 				CEAAA592285A2A4C00D8D3EA /* AppDelegate.swift in Sources */,
 				CEE76521286746B4007FC892 /* HomeTab.swift in Sources */,
+				A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */,
 				A2CF64E728796DB1007D54DD /* ResponseModel.swift in Sources */,
 				CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */,
+				A24FD14628B3554000A003D1 /* MyWardListRequest.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
 				CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
+				A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
+				A24FD15128B3C2F300A003D1 /* DoriDoriLocationManager.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
+				A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
 				CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */,
 				A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */,
+				A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */,
+				A24FD17728B5432000A003D1 /* OtherPageReactor.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
+				A24FD12E28B213DB00A003D1 /* QuestionViewController.swift in Sources */,
+				A24FD13028B21D7800A003D1 /* QuestionCoordinator.swift in Sources */,
 				A24FD0F328A63E2E00A003D1 /* SettingViewController.swift in Sources */,
 				CE5B1328287974A400F10A20 /* AppCoordinator.swift in Sources */,
 				A24FD0E528A56D4100A003D1 /* MyPageRepository.swift in Sources */,
 				CEAAA594285A2A4C00D8D3EA /* SceneDelegate.swift in Sources */,
+				A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */,
 				A22FC8D92879BF7A00F33D4F /* UIFont+Extension.swift in Sources */,
 				A2F92CA3288EDC55000340F5 /* HomeOtherSpeechBubbleCell.swift in Sources */,
 				CE6FF75628B1220600E4A3CD /* SchemeExecuter.swift in Sources */,
@@ -1275,6 +1489,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		A24FD13D28B284F900A003D1 /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		A24FD14228B3504D00A003D1 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
@@ -1334,6 +1572,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A24FD11E28B0C3BD00A003D1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		A24FD13E28B284F900A003D1 /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A24FD13D28B284F900A003D1 /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
+		A24FD14328B3504E00A003D1 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A24FD14228B3504D00A003D1 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
 		CE58A7EE2877279C00928091 /* FlexLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */;
