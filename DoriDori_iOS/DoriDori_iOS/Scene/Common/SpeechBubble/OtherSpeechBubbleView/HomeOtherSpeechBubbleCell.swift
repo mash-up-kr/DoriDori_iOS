@@ -52,7 +52,8 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = HomeOtherSpeechBubbleView()
+    let speechBubble = HomeOtherSpeechBubbleView()
+    static let identifier =  "HomeOtherSpeechBubbleCell"
     
     // MARK: - Init
     
@@ -70,18 +71,13 @@ final class HomeOtherSpeechBubbleCell: UICollectionViewCell {
     }
     
     
-    func configure(_ item: HomeSpeechBubbleItemType) {
+    func configure(_ item: HomeSpeechInfo) {
         self.speechBubble.configure(item)
-        if let identifiedHomeOtherSpeechBubbleCellItem = item as? IdentifiedHomeSpeechBubbleCellItem {
-            self.profileImageView.kf.setImage(with: identifiedHomeOtherSpeechBubbleCellItem.profileImageURL)
-            self.levelView.configure(level: identifiedHomeOtherSpeechBubbleCellItem.level)
-        }
-        if let _ = item as? AnonymousIdentifiedHomeOtherSpeechBubbleCellItem {
-            self.levelView.isHidden = true
-        }
+        self.profileImageView.kf.setImage(with: URL(string: item.user.profileImageURL))
+        self.levelView.configure(level: item.user.level)
     }
     
-    static func fittingSize(width: CGFloat, item: HomeSpeechBubbleItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: HomeSpeechInfo) -> CGSize {
         let cell = HomeOtherSpeechBubbleCell()
         cell.configure(item)
         let targetSize = CGSize(width: width,

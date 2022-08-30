@@ -21,7 +21,8 @@ final class HomeMySpeechBubbleViewCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = HomeMySpeechBubbleView()
+    let speechBubble = HomeMySpeechBubbleView()
+    static let identifier = "HomeMySpeechBubbleViewCell"
     
     // MARK: Init
     
@@ -38,17 +39,19 @@ final class HomeMySpeechBubbleViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(_ item: IdentifiedHomeSpeechBubbleCellItemType) {
-        self.speechBubble.configure(item)
-        self.profileImageView.kf.setImage(with: item.profileImageURL)
-        self.levelView.configure(level: item.level)
+    func configure(item: HomeSpeechInfo) {
+        speechBubble.configure(item)
+        profileImageView.kf.setImage(with: URL(string: item.user.profileImageURL))
+        levelView.configure(level: item.user.level)
     }
     
-    static func fittingSize(width: CGFloat, item: IdentifiedHomeSpeechBubbleCellItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: HomeSpeechInfo) -> CGSize {
         let cell = HomeMySpeechBubbleViewCell()
-        cell.configure(item)
-        let targetSize = CGSize(width: width,
-                                height: UIView.layoutFittingCompressedSize.height)
+        cell.configure(item: item)
+        let targetSize = CGSize(
+            width: width,
+            height: UIView.layoutFittingCompressedSize.height
+        )
         return cell.contentView.systemLayoutSizeFitting(targetSize,
                                                         withHorizontalFittingPriority: .required,
                                                         verticalFittingPriority: .fittingSizeLevel)
@@ -65,7 +68,7 @@ extension HomeMySpeechBubbleViewCell {
             $0.leading.equalToSuperview().offset(30)
         }
         self.profileImageView.snp.makeConstraints {
-            $0.leading.equalTo(self.speechBubble.snp.trailing).offset(8)
+            $0.leading.equalTo(self.speechBubble.snp.trailing).offset(18)
             $0.top.equalToSuperview().offset(16)
             $0.size.equalTo(42)
             $0.trailing.equalToSuperview().inset(30)

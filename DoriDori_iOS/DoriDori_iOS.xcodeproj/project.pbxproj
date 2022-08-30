@@ -122,8 +122,18 @@
 		CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13332879AED500F10A20 /* HomeViewModel.swift */; };
 		CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */; };
 		CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */; };
+		CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */; };
+		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
+		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
+		CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A0FB228BA939C00E1E644 /* Lottie */; };
+		CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */; };
+		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
 		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
+		CE6A452628ABF59B0084B106 /* HomeCollectionViewImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */; };
+		CE6A452828ABFD550084B106 /* MyWardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452728ABFD550084B106 /* MyWardRequest.swift */; };
+		CE6FF74328AD274D00E4A3CD /* Rx+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74228AD274D00E4A3CD /* Rx+UIViewController.swift */; };
+		CE6FF74828B0B51400E4A3CD /* HomeSpeechsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */; };
 		CE6FF75028B11A7900E4A3CD /* URLContant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF74F28B11A7900E4A3CD /* URLContant.swift */; };
 		CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */; };
 		CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FF75328B1217400E4A3CD /* Scheme.swift */; };
@@ -273,8 +283,18 @@
 		CE5B13332879AED500F10A20 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		CE5B134C287A11B800F10A20 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = DoriDori_iOS/Common/Network/DevDatas.swift; sourceTree = SOURCE_ROOT; };
+		CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLike.swift; sourceTree = "<group>"; };
+		CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
+		CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
+		CE6A451228AA35E40084B106 /* DevDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevDatas.swift; path = /Downloads/DevDatas.swift; sourceTree = "<absolute>"; };
+		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
 		CE6A452028ABEB6D0084B106 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
+		CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewImplement.swift; sourceTree = "<group>"; };
+		CE6A452728ABFD550084B106 /* MyWardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardRequest.swift; sourceTree = "<group>"; };
+		CE6FF74228AD274D00E4A3CD /* Rx+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UIViewController.swift"; sourceTree = "<group>"; };
+		CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechsRequest.swift; sourceTree = "<group>"; };
 		CE6FF74F28B11A7900E4A3CD /* URLContant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContant.swift; sourceTree = "<group>"; };
 		CE6FF75128B11AE600E4A3CD /* SchemeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeParser.swift; sourceTree = "<group>"; };
 		CE6FF75328B1217400E4A3CD /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
@@ -311,6 +331,7 @@
 				CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */,
 				CEAAA5C6285A2D3300D8D3EA /* RxCocoa in Frameworks */,
 				CE58A7EF2877279C00928091 /* FlexLayout in Frameworks */,
+				CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */,
 				CEAAA5C3285A2BDB00D8D3EA /* ReactorKit in Frameworks */,
 				CE58A80E28796C8900928091 /* SnapKit in Frameworks */,
 				A24FD14428B3504E00A003D1 /* RxGesture in Frameworks */,
@@ -437,8 +458,11 @@
 			isa = PBXGroup;
 			children = (
 				A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */,
+				CE6A452728ABFD550084B106 /* MyWardRequest.swift */,
+				CE6FF74728B0B51400E4A3CD /* HomeSpeechsRequest.swift */,
 				A24FD12428B0FEE400A003D1 /* AnswerCompleteRequest.swift */,
 				A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */,
+				CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */,
 				A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */,
 				A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */,
 				A24FD14528B3554000A003D1 /* MyWardListRequest.swift */,
@@ -618,6 +642,7 @@
 			children = (
 				A24FD16928B519C400A003D1 /* Authentication */,
 				A2CF64E428796DA5007D54DD /* Requestable.swift */,
+				CE6A0FAA28BA1AF200E1E644 /* DevDatas.swift */,
 				A2CF64E228796D99007D54DD /* Network.swift */,
 				A2CF64E628796DB1007D54DD /* ResponseModel.swift */,
 				A2CF64E028796D8B007D54DD /* ErrorModel.swift */,
@@ -704,8 +729,10 @@
 		CE5B13362879B16F00F10A20 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */,
 				CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */,
 				CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */,
+				CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -720,6 +747,14 @@
 				A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		CE6A0FA928BA1AE000E1E644 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A451228AA35E40084B106 /* DevDatas.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		CE6A451F28ABEB670084B106 /* UserDefault */ = {
@@ -749,6 +784,7 @@
 				CEAAA5A7285A2A4D00D8D3EA /* DoriDori_iOSTests */,
 				CEAAA5B1285A2A4D00D8D3EA /* DoriDori_iOSUITests */,
 				CEAAA58F285A2A4C00D8D3EA /* Products */,
+				CE6A0FA928BA1AE000E1E644 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -816,6 +852,7 @@
 				A2F92C6F288BF76B000340F5 /* UIStackView+Extension.swift */,
 				A2F92CA0288EDA94000340F5 /* Int+Extension.swift */,
 				A2DF0877289C2DA700F2046C /* Array+Extension.swift */,
+				CE6FF74228AD274D00E4A3CD /* Rx+UIViewController.swift */,
 				CE6FF75728B135A300E4A3CD /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
@@ -825,6 +862,8 @@
 			isa = PBXGroup;
 			children = (
 				CECB0C3E28A2BE2B00A48D82 /* MyWard.swift */,
+				CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */,
+				CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -866,6 +905,7 @@
 				CE58A7F02877279C00928091 /* FlexLayoutYoga */,
 				CE58A7F22877279C00928091 /* FlexLayoutYogaKit */,
 				CE58A80D28796C8900928091 /* SnapKit */,
+				CE6A0FB228BA939C00E1E644 /* Lottie */,
 				A24FD11E28B0C3BD00A003D1 /* Toast */,
 				A24FD13E28B284F900A003D1 /* DropDown */,
 				A24FD14328B3504E00A003D1 /* RxGesture */,
@@ -949,6 +989,7 @@
 				CEAAA5CC285A2DAB00D8D3EA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE58A7ED2877279C00928091 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A24FD11D28B0C3BD00A003D1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				A24FD13D28B284F900A003D1 /* XCRemoteSwiftPackageReference "DropDown" */,
 				A24FD14228B3504D00A003D1 /* XCRemoteSwiftPackageReference "RxGesture" */,
@@ -1026,12 +1067,15 @@
 				CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
+				CE6A0FAB28BA1AF200E1E644 /* DevDatas.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
 				A24FD0FD28A8BDE100A003D1 /* SettingCoordinator.swift in Sources */,
 				A22FC8AE2879A62500F33D4F /* LevelView.swift in Sources */,
 				A2DF0874289AD46400F2046C /* QuestionReceivedViewController.swift in Sources */,
 				A24FD15328B3F8E600A003D1 /* CLLocationManger+Rx.swift in Sources */,
 				A2DF0872289AD44C00F2046C /* SeeAllViewController.swift in Sources */,
+				CEAAA596285A2A4C00D8D3EA /* ViewController.swift in Sources */,
+				CE6FF74328AD274D00E4A3CD /* Rx+UIViewController.swift in Sources */,
 				A24FD17B28B65C2800A003D1 /* ProfileWardView.swift in Sources */,
 				A24FD12328B0FEB500A003D1 /* QuestionModel.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
@@ -1051,6 +1095,7 @@
 				A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */,
 				A2E105DE28BA0A5800CC6498 /* ModalTypeWebViewController.swift in Sources */,
 				A22FC8B02879AA3F00F33D4F /* UIView+Extension.swift in Sources */,
+				CE6A452828ABFD550084B106 /* MyWardRequest.swift in Sources */,
 				A2E105E028BA0CB600CC6498 /* WebViewCoordinator.swift in Sources */,
 				A24FD18528B6747B00A003D1 /* OtherProfileContentReactor.swift in Sources */,
 				A24FD17928B5437400A003D1 /* OtherPageCoordinator.swift in Sources */,
@@ -1059,17 +1104,20 @@
 				A2655AE328996EC800B03AA1 /* SpeechBubbleViewType.swift in Sources */,
 				A22FC8DE2879D80C00F33D4F /* KeywordView.swift in Sources */,
 				A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */,
+				CE6FF74828B0B51400E4A3CD /* HomeSpeechsRequest.swift in Sources */,
 				A24FD0F928A7EC8700A003D1 /* SettingCollectionViewCell.swift in Sources */,
 				A24FD17F28B6618800A003D1 /* OtherPageRepository.swift in Sources */,
 				A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */,
 				A24FD15E28B4B01300A003D1 /* QuestionType.swift in Sources */,
 				CE5B13262879748D00F10A20 /* Coordinator.swift in Sources */,
 				A2DF0876289ADA1700F2046C /* MyPageTab.swift in Sources */,
+				CE6A452628ABF59B0084B106 /* HomeCollectionViewImplement.swift in Sources */,
 				A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */,
 				A24FD17028B542C600A003D1 /* OtherProfileView.swift in Sources */,
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
+				CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
 				A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */,
 				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
@@ -1091,14 +1139,17 @@
 				CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */,
 				A24FD14628B3554000A003D1 /* MyWardListRequest.swift in Sources */,
 				CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */,
+				CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
+				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
 				A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */,
 				A20A9E9928797B93000ABFBB /* MyPageCoordinator.swift in Sources */,
 				A24FD15128B3C2F300A003D1 /* DoriDoriLocationManager.swift in Sources */,
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
+				CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */,
 				A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */,
 				A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */,
 				A24FD17728B5432000A003D1 /* OtherPageReactor.swift in Sources */,
@@ -1478,6 +1529,14 @@
 				kind = branch;
 			};
 		};
+		CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CEAAA5C1285A2BDB00D8D3EA /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -1547,6 +1606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE58A80C28796C8900928091 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CE6A0FB228BA939C00E1E644 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6A0FB128BA939C00E1E644 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		CEAAA5C2285A2BDB00D8D3EA /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
