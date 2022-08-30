@@ -126,13 +126,14 @@ final class MyPageViewController: UIViewController, View {
         
         reactor.pulse(\.$myPageTabs)
             .bind(with: self) { owner, tabs in
+                let answerCompleteRepository = MyPageRepository()
                 tabs.forEach { tab in
                     switch tab {
                     case .questionReceived:
-                        let vc = QuestionReceivedViewController(nibName: nil, bundle: nil)
+                        let reactor = QuestionReceivedReactor(myPageRepository: answerCompleteRepository)
+                        let vc = QuestionReceivedViewController(reactor: reactor, coordiantor: self.myPageCoordinator)
                         self.addArrangedSubContentViewController(vc)
                     case .answerComplete:
-                        let answerCompleteRepository = MyPageRepository()
                         let answerCompleteReactor = AnswerCompleteReactor(repository: answerCompleteRepository)
                         let viewController = AnswerCompleteViewController(coordinator: self.myPageCoordinator, reactor: answerCompleteReactor)
                         self.addArrangedSubContentViewController(viewController)

@@ -75,8 +75,8 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         self.disposeBag = .init()
     }
     
-    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
-        self.speechBubble.configure(item)
+    func configure(_ item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) {
+        self.speechBubble.configure(item, shouldHideButtonstackView: shouldHideButtonstackView)
         if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
             self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
             self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)

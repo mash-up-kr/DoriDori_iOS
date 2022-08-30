@@ -12,6 +12,7 @@ protocol MyPageRequestable: AnyObject {
     func fetchMyProfile() -> Observable<UserInfoModel>
     func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<AnswerCompleteModel>
     func fetchAnswerCompleteQuestions(userID: UserID, lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
+    func fetchReceivedQuestions(size: Int, lastQuestionID: QuestionID?) -> Observable<ReceivedQuestionModel>
 }
 
 final class MyPageRepository: MyPageRequestable {
@@ -33,6 +34,13 @@ final class MyPageRepository: MyPageRequestable {
         Network().request(
             api: AnswerCompleteRequest(userID: userID, lastQuestionID: lastQuestionID, size: size),
             responseModel: ResponseModel<[QuestionModel]>.self
+        )
+    }
+    
+    func fetchReceivedQuestions(size: Int, lastQuestionID: QuestionID?) -> Observable<ReceivedQuestionModel> {
+        Network().request(
+            api: ReceivedQuestionRequest(size: size, lastID: lastQuestionID),
+            responseModel: ResponseModel<ReceivedQuestionModel>.self
         )
     }
 }
