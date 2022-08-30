@@ -17,15 +17,6 @@ struct MyPageProfileItem: Equatable {
     let profileImageURL: String?
     let description: String
     let tags: [String]
-//    let didTapSettingButton: PublishRelay<Void>
-    
-    static func == (lhs: MyPageProfileItem, rhs: MyPageProfileItem) -> Bool {
-        (lhs.level == rhs.level) &&
-        (lhs.nickname == rhs.nickname) &&
-        (lhs.description == rhs.description) &&
-        (lhs.tags == rhs.tags) &&
-        (lhs.profileImageURL == rhs.profileImageURL)
-    }
 }
 
 final class MyPageProfileView: UIView {

@@ -128,12 +128,15 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
 
 extension MyPageOtherSpeechBubbleView {
     
-    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
+    func configure(_ item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) {
         self.nameLabel.text = item.userName
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
         self.setupTagStackView(item.tags)
         self.setupContentLabel(item.content, at: self.contentLabel)
+        if shouldHideButtonstackView {
+            self.buttonStackView.arrangedSubviews.forEach { $0.isHidden = true }
+        }
     }
 
     private func setupTagStackView(_ tags: [String]) {
