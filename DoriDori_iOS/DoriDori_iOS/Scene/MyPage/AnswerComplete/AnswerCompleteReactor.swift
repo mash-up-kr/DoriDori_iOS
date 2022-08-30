@@ -18,13 +18,16 @@ final class AnswerCompleteReactor: Reactor {
         case willDisplayCell(IndexPath)
         case didSelectCell(IndexPath)
         case didTapProfile(IndexPath)
+        case didRefresh
     }
     
     enum Mutation {
         case questionAndAnswers([MyPageBubbleItemType])
         case didSelect(QuestionID)
         case didTap(UserID)
+        case endRefreshing([MyPageBubbleItemType])
     }
+    
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
         @Pulse var navigateQuestionID: QuestionID?
@@ -76,6 +79,18 @@ final class AnswerCompleteReactor: Reactor {
                 return .just(.didTap(question.userID))
             }
             return .empty()
+        case .didRefresh:
+            self.lastQuestionID = nil
+            return self.repository.fetchMyAnswerCompleteQuestions(lastQuestionID: self.lastQuestionID, size: 20)
+                .catch { error in
+                    print(error)
+                    return .empty()
+                }
+                .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    let questionItems = self.configureCells(response: response)
+                    return .just(.endRefreshing(questionItems))
+                }
         }
         
         return .empty()
@@ -167,6 +182,9 @@ final class AnswerCompleteReactor: Reactor {
             _state.navigateQuestionID = questionID
         case .didTap(let userID):
             _state.navigateUserID = userID
+        case .endRefreshing(let questionAndAnswer):
+            _state.questionAndAnswer = questionAndAnswer
+            _state.endRefreshing = true
         }
         return _state
     }

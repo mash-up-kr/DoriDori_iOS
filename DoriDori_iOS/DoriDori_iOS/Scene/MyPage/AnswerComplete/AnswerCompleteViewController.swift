@@ -20,6 +20,7 @@ final class AnswerCompleteViewController: UIViewController,
         collectionView.backgroundColor = .darkGray
         return collectionView
     }()
+    private let refreshControl = UIRefreshControl()
 
     private let viewDidLoadStream: PublishRelay<Void>
     let reactor: AnswerCompleteReactor
@@ -85,6 +86,11 @@ final class AnswerCompleteViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.refreshControl.rx.controlEvent(.valueChanged)
+            .map { AnswerCompleteReactor.Action.didRefresh }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: questionItems)
             .disposed(by: self.disposeBag)
@@ -100,6 +106,15 @@ final class AnswerCompleteViewController: UIViewController,
             .compactMap { $0 }
             .bind(with: self) { owner, questionID in
                 owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$endRefreshing)
+            .compactMap { $0 }
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.refreshControl.endRefreshing()
             }
             .disposed(by: self.disposeBag)
     }
@@ -119,6 +134,8 @@ final class AnswerCompleteViewController: UIViewController,
         collectionView.dataSource = self
         collectionView.delegate = self
         self.register(collectionView)
+        collectionView.refreshControl = self.refreshControl
+        self.refreshControl.tintColor = .lime300
     }
     
     private func register(_ collectionView: UICollectionView) {
