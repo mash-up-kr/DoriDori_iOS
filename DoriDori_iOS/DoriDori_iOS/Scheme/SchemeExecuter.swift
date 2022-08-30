@@ -17,8 +17,8 @@ struct SchemeExecuter {
     
     func execute() {
         switch schemeType {
-        case .question:
-            print("QUESTION")
+        case let .question(userId):
+            print("id: \(userId)")
         case .mypage_other:
             print("MYPAGE_OTHER")
         }

@@ -10,6 +10,13 @@ import UIKit
 enum LikeButtonType {
     case hand
     case heart
+    
+    var title: String {
+        switch self {
+        case .hand: return "궁금해요"
+        case .heart: return "좋아요"
+        }
+    }
 }
 
 protocol SpeechBubbleViewLikeable where Self: SpeechBubbleViewType {
@@ -30,7 +37,7 @@ extension SpeechBubbleViewLikeable {
         
         if count == 0 {
             button.setImage(image?.withTintColor(.gray600), for: .normal)
-            button.setTitle("궁금해요", for: .normal)
+            button.setTitle(self.likeButtonType.title, for: .normal)
             button.setTitleColor(.gray500, for: .normal)
             button.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
             button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)

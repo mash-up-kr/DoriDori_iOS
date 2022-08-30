@@ -37,6 +37,6 @@ struct URLConstant {
 }
 
 enum SchemeType {
-    case question
+    case question(userId: String?)
     case mypage_other
 }

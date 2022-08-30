@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
                                        SpeechBubbleViewType,
@@ -131,6 +132,9 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
     
     // MARK: - Properties
     var likeButtonType: LikeButtonType { .hand }
+    weak var delegate: HomeSpeechBubleViewDelegate?
+    private let disposeBag = DisposeBag()
+    private var homeSpeechInfo: HomeSpeechInfo?
     
     // MARK: - Inits
     
@@ -145,6 +149,7 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        bind()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -155,17 +160,22 @@ final class HomeOtherSpeechBubbleView: OtherSpeechBubbleView,
 
 extension HomeOtherSpeechBubbleView {
     
-    func configure(_ item: HomeSpeechBubbleItemType) {
+    func configure(_ item: HomeSpeechInfo) {
+        homeSpeechInfo = item        
         self.setupContentLabel(item.content, at: self.contentLabel)
-        self.locationLabel.text = item.location
-        self.updatedTimeLabel.text = "\(item.updatedTime)분 전"
-        self.userNameLabel.text = item.userName
+        self.locationLabel.text = item.representativeAddress
+        self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
+        self.userNameLabel.text = item.user.nickname
         self.setupLikeButton(item.likeCount, at: self.handButton)
         self.setupCommentButton(item.commentCount, at: self.commentButton)
-        self.setupTagStackView(item.tags)
+        self.setupTagStackView(item.user.tags)
     }
     
     private func setupTagStackView(_ tags: [String]) {
+        tagStackView.arrangedSubviews.forEach { view in
+            NSLayoutConstraint.deactivate(self.constraints.filter({ $0.firstItem === view || $0.secondItem === view }))
+            view.removeFromSuperview()
+        }
         let tagViews = self.configureTagViews(tags)
         self.tagStackView.isHidden = tagViews.isEmpty
         tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
@@ -253,5 +263,29 @@ extension HomeOtherSpeechBubbleView {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    private func bind() {
+        handButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard let info = owner.homeSpeechInfo else { return }
+                owner.delegate?.likeButtonDidTap(id: info.id, userLiked: info.userLiked )
+            })
+            .disposed(by: disposeBag)
+        
+        commentButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.commentButtonDidTap()
+            })
+            .disposed(by: disposeBag)
+        
+        shareButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.shareButtonDidTap()
+            })
+            .disposed(by: disposeBag)
     }
 }

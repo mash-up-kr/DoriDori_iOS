@@ -11,34 +11,42 @@ import ReactorKit
 final class HomeViewModel: Reactor {
     
     enum Action {
-        case requestHeaderViewData
-        case locationCellDidTap(Bool)
+        case reqeustHomeData
+        case like(id: String)
+        case dislike(id: String)
     }
     
     enum Mutation {
-        case setLocationCollectionViewReload(Bool)
-        case setLocationModels([MyWard])
+        case setHomeCollectionViewReload(Bool)
+        case setHomeModels(HomeSpeechs)
+        case setHomeEmptyState(Bool)
+        case setWardTitleLabel(String)
     }
     
     struct State {
-        var lactaionListModel: [MyWard] = []
-        @Pulse var locationCollectionViewNeedReload: Bool = false
+        var homeSpeechModel: HomeSpeechs?
+        var wardTitle: String = ""
+        @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
+        @Pulse var homeEmptyState: Bool = false
     }
 
     let initialState: State = State()
     let repository: HomeRepositoryRequestable
-
+    var homeListNumberOfModel: Int { currentState.homeSpeechModel?.homeSpeech.count ?? 0 }
+    
     init(repository: HomeRepositoryRequestable) {
         self.repository = repository
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case.requestHeaderViewData:
-            return requestHeaderViewData()
-        case .locationCellDidTap(_):
-            return .empty()
+        case .reqeustHomeData:
+            return requestHomeData()
+        case let .like(id):
+            return like(id: id)
+        case let .dislike(id: id):
+            return dislike(id: id)
         }
     }
 
@@ -46,22 +54,48 @@ final class HomeViewModel: Reactor {
         var newState = state
         
         switch mutation {
-        case let .setLocationCollectionViewReload(locationCollectionViewNeedReload):
-            newState.locationCollectionViewNeedReload = locationCollectionViewNeedReload
-        case let .setLocationModels(models):
-            newState.lactaionListModel = models
+        case let .setHomeCollectionViewReload(homeCollectionViewNeedReload):
+            newState.homeCollectionViewNeedReload = homeCollectionViewNeedReload
+        case let .setHomeModels(models):
+            newState.homeSpeechModel = models
+        case let .setHomeEmptyState(homeEmptyState):
+            newState.homeEmptyState = homeEmptyState
+        case let .setWardTitleLabel(title):
+            newState.wardTitle = title
         }
+        
         return newState
     }
     
-    private func requestHeaderViewData() -> Observable<Mutation> {
-        repository.requestHomeHeaderData()
+    private func requestHomeData() -> Observable<Mutation> {
+        repository.requestHomeData(lastId: nil, latitude: 37.497175, longitude: 127.027926, meterDistance: 1000, size: 20)
             .flatMap { models -> Observable<Mutation> in
-                .concat([
-                    .just(.setLocationModels(models)),
-                    .just(.setLocationCollectionViewReload(true))
+                if models.homeSpeech.isEmpty {
+                    return .just(.setHomeEmptyState(true))
+                }
+                let wardTitle = models.homeSpeech.first?.representativeAddress ?? ""
+                return .concat([
+                    .just(.setHomeModels(models)),
+                    .just(.setHomeEmptyState(false)),
+                    .just(.setWardTitleLabel(wardTitle)),
+                    .just(.setHomeCollectionViewReload(true))
                 ])
             }
-            
+    }
+    
+    private func like(id: String) -> Observable<Mutation> {
+        repository.like(id: id)
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
+            }
+    }
+    
+    private func dislike(id: String) -> Observable<Mutation> {
+        repository.dislike(id: id)
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
+            }
     }
 }

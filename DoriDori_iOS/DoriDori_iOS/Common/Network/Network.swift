@@ -36,6 +36,9 @@ struct Network {
         return Observable<Model>.create { observer in
             var headers: HTTPHeaders?
             var refreshToken: RefreshToken?
+            headers = [
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE3NTQyMzE0MTQsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.qYld9Je775prztT4oGWZ-4FDYg27TVJ24h1mQZG0fiE"
+            ]
             if let authentication = self.fetchAuthentication() {
                 headers = [
                     "Authorization": "Bearer \(authentication.accessToken)"
@@ -124,7 +127,9 @@ extension Network {
             if isSuccess {
                 if let data = response.data {
                     observer.onNext(data)
-                } else { observer.onError(DoriDoriError.noData) }
+                } else {
+                    observer.onError(DoriDoriError.noData)
+                }
             } else {
                 if let errModel = response.error {
                     if errModel.code == DoriDoriError.TOKEN_EXPIRED.rawValue {

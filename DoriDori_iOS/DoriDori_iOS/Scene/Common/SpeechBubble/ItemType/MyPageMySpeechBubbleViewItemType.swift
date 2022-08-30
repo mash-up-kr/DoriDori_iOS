@@ -15,3 +15,5 @@ protocol MyPageMySpeechBubbleViewItemType {
     var updatedTime: Int { get }
     var likeCount: Int { get }
 }
+
+protocol MyPageBubbleItemType { }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+import RxSwift
 
 enum WardState {
     case currentLocation(location: String)
@@ -66,27 +66,31 @@ final class HomeHeaderView: UIView {
         return collectionView
     }()
     
-    private let hotLocatinContainerView: UIView = {
+    private let locationRangeContainerView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 4
         return view
     }()
     
-    private let hotLocationView: UIImageView = {
-        let imageView: UIImageView = UIImageView()
-        imageView.image = UIImage(named: "hotLocation")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    let locationRangeButton: UIButton = UIButton()
     
-    private let hotLocationLabel: UILabel = {
+    let locationRangeLabel: UILabel = {
         let label: UILabel = UILabel()
+        label.font = UIFont.setKRFont(weight: .bold, size: 14)
+        label.text = "1000M"
         label.textColor = .white
-        label.text = "지금 강남동이 핫🔥해요!!"
-        label.font = UIFont.setKRFont(weight: .regular, size: 14)
         return label
     }()
     
+    private let locationRangeImageView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.image = UIImage(named: "location")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -106,9 +110,11 @@ final class HomeHeaderView: UIView {
         addSubview(wardImageView)
         addSubview(wardTitleLabel)
         addSubview(locationCollectionView)
-        addSubview(hotLocatinContainerView)
-        hotLocatinContainerView.addSubview(hotLocationView)
-        hotLocatinContainerView.addSubview(hotLocationLabel)
+        addSubview(locationRangeContainerView)
+        
+        locationRangeContainerView.addSubview(locationRangeLabel)
+        locationRangeContainerView.addSubview(locationRangeImageView)
+        locationRangeContainerView.addSubview(locationRangeButton)
     }
     
     private func setupConstraints() {
@@ -133,27 +139,22 @@ final class HomeHeaderView: UIView {
             $0.height.equalTo(34)
         }
         
-        locationCollectionView.snp.makeConstraints {
+        locationRangeContainerView.snp.makeConstraints {
             $0.top.equalTo(wardTitleLabel.snp.bottom).inset(-16)
             $0.leading.equalTo(wardTitleLabel.snp.leading)
-            $0.trailing.equalToSuperview()
             $0.height.equalTo(34)
+            $0.width.equalTo(83)
         }
         
-        hotLocatinContainerView.snp.makeConstraints {
-            $0.top.equalTo(locationCollectionView.snp.bottom).inset(-20)
-            $0.leading.equalToSuperview().inset(30)
-            $0.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(40)
+        locationRangeLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(12)
         }
         
-        hotLocationView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        hotLocationLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(8)
-            $0.leading.equalToSuperview().inset(16)
+        locationRangeImageView.snp.makeConstraints {
+            $0.centerY.equalTo(locationRangeLabel)
+            $0.leading.equalTo(locationRangeLabel.snp.trailing).offset(6)
+            $0.size.equalTo(12).priority(999)
         }
     }
 }
