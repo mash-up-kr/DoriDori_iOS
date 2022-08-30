@@ -25,7 +25,8 @@ final class SettingCoordinator: SettingCoordinatable {
     deinit { debugPrint("\(self) deinit") }
     
     func start() {
-        let settingReactor = SettingReactor()
+        let settingRepository = SettingRepsotiory()
+        let settingReactor = SettingReactor(settingRepository: settingRepository)
         let settingViewController = SettingViewController(
             settingReactor: settingReactor,
             coordinator: self

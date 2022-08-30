@@ -94,6 +94,13 @@ final class SettingViewController: UIViewController, View {
         reactor.pulse(\.$settingSections)
             .bind(to: self.settingItems)
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$showAlert)
+            .bind { model in
+                guard let model = model else { return }
+                AlertViewController(model: model).show()
+            }.disposed(by: self.disposeBag)
+            
     }
 }
 

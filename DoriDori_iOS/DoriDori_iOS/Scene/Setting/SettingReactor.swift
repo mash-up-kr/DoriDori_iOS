@@ -7,32 +7,40 @@
 
 import ReactorKit
 import Foundation
+import UIKit
 
 final class SettingReactor: Reactor {
     
     enum Action {
         case viewDidLoad
         case didTap(indexPath: IndexPath)
+        case didTapDenyCancel
+        case didTapWithdraw
     }
     
     enum Mutation {
         case setSettingSections
         case didTap(item: SettingItem)
+        case showAlertMu(model: AlertModel?)
+        case shouldDismissPresentedViewController
     }
     
     struct State {
         @Pulse var settingSections: [SettingSectionModel]
         @Pulse var navigateWeb: DoriDoriWeb? = nil
+        @Pulse var showAlert: AlertModel?
+        @Pulse var shouldDismissPresentedViewController: Void?
     }
     
     // MARK: - Properties
-    
+    private let settingRepository: SettingRequestable
     var initialState: State
     
     // MARK: - Init
     
-    init() {
+    init(settingRepository: SettingRequestable) {
         self.initialState = State(settingSections: [])
+        self.settingRepository = settingRepository
     }
     
     deinit { debugPrint("\(self) deinit") }
@@ -45,7 +53,24 @@ final class SettingReactor: Reactor {
             return .just(.setSettingSections)
         case .didTap(let indexPath):
             guard let settingItem = self.currentState.settingSections[safe: indexPath.section]?.settingItems[safe: indexPath.item] else { return .empty() }
-            return .just(.didTap(item: settingItem))
+            if settingItem == .withdraw {
+                // TODO: 여기서 알랏 만들어서 확인일때만 API 쏜다 withdrawUser()
+                let model = AlertModel(title: "도리도리의 계정을 지웁니다",
+                                       message: "작성한 질문, 댓글은 삭제되지 않아요!",
+                                       normalAction: AlertAction(title: "취소", action: {
+                    self.action.onNext(.didTapDenyCancel)
+                }),
+                                       emphasisAction: AlertAction(title: "탈퇴", action: {
+                    self.action.onNext(.didTapWithdraw)
+                }))
+                return .just(.showAlertMu(model: model))
+            }
+            else { return .just(.didTap(item: settingItem)) }
+            
+        case .didTapDenyCancel:
+            return .just(.shouldDismissPresentedViewController)
+        case .didTapWithdraw:
+            return withdrawUser()
         }
     }
     
@@ -70,7 +95,6 @@ final class SettingReactor: Reactor {
                 ])
             ]
             _state.settingSections = settingSections
-            
         case .didTap(let item):
             switch item {
             case .myLevel: _state.navigateWeb = .myLevel
@@ -81,7 +105,26 @@ final class SettingReactor: Reactor {
             case .openSource: _state.navigateWeb = .openSource
             default: break
             }
+            
+        case .showAlertMu(model: let model):
+            _state.showAlert = model
+        case .shouldDismissPresentedViewController:
+            _state.shouldDismissPresentedViewController = ()
         }
         return _state
+    }
+    
+}
+
+extension SettingReactor {
+    private func withdrawUser() -> Observable<Mutation> {
+        return self.settingRepository.userWithdraw()
+            .catch { error in
+                print(error)
+                return .empty()
+            }.observe(on: MainScheduler.instance)
+            .flatMapLatest { withdraw -> Observable<Mutation> in
+                return .just(.showAlertMu(model: nil))
+            }
     }
 }
