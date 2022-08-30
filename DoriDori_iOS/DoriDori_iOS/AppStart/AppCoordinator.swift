@@ -22,11 +22,6 @@ final class AppCoordinator {
         let viewController: UINavigationController
 
         switch tab {
-        // TODO: 각 VC에서 자신의 Coordinator 생성해서 주입해줘야 됨.
-        case .notification:
-            let coordinator = WebViewCoordinator(navigationController: UINavigationController(), type: .questionDetail(id: "63063e418661dd2541ce8e10"), navigateStyle: .present)
-            let navigationController = UINavigationController(rootViewController: NavigationWebViewController(type: .questionDetail(id: "63063e418661dd2541ce8e10"), coordinator: coordinator))
-            viewController = navigationController
         case .home:
             let homeViewController = HomeViewController()
             let navigationController = UINavigationController(rootViewController: homeViewController)

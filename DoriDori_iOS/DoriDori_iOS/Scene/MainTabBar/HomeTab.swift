@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 enum HomeTabType: CaseIterable {
-    case notification
     case home
     case myPage
 }
@@ -21,10 +20,8 @@ extension HomeTabType {
     
     var tabImage: UIImage? {
         switch self {
-        case .notification:
-            return UIImage(named: "NotificationTab")?.withTintColor(.gray700)
         case .home:
-            return UIImage(named: "HomeTab")?.withTintColor(.gray700)
+            return UIImage(named: "home")?.withTintColor(.gray700)
         case .myPage:
             return UIImage(named: "MyPageTab")?.withTintColor(.gray700)
         }
@@ -32,10 +29,8 @@ extension HomeTabType {
     
     var selectedImage: UIImage? {
         switch self {
-        case .notification:
-            return UIImage(systemName: "NotificationTab")?.withTintColor(.lime300)
         case .home:
-            return UIImage(systemName: "HomeTab")
+            return UIImage(systemName: "home")
         case .myPage:
             return UIImage(systemName: "MyPageTab")
         }
