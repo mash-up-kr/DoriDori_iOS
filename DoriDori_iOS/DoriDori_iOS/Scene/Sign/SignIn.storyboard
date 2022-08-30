@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeMadori" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-YX-etJ">
-                                <rect key="frame" x="22.666666666666657" y="260.33333333333331" width="330" height="259.99999999999994"/>
+                                <rect key="frame" x="22.666666666666657" y="194.33333333333337" width="330" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="664-ge-LWN"/>
                                     <constraint firstAttribute="width" constant="330" id="eEK-A6-GJS"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="QI1-1Z-SSM" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="6vR-nA-Ioq"/>
                             <constraint firstItem="CjZ-em-D0Z" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="ADC-Jt-Fsd"/>
                             <constraint firstAttribute="bottom" secondItem="CjZ-em-D0Z" secondAttribute="bottom" constant="54" id="B5Z-Lx-XzJ"/>
-                            <constraint firstItem="3q1-YX-etJ" firstAttribute="top" secondItem="QI1-1Z-SSM" secondAttribute="bottom" constant="110" id="OYB-9a-YrI"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="top" secondItem="QI1-1Z-SSM" secondAttribute="bottom" constant="44" id="OYB-9a-YrI"/>
                             <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="QI1-1Z-SSM" secondAttribute="trailing" constant="30" id="RP4-c3-9yp"/>
                             <constraint firstItem="3q1-YX-etJ" firstAttribute="centerX" secondItem="BNZ-bO-rhc" secondAttribute="centerX" id="YgB-mM-KrM"/>
                             <constraint firstItem="QI1-1Z-SSM" firstAttribute="top" secondItem="HgA-Aw-ocO" secondAttribute="top" constant="46" id="xL1-c0-cDD"/>
@@ -613,7 +613,7 @@
     </scenes>
     <resources>
         <image name="checkbox_outline" width="20" height="20"/>
-        <image name="homeMadori" width="990" height="780"/>
+        <image name="homeMadori" width="330" height="260"/>
         <namedColor name="darkGray">
             <color red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
