@@ -55,13 +55,16 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         return imageView
     }()
     private let levelView = LevelView()
-    private let speechBubble = MyPageOtherSpeechBubbleView()
-    
+    private lazy var speechBubble = MyPageOtherSpeechBubbleView(delegate: self)
+    private let didTapComment: PublishRelay<Void>
+    private let didTapDeny: PublishRelay<Void>
     private var disposeBag = DisposeBag()
     
     // MARK: Init
     
     override init(frame: CGRect) {
+        self.didTapComment = .init()
+        self.didTapDeny = .init()
         super.init(frame: frame)
         self.setupLayouts()
     }
@@ -75,8 +78,8 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         self.disposeBag = .init()
     }
     
-    func configure(_ item: MyPageOtherSpeechBubbleItemType) {
-        self.speechBubble.configure(item)
+    func configure(_ item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) {
+        self.speechBubble.configure(item, shouldHideButtonstackView: shouldHideButtonstackView)
         if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
             self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
             self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)
@@ -86,17 +89,36 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         }
     }
     
-    func bindAction(didTapProfile: PublishRelay<IndexPath>, at indexPath: IndexPath) {
+    func bindAction(
+        didTapProfile: PublishRelay<IndexPath>,
+        didTapComment: PublishRelay<IndexPath>? = nil,
+        didTapDeny: PublishRelay<IndexPath>? = nil,
+        at indexPath: IndexPath
+    ) {
         self.profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in return indexPath }
             .bind(to: didTapProfile)
             .disposed(by: self.disposeBag)
+        
+        self.didTapDeny
+            .map { indexPath }
+            .bind(onNext: { indexPath in
+                didTapDeny?.accept(indexPath)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.didTapComment
+            .map { indexPath }
+            .bind(onNext: { indexPath in
+                didTapComment?.accept(indexPath)
+            })
+            .disposed(by: self.disposeBag)
     }
     
-    static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType) -> CGSize {
+    static func fittingSize(width: CGFloat, item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) -> CGSize {
         let cell = MyPageOtherSpeechBubbleCell()
-        cell.configure(item)
+        cell.configure(item, shouldHideButtonstackView: shouldHideButtonstackView)
         let targetSize = CGSize(width: width,
                                 height: UIView.layoutFittingCompressedSize.height)
         return cell.contentView.systemLayoutSizeFitting(targetSize,
@@ -126,5 +148,17 @@ extension MyPageOtherSpeechBubbleCell {
             $0.leading.equalTo(self.profileImageView.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(30)
         }
+    }
+}
+
+// MARK: - MyPageOtherSpeechBubbleViewDelegate
+
+extension MyPageOtherSpeechBubbleCell: MyPageOtherSpeechBubbleViewDelegate {
+    func didTapDeny(_ speechBubbleView: MyPageOtherSpeechBubbleView) {
+        self.didTapDeny.accept(())
+    }
+    
+    func didTapComment(_ speechBubbleView: MyPageOtherSpeechBubbleView) {
+        self.didTapComment.accept(())
     }
 }

@@ -9,23 +9,25 @@ import Foundation
 import RxSwift
 
 protocol MyPageRequestable: AnyObject {
-    func fetchMyProfile(userID: UserID) -> Observable<UserInfoModel>
-    func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
+    func fetchMyProfile() -> Observable<UserInfoModel>
+    func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<AnswerCompleteModel>
     func fetchAnswerCompleteQuestions(userID: UserID, lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]>
+    func fetchReceivedQuestions(size: Int, lastQuestionID: QuestionID?) -> Observable<ReceivedQuestionModel>
+    func denyQuestion(questionID: QuestionID) -> Observable<String>
 }
 
 final class MyPageRepository: MyPageRequestable {
-    func fetchMyProfile(userID: UserID) -> Observable<UserInfoModel> {
+    func fetchMyProfile() -> Observable<UserInfoModel> {
         Network().request(
-            api: UserInfoRequest(userID: userID),
+            api: MyProfileRequest(),
             responseModel: ResponseModel<UserInfoModel>.self
         )
     }
 
-    func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<[QuestionModel]> {
+    func fetchMyAnswerCompleteQuestions(lastQuestionID: QuestionID?, size: Int) -> Observable<AnswerCompleteModel> {
         Network().request(
             api: MyAnswerCompleteRequest(lastQuestionID: lastQuestionID, size: size),
-            responseModel: ResponseModel<[QuestionModel]>.self
+            responseModel: ResponseModel<AnswerCompleteModel>.self
         )
     }
 
@@ -33,6 +35,19 @@ final class MyPageRepository: MyPageRequestable {
         Network().request(
             api: AnswerCompleteRequest(userID: userID, lastQuestionID: lastQuestionID, size: size),
             responseModel: ResponseModel<[QuestionModel]>.self
+        )
+    }
+    
+    func fetchReceivedQuestions(size: Int, lastQuestionID: QuestionID?) -> Observable<ReceivedQuestionModel> {
+        Network().request(
+            api: ReceivedQuestionRequest(size: size, lastID: lastQuestionID),
+            responseModel: ResponseModel<ReceivedQuestionModel>.self
+        )
+    }
+    func denyQuestion(questionID: QuestionID) -> Observable<String> {
+        Network().request(
+            api: QuestionDenyRequest(questionID: questionID),
+            responseModel: ResponseModel<String>.self
         )
     }
 }

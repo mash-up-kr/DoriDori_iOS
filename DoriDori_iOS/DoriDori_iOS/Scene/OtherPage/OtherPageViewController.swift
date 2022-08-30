@@ -35,16 +35,19 @@ final class OtherPageViewController: UIViewController,
     private let didTapQuestionButton: PublishRelay<Void>
     private let reactor: OtherPageReactor
     private let coordinator: OtherPageCoordinatable
+    private let contentViewController: UIViewController
     var disposeBag: DisposeBag
     
     // MARK: - LifeCycles
     
     init(
         reactor: OtherPageReactor,
-        coordinator: OtherPageCoordinatable
+        coordinator: OtherPageCoordinatable,
+        contentViewController: UIViewController
     ) {
         self.reactor = reactor
         self.coordinator = coordinator
+        self.contentViewController = contentViewController
         self.viewDidLoadStream = .init()
         self.disposeBag = .init()
         self.didTapShareButton = .init()
@@ -60,6 +63,17 @@ final class OtherPageViewController: UIViewController,
     
     deinit {
         debugPrint("\(self) deinit")
+    }
+    
+    private func setupContentViewController(_ contentViewController: UIViewController) {
+        self.addChild(contentViewController)
+        contentViewController.didMove(toParent: self)
+        self.view.addSubview(contentViewController.view)
+        
+        contentViewController.view.snp.makeConstraints {
+            $0.top.equalTo(self.profileDividerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     override func viewDidLoad() {
@@ -116,13 +130,7 @@ final class OtherPageViewController: UIViewController,
     }
 
     private func setupLayouts() {
-        let reactor = OtherProfileContentReactor(repository: OtherPageRepository(), userID: "62f8b253c9900a7cb9e90021")
-        let contentViewController = OtherProfileContentViewController(reactor: reactor, coordinator: self.coordinator)
-        
-        self.view.addSubViews(self.profileView, self.profileDividerView, contentViewController.view)
-        self.addChild(contentViewController)
-        contentViewController.didMove(toParent: self)
-        
+        self.view.addSubViews(self.profileView, self.profileDividerView)
         self.profileView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -132,10 +140,7 @@ final class OtherPageViewController: UIViewController,
             $0.height.equalTo(1)
             $0.leading.trailing.equalToSuperview()
         }
-        contentViewController.view.snp.makeConstraints {
-            $0.top.equalTo(self.profileDividerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
+//        self.setupContentViewController(self.contentViewController)
     }
     
     private func setupUI() {

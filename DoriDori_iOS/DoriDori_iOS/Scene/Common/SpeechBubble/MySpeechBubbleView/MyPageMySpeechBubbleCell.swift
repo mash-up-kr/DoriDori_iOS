@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxRelay
+import RxSwift
+import RxGesture
 
 struct MyPageMySpeechBubbleCellItem: MyPageMySpeechBubbleViewItemType,
                                      MyPageBubbleItemType {
@@ -36,10 +39,12 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
     }()
     private let levelView = LevelView()
     private let speechBubble = MyPageMySpeechBubbleView()
+    private var disposeBag: DisposeBag
     
     // MARK: - Init
     
     override init(frame: CGRect) {
+        self.disposeBag = .init()
         super.init(frame: frame)
         self.setupLayouts()
     }
@@ -50,6 +55,7 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.disposeBag = .init()
     }
     
     func configure(_ item: MyPageMySpeechBubbleCellItem) {
@@ -58,6 +64,14 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
             self.profileImageView.kf.setImage(with: imageURL)
         }
         self.levelView.configure(level: item.level)
+    }
+    
+    func bindAction(didTapProfile: PublishRelay<IndexPath>, at indexPath: IndexPath) {
+        self.profileImageView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in return indexPath }
+            .bind(to: didTapProfile)
+            .disposed(by: self.disposeBag)
     }
     
     static func fittingSize(width: CGFloat, item: MyPageMySpeechBubbleCellItem) -> CGSize {
