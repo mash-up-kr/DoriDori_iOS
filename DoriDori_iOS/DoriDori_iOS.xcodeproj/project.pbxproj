@@ -53,6 +53,15 @@
 		A24FD13428B227AE00A003D1 /* QuestionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13328B227AE00A003D1 /* QuestionReactor.swift */; };
 		A24FD13628B2325B00A003D1 /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13528B2325B00A003D1 /* QuestionRepository.swift */; };
 		A24FD13828B2336B00A003D1 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13728B2336B00A003D1 /* EmptyModel.swift */; };
+		A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16028B4B2E000A003D1 /* AlertViewController.swift */; };
+		A24FD16328B4B3ED00A003D1 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16228B4B3ED00A003D1 /* AlertAction.swift */; };
+		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
+		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
+		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
+		A24FD16628B4B49500A003D1 /* DoriDoriActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */; };
+		A24FD16828B5174A00A003D1 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */; };
+		A24FD16B28B519D900A003D1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */; };
+		A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD16C28B51A0700A003D1 /* RefreshModel.swift */; };
 		A24FD13A28B2664200A003D1 /* QuestionAtCommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */; };
 		A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */; };
 		A24FD13F28B284F900A003D1 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = A24FD13E28B284F900A003D1 /* DropDown */; };
@@ -214,6 +223,13 @@
 		A24FD13328B227AE00A003D1 /* QuestionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactor.swift; sourceTree = "<group>"; };
 		A24FD13528B2325B00A003D1 /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
 		A24FD13728B2336B00A003D1 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
+		A24FD16028B4B2E000A003D1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A24FD16228B4B3ED00A003D1 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriActivityIndicator.swift; sourceTree = "<group>"; };
+		A24FD12028B0C3CF00A003D1 /* DoriDoriToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriToastView.swift; sourceTree = "<group>"; };
+		A24FD16728B5174A00A003D1 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
+		A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		A24FD16C28B51A0700A003D1 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		A24FD13928B2664200A003D1 /* QuestionAtCommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAtCommunityRequest.swift; sourceTree = "<group>"; };
 		A24FD13B28B2676400A003D1 /* QuestionToUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionToUserRequest.swift; sourceTree = "<group>"; };
 		A24FD14528B3554000A003D1 /* MyWardListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWardListRequest.swift; sourceTree = "<group>"; };
@@ -431,6 +447,7 @@
 		A24FD0EB28A5734200A003D1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A24FD15F28B4B2CD00A003D1 /* Alert */,
 				A24FD16428B4B48A00A003D1 /* ActivityIndicator */,
 				A2F92C6A288BD1E1000340F5 /* SpeechBubble */,
 				A22FC8DC2879D7E200F33D4F /* KeywordView */,
@@ -469,6 +486,32 @@
 				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A24FD15F28B4B2CD00A003D1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16028B4B2E000A003D1 /* AlertViewController.swift */,
+				A24FD16228B4B3ED00A003D1 /* AlertAction.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		A24FD16428B4B48A00A003D1 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16528B4B49500A003D1 /* DoriDoriActivityIndicator.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		A24FD16928B519C400A003D1 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A24FD16A28B519D900A003D1 /* AuthenticationRepository.swift */,
+				A24FD16C28B51A0700A003D1 /* RefreshModel.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		A24FD12C28B213CC00A003D1 /* Question */ = {
@@ -1014,6 +1057,7 @@
 				A21188F328BD0B43008A48C0 /* WardModel.swift in Sources */,
 				A2655AE5289972D400B03AA1 /* SpeechBubbleViewTaggable.swift in Sources */,
 				A22FC8E9287A10B800F33D4F /* AnswerCompleteViewController.swift in Sources */,
+				A24FD16328B4B3ED00A003D1 /* AlertAction.swift in Sources */,
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
 				A24FD16D28B51A0700A003D1 /* RefreshModel.swift in Sources */,
@@ -1076,6 +1120,7 @@
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
+				A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */,
 				A24FD0FF28A8EA5700A003D1 /* SettingSectionModel.swift in Sources */,
 				A24FD14E28B3571200A003D1 /* AnonymousDropDownItem.swift in Sources */,
 				A21188FB28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift in Sources */,
