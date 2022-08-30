@@ -14,11 +14,13 @@ final class QuestionReceivedReactor: Reactor {
         case didTapProfile(IndexPath)
         case didTapDeny(IndexPath)
         case didTapComment(IndexPath)
+        case didSelectCell(IndexPath)
     }
     
     enum Mutation {
         case questions([MyPageOtherSpeechBubbleItemType])
         case didTapProfile(UserID)
+        case didSelectQuestion(QuestionID)
     }
     
     struct State {
@@ -82,6 +84,9 @@ final class QuestionReceivedReactor: Reactor {
             print("didTApDeny")
         case .didTapComment(let indexPath):
             print("didTapcomment")
+        case .didSelectCell(let indexPath):
+            guard let question = self.currentState.receivedQuestions[safe: indexPath.item] else { return .empty() }
+            return .just(.didSelectQuestion(question.questionID))
         }
         return .empty()
     }
@@ -93,6 +98,8 @@ final class QuestionReceivedReactor: Reactor {
             _state.receivedQuestions = questions
         case .didTapProfile(let userID):
             _state.navigateUserID = userID
+        case .didSelectQuestion(let questionID):
+            _state.navigateQuestionID = questionID
         }
         return _state
     }

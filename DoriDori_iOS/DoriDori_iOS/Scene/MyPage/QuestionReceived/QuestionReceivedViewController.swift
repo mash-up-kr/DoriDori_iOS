@@ -29,11 +29,13 @@ final class QuestionReceivedViewController: UIViewController,
     private let didTapProfile: PublishRelay<IndexPath>
     private let didTapDenyButton: PublishRelay<IndexPath>
     private let didTapCommentButton: PublishRelay<IndexPath>
+    private let didSelectCell: PublishRelay<IndexPath>
     
     init(
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.didSelectCell = .init()
         self.didTapDenyButton = .init()
         self.didTapCommentButton = .init()
         self.didTapProfile = .init()
@@ -88,6 +90,11 @@ final class QuestionReceivedViewController: UIViewController,
             })
             .disposed(by: self.disposeBag)
         
+        self.didSelectCell
+            .map { QuestionReceivedReactor.Action.didSelectCell($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$receivedQuestions)
             .bind(to: questions)
             .disposed(by: self.disposeBag)
@@ -96,6 +103,13 @@ final class QuestionReceivedViewController: UIViewController,
             .compactMap { $0 }
             .bind(with: self) { owner, userID in
                 owner.coordiantor.navigateToOtherPage(userID: userID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateQuestionID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, questionID in
+                owner.coordiantor.navigateToQuestionDetail(questionID: questionID)
             }
             .disposed(by: self.disposeBag)
     }
@@ -168,6 +182,12 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
             item: item,
             shouldHideButtonstackView: false
         )
+    }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        self.didSelectCell.accept(indexPath)
     }
 }
 
