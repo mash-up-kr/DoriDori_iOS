@@ -277,7 +277,8 @@ extension HomeOtherSpeechBubbleView {
         commentButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.delegate?.commentButtonDidTap()
+                guard let info = owner.homeSpeechInfo else { return }
+                owner.delegate?.commentButtonDidTap(postId: info.id)
             })
             .disposed(by: disposeBag)
         

@@ -86,6 +86,7 @@ final class HomeViewController: UIViewController {
             .distinctUntilChanged()
             .bind(to: homeHeaderView.wardTitleLabel.rx.text)
             .disposed(by: disposeBag)
+
     }
     
     // MARK: - Methods
@@ -116,7 +117,9 @@ final class HomeViewController: UIViewController {
     private func setup() {
         if let viewModel = viewModel {
             bind(reactor: viewModel)
-            homeCollectionViewImplement = HomeCollectionViewImplement(viewModel: viewModel)
+            // TODO: - 일단 HomeVC 생성시에 navigation 넣어줘서 강제 언래핑으로,
+            // 추후에 HomeCoordinator로 바꾸기
+            homeCollectionViewImplement = HomeCollectionViewImplement(viewModel: viewModel, naviagationController: self.navigationController!)
         }
         
         collectionView.dataSource = homeCollectionViewImplement
