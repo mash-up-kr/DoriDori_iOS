@@ -110,10 +110,7 @@ extension Network {
     
     private func fetchAuthentication() -> (accessToken: AccessToken, refreshToken: RefreshToken)? {
         guard let accessToken = UserDefaults.accessToken,
-              let refrehToken = UserDefaults.refreshToken else { return
-            
-            ("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE3NTQyMzE0MTQsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.qYld9Je775prztT4oGWZ-4FDYg27TVJ24h1mQZG0fiE", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYW5nd2lkYWUiLCJleHAiOjE2NzYyMTY2NDYsInVzZXJJZCI6IjYyZDdmNDc3NmFkOTZjNTFkNDMzMGVhMiJ9.SjS4nCB9AfiRG3v8cbYUdUIXsrJSbePZM-mIyjOBsiA")
-        }
+              let refrehToken = UserDefaults.refreshToken else { return nil }
         return (accessToken, refrehToken)
     }
 
