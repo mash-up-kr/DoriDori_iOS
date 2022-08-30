@@ -54,9 +54,10 @@ final class MyPageCoordinator: MyPageCoordinatable {
     }
     
     func navigateToOtherPage(userID: UserID) {
-        OtherPageCoordinator(
-            navigationController: self.navigationController,
-            userID: userID
-        ).start()
+//        OtherPageCoordinator(
+//            navigationController: self.navigationController,
+//            userID: userID
+//        ).start()
+        LocationAlertViewController(nibName: nil, bundle: nil).show()
     }
 }
