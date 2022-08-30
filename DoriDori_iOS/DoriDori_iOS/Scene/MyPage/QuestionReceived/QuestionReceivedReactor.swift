@@ -13,7 +13,7 @@ final class QuestionReceivedReactor: Reactor {
         case viewDidLoad
         case didTapProfile(IndexPath)
         case didTapDeny(IndexPath)
-        case didTapComment(IndexPath)
+        case comment(content: String, indexPath: IndexPath)
         case didSelectCell(IndexPath)
         case willDisplayCell(IndexPath)
         case didTapDenyCancel
@@ -29,6 +29,7 @@ final class QuestionReceivedReactor: Reactor {
         case shouldDismissPresentedViewController
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
         case didDenyQuestion([MyPageOtherSpeechBubbleItemType])
+        case toast(text: String)
     }
     
     struct State {
@@ -38,6 +39,7 @@ final class QuestionReceivedReactor: Reactor {
         @Pulse var alert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
         @Pulse var endRefreshing: Bool?
+        @Pulse var showToast: String?
     }
     
     var initialState: State
@@ -109,8 +111,17 @@ final class QuestionReceivedReactor: Reactor {
                     )
                 }
             
-        case .didTapComment(let indexPath):
-            print("didTapcomment")
+        case .comment(let content, let indexPath):
+            guard let question = self.question(at: indexPath) else { return .empty() }
+            let questionID = question.questionID
+            return self.myPageRepository.postComment(to: question.questionID, content: content, location: (127.29, 36.48))
+                .catch { error in
+                    print(error)
+                    return .empty()
+                }
+                .flatMap { _ -> Observable<Mutation> in
+                    return .just(.toast(text: "답변이 등록되었습니다"))
+                }
             
         case .didSelectCell(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
@@ -155,6 +166,8 @@ final class QuestionReceivedReactor: Reactor {
         case .endRefreshing(let questions):
             _state.receivedQuestions = questions
             _state.endRefreshing = true
+        case .toast(let text):
+            _state.showToast = text
         }
         return _state
     }

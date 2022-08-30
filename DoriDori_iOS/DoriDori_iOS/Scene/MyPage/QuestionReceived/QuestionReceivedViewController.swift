@@ -16,9 +16,35 @@ final class QuestionReceivedViewController: UIViewController,
     private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.keyboardDismissMode = .onDrag
         return collectionView
     }()
     private let refreshControl = UIRefreshControl()
+    
+    private let commentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray900
+        view.isHidden = true
+        return view
+    }()
+    
+    private let registButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("등록", for: .normal)
+        button.setTitleColor(UIColor.lime300, for: .normal)
+        button.layer.cornerRadius = 15
+        button.layer.borderColor = UIColor.lime300.cgColor
+        button.layer.borderWidth = 1
+        button.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 12)
+        return button
+    }()
+    
+    private let textField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .white
+        textField.tintColor = .lime300
+        return textField
+    }()
     
     // MARK: - Properties
     
@@ -32,11 +58,14 @@ final class QuestionReceivedViewController: UIViewController,
     private let didTapCommentButton: PublishRelay<IndexPath>
     private let didSelectCell: PublishRelay<IndexPath>
     private let willDisplayCell: PublishRelay<IndexPath>
+    private var keyboardHeight: CGFloat = .zero
+    private let didTapRegistButton: PublishRelay<IndexPath>
     
     init(
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.didTapRegistButton = .init()
         self.willDisplayCell = .init()
         self.didSelectCell = .init()
         self.didTapDenyButton = .init()
@@ -62,8 +91,25 @@ final class QuestionReceivedViewController: UIViewController,
         self.setupLayouts()
         self.bind(reactor: self.reactor)
         self.viewDidLoadStream.accept(())
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .bind(with: self) { owner, notification in
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                    let keyboardRectangle = keyboardFrame.cgRectValue
+                    let keyboardHeight = keyboardRectangle.height
+                    owner.keyboardHeight = keyboardHeight
+                }
+            }
+            .disposed(by: self.disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .bind(with: self) { owner, notification in
+                owner.textField.resignFirstResponder()
+                owner.commentView.isHidden = true
+            }
+            .disposed(by: self.disposeBag)
+        
     }
-    
     
     deinit {
         debugPrint("\(self) deinit")
@@ -87,9 +133,25 @@ final class QuestionReceivedViewController: UIViewController,
             .disposed(by: self.disposeBag)
         
         self.didTapCommentButton
-            .subscribe(onNext: { indexPath in
-                print("didTapCommentButton", indexPath)
-            })
+            .bind(with: self) { owner, _ in
+                owner.textField.becomeFirstResponder()
+                owner.textField.text = nil
+                owner.commentView.isHidden = false
+                owner.commentView.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(self.keyboardHeight)
+                }
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.textField.rx.text.orEmpty
+            .withLatestFrom(self.didTapCommentButton) { ($0, $1) }
+            .map { content, indexPath -> QuestionReceivedReactor.Action in
+                QuestionReceivedReactor.Action.comment(
+                    content: content,
+                    indexPath: indexPath
+                )
+            }
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
         self.willDisplayCell
@@ -149,6 +211,13 @@ final class QuestionReceivedViewController: UIViewController,
                 owner.refreshControl.endRefreshing()
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$showToast)
+            .compactMap { $0 }
+            .bind(with: self) { owner, toast in
+                DoriDoriToastView(text: toast).show()
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func bind() {
@@ -162,9 +231,28 @@ final class QuestionReceivedViewController: UIViewController,
     
     private func setupLayouts() {
         self.view.addSubview(self.collectionView)
+        self.commentView.addSubViews(self.textField, self.registButton)
+        self.textField.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(30)
+            $0.bottom.equalToSuperview().inset(16)
+        }
+        
+        self.registButton.snp.makeConstraints {
+            $0.top.bottom.equalTo(self.textField)
+            $0.leading.equalTo(self.textField.snp.trailing).offset(9)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.width.equalTo(47)
+        }
+        self.view.addSubview(self.commentView)
         
         self.collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        self.commentView.snp.makeConstraints {
+            $0.height.equalTo(59)
+            $0.bottom.equalToSuperview().inset(100)
+            $0.leading.trailing.equalToSuperview()
         }
     }
     
