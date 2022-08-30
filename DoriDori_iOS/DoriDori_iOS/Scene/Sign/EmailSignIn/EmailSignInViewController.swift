@@ -69,7 +69,7 @@ final class EmailSignInViewController: UIViewController {
             .bind { [weak self] _ in
                 guard let self = self?.emailTextField else { return }
                 self.errorLabel.text = "이메일 주소를 확인해주세요."
-                self.underLineView.backgroundColor = UIColor(named: "red500")
+                self.underLineView.backgroundColor = .red500
                 self.iconImageView.image = UIImage(named: "error")
             }.disposed(by: disposeBag)
         
@@ -86,7 +86,7 @@ final class EmailSignInViewController: UIViewController {
         
         output.buttonIsValid.bind { [weak self] isValid in
             self?.loginButton.isEnabled = isValid
-            self?.loginButton.backgroundColor = isValid ? UIColor(named: "lime300") : UIColor(named: "gray700")
+            self?.loginButton.backgroundColor = isValid ? .lime300 : .gray700
             let buttonTitleColor = isValid ? UIColor(named: "darkGray") : UIColor(named: "gray300")
             self?.loginButton.setTitleColor(buttonTitleColor, for: .normal)
         }.disposed(by: disposeBag)
@@ -95,11 +95,8 @@ final class EmailSignInViewController: UIViewController {
             self?.navigationController?.pushViewController(HomeViewController(), animated: true)
         }.disposed(by: disposeBag)
         
-        output.errorMessage.emit(onNext: { [weak self] str in
-            let alert = UIAlertController(title: "로그인", message: str, preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(confirmAction)
-            self?.present(alert, animated: true)
+        output.errorMessage.emit(onNext: { str in
+            DoriDoriToastView.init(text: "로그인에 실패했어요.", bgColor: .red500).show()
         }).disposed(by: disposeBag)
 
     }
