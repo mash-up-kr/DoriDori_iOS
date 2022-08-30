@@ -27,11 +27,15 @@ final class QuestionReceivedViewController: UIViewController,
     private let viewDidLoadStream: PublishRelay<Void>
     private let questions: BehaviorRelay<[MyPageOtherSpeechBubbleItemType]>
     private let didTapProfile: PublishRelay<IndexPath>
+    private let didTapDenyButton: PublishRelay<IndexPath>
+    private let didTapCommentButton: PublishRelay<IndexPath>
     
     init(
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.didTapDenyButton = .init()
+        self.didTapCommentButton = .init()
         self.didTapProfile = .init()
         self.questions = .init(value: [])
         self.viewDidLoadStream = .init()
@@ -67,8 +71,32 @@ final class QuestionReceivedViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapProfile
+            .map { QuestionReceivedReactor.Action.didTapProfile($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        self.didTapDenyButton
+            .subscribe(onNext: { indexPath in
+                print("didTapDenyButton", indexPath)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.didTapCommentButton
+            .subscribe(onNext: { indexPath in
+                print("didTapCommentButton", indexPath)
+            })
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$receivedQuestions)
             .bind(to: questions)
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$navigateUserID)
+            .compactMap { $0 }
+            .bind(with: self) { owner, userID in
+                owner.coordiantor.navigateToOtherPage(userID: userID)
+            }
             .disposed(by: self.disposeBag)
     }
     
@@ -114,7 +142,12 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
         }
         let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
         cell.configure(item, shouldHideButtonstackView: false)
-        cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+        cell.bindAction(
+            didTapProfile: self.didTapProfile,
+            didTapComment: self.didTapCommentButton,
+            didTapDeny: self.didTapDenyButton,
+            at: indexPath
+        )
         return cell
     }
     

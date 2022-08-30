@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol MyPageOtherSpeechBubbleViewDelegate: AnyObject {
+    func didTapDeny(_ speechBubbleView: MyPageOtherSpeechBubbleView)
+    func didTapComment(_ speechBubbleView: MyPageOtherSpeechBubbleView)
+}
 
 final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
                                          SpeechBubbleViewType,
@@ -86,7 +92,7 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         view.backgroundColor = .gray700
         return view
     }()
-    private let refuseButton: UIButton = {
+    private let denyButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "refuse"), for: .normal)
         button.setTitle("거절하기", for: .normal)
@@ -104,19 +110,26 @@ final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
         return stackView
     }()
     
+    weak var delegate: MyPageOtherSpeechBubbleViewDelegate?
+    private let disposeBag: DisposeBag
+    
     // MARK: - Init
     
-    override init(
+    init(
         borderWidth: CGFloat = 1,
         borderColor: UIColor = .gray900,
-        backgroundColor: UIColor = .gray900
+        backgroundColor: UIColor = .gray900,
+        delegate: MyPageOtherSpeechBubbleViewDelegate?
     ) {
+        self.disposeBag = .init()
+        self.delegate = delegate
         super.init(
             borderWidth: borderWidth,
             borderColor: borderColor,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        self.bind()
     }
     
     required init?(coder: NSCoder) {
@@ -144,6 +157,20 @@ extension MyPageOtherSpeechBubbleView {
         self.tagStackView.isHidden = tagViews.isEmpty
         tagViews.forEach(self.tagStackView.addArrangedSubview(_:))
     }
+    
+    private func bind() {
+        self.commentButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.delegate?.didTapComment(owner)
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.denyButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.delegate?.didTapDeny(owner)
+            }
+            .disposed(by: self.disposeBag)
+    }
 }
 
 // MARK: - Layouts
@@ -152,7 +179,7 @@ extension MyPageOtherSpeechBubbleView {
     
     private func setupLayouts() {
         self.locationTimeStackView.addArrangedSubViews(self.locationLabel, self.verticalSeperatedView, self.updatedTimeLabel)
-        self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.refuseButton)
+        self.buttonStackView.addArrangedSubViews(self.commentButton, self.buttonSeperatedView, self.denyButton)
         self.addSubViews(
             self.nameLabel,
             self.moreButton,
@@ -168,7 +195,7 @@ extension MyPageOtherSpeechBubbleView {
             $0.height.equalTo(24)
             $0.width.equalTo(1)
         }
-        self.refuseButton.snp.makeConstraints { $0.height.equalTo(40) }
+        self.denyButton.snp.makeConstraints { $0.height.equalTo(40) }
         self.locationLabel.snp.makeConstraints { $0.height.equalTo(16) }
         self.verticalSeperatedView.snp.makeConstraints {
             $0.height.equalTo(10)
