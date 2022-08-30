@@ -18,6 +18,7 @@ final class QuestionReceivedViewController: UIViewController,
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Properties
     
@@ -94,6 +95,11 @@ final class QuestionReceivedViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.refreshControl.rx.controlEvent(.valueChanged)
+            .map { QuestionReceivedReactor.Action.didRefresh }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$receivedQuestions)
             .bind(to: questions)
             .disposed(by: self.disposeBag)
@@ -127,6 +133,15 @@ final class QuestionReceivedViewController: UIViewController,
                 owner.dismiss(animated: true)
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$endRefreshing)
+            .compactMap { $0 }
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.refreshControl.endRefreshing()
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func bind() {
@@ -150,6 +165,8 @@ final class QuestionReceivedViewController: UIViewController,
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MyPageOtherSpeechBubbleCell.self)
+        collectionView.refreshControl = self.refreshControl
+        self.refreshControl.tintColor = .lime300
     }
 }
 
