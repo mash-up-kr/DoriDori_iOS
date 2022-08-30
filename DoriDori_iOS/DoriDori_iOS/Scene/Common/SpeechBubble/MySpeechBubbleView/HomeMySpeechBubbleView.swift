@@ -168,12 +168,16 @@ extension HomeMySpeechBubbleView {
     func configure(_ item: HomeSpeechInfo) {
         homeSpeechInfo = item
         self.locationLabel.text = item.representativeAddress
-        self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
         self.userNameLabel.text = item.user.nickname
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.handButton)
         self.setupCommentButton(item.commentCount, at: self.commentButton)
         self.setupTagStackView(item.user.tags)
+        
+        guard let updatedTimeText = DoriDoriDateFormatter(dateString: item.updatedAt).createdAtText() else {
+            return
+        }
+        self.updatedTimeLabel.text = updatedTimeText
     }
     
     private func setupTagStackView(_ tags: [String]) {
