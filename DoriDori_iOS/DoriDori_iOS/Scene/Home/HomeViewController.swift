@@ -29,11 +29,7 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
-    private let homeEmptyView: HomeEmptyView = {
-        let emptyView: HomeEmptyView = HomeEmptyView()
-        emptyView.backgroundColor = .red
-        return emptyView
-    }()
+    private let homeEmptyView: DoriDoriEmptyView = DoriDoriEmptyView()
     
     private let homeWriteButton: UIButton = {
         let button: UIButton = UIButton()
@@ -122,8 +118,7 @@ final class HomeViewController: UIViewController {
         }
         
         homeEmptyView.snp.makeConstraints {
-            $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.leading.trailing.bottom.equalToSuperview()
         }
         
         homeWriteButton.snp.makeConstraints {
