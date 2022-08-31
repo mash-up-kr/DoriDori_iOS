@@ -183,7 +183,6 @@ extension HomeMySpeechBubbleView {
     
     private func setupTagStackView(_ tags: [String]) {
         tagStackView.arrangedSubviews.forEach { view in
-            NSLayoutConstraint.deactivate(self.constraints.filter({ $0.firstItem === view || $0.secondItem === view }))
             view.removeFromSuperview()
         }
         let tagViews = self.configureTagViews(tags)

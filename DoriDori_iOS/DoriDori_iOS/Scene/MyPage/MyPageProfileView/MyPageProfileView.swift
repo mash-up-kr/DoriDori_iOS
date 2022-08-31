@@ -147,6 +147,10 @@ final class MyPageProfileView: UIView {
 extension MyPageProfileView {
 
     private func setupTagViews(tags: [String]) {
+        tagStackView.arrangedSubviews.forEach { view in
+            view.removeFromSuperview()
+        }
+        
         tags.forEach { tag in
             let keywordView = KeywordView()
             keywordView.configure(title: tag)
