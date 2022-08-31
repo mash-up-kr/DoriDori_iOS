@@ -16,11 +16,24 @@ struct SchemeExecuter {
     }
     
     func execute() {
+        
+        guard let navigation = UIViewController.topViewController()?.navigationController as? UINavigationController else {
+            fatalError("can not find navigaion controller")
+        }
+        
         switch schemeType {
         case let .question(userId):
-            print("id: \(userId)")
-        case .mypage_other:
-            print("MYPAGE_OTHER")
+            print("userId: \(userId)")
+            QuestionCoordinator(
+                navigationController: navigation,
+                questionType: .user(userID: userId)
+            ).start()
+        case .mypage_other(let userID):
+            print("userId", userID)
+            OtherPageCoordinator(
+                navigationController: navigation,
+                userID: userID
+            ).start()
         }
     }
     
