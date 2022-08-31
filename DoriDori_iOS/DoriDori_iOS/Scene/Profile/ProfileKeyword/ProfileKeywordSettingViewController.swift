@@ -94,7 +94,9 @@ final class ProfileKeywordSettingViewController: UIViewController {
         output.profileOutput.drive(onNext: { [weak self] _ in
             // TODO: 위치정보 허락 여부
             self?.keywordTextField.textField.resignFirstResponder()
-            self?.navigationController?.pushViewController(HomeViewController(), animated: true)
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+                  var window = sceneDelegate.window else { return }
+            window = CompositionRoot.resolve(window: window, appStart: .home).window
         }).disposed(by: disposeBag)
         
     }

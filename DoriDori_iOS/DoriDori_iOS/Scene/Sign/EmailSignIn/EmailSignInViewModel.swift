@@ -23,7 +23,7 @@ final class EmailSignInViewModel: ViewModelProtocol {
         let buttonIsValid: Observable<Bool>
         let emailIsValid: Observable<Bool>
         let passwordIsValid: Observable<Bool>
-        let signIn: Observable<Void>
+        let signIn: Observable<TokenData>
         let errorMessage: Signal<String>
     }
     
@@ -44,7 +44,7 @@ final class EmailSignInViewModel: ViewModelProtocol {
         
         let errorRelay = PublishRelay<String>()
         let signIn = input.loginButtonTap.withLatestFrom(Observable.combineLatest(input.email, input.password) { ($0, $1) })
-            .flatMapLatest { [weak self] email, password -> Observable<Void> in
+            .flatMapLatest { [weak self] email, password -> Observable<TokenData> in
                 guard let self = self else { return .empty() }
                 return self.repository.requestLogin(email: email, loginType: "BASIC", password: password)
                     .catch { error in
@@ -56,9 +56,8 @@ final class EmailSignInViewModel: ViewModelProtocol {
                             errorRelay.accept(errorMsg)
                         }
                         return .empty()
-                    }.map({ _ in
-                        return
-                    })}.observe(on: MainScheduler.instance)
+                    }
+            }.observe(on: MainScheduler.instance)
                 
         return Output(buttonIsValid: buttonIsValid, emailIsValid: emailIsValid, passwordIsValid: passwordIsValid, signIn: signIn, errorMessage: errorRelay.asSignal())
     }
