@@ -34,6 +34,12 @@ final class HomeViewController: UIViewController {
         emptyView.backgroundColor = .red
         return emptyView
     }()
+    
+    private let homeWriteButton: UIButton = {
+        let button: UIButton = UIButton()
+        button.setImage(UIImage(named: "wardWrite"), for: .normal)
+        return button
+    }()
 
     private var homeCollectionViewImplement: HomeCollectionViewImplement?
 
@@ -86,7 +92,13 @@ final class HomeViewController: UIViewController {
             .distinctUntilChanged()
             .bind(to: homeHeaderView.wardTitleLabel.rx.text)
             .disposed(by: disposeBag)
-
+        
+        homeWriteButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.writeButtonDidTap()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Methods
@@ -94,6 +106,7 @@ final class HomeViewController: UIViewController {
         view.addSubview(homeHeaderView)
         view.addSubview(collectionView)
         view.addSubview(homeEmptyView)
+        view.addSubview(homeWriteButton)
     }
     
     private func setupConstrinats() {
@@ -112,6 +125,21 @@ final class HomeViewController: UIViewController {
             $0.top.equalTo(homeHeaderView.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        
+        homeWriteButton.snp.makeConstraints {
+            let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 0
+            $0.bottom.equalToSuperview().inset(tabBarHeight + 21)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.size.equalTo(54)
+        }
+    }
+    
+    private func writeButtonDidTap() {
+        // TODO: - 강제 언래핑 삭제
+        QuestionCoordinator(
+            navigationController: self.navigationController!,
+            questionType: .community
+        ).start()
     }
     
     private func setup() {

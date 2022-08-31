@@ -25,6 +25,7 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "more"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let userNameLabel: UILabel = {
