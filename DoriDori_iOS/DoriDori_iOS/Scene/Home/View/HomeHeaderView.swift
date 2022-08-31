@@ -71,6 +71,7 @@ final class HomeHeaderView: UIView {
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 4
+        view.isHidden = true
         return view
     }()
     
@@ -134,7 +135,7 @@ final class HomeHeaderView: UIView {
         }
         
         wardTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(homeLogoImageView.snp.bottom).inset(-32)
+            $0.top.equalTo(homeLogoImageView.snp.bottom).inset(-50)
             $0.leading.equalToSuperview().inset(30)
             $0.height.equalTo(34)
         }

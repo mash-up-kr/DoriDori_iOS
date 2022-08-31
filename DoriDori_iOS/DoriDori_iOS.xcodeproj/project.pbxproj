@@ -177,7 +177,7 @@
 		CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */; };
 		CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */; };
 		CE6A0FB328BA939C00E1E644 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A0FB228BA939C00E1E644 /* Lottie */; };
-		CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */; };
+		CE6A0FB528BA93F700E1E644 /* DoriDoriEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A0FB428BA93F700E1E644 /* DoriDoriEmptyView.swift */; };
 		CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */; };
 		CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452028ABEB6D0084B106 /* UserDefault.swift */; };
 		CE6A452428ABEB9A0084B106 /* UserDefault+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */; };
@@ -202,6 +202,9 @@
 		CEAAA5C8285A2D3300D8D3EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5C7285A2D3300D8D3EA /* RxRelay */; };
 		CEAAA5CB285A2D8700D8D3EA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CA285A2D8700D8D3EA /* Alamofire */; };
 		CEAAA5CE285A2DAB00D8D3EA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAA5CD285A2DAB00D8D3EA /* Kingfisher */; };
+		CEB113B128BE88AC00C17D7A /* HomeRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB113B028BE88AC00C17D7A /* HomeRangeViewController.swift */; };
+		CEB113B328BE88B300C17D7A /* HomeRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB113B228BE88B300C17D7A /* HomeRangeView.swift */; };
+		CEB113B728BE8DE700C17D7A /* SliderRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB113B628BE8DE700C17D7A /* SliderRangeView.swift */; };
 		CEB2656E2875E9C800B9970B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */; };
 		CEB265702875EA6800B9970B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2656F2875EA6800B9970B /* Colors.xcassets */; };
 		CECB0C3B28A2AF4D00A48D82 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB0C3A28A2AF4D00A48D82 /* HomeRepository.swift */; };
@@ -391,7 +394,7 @@
 		CE5E72BA28BE4AA5002E97B9 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		CE6A0FAC28BA2AF000E1E644 /* HomeLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLike.swift; sourceTree = "<group>"; };
 		CE6A0FAE28BA2DEF00E1E644 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
-		CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
+		CE6A0FB428BA93F700E1E644 /* DoriDoriEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriEmptyView.swift; sourceTree = "<group>"; };
 		CE6A451928ABD3B20084B106 /* HomeSpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpeechModel.swift; sourceTree = "<group>"; };
 		CE6A452028ABEB6D0084B106 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		CE6A452328ABEB9A0084B106 /* UserDefault+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Value.swift"; sourceTree = "<group>"; };
@@ -415,6 +418,9 @@
 		CEAAA5AE285A2A4D00D8D3EA /* DoriDori_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoriDori_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAAA5B2285A2A4D00D8D3EA /* DoriDori_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITests.swift; sourceTree = "<group>"; };
 		CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDori_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEB113B028BE88AC00C17D7A /* HomeRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRangeViewController.swift; sourceTree = "<group>"; };
+		CEB113B228BE88B300C17D7A /* HomeRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRangeView.swift; sourceTree = "<group>"; };
+		CEB113B628BE8DE700C17D7A /* SliderRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderRangeView.swift; sourceTree = "<group>"; };
 		CEB2656D2875E9C800B9970B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CEB2656F2875EA6800B9970B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CECB0C3A28A2AF4D00A48D82 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
@@ -1024,6 +1030,7 @@
 		CE5B13312879AEC000F10A20 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CEB113AF28BE888F00C17D7A /* HomeRange */,
 				CECB0C3D28A2BDA100A48D82 /* Model */,
 				CE5B13362879B16F00F10A20 /* View */,
 				CE5B13322879AED500F10A20 /* HomeViewController.swift */,
@@ -1040,7 +1047,7 @@
 				CE6A452528ABF59B0084B106 /* HomeCollectionViewImplement.swift */,
 				CE5B13372879B1DC00F10A20 /* HomeHeaderView.swift */,
 				CE8A535628996272005E33CC /* LocationCollectionViewCell.swift */,
-				CE6A0FB428BA93F700E1E644 /* HomeEmptyView.swift */,
+				CE6A0FB428BA93F700E1E644 /* DoriDoriEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1125,6 +1132,16 @@
 				CEAAA5B4285A2A4D00D8D3EA /* DoriDori_iOSUITestsLaunchTests.swift */,
 			);
 			path = DoriDori_iOSUITests;
+			sourceTree = "<group>";
+		};
+		CEB113AF28BE888F00C17D7A /* HomeRange */ = {
+			isa = PBXGroup;
+			children = (
+				CEB113B028BE88AC00C17D7A /* HomeRangeViewController.swift */,
+				CEB113B228BE88B300C17D7A /* HomeRangeView.swift */,
+				CEB113B628BE8DE700C17D7A /* SliderRangeView.swift */,
+			);
+			path = HomeRange;
 			sourceTree = "<group>";
 		};
 		CEB2656B2875E9B500B9970B /* Common */ = {
@@ -1392,6 +1409,7 @@
 				A2F92C6C288BD1F4000340F5 /* OtherSpeechBubbleView.swift in Sources */,
 				CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */,
 				CE5E72B628BE3991002E97B9 /* RefreshModel.swift in Sources */,
+				CEB113B128BE88AC00C17D7A /* HomeRangeViewController.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
@@ -1418,6 +1436,7 @@
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A2F92C72288C05F5000340F5 /* MyPageOtherSpeechBubbleCell.swift in Sources */,
 				A2DBFCF828BE89D100521756 /* LocationAlertViewController.swift in Sources */,
+				CEB113B728BE8DE700C17D7A /* SliderRangeView.swift in Sources */,
 				CEE7652328674750007FC892 /* MainTabBarController.swift in Sources */,
 				A24FD13228B223E400A003D1 /* DropDownView.swift in Sources */,
 				6C564FE528B91D7D00A91959 /* ProfileRepository.swift in Sources */,
@@ -1501,7 +1520,7 @@
 				A2655AE128996E4B00B03AA1 /* MyPageMySpeechBubbleViewItemType.swift in Sources */,
 				A24FD12128B0C3CF00A003D1 /* DoriDoriToastView.swift in Sources */,
 				A2CF64E528796DA5007D54DD /* Requestable.swift in Sources */,
-				CE6A0FB528BA93F700E1E644 /* HomeEmptyView.swift in Sources */,
+				CE6A0FB528BA93F700E1E644 /* DoriDoriEmptyView.swift in Sources */,
 				A24FD15C28B4AFAF00A003D1 /* LocationManager.swift in Sources */,
 				A24FD17728B5432000A003D1 /* OtherPageReactor.swift in Sources */,
 				A20A9E9E28798336000ABFBB /* UICollectionView+Extension.swift in Sources */,
@@ -1527,6 +1546,7 @@
 				CE6FF75428B1217400E4A3CD /* Scheme.swift in Sources */,
 				6C296CA028B35F9800E1BFD2 /* EmailSignInRequest.swift in Sources */,
 				A2F92C70288BF76B000340F5 /* UIStackView+Extension.swift in Sources */,
+				CEB113B328BE88B300C17D7A /* HomeRangeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

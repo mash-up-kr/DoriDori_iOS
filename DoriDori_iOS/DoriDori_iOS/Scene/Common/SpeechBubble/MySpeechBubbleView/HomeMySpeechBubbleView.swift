@@ -25,6 +25,7 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "more"), for: .normal)
+        button.isHidden = true
         return button
     }()
     private let userNameLabel: UILabel = {
@@ -168,17 +169,20 @@ extension HomeMySpeechBubbleView {
     func configure(_ item: HomeSpeechInfo) {
         homeSpeechInfo = item
         self.locationLabel.text = item.representativeAddress
-        self.updatedTimeLabel.text = "\(item.updatedAt)분 전"
         self.userNameLabel.text = item.user.nickname
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.handButton)
         self.setupCommentButton(item.commentCount, at: self.commentButton)
         self.setupTagStackView(item.user.tags)
+        
+        guard let updatedTimeText = DoriDoriDateFormatter(dateString: item.updatedAt).createdAtText() else {
+            return
+        }
+        self.updatedTimeLabel.text = updatedTimeText
     }
     
     private func setupTagStackView(_ tags: [String]) {
         tagStackView.arrangedSubviews.forEach { view in
-            NSLayoutConstraint.deactivate(self.constraints.filter({ $0.firstItem === view || $0.secondItem === view }))
             view.removeFromSuperview()
         }
         let tagViews = self.configureTagViews(tags)

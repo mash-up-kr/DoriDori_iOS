@@ -32,6 +32,7 @@ final class QuestionCoordinator: Coordinator {
             reactor: qeustionReactor,
             coordinator: self
         )
+        navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(questionViewController, animated: true)
     }
 }
