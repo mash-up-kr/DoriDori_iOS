@@ -21,8 +21,8 @@ final class SettingReactor: Reactor {
     enum Mutation {
         case setSettingSections
         case didTap(item: SettingItem)
-        case showAlertMu(model: AlertModel?)
         case shouldDismissPresentedViewController
+        case goToWelcomeViewController
     }
     
     struct State {
@@ -30,6 +30,7 @@ final class SettingReactor: Reactor {
         @Pulse var navigateWeb: DoriDoriWeb? = nil
         @Pulse var showAlert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
+        @Pulse var goToWelcomeViewController: Void?
     }
     
     // MARK: - Properties
@@ -53,20 +54,7 @@ final class SettingReactor: Reactor {
             return .just(.setSettingSections)
         case .didTap(let indexPath):
             guard let settingItem = self.currentState.settingSections[safe: indexPath.section]?.settingItems[safe: indexPath.item] else { return .empty() }
-            if settingItem == .withdraw {
-                // TODO: 여기서 알랏 만들어서 확인일때만 API 쏜다 withdrawUser()
-                let model = AlertModel(title: "도리도리의 계정을 지웁니다",
-                                       message: "작성한 질문, 댓글은 삭제되지 않아요!",
-                                       normalAction: AlertAction(title: "취소", action: {
-                    self.action.onNext(.didTapDenyCancel)
-                }),
-                                       emphasisAction: AlertAction(title: "탈퇴", action: {
-                    self.action.onNext(.didTapWithdraw)
-                }))
-                return .just(.showAlertMu(model: model))
-            }
-            else { return .just(.didTap(item: settingItem)) }
-            
+                return .just(.didTap(item: settingItem))
         case .didTapDenyCancel:
             return .just(.shouldDismissPresentedViewController)
         case .didTapWithdraw:
@@ -103,13 +91,16 @@ final class SettingReactor: Reactor {
             case .notice: _state.navigateWeb = .notice
             case .termsOfService: _state.navigateWeb = .terms
             case .openSource: _state.navigateWeb = .openSource
+            case .withdraw: _state.showAlert = AlertModel(title: "도리도리의 계정을 지웁니다",
+                                                          message: "작성한 질문, 댓글은 삭제되지 않아요!",
+                                                          normalAction: AlertAction(title: "취소", action: { self.action.onNext(.didTapDenyCancel) }),
+                                                          emphasisAction: AlertAction(title: "탈퇴", action: { self.action.onNext(.didTapWithdraw) }))
             default: break
             }
-            
-        case .showAlertMu(model: let model):
-            _state.showAlert = model
         case .shouldDismissPresentedViewController:
             _state.shouldDismissPresentedViewController = ()
+        case .goToWelcomeViewController:
+            _state.goToWelcomeViewController = ()
         }
         return _state
     }
@@ -120,11 +111,10 @@ extension SettingReactor {
     private func withdrawUser() -> Observable<Mutation> {
         return self.settingRepository.userWithdraw()
             .catch { error in
-                print(error)
                 return .empty()
             }.observe(on: MainScheduler.instance)
             .flatMapLatest { withdraw -> Observable<Mutation> in
-                return .just(.showAlertMu(model: nil))
+                return .just(.goToWelcomeViewController)
             }
     }
 }

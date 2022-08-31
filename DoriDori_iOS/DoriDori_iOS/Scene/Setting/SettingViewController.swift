@@ -96,11 +96,31 @@ final class SettingViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         reactor.pulse(\.$showAlert)
+            .compactMap { $0 }
             .bind { model in
-                guard let model = model else { return }
                 AlertViewController(model: model).show()
             }.disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$shouldDismissPresentedViewController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }.disposed(by: self.disposeBag)
             
+        
+        reactor.pulse(\.$goToWelcomeViewController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind { _ in
+                guard let access = UserDefaults.accessToken, let refresh = UserDefaults.refreshToken else { return }
+                UserDefaults.standard.removeObject(forKey: access)
+                UserDefaults.standard.removeObject(forKey: refresh)
+                _=UserDefaults.standard.dictionaryRepresentation().map {print("[UserDefaults_CleandUp]:\($0.key): \($0.value)")}
+                guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+                      var window = sceneDelegate.window else { return }
+                window = CompositionRoot.resolve(window: window, appStart: .siginIn).window
+            }.disposed(by: self.disposeBag)
     }
 }
 
