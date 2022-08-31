@@ -7,8 +7,11 @@
 
 import Foundation
 
+typealias PostID = String
+
 enum DoriDoriWeb {
     case questionDetail(id: QuestionID)
+    case postDetail(id: PostID)
     case profileSetting
     case share
     case myLevel
@@ -20,7 +23,8 @@ enum DoriDoriWeb {
     
     var path: String {
         switch self {
-        case .questionDetail(let id): return "/question-detail?questionId=\(id)"
+        case .questionDetail(let questionID): return "/question-detail?questionId=\(questionID)"
+        case .postDetail(let postID): return "/question-detail?postId=\(postID)"
         case .profileSetting: return "/setting/my-profile"
         case .share: return "/open-inquiry"
         case .myLevel: return "/my-level"

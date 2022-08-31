@@ -32,6 +32,7 @@ final class DoriDoriLocationManager: NSObject,
         let locationOb: Observable<Result<Location, DoriDoriLocationError>> = self.location.rx.didUpdateLocations
             .compactMap { $0.last?.coordinate }
             .map { (latitude: $0.latitude, longitude: $0.longitude) }
+            .do(onNext: { print("😲", $0) })
             .map { .success($0) }
         
         let errorOb: Observable<Result<Location, DoriDoriLocationError>> = Observable.merge(
