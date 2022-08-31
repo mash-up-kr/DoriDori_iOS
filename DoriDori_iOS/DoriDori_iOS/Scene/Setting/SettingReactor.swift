@@ -16,6 +16,7 @@ final class SettingReactor: Reactor {
         case didTap(indexPath: IndexPath)
         case didTapDenyCancel
         case didTapWithdraw
+        case didTapLogout
     }
     
     enum Mutation {
@@ -59,6 +60,8 @@ final class SettingReactor: Reactor {
             return .just(.shouldDismissPresentedViewController)
         case .didTapWithdraw:
             return withdrawUser()
+        case .didTapLogout:
+            return .just(.goToWelcomeViewController)
         }
     }
     
@@ -91,6 +94,10 @@ final class SettingReactor: Reactor {
             case .notice: _state.navigateWeb = .notice
             case .termsOfService: _state.navigateWeb = .terms
             case .openSource: _state.navigateWeb = .openSource
+            case .logout: _state.showAlert = AlertModel(title: "도리도리의 접속이 중요합니다.",
+                                                        message: "가입했던 계정을 기억해주세요!",
+                                                        normalAction: AlertAction(title: "취소", action: { self.action.onNext(.didTapDenyCancel) }),
+                                                        emphasisAction: AlertAction(title: "로그아웃", action: { self.action.onNext(.didTapLogout) }))
             case .withdraw: _state.showAlert = AlertModel(title: "도리도리의 계정을 지웁니다",
                                                           message: "작성한 질문, 댓글은 삭제되지 않아요!",
                                                           normalAction: AlertAction(title: "취소", action: { self.action.onNext(.didTapDenyCancel) }),

@@ -107,8 +107,7 @@ final class SettingViewController: UIViewController, View {
             .bind(with: self) { owner, _ in
                 owner.dismiss(animated: true)
             }.disposed(by: self.disposeBag)
-            
-        
+     
         reactor.pulse(\.$goToWelcomeViewController)
             .compactMap { $0 }
             .observe(on: MainScheduler.instance)
@@ -116,11 +115,13 @@ final class SettingViewController: UIViewController, View {
                 guard let access = UserDefaults.accessToken, let refresh = UserDefaults.refreshToken else { return }
                 UserDefaults.standard.removeObject(forKey: access)
                 UserDefaults.standard.removeObject(forKey: refresh)
-                _=UserDefaults.standard.dictionaryRepresentation().map {print("[UserDefaults_CleandUp]:\($0.key): \($0.value)")}
+                _=UserDefaults.standard.dictionaryRepresentation().map {print("[유저디폴트 삭제]:\($0.key): \($0.value)")}
                 guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
                       var window = sceneDelegate.window else { return }
                 window = CompositionRoot.resolve(window: window, appStart: .siginIn).window
             }.disposed(by: self.disposeBag)
+        
+        
     }
 }
 
