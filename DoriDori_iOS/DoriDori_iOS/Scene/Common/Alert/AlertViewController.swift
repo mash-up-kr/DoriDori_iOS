@@ -9,13 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct AlertModel {
-    let title: String
-        let message: String
-        let normalAction: AlertAction
-        let emphasisAction: AlertAction
-}
-
 final class AlertViewController: UIViewController {
     
     private let alertView: UIView = {

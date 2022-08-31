@@ -130,7 +130,10 @@ final class MyPageViewController: UIViewController, View {
                 tabs.forEach { tab in
                     switch tab {
                     case .questionReceived:
-                        let reactor = QuestionReceivedReactor(myPageRepository: answerCompleteRepository)
+                        let reactor = QuestionReceivedReactor(
+                            myPageRepository: answerCompleteRepository,
+                            locationManager: DoriDoriLocationManager()
+                        )
                         let vc = QuestionReceivedViewController(reactor: reactor, coordiantor: self.myPageCoordinator)
                         self.addArrangedSubContentViewController(vc)
                     case .answerComplete:

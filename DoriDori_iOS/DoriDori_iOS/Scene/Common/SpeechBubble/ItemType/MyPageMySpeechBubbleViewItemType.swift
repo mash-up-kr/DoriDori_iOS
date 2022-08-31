@@ -12,7 +12,7 @@ protocol MyPageMySpeechBubbleViewItemType {
     var userName: String { get }
     var content: String { get }
     var location: String { get }
-    var updatedTime: Int { get }
+    var updatedTime: String { get }
     var likeCount: Int { get }
 }
 
