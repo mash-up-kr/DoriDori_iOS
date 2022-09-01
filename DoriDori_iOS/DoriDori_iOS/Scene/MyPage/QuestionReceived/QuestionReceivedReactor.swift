@@ -13,7 +13,7 @@ final class QuestionReceivedReactor: Reactor {
         case viewDidLoad
         case didTapProfile(IndexPath)
         case didTapDeny(IndexPath)
-        case didTapComment(IndexPath)
+        case comment(content: String, indexPath: IndexPath)
         case didSelectCell(IndexPath)
         case willDisplayCell(IndexPath)
         case didTapDenyCancel
@@ -29,6 +29,7 @@ final class QuestionReceivedReactor: Reactor {
         case shouldDismissPresentedViewController
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
         case didDenyQuestion([MyPageOtherSpeechBubbleItemType])
+        case toast(text: String)
     }
     
     struct State {
@@ -38,20 +39,25 @@ final class QuestionReceivedReactor: Reactor {
         @Pulse var alert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
         @Pulse var endRefreshing: Bool?
+        @Pulse var showToast: String?
     }
     
     var initialState: State
     
+    private let locationManager: LocationManager
     private var lastQuestionID: QuestionID?
     private let myPageRepository: MyPageRequestable
     private var hasNext: Bool = false
     private var isRequesting: Bool = false
+    private var isFetchMore: Bool = false
     
     init(
-        myPageRepository: MyPageRequestable
+        myPageRepository: MyPageRequestable,
+        locationManager: LocationManager
     ) {
         self.myPageRepository = myPageRepository
         self.initialState = .init()
+        self.locationManager = locationManager
     }
   
     func mutate(action: Action) -> Observable<Mutation> {
@@ -62,6 +68,7 @@ final class QuestionReceivedReactor: Reactor {
         case .willDisplayCell(let indexPath):
             if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
                 if !isRequesting {
+                    self.isFetchMore = true
                     return self.fetchReceivedQuestions(
                         size: 20,
                         lastID: self.lastQuestionID
@@ -109,8 +116,38 @@ final class QuestionReceivedReactor: Reactor {
                     )
                 }
             
-        case .didTapComment(let indexPath):
-            print("didTapcomment")
+        case .comment(let content, let indexPath):
+            if content.count < 1 { return .just(.toast(text: "1글자 이상 입력해주세요")) }
+            guard let question = self.question(at: indexPath) else { return .empty() }
+            
+            return self.locationManager.getLocation()
+                .flatMapLatest { [weak self] result -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    switch result {
+                    case .success(let location):
+                        return self.myPageRepository.postComment(
+                            to: question.questionID,
+                            content: content,
+                            location: location
+                        )
+                        .catch { error in
+                            print(error)
+                            return .empty()
+                        }
+                        .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                            guard let self = self else { return .empty() }
+                            var _questions = self.currentState.receivedQuestions
+                            _questions.remove(at: indexPath.item)
+                            return .concat(
+                                .just(.toast(text: "답변이 등록되었습니다")),
+                                .just(.questions(_questions))
+                            )
+                        }
+                    case .failure(let error):
+                        debugPrint(error.errorDescription)
+                        return .empty()
+                    }
+                }
             
         case .didSelectCell(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
@@ -137,10 +174,11 @@ final class QuestionReceivedReactor: Reactor {
         var _state = state
         switch mutation {
         case .questions(let questions):
-            if _state.receivedQuestions.isEmpty {
-                _state.receivedQuestions = questions
-            } else {
+            if self.isFetchMore {
                 _state.receivedQuestions.append(contentsOf: questions)
+                self.isFetchMore = false
+            } else {
+                _state.receivedQuestions = questions
             }
         case .didDenyQuestion(let questions):
             _state.receivedQuestions = questions
@@ -155,6 +193,8 @@ final class QuestionReceivedReactor: Reactor {
         case .endRefreshing(let questions):
             _state.receivedQuestions = questions
             _state.endRefreshing = true
+        case .toast(let text):
+            _state.showToast = text
         }
         return _state
     }
@@ -173,13 +213,15 @@ extension QuestionReceivedReactor {
         guard let questions = response.questions else { return [] }
         return questions.compactMap { question -> MyPageOtherSpeechBubbleItemType? in
             guard let isAnonymousQuestion = question.anonymous else { return nil }
+            guard let createdAt = question.createdAt,
+                  let updatedTime = DoriDoriDateFormatter(dateString: createdAt).createdAtText() else { return nil }
             if isAnonymousQuestion {
                 return AnonymousMyPageSpeechBubbleCellItem(
                     userID: question.fromUser?.id ?? "",
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     tags: question.fromUser?.tags ?? [],
                     userName: question.fromUser?.nickname ?? ""
                 )
@@ -189,7 +231,7 @@ extension QuestionReceivedReactor {
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     level: question.fromUser?.level ?? 1,
                     imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
                     tags: question.fromUser?.tags ?? [],

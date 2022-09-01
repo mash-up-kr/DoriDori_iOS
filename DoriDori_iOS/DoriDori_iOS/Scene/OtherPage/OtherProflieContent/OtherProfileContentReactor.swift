@@ -90,6 +90,8 @@ final class OtherProfileContentReactor: Reactor {
         var _questions: [MyPageBubbleItemType] = []
         let questionItems = quetsions.compactMap { question -> [MyPageBubbleItemType]? in
             guard let isAnonymousQuestion = question.anonymous else { return nil }
+            guard let createdAt = question.createdAt,
+                  let updatedTime = DoriDoriDateFormatter(dateString: createdAt).createdAtText() else { return nil }
             let otherSpeechBubbleItem: MyPageOtherSpeechBubbleItemType
             if isAnonymousQuestion {
                 otherSpeechBubbleItem = AnonymousMyPageSpeechBubbleCellItem(
@@ -97,7 +99,7 @@ final class OtherProfileContentReactor: Reactor {
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     tags: question.fromUser?.tags ?? [],
                     userName: question.fromUser?.nickname ?? ""
                 )
@@ -107,14 +109,15 @@ final class OtherProfileContentReactor: Reactor {
                     questionID: question.id ?? "",
                     content: question.content ?? "",
                     location: question.representativeAddress ?? "",
-                    updatedTime: 1,
+                    updatedTime: updatedTime,
                     level: question.fromUser?.level ?? 1,
                     imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
                     tags: question.fromUser?.tags ?? [],
                     userName: question.fromUser?.nickname ?? ""
                 )
             }
-
+            guard let createdAt = question.answer?.createdAt,
+                  let updatedTime = DoriDoriDateFormatter(dateString: createdAt).createdAtText() else { return nil }
             let mySpeechBubbleItem = MyPageMySpeechBubbleCellItem(
                 userID: question.toUser?.id ?? "",
                 questionID: question.answer?.id ?? "",
@@ -122,7 +125,7 @@ final class OtherProfileContentReactor: Reactor {
                 userName: question.answer?.user?.nickname ?? "",
                 content: question.answer?.content ?? "",
                 location: question.answer?.representativeAddress ?? "",
-                updatedTime: 1,
+                updatedTime: updatedTime,
                 likeCount: question.answer?.likeCount ?? 0,
                 profileImageURL: URL(string: question.answer?.user?.profileImageURL ?? ""),
                 level: question.answer?.user?.level ?? 1
