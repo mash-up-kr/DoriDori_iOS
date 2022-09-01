@@ -16,7 +16,9 @@ final class HomeViewController: UIViewController {
     var disposeBag = DisposeBag()
      
     // MARK: - UIView
-    let homeHeaderView: HomeHeaderView = HomeHeaderView()
+    
+    // TODO: - 1.0.1 이후 수정 필요
+    lazy var homeHeaderView: HomeHeaderView = HomeHeaderView(navigationController: self.navigationController!)
     private var viewModel: HomeViewModel?
     
     private let collectionView: UICollectionView = {
@@ -43,7 +45,7 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        navigationController?.navigationBar.isHidden = true
         collectionView.isHidden = true
         setupViews()
         setupConstrinats()
@@ -127,7 +129,8 @@ final class HomeViewController: UIViewController {
         }
         
         homeEmptyView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(homeHeaderView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         homeWriteButton.snp.makeConstraints {

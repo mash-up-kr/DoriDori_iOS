@@ -26,6 +26,8 @@ final class HomeHeaderView: UIView {
     
     // MARK: - Variable
     var wardState: WardState?
+    private let navigationController: UINavigationController
+    private let disposeBag = DisposeBag()
     
     // MARK: - UIView
     private let homeLogoImageView: UIImageView = {
@@ -35,6 +37,12 @@ final class HomeHeaderView: UIView {
         return imageView
     }()
     
+    private let makeWardContainerView: UIView = {
+        let view: UIView = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     private let wardDescriptionImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "makeWard")
@@ -42,10 +50,12 @@ final class HomeHeaderView: UIView {
         return imageView
     }()
     
+    private let makeWardButton: UIButton = UIButton()
+    
     private let wardImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "ward")
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -92,11 +102,12 @@ final class HomeHeaderView: UIView {
         return imageView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        super.init(frame: .zero)
         setupViews()
         setupConstraints()
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -107,11 +118,15 @@ final class HomeHeaderView: UIView {
     
     private func setupViews() {
         addSubview(homeLogoImageView)
-        addSubview(wardDescriptionImageView)
-        addSubview(wardImageView)
-        addSubview(wardTitleLabel)
-        addSubview(locationCollectionView)
         addSubview(locationRangeContainerView)
+        addSubview(wardTitleLabel)
+        addSubview(makeWardContainerView)
+        
+        makeWardContainerView.addSubview(wardDescriptionImageView)
+        makeWardContainerView.addSubview(wardImageView)
+        makeWardContainerView.addSubview(makeWardButton)
+        
+        addSubview(locationCollectionView)
         
         locationRangeContainerView.addSubview(locationRangeLabel)
         locationRangeContainerView.addSubview(locationRangeImageView)
@@ -124,14 +139,26 @@ final class HomeHeaderView: UIView {
             $0.leading.equalToSuperview().offset(30)
         }
         
+        makeWardContainerView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(9)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.width.equalTo(159)
+            $0.height.equalTo(30)
+        }
+        
         wardImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(13)
-            $0.trailing.equalToSuperview().inset(28)
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(26)
         }
         
         wardDescriptionImageView.snp.makeConstraints {
             $0.trailing.equalTo(wardImageView.snp.leading).inset(-6)
             $0.centerY.equalTo(wardImageView)
+        }
+        
+        makeWardButton.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
         }
         
         wardTitleLabel.snp.makeConstraints {
@@ -157,6 +184,15 @@ final class HomeHeaderView: UIView {
             $0.leading.equalTo(locationRangeLabel.snp.trailing).offset(6)
             $0.size.equalTo(12).priority(999)
         }
+    }
+    
+    private func bind() {
+        makeWardButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { _, _ in
+                WebViewCoordinator(navigationController: self.navigationController, type: .ward, navigateStyle: .present).start()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
