@@ -75,12 +75,16 @@ final class EmailSignInViewController: UIViewController {
         
         password.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(output.passwordIsValid)
-            .filter { !$0 }
-            .bind { [weak self] _ in
+            .bind { [weak self] isValid in
                 guard let self = self?.passwordTextField else { return }
-                self.errorLabel.text = "비밀번호를 확인해주세요."
-                self.underLineView.backgroundColor = UIColor(named: "red500")
-                self.iconImageView.image = UIImage(named: "error")
+                if !isValid {
+                    self.errorLabel.text = "비밀번호를 확인해주세요."
+                    self.underLineView.backgroundColor = .red500
+                    self.errorLabel.textColor = .red500
+                } else {
+                    self.errorLabel.text = ""
+                }
+                
             }.disposed(by: disposeBag)
        
         

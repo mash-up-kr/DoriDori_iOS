@@ -41,8 +41,6 @@ final class PasswordViewController: UIViewController {
         passwordConfirmTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .passwordConfirm,
                                                                          inputContentType: .password,
                                                                          keyboardType: .default)
-        passwordTextField.errorLabel.text = "영문(대/소문자)/특수문자/숫자 사용가능"
-        passwordTextField.errorLabel.textColor = .gray600
     }
     
     private func bind(_ viewModel: PasswordViewModel) {
@@ -90,7 +88,7 @@ final class PasswordViewController: UIViewController {
             .filter { !$0 }
             .bind { [weak self] isValid in
                 self?.passwordConfirmTextField.errorLabel.text = "비밀번호를 확인해주세요."
-                self?.passwordConfirmTextField.errorLabel.tintColor = UIColor(named: "red500")
+                self?.passwordConfirmTextField.errorLabel.textColor = UIColor(named: "red500")
                 self?.passwordConfirmTextField.underLineView.backgroundColor = UIColor(named: "red500")
                 self?.passwordConfirmTextField.iconImageView.image = UIImage(named: "error")
             }.disposed(by: disposeBag)
