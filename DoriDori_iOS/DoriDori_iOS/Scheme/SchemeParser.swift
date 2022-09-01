@@ -24,16 +24,16 @@ final class URLSchemeParser: SchemeParser {
         let path = URLConstant.Path(rawValue: url.path)
         
         let userIdDict: [String: String] = parseQuery(url.query ?? "", key: "userId")
-        let userId = userIdDict["userId"]
-        
         
         switch scheme {
         case .main:
             switch path {
             case .question:
-                return .question(userId: userId)
+                guard let userId = userIdDict["userId"] else { return nil }
+                return .question(userID: userId)
             case .mypage_other:
-                return .mypage_other
+                guard let userId = userIdDict["userId"] else { return nil }
+                return .mypage_other(userID: userId)
             default:
                 return nil
             }

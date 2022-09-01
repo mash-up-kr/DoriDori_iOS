@@ -18,9 +18,9 @@
 		</dict>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>testeststestestest</string>
+	<string>사용자의 현재 위치가 지도상에 표시되며 경로, 주변 검색 결과 및 예상 이동 시간을 제공하는데 사용됩니다.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>testeststestestest</string>
+	<string>사용자의 현재 위치가 지도상에 표시되며 경로, 주변 검색 결과 및 예상 이동 시간을 제공하는데 사용됩니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>‘도리도리&apos;가 사진 또는 동영상을 촬영하여 메세지로 전송, 게시물에 기록, 커뮤니티에 표시, 사진 임시 저장, 프로필 정보 제공시에 이용, 사진을 촬영하여 등록하는 기능 등을 위해 사진 라이브러리에 접근하도록 허용합니다.</string>
 	<key>UIAppFonts</key>

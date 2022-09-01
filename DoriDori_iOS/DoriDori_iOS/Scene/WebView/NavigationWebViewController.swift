@@ -39,7 +39,7 @@ final class NavigationWebViewController: UIViewController {
     }()
     
     private let webViewController: BaseWebViewController
-    private let type: DoriDoriWeb
+    private var type: DoriDoriWeb?
     private let disposeBag: DisposeBag
     private let coordinator: WebViewCoordinatable
     
@@ -57,6 +57,18 @@ final class NavigationWebViewController: UIViewController {
         self.disposeBag = .init()
         self.type = type
         self.webViewController = BaseWebViewController(path: type.path)
+        self.navigationTitleLabel.text = title
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(
+        path: String,
+        title: String? = nil,
+        coordinator: WebViewCoordinatable
+    ) {
+        self.coordinator = coordinator
+        self.disposeBag = .init()
+        self.webViewController = BaseWebViewController(path: path)
         self.navigationTitleLabel.text = title
         super.init(nibName: nil, bundle: nil)
     }

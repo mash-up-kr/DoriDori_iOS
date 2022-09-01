@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import WebKit
 
-
 final class BaseWebViewController: UIViewController, WKNavigationDelegate {
     
     private enum Constant {
@@ -117,14 +116,40 @@ extension BaseWebViewController: WKScriptMessageHandler {
     ) {
         guard message.name == Constant.messageName,
               let messages = message.body as? [String: Any],
-              let cmd = messages["cmd"],
-              let params = messages["parameters"] as? [String: String],
-              let deeplink = params["value"] else { return }
-        guard let url = URL(string: deeplink) else { return }
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            return
+              let cmd = messages["cmd"] as? String else { return }
+        
+        switch WebViewCommand(rawValue: cmd) {
+        case .url:
+            guard let prarms = messages["parameters"] as? [String: String],
+                  let url = prarms["url"],
+                  let title = prarms["title"],
+                  let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            
+            guard let navi = sceneDelegate.window?.rootViewController?.presentedViewController as? UINavigationController else { return }
+            let viewController = NavigationWebViewController(
+                path: url,
+                title: title,
+                coordinator: WebViewCoordinator(
+                    navigationController: navi,
+                    type: .alarmSetting,
+                    navigateStyle: .push
+                )
+            )
+            navi.pushViewController(viewController, animated: true)
+            
+        case .link:
+            guard let params = messages["parameters"] as? [String: String],
+                  let deeplink = params["value"] else { return }
+            
+            guard let url = URL(string: deeplink) else { return }
+            
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                return
+            }
+            
+        case .none:
+            break
         }
     }
-    
 }

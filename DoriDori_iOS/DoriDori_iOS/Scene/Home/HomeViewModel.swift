@@ -21,6 +21,7 @@ final class HomeViewModel: Reactor {
         case setHomeModels(HomeSpeechs)
         case setHomeEmptyState(Bool)
         case setWardTitleLabel(String)
+        case shouldShowLocationAlert
     }
     
     struct State {
@@ -29,20 +30,25 @@ final class HomeViewModel: Reactor {
         @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
         @Pulse var homeEmptyState: Bool = false
+        @Pulse var shouldShowLocationAlert: Void? = nil
     }
 
     let initialState: State = State()
     let repository: HomeRepositoryRequestable
     var homeListNumberOfModel: Int { currentState.homeSpeechModel?.homeSpeech.count ?? 0 }
-    
-    init(repository: HomeRepositoryRequestable) {
+    private let locationManager: LocationManager
+    init(
+        repository: HomeRepositoryRequestable,
+        locationManager: LocationManager
+    ) {
+        self.locationManager = locationManager
         self.repository = repository
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .reqeustHomeData:
-            return requestHomeData()
+            return requestHome()
         case let .like(id):
             return like(id: id)
         case let .dislike(id: id):
@@ -62,13 +68,40 @@ final class HomeViewModel: Reactor {
             newState.homeEmptyState = homeEmptyState
         case let .setWardTitleLabel(title):
             newState.wardTitle = title
+        case let .shouldShowLocationAlert:
+            newState.shouldShowLocationAlert = ()
         }
         
         return newState
     }
     
-    private func requestHomeData() -> Observable<Mutation> {
-        repository.requestHomeData(lastId: nil, latitude: 37.497175, longitude: 127.027926, meterDistance: 1000, size: 20)
+    private func requestHome() -> Observable<Mutation> {
+       return self.locationManager
+            .getLocation()
+            .flatMapLatest { [weak self] result -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                switch result {
+                case .success(let location):
+                    UserDefaults.latitude = location.latitude
+                    UserDefaults.longitude = location.longitude
+                    
+                    print("🤔UserDefaults.latitude", UserDefaults.latitude)
+                    print("🤔UserDefaults.longitude", UserDefaults.longitude)
+                    
+                    return self.requestHomeData(
+                        latitude: location.latitude,
+                        longitude: location.longitude
+                    )
+                    
+                case .failure(let error):
+                    print("🤔error")
+                    return .just(.shouldShowLocationAlert)
+                }
+            }
+    }
+    
+    private func requestHomeData(latitude: Double = UserDefaults.latitude, longitude: Double = UserDefaults.longitude) -> Observable<Mutation> {
+        repository.requestHomeData(lastId: nil, latitude: latitude, longitude: longitude, meterDistance: 1000, size: 20)
             .flatMap { models -> Observable<Mutation> in
                 if models.homeSpeech.isEmpty {
                     return .just(.setHomeEmptyState(true))

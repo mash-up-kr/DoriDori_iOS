@@ -20,4 +20,10 @@ extension UserDefaults {
     
     @OptionalUserDefault(key: "userID")
     static var userID: UserID?
+    
+    @UserDefault(key: "longitude", defaultValue: 127.027926)
+    static var longitude: Double
+    
+    @UserDefault(key: "latitude", defaultValue: 37.497175)
+    static var latitude: Double
 }

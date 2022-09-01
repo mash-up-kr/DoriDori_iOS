@@ -16,4 +16,29 @@ extension UIViewController {
               }
         navigationController.popViewController(animated: animated)
     }
+    static func topViewController() -> UIViewController? {
+        var topViewController: UIViewController?
+
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        if let viewController = rootViewController as? UINavigationController {
+            topViewController = viewController.visibleViewController
+        } else if let viewController = rootViewController?.presentedViewController {
+            topViewController = viewController
+
+            if let viewController = topViewController as? UINavigationController {
+                topViewController = viewController.visibleViewController
+            }
+        } else if let viewController = rootViewController as? UITabBarController {
+            topViewController = viewController.selectedViewController
+
+            if let viewController = topViewController as? UINavigationController {
+                topViewController = viewController.visibleViewController
+            }
+        } else {
+            topViewController = rootViewController
+        }
+
+        return topViewController
+    }
 }

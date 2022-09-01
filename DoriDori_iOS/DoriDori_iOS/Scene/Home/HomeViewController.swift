@@ -53,7 +53,8 @@ final class HomeViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         let homeRepository: HomeRepositoryRequestable = HomeRepository()
-        viewModel = HomeViewModel(repository: homeRepository)
+        let locationManager = DoriDoriLocationManager()
+        viewModel = HomeViewModel(repository: homeRepository, locationManager: locationManager)
     }
     
     required init?(coder: NSCoder) {
@@ -82,6 +83,14 @@ final class HomeViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel?.pulse(\.$shouldShowLocationAlert)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self, onNext: { owner, _ in
+                LocationAlertViewController().show()
+            })
+            .disposed(by: self.disposeBag)
         
         viewModel?.state
             .map { "지금 여기는 \(String($0.wardTitle))!" }
