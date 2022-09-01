@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-1Z-SSM">
-                                <rect key="frame" x="30" y="124" width="315" height="56"/>
+                                <rect key="frame" x="30" y="123.99999999999999" width="315" height="60.333333333333329"/>
                                 <string key="text">도리도리,
 내 근처 사람에게 물어보세요</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeMadori" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-YX-etJ">
-                                <rect key="frame" x="22.666666666666657" y="224" width="330" height="260"/>
+                                <rect key="frame" x="22.666666666666657" y="276" width="330" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="664-ge-LWN"/>
                                     <constraint firstAttribute="width" constant="330" id="eEK-A6-GJS"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="QI1-1Z-SSM" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="6vR-nA-Ioq"/>
                             <constraint firstItem="CjZ-em-D0Z" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="30" id="ADC-Jt-Fsd"/>
                             <constraint firstAttribute="bottom" secondItem="CjZ-em-D0Z" secondAttribute="bottom" constant="54" id="B5Z-Lx-XzJ"/>
-                            <constraint firstItem="3q1-YX-etJ" firstAttribute="top" secondItem="QI1-1Z-SSM" secondAttribute="bottom" constant="44" id="OYB-9a-YrI"/>
+                            <constraint firstItem="3q1-YX-etJ" firstAttribute="centerY" secondItem="BNZ-bO-rhc" secondAttribute="centerY" id="FTn-zK-R5d"/>
                             <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="QI1-1Z-SSM" secondAttribute="trailing" constant="30" id="RP4-c3-9yp"/>
                             <constraint firstItem="3q1-YX-etJ" firstAttribute="centerX" secondItem="BNZ-bO-rhc" secondAttribute="centerX" id="YgB-mM-KrM"/>
                             <constraint firstItem="QI1-1Z-SSM" firstAttribute="top" secondItem="BNZ-bO-rhc" secondAttribute="top" constant="124" id="xL1-c0-cDD"/>
@@ -142,7 +142,7 @@
                                     <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI5-eu-s2n">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI5-eu-s2n">
                                 <rect key="frame" x="30" y="704" width="315" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
                                 <constraints>
@@ -378,7 +378,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="NZa-hD-r7L"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" name="gray500"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -400,7 +399,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="5bM-cd-d6U"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" name="gray500"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -660,7 +658,7 @@
                                     <constraint firstAttribute="height" constant="100" id="UKG-Nj-Tzm"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjK-qw-KkQ">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjK-qw-KkQ">
                                 <rect key="frame" x="30" y="704" width="315" height="54"/>
                                 <color key="backgroundColor" name="gray700"/>
                                 <constraints>
