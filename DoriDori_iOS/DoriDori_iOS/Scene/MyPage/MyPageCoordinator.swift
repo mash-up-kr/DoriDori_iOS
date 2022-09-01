@@ -40,7 +40,7 @@ final class MyPageCoordinator: MyPageCoordinatable {
     func navigateToShare() {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .share,
+            type: .share(),
             navigateStyle: .present
         ).start()
     }

@@ -59,7 +59,7 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
     func navigateToProfileShare() {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .share,
+            type: .share(id: self.userID),
             navigateStyle: .present
         ).start()
     }
