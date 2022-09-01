@@ -32,7 +32,7 @@ enum DoriDoriWeb {
         case .ward: return "/my-ward"
         case .notice: return "/setting/notice"
         case .terms: return "/setting/terms"
-        case .openSource: return "/open-source"
+        case .openSource: return "/setting/open-source"
         }
     }
 }
