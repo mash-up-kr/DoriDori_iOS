@@ -29,9 +29,7 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // TODO: - 회원가입 후 저장된 내 userid와 비교
-        if viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row]?.user.id == "" {
+        if viewModel?.currentState.homeSpeechModel?.homeSpeech[safe: indexPath.row]?.user.id == UserDefaults.userID {
             homeCellType = .my
         } else {
             homeCellType = .other
