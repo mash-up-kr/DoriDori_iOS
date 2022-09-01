@@ -41,7 +41,8 @@ final class DoriDoriEmptyView: UIView {
     
     private func setupConstraints() {
         emptyImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.top.equalToSuperview().inset(50)
+            $0.centerX.equalToSuperview()
         }
         
         descriptionLabel.snp.makeConstraints {
