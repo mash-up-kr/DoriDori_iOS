@@ -121,6 +121,12 @@ final class SettingViewController: UIViewController, View {
             }.disposed(by: self.disposeBag)
         
         
+        reactor.pulse(\.$navigateToAdminPage)
+            .compactMap { $0 }
+            .bind(with: self) { owner, _ in
+                owner.coordinator.navigateToAdminPage()
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 

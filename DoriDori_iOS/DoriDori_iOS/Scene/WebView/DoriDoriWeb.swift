@@ -13,7 +13,7 @@ enum DoriDoriWeb {
     case questionDetail(id: QuestionID)
     case postDetail(id: PostID)
     case profileSetting
-    case share
+    case share(id: UserID? = nil)
     case myLevel
     case alarmSetting
     case ward
@@ -26,13 +26,18 @@ enum DoriDoriWeb {
         case .questionDetail(let questionID): return "/question-detail?questionId=\(questionID)"
         case .postDetail(let postID): return "/question-detail?postId=\(postID)"
         case .profileSetting: return "/setting/my-profile"
-        case .share: return "/open-inquiry"
+        case .share(let userID):
+            if let userID = userID {
+                return "/open-inquiry?userId=\(userID)"
+            } else {
+                return "/open-inquiry"
+            }
         case .myLevel: return "/my-level"
         case .alarmSetting: return "/setting/alarm"
         case .ward: return "/my-ward"
         case .notice: return "/setting/notice"
         case .terms: return "/setting/terms"
-        case .openSource: return "/open-source"
+        case .openSource: return "/setting/open-source"
         }
     }
 }

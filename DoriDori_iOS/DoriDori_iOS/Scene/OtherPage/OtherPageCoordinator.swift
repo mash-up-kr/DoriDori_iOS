@@ -18,7 +18,7 @@ protocol OtherPageCoordinatable: Coordinator {
 
 final class OtherPageCoordinator: OtherPageCoordinatable {
     let navigationController: UINavigationController
-    private let userID: UserID
+    private var userID: UserID
     
     init(
         navigationController: UINavigationController,
@@ -59,7 +59,7 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
     func navigateToProfileShare() {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .share,
+            type: .share(id: self.userID),
             navigateStyle: .present
         ).start()
     }
@@ -71,6 +71,7 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
         ).start()
     }
     func navigateToOtherPage(userID: UserID) {
+        self.userID = userID
         self.start()
     }
 }

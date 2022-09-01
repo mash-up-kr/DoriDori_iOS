@@ -27,7 +27,7 @@ final class QuestionViewController: UIViewController,
         let label = UILabel()
         label.text = "질문하기"
         label.textColor = UIColor.white
-        label.font = UIFont.setKRFont(weight: .regular, size: 18)
+        label.font = UIFont.setKRFont(weight: .bold, size: 18)
         return label
     }()
     
@@ -35,6 +35,7 @@ final class QuestionViewController: UIViewController,
         let button = UIButton()
         button.setTitle("등록", for: .normal)
         button.setTitleColor(UIColor.gray700, for: .normal)
+        button.titleLabel?.font = UIFont.setKRFont(weight: .regular, size: 18)
         return button
     }()
     
@@ -91,6 +92,7 @@ final class QuestionViewController: UIViewController,
         let button = UIButton()
         button.setTitleColor(UIColor.gray300, for: .normal)
         button.setTitle("질문등록", for: .normal)
+        button.titleLabel?.font = UIFont.setKRFont(weight: .bold, size: 16)
         button.backgroundColor = .gray700
         button.layer.cornerRadius = 10
         button.clipsToBounds = true

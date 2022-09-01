@@ -11,6 +11,7 @@ import UIKit
 protocol SettingCoordinatable: Coordinator {
     func dismiss(_ completion: (() -> Void)?)
     func navigateToWebView(type: DoriDoriWeb)
+    func navigateToAdminPage()
 }
 
 final class SettingCoordinator: SettingCoordinatable {
@@ -46,5 +47,9 @@ final class SettingCoordinator: SettingCoordinatable {
             type: type,
             navigateStyle: .push
         ).start()
+    }
+    
+    func navigateToAdminPage() {
+        OtherPageCoordinator(navigationController: self.innerNavigationController, userID: "6310d0901df08f38a0391d7d").start()
     }
 }

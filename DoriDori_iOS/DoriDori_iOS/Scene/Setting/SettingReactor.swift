@@ -32,6 +32,7 @@ final class SettingReactor: Reactor {
         @Pulse var showAlert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
         @Pulse var goToWelcomeViewController: Void?
+        @Pulse var navigateToAdminPage: Void?
     }
     
     // MARK: - Properties
@@ -72,8 +73,8 @@ final class SettingReactor: Reactor {
             let settingSections = [
                 SettingSectionModel(title: "내 설정", settingItems: [
                     .myLevel,
-                    .modifyProfile,
-                    .alarmLocationSetting
+                    .modifyProfile
+//                    .alarmLocationSetting
                 ]),
                 SettingSectionModel(title: "앱 설정", settingItems: [
                     .notice,
@@ -102,6 +103,8 @@ final class SettingReactor: Reactor {
                                                           message: "작성한 질문, 댓글은 삭제되지 않아요!",
                                                           normalAction: AlertAction(title: "취소", action: { self.action.onNext(.didTapDenyCancel) }),
                                                           emphasisAction: AlertAction(title: "탈퇴", action: { self.action.onNext(.didTapWithdraw) }))
+            case .questionToAdmin:
+                _state.navigateToAdminPage = ()
             default: break
             }
         case .shouldDismissPresentedViewController:

@@ -140,7 +140,7 @@ final class OtherPageViewController: UIViewController,
             $0.height.equalTo(1)
             $0.leading.trailing.equalToSuperview()
         }
-//        self.setupContentViewController(self.contentViewController)
+        self.setupContentViewController(self.contentViewController)
     }
     
     private func setupUI() {

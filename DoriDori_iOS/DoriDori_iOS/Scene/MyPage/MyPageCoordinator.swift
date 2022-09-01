@@ -40,7 +40,7 @@ final class MyPageCoordinator: MyPageCoordinatable {
     func navigateToShare() {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .share,
+            type: .share(),
             navigateStyle: .present
         ).start()
     }
@@ -54,10 +54,9 @@ final class MyPageCoordinator: MyPageCoordinatable {
     }
     
     func navigateToOtherPage(userID: UserID) {
-//        OtherPageCoordinator(
-//            navigationController: self.navigationController,
-//            userID: userID
-//        ).start()
-        LocationAlertViewController(nibName: nil, bundle: nil).show()
+        OtherPageCoordinator(
+            navigationController: self.navigationController,
+            userID: userID
+        ).start()
     }
 }

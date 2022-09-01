@@ -117,7 +117,7 @@ extension BaseWebViewController: WKScriptMessageHandler {
         guard message.name == Constant.messageName,
               let messages = message.body as? [String: Any],
               let cmd = messages["cmd"] as? String else { return }
-        
+        print("cmd", cmd)
         switch WebViewCommand(rawValue: cmd) {
         case .url:
             guard let prarms = messages["parameters"] as? [String: String],
@@ -140,7 +140,8 @@ extension BaseWebViewController: WKScriptMessageHandler {
         case .link:
             guard let params = messages["parameters"] as? [String: String],
                   let deeplink = params["value"] else { return }
-            
+            print("params", params)
+            print("deeplink", deeplink)
             guard let url = URL(string: deeplink) else { return }
             
             if UIApplication.shared.canOpenURL(url) {

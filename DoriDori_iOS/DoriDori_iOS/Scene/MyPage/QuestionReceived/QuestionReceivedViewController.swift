@@ -20,7 +20,6 @@ final class QuestionReceivedViewController: UIViewController,
         return collectionView
     }()
     private let refreshControl = UIRefreshControl()
-    
     private let commentView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray900
@@ -266,6 +265,7 @@ final class QuestionReceivedViewController: UIViewController,
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MyPageOtherSpeechBubbleCell.self)
+        collectionView.register(EmptyCell.self)
         collectionView.refreshControl = self.refreshControl
         self.refreshControl.tintColor = .lime300
     }
@@ -278,13 +278,21 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        self.questions.value.count
+        if self.questions.value.isEmpty {
+            return 1
+        }
+        else { return self.questions.value.count }
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        if self.questions.value.isEmpty {
+            let cell = collectionView.dequeueReusableCell(type: EmptyCell.self, for: indexPath)
+            cell.configure(title: "질문을 요청해보세요!")
+            return cell
+        }
         guard let item = self.questions.value[safe: indexPath.item] else { fatalError("can not find item")
         }
         let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
@@ -308,6 +316,9 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
+        if self.questions.value.isEmpty {
+            return collectionView.bounds.size
+        }
         guard let item = self.questions.value[safe: indexPath.item] else { fatalError("can not find item")
         }
         return MyPageOtherSpeechBubbleCell.fittingSize(
@@ -320,7 +331,9 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        self.didSelectCell.accept(indexPath)
+        if !self.questions.value.isEmpty {
+            self.didSelectCell.accept(indexPath)
+        }
     }
     
     func collectionView(
@@ -328,7 +341,9 @@ extension QuestionReceivedViewController: UICollectionViewDelegate {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        self.willDisplayCell.accept(indexPath)
+        if !self.questions.value.isEmpty {
+            self.willDisplayCell.accept(indexPath)
+        }
     }
 }
 

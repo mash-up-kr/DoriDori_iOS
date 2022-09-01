@@ -145,6 +145,7 @@
 		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
 		A29C2ADB28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */; };
 		A2AF0CE128B764730007A57C /* NavigationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */; };
+		A2CE622D28C11C130067CCAD /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CE622C28C11C130067CCAD /* EmptyCell.swift */; };
 		A2CF64DF28796D7F007D54DD /* DoriDoriError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */; };
 		A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E028796D8B007D54DD /* ErrorModel.swift */; };
 		A2CF64E328796D99007D54DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF64E228796D99007D54DD /* Network.swift */; };
@@ -373,6 +374,7 @@
 		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2ADA28959E4600CA5C49 /* MyPageMySpeechBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleCell.swift; sourceTree = "<group>"; };
 		A2AF0CE028B764730007A57C /* NavigationWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWebViewController.swift; sourceTree = "<group>"; };
+		A2CE622C28C11C130067CCAD /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		A2CF64DE28796D7F007D54DD /* DoriDoriError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriError.swift; sourceTree = "<group>"; };
 		A2CF64E028796D8B007D54DD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A2CF64E228796D99007D54DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				A2DF0875289ADA1700F2046C /* MyPageTab.swift */,
 				A2934DFD289E33B900749D0B /* MyPageTabCollectionViewCell.swift */,
 				A24FD0E428A56D4100A003D1 /* MyPageRepository.swift */,
+				A2CE622C28C11C130067CCAD /* EmptyCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1536,6 +1539,7 @@
 				CE6A0FAD28BA2AF000E1E644 /* HomeLike.swift in Sources */,
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5E72BB28BE4AA5002E97B9 /* HomeCoordinator.swift in Sources */,
+				A2CE622D28C11C130067CCAD /* EmptyCell.swift in Sources */,
 				A266067728BFBE9200E54CBF /* WebViewCommand.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
@@ -1657,7 +1661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1714,7 +1718,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
