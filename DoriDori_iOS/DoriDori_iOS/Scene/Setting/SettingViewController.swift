@@ -112,9 +112,8 @@ final class SettingViewController: UIViewController, View {
             .compactMap { $0 }
             .observe(on: MainScheduler.instance)
             .bind { _ in
-                guard let access = UserDefaults.accessToken, let refresh = UserDefaults.refreshToken else { return }
-                UserDefaults.standard.removeObject(forKey: access)
-                UserDefaults.standard.removeObject(forKey: refresh)
+                UserDefaults.standard.removeObject(forKey: "accessToken")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
                 _=UserDefaults.standard.dictionaryRepresentation().map {print("[유저디폴트 삭제]:\($0.key): \($0.value)")}
                 guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
                       var window = sceneDelegate.window else { return }
