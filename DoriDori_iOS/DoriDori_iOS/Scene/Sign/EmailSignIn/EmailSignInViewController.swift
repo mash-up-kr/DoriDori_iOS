@@ -120,7 +120,7 @@ extension EmailSignInViewController {
     @objc func keyboardWillShow(_ sender: Notification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                self.loginButtomConstraint.constant = 28 + keyboardSize.height
+                self.loginButtomConstraint.constant = 10 + keyboardSize.height
                 self.view.layoutIfNeeded()
             })
         }

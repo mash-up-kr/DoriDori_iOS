@@ -92,7 +92,7 @@ extension NicknameSettingViewController {
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        let keyboardButtonSpace: Int = 20
+        let keyboardButtonSpace: Int = 10
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.buttomBottomConstraint.constant = CGFloat(keyboardButtonSpace) + keyboardSize.height
