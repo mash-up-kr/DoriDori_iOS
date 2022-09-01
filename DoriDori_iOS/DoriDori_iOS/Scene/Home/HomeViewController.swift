@@ -88,7 +88,6 @@ final class HomeViewController: UIViewController {
             .compactMap { $0 }
             .observe(on: MainScheduler.instance)
             .bind(with: self, onNext: { owner, _ in
-                print("🤔 alert!")
                 LocationAlertViewController().show()
             })
             .disposed(by: self.disposeBag)
