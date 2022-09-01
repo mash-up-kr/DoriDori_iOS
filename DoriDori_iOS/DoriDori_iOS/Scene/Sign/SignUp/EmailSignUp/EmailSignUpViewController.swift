@@ -73,6 +73,11 @@ final class EmailSignUpViewController: UIViewController {
                 }
             }.disposed(by: disposeBag)
         
+        input.authNumberResendButton.bind { [weak self] _ in
+            DoriDoriToastView(text: "인증번호가 재전송되었습니다.").show()
+            self?.authNumberTextField.textField.text = ""
+        }.disposed(by: disposeBag)
+        
         output.isValidEmail.bind { [weak self] isValid in
             self?.buttonValid(isValid)
         }.disposed(by: disposeBag)
