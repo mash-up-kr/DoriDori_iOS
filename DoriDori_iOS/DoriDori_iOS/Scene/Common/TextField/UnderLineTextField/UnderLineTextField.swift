@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 protocol UnderLineTextFieldDelegate: AnyObject {
     func addKeyword(_ keyword: String)
@@ -33,6 +34,7 @@ class UnderLineTextField: UIView {
     
     weak var delegate: UnderLineTextFieldDelegate?
     private let disposeBag = DisposeBag()
+    private let visibilityState: BehaviorRelay<Bool> = .init(value: false)
     var viewModel = UnderLineTextFieldViewModel() {
         didSet {
             configure(viewModel: viewModel)
@@ -63,9 +65,17 @@ class UnderLineTextField: UIView {
         textField.rx.controlEvent([.editingDidBegin, .editingChanged])
             .asObservable()
             .bind(onNext: { [weak self] _ in
-                self?.underLineView.backgroundColor = UIColor(named: "lime300")
-                self?.errorLabel.text = ""
-                self?.iconImageView.image = UIImage()
+                guard let self = self else { return }
+                self.underLineView.backgroundColor = UIColor(named: "lime300")
+                self.errorLabel.text = ""
+                if self.viewModel.titleLabelType == .password ||
+                    self.viewModel.titleLabelType == .passwordConfirm {
+                    self.iconImageView.image =  self.visibilityState.value ? UIImage(named: "visibility") : UIImage(named: "visibility_off")
+                    self.errorLabel.text = "6~20자의 영문/특수문자/숫자 사용가능"
+                    self.errorLabel.textColor = .lime300
+                } else {
+                    self.iconImageView.image = UIImage()
+                } 
             }).disposed(by: disposeBag)
         
         textField.rx.controlEvent(.editingDidEnd)
@@ -74,6 +84,28 @@ class UnderLineTextField: UIView {
                 self?.underLineView.backgroundColor = UIColor(named: "gray800")
             }).disposed(by: disposeBag)
         
+        iconImageView.rx.tapGesture()
+            .filter { _ in
+                self.viewModel.titleLabelType == .password ||
+                self.viewModel.titleLabelType == .passwordConfirm
+            }
+            .when(.recognized)
+            .withLatestFrom(visibilityState)
+            .bind { [weak self] state in
+                var _state = state
+                _state.toggle()
+                self?.visibilityState.accept(_state)
+            }.disposed(by: disposeBag)
+    
+        visibilityState.asDriver()
+            .filter { _ in
+                self.viewModel.titleLabelType == .password ||
+                self.viewModel.titleLabelType == .passwordConfirm
+            }
+            .drive(onNext: { [weak self] visible in
+            self?.iconImageView.image = visible ? UIImage(named: "visibility") : UIImage(named: "visibility_off")
+            self?.textField.isSecureTextEntry = !visible
+        }).disposed(by: disposeBag)
     }
     
     private func configure(viewModel: UnderLineTextFieldViewModel) {

@@ -13,6 +13,7 @@ final class NicknameSettingViewController: UIViewController {
     @IBOutlet private weak var nicknameTextField: UnderLineTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var buttomBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let viewModel: NicknameSettingViewModel = .init()
     private var disposeBag = DisposeBag()
@@ -23,12 +24,15 @@ final class NicknameSettingViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keyboardSetting()
+        settingNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Bind

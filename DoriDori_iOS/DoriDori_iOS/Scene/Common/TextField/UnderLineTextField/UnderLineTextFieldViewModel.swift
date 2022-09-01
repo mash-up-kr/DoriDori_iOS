@@ -12,6 +12,7 @@ import RxCocoa
 
 class UnderLineTextFieldViewModel {
     
+    // MARK: - 변수, Enum
     var inputContentType: UITextContentType = .nickname
     var returnKeyType: UIReturnKeyType = .default
     var keyboardType: UIKeyboardType
@@ -50,7 +51,7 @@ class UnderLineTextFieldViewModel {
         case password = "비밀번호를 확인해주세요."
         case nickname = "닉네임은 7자리 이내로 설정해주세요."
     }
-    
+    // MARK: - init
     init() {
         self.titleLabelType = .email
         self.inputContentType = .emailAddress
@@ -76,6 +77,7 @@ class UnderLineTextFieldViewModel {
         configureTextField(titleLabelType)
     }
     
+    // MARK: - func
     private func configureTextField(_ type: TextFieldType) {
         switch type {
         case .email:

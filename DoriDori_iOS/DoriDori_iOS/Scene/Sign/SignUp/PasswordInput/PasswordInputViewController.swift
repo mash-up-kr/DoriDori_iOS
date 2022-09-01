@@ -14,6 +14,7 @@ final class PasswordViewController: UIViewController {
     @IBOutlet private weak var passwordConfirmTextField: UnderLineTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var confirmButtonButtomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let viewModel: PasswordViewModel = .init()
     var email: String = ""
@@ -26,11 +27,15 @@ final class PasswordViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keyboardSetting()
+        settingNavigation()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Bind
@@ -41,8 +46,6 @@ final class PasswordViewController: UIViewController {
         passwordConfirmTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .passwordConfirm,
                                                                          inputContentType: .password,
                                                                          keyboardType: .default)
-        passwordTextField.errorLabel.text = "영문(대/소문자)/특수문자/숫자 사용가능"
-        passwordTextField.errorLabel.textColor = .gray600
     }
     
     private func bind(_ viewModel: PasswordViewModel) {
@@ -90,7 +93,7 @@ final class PasswordViewController: UIViewController {
             .filter { !$0 }
             .bind { [weak self] isValid in
                 self?.passwordConfirmTextField.errorLabel.text = "비밀번호를 확인해주세요."
-                self?.passwordConfirmTextField.errorLabel.tintColor = UIColor(named: "red500")
+                self?.passwordConfirmTextField.errorLabel.textColor = UIColor(named: "red500")
                 self?.passwordConfirmTextField.underLineView.backgroundColor = UIColor(named: "red500")
                 self?.passwordConfirmTextField.iconImageView.image = UIImage(named: "error")
             }.disposed(by: disposeBag)

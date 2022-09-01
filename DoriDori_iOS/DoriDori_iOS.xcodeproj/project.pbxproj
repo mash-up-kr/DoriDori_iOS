@@ -34,6 +34,8 @@
 		6C58604928A2A04300D13AA9 /* ProfileKeywordSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58604828A2A04300D13AA9 /* ProfileKeywordSettingViewController.swift */; };
 		6C5B741A28A3F89000D7DC9D /* ProfileKeywordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */; };
 		6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */; };
+		6C5E2D5828BE433300FA13BC /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E2D5728BE433300FA13BC /* SettingRepository.swift */; };
+		6C5E2D5A28BE434D00FA13BC /* UserWithdrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E2D5928BE434D00FA13BC /* UserWithdrawRequest.swift */; };
 		6C5E72B728AFCCB200013C2B /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E72AA28AFCCB200013C2B /* ViewModelProtocol.swift */; };
 		6C5E72B828AFCCB200013C2B /* UnderLineTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E72AC28AFCCB200013C2B /* UnderLineTextField.xib */; };
 		6C5E72B928AFCCB200013C2B /* UnderLineTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E72AD28AFCCB200013C2B /* UnderLineTextFieldViewModel.swift */; };
@@ -262,6 +264,8 @@
 		6C58604828A2A04300D13AA9 /* ProfileKeywordSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordSettingViewController.swift; sourceTree = "<group>"; };
 		6C5B741928A3F89000D7DC9D /* ProfileKeywordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileKeywordView.xib; sourceTree = "<group>"; };
 		6C5B741B28A49CB200D7DC9D /* ProfileKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKeywordView.swift; sourceTree = "<group>"; };
+		6C5E2D5728BE433300FA13BC /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		6C5E2D5928BE434D00FA13BC /* UserWithdrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWithdrawRequest.swift; sourceTree = "<group>"; };
 		6C5E72AA28AFCCB200013C2B /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		6C5E72AC28AFCCB200013C2B /* UnderLineTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderLineTextField.xib; sourceTree = "<group>"; };
 		6C5E72AD28AFCCB200013C2B /* UnderLineTextFieldViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLineTextFieldViewModel.swift; sourceTree = "<group>"; };
@@ -791,6 +795,7 @@
 				A21188FA28BDDFD3008A48C0 /* ReceivedQuestionRequest.swift */,
 				A21188FC28BDF0CD008A48C0 /* QuestionDenyRequest.swift */,
 				A219F63A28BE5EAC0065C1F9 /* ReplyCommentRequest.swift */,
+				6C5E2D5928BE434D00FA13BC /* UserWithdrawRequest.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				A24FD0FA28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift */,
 				A24FD0FC28A8BDE100A003D1 /* SettingCoordinator.swift */,
 				A24FD0FE28A8EA5700A003D1 /* SettingSectionModel.swift */,
+				6C5E2D5728BE433300FA13BC /* SettingRepository.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1407,12 +1413,14 @@
 				A2F92C74288CF594000340F5 /* HomeOtherSpeechBubbleView.swift in Sources */,
 				A2655AD92899650400B03AA1 /* HomeMySpeechBubbleViewCell.swift in Sources */,
 				6C5E72BA28AFCCB200013C2B /* UnderLineTextField.swift in Sources */,
+				6C5E2D5A28BE434D00FA13BC /* UserWithdrawRequest.swift in Sources */,
 				A2F92C6E288BEED1000340F5 /* MyPageOtherSpeechBubbleView.swift in Sources */,
 				CEE7651F2867462B007FC892 /* BaseTabBarController.swift in Sources */,
 				A24FD0EA28A5702D00A003D1 /* UserInfoModel.swift in Sources */,
 				CE6FF75228B11AE600E4A3CD /* SchemeParser.swift in Sources */,
 				A24FD0FB28A7FAC000A003D1 /* SettingCollectionViewHeaderView.swift in Sources */,
 				A24FD15528B4046200A003D1 /* DoriDoriLocationError.swift in Sources */,
+				6C5E2D5828BE433300FA13BC /* SettingRepository.swift in Sources */,
 				A24FD0EE28A5736100A003D1 /* UserInfoRequest.swift in Sources */,
 				CE3316C128BE38D400FAF82C /* TokenData.swift in Sources */,
 				A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */,

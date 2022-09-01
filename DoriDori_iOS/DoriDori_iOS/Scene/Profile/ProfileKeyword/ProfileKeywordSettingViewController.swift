@@ -18,6 +18,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
     @IBOutlet private weak var keywordEditButton: UIButton!
     @IBOutlet private weak var keywordCountLabel: UILabel!
     @IBOutlet private weak var startButtomBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let keywordLimit: Int = 3
     private let keyboardUpButtomConstraint: CGFloat = 20
@@ -36,12 +37,15 @@ final class ProfileKeywordSettingViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keywordTextField.delegate = self
+        settingNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     private func settingViewModel() {
@@ -113,17 +117,19 @@ final class ProfileKeywordSettingViewController: UIViewController {
 
 extension ProfileKeywordSettingViewController: ProfileKeywordViewDelegate {
     func removeKeyword(_ view: ProfileKeywordView) {
-        if keywordCount.value == keywordLimit {
-            buttonIsEnable.accept(true)
-        } else {
-            buttonIsEnable.accept(false)
-        }
+     
         self.keywordStackView.removeArrangedSubview(view)
         view.removeFromSuperview()
         keywordCount.accept(keywordStackView.arrangedSubviews.count)
         UIView.animate(withDuration: 0.2, animations: {
             self.keywordStackView.layoutIfNeeded()
         })
+        print("삭제: ", keywordCount.value)
+        if keywordCount.value - 1 == keywordLimit {
+            buttonIsEnable.accept(true)
+        } else {
+            buttonIsEnable.accept(false)
+        }
         DoriDoriToastView.init(text: "관심분야가 삭제되었습니다.", duration: 2.0).show()
     }
 }
@@ -134,6 +140,7 @@ extension ProfileKeywordSettingViewController: UnderLineTextFieldDelegate {
             if keywordCount.value == keywordLimit {
                 buttonIsEnable.accept(true)
             }
+
             let keywordView = ProfileKeywordView()
             keywordView.configure(title: keyword)
             self.keywordStackView.addArrangedSubview(keywordView)

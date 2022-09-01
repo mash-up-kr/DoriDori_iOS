@@ -94,6 +94,33 @@ final class SettingViewController: UIViewController, View {
         reactor.pulse(\.$settingSections)
             .bind(to: self.settingItems)
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$showAlert)
+            .compactMap { $0 }
+            .bind { model in
+                AlertViewController(model: model).show()
+            }.disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$shouldDismissPresentedViewController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }.disposed(by: self.disposeBag)
+     
+        reactor.pulse(\.$goToWelcomeViewController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind { _ in
+                UserDefaults.standard.removeObject(forKey: "accessToken")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
+                _=UserDefaults.standard.dictionaryRepresentation().map {print("[유저디폴트 삭제]:\($0.key): \($0.value)")}
+                guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+                      var window = sceneDelegate.window else { return }
+                window = CompositionRoot.resolve(window: window, appStart: .siginIn).window
+            }.disposed(by: self.disposeBag)
+        
+        
     }
 }
 

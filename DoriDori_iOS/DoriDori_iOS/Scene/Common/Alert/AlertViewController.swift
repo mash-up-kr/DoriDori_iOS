@@ -98,7 +98,7 @@ final class AlertViewController: UIViewController {
                         as? SceneDelegate else {
                     return
                 }
-        sceneDelegate.window?.rootViewController?.present(self, animated: true)
+        sceneDelegate.window?.rootViewController?.presentedViewController?.present(self, animated: true)
     }
 }
 

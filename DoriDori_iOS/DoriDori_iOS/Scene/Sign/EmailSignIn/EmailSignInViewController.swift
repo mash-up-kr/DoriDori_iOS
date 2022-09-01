@@ -11,14 +11,9 @@ import RxSwift
 final class EmailSignInViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UnderLineTextField!
     @IBOutlet private weak var passwordTextField: UnderLineTextField!
-    
-    //하단
-    @IBOutlet private weak var emailPwFindStackView: UIStackView!
-    @IBOutlet private weak var emailSignUpButton: UIButton!
-    @IBOutlet private weak var emailFindButton: UIButton!
-    @IBOutlet private weak var passwordFindButton: UIButton!
     @IBOutlet private weak var loginButtomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let keyboardUpButtomConstraint: CGFloat = 20
     private let keyboardDownButtomConstraint: CGFloat = 54
@@ -33,14 +28,17 @@ final class EmailSignInViewController: UIViewController {
         keyboardSetting()
         settingViewModel()
         bind(viewModel)
+        settingNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
-
+  
     // MARK: - Bind ViewModel
     private func settingViewModel() {
         emailTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .email,
@@ -75,12 +73,16 @@ final class EmailSignInViewController: UIViewController {
         
         password.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(output.passwordIsValid)
-            .filter { !$0 }
-            .bind { [weak self] _ in
+            .bind { [weak self] isValid in
                 guard let self = self?.passwordTextField else { return }
-                self.errorLabel.text = "비밀번호를 확인해주세요."
-                self.underLineView.backgroundColor = UIColor(named: "red500")
-                self.iconImageView.image = UIImage(named: "error")
+                if !isValid {
+                    self.errorLabel.text = "비밀번호를 확인해주세요."
+                    self.underLineView.backgroundColor = .red500
+                    self.errorLabel.textColor = .red500
+                } else {
+                    self.errorLabel.text = ""
+                }
+                
             }.disposed(by: disposeBag)
        
         

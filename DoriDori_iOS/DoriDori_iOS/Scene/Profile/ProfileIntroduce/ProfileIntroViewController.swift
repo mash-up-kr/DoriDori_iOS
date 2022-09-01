@@ -14,6 +14,7 @@ final class ProfileIntroViewController: UIViewController {
     @IBOutlet private weak var profileIntroTextField: UnderLineTextField!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var buttonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let viewModel: ProfileIntroViewModel = .init()
     private var disposeBag = DisposeBag()
@@ -23,12 +24,15 @@ final class ProfileIntroViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keyboardSetting()
+        settingNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Bind

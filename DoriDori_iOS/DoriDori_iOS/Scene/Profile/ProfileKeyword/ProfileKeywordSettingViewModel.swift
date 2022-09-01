@@ -57,7 +57,9 @@ final class ProfileKeywordSettingViewModel: ViewModelProtocol {
             }.observe(on: MainScheduler.instance)
             
       
-        return Output(editState: keywordEdit.asDriver(), profileOutput: output.asDriver(onErrorJustReturn: false), errorMsg: errorRelay.asSignal())
+        return Output(editState: keywordEdit.asDriver(),
+                      profileOutput: output.asDriver(onErrorJustReturn: false),
+                      errorMsg: errorRelay.asSignal())
 
     }
     
