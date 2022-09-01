@@ -120,34 +120,24 @@ final class QuestionReceivedReactor: Reactor {
             if content.count < 1 { return .just(.toast(text: "1글자 이상 입력해주세요")) }
             guard let question = self.question(at: indexPath) else { return .empty() }
             
-            return self.locationManager.getLocation()
-                .flatMapLatest { [weak self] result -> Observable<Mutation> in
-                    guard let self = self else { return .empty() }
-                    switch result {
-                    case .success(let location):
-                        return self.myPageRepository.postComment(
-                            to: question.questionID,
-                            content: content,
-                            location: location
-                        )
-                        .catch { error in
-                            print(error)
-                            return .empty()
-                        }
-                        .flatMapLatest { [weak self] _ -> Observable<Mutation> in
-                            guard let self = self else { return .empty() }
-                            var _questions = self.currentState.receivedQuestions
-                            _questions.remove(at: indexPath.item)
-                            return .concat(
-                                .just(.toast(text: "답변이 등록되었습니다")),
-                                .just(.questions(_questions))
-                            )
-                        }
-                    case .failure(let error):
-                        debugPrint(error.errorDescription)
-                        return .empty()
-                    }
-                }
+            return self.myPageRepository.postComment(
+                to: question.questionID,
+                content: content,
+                location: (UserDefaults.longitude, UserDefaults.latitude)
+            )
+            .catch { error in
+                print(error)
+                return .empty()
+            }
+            .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                var _questions = self.currentState.receivedQuestions
+                _questions.remove(at: indexPath.item)
+                return .concat(
+                    .just(.toast(text: "답변이 등록되었습니다")),
+                    .just(.questions(_questions))
+                )
+            }
             
         case .didSelectCell(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
