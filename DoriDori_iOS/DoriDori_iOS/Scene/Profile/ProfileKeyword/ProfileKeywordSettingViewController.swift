@@ -21,7 +21,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
     @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let keywordLimit: Int = 3
-    private let keyboardUpButtomConstraint: CGFloat = 20
+    private let keyboardUpButtomConstraint: CGFloat = 10
     private let keyboardDownButtomConstraint: CGFloat = 54
     private let keywordCount: BehaviorRelay<Int> = .init(value: 1)
     private let buttonIsEnable: BehaviorRelay<Bool> = .init(value: false)
@@ -97,7 +97,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
         
         output.profileOutput.drive(onNext: { [weak self] _ in
             // TODO: 위치정보 허락 여부
-            self?.keywordTextField.textField.resignFirstResponder()
+            self?.navigationController?.navigationBar.isHidden = true
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
                   var window = sceneDelegate.window else { return }
             window = CompositionRoot.resolve(window: window, appStart: .home).window
