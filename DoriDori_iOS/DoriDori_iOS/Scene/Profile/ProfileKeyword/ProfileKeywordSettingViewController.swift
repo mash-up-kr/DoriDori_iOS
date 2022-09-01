@@ -18,6 +18,7 @@ final class ProfileKeywordSettingViewController: UIViewController {
     @IBOutlet private weak var keywordEditButton: UIButton!
     @IBOutlet private weak var keywordCountLabel: UILabel!
     @IBOutlet private weak var startButtomBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let keywordLimit: Int = 3
     private let keyboardUpButtomConstraint: CGFloat = 20
@@ -36,12 +37,15 @@ final class ProfileKeywordSettingViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keywordTextField.delegate = self
+        settingNavigation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     private func settingViewModel() {

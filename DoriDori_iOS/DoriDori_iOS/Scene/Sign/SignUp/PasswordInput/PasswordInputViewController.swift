@@ -14,6 +14,7 @@ final class PasswordViewController: UIViewController {
     @IBOutlet private weak var passwordConfirmTextField: UnderLineTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var confirmButtonButtomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private let viewModel: PasswordViewModel = .init()
     var email: String = ""
@@ -26,11 +27,15 @@ final class PasswordViewController: UIViewController {
         settingViewModel()
         bind(viewModel)
         keyboardSetting()
+        settingNavigation()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Bind

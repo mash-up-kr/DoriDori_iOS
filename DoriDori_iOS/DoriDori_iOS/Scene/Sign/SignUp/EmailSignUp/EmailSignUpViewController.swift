@@ -21,6 +21,7 @@ final class EmailSignUpViewController: UIViewController {
     @IBOutlet private weak var sendToAuthNumberButton: UIButton!
     @IBOutlet private weak var sendButtonButtomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var indicator: UIActivityIndicatorView!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     private let viewModel: EmailSignUpViewModel = .init()
     private var disposeBag = DisposeBag()
     var termsIds: [String] = []
@@ -32,12 +33,16 @@ final class EmailSignUpViewController: UIViewController {
         settingViewModel()
         keyboardSetting()
         bind(viewModel)
+        settingNavigation()
         self.view.bringSubviewToFront(self.indicator)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+    
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Bind

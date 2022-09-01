@@ -23,6 +23,7 @@ final class TermsOfServiceViewContoller: UIViewController {
     @IBOutlet private weak var locationAgreeContent: UITextView!
     
     @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var navigationBackButton: UIButton!
     
     private var viewModel: TermsOfServiceViewModel = .init()
     private var termsIds: [String] = []
@@ -33,11 +34,15 @@ final class TermsOfServiceViewContoller: UIViewController {
         super.viewDidLoad()
         bind(viewModel: viewModel)
         settingTextViewInset()
+        settingNavigation()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "입장하기"
-        navigationController?.navigationBar.topItem?.title = ""
+
+    private func settingNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        let navi = navigationBackButton.rx.tap.asObservable()
+        navi.bind { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
     
     private func settingTextViewInset() {
