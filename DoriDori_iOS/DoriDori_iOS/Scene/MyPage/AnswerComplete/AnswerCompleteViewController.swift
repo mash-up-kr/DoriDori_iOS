@@ -17,11 +17,9 @@ final class AnswerCompleteViewController: UIViewController,
     private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .darkGray
         return collectionView
     }()
     private let refreshControl = UIRefreshControl()
-
     private let viewDidLoadStream: PublishRelay<Void>
     let reactor: AnswerCompleteReactor
     var disposeBag: DisposeBag
@@ -141,6 +139,7 @@ final class AnswerCompleteViewController: UIViewController,
     private func register(_ collectionView: UICollectionView) {
         collectionView.register(MyPageOtherSpeechBubbleCell.self)
         collectionView.register(MyPageMySpeechBubbleCell.self)
+        collectionView.register(EmptyCell.self)
     }
 }
 
@@ -151,13 +150,19 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        self.questionItems.value.count
+        if self.questionItems.value.isEmpty { return 1 }
+        return self.questionItems.value.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        if self.questionItems.value.isEmpty {
+            let cell = collectionView.dequeueReusableCell(type: EmptyCell.self, for: indexPath)
+            cell.configure(title: "받은 질문에 답변을 작성해보아요!")
+            return cell
+        }
         guard let item = self.questionItems.value[safe: indexPath.item] else { fatalError("can not find item")
         }
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
@@ -185,6 +190,9 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
+        if self.questionItems.value.isEmpty {
+            return collectionView.bounds.size
+        }
         guard let item = self.questionItems.value[safe: indexPath.item] else { fatalError("can not find item")
         }
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
@@ -201,14 +209,18 @@ extension AnswerCompleteViewController: UICollectionViewDelegate {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        self.willDisplayCell.accept(indexPath)
+        if !self.questionItems.value.isEmpty {
+            self.willDisplayCell.accept(indexPath)
+        }
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        self.didSelectCell.accept(indexPath)
+        if !self.questionItems.value.isEmpty {
+            self.didSelectCell.accept(indexPath)
+        }
     }
 }
 

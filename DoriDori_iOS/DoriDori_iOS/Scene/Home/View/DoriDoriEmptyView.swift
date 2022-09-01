@@ -49,4 +49,8 @@ final class DoriDoriEmptyView: UIView {
             $0.centerX.equalTo(emptyImageView)
         }
     }
+    
+    func configure(title: String) {
+        self.descriptionLabel.text = title
+    }
 }
