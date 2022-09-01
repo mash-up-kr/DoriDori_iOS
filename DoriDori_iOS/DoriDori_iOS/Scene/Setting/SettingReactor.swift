@@ -73,8 +73,8 @@ final class SettingReactor: Reactor {
             let settingSections = [
                 SettingSectionModel(title: "내 설정", settingItems: [
                     .myLevel,
-                    .modifyProfile,
-                    .alarmLocationSetting
+                    .modifyProfile
+//                    .alarmLocationSetting
                 ]),
                 SettingSectionModel(title: "앱 설정", settingItems: [
                     .notice,
