@@ -29,7 +29,7 @@ final class BaseWebViewController: UIViewController, WKNavigationDelegate {
             .path: path,
             .name: "accessToken",
             .value: "Bearer \(UserDefaults.accessToken ?? "")",
-            .maximumAge: 7200
+            .maximumAge: 72000
         ]) {
             print(cookie)
             let configuraction = WKWebViewConfiguration()

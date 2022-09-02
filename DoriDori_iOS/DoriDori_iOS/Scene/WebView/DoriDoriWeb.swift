@@ -24,7 +24,7 @@ enum DoriDoriWeb {
     var path: String {
         switch self {
         case .questionDetail(let questionID): return "/question-detail?questionId=\(questionID)"
-        case .postDetail(let postID): return "/question-detail?postId=\(postID)"
+        case .postDetail(let postID): return "/post-detail?postId=\(postID)"
         case .profileSetting: return "/setting/my-profile"
         case .share(let userID):
             if let userID = userID {
