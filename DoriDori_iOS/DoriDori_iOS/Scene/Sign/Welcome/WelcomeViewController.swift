@@ -24,7 +24,7 @@ final class WelcomeViewController: UIViewController, StoryboardView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func router(to: SignInButtonType) {
@@ -47,11 +47,13 @@ final class WelcomeViewController: UIViewController, StoryboardView {
         
         emailLoginButton.rx.tap
             .map { .emailSignInButtonDidTap }
+            .distinctUntilChanged()
             .bind(to: viewModel.action)
             .disposed(by: disposeBag)
         
         emailSignUpButton.rx.tap
             .map { .emailSignupButtonDidTap }
+            .distinctUntilChanged()
             .bind(to: viewModel.action)
             .disposed(by: disposeBag)
         
