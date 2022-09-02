@@ -35,22 +35,45 @@ final class DoriDoriLocationManager: NSObject,
             .do(onNext: { print("😲", $0) })
             .map { .success($0) }
         
-        let errorOb: Observable<Result<Location, DoriDoriLocationError>> = Observable.merge(
+        let errorOb1: Observable<Result<Location, DoriDoriLocationError>> = Observable.merge(
             self.location.rx.didFailWithError,
             self.location.rx.didFinishDeferredUpdatesWithError
         )
+        .do(onNext: { print("🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔", $0)})
         .map { .failure($0) }
         
+  
+        let errorOb: Observable<Result<Location, DoriDoriLocationError>>
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
+            print("🤔🤔🤔")
             self.location.startUpdatingLocation()
-        case .denied, .notDetermined:
+            errorOb = Observable<Result<Location, DoriDoriLocationError>>.create { observer in
+                return Disposables.create()
+            }
+        case .denied, .restricted:
+            print("🤔")
+            self.location.requestWhenInUseAuthorization()
+//            self.location.startUpdatingLocation()
+            errorOb = Observable<Result<Location, DoriDoriLocationError>>.create { observer in
+                observer.onNext(.failure(DoriDoriLocationError.unknownError))
+                return Disposables.create()
+            }
+        case .notDetermined:
+            print("🤔🤔")
             self.location.requestWhenInUseAuthorization()
             self.location.startUpdatingLocation()
-        default: break
+            errorOb = Observable<Result<Location, DoriDoriLocationError>>.create { observer in
+                return Disposables.create()
+            }
+        default:
+            print("🤔🤔🤔🤔")
+            errorOb = Observable<Result<Location, DoriDoriLocationError>>.create { observer in
+                return Disposables.create()
+            }
         }
         
-        return Observable.merge(locationOb, errorOb)
+        return Observable.merge(locationOb, errorOb, errorOb1)
     }
     
 }
