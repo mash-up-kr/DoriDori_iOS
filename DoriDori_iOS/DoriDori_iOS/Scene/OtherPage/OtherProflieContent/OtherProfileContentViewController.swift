@@ -85,7 +85,6 @@ final class OtherProfileContentViewController: UIViewController,
         reactor.pulse(\.$navigateUserID)
             .compactMap { $0 }
             .bind(with: self) { owner, userID in
-                print("userID", userID)
                 owner.coordinator.navigateToOtherPage(userID: userID)
             }
             .disposed(by: self.disposeBag)
