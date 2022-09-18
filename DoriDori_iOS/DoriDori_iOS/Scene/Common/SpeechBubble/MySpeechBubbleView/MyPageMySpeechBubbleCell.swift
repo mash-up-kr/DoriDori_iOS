@@ -40,12 +40,15 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
     private let levelView = LevelView()
     private let speechBubble = MyPageMySpeechBubbleView()
     private var disposeBag: DisposeBag
+    private let didTapMoreButton: PublishRelay<Void>
     
     // MARK: - Init
     
     override init(frame: CGRect) {
+        self.didTapMoreButton = .init()
         self.disposeBag = .init()
         super.init(frame: frame)
+        self.speechBubble.delegate = self
         self.setupLayouts()
     }
     
@@ -66,11 +69,22 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
         self.levelView.configure(level: item.level)
     }
     
-    func bindAction(didTapProfile: PublishRelay<IndexPath>, at indexPath: IndexPath) {
+    func bindAction(
+        didTapProfile: PublishRelay<IndexPath>,
+        didTapMoreButton: PublishRelay<IndexPath>? = nil,
+        at indexPath: IndexPath
+    ) {
         self.profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in return indexPath }
             .bind(to: didTapProfile)
+            .disposed(by: self.disposeBag)
+        
+        self.didTapMoreButton
+            .map { indexPath }
+            .bind { indexPath in
+                didTapMoreButton?.accept(indexPath)
+            }
             .disposed(by: self.disposeBag)
     }
     
@@ -109,5 +123,14 @@ extension MyPageMySpeechBubbleCell {
             $0.top.equalTo(self.profileImageView.snp.bottom).offset(8)
             $0.centerX.equalTo(self.profileImageView.snp.centerX)
         }
+    }
+}
+
+// MARK: - MyPageMySpeechBubbleViewDelegate
+
+extension MyPageMySpeechBubbleCell: MyPageMySpeechBubbleViewDelegate {
+    
+    func didTapMore(_ speechBubbleView: MyPageMySpeechBubbleView) {
+        self.didTapMoreButton.accept(())
     }
 }

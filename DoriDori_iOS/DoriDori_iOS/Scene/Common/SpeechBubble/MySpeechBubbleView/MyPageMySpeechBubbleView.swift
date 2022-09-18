@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+protocol MyPageMySpeechBubbleViewDelegate: AnyObject {
+    func didTapMore(_ speechBubbleView: MyPageMySpeechBubbleView)
+}
 
 final class MyPageMySpeechBubbleView: MySpeechBubbleView,
                                       SpeechBubbleViewType,
@@ -93,7 +99,8 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
     }()
     
     // MARK: - Properties
-    
+    weak var delegate: MyPageMySpeechBubbleViewDelegate?
+    private let disposeBag: DisposeBag
     var likeButtonType: LikeButtonType { .heart }
     
     // MARK: - Init
@@ -103,12 +110,14 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
+        self.disposeBag = .init()
         super.init(
             borderWidth: borderWidth,
             borderColor: borderColor,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        self.bind()
     }
     
     required init?(coder: NSCoder) {
@@ -122,6 +131,17 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         self.updatedTimeLabel.text = item.updatedTime
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.likeButton)
+    }
+}
+
+// MARK: - Private functions
+extension MyPageMySpeechBubbleView {
+    func bind() {
+        self.moreButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.delegate?.didTapMore(self)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 
