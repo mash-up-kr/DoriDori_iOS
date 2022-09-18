@@ -1737,17 +1737,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoriDori_iOS/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "도리도리는 사용자의 현 위치를 파악하여, 사용자 위치 근방에 있는 게시물을 선별하여 보여주는데 사용됩니다. 또한 사용자가 방문한 위치를 저장하고 다시 불러오는데 사용됩니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "도리도리는 사용자의 현 위치를 파악하여, 사용자 위치 근방에 있는 게시물을 선별하여 보여주는데 사용됩니다. 또한 사용자가 방문한 위치를 저장하고 다시 불러오는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "‘도리도리'가 사진 또는 동영상을 촬영하여 메세지로 전송, 게시물에 기록, 커뮤니티에 표시, 사진 임시 저장, 프로필 정보 제공시에 이용, 사진을 촬영하여 등록하는 기능 등을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "MashUp-Bangwidae.DoriDori-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1766,17 +1769,20 @@
 				DEVELOPMENT_TEAM = 49VF2WJUF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoriDori_iOS/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "도리도리는 사용자의 현 위치를 파악하여, 사용자 위치 근방에 있는 게시물을 선별하여 보여주는데 사용됩니다. 또한 사용자가 방문한 위치를 저장하고 다시 불러오는데 사용됩니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "도리도리는 사용자의 현 위치를 파악하여, 사용자 위치 근방에 있는 게시물을 선별하여 보여주는데 사용됩니다. 또한 사용자가 방문한 위치를 저장하고 다시 불러오는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "‘도리도리'가 사진 또는 동영상을 촬영하여 메세지로 전송, 게시물에 기록, 커뮤니티에 표시, 사진 임시 저장, 프로필 정보 제공시에 이용, 사진을 촬영하여 등록하는 기능 등을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "MashUp-Bangwidae.DoriDori-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
