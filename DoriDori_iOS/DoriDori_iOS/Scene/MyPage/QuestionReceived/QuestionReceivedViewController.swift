@@ -54,6 +54,7 @@ final class QuestionReceivedViewController: UIViewController,
     private let questions: BehaviorRelay<[MyPageOtherSpeechBubbleItemType]>
     private let didTapProfile: PublishRelay<IndexPath>
     private let didTapDenyButton: PublishRelay<IndexPath>
+    private let didTapMoreButton: PublishRelay<IndexPath>
     private let didTapCommentButton: PublishRelay<IndexPath>
     private let didSelectCell: PublishRelay<IndexPath>
     private let willDisplayCell: PublishRelay<IndexPath>
@@ -64,6 +65,7 @@ final class QuestionReceivedViewController: UIViewController,
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.didTapMoreButton = .init()
         self.didTapRegistButton = .init()
         self.willDisplayCell = .init()
         self.didSelectCell = .init()
@@ -123,6 +125,11 @@ final class QuestionReceivedViewController: UIViewController,
         
         self.didTapProfile
             .map { QuestionReceivedReactor.Action.didTapProfile($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        self.didTapMoreButton
+            .map { QuestionReceivedReactor.Action.didTapReport($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
@@ -220,6 +227,15 @@ final class QuestionReceivedViewController: UIViewController,
                 DoriDoriToastView(text: toast).show()
             }
             .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$actionSheetAlertController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, actionSheet in
+                let viewController = actionSheet.configure()
+                owner.present(viewController, animated: true)
+            }
+            .disposed(by: self.disposeBag)
     }
     
     private func bind() {
@@ -301,6 +317,7 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
             didTapProfile: self.didTapProfile,
             didTapComment: self.didTapCommentButton,
             didTapDeny: self.didTapDenyButton,
+            didTapMoreButton: self.didTapMoreButton,
             at: indexPath
         )
         return cell

@@ -11,6 +11,7 @@ import RxSwift
 protocol MyPageOtherSpeechBubbleViewDelegate: AnyObject {
     func didTapDeny(_ speechBubbleView: MyPageOtherSpeechBubbleView)
     func didTapComment(_ speechBubbleView: MyPageOtherSpeechBubbleView)
+    func didTapMore(_ speechBubbleView: MyPageOtherSpeechBubbleView)
 }
 
 final class MyPageOtherSpeechBubbleView: OtherSpeechBubbleView,
@@ -171,6 +172,12 @@ extension MyPageOtherSpeechBubbleView {
         self.denyButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.delegate?.didTapDeny(owner)
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.moreButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.delegate?.didTapMore(owner)
             }
             .disposed(by: self.disposeBag)
     }

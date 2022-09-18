@@ -19,6 +19,8 @@ final class QuestionReceivedReactor: Reactor {
         case didTapDenyCancel
         case didTapDenyAction(QuestionID)
         case didRefresh
+        case didTapReport(IndexPath)
+        case didTapReportAction(type: ReportType, questionID: QuestionID)
     }
     
     enum Mutation {
@@ -30,6 +32,7 @@ final class QuestionReceivedReactor: Reactor {
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
         case didDenyQuestion([MyPageOtherSpeechBubbleItemType])
         case toast(text: String)
+        case didTapReport(ActionSheetAlertController)
     }
     
     struct State {
@@ -40,6 +43,7 @@ final class QuestionReceivedReactor: Reactor {
         @Pulse var shouldDismissPresentedViewController: Void?
         @Pulse var endRefreshing: Bool?
         @Pulse var showToast: String?
+        @Pulse var actionSheetAlertController: ActionSheetAlertController?
     }
     
     var initialState: State
@@ -92,6 +96,28 @@ final class QuestionReceivedReactor: Reactor {
                 self.action.onNext(.didTapDenyAction(question.questionID))
             }))
             return .just(.alert(alertModel))
+            
+        case .didTapReport(let indexPath):
+            let actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
+                guard let question = self?.currentState.receivedQuestions[safe: indexPath.item] else { return }
+                
+                self?.action.onNext(.didTapReportAction(type: .question, questionID: question.questionID))
+            }))
+            return .just(.didTapReport(actionSheetController))
+            
+        case .didTapReportAction(let type, let questionID):
+            return self.myPageRepository.requestReport(
+                type: type,
+                targetID: questionID
+            )
+            .catch({ error in
+                print(error)
+                return .empty()
+            })
+            .filter { $0 }
+            .flatMap { _ -> Observable<Mutation> in
+                return .just(.toast(text: "신고되었습니다!"))
+            }
             
         case .didTapDenyCancel:
             return .just(.shouldDismissPresentedViewController)
@@ -185,6 +211,8 @@ final class QuestionReceivedReactor: Reactor {
             _state.endRefreshing = true
         case .toast(let text):
             _state.showToast = text
+        case .didTapReport(let acionSheet):
+            _state.actionSheetAlertController = acionSheet
         }
         return _state
     }
