@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-1Z-SSM">
-                                <rect key="frame" x="30" y="124" width="315" height="56"/>
+                                <rect key="frame" x="30" y="123.99999999999999" width="315" height="60.333333333333329"/>
                                 <string key="text">도리도리,
 내 근처 사람에게 물어보세요</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
@@ -123,20 +123,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일로 입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-dn-95g">
-                                <rect key="frame" x="30" y="119" width="315" height="28"/>
+                                <rect key="frame" x="30" y="118.99999999999999" width="315" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-yM-Zf3" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="177" width="315" height="100"/>
+                                <rect key="frame" x="30" y="179.33333333333334" width="315" height="100.00000000000003"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LiT-TT-m4I"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-Zo-YUW" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="297" width="315" height="100"/>
+                                <rect key="frame" x="30" y="299.33333333333331" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="cYA-q7-90S"/>
@@ -227,23 +227,23 @@
             <objects>
                 <viewController storyboardIdentifier="TermsOfServiceViewContoller" id="eRl-Se-oQ7" customClass="TermsOfServiceViewContoller" customModule="DoriDori_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DaG-Xd-dTX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="1054"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIF-hC-Gmm">
-                                <rect key="frame" x="0.0" y="114" width="375" height="752"/>
+                                <rect key="frame" x="0.0" y="114" width="404" height="906"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-5i-WJz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="732.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-FZ-hoS">
-                                                <rect key="frame" x="30" y="20" width="315" height="28"/>
+                                                <rect key="frame" x="30" y="20" width="344" height="30.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-pm-DZP">
-                                                <rect key="frame" x="30" y="78" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="80.333333333333343" width="344" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="약관에 모두 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-vv-oFz">
                                                         <rect key="frame" x="44" y="17.333333333333172" width="111" height="21"/>
@@ -291,7 +291,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-BS-B8A">
-                                                <rect key="frame" x="29.999999999999993" y="174" width="108.33333333333331" height="20"/>
+                                                <rect key="frame" x="30" y="164.33333333333331" width="115" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-H9-fEF">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -303,16 +303,16 @@
                                                         <state key="normal" title=" " image="checkbox_outline"/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-uF-xkS">
-                                                        <rect key="frame" x="27.999999999999993" y="0.0" width="80.333333333333314" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="87" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-qk-DYN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-9I-X6K">
-                                                                <rect key="frame" x="48.666666666666664" y="0.0" width="31.666666666666664" height="20"/>
+                                                                <rect key="frame" x="51.666666666666671" y="0.0" width="35.333333333333329" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
@@ -322,7 +322,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-kp-LTx">
-                                                <rect key="frame" x="30" y="624" width="315" height="54"/>
+                                                <rect key="frame" x="30" y="626.33333333333337" width="344" height="54"/>
                                                 <color key="backgroundColor" name="gray700"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="3xc-9u-f5D"/>
@@ -342,7 +342,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-mU-iwI">
-                                                <rect key="frame" x="30" y="370" width="156.33333333333334" height="20"/>
+                                                <rect key="frame" x="30.000000000000014" y="318.33333333333331" width="224.33333333333337" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPo-w3-TAK">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -354,16 +354,16 @@
                                                         <state key="normal" title=" " image="checkbox_outline"/>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-lW-sJi">
-                                                        <rect key="frame" x="28" y="0.0" width="128.33333333333334" height="20"/>
+                                                        <rect key="frame" x="28" y="0.0" width="196.33333333333334" height="20"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현 위치 추적 허용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96.666666666666671" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보처리방침 동의 약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-9E-Uod">
+                                                                <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm1-fZ-Fwh">
-                                                                <rect key="frame" x="96.666666666666657" y="0.0" width="31.666666666666657" height="20"/>
+                                                                <rect key="frame" x="161" y="0.0" width="35.333333333333343" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                                 <color key="textColor" name="lime300"/>
                                                                 <nil key="highlightedColor"/>
@@ -373,10 +373,10 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-ux-9dZ">
-                                                <rect key="frame" x="30" y="208" width="315" height="120"/>
+                                                <rect key="frame" x="30" y="198.33333333333331" width="344" height="95"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="NZa-hD-r7L"/>
+                                                    <constraint firstAttribute="height" constant="95" id="NZa-hD-r7L"/>
                                                 </constraints>
                                                 <color key="textColor" name="gray500"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
@@ -394,10 +394,62 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27W-We-bFc">
-                                                <rect key="frame" x="30" y="404" width="315" height="120"/>
+                                                <rect key="frame" x="30" y="352.33333333333331" width="344" height="95"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="5bM-cd-d6U"/>
+                                                    <constraint firstAttribute="height" constant="95" id="5bM-cd-d6U"/>
+                                                </constraints>
+                                                <color key="textColor" name="gray500"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibCornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ibBorderColor">
+                                                        <color key="value" name="gray800"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibBorderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-w6-Wsc">
+                                                <rect key="frame" x="30.000000000000014" y="472.33333333333337" width="211.33333333333337" height="20"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="It3-Mk-9p1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="3C7-BQ-OkM"/>
+                                                            <constraint firstAttribute="height" constant="20" id="W0T-aN-6T5"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title=" " image="checkbox_outline"/>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e72-LX-hie">
+                                                        <rect key="frame" x="28" y="0.0" width="183.33333333333334" height="20"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치기반서비스 동의 약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qme-8n-MkQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="148" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faE-lW-sdL">
+                                                                <rect key="frame" x="148" y="0.0" width="35.333333333333343" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                <color key="textColor" name="lime300"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rIm-9b-AKP">
+                                                <rect key="frame" x="30" y="506.33333333333337" width="344" height="95"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="95" id="bax-T9-Bux"/>
                                                 </constraints>
                                                 <color key="textColor" name="gray500"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="12"/>
@@ -419,22 +471,27 @@
                                         <constraints>
                                             <constraint firstItem="5eC-ux-9dZ" firstAttribute="leading" secondItem="XVb-FZ-hoS" secondAttribute="leading" id="23W-ec-JLF"/>
                                             <constraint firstItem="ItB-mU-iwI" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="2gw-az-3P2"/>
+                                            <constraint firstItem="FDK-w6-Wsc" firstAttribute="top" secondItem="27W-We-bFc" secondAttribute="bottom" constant="25" id="2nj-oP-nnY"/>
                                             <constraint firstItem="27W-We-bFc" firstAttribute="trailing" secondItem="5eC-ux-9dZ" secondAttribute="trailing" id="4H3-zF-6Kn"/>
                                             <constraint firstAttribute="trailing" secondItem="Z2q-kp-LTx" secondAttribute="trailing" constant="30" id="4IN-PK-E7H"/>
-                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="top" secondItem="5eC-ux-9dZ" secondAttribute="bottom" constant="42" id="4nk-RV-hKy"/>
+                                            <constraint firstItem="rIm-9b-AKP" firstAttribute="trailing" secondItem="27W-We-bFc" secondAttribute="trailing" id="4JQ-FQ-EA9"/>
+                                            <constraint firstItem="ItB-mU-iwI" firstAttribute="top" secondItem="5eC-ux-9dZ" secondAttribute="bottom" constant="25" id="4nk-RV-hKy"/>
                                             <constraint firstItem="5eC-ux-9dZ" firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" id="DHn-nk-cmY"/>
-                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="top" secondItem="27W-We-bFc" secondAttribute="bottom" constant="100" id="Ful-W9-hdg"/>
                                             <constraint firstItem="bgH-BS-B8A" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="G8y-IH-CaN"/>
                                             <constraint firstAttribute="trailing" secondItem="XVb-FZ-hoS" secondAttribute="trailing" constant="30" id="Krb-wm-SLb"/>
                                             <constraint firstItem="5eC-ux-9dZ" firstAttribute="top" secondItem="bgH-BS-B8A" secondAttribute="bottom" constant="14" id="LcV-QE-w6J"/>
-                                            <constraint firstItem="bgH-BS-B8A" firstAttribute="top" secondItem="b9W-pm-DZP" secondAttribute="bottom" constant="42" id="RSH-uZ-xbt"/>
+                                            <constraint firstItem="rIm-9b-AKP" firstAttribute="top" secondItem="FDK-w6-Wsc" secondAttribute="bottom" constant="14" id="NGL-nt-waJ"/>
+                                            <constraint firstItem="bgH-BS-B8A" firstAttribute="top" secondItem="b9W-pm-DZP" secondAttribute="bottom" constant="30" id="RSH-uZ-xbt"/>
+                                            <constraint firstItem="Z2q-kp-LTx" firstAttribute="top" secondItem="rIm-9b-AKP" secondAttribute="bottom" constant="25" id="SS4-hx-Ytb"/>
                                             <constraint firstItem="b9W-pm-DZP" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="TkN-rI-tl8"/>
                                             <constraint firstItem="27W-We-bFc" firstAttribute="leading" secondItem="5eC-ux-9dZ" secondAttribute="leading" id="a22-2E-7D2"/>
                                             <constraint firstAttribute="bottom" secondItem="Z2q-kp-LTx" secondAttribute="bottom" constant="52" id="aGa-BX-C8J"/>
+                                            <constraint firstItem="FDK-w6-Wsc" firstAttribute="leading" secondItem="27W-We-bFc" secondAttribute="leading" id="bhD-ZB-7p3"/>
                                             <constraint firstItem="XVb-FZ-hoS" firstAttribute="top" secondItem="G7T-5i-WJz" secondAttribute="top" constant="20" id="eik-g0-KbW"/>
                                             <constraint firstItem="Z2q-kp-LTx" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="eoX-U0-UDc"/>
                                             <constraint firstItem="27W-We-bFc" firstAttribute="top" secondItem="ItB-mU-iwI" secondAttribute="bottom" constant="14" id="hjn-U8-BtX"/>
                                             <constraint firstItem="b9W-pm-DZP" firstAttribute="top" secondItem="XVb-FZ-hoS" secondAttribute="bottom" constant="30" id="n60-qa-otG"/>
+                                            <constraint firstItem="rIm-9b-AKP" firstAttribute="leading" secondItem="27W-We-bFc" secondAttribute="leading" id="nXt-G5-kuc"/>
                                             <constraint firstItem="XVb-FZ-hoS" firstAttribute="leading" secondItem="G7T-5i-WJz" secondAttribute="leading" constant="30" id="tjt-6h-78P"/>
                                             <constraint firstAttribute="trailing" secondItem="b9W-pm-DZP" secondAttribute="trailing" constant="30" id="xs8-ZZ-zA1"/>
                                         </constraints>
@@ -451,7 +508,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="cb4-OG-SsR"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-g6-66E">
-                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="404" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uet-CV-Bvf">
                                         <rect key="frame" x="31" y="30" width="20" height="20"/>
@@ -469,7 +526,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l17-GB-k9B">
-                                        <rect key="frame" x="156.33333333333334" y="29" width="62.333333333333343" height="21"/>
+                                        <rect key="frame" x="169" y="27.333333333333329" width="66.333333333333314" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -497,15 +554,18 @@
                             <constraint firstItem="G5D-ac-IVw" firstAttribute="trailing" secondItem="cu9-g6-66E" secondAttribute="trailing" id="zkv-FE-Pha"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="404" height="1054"/>
                     <connections>
                         <outlet property="allAgreeButton" destination="zRL-7Z-A1y" id="2bn-96-ubD"/>
                         <outlet property="allAgreeOutLineView" destination="b9W-pm-DZP" id="pKU-Zt-yGu"/>
-                        <outlet property="locationAgreeButton" destination="PPo-w3-TAK" id="DCP-VO-56T"/>
-                        <outlet property="locationAgreeContent" destination="27W-We-bFc" id="4bF-1X-RRW"/>
-                        <outlet property="locationAgreeLabel" destination="WeU-9E-Uod" id="oQm-sr-R8U"/>
+                        <outlet property="locationAgreeButton" destination="It3-Mk-9p1" id="pzI-LE-ISo"/>
+                        <outlet property="locationAgreeContent" destination="rIm-9b-AKP" id="UZN-Jo-J38"/>
+                        <outlet property="locationAgreeLabel" destination="qme-8n-MkQ" id="fZC-Ca-CQZ"/>
                         <outlet property="navigationBackButton" destination="uet-CV-Bvf" id="9BU-Ad-Lcn"/>
                         <outlet property="nextButton" destination="Z2q-kp-LTx" id="yWL-SQ-Vzm"/>
+                        <outlet property="personalInfoAgreeButton" destination="PPo-w3-TAK" id="zet-eZ-lej"/>
+                        <outlet property="personalInfoAgreeContent" destination="27W-We-bFc" id="6Pv-RA-Fn4"/>
+                        <outlet property="personalInfoAgreeLabel" destination="WeU-9E-Uod" id="kCZ-Ka-Hr9"/>
                         <outlet property="useAgreeButton" destination="wW1-H9-fEF" id="YTs-ix-YRH"/>
                         <outlet property="useAgreeContent" destination="5eC-ux-9dZ" id="j0Z-9U-3cm"/>
                         <outlet property="useAgreeLabel" destination="Z0o-qk-DYN" id="3JB-6W-0cE"/>
@@ -513,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgy-18-rSi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005.6" y="1458.6206896551726"/>
+            <point key="canvasLocation" x="1028.8" y="1515.5172413793105"/>
         </scene>
         <!--Email Sign Up View Controller-->
         <scene sceneID="AJ7-9D-UMk">
@@ -524,13 +584,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 인증이 필요해요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8n-4V-baU">
-                                <rect key="frame" x="30" y="124" width="315" height="28"/>
+                                <rect key="frame" x="30" y="123.99999999999999" width="315" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-eb-yzb" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="182" width="315" height="100"/>
+                                <rect key="frame" x="30" y="184.33333333333334" width="315" height="100.00000000000003"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="gtD-X0-tJX"/>
@@ -557,7 +617,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-NK-wqw" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="302" width="315" height="100"/>
+                                <rect key="frame" x="30" y="304.33333333333331" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="ckL-Iw-AQh"/>
@@ -586,7 +646,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urC-Rt-68c">
-                                        <rect key="frame" x="156.33333333333334" y="29" width="62.333333333333343" height="21"/>
+                                        <rect key="frame" x="154.33333333333334" y="27.333333333333329" width="66.333333333333343" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -646,13 +706,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 입력해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dos-MV-OOJ">
-                                <rect key="frame" x="30" y="114" width="315" height="28"/>
+                                <rect key="frame" x="30" y="113.99999999999999" width="315" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-DK-S6G" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="292" width="315" height="100"/>
+                                <rect key="frame" x="30" y="294.33333333333331" width="315" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="UKG-Nj-Tzm"/>
@@ -679,7 +739,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-La-m5M" customClass="UnderLineTextField" customModule="DoriDori_iOS" customModuleProvider="target">
-                                <rect key="frame" x="30" y="172" width="315" height="100"/>
+                                <rect key="frame" x="30" y="174.33333333333334" width="315" height="100.00000000000003"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="lAQ-N6-qIB"/>
@@ -704,7 +764,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입장하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NM5-QT-Npe">
-                                        <rect key="frame" x="156.33333333333334" y="29" width="62.333333333333343" height="21"/>
+                                        <rect key="frame" x="154.33333333333334" y="27.333333333333329" width="66.333333333333343" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
