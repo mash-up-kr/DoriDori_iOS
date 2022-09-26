@@ -211,6 +211,12 @@ final class NavigationWebViewController: UIViewController {
     }
     
     private func blockUser(userID: UserID) {
-        
+        self.repository.blockUser(userID: userID)
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                DoriDoriToastView(text: "해당 글쓴이를 차단했습니다.").show()
+            }
+            .disposed(by: self.disposeBag)
     }
 }
