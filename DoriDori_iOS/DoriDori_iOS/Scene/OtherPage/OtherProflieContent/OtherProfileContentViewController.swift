@@ -30,11 +30,13 @@ final class OtherProfileContentViewController: UIViewController,
     private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
     private let coordinator: OtherPageCoordinatable
     private let didTapProfile: PublishRelay<IndexPath>
+    private let didTapMoreButton: PublishRelay<IndexPath>
 
     init(
         reactor: OtherProfileContentReactor,
         coordinator: OtherPageCoordinatable
     ) {
+        self.didTapMoreButton = .init()
         self.didTapProfile = .init()
         self.coordinator = coordinator
         self.questionItems = .init(value: [])
@@ -71,6 +73,11 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapMoreButton
+            .map { OtherProfileContentReactor.Action.didTapMoreButton($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: self.questionItems)
             .disposed(by: self.disposeBag)
@@ -87,6 +94,21 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(with: self) { owner, userID in
                 print("userID", userID)
                 owner.coordinator.navigateToOtherPage(userID: userID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$actionSheetController)
+            .compactMap { $0 }
+            .bind(with: self) { owner, actionSheet in
+                let actionSheetController = actionSheet.configure()
+                owner.present(actionSheetController, animated: true)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$toast)
+            .compactMap { $0 }
+            .bind(with: self) { owner, text in
+                DoriDoriToastView(text: text).show()
             }
             .disposed(by: self.disposeBag)
     }
@@ -146,12 +168,20 @@ extension OtherProfileContentViewController: UICollectionViewDataSource {
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
             let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
             cell.configure(otherSpeechBubbleItem)
-            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+            cell.bindAction(
+                didTapProfile: self.didTapProfile,
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
             let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
             cell.configure(mySpeechBubbleItem)
+            cell.bindAction(
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         fatalError("can not casting itemtype")

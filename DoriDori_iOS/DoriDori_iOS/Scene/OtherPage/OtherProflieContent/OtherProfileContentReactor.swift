@@ -11,22 +11,33 @@ import RxSwift
 import ReactorKit
 
 final class OtherProfileContentReactor: Reactor {
+    
     enum Action {
         case viewDidLoad
         case didSelect(IndexPath)
         case willDisplayCell(IndexPath)
         case didTapProfile(IndexPath)
+        case didTapMoreButton(IndexPath)
+        case didTapReport(type: ReportType, targetID: String)
     }
+    
     enum Mutation {
         case quetsions([MyPageBubbleItemType])
         case didSelect(QuestionID)
         case didTap(UserID)
+        case didTapReport(ActionSheetAlertController)
+        case toast(text: String)
     }
+    
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
         @Pulse var navigateQuestionID: QuestionID?
         @Pulse var navigateUserID: UserID?
+        @Pulse var actionSheetController: ActionSheetAlertController?
+        @Pulse var toast: String?
     }
+    
+    private var shouldRefreshQuestionAndAnswers: Bool = false
     private var hasNext: Bool = false
     private var lastID: String?
     private var isRequesting: Bool = false
@@ -48,25 +59,8 @@ final class OtherProfileContentReactor: Reactor {
     deinit {
         debugPrint("\(self) deinit")
     }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-        var _state = state
-        switch mutation {
-        case .quetsions(let questions):
-            if _state.questionAndAnswer.isEmpty {
-                _state.questionAndAnswer = questions
-            } else {
-                _state.questionAndAnswer.append(contentsOf: questions)
-            }
-        case .didSelect(let questionID):
-            _state.navigateQuestionID = questionID
-        case .didTap(let userID):
-            _state.navigateUserID = userID
-        }
-        return _state
-    }
-    
-    private func fetchQuestionAndAnswer(size: Int = 20, userID: UserID, lastID: String?) -> Observable<Mutation> {
+
+    private func fetchQuestionAndAnswer(size: Int = 20, userID: UserID, lastID: String?) -> Observable<AnswerCompleteModel> {
         return self.repository.fetchQuestionAndAnswer(size: 20, userID: self.userID)
             .do(onNext: { [weak self] _ in
                 self?.isRequesting = true
@@ -74,14 +68,6 @@ final class OtherProfileContentReactor: Reactor {
             .catch { error in
                 print(error)
                 return .empty()
-            }
-            .flatMapLatest { [weak self] response -> Observable<Mutation> in
-                guard let self = self else { return .empty() }
-                guard let hasNext = response.hasNext else { return .empty() }
-                self.hasNext = hasNext
-                let _questions = self.configureCells(response: response)
-                self.isRequesting = false
-                return .just(.quetsions(_questions))
             }
     }
     
@@ -146,6 +132,16 @@ final class OtherProfileContentReactor: Reactor {
                 userID: self.userID,
                 lastID: self.lastID
             )
+            .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                guard let hasNext = response.hasNext else { return .empty() }
+                self.hasNext = hasNext
+                let _questions = self.configureCells(response: response)
+                self.isRequesting = false
+                self.shouldRefreshQuestionAndAnswers = true
+                return .just(.quetsions(_questions))
+            }
+            
         case .didSelect(let indexPath):
             guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
             if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
@@ -165,14 +161,90 @@ final class OtherProfileContentReactor: Reactor {
                 return .just(.didTap(question.userID))
             }
             return .empty()
+            
+        case .didTapMoreButton(let indexPath):
+            let actionSheet: ActionSheetAlertController
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            if let answer = question as? MyPageMySpeechBubbleCellItem {
+                actionSheet = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
+                    self?.action.onNext(.didTapReport(type: .answer, targetID: answer.questionID))
+                }))
+            } else if let question = question as? MyPageOtherSpeechBubbleItemType {
+                actionSheet = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
+                    self?.action.onNext(.didTapReport(type: .question, targetID: question.questionID))
+                }))
+            } else { return .empty() }
+            
+            return .just(.didTapReport(actionSheet))
+            
         case .willDisplayCell(let indexPath):
             if (self.currentState.questionAndAnswer.count < ( indexPath.item + 5)) && self.hasNext {
                 return self.fetchQuestionAndAnswer(
                     userID: self.userID,
                     lastID: self.lastID
                 )
+                .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    guard let hasNext = response.hasNext else { return .empty() }
+                    self.hasNext = hasNext
+                    let _questions = self.configureCells(response: response)
+                    self.isRequesting = false
+                    return .just(.quetsions(_questions))
+                }
             } else { return .just(.quetsions([])) }
+            
+        case .didTapReport(let type, let targetID):
+            let newQuestionAndAnswers = self.repository.requestReport(type: type, targetID: targetID)
+                .catch({ error in
+                    print(error)
+                    return .empty()
+                })
+                .filter { $0 }
+                .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    return self.fetchQuestionAndAnswer(
+                        userID: self.userID,
+                        lastID: nil
+                    )
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        guard let hasNext = response.hasNext else { return .empty() }
+                        self.hasNext = hasNext
+                        let _questions = self.configureCells(response: response)
+                        self.isRequesting = false
+                        return .just(.quetsions(_questions))
+                    }
+                }
+            self.shouldRefreshQuestionAndAnswers = true
+            return .concat(
+                newQuestionAndAnswers,
+                .just(.toast(text: "신고되었습니다!"))
+            )
         }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var _state = state
+        switch mutation {
+        case .quetsions(let questions):
+            if self.shouldRefreshQuestionAndAnswers {
+                _state.questionAndAnswer = questions
+            } else {
+                _state.questionAndAnswer.append(contentsOf: questions)
+            }
+        case .didSelect(let questionID):
+            _state.navigateQuestionID = questionID
+        case .didTap(let userID):
+            _state.navigateUserID = userID
+        case .didTapReport(let actionSheetcontroller):
+            _state.actionSheetController = actionSheetcontroller
+        case .toast(let text):
+            _state.toast = text
+        }
+        
+        self.shouldRefreshQuestionAndAnswers = false
+        
+        return _state
     }
     
 }

@@ -70,14 +70,16 @@ final class MyPageMySpeechBubbleCell: UICollectionViewCell {
     }
     
     func bindAction(
-        didTapProfile: PublishRelay<IndexPath>,
+        didTapProfile: PublishRelay<IndexPath>? = nil,
         didTapMoreButton: PublishRelay<IndexPath>? = nil,
         at indexPath: IndexPath
     ) {
         self.profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in return indexPath }
-            .bind(to: didTapProfile)
+            .bind { indexPath in 
+                didTapProfile?.accept(indexPath)
+            }
             .disposed(by: self.disposeBag)
         
         self.didTapMoreButton
