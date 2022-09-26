@@ -150,28 +150,12 @@ final class NavigationWebViewController: UIViewController {
             .compactMap { [weak self] _ -> [ActionSheetAction]? in
                 guard let self = self else { return nil }
                 switch self.type {
-                case .postDetail(_, let isMine), .questionDetail(_, let isMine):
-                    if isMine {
-                        return [
-                            .init(title: "수정하기", action: { [weak self] _ in
-                                
-                            }),
-                            .init(title: "삭제하기", action: { [weak self] _ in
-                                
-                            }),
-                            .init(title: "익명으로 변경", action: { [weak self] _ in
-                                
-                            })
-                        ]
-                    } else {
-                        return [
-                            .init(title: "신고하기", action: { [weak self] _ in
-                                
-                            }),
-                            .init(title: "글쓴이 차단하기", action: { [weak self] _ in
-                                
-                            })
-                        ]
+                case .postDetail(let targetID, let isMine), .questionDetail(let targetID, let isMine):
+                    let items: [DoriDoriQuestionPostDetailMore]
+                    if isMine { items = [.modify, .delete, .toAnonymous] }
+                    else { items = [.report, .block] }
+                    return items.map { item in
+                        .init(title: item.title, action: { _ in item.action(targetID) })
                     }
                 default: return nil
                 }
