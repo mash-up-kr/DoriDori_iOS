@@ -57,11 +57,29 @@ final class AnswerCompleteReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchAnswerComplete()
+                .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    guard let hasNext = response.hasNext else { return .empty() }
+                    self.hasNext = hasNext
+                    self.lastQuestionID = response.questions?.last?.id
+                    let _questions = self.configureCells(response: response)
+                    self.isRequesting = false
+                    return .just(.questionAndAnswers(_questions))
+                }
             
         case .willDisplayCell(let indexPath):
             if (self.currentState.questionAndAnswer.count < ( indexPath.item + 5)) && self.hasNext {
                 if !isRequesting {
                     return self.fetchAnswerComplete()
+                        .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                            guard let self = self else { return .empty() }
+                            guard let hasNext = response.hasNext else { return .empty() }
+                            self.hasNext = hasNext
+                            self.lastQuestionID = response.questions?.last?.id
+                            let _questions = self.configureCells(response: response)
+                            self.isRequesting = false
+                            return .just(.questionAndAnswers(_questions))
+                        }
                 }
             }
             
@@ -86,20 +104,21 @@ final class AnswerCompleteReactor: Reactor {
             
         case .didTapReport(let indexPath):
             guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
-            let reportType: ReportType
-            let targetID: String
+            let actionSheetController: ActionSheetAlertController
             if let question = question as? MyPageOtherSpeechBubbleItemType {
-                reportType = .question
-                targetID = question.questionID
+                actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
+                    self?.action.onNext(.didTapReportButton(type:  .question, targetID: question.questionID))
+                }))
+                
             } else if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
-                reportType = .answer
-                targetID = myAnswer.questionID
+                actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "삭제하기", action: { [weak self] _ in
+                    #warning("TODO: // 내 답변 삭제하기 , 수정하기 들어가야됨")
+                    print("삭제하기 \(myAnswer.questionID)")
+                }))
+                
             } else { return .empty() }
-            let actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
-                self?.action.onNext(.didTapReportButton(type: reportType, targetID: targetID))
-            }))
+     
             return .just(.didTapReport(actionSheetController))
-            
         case .didTapReportButton(let type, let questionID):
             return self.repository.requestReport(
                 type: type,
@@ -110,8 +129,22 @@ final class AnswerCompleteReactor: Reactor {
                 return .empty()
             })
             .filter { $0 }
-            .flatMap { _ -> Observable<Mutation> in
-                return .just(.toast(text: "신고되었습니다!"))
+            .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                let newAnswerCompletes = self.fetchAnswerComplete()
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        guard let hasNext = response.hasNext else { return .empty() }
+                        self.hasNext = hasNext
+                        self.lastQuestionID = response.questions?.last?.id
+                        let _questions = self.configureCells(response: response)
+                        self.isRequesting = false
+                        return .just(.questionAndAnswers(_questions))
+                    }
+                return .concat(
+                    newAnswerCompletes,
+                    .just(.toast(text: "신고되었습니다!"))
+                )
             }
             
         case .didRefresh:
@@ -186,7 +219,7 @@ final class AnswerCompleteReactor: Reactor {
         return _questions
     }
     
-    private func fetchAnswerComplete() -> Observable<Mutation> {
+    private func fetchAnswerComplete() -> Observable<AnswerCompleteModel> {
         self.isRequesting = true
         return self.repository
             .fetchMyAnswerCompleteQuestions(
@@ -196,15 +229,6 @@ final class AnswerCompleteReactor: Reactor {
             .catch { error in
                 print(error)
                 return .empty()
-            }
-            .flatMapLatest { [weak self] response -> Observable<Mutation> in
-                guard let self = self else { return .empty() }
-                guard let hasNext = response.hasNext else { return .empty() }
-                self.hasNext = hasNext
-                self.lastQuestionID = response.questions?.last?.id
-                let _questions = self.configureCells(response: response)
-                self.isRequesting = false
-                return .just(.questionAndAnswers(_questions))
             }
     }
     

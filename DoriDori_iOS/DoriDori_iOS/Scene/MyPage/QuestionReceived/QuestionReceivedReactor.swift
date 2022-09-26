@@ -68,6 +68,14 @@ final class QuestionReceivedReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchReceivedQuestions(size: 20, lastID: self.lastQuestionID)
+                .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    let questionItems = self.configureCells(response: response)
+                    self.hasNext = response.hasNext ?? false
+                    self.isRequesting = false
+                    self.lastQuestionID = response.questions?.last?.id
+                    return .just(.questions(questionItems))
+                }
             
         case .willDisplayCell(let indexPath):
             if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
@@ -77,6 +85,14 @@ final class QuestionReceivedReactor: Reactor {
                         size: 20,
                         lastID: self.lastQuestionID
                     )
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        let questionItems = self.configureCells(response: response)
+                        self.hasNext = response.hasNext ?? false
+                        self.isRequesting = false
+                        self.lastQuestionID = response.questions?.last?.id
+                        return .just(.questions(questionItems))
+                    }
                 }
             }
         case .didTapProfile(let indexPath):
@@ -115,8 +131,22 @@ final class QuestionReceivedReactor: Reactor {
                 return .empty()
             })
             .filter { $0 }
-            .flatMap { _ -> Observable<Mutation> in
-                return .just(.toast(text: "신고되었습니다!"))
+            .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                let newReceivedQuestions = self.fetchReceivedQuestions(size: 20, lastID: nil)
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        let questionItems = self.configureCells(response: response)
+                        self.hasNext = response.hasNext ?? false
+                        self.isRequesting = false
+                        self.lastQuestionID = response.questions?.last?.id
+                        return .just(.questions(questionItems))
+                    }
+                
+                return .concat(
+                    newReceivedQuestions,
+                    .just(.toast(text: "신고되었습니다!"))
+                )
             }
             
         case .didTapDenyCancel:
@@ -259,7 +289,7 @@ extension QuestionReceivedReactor {
         }
     }
     
-    private func fetchReceivedQuestions(size: Int, lastID: QuestionID?) -> Observable<Mutation> {
+    private func fetchReceivedQuestions(size: Int, lastID: QuestionID?) -> Observable<ReceivedQuestionModel> {
         self.isRequesting = true
         return self.myPageRepository.fetchReceivedQuestions(
             size: size,
@@ -268,14 +298,6 @@ extension QuestionReceivedReactor {
             .catch { error in
                 print(error)
                 return .empty()
-            }
-            .flatMapLatest { [weak self] response -> Observable<Mutation> in
-                guard let self = self else { return .empty() }
-                let questionItems = self.configureCells(response: response)
-                self.hasNext = response.hasNext ?? false
-                self.isRequesting = false
-                self.lastQuestionID = response.questions?.last?.id
-                return .just(.questions(questionItems))
             }
     }
 }

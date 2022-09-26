@@ -81,7 +81,7 @@ extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
     }
     
     func commentButtonDidTap(postId: String) {
-        WebViewCoordinator(navigationController: navigationController, type: .questionDetail(id: postId), navigateStyle: .push)
+        WebViewCoordinator(navigationController: navigationController, type: .postDetail(id: postId), navigateStyle: .push)
             .start()
     }
     
