@@ -155,11 +155,12 @@ final class NavigationWebViewController: UIViewController {
         
         self.questionMoreButton.rx.throttleTap
             .compactMap { [weak self] _ -> [ActionSheetAction]? in
-                guard let self = self else { return nil }
+                guard let self = self,
+                      let userID = UserDefaults.userID else { return nil }
                 switch self.type {
-                case .postDetail(let postID, let isMine):
+                case .postDetail(let postID, let postUserID):
                     let items: [DoriDoriQuestionPostDetailMore]
-                    if isMine { items = [.modify, .delete] }
+                    if userID == postUserID { items = [.delete] }
                     else { items = [.report, .block] }
                     return items.map { item in
                             .init(title: item.title, action: { _ in
@@ -172,13 +173,15 @@ final class NavigationWebViewController: UIViewController {
                                             owner.coordinator.pop()
                                         })
                                         .disposed(by: self.disposeBag)
+                                case .block:
+                                    self.blockUser(userID: postUserID)
                                 default: break
                                 }
                             })
                     }
-                case .questionDetail(let questionID, let isMine):
+                case .questionDetail(let questionID, let questionUserID):
                     let items: [DoriDoriQuestionPostDetailMore]
-                    if isMine { items = [.modify, .delete] }
+                    if userID == questionUserID { items = [.modify, .delete] }
                     else { items = [.report, .block] }
                     return items.map { item in
                             .init(title: item.title, action: { _ in
@@ -191,6 +194,8 @@ final class NavigationWebViewController: UIViewController {
                                             owner.coordinator.pop()
                                         })
                                         .disposed(by: self.disposeBag)
+                                case .block:
+                                    self.blockUser(userID: questionUserID)
                                 default: break
                                 }
                             })
@@ -205,7 +210,7 @@ final class NavigationWebViewController: UIViewController {
             .disposed(by: self.disposeBag)
     }
     
-    private func deleteQuestion(questionID: QuestionID) {
+    private func blockUser(userID: UserID) {
         
     }
 }

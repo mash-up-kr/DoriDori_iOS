@@ -10,8 +10,8 @@ import Foundation
 typealias PostID = String
 
 enum DoriDoriWeb {
-    case questionDetail(id: QuestionID, isMyQuestion: Bool)
-    case postDetail(id: PostID, isMyPost: Bool)
+    case questionDetail(id: QuestionID, questionUserID: UserID)
+    case postDetail(id: PostID, postUserID: UserID)
     case profileSetting
     case share(id: UserID? = nil)
     case myLevel

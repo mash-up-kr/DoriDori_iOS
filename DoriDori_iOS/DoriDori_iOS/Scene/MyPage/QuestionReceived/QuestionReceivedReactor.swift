@@ -26,7 +26,7 @@ final class QuestionReceivedReactor: Reactor {
     enum Mutation {
         case questions([MyPageOtherSpeechBubbleItemType])
         case didTapProfile(UserID)
-        case didSelectQuestion(questionID: QuestionID, isMyQuestion: Bool)
+        case didSelectQuestion(questionID: QuestionID, questionUserID: UserID)
         case alert(AlertModel)
         case shouldDismissPresentedViewController
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
@@ -37,7 +37,7 @@ final class QuestionReceivedReactor: Reactor {
     
     struct State {
         @Pulse var receivedQuestions: [MyPageOtherSpeechBubbleItemType] = []
-        @Pulse var navigateQuestionID: (questionID: QuestionID, isMyQuestion: Bool)?
+        @Pulse var navigateQuestionID: (questionID: QuestionID, questionUserID: UserID)?
         @Pulse var navigateUserID: UserID?
         @Pulse var alert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
@@ -196,9 +196,8 @@ final class QuestionReceivedReactor: Reactor {
             }
             
         case .didSelectCell(let indexPath):
-            guard let question = self.question(at: indexPath),
-                  let userID = UserDefaults.userID else { return .empty() }
-            return .just(.didSelectQuestion(questionID: question.questionID, isMyQuestion: question.userID == userID))
+            guard let question = self.question(at: indexPath) else { return .empty() }
+            return .just(.didSelectQuestion(questionID: question.questionID, questionUserID: question.userID))
             
         case .didRefresh:
             self.lastQuestionID = nil
@@ -231,8 +230,8 @@ final class QuestionReceivedReactor: Reactor {
             _state.receivedQuestions = questions
         case .didTapProfile(let userID):
             _state.navigateUserID = userID
-        case .didSelectQuestion(let questionID, let isMyQuestion):
-            _state.navigateQuestionID = (questionID, isMyQuestion)
+        case .didSelectQuestion(let questionID, let questionUserID):
+            _state.navigateQuestionID = (questionID, questionUserID)
         case .alert(let alertModel):
             _state.alert = alertModel
         case .shouldDismissPresentedViewController:

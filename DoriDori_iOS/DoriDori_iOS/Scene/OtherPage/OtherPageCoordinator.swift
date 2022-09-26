@@ -10,7 +10,7 @@ import UIKit
 
 protocol OtherPageCoordinatable: Coordinator {
     func pop()
-    func navigateToQuestionDetail(questionID: QuestionID, isMyQuestion: Bool)
+    func navigateToQuestionDetail(questionID: QuestionID, questionUserID: UserID)
     func navigateToOtherPage(userID: UserID)
     func navigateToProfileShare()
     func navigateToQuestion()
@@ -48,10 +48,10 @@ final class OtherPageCoordinator: OtherPageCoordinatable {
         self.navigationController.popViewController(animated: true)
     }
     
-    func navigateToQuestionDetail(questionID: QuestionID, isMyQuestion: Bool) {
+    func navigateToQuestionDetail(questionID: QuestionID, questionUserID: UserID) {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .questionDetail(id: questionID, isMyQuestion: isMyQuestion),
+            type: .questionDetail(id: questionID, questionUserID: questionUserID),
             navigateStyle: .push
         ).start()
     }
