@@ -23,6 +23,7 @@ final class OtherProfileContentViewController: UIViewController,
     }()
     
     private let viewDidLoadStream: PublishRelay<Void>
+    private let viewWillAppearStream: PublishRelay<Void>
     private let didSelectItem: PublishRelay<IndexPath>
     private let cellWillDisplay: PublishRelay<IndexPath>
     private let reactor: OtherProfileContentReactor
@@ -36,6 +37,7 @@ final class OtherProfileContentViewController: UIViewController,
         reactor: OtherProfileContentReactor,
         coordinator: OtherPageCoordinatable
     ) {
+        self.viewWillAppearStream = .init()
         self.didTapMoreButton = .init()
         self.didTapProfile = .init()
         self.coordinator = coordinator
@@ -57,8 +59,8 @@ final class OtherProfileContentViewController: UIViewController,
     }
     
     func bind(reactor: OtherProfileContentReactor) {
-        self.viewDidLoadStream
-            .map { OtherProfileContentReactor.Action.viewDidLoad }
+        Observable.merge(self.viewDidLoadStream.asObservable(), self.viewWillAppearStream.asObservable())
+            .map { OtherProfileContentReactor.Action.fetchNewData }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
@@ -122,6 +124,11 @@ final class OtherProfileContentViewController: UIViewController,
         self.bind(reactor: self.reactor)
         
         self.viewDidLoadStream.accept(())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewWillAppearStream.accept(())
     }
     
     private func configure(_ collectionView: UICollectionView) {

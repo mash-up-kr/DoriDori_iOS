@@ -13,7 +13,7 @@ import ReactorKit
 final class OtherProfileContentReactor: Reactor {
     
     enum Action {
-        case viewDidLoad
+        case fetchNewData
         case didSelect(IndexPath)
         case willDisplayCell(IndexPath)
         case didTapProfile(IndexPath)
@@ -127,7 +127,7 @@ final class OtherProfileContentReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .viewDidLoad:
+        case .fetchNewData:
             return self.fetchQuestionAndAnswer(
                 userID: self.userID,
                 lastID: self.lastID
