@@ -175,6 +175,8 @@ final class NavigationWebViewController: UIViewController {
                                         .disposed(by: self.disposeBag)
                                 case .block:
                                     self.blockUser(userID: postUserID)
+                                case .report:
+                                    self.report(type: .post, targetID: postID)
                                 default: break
                                 }
                             })
@@ -196,6 +198,8 @@ final class NavigationWebViewController: UIViewController {
                                         .disposed(by: self.disposeBag)
                                 case .block:
                                     self.blockUser(userID: questionUserID)
+                                case .report:
+                                    self.report(type: .question, targetID: questionID)
                                 default: break
                                 }
                             })
@@ -216,6 +220,16 @@ final class NavigationWebViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 DoriDoriToastView(text: "해당 글쓴이를 차단했습니다.").show()
+            }
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func report(type: ReportType, targetID: String) {
+        self.repository.report(type: type, targetID: targetID)
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                DoriDoriToastView(text: "신고가 정상 접수되었습니다.").show()
             }
             .disposed(by: self.disposeBag)
     }

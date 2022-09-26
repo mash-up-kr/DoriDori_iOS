@@ -12,6 +12,7 @@ protocol QuestionPostDetailRequestable: AnyObject {
     func deleteQuestion(questionID: QuestionID) -> Observable<String>
     func deletePost(postID: PostID) -> Observable<Bool>
     func blockUser(userID: UserID) -> Observable<Bool>
+    func report(type: ReportType, targetID: String) -> Observable<Bool>
 }
 
 final class QuestionPostDetailRepository: QuestionPostDetailRequestable {
@@ -24,5 +25,9 @@ final class QuestionPostDetailRepository: QuestionPostDetailRequestable {
     
     func blockUser(userID: UserID) -> Observable<Bool> {
         Network().request(api: BlockUserRequest(userID: userID), responseModel: ResponseModel<Bool>.self)
+    }
+    
+    func report(type: ReportType, targetID: String) -> Observable<Bool> {
+        Network().request(api: ReportRequest(type: type, targetID: targetID), responseModel: ResponseModel<Bool>.self)
     }
 }
