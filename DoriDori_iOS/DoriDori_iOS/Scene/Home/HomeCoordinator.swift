@@ -23,10 +23,10 @@ final class HomeCoordinator: HomeCoordinatorPresentable {
     }
     
     func navigateToQuestionDetail(postId: String) {
-        WebViewCoordinator(
-            navigationController: self.navigationController,
-            type: .questionDetail(id: postId),
-            navigateStyle: .push
-        ).start()
+//        WebViewCoordinator(
+//            navigationController: self.navigationController,
+//            type: .questionDetail(id: postId),
+//            navigateStyle: .push
+//        ).start()
     }
 }

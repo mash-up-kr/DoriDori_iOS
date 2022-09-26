@@ -24,7 +24,7 @@ final class AnswerCompleteReactor: Reactor {
     
     enum Mutation {
         case questionAndAnswers([MyPageBubbleItemType])
-        case didSelect(QuestionID)
+        case didSelect(questionID: QuestionID, isMyQuestion: Bool)
         case didTap(UserID)
         case endRefreshing([MyPageBubbleItemType])
         case didTapReport(ActionSheetAlertController)
@@ -33,7 +33,7 @@ final class AnswerCompleteReactor: Reactor {
     
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
-        @Pulse var navigateQuestionID: QuestionID?
+        @Pulse var navigateQuestionID: (questionID: QuestionID, isMyQuestion: Bool)?
         @Pulse var navigateUserID: UserID?
         @Pulse var endRefreshing: Bool?
         @Pulse var actionSheetAlertController: ActionSheetAlertController?
@@ -84,12 +84,13 @@ final class AnswerCompleteReactor: Reactor {
             }
             
         case .didSelectCell(let indexPath):
-            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] ,
+                  let userID = UserDefaults.userID else { return .empty() }
             if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
-                return .just(.didSelect(myAnswer.questionID))
+                return .just(.didSelect(questionID: myAnswer.questionID, isMyQuestion: userID == myAnswer.userID))
             }
             if let question = question as? MyPageOtherSpeechBubbleItemType {
-                return .just(.didSelect(question.questionID))
+                return .just(.didSelect(questionID: question.questionID, isMyQuestion: userID == question.userID))
             }
             return .empty()
             
@@ -241,8 +242,8 @@ final class AnswerCompleteReactor: Reactor {
             } else {
                 _state.questionAndAnswer.append(contentsOf: questions)
             }
-        case .didSelect(let questionID):
-            _state.navigateQuestionID = questionID
+        case .didSelect(let questionID, let isMyQuestion):
+            _state.navigateQuestionID = (questionID, isMyQuestion)
         case .didTap(let userID):
             _state.navigateUserID = userID
         case .endRefreshing(let questionAndAnswer):

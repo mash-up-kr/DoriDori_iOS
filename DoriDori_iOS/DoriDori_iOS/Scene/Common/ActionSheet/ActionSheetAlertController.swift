@@ -40,6 +40,20 @@ final class ActionSheetAlertController {
         self.tintColor = tintColor
     }
     
+    init(
+        title: String? = nil,
+        message: String? = nil,
+        actionModels: [ActionSheetAction],
+        neededCancel: Bool = true,
+        tintColor: UIColor = .lime300
+    ) {
+        self.title = title
+        self.message = message
+        self.actionModels = actionModels
+        self.neededCancel = neededCancel
+        self.tintColor = tintColor
+    }
+    
     func configure() -> UIAlertController {
         let alertController = UIAlertController(
             title: title,

@@ -23,7 +23,7 @@ final class OtherProfileContentReactor: Reactor {
     
     enum Mutation {
         case quetsions([MyPageBubbleItemType])
-        case didSelect(QuestionID)
+        case didSelect(questionID: QuestionID, isMyQuestion: Bool)
         case didTap(UserID)
         case didTapReport(ActionSheetAlertController)
         case toast(text: String)
@@ -31,7 +31,7 @@ final class OtherProfileContentReactor: Reactor {
     
     struct State {
         @Pulse var questionAndAnswer: [MyPageBubbleItemType] = []
-        @Pulse var navigateQuestionID: QuestionID?
+        @Pulse var navigateQuestionID: (questionID: QuestionID, isMyQuestion: Bool)?
         @Pulse var navigateUserID: UserID?
         @Pulse var actionSheetController: ActionSheetAlertController?
         @Pulse var toast: String?
@@ -143,12 +143,13 @@ final class OtherProfileContentReactor: Reactor {
             }
             
         case .didSelect(let indexPath):
-            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item] else { return .empty() }
+            guard let question = self.currentState.questionAndAnswer[safe: indexPath.item],
+                  let userID = UserDefaults.userID else { return .empty() }
             if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
-                return .just(.didSelect(myAnswer.questionID))
+                return .just(.didSelect(questionID: myAnswer.questionID, isMyQuestion: userID == myAnswer.userID))
             }
             if let question = question as? MyPageOtherSpeechBubbleItemType {
-                return .just(.didSelect(question.questionID))
+                return .just(.didSelect(questionID: question.questionID, isMyQuestion: userID == question.userID))
             }
             return .empty()
          
@@ -232,8 +233,8 @@ final class OtherProfileContentReactor: Reactor {
             } else {
                 _state.questionAndAnswer.append(contentsOf: questions)
             }
-        case .didSelect(let questionID):
-            _state.navigateQuestionID = questionID
+        case .didSelect(let questionID, let isMyQuestion):
+            _state.navigateQuestionID = (questionID, isMyQuestion)
         case .didTap(let userID):
             _state.navigateUserID = userID
         case .didTapReport(let actionSheetcontroller):

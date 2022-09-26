@@ -190,8 +190,8 @@ final class QuestionReceivedViewController: UIViewController,
         
         reactor.pulse(\.$navigateQuestionID)
             .compactMap { $0 }
-            .bind(with: self) { owner, questionID in
-                owner.coordiantor.navigateToQuestionDetail(questionID: questionID)
+            .bind(with: self) { owner, value in
+                owner.coordiantor.navigateToQuestionDetail(questionID: value.questionID, isMyQuestion: value.isMyQuestion)
             }
             .disposed(by: self.disposeBag)
         

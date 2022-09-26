@@ -80,8 +80,8 @@ extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
         }
     }
     
-    func commentButtonDidTap(postId: String) {
-        WebViewCoordinator(navigationController: navigationController, type: .postDetail(id: postId), navigateStyle: .push)
+    func commentButtonDidTap(postId: String, isMyPost: Bool) {
+        WebViewCoordinator(navigationController: navigationController, type: .postDetail(id: postId, isMyPost: isMyPost), navigateStyle: .push)
             .start()
     }
     

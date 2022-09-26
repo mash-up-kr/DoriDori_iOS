@@ -122,7 +122,7 @@ final class NavigationWebViewController: UIViewController {
         }
         
         switch self.type {
-        case .questionDetail:
+        case .questionDetail, .postDetail:
             self.setupQuestionDetailView()
         default: break
         }
@@ -143,6 +143,42 @@ final class NavigationWebViewController: UIViewController {
         self.backButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.coordinator.pop()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.questionMoreButton.rx.throttleTap
+            .compactMap { [weak self] _ -> [ActionSheetAction]? in
+                guard let self = self else { return nil }
+                switch self.type {
+                case .postDetail(_, let isMine), .questionDetail(_, let isMine):
+                    if isMine {
+                        return [
+                            .init(title: "수정하기", action: { [weak self] _ in
+                                
+                            }),
+                            .init(title: "삭제하기", action: { [weak self] _ in
+                                
+                            }),
+                            .init(title: "익명으로 변경", action: { [weak self] _ in
+                                
+                            })
+                        ]
+                    } else {
+                        return [
+                            .init(title: "신고하기", action: { [weak self] _ in
+                                
+                            }),
+                            .init(title: "글쓴이 차단하기", action: { [weak self] _ in
+                                
+                            })
+                        ]
+                    }
+                default: return nil
+                }
+            }
+            .bind(with: self) { owner, actions in
+                let actionSheetViewController = ActionSheetAlertController(actionModels: actions).configure()
+                owner.present(actionSheetViewController, animated: true)
             }
             .disposed(by: self.disposeBag)
     }

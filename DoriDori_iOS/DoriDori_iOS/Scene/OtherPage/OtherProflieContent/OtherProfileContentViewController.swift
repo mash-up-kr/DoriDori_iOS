@@ -84,8 +84,8 @@ final class OtherProfileContentViewController: UIViewController,
         
         reactor.pulse(\.$navigateQuestionID)
             .compactMap { $0 }
-            .bind(with: self) { owner, questionID in
-                owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            .bind(with: self) { owner, value in
+                owner.coordinator.navigateToQuestionDetail(questionID: value.questionID, isMyQuestion: value.isMyQuestion)
             }
             .disposed(by: self.disposeBag)
         

@@ -10,7 +10,7 @@ import UIKit
 protocol MyPageCoordinatable: Coordinator {
     func navigateToSetting()
     func navigateToShare()
-    func navigateToQuestionDetail(questionID: QuestionID)
+    func navigateToQuestionDetail(questionID: QuestionID, isMyQuestion: Bool)
     func navigateToOtherPage(userID: UserID)
 }
 
@@ -45,10 +45,10 @@ final class MyPageCoordinator: MyPageCoordinatable {
         ).start()
     }
     
-    func navigateToQuestionDetail(questionID: QuestionID) {
+    func navigateToQuestionDetail(questionID: QuestionID, isMyQuestion: Bool) {
         WebViewCoordinator(
             navigationController: self.navigationController,
-            type: .questionDetail(id: questionID),
+            type: .questionDetail(id: questionID, isMyQuestion: isMyQuestion),
             navigateStyle: .push
         ).start()
     }
