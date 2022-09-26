@@ -42,6 +42,7 @@ final class NavigationWebViewController: UIViewController {
     private var type: DoriDoriWeb?
     private let disposeBag: DisposeBag
     private let coordinator: WebViewCoordinatable
+    private let repository: QuestionPostDetailRequestable
     
     override var hidesBottomBarWhenPushed: Bool {
         get { self.navigationController?.topViewController == self }
@@ -51,8 +52,10 @@ final class NavigationWebViewController: UIViewController {
     init(
         type: DoriDoriWeb,
         title: String? = nil,
-        coordinator: WebViewCoordinatable
+        coordinator: WebViewCoordinatable,
+        repository: QuestionPostDetailRequestable = QuestionPostDetailRepository()
     ) {
+        self.repository = repository
         self.coordinator = coordinator
         self.disposeBag = .init()
         self.type = type
@@ -64,8 +67,10 @@ final class NavigationWebViewController: UIViewController {
     init(
         path: String,
         title: String? = nil,
-        coordinator: WebViewCoordinatable
+        coordinator: WebViewCoordinatable,
+        repository: QuestionPostDetailRequestable = QuestionPostDetailRepository()
     ) {
+        self.repository = repository
         self.coordinator = coordinator
         self.disposeBag = .init()
         self.webViewController = BaseWebViewController(path: path)
@@ -76,6 +81,8 @@ final class NavigationWebViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit { debugPrint("\(self) deinit")}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,12 +157,43 @@ final class NavigationWebViewController: UIViewController {
             .compactMap { [weak self] _ -> [ActionSheetAction]? in
                 guard let self = self else { return nil }
                 switch self.type {
-                case .postDetail(let targetID, let isMine), .questionDetail(let targetID, let isMine):
+                case .postDetail(let postID, let isMine):
                     let items: [DoriDoriQuestionPostDetailMore]
-                    if isMine { items = [.modify, .delete, .toAnonymous] }
+                    if isMine { items = [.modify, .delete] }
                     else { items = [.report, .block] }
                     return items.map { item in
-                        .init(title: item.title, action: { _ in item.action(targetID) })
+                            .init(title: item.title, action: { _ in
+                                switch item {
+                                case .delete:
+                                    self.repository.deletePost(postID: postID)
+                                        .filter { $0 }
+                                        .observe(on: MainScheduler.instance)
+                                        .bind(with: self, onNext: { owner, _ in
+                                            owner.coordinator.pop()
+                                        })
+                                        .disposed(by: self.disposeBag)
+                                default: break
+                                }
+                            })
+                    }
+                case .questionDetail(let questionID, let isMine):
+                    let items: [DoriDoriQuestionPostDetailMore]
+                    if isMine { items = [.modify, .delete] }
+                    else { items = [.report, .block] }
+                    return items.map { item in
+                            .init(title: item.title, action: { _ in
+                                switch item {
+                                case .delete:
+                                    self.repository.deleteQuestion(questionID: questionID)
+                                        .filter { !$0.isEmpty }
+                                        .observe(on: MainScheduler.instance)
+                                        .bind(with: self, onNext: { owner, _ in
+                                            owner.coordinator.pop()
+                                        })
+                                        .disposed(by: self.disposeBag)
+                                default: break
+                                }
+                            })
                     }
                 default: return nil
                 }
@@ -165,5 +203,9 @@ final class NavigationWebViewController: UIViewController {
                 owner.present(actionSheetViewController, animated: true)
             }
             .disposed(by: self.disposeBag)
+    }
+    
+    private func deleteQuestion(questionID: QuestionID) {
+        
     }
 }
