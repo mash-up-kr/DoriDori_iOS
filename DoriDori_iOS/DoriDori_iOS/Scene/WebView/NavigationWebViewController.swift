@@ -42,6 +42,7 @@ final class NavigationWebViewController: UIViewController {
     private var type: DoriDoriWeb?
     private let disposeBag: DisposeBag
     private let coordinator: WebViewCoordinatable
+    private let repository: QuestionPostDetailRequestable
     
     override var hidesBottomBarWhenPushed: Bool {
         get { self.navigationController?.topViewController == self }
@@ -51,8 +52,10 @@ final class NavigationWebViewController: UIViewController {
     init(
         type: DoriDoriWeb,
         title: String? = nil,
-        coordinator: WebViewCoordinatable
+        coordinator: WebViewCoordinatable,
+        repository: QuestionPostDetailRequestable = QuestionPostDetailRepository()
     ) {
+        self.repository = repository
         self.coordinator = coordinator
         self.disposeBag = .init()
         self.type = type
@@ -64,8 +67,10 @@ final class NavigationWebViewController: UIViewController {
     init(
         path: String,
         title: String? = nil,
-        coordinator: WebViewCoordinatable
+        coordinator: WebViewCoordinatable,
+        repository: QuestionPostDetailRequestable = QuestionPostDetailRepository()
     ) {
+        self.repository = repository
         self.coordinator = coordinator
         self.disposeBag = .init()
         self.webViewController = BaseWebViewController(path: path)
@@ -76,6 +81,8 @@ final class NavigationWebViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit { debugPrint("\(self) deinit")}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +129,7 @@ final class NavigationWebViewController: UIViewController {
         }
         
         switch self.type {
-        case .questionDetail:
+        case .questionDetail, .postDetail:
             self.setupQuestionDetailView()
         default: break
         }
@@ -143,6 +150,86 @@ final class NavigationWebViewController: UIViewController {
         self.backButton.rx.throttleTap
             .bind(with: self) { owner, _ in
                 owner.coordinator.pop()
+            }
+            .disposed(by: self.disposeBag)
+        
+        self.questionMoreButton.rx.throttleTap
+            .compactMap { [weak self] _ -> [ActionSheetAction]? in
+                guard let self = self,
+                      let userID = UserDefaults.userID else { return nil }
+                switch self.type {
+                case .postDetail(let postID, let postUserID):
+                    let items: [DoriDoriQuestionPostDetailMore]
+                    if userID == postUserID { items = [.delete] }
+                    else { items = [.report, .block] }
+                    return items.map { item in
+                            .init(title: item.title, action: { _ in
+                                switch item {
+                                case .delete:
+                                    self.repository.deletePost(postID: postID)
+                                        .filter { $0 }
+                                        .observe(on: MainScheduler.instance)
+                                        .bind(with: self, onNext: { owner, _ in
+                                            owner.coordinator.pop()
+                                        })
+                                        .disposed(by: self.disposeBag)
+                                case .block:
+                                    self.blockUser(userID: postUserID)
+                                case .report:
+                                    self.report(type: .post, targetID: postID)
+                                default: break
+                                }
+                            })
+                    }
+                case .questionDetail(let questionID, let questionUserID):
+                    let items: [DoriDoriQuestionPostDetailMore]
+                    if userID == questionUserID { items = [.modify, .delete] }
+                    else { items = [.report, .block] }
+                    return items.map { item in
+                            .init(title: item.title, action: { _ in
+                                switch item {
+                                case .delete:
+                                    self.repository.deleteQuestion(questionID: questionID)
+                                        .filter { !$0.isEmpty }
+                                        .observe(on: MainScheduler.instance)
+                                        .bind(with: self, onNext: { owner, _ in
+                                            owner.coordinator.pop()
+                                        })
+                                        .disposed(by: self.disposeBag)
+                                case .block:
+                                    self.blockUser(userID: questionUserID)
+                                case .report:
+                                    self.report(type: .question, targetID: questionID)
+                                default: break
+                                }
+                            })
+                    }
+                default: return nil
+                }
+            }
+            .bind(with: self) { owner, actions in
+                let actionSheetViewController = ActionSheetAlertController(actionModels: actions).configure()
+                owner.present(actionSheetViewController, animated: true)
+            }
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func blockUser(userID: UserID) {
+        self.repository.blockUser(userID: userID)
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                DoriDoriToastView(text: "해당 글쓴이를 차단했습니다.").show()
+            }
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func report(type: ReportType, targetID: String) {
+        self.repository.report(type: type, targetID: targetID)
+            .filter { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                DoriDoriToastView(text: "신고가 정상 접수되었습니다.").show()
             }
             .disposed(by: self.disposeBag)
     }

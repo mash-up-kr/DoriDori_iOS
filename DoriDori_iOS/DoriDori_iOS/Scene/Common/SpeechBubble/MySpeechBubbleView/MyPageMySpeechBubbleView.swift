@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+protocol MyPageMySpeechBubbleViewDelegate: AnyObject {
+    func didTapMore(_ speechBubbleView: MyPageMySpeechBubbleView)
+}
 
 final class MyPageMySpeechBubbleView: MySpeechBubbleView,
                                       SpeechBubbleViewType,
@@ -13,7 +19,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
     
     // MARK: - UIComponent
     
-    private let questionerNameLabel: UILabel = {
+    private let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         label.textColor = UIColor.gray200
@@ -23,7 +29,7 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         let bracketImageView = UIImageView(image: UIImage(named: "right_bracket"))
         return bracketImageView
     }()
-    private let userNameLabel: UILabel = {
+    private let questionerNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setKRFont(weight: .medium, size: 13)
         label.textColor = UIColor.lime300
@@ -93,7 +99,8 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
     }()
     
     // MARK: - Properties
-    
+    weak var delegate: MyPageMySpeechBubbleViewDelegate?
+    private let disposeBag: DisposeBag
     var likeButtonType: LikeButtonType { .heart }
     
     // MARK: - Init
@@ -103,12 +110,14 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
         borderColor: UIColor = .gray900,
         backgroundColor: UIColor = .gray900
     ) {
+        self.disposeBag = .init()
         super.init(
             borderWidth: borderWidth,
             borderColor: borderColor,
             backgroundColor: backgroundColor
         )
         self.setupLayouts()
+        self.bind()
     }
     
     required init?(coder: NSCoder) {
@@ -116,12 +125,23 @@ final class MyPageMySpeechBubbleView: MySpeechBubbleView,
     }
     
     func configure(_ item: MyPageMySpeechBubbleViewItemType) {
-        self.questionerNameLabel.text = item.questioner
         self.userNameLabel.text = item.userName
+        self.questionerNameLabel.text = item.questioner
         self.locationLabel.text = item.location
         self.updatedTimeLabel.text = item.updatedTime
         self.setupContentLabel(item.content, at: self.contentLabel)
         self.setupLikeButton(item.likeCount, at: self.likeButton)
+    }
+}
+
+// MARK: - Private functions
+extension MyPageMySpeechBubbleView {
+    func bind() {
+        self.moreButton.rx.throttleTap
+            .bind(with: self) { owner, _ in
+                owner.delegate?.didTapMore(self)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -131,9 +151,9 @@ extension MyPageMySpeechBubbleView {
     
     private func setupLayouts() {
         self.addSubViews(
-            self.questionerNameLabel,
-            self.bracketImageView,
             self.userNameLabel,
+            self.bracketImageView,
+            self.questionerNameLabel,
             self.moreButton,
             self.contentLabel,
             self.locationLabel,
@@ -145,13 +165,13 @@ extension MyPageMySpeechBubbleView {
         self.layoutsUserInfo()
         self.moreButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
-            $0.leading.greaterThanOrEqualTo(self.userNameLabel.snp.trailing).offset(4)
+            $0.leading.greaterThanOrEqualTo(self.questionerNameLabel.snp.trailing).offset(4)
             $0.trailing.equalToSuperview().inset(18)
             $0.size.equalTo(24)
         }
         self.contentLabel.snp.makeConstraints {
-            $0.top.equalTo(self.questionerNameLabel.snp.bottom).offset(18)
-            $0.leading.equalTo(self.questionerNameLabel.snp.leading)
+            $0.top.equalTo(self.userNameLabel.snp.bottom).offset(18)
+            $0.leading.equalTo(self.userNameLabel.snp.leading)
             $0.trailing.equalToSuperview().inset(26)
         }
         self.layoutsLocationAndTime()
@@ -171,19 +191,19 @@ extension MyPageMySpeechBubbleView {
     
     private func layoutsUserInfo() {
         
-        self.questionerNameLabel.snp.makeConstraints {
+        self.userNameLabel.snp.makeConstraints {
             $0.height.equalTo(18)
             $0.leading.equalToSuperview().offset(18)
             $0.top.equalToSuperview().offset(18)
         }
         self.bracketImageView.snp.makeConstraints {
-            $0.leading.equalTo(self.questionerNameLabel.snp.trailing).offset(8)
-            $0.centerY.equalTo(self.questionerNameLabel.snp.centerY)
+            $0.leading.equalTo(self.userNameLabel.snp.trailing).offset(8)
+            $0.centerY.equalTo(self.userNameLabel.snp.centerY)
             $0.width.equalTo(4)
             $0.height.equalTo(8)
         }
-        self.userNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.questionerNameLabel.snp.top)
+        self.questionerNameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.userNameLabel.snp.top)
             $0.leading.equalTo(self.bracketImageView.snp.trailing).offset(8)
             $0.height.equalTo(18)
         }

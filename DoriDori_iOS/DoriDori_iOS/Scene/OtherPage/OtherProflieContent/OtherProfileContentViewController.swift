@@ -23,6 +23,7 @@ final class OtherProfileContentViewController: UIViewController,
     }()
     
     private let viewDidLoadStream: PublishRelay<Void>
+    private let viewWillAppearStream: PublishRelay<Void>
     private let didSelectItem: PublishRelay<IndexPath>
     private let cellWillDisplay: PublishRelay<IndexPath>
     private let reactor: OtherProfileContentReactor
@@ -30,11 +31,14 @@ final class OtherProfileContentViewController: UIViewController,
     private let questionItems: BehaviorRelay<[MyPageBubbleItemType]>
     private let coordinator: OtherPageCoordinatable
     private let didTapProfile: PublishRelay<IndexPath>
+    private let didTapMoreButton: PublishRelay<IndexPath>
 
     init(
         reactor: OtherProfileContentReactor,
         coordinator: OtherPageCoordinatable
     ) {
+        self.viewWillAppearStream = .init()
+        self.didTapMoreButton = .init()
         self.didTapProfile = .init()
         self.coordinator = coordinator
         self.questionItems = .init(value: [])
@@ -55,8 +59,8 @@ final class OtherProfileContentViewController: UIViewController,
     }
     
     func bind(reactor: OtherProfileContentReactor) {
-        self.viewDidLoadStream
-            .map { OtherProfileContentReactor.Action.viewDidLoad }
+        Observable.merge(self.viewDidLoadStream.asObservable(), self.viewWillAppearStream.asObservable())
+            .map { OtherProfileContentReactor.Action.fetchNewData }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
@@ -71,14 +75,19 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapMoreButton
+            .map { OtherProfileContentReactor.Action.didTapMoreButton($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: self.questionItems)
             .disposed(by: self.disposeBag)
         
         reactor.pulse(\.$navigateQuestionID)
             .compactMap { $0 }
-            .bind(with: self) { owner, questionID in
-                owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            .bind(with: self) { owner, value in
+                owner.coordinator.navigateToQuestionDetail(questionID: value.questionID, questionUserID: value.questionUserID)
             }
             .disposed(by: self.disposeBag)
         
@@ -87,6 +96,21 @@ final class OtherProfileContentViewController: UIViewController,
             .bind(with: self) { owner, userID in
                 print("userID", userID)
                 owner.coordinator.navigateToOtherPage(userID: userID)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$actionSheetController)
+            .compactMap { $0 }
+            .bind(with: self) { owner, actionSheet in
+                let actionSheetController = actionSheet.configure()
+                owner.present(actionSheetController, animated: true)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$toast)
+            .compactMap { $0 }
+            .bind(with: self) { owner, text in
+                DoriDoriToastView(text: text).show()
             }
             .disposed(by: self.disposeBag)
     }
@@ -100,6 +124,11 @@ final class OtherProfileContentViewController: UIViewController,
         self.bind(reactor: self.reactor)
         
         self.viewDidLoadStream.accept(())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewWillAppearStream.accept(())
     }
     
     private func configure(_ collectionView: UICollectionView) {
@@ -146,12 +175,20 @@ extension OtherProfileContentViewController: UICollectionViewDataSource {
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
             let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
             cell.configure(otherSpeechBubbleItem)
-            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+            cell.bindAction(
+                didTapProfile: self.didTapProfile,
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
             let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
             cell.configure(mySpeechBubbleItem)
+            cell.bindAction(
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         fatalError("can not casting itemtype")

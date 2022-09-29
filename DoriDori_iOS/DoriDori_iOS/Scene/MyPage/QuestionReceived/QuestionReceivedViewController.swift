@@ -54,6 +54,7 @@ final class QuestionReceivedViewController: UIViewController,
     private let questions: BehaviorRelay<[MyPageOtherSpeechBubbleItemType]>
     private let didTapProfile: PublishRelay<IndexPath>
     private let didTapDenyButton: PublishRelay<IndexPath>
+    private let didTapMoreButton: PublishRelay<IndexPath>
     private let didTapCommentButton: PublishRelay<IndexPath>
     private let didSelectCell: PublishRelay<IndexPath>
     private let willDisplayCell: PublishRelay<IndexPath>
@@ -64,6 +65,7 @@ final class QuestionReceivedViewController: UIViewController,
         reactor: QuestionReceivedReactor,
         coordiantor: MyPageCoordinatable
     ) {
+        self.didTapMoreButton = .init()
         self.didTapRegistButton = .init()
         self.willDisplayCell = .init()
         self.didSelectCell = .init()
@@ -126,6 +128,11 @@ final class QuestionReceivedViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapMoreButton
+            .map { QuestionReceivedReactor.Action.didTapReport($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         self.didTapDenyButton
             .map { QuestionReceivedReactor.Action.didTapDeny($0) }
             .bind(to: reactor.action)
@@ -183,8 +190,8 @@ final class QuestionReceivedViewController: UIViewController,
         
         reactor.pulse(\.$navigateQuestionID)
             .compactMap { $0 }
-            .bind(with: self) { owner, questionID in
-                owner.coordiantor.navigateToQuestionDetail(questionID: questionID)
+            .bind(with: self) { owner, value in
+                owner.coordiantor.navigateToQuestionDetail(questionID: value.questionID, questionUserID: value.questionUserID)
             }
             .disposed(by: self.disposeBag)
         
@@ -218,6 +225,15 @@ final class QuestionReceivedViewController: UIViewController,
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, toast in
                 DoriDoriToastView(text: toast).show()
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$actionSheetAlertController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, actionSheet in
+                let viewController = actionSheet.configure()
+                owner.present(viewController, animated: true)
             }
             .disposed(by: self.disposeBag)
     }
@@ -301,6 +317,7 @@ extension QuestionReceivedViewController: UICollectionViewDataSource {
             didTapProfile: self.didTapProfile,
             didTapComment: self.didTapCommentButton,
             didTapDeny: self.didTapDenyButton,
+            didTapMoreButton: self.didTapMoreButton,
             at: indexPath
         )
         return cell

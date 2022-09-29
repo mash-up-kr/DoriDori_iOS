@@ -28,6 +28,7 @@ final class AnswerCompleteViewController: UIViewController,
     private let didTapProfile: PublishRelay<IndexPath>
     private let willDisplayCell: PublishRelay<IndexPath>
     private let didSelectCell: PublishRelay<IndexPath>
+    private let didTapMoreButton: PublishRelay<IndexPath>
     
     // MARK: - LifeCycles
     
@@ -45,6 +46,7 @@ final class AnswerCompleteViewController: UIViewController,
         coordinator: MyPageCoordinatable,
         reactor: AnswerCompleteReactor
     ) {
+        self.didTapMoreButton = .init()
         self.didSelectCell = .init()
         self.willDisplayCell = .init()
         self.reactor = reactor
@@ -89,6 +91,11 @@ final class AnswerCompleteViewController: UIViewController,
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        self.didTapMoreButton
+            .map { AnswerCompleteReactor.Action.didTapReport($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
         reactor.pulse(\.$questionAndAnswer)
             .bind(to: questionItems)
             .disposed(by: self.disposeBag)
@@ -102,8 +109,8 @@ final class AnswerCompleteViewController: UIViewController,
         
         reactor.pulse(\.$navigateQuestionID)
             .compactMap { $0 }
-            .bind(with: self) { owner, questionID in
-                owner.coordinator.navigateToQuestionDetail(questionID: questionID)
+            .bind(with: self) { owner, value in
+                owner.coordinator.navigateToQuestionDetail(questionID: value.questionID, questionUserID: value.questionUserID)
             }
             .disposed(by: self.disposeBag)
         
@@ -113,6 +120,23 @@ final class AnswerCompleteViewController: UIViewController,
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 owner.refreshControl.endRefreshing()
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$actionSheetAlertController)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, actionSheetController in
+                let actionSheet = actionSheetController.configure()
+                owner.present(actionSheet, animated: true)
+            }
+            .disposed(by: self.disposeBag)
+        
+        reactor.pulse(\.$showToast)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, text in
+                DoriDoriToastView(text: text).show()
             }
             .disposed(by: self.disposeBag)
     }
@@ -168,14 +192,22 @@ extension AnswerCompleteViewController: UICollectionViewDataSource {
         if let otherSpeechBubbleItem = item as? MyPageOtherSpeechBubbleItemType {
             let cell = collectionView.dequeueReusableCell(type: MyPageOtherSpeechBubbleCell.self, for: indexPath)
             cell.configure(otherSpeechBubbleItem)
-            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+            cell.bindAction(
+                didTapProfile: self.didTapProfile,
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         
         if let mySpeechBubbleItem = item as? MyPageMySpeechBubbleCellItem {
             let cell = collectionView.dequeueReusableCell(type: MyPageMySpeechBubbleCell.self, for: indexPath)
             cell.configure(mySpeechBubbleItem)
-            cell.bindAction(didTapProfile: self.didTapProfile, at: indexPath)
+            cell.bindAction(
+                didTapProfile: self.didTapProfile,
+                didTapMoreButton: self.didTapMoreButton,
+                at: indexPath
+            )
             return cell
         }
         fatalError("can not casting itemtype")

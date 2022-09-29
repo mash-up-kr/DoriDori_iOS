@@ -58,6 +58,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     private lazy var speechBubble = MyPageOtherSpeechBubbleView(delegate: self)
     private let didTapComment: PublishRelay<Void>
     private let didTapDeny: PublishRelay<Void>
+    private let didTapMoreButton: PublishRelay<Void>
     private var disposeBag = DisposeBag()
     
     // MARK: Init
@@ -65,6 +66,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         self.didTapComment = .init()
         self.didTapDeny = .init()
+        self.didTapMoreButton = .init()
         super.init(frame: frame)
         self.setupLayouts()
     }
@@ -93,6 +95,7 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
         didTapProfile: PublishRelay<IndexPath>,
         didTapComment: PublishRelay<IndexPath>? = nil,
         didTapDeny: PublishRelay<IndexPath>? = nil,
+        didTapMoreButton: PublishRelay<IndexPath>? = nil,
         at indexPath: IndexPath
     ) {
         self.profileImageView.rx.tapGesture()
@@ -113,6 +116,13 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
             .bind(onNext: { indexPath in
                 didTapComment?.accept(indexPath)
             })
+            .disposed(by: self.disposeBag)
+        
+        self.didTapMoreButton
+            .map { indexPath }
+            .bind { indexPath in
+                didTapMoreButton?.accept(indexPath)
+            }
             .disposed(by: self.disposeBag)
     }
     
@@ -160,5 +170,9 @@ extension MyPageOtherSpeechBubbleCell: MyPageOtherSpeechBubbleViewDelegate {
     
     func didTapComment(_ speechBubbleView: MyPageOtherSpeechBubbleView) {
         self.didTapComment.accept(())
+    }
+    
+    func didTapMore(_ speechBubbleView: MyPageOtherSpeechBubbleView) {
+        self.didTapMoreButton.accept(())
     }
 }

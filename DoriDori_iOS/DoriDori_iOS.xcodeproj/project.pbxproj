@@ -140,6 +140,13 @@
 		A2655AE72899731600B03AA1 /* CommentableSpeechBubbleViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */; };
 		A2655AE92899751A00B03AA1 /* SpeechBubbleViewLikeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */; };
 		A266067728BFBE9200E54CBF /* WebViewCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A266067628BFBE9200E54CBF /* WebViewCommand.swift */; };
+		A274345828D702D4000B10CC /* ActionSheetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A274345728D702D4000B10CC /* ActionSheetAlertController.swift */; };
+		A274345B28D7048E000B10CC /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A274345A28D7048E000B10CC /* ReportRequest.swift */; };
+		A2774D3C28E1D2470014365F /* DoriDoriQuestionPostDetailMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2774D3B28E1D2470014365F /* DoriDoriQuestionPostDetailMore.swift */; };
+		A2774D3E28E1D9740014365F /* QuestionPostDetailRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2774D3D28E1D9740014365F /* QuestionPostDetailRequestable.swift */; };
+		A2774D4128E1DA700014365F /* DeletePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2774D4028E1DA700014365F /* DeletePostRequest.swift */; };
+		A2774D4428E1DABD0014365F /* DeleteQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2774D4328E1DABD0014365F /* DeleteQuestionRequest.swift */; };
+		A2774D4728E1E28D0014365F /* BlockUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2774D4628E1E28D0014365F /* BlockUserRequest.swift */; };
 		A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2934DFD289E33B900749D0B /* MyPageTabCollectionViewCell.swift */; };
 		A29C2AD728959B1C00CA5C49 /* MySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */; };
 		A29C2AD928959DE700CA5C49 /* MyPageMySpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */; };
@@ -369,6 +376,13 @@
 		A2655AE62899731600B03AA1 /* CommentableSpeechBubbleViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentableSpeechBubbleViewType.swift; sourceTree = "<group>"; };
 		A2655AE82899751A00B03AA1 /* SpeechBubbleViewLikeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleViewLikeable.swift; sourceTree = "<group>"; };
 		A266067628BFBE9200E54CBF /* WebViewCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCommand.swift; sourceTree = "<group>"; };
+		A274345728D702D4000B10CC /* ActionSheetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAlertController.swift; sourceTree = "<group>"; };
+		A274345A28D7048E000B10CC /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
+		A2774D3B28E1D2470014365F /* DoriDoriQuestionPostDetailMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoriDoriQuestionPostDetailMore.swift; sourceTree = "<group>"; };
+		A2774D3D28E1D9740014365F /* QuestionPostDetailRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPostDetailRequestable.swift; sourceTree = "<group>"; };
+		A2774D4028E1DA700014365F /* DeletePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostRequest.swift; sourceTree = "<group>"; };
+		A2774D4328E1DABD0014365F /* DeleteQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteQuestionRequest.swift; sourceTree = "<group>"; };
+		A2774D4628E1E28D0014365F /* BlockUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserRequest.swift; sourceTree = "<group>"; };
 		A2934DFD289E33B900749D0B /* MyPageTabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabCollectionViewCell.swift; sourceTree = "<group>"; };
 		A29C2AD628959B1C00CA5C49 /* MySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechBubbleView.swift; sourceTree = "<group>"; };
 		A29C2AD828959DE700CA5C49 /* MyPageMySpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMySpeechBubbleView.swift; sourceTree = "<group>"; };
@@ -770,6 +784,7 @@
 		A24FD0EB28A5734200A003D1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A274345628D702C1000B10CC /* ActionSheet */,
 				A24FD15F28B4B2CD00A003D1 /* Alert */,
 				A24FD16428B4B48A00A003D1 /* ActivityIndicator */,
 				6C5E72A228AFCCB200013C2B /* TextField */,
@@ -785,6 +800,10 @@
 		A24FD0EC28A5735400A003D1 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				A2774D4528E1E27C0014365F /* UserController */,
+				A2774D4228E1DAB00014365F /* QuestionController */,
+				A2774D3F28E1DA620014365F /* PostController */,
+				A274345928D7047F000B10CC /* ReportController */,
 				6C296CA628B362D600E1BFD2 /* Auth */,
 				6C564FE628B9221500A91959 /* Profile */,
 				A24FD0ED28A5736100A003D1 /* UserInfoRequest.swift */,
@@ -966,6 +985,46 @@
 			path = ItemType;
 			sourceTree = "<group>";
 		};
+		A274345628D702C1000B10CC /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A274345728D702D4000B10CC /* ActionSheetAlertController.swift */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
+		A274345928D7047F000B10CC /* ReportController */ = {
+			isa = PBXGroup;
+			children = (
+				A274345A28D7048E000B10CC /* ReportRequest.swift */,
+			);
+			path = ReportController;
+			sourceTree = "<group>";
+		};
+		A2774D3F28E1DA620014365F /* PostController */ = {
+			isa = PBXGroup;
+			children = (
+				A2774D4028E1DA700014365F /* DeletePostRequest.swift */,
+			);
+			path = PostController;
+			sourceTree = "<group>";
+		};
+		A2774D4228E1DAB00014365F /* QuestionController */ = {
+			isa = PBXGroup;
+			children = (
+				A2774D4328E1DABD0014365F /* DeleteQuestionRequest.swift */,
+			);
+			path = QuestionController;
+			sourceTree = "<group>";
+		};
+		A2774D4528E1E27C0014365F /* UserController */ = {
+			isa = PBXGroup;
+			children = (
+				A2774D4628E1E28D0014365F /* BlockUserRequest.swift */,
+			);
+			path = UserController;
+			sourceTree = "<group>";
+		};
 		A2CF64DD28796D72007D54DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,6 +1140,8 @@
 				A2E105DF28BA0CB600CC6498 /* WebViewCoordinator.swift */,
 				A2E105E128BA139B00CC6498 /* DoriDoriWeb.swift */,
 				A266067628BFBE9200E54CBF /* WebViewCommand.swift */,
+				A2774D3B28E1D2470014365F /* DoriDoriQuestionPostDetailMore.swift */,
+				A2774D3D28E1D9740014365F /* QuestionPostDetailRequestable.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -1393,12 +1454,14 @@
 				A219F63B28BE5EAC0065C1F9 /* ReplyCommentRequest.swift in Sources */,
 				6C5E72B928AFCCB200013C2B /* UnderLineTextFieldViewModel.swift in Sources */,
 				6C3D0B6C28B4919A0076450B /* TermsModel.swift in Sources */,
+				A274345B28D7048E000B10CC /* ReportRequest.swift in Sources */,
 				6C564FF428B926A500A91959 /* TokenModel.swift in Sources */,
 				6C5B741C28A49CB200D7DC9D /* ProfileKeywordView.swift in Sources */,
 				6C0172B928AA2A460081DDD4 /* SignUpRepository.swift in Sources */,
 				6C6529ED2895365A00EB04B5 /* PasswordViewModel.swift in Sources */,
 				6C86264228BCE9D600865FFA /* ProfileDefaultReqeust.swift in Sources */,
 				6C6529EB2895364B00EB04B5 /* PasswordInputViewController.swift in Sources */,
+				A2774D4428E1DABD0014365F /* DeleteQuestionRequest.swift in Sources */,
 				6C564FE828B9223D00A91959 /* NicknameRequest.swift in Sources */,
 				6CB65B622879AAB300C15E2B /* EmailSignInViewController.swift in Sources */,
 				6C350E7228A1619F005281C2 /* ProfileUploadViewController.swift in Sources */,
@@ -1407,6 +1470,7 @@
 				6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */,
 				CE6FF75828B135A300E4A3CD /* UIViewController+Extension.swift in Sources */,
 				A24FD14B28B356A100A003D1 /* MyWardDropDownItem.swift in Sources */,
+				A2774D3E28E1D9740014365F /* QuestionPostDetailRequestable.swift in Sources */,
 				CE5B13352879AED500F10A20 /* HomeViewModel.swift in Sources */,
 				A20A9E9C287982B5000ABFBB /* MyPageProfileView.swift in Sources */,
 				A2CF64E128796D8B007D54DD /* ErrorModel.swift in Sources */,
@@ -1434,6 +1498,7 @@
 				CE6A452128ABEB6E0084B106 /* UserDefault.swift in Sources */,
 				CE5E72B628BE3991002E97B9 /* RefreshModel.swift in Sources */,
 				CEB113B128BE88AC00C17D7A /* HomeRangeViewController.swift in Sources */,
+				A2774D4128E1DA700014365F /* DeletePostRequest.swift in Sources */,
 				CE8A535728996272005E33CC /* LocationCollectionViewCell.swift in Sources */,
 				CE42D3842870483A00C49548 /* CompositionRoot.swift in Sources */,
 				CE5B134D287A11B800F10A20 /* BaseWebViewController.swift in Sources */,
@@ -1530,6 +1595,7 @@
 				6C350E6F28A159B5005281C2 /* NicknameSettingViewController.swift in Sources */,
 				6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */,
 				6C1A660328892054005A3314 /* TermsOfServiceViewContoller.swift in Sources */,
+				A2774D4728E1E28D0014365F /* BlockUserRequest.swift in Sources */,
 				6C3D0B6728B48E6E0076450B /* TermsOfServiceRequest.swift in Sources */,
 				6CB65B5B2879792000C15E2B /* WelcomeViewController.swift in Sources */,
 				A219F63928BE48290065C1F9 /* TextFieldAlertViewController.swift in Sources */,
@@ -1540,7 +1606,9 @@
 				CE5B13382879B1DC00F10A20 /* HomeHeaderView.swift in Sources */,
 				CE5E72BB28BE4AA5002E97B9 /* HomeCoordinator.swift in Sources */,
 				A2CE622D28C11C130067CCAD /* EmptyCell.swift in Sources */,
+				A274345828D702D4000B10CC /* ActionSheetAlertController.swift in Sources */,
 				A266067728BFBE9200E54CBF /* WebViewCommand.swift in Sources */,
+				A2774D3C28E1D2470014365F /* DoriDoriQuestionPostDetailMore.swift in Sources */,
 				CE5B13342879AED500F10A20 /* HomeViewController.swift in Sources */,
 				CE6A451A28ABD3B20084B106 /* HomeSpeechModel.swift in Sources */,
 				A24FD13C28B2676400A003D1 /* QuestionToUserRequest.swift in Sources */,

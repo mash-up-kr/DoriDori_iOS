@@ -282,7 +282,7 @@ extension HomeOtherSpeechBubbleView {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 guard let info = owner.homeSpeechInfo else { return }
-                owner.delegate?.commentButtonDidTap(postId: info.id)
+                owner.delegate?.commentButtonDidTap(postId: info.id, postUserID: info.user.id)
             })
             .disposed(by: disposeBag)
         

@@ -19,27 +19,31 @@ final class QuestionReceivedReactor: Reactor {
         case didTapDenyCancel
         case didTapDenyAction(QuestionID)
         case didRefresh
+        case didTapReport(IndexPath)
+        case didTapReportAction(type: ReportType, questionID: QuestionID)
     }
     
     enum Mutation {
         case questions([MyPageOtherSpeechBubbleItemType])
         case didTapProfile(UserID)
-        case didSelectQuestion(QuestionID)
+        case didSelectQuestion(questionID: QuestionID, questionUserID: UserID)
         case alert(AlertModel)
         case shouldDismissPresentedViewController
         case endRefreshing([MyPageOtherSpeechBubbleItemType])
         case didDenyQuestion([MyPageOtherSpeechBubbleItemType])
         case toast(text: String)
+        case didTapReport(ActionSheetAlertController)
     }
     
     struct State {
         @Pulse var receivedQuestions: [MyPageOtherSpeechBubbleItemType] = []
-        @Pulse var navigateQuestionID: QuestionID?
+        @Pulse var navigateQuestionID: (questionID: QuestionID, questionUserID: UserID)?
         @Pulse var navigateUserID: UserID?
         @Pulse var alert: AlertModel?
         @Pulse var shouldDismissPresentedViewController: Void?
         @Pulse var endRefreshing: Bool?
         @Pulse var showToast: String?
+        @Pulse var actionSheetAlertController: ActionSheetAlertController?
     }
     
     var initialState: State
@@ -64,6 +68,14 @@ final class QuestionReceivedReactor: Reactor {
         switch action {
         case .viewDidLoad:
             return self.fetchReceivedQuestions(size: 20, lastID: self.lastQuestionID)
+                .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    let questionItems = self.configureCells(response: response)
+                    self.hasNext = response.hasNext ?? false
+                    self.isRequesting = false
+                    self.lastQuestionID = response.questions?.last?.id
+                    return .just(.questions(questionItems))
+                }
             
         case .willDisplayCell(let indexPath):
             if (self.currentState.receivedQuestions.count < ( indexPath.item + 5)) && self.hasNext {
@@ -73,6 +85,14 @@ final class QuestionReceivedReactor: Reactor {
                         size: 20,
                         lastID: self.lastQuestionID
                     )
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        let questionItems = self.configureCells(response: response)
+                        self.hasNext = response.hasNext ?? false
+                        self.isRequesting = false
+                        self.lastQuestionID = response.questions?.last?.id
+                        return .just(.questions(questionItems))
+                    }
                 }
             }
         case .didTapProfile(let indexPath):
@@ -92,6 +112,42 @@ final class QuestionReceivedReactor: Reactor {
                 self.action.onNext(.didTapDenyAction(question.questionID))
             }))
             return .just(.alert(alertModel))
+            
+        case .didTapReport(let indexPath):
+            let actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { [weak self] _ in
+                guard let question = self?.currentState.receivedQuestions[safe: indexPath.item] else { return }
+                
+                self?.action.onNext(.didTapReportAction(type: .question, questionID: question.questionID))
+            }))
+            return .just(.didTapReport(actionSheetController))
+            
+        case .didTapReportAction(let type, let questionID):
+            return self.myPageRepository.requestReport(
+                type: type,
+                targetID: questionID
+            )
+            .catch({ error in
+                print(error)
+                return .empty()
+            })
+            .filter { $0 }
+            .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                guard let self = self else { return .empty() }
+                let newReceivedQuestions = self.fetchReceivedQuestions(size: 20, lastID: nil)
+                    .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                        guard let self = self else { return .empty() }
+                        let questionItems = self.configureCells(response: response)
+                        self.hasNext = response.hasNext ?? false
+                        self.isRequesting = false
+                        self.lastQuestionID = response.questions?.last?.id
+                        return .just(.questions(questionItems))
+                    }
+                
+                return .concat(
+                    newReceivedQuestions,
+                    .just(.toast(text: "신고되었습니다!"))
+                )
+            }
             
         case .didTapDenyCancel:
             return .just(.shouldDismissPresentedViewController)
@@ -141,7 +197,7 @@ final class QuestionReceivedReactor: Reactor {
             
         case .didSelectCell(let indexPath):
             guard let question = self.question(at: indexPath) else { return .empty() }
-            return .just(.didSelectQuestion(question.questionID))
+            return .just(.didSelectQuestion(questionID: question.questionID, questionUserID: question.userID))
             
         case .didRefresh:
             self.lastQuestionID = nil
@@ -174,8 +230,8 @@ final class QuestionReceivedReactor: Reactor {
             _state.receivedQuestions = questions
         case .didTapProfile(let userID):
             _state.navigateUserID = userID
-        case .didSelectQuestion(let questionID):
-            _state.navigateQuestionID = questionID
+        case .didSelectQuestion(let questionID, let questionUserID):
+            _state.navigateQuestionID = (questionID, questionUserID)
         case .alert(let alertModel):
             _state.alert = alertModel
         case .shouldDismissPresentedViewController:
@@ -185,6 +241,8 @@ final class QuestionReceivedReactor: Reactor {
             _state.endRefreshing = true
         case .toast(let text):
             _state.showToast = text
+        case .didTapReport(let acionSheet):
+            _state.actionSheetAlertController = acionSheet
         }
         return _state
     }
@@ -231,7 +289,7 @@ extension QuestionReceivedReactor {
         }
     }
     
-    private func fetchReceivedQuestions(size: Int, lastID: QuestionID?) -> Observable<Mutation> {
+    private func fetchReceivedQuestions(size: Int, lastID: QuestionID?) -> Observable<ReceivedQuestionModel> {
         self.isRequesting = true
         return self.myPageRepository.fetchReceivedQuestions(
             size: size,
@@ -240,14 +298,6 @@ extension QuestionReceivedReactor {
             .catch { error in
                 print(error)
                 return .empty()
-            }
-            .flatMapLatest { [weak self] response -> Observable<Mutation> in
-                guard let self = self else { return .empty() }
-                let questionItems = self.configureCells(response: response)
-                self.hasNext = response.hasNext ?? false
-                self.isRequesting = false
-                self.lastQuestionID = response.questions?.last?.id
-                return .just(.questions(questionItems))
             }
     }
 }

@@ -11,7 +11,7 @@ import RxSwift
 
 protocol HomeSpeechBubleViewDelegate: AnyObject {
     func likeButtonDidTap(id: String, userLiked: Bool)
-    func commentButtonDidTap(postId: String)
+    func commentButtonDidTap(postId: String, postUserID: UserID)
     func shareButtonDidTap()
 }
 
@@ -203,7 +203,7 @@ extension HomeMySpeechBubbleView {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 guard let info = owner.homeSpeechInfo else { return }
-                owner.delegate?.commentButtonDidTap(postId: info.id)
+                owner.delegate?.commentButtonDidTap(postId: info.id, postUserID: info.user.id)
             })
             .disposed(by: disposeBag)
         
