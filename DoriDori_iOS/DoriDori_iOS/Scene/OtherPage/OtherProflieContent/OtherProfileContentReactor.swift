@@ -97,7 +97,7 @@ final class OtherProfileContentReactor: Reactor {
                     location: question.representativeAddress ?? "",
                     updatedTime: updatedTime,
                     level: question.fromUser?.level ?? 1,
-                    imageURL: URL(string: question.fromUser?.profileImageURL ?? ""),
+                    imageURL: question.fromUser?.profileImageURL ?? "",
                     tags: question.fromUser?.tags ?? [],
                     userName: question.fromUser?.nickname ?? ""
                 )

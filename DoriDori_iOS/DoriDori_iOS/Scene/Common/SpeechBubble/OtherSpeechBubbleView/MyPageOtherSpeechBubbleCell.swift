@@ -18,7 +18,7 @@ struct IdentifiedMyPageSpeechBubbleCellItem: IdentifiedMyPageSpeechBubbleCellIte
     let location: String
     let updatedTime: String
     let level: Int
-    let imageURL: URL?
+    let imageURL: String
     let tags: [String]
     let userName: String
 }
@@ -35,7 +35,7 @@ struct AnonymousMyPageSpeechBubbleCellItem: AnonymousMyPageSpeechBubbleCellItemT
 
 protocol IdentifiedMyPageSpeechBubbleCellItemType: MyPageOtherSpeechBubbleItemType {
     var level: Int { get }
-    var imageURL: URL? { get }
+    var imageURL: String { get }
 }
 
 protocol AnonymousMyPageSpeechBubbleCellItemType: MyPageOtherSpeechBubbleItemType {
@@ -83,11 +83,14 @@ final class MyPageOtherSpeechBubbleCell: UICollectionViewCell {
     func configure(_ item: MyPageOtherSpeechBubbleItemType, shouldHideButtonstackView: Bool = true) {
         self.speechBubble.configure(item, shouldHideButtonstackView: shouldHideButtonstackView)
         if let identifiedMyPageSpeechBubbleCellItem = item as? IdentifiedMyPageSpeechBubbleCellItem {
-            self.profileImageView.kf.setImage(with: identifiedMyPageSpeechBubbleCellItem.imageURL)
+            self.profileImageView.kf.setImage(with: URL(string: identifiedMyPageSpeechBubbleCellItem.imageURL))
             self.levelView.configure(level: identifiedMyPageSpeechBubbleCellItem.level)
         }
+        
         if let _ = item as? AnonymousMyPageSpeechBubbleCellItem {
             self.levelView.isHidden = true
+        } else {
+            self.levelView.isHidden = false
         }
     }
     

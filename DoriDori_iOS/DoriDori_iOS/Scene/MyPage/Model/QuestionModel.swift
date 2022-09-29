@@ -39,4 +39,9 @@ struct QuestionUserModel: Codable {
     var tags: [String]?
     var profileImageURL: String?
     var level: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case profileImageURL = "profileImageUrl"
+        case id, nickname, profileDescription, tags, level
+    }
 }
