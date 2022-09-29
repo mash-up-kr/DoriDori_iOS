@@ -20,6 +20,7 @@ final class AnswerCompleteReactor: Reactor {
         case didTapReport(IndexPath)
         case didTapReportButton(type: ReportType, targetID: String)
         case didRefresh
+        case didTapDelete(answerID: AnswerID)
     }
     
     enum Mutation {
@@ -115,13 +116,39 @@ final class AnswerCompleteReactor: Reactor {
                 
             } else if let myAnswer = question as? MyPageMySpeechBubbleCellItem {
                 actionSheetController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "삭제하기", action: { [weak self] _ in
-                    #warning("TODO: // 내 답변 삭제하기 , 수정하기 들어가야됨")
-                    print("삭제하기 \(myAnswer.questionID)")
+                    self?.action.onNext(.didTapDelete(answerID: myAnswer.questionID))
                 }))
                 
             } else { return .empty() }
      
             return .just(.didTapReport(actionSheetController))
+            
+        case .didTapDelete(let answerID):
+            return self.repository.deleteAnswer(answerID: answerID)
+                .catch { error in
+                    print(error)
+                    return .empty()
+                }
+                .flatMapLatest { [weak self] _ -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    self.lastQuestionID = nil
+                    let newAnswerCompletes = self.fetchAnswerComplete()
+                        .flatMapLatest { [weak self] response -> Observable<Mutation> in
+                            guard let self = self else { return .empty() }
+                            guard let hasNext = response.hasNext else { return .empty() }
+                            self.hasNext = hasNext
+                            self.lastQuestionID = response.questions?.last?.id
+                            let _questions = self.configureCells(response: response)
+                            self.isRequesting = false
+                            return .just(.questionAndAnswers(_questions))
+                        }
+                    self.shouldRefreshQuestionAndAnswers = true
+                    return .concat(
+                        newAnswerCompletes,
+                        .just(.toast(text: "삭제되었습니다!"))
+                    )
+                }
+            
         case .didTapReportButton(let type, let questionID):
             return self.repository.requestReport(
                 type: type,
@@ -134,6 +161,7 @@ final class AnswerCompleteReactor: Reactor {
             .filter { $0 }
             .flatMapLatest { [weak self] _ -> Observable<Mutation> in
                 guard let self = self else { return .empty() }
+                self.lastQuestionID = nil
                 let newAnswerCompletes = self.fetchAnswerComplete()
                     .flatMapLatest { [weak self] response -> Observable<Mutation> in
                         guard let self = self else { return .empty() }

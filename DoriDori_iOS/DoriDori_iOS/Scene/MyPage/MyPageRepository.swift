@@ -17,6 +17,7 @@ protocol MyPageRequestable: AnyObject {
     func postComment(to questionID: QuestionID, content: String, location: Location) -> Observable<String>
     
     func requestReport(type: ReportType, targetID: String) -> Observable<Bool>
+    func deleteAnswer(answerID: AnswerID) -> Observable<String>
 }
 
 final class MyPageRepository: MyPageRequestable {
@@ -67,6 +68,14 @@ final class MyPageRepository: MyPageRequestable {
         Network().request(
             api: ReportRequest(type: type, targetID: targetID),
             responseModel: ResponseModel<Bool>.self
+        )
+    }
+    
+    
+    func deleteAnswer(answerID: AnswerID) -> Observable<String> {
+        Network().request(
+            api: DeleteAnswerRequest(answerID: answerID),
+            responseModel: ResponseModel<String>.self
         )
     }
 }
