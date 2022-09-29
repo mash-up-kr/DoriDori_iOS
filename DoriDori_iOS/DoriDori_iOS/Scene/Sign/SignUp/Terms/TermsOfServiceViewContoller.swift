@@ -18,6 +18,10 @@ final class TermsOfServiceViewContoller: UIViewController {
     @IBOutlet private weak var useAgreeButton: UIButton!
     @IBOutlet private weak var useAgreeContent: UITextView!
     
+    @IBOutlet private weak var personalInfoAgreeLabel: UILabel!
+    @IBOutlet private weak var personalInfoAgreeButton: UIButton!
+    @IBOutlet private weak var personalInfoAgreeContent: UITextView!
+    
     @IBOutlet private weak var locationAgreeLabel: UILabel!
     @IBOutlet private weak var locationAgreeButton: UIButton!
     @IBOutlet private weak var locationAgreeContent: UITextView!
@@ -49,11 +53,13 @@ final class TermsOfServiceViewContoller: UIViewController {
         let edgeInsets = UIEdgeInsets(top: 16, left: 12, bottom: 16, right: 12)
         useAgreeContent.textContainerInset = edgeInsets
         locationAgreeContent.textContainerInset = edgeInsets
+        personalInfoAgreeContent.textContainerInset = edgeInsets
     }
     
     private func bind(viewModel: TermsOfServiceViewModel) {
         let input = TermsOfServiceViewModel.Input(allAgree: allAgreeButton.rx.tap.asObservable(),
                                                   useAgree: useAgreeButton.rx.tap.asObservable(),
+                                                  personalInfoAgree: personalInfoAgreeButton.rx.tap.asObservable(),
                                                   locationAgree: locationAgreeButton.rx.tap.asObservable())
         
         let output = viewModel.transform(input: input)
@@ -68,6 +74,11 @@ final class TermsOfServiceViewContoller: UIViewController {
         output.useAgreeOutput.drive(onNext: {[weak self] isValid in
             let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
             self?.useAgreeButton.setImage(buttonImage, for: .normal)
+        }).disposed(by: disposeBag)
+        
+        output.personalInfoAgreeOutput.drive(onNext: {[weak self] isValid in
+            let buttonImage = isValid ? UIImage(named: "checkbox") : UIImage(named: "checkbox_outline")
+            self?.personalInfoAgreeButton.setImage(buttonImage, for: .normal)
         }).disposed(by: disposeBag)
         
         output.locationAgreeOutput.drive(onNext: {[weak self] isValid in
@@ -95,6 +106,14 @@ final class TermsOfServiceViewContoller: UIViewController {
             DispatchQueue.main.async {
                 self?.locationAgreeLabel.text = data.title
                 self?.locationAgreeContent.text = data.content
+                self?.termsIds.append(data.id)
+            }
+        }).disposed(by: disposeBag)
+        
+        output.personalInfoContent.bind(onNext: { [weak self] data in
+            DispatchQueue.main.async {
+                self?.personalInfoAgreeLabel.text = data.title
+                self?.personalInfoAgreeContent.text = data.content
                 self?.termsIds.append(data.id)
             }
         }).disposed(by: disposeBag)
