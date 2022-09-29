@@ -45,6 +45,7 @@ final class AnswerCompleteReactor: Reactor {
     private var hasNext: Bool = false
     private var isRequesting: Bool = false
     var initialState: State
+    private var shouldRefreshQuestionAndAnswers: Bool = false
     
     init(
         repository: MyPageRequestable
@@ -64,6 +65,7 @@ final class AnswerCompleteReactor: Reactor {
                     self.lastQuestionID = response.questions?.last?.id
                     let _questions = self.configureCells(response: response)
                     self.isRequesting = false
+                    self.shouldRefreshQuestionAndAnswers = true
                     return .just(.questionAndAnswers(_questions))
                 }
             
@@ -142,6 +144,7 @@ final class AnswerCompleteReactor: Reactor {
                         self.isRequesting = false
                         return .just(.questionAndAnswers(_questions))
                     }
+                self.shouldRefreshQuestionAndAnswers = true
                 return .concat(
                     newAnswerCompletes,
                     .just(.toast(text: "신고되었습니다!"))
@@ -237,7 +240,7 @@ final class AnswerCompleteReactor: Reactor {
         var _state = state
         switch mutation {
         case .questionAndAnswers(let questions):
-            if _state.questionAndAnswer.isEmpty {
+            if self.shouldRefreshQuestionAndAnswers {
                 _state.questionAndAnswer = questions
             } else {
                 _state.questionAndAnswer.append(contentsOf: questions)
@@ -254,6 +257,9 @@ final class AnswerCompleteReactor: Reactor {
         case .toast(let text):
             _state.showToast = text
         }
+        
+        self.shouldRefreshQuestionAndAnswers = false
+        
         return _state
     }
 }
