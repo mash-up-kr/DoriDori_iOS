@@ -91,6 +91,8 @@ final class AlertViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit { debugPrint("\(self) deinit") }
+    
     func show() {
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .crossDissolve
@@ -98,7 +100,12 @@ final class AlertViewController: UIViewController {
                         as? SceneDelegate else {
                     return
                 }
-        sceneDelegate.window?.rootViewController?.presentedViewController?.present(self, animated: true)
+        if let presentedViewController = sceneDelegate.window?.rootViewController?.presentedViewController {
+            presentedViewController.present(self, animated: true)
+        } else {
+            sceneDelegate.window?.rootViewController?.present(self, animated: true, completion: nil)
+        }
+      
     }
 }
 
