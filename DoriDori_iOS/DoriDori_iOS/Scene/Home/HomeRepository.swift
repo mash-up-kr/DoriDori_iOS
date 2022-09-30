@@ -14,6 +14,8 @@ protocol HomeRepositoryRequestable {
     func like(id: String) -> Observable<Bool>
     func dislike(id: String) -> Observable<Bool>
     func comment(postId: String) -> Observable<HomeSpeechInfo>
+    func report(type: ReportType, targetId: String) -> Observable<Bool>
+    func deleteMyQuestion(id: String) -> Observable<Bool>
 }
 
 struct HomeRepository: HomeRepositoryRequestable {
@@ -37,5 +39,13 @@ struct HomeRepository: HomeRepositoryRequestable {
     
     func comment(postId: String) -> Observable<HomeSpeechInfo> {
         Network().request(api: HomeCommentRequest(postId: postId), responseModel: ResponseModel<HomeSpeechInfo>.self)
+    }
+    
+    func report(type: ReportType, targetId: String) -> Observable<Bool> {
+        Network().request(api: ReportRequest(type: type, targetID: targetId), responseModel: ResponseModel<Bool>.self)
+    }
+    
+    func deleteMyQuestion(id: String) -> Observable<Bool> {
+        Network().request(api: DeletePostRequest(postID: id), responseModel: ResponseModel<Bool>.self)
     }
 }

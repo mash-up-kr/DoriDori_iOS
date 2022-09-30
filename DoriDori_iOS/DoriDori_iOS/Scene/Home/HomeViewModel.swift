@@ -14,6 +14,10 @@ final class HomeViewModel: Reactor {
         case reqeustHomeData
         case like(id: String)
         case dislike(id: String)
+        case didTapReport(id: String)
+        case didTapDelete(id: String)
+        case report(type: ReportType)
+        case deleteMyQuestion
     }
     
     enum Mutation {
@@ -22,15 +26,21 @@ final class HomeViewModel: Reactor {
         case setHomeEmptyState(Bool)
         case setWardTitleLabel(String)
         case shouldShowLocationAlert
+        case setNeedReportView(Bool)
+        case setNeedDeleteView(Bool)
+        case setReportId(String)
     }
     
     struct State {
         var homeSpeechModel: HomeSpeechs?
         var wardTitle: String = ""
+        var reportId: String = ""
         @Pulse var homeCollectionViewNeedReload: Bool = false
         @Pulse var locationViewNeedAnimate: Bool = false
         @Pulse var homeEmptyState: Bool = false
         @Pulse var shouldShowLocationAlert: Void? = nil
+        @Pulse var needShowReportActionSheetView: Bool = false
+        @Pulse var needShowDeleteActionSheetView: Bool = false
     }
 
     let initialState: State = State()
@@ -53,6 +63,20 @@ final class HomeViewModel: Reactor {
             return like(id: id)
         case let .dislike(id: id):
             return dislike(id: id)
+        case .didTapReport(id: let id):
+            return .concat([
+                .just(.setReportId(id)),
+                .just(.setNeedReportView(true))
+            ])
+        case let .report(type: type):
+            return report(type: type)
+        case .didTapDelete(id: let id):
+            return .concat([
+                .just(.setReportId(id)),
+                .just(.setNeedDeleteView(true))
+            ])
+        case let .deleteMyQuestion:
+            return deleteMyQuestion()
         }
     }
 
@@ -70,6 +94,12 @@ final class HomeViewModel: Reactor {
             newState.wardTitle = title
         case let .shouldShowLocationAlert:
             newState.shouldShowLocationAlert = ()
+        case let .setNeedReportView(needShowView):
+            newState.needShowReportActionSheetView = needShowView
+        case let .setReportId(id):
+            newState.reportId = id
+        case let .setNeedDeleteView(needShowView):
+            newState.needShowDeleteActionSheetView = needShowView
         }
         
         return newState
@@ -126,6 +156,22 @@ final class HomeViewModel: Reactor {
     
     private func dislike(id: String) -> Observable<Mutation> {
         repository.dislike(id: id)
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
+            }
+    }
+    
+    private func report(type: ReportType) -> Observable<Mutation> {
+        return repository.report(type: type, targetId: currentState.reportId)
+            .withUnretained(self)
+            .flatMap { owner, _ -> Observable<Mutation> in
+                return owner.requestHomeData()
+            }
+    }
+    
+    private func deleteMyQuestion() -> Observable<Mutation> {
+        return repository.deleteMyQuestion(id: currentState.reportId)
             .withUnretained(self)
             .flatMap { owner, _ -> Observable<Mutation> in
                 return owner.requestHomeData()
