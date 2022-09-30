@@ -72,6 +72,7 @@ final class HomeCollectionViewImplement: NSObject, UICollectionViewDataSource, U
 }
 
 extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
+    
     func likeButtonDidTap(id: String, userLiked: Bool) {
         if userLiked {
             viewModel?.action.onNext(.dislike(id: id))
@@ -87,5 +88,13 @@ extension HomeCollectionViewImplement: HomeSpeechBubleViewDelegate {
     
     func shareButtonDidTap() {
         print("공유 버튼 눌림")
+    }
+    
+    func reportButtonDidTap(id: String, userId: String) {
+        if UserDefaults.userID == userId {
+            viewModel?.action.onNext(.didTapDelete(id: id))
+        } else {
+            viewModel?.action.onNext(.didTapReport(id: id))
+        }
     }
 }

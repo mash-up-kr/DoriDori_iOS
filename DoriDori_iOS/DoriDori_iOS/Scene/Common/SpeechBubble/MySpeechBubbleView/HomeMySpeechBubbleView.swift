@@ -13,6 +13,7 @@ protocol HomeSpeechBubleViewDelegate: AnyObject {
     func likeButtonDidTap(id: String, userLiked: Bool)
     func commentButtonDidTap(postId: String, postUserID: UserID)
     func shareButtonDidTap()
+    func reportButtonDidTap(id: String, userId: String)
 }
 
 final class HomeMySpeechBubbleView: MySpeechBubbleView,
@@ -25,7 +26,6 @@ final class HomeMySpeechBubbleView: MySpeechBubbleView,
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "more"), for: .normal)
-        button.isHidden = true
         return button
     }()
     private let userNameLabel: UILabel = {
@@ -213,6 +213,20 @@ extension HomeMySpeechBubbleView {
                 owner.delegate?.shareButtonDidTap()
             })
             .disposed(by: disposeBag)
+        
+        moreButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard
+                    let id = owner.homeSpeechInfo?.id,
+                    let userId = owner.homeSpeechInfo?.user.id
+                else {
+                    return
+                }
+                owner.delegate?.reportButtonDidTap(id: id, userId: userId)
+            })
+            .disposed(by: disposeBag)
+
     }
 }
 

@@ -33,6 +33,14 @@ final class HomeViewController: UIViewController {
     
     private let homeEmptyView: DoriDoriEmptyView = DoriDoriEmptyView()
     
+    private lazy var reportActionSheetView: ActionSheetAlertController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "신고하기", action: { _ in
+        self.viewModel?.action.onNext(.report(type: .question))
+    }))
+    
+    private lazy var deleteActionSheetView: ActionSheetAlertController = ActionSheetAlertController(actionModels: ActionSheetAction(title: "삭제하기", action: { _ in
+        self.viewModel?.action.onNext(.deleteMyQuestion)
+    }))
+    
     private let homeWriteButton: UIButton = {
         let button: UIButton = UIButton()
         button.setImage(UIImage(named: "wardWrite"), for: .normal)
@@ -93,6 +101,24 @@ final class HomeViewController: UIViewController {
                 LocationAlertViewController().show()
             })
             .disposed(by: self.disposeBag)
+        
+        viewModel?.pulse(\.$needShowReportActionSheetView)
+            .skip(1)
+            .observe(on: MainScheduler.instance)
+            .bind(with: self, onNext: { owner, _ in
+                let actionSheetVC = owner.reportActionSheetView.configure()
+                owner.present(actionSheetVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel?.pulse(\.$needShowDeleteActionSheetView)
+            .skip(1)
+            .observe(on: MainScheduler.instance)
+            .bind(with: self, onNext: { owner, _ in
+                let actionSheetVC = owner.deleteActionSheetView.configure()
+                owner.present(actionSheetVC, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         viewModel?.state
             .map { "지금 여기는 \(String($0.wardTitle))!" }
