@@ -112,7 +112,6 @@ class UnderLineTextField: UIView {
         if viewModel.titleLabelType != .profile && viewModel.titleLabelType != .profileKeyword {
             titleLabel.text = viewModel.titleLabelType.rawValue
         }
-//        errorLabel.text = viewModel.errorMessage.rawValue
         textField.textContentType = viewModel.inputContentType
         textField.returnKeyType = viewModel.returnKeyType
         textField.isSecureTextEntry = viewModel.isSecureTextEntry

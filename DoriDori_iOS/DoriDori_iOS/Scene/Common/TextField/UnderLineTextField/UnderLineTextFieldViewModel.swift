@@ -11,22 +11,6 @@ import RxSwift
 import RxCocoa
 
 class UnderLineTextFieldViewModel {
-    
-    // MARK: - 변수, Enum
-    var inputContentType: UITextContentType = .nickname
-    var returnKeyType: UIReturnKeyType = .default
-    var keyboardType: UIKeyboardType
-    var isSecureTextEntry: Bool {
-        return inputContentType == .password
-    }
-    var titleLabelType: TextFieldType
-    var inputPlaceHolder: TextFieldPlaceHolder = .email
-    var errorMsgAndTypeCheck: TextFieldErrorMessage = .email
-    var stringCountIsHidden: Bool = true
-    var totalStringCount: Int = 0
-    var authNumberTimer: Bool = true
-    var authNumberResend: Bool = true
-    
     enum TextFieldType: String {
         case email = "이메일"
         case password = "비밀번호"
@@ -51,30 +35,30 @@ class UnderLineTextFieldViewModel {
         case password = "비밀번호를 확인해주세요."
         case nickname = "닉네임은 7자리 이내로 설정해주세요."
     }
-    // MARK: - init
-    init() {
-        self.titleLabelType = .email
-        self.inputContentType = .emailAddress
-        self.keyboardType = .default
+    
+    private(set) var inputContentType: UITextContentType = .emailAddress
+    private(set) var returnKeyType: UIReturnKeyType = .default
+    private(set) var keyboardType: UIKeyboardType = .default
+    private(set) var isSecureTextEntry: Bool = false
+    private(set) var titleLabelType: TextFieldType = .email
+    private(set) var inputPlaceHolder: TextFieldPlaceHolder = .email
+    private(set) var errorMsgAndTypeCheck: TextFieldErrorMessage = .email
+    private(set) var stringCountIsHidden: Bool = true
+    private(set) var totalStringCount: Int = 0
+    private(set) var authNumberTimer: Bool = true
+    private(set) var authNumberResend: Bool = true
+    
+    func setUpTitleType(_ titleType: TextFieldType) {
+        self.titleLabelType = titleType
+        configureTextField(titleType)
     }
     
-    init(titleLabelType: TextFieldType,
-         keyboardType: UIKeyboardType = .default) {
-        
-        self.titleLabelType = titleLabelType
-        self.keyboardType = keyboardType
-        configureTextField(titleLabelType)
+    func setUpInputType(_ inputType: UITextContentType) {
+        self.inputContentType = inputType
     }
     
-    init(titleLabelType: TextFieldType,
-         inputContentType: UITextContentType = .emailAddress,
-         returnKeyType: UIReturnKeyType = .default,
-         keyboardType: UIKeyboardType = .default) {
-        
-        self.titleLabelType = titleLabelType
-        self.inputContentType = inputContentType
+    func setUpKeyboardType(_ keyboardType: UIKeyboardType) {
         self.keyboardType = keyboardType
-        configureTextField(titleLabelType)
     }
     
     // MARK: - func
@@ -88,11 +72,13 @@ class UnderLineTextFieldViewModel {
             inputPlaceHolder = .password
             stringCountIsHidden = false
             totalStringCount = 20
+            isSecureTextEntry = true
         case .passwordConfirm:
             errorMsgAndTypeCheck = .password
             inputPlaceHolder = .passwordConfirm
             stringCountIsHidden = false
             totalStringCount = 20
+            isSecureTextEntry = true
         case .nickname:
             errorMsgAndTypeCheck = .nickname
             inputPlaceHolder = .nickname

@@ -49,6 +49,7 @@
 		6C94FC622887C86800DD77B6 /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */; };
 		6C94FC682887C9F000DD77B6 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */; };
 		6C94FC692887C9F000DD77B6 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */; };
+		6CA048962928802C001E61AA /* UnderLineTextFieldDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA048952928802C001E61AA /* UnderLineTextFieldDirector.swift */; };
 		6CB65B5A2879792000C15E2B /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB65B572879792000C15E2B /* SignIn.storyboard */; };
 		6CB65B5B2879792000C15E2B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B582879792000C15E2B /* WelcomeViewController.swift */; };
 		6CB65B5C2879792000C15E2B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB65B592879792000C15E2B /* WelcomeViewModel.swift */; };
@@ -289,6 +290,7 @@
 		6C94FC612887C86800DD77B6 /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		6C94FC652887C9F000DD77B6 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		6C94FC662887C9F000DD77B6 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
+		6CA048952928802C001E61AA /* UnderLineTextFieldDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextFieldDirector.swift; sourceTree = "<group>"; };
 		6CB65B572879792000C15E2B /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		6CB65B582879792000C15E2B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		6CB65B592879792000C15E2B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				6C5E72AC28AFCCB200013C2B /* UnderLineTextField.xib */,
 				6C5E72AD28AFCCB200013C2B /* UnderLineTextFieldViewModel.swift */,
 				6C5E72AE28AFCCB200013C2B /* UnderLineTextField.swift */,
+				6CA048952928802C001E61AA /* UnderLineTextFieldDirector.swift */,
 			);
 			path = UnderLineTextField;
 			sourceTree = "<group>";
@@ -1576,6 +1579,7 @@
 				A2F92CA1288EDA94000340F5 /* Int+Extension.swift in Sources */,
 				A2655ADF28996E1500B03AA1 /* MyPageOtherSpeechBubbleItemType.swift in Sources */,
 				A2934DFE289E33B900749D0B /* MyPageTabCollectionViewCell.swift in Sources */,
+				6CA048962928802C001E61AA /* UnderLineTextFieldDirector.swift in Sources */,
 				CE6A0FAF28BA2DEF00E1E644 /* HomeRequest.swift in Sources */,
 				A2DF0878289C2DA700F2046C /* Array+Extension.swift in Sources */,
 				A24FD16128B4B2E000A003D1 /* AlertViewController.swift in Sources */,
