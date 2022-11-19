@@ -41,14 +41,9 @@ final class EmailSignInViewController: UIViewController {
   
     // MARK: - Bind ViewModel
     private func settingViewModel() {
-        emailTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .email,
-                                                               inputContentType: .emailAddress,
-                                                               returnKeyType: .default,
-                                                               keyboardType: .emailAddress)
-        passwordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .password,
-                                                                    inputContentType: .password,
-                                                                    returnKeyType: .default,
-                                                                    keyboardType: .default)
+        let director = UnderLineTextFieldDirector()
+        emailTextField.viewModel = director.createEmailViewModel()
+        passwordTextField.viewModel = director.createPasswordViewModel()
     }
     
     private func bind(_ viewModel: EmailSignInViewModel) {

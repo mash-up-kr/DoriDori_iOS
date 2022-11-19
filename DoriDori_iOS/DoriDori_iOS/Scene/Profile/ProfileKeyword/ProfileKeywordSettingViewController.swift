@@ -49,8 +49,8 @@ final class ProfileKeywordSettingViewController: UIViewController {
     }
     
     private func settingViewModel() {
-        keywordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profileKeyword,
-                                                                 keyboardType: .default)
+        let director = UnderLineTextFieldDirector()
+        keywordTextField.viewModel = director.createKeywordViewModel()
     }
     
     private func bind(_ viewModel: ProfileKeywordSettingViewModel) {

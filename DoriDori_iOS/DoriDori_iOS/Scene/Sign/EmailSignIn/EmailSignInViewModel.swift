@@ -39,7 +39,7 @@ final class EmailSignInViewModel: ViewModelProtocol {
                 pw.passwordValidCheck
             }
         
-           
+        
         let buttonIsValid = Observable.combineLatest(emailIsValid, passwordIsValid) { $0 && $1 }
         
         let errorRelay = PublishRelay<String>()
@@ -58,8 +58,8 @@ final class EmailSignInViewModel: ViewModelProtocol {
                         return .empty()
                     }
             }.observe(on: MainScheduler.instance)
-                
+        
         return Output(buttonIsValid: buttonIsValid, emailIsValid: emailIsValid, passwordIsValid: passwordIsValid, signIn: signIn, errorMessage: errorRelay.asSignal())
     }
-
+    
 }

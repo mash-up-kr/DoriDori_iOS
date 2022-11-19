@@ -47,12 +47,9 @@ final class EmailSignUpViewController: UIViewController {
     
     // MARK: - Bind
     private func settingViewModel() {
-        emailTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .email,
-                                                               inputContentType: .emailAddress,
-                                                               keyboardType: .emailAddress)
-        authNumberTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .authNumber,
-                                                                    inputContentType: .oneTimeCode,
-                                                                    keyboardType: .numberPad)
+        let director = UnderLineTextFieldDirector()
+        emailTextField.viewModel = director.createEmailViewModel()
+        authNumberTextField.viewModel = director.createAuthNumberViewModel()
     }
     
     private func bind(_ viewModel: EmailSignUpViewModel) {

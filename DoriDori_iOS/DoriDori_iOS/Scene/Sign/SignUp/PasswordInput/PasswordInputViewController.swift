@@ -40,12 +40,9 @@ final class PasswordViewController: UIViewController {
     
     // MARK: - Bind
     private func settingViewModel() {
-        passwordTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .password,
-                                                                  inputContentType: .password,
-                                                                  keyboardType: .default)
-        passwordConfirmTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .passwordConfirm,
-                                                                         inputContentType: .password,
-                                                                         keyboardType: .default)
+        let director = UnderLineTextFieldDirector()
+        passwordTextField.viewModel = director.createPasswordViewModel()
+        passwordConfirmTextField.viewModel = director.createPasswordConfirmViewModel()
     }
     
     private func bind(_ viewModel: PasswordViewModel) {

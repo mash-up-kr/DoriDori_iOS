@@ -37,8 +37,8 @@ final class ProfileIntroViewController: UIViewController {
     
     // MARK: - Bind
     private func settingViewModel() {
-        profileIntroTextField.viewModel = UnderLineTextFieldViewModel(titleLabelType: .profile,
-                                                                      keyboardType: .default)
+        let director = UnderLineTextFieldDirector()
+        profileIntroTextField.viewModel = director.createProfileViewModel()
     }
     
     private func bind(_ viewModel: ProfileIntroViewModel) {
